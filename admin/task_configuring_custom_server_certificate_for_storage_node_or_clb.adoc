@@ -1,0 +1,51 @@
+---
+permalink: admin/task_configuring_custom_server_certificate_for_storage_node_or_clb.html
+sidebar: sidebar
+keywords: 
+summary: 'You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service \(deprecated\) on Gateway Node. The replacement custom server certificate is specific to your organization.'
+---
+= Configuring a custom server certificate for connections to the Storage Node or the CLB service
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service (deprecated) on Gateway Node. The replacement custom server certificate is specific to your organization.
+
+By default, every Storage Node is issued a X.509 server certificate signed by the grid CA. These CA signed certificates can be replaced by a single common custom server certificate and corresponding private key.
+
+A single custom server certificate is used for all Storage Nodes, so you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the storage endpoint. Define the custom certificate such that it matches all Storage Nodes in the grid.
+
+After completing configuration on the server, users might also need to install the root CA certificate in the S3 or Swift API client they will use to access the system, depending on the root Certificate Authority (CA) you are using.
+
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Storage API Endpoints* alert and the legacy Storage API Service Endpoints Certificate Expiry (SCEP) alarm are both triggered when the root server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *primary Admin Node* > *CMN* > *Resources*.
+
+The custom certificates are only used if clients connect to StorageGRID using the deprecated CLB service on Gateway Nodes, or if they connect directly to Storage Nodes. S3 or Swift clients that connect to StorageGRID using the Load Balancer service on Admin Nodes or Gateway Nodes use the certificate configured for the load balancer endpoint.
+
+NOTE: The *Expiration of load balancer endpoint certificate* alert is triggered for load balancer endpoints that will expire soon.
+
+. Select *Configuration* > *Network Settings* > *Server Certificates*.
+. In the Object Storage API Service Endpoints Server Certificate section, click *Install Custom Certificate*.
+. Upload the required server certificate files:
+ ** *Server Certificate*: The custom server certificate file (.crt).
+ ** *Server Certificate Private Key*: The custom server certificate private key file (.key).
++
+NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
+
+ ** *CA Bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+. Click *Save*.
++
+The custom server certificate is used for all subsequent new API client connections.
++
+Select a tab to display detailed information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
++
+NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+
+. Refresh the page to ensure the web browser is updated.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-swift/home.html[Implementing Swift client applications]
+
+xref:task_configuring_s3_api_endpoint_domain_names.adoc[Configuring S3 API endpoint domain names]

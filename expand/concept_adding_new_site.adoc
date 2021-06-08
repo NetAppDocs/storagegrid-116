@@ -1,0 +1,37 @@
+---
+permalink: expand/concept_adding_new_site.html
+sidebar: sidebar
+keywords: 
+summary: 'You can expand your StorageGRID system by adding a new site.'
+---
+= Adding a new site
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can expand your StorageGRID system by adding a new site.
+
+== Guidelines for adding a site
+
+Before adding a site, review the following requirements and limitations:
+
+* You can only add one site per expansion operation.
+* You cannot add grid nodes to an existing site as part of the same expansion.
+* All sites must include at least three Storage Nodes.
+* Adding a new site does not automatically increase the number of objects you can store. The total object capacity of a grid depends on the amount of available storage, the ILM policy, and the metadata capacity at each site.
+* When sizing a new site, you must ensure that it includes enough metadata capacity.
++
+StorageGRID keeps a copy of all object metadata at every site. When you add a new site, you must ensure that it includes enough metadata capacity for the existing object metadata and enough metadata capacity for growth.
++
+For information on monitoring object metadata capacity, see the instructions for monitoring and troubleshooting StorageGRID.
+
+* You must consider the available network bandwidth between sites, and the level of network latency. Metadata updates are continually replicated between sites even if all objects are stored only at the site where they are ingested.
+* Because your StorageGRID system remains operational during the expansion, you must review ILM rules before starting the expansion procedure. You must ensure that object copies are not stored to the new site until the expansion procedure is complete.
++
+For example, before you begin the expansion, determine if any rules use the default storage pool (All Storage Nodes). If they do, you must create a new storage pool that contains the existing Storage Nodes and update your ILM rules to use the new storage pool. Otherwise, objects will be copied to the new site as soon as the first node at that site becomes active.
++
+For more information about changing ILM when adding a new site, see the example for changing an ILM policy in the instructions for managing objects with information lifecycle management.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]

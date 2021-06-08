@@ -1,0 +1,257 @@
+---
+permalink: primer/concept_exploring_grid_manager.html
+sidebar: sidebar
+keywords: 
+summary: ''
+---
+= Exploring the Grid Manager
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Grid Manager is the browser-based graphical interface that allows you to configure, manage, and monitor your StorageGRID system.
+
+When you sign in to the Grid Manager, you are connecting to an Admin Node. Each StorageGRID system includes one primary Admin Node and any number of non-primary Admin Nodes. You can connect to any Admin Node, and each Admin Node displays a similar view of the StorageGRID system.
+
+You can access the Grid Manager using a supported web browser.
+
+== Web browser requirements
+
+[.lead]
+You must use a supported web browser.
+
+|===
+| Web browser| Minimum supported version
+a|
+Google Chrome
+a|
+87
+a|
+Microsoft Edge
+a|
+87
+a|
+Mozilla Firefox
+a|
+84
+|===
+You should set the browser window to a recommended width.
+
+|===
+| Browser width| Pixels
+a|
+Minimum
+a|
+1024
+a|
+Optimum
+a|
+1280
+|===
+
+== Grid Manager Dashboard
+
+[.lead]
+When you first sign in to the Grid Manager, you can use the Dashboard to monitor system activities at a glance.
+
+The Dashboard includes summary information about system health, storage use, ILM processes, and S3 and Swift operations.
+
+image::../media/grid_manager_dashboard.png[Dashboard in the Grid Manager]
+
+For an explanation of the information on each panel, click the help icon image:../media/nms_question_icon.gif[question mark icon] for that panel.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+== Alerts menu
+
+[.lead]
+The Alerts menu provides an easy-to-use interface for detecting, evaluating, and resolving issues that might occur during StorageGRID operation.
+
+image::../media/alerts_menu.png[Alerts Menu]
+
+From the Alerts menu, you can do the following:
+
+* Review current alerts
+* Review resolved alerts
+* Configure silences to suppress alert notifications
+* Configure the email server for alert notifications
+* Define alert rules for conditions that trigger alerts
+
+*Related information*
+
+xref:concept_monitoring_and_managing_alerts.adoc[Monitoring and managing alerts]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+== Nodes page
+
+[.lead]
+The Nodes page displays information about the entire grid, each site in the grid, and each node at a site.
+
+The Nodes home page displays combined metrics for the entire grid. To view information for a particular site or node, click the appropriate link on the left.
+
+image::../media/nodes_menu.png[nodes page main]
+
+*Related information*
+
+xref:concept_viewing_nodes_page.adoc[Viewing the Nodes page]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+== Tenant Accounts page
+
+[.lead]
+The Tenant Accounts page allows you to create and monitor the storage tenant accounts for your StorageGRID system. You must create at least one tenant account to specify who can store and retrieve objects and which functionality is available to them.
+
+The Tenant Accounts page also provides usage details for each tenant, including the amount of storage used and the number of objects. If you set a quota when you created the tenant, you can see how much of that quota has been used.
+
+image::../media/tenants_menu_and_page.png[Tenants Menu and Page]
+
+*Related information*
+
+xref:concept_managing_tenants_and_client_connections.adoc[Managing tenants and client connections]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+
+== ILM menu
+
+[.lead]
+The ILM menu allows you to configure the information lifecycle management (ILM) rules and policies that govern data durability and availability. You can also enter an object identifier to view the metadata for that object.
+
+image::../media/ilm_menu_and_page.png[ILM Menu and Page]
+
+*Related information*
+
+xref:concept_using_information_lifecycle_management.adoc[Using information lifecycle management]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+== Configuration menu
+
+[.lead]
+The Configuration menu allows you to specify network settings, system settings, monitoring options, and access control options.
+
+image::../media/configuration_menu.png[Configuration Menu]
+
+*Related information*
+
+xref:concept_configuring_network_settings.adoc[Configuring network settings]
+
+xref:concept_managing_tenants_and_client_connections.adoc[Managing tenants and client connections]
+
+xref:concept_reviewing_audit_messages.adoc[Reviewing audit messages]
+
+xref:concept_controlling_storagegrid_access.adoc[Controlling StorageGRID access]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
+
+== Maintenance menu
+
+[.lead]
+The Maintenance menu allows you to perform maintenance tasks, network tasks, and system tasks.
+
+image::../media/maintenance_menu_and_page.png[Maintenance Menu and Page]
+
+=== Maintenance Tasks
+
+Maintenance tasks include:
+
+* Decommission operations to remove unused grid nodes and sites.
+* Expansion operations to add new grid nodes and sites.
+* Recovery operations to replace a failed node and restore data.
+
+=== Network
+
+Network tasks you can perform from the Maintenance menu include:
+
+* Editing information about DNS servers.
+* Configuring the subnets that are used on the Grid Network.
+* Editing information about NTP servers.
+
+=== System
+
+System tasks you can perform from the Maintenance menu include:
+
+* Reviewing details for the current StorageGRID license or uploading a new license.
+* Generating a Recovery Package.
+* Performing StorageGRID software updates, including software upgrades, hotfixes, and updates to the SANtricity OS software on selected appliances.
+
+*Related information*
+
+xref:concept_performing_maintenance_procedures.adoc[Performing maintenance procedures]
+
+xref:concept_downloading_recovery_package.adoc[Downloading the Recovery Package]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-upgrade/home.html[Upgrading StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+== Support menu
+
+[.lead]
+The Support menu provides options that help technical support analyze and troubleshoot your system. There are two parts to the Support menu: Tools and Alarms (legacy).
+
+image::../media/support_menu.png[Support menu]
+
+=== Tools
+
+From the Tools section of the Support menu, you can:
+
+* Enable AutoSupport.
+* Perform a set of diagnostic checks on the current state of the grid.
+* Access the Grid Topology tree to view detailed information about grid nodes, services, and attributes.
+* Retrieve log files and system data.
+* Review detailed metrics and charts.
++
+IMPORTANT: The tools available from the *Metrics* option are intended for use by technical support. Some features and menu items within these tools are intentionally non-functional.
+
+=== Alarms (legacy)
+
+From the Alarms (legacy) section of the Support menu, you can review current, historical, and global alarms, and you can set up email notifications for legacy alarms and AutoSupport.
+
+*Related information*
+
+link:concept_storagegrid_architecture_and_network_topology.md#[Grid nodes and services]
+
+xref:concept_storagegrid_attributes.adoc[StorageGRID attributes]
+
+link:[Monitoring alarms (legacy system)]
+
+link:concept_using_storagegrid_support_options.md#[Collecting StorageGRID logs]
+
+link:concept_using_storagegrid_support_options.md#[Configuring AutoSupport]
+
+link:concept_using_storagegrid_support_options.md#[Using metrics and running diagnostics]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+== Help menu
+
+[.lead]
+The Help option provides access to the StorageGRID Documentation Center for the current release and to the API documentation. You can also determine which version of StorageGRID is currently installed.
+
+image::../media/help_menu.png[Help Menu]
+
+*Related information*
+
+https://docs.netapp.com/sgws-115/index.jsp[StorageGRID 11.5 Documentation Center]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

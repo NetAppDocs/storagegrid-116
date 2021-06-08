@@ -1,0 +1,51 @@
+---
+permalink: maintain/reference_obtaining_the_required_materials_for_a_hotfix.html
+sidebar: sidebar
+keywords: 
+summary: 'Before applying a hotfix, you must obtain all required materials.'
+---
+= Obtaining the required materials for a hotfix
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before applying a hotfix, you must obtain all required materials.
+
+|===
+| Item| Notes
+a|
+StorageGRID hotfix file
+a|
+You must download the StorageGRID hotfix file.
+
+a|
+
+* Network port
+* Supported web browser
+* SSH client (for example, PuTTY)
+
+a|
+See "`Web browser requirements.`"
+a|
+Recovery Package (.zip) file
+a|
+Before applying a hotfix, download the most recent Recovery Package file in case any problems occur during the hotfix.Then, after the hotfix has been applied, download a new copy of the Recovery Package file and save it in a safe location. The updated Recovery Package file allows you to restore the system if a failure occurs.
+
+a|
+Passwords.txt file
+a|
+Optional and used only if you are applying a hotfix manually using the SSH client. The Passwords.txt file is included in the SAID package, which is part of the Recovery Package .zip file.
+a|
+Provisioning passphrase
+a|
+The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not listed in the Passwords.txt file.
+a|
+Related documentation
+a|
+readme.txt file for the hotfix. This file is included on the hotfix download page. Be sure to review the readme file carefully before applying the hotfix.
+|===
+*Related information*
+
+xref:task_downloading_the_hotfix_file.adoc[Downloading the hotfix file]
+
+xref:task_downloading_the_recovery_package.adoc[Downloading the Recovery Package]

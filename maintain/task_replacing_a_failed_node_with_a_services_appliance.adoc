@@ -1,0 +1,27 @@
+---
+permalink: maintain/task_replacing_a_failed_node_with_a_services_appliance.html
+sidebar: sidebar
+keywords: 
+summary: 'You can use an SG100 or SG1000 services appliance to recover a failed Gateway Node, a failed non-primary Admin Node, or a failed primary Admin Node that was hosted on VMware, a Linux host, or a services appliance. This procedure is one step of the grid node recovery procedure.'
+---
+= Replacing a failed node with a services appliance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use an SG100 or SG1000 services appliance to recover a failed Gateway Node, a failed non-primary Admin Node, or a failed primary Admin Node that was hosted on VMware, a Linux host, or a services appliance. This procedure is one step of the grid node recovery procedure.
+
+* You must have determined that one of the following situations is true:
+ ** The virtual machine hosting the node cannot be restored.
+ ** The physical or virtual Linux host for the grid node has failed, and must be replaced.
+ ** The services appliance hosting the grid node must be replaced.
+* You must make sure that the StorageGRID Appliance Installer version on the services appliance matches the software version of your StorageGRID system, as described in hardware installation and maintenance for verifying and upgrading the StorageGRID Appliance Installer version.
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+IMPORTANT: Do not deploy both an SG100 and an SG1000 service appliance in the same site. Unpredictable performance might result.
+
+You can use an SG100 or SG1000 services appliance to recover a failed grid node in the following cases:
+
+* The failed node was hosted on VMware or Linux (platform change)
+* The failed node was hosted on a services appliance (platform replacement)

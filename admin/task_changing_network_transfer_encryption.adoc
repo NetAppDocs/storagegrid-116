@@ -1,0 +1,24 @@
+---
+permalink: admin/task_changing_network_transfer_encryption.html
+sidebar: sidebar
+keywords: 
+summary: 'The StorageGRID system uses Transport Layer Security \(TLS\) to protect internal control traffic between grid nodes. The Network Transfer Encryption option sets the algorithm used by TLS to encrypt control traffic between grid nodes. This setting does not affect data encryption.'
+---
+= Changing network transfer encryption
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system uses Transport Layer Security (TLS) to protect internal control traffic between grid nodes. The Network Transfer Encryption option sets the algorithm used by TLS to encrypt control traffic between grid nodes. This setting does not affect data encryption.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have specific access permissions.
+
+By default, network transfer encryption uses the AES256-SHA algorithm. Control traffic can also be encrypted using the AES128-SHA algorithm.
+
+. Select *Configuration* > *System Settings* > *Grid Options*.
+. In the Network Options section, change Network Transfer Encryption to *AES128-SHA* or *AES256-SHA* (default).
++
+image::../media/network_transfer_encryption.png[Grid configuration network encryption]
+
+. Click *Save*.

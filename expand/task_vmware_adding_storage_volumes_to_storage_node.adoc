@@ -1,0 +1,75 @@
+---
+permalink: expand/task_vmware_adding_storage_volumes_to_storage_node.html
+sidebar: sidebar
+keywords: 
+summary: 'If a Storage Node includes fewer than 16 storage volumes, you can increase its capacity by using VMware vSphere to add volumes.'
+---
+= VMware: Adding storage volumes to a Storage Node
+:experimental:
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If a Storage Node includes fewer than 16 storage volumes, you can increase its capacity by using VMware vSphere to add volumes.
+
+* You must have access to the instructions for installing StorageGRID for VMware deployments.
+* You must have the Passwords.txt file.
+* You must have specific access permissions.
+
+IMPORTANT: Do not attempt to add storage volumes to a Storage Node while a software upgrade, recovery procedure, or another expansion procedure is active.
+
+The Storage Node is unavailable for a brief time when you add storage volumes. You should perform this procedure on one Storage Node at a time to avoid impacting client-facing grid services.
+
+. If necessary, install new storage hardware and create new VMware datastores.
+. Add one or more hard disks to the virtual machine for use as storage (object stores).
+ .. Open VMware vSphere Client.
+ .. Edit the virtual machine settings to add one or more additional hard disks.
+
++
+The hard disks are typically configured as Virtual Machine Disks (VMDKs). VMDKs are more commonly used and are easier to manage, while RDMs may provide better performance for workloads that use larger object sizes (for example, greater than 100 MB). For more information about adding hard disks to virtual machines, see the VMware vSphere documentation.
+. Restart the virtual machine by using the *Restart Guest OS* option in the VMware vSphere Client, or by entering the following command in an ssh session to the virtual machine:``sudo reboot``
++
+NOTE: Do not use *Power Off* or *Reset* to restart the virtual machine.
+
+. Configure the new storage for use by the Storage Node:
+ .. Log in to the grid node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the Passwords.txt file.
+When you are logged in as root, the prompt changes from `$` to `#`.
+ .. Configure the new storage volumes: `sudo add_rangedbs.rb`
++
+This script finds any new storage volumes and prompts you to format them.
+
+ .. Enter *y* to accept the formatting.
+ .. If any of the volumes have previously been formatted, decide if you want to reformat them.
+  *** Enter *y* to reformat.
+  *** Enter *n* to skip reformatting.
+The storage volumes are formatted.
+ .. When asked, enter *y* to stop storage services.
++
+The storage services are stopped, and the setup_rangedbs.sh script runs automatically. After the volumes are ready for use as rangedbs, the services start again.
+. Check that the services start correctly:
+ .. View a listing of the status of all services on the server: `sudo storagegrid-status`
++
+The status is updated automatically.
+
+ .. Wait until all services are Running or Verified.
+ .. Exit the status screen: `Ctrl+C`
+. Verify that the Storage Node is online:
+ .. Sign in to the Grid Manager using a supported browser.
+ .. Select *Support* > *Tools* > *Grid Topology*.
+ .. Select menu:site[Storage Node] > *LDR* > *Storage*.
+ .. Select the *Configuration* tab and then the *Main* tab.
+ .. If the *Storage State - Desired* drop-down list is set to Read-only or Offline, select *Online*.
+ .. Click *Apply Changes*.
+. To see the new object stores:
+ .. Select *Nodes* > menu:site[Storage Node] > *Storage*.
+ .. View the details in the *Object Stores* table.
+
+You can now use the expanded capacity of the Storage Nodes to save object data.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation]

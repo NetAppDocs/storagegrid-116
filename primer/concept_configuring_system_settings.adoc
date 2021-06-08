@@ -1,0 +1,38 @@
+---
+permalink: primer/concept_configuring_system_settings.html
+sidebar: sidebar
+keywords: 
+summary: 'You can configure various system settings from the Grid Manager to fine tune the operation of your StorageGRID system.'
+---
+= Configuring system settings
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can configure various system settings from the Grid Manager to fine tune the operation of your StorageGRID system.
+
+== Display options
+
+Display options allow you to specify the timeout period for user sessions and to suppress email notifications for legacy alarms and event-triggered AutoSupport messages.
+
+== Grid options
+
+You can use Grid Options to configure the settings for all of the objects stored in your StorageGRID system, including stored object compression, stored object encryption. and stored object hashing.
+
+You can also use these options to specify global settings for S3 and Swift client operations.
+
+== Key management servers
+
+You can configure one or more external key management servers (KMS) to provide encryption keys to StorageGRID services and storage appliances. Each KMS or KMS cluster uses the Key Management Interoperability Protocol (KMIP) to provide an encryption key to the appliance nodes at the associated StorageGRID site. Using key management servers lets you protect StorageGRID data even if an appliance is removed from the data center. After the appliance volumes are encrypted, you cannot access any data on the appliance unless the node can communicate with the KMS.
+
+NOTE: To use encryption key management, you must enable the *Node Encryption* setting for each appliance during installation, before the appliance is added to the grid.
+
+== S3 Object Lock
+
+The StorageGRID S3 Object Lock feature is an object-protection solution that is equivalent to S3 Object Lock in Amazon Simple Storage Service (Amazon S3). You can enable the global S3 Object Lock setting for a StorageGRID system to allow S3 tenant accounts to create buckets with S3 Object Lock enabled. The tenant can then use an S3 client application to optionally specify retention settings (retain until date, legal hold, or both) for the objects in those buckets.
+
+image::../media/s3_object_lock_architecture.png[S3 Object Lock Architecture]
+
+== Storage options
+
+Storage options allow you to control object segmentation and to define storage watermarks to manage a Storage Node's usable storage space.

@@ -1,0 +1,49 @@
+---
+permalink: tenant/task_deleting_an_s3_bucket.html
+sidebar: sidebar
+keywords: S3 bucket,tenant
+summary: 'You can use the Tenant Manager to delete an S3 bucket that is empty.'
+---
+= Deleting an S3 bucket
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the Tenant Manager to delete an S3 bucket that is empty.
+
+* You must be signed in to the Tenant Manager using a supported browser.
+* You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
+
+These instructions describe how to delete an S3 bucket using the Tenant Manager. You can also delete S3 buckets using the Tenant Management API or the S3 REST API.
+
+You cannot delete an S3 bucket if it contains objects or noncurrent object versions. For information about how S3 versioned objects are deleted, see the instructions for managing objects with information lifecycle management.
+
+. Select *STORAGE (S3)* > *Buckets*.
++
+The Buckets page appears and shows all existing S3 buckets.
++
+image::../media/buckets_table.png[Buckets Table]
+
+. Select the check box for the empty bucket you want to delete.
++
+The Actions menu is enabled.
+
+. From the Actions menu, select *Delete empty bucket*.
++
+image::../media/delete_bucket_button.png[Delete Buckets Button]
++
+A confirmation message appears.
++
+image::../media/delete_bucket_confirmation_dialog.png[Delete Bucket Confirmation Dialog]
+
+. If you are sure you want to delete the bucket, select *Delete bucket*.
++
+StorageGRID confirms that the bucket is empty and then deletes the bucket. This operation might take a few minutes.
++
+If the bucket is not empty, an error message appears. You must delete all objects before you can delete the bucket.
++
+image::../media/delete_bucket_not_empty_message.png[Delete Bucket Not Empty Message]
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]

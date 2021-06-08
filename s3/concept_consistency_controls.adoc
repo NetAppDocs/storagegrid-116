@@ -1,0 +1,119 @@
+---
+permalink: s3/concept_consistency_controls.html
+sidebar: sidebar
+keywords: 
+summary: 'Consistency controls provide a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.'
+---
+= Consistency controls
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Consistency controls provide a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.
+
+By default, StorageGRID guarantees read-after-write consistency for newly created objects. Any GET following a successfully completed PUT will be able to read the newly written data. Overwrites of existing objects, metadata updates, and deletes are eventually consistent. Overwrites generally take seconds or minutes to propagate, but can take up to 15 days.
+
+If you want to perform object operations at a different consistency level, you can specify a consistency control for each bucket or for each API operation.
+
+== Consistency controls
+
+The consistency control affects how the metadata that StorageGRID uses to track objects is distributed between nodes, and therefore the availability of objects for client requests.
+
+You can set the consistency control for a bucket or an API operation to one of the following values:
+
+|===
+| Consistency control| Description
+a|
+all
+a|
+All nodes receive the data immediately, or the request will fail.
+a|
+strong-global
+a|
+Guarantees read-after-write consistency for all client requests across all sites.
+a|
+strong-site
+a|
+Guarantees read-after-write consistency for all client requests within a site.
+a|
+read-after-new-write
+a|
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+
+a|
+available (eventual consistency for HEAD operations)
+a|
+Behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations. Offers higher availability for HEAD operations than "`read-after-new-write`" if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD operations only.
+|===
+
+== Using the "`read-after-new-write`" and "`available`" consistency controls
+
+When a HEAD or GET operation uses the "`read-after-new-write`" consistency control or a GET operation uses the "`available`" consistency control, StorageGRID performs the lookup in multiple steps, as follows:
+
+* It first looks up the object using a low consistency.
+* If that lookup fails, it repeats the lookup at the next consistency level until it reaches the highest consistency level, "`all,`" which requires all copies of the object metadata to be available.
+
+If a HEAD or GET operation uses the "`read-after-new-write`" consistency control but the object does not exist, the object lookup will always reach the "`all`" consistency level. Because this consistency level requires all copies of the object metadata to be available, you can receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable.
+
+Unless you require consistency guarantees similar to Amazon S3, you can prevent these errors for HEAD operations by setting the consistency control to "`available.`" When a HEAD operation uses the "`available`" consistency control, StorageGRID provides eventual consistency only. It does not retry a failed operation until it reaches the "`all`" consistency level, so it does not require that all copies of the object metadata be available.
+
+== Specifying the consistency control for an API operation
+
+To set the consistency control for an individual API operation, consistency controls must be supported for the operation, and you must specify the consistency control in the request header. This example sets the consistency control to "`strong-site`" for a GET Object operation.
+
+----
+GET /bucket/object HTTP/1.1
+Date: date
+Authorization: authorization name
+Host: host
+Consistency-Control: strong-site
+----
+
+NOTE: You must use the same consistency control for both the PUT Object and GET Object operations.
+
+== Specifying the consistency control for a bucket
+
+To set the consistency control for bucket, you can use the StorageGRID PUT Bucket consistency request and the GET Bucket consistency request. Or you can use the Tenant Manager or the Tenant Management API.
+
+When setting the consistency controls for a bucket, be aware of the following:
+
+* Setting the consistency control for a bucket determines which consistency control is used for S3 operations performed on the objects in the bucket or on the bucket configuration. It does not affect operations on the bucket itself.
+* The consistency control for an individual API operation overrides the consistency control for the bucket.
+* In general, buckets should use the default consistency control, "`read-after-new-write.`" If requests are not working correctly, change the application client behavior if possible. Or, configure the client to specify the consistency control for each API request. Set the consistency control at the bucket level only as a last resort.
+
+== How consistency controls and ILM rules interact to affect data protection
+
+Both your choice of consistency control and your ILM rule affect how objects are protected. These settings can interact.
+
+For example, the consistency control used when an object is stored affects the initial placement of object metadata, while the ingest behavior selected for the ILM rule affects the initial placement of object copies. Because StorageGRID requires access to both an object's metadata and its data to fulfill client requests, selecting matching levels of protection for the consistency level and ingest behavior can provide better initial data protection and more predictable system responses.
+
+The following ingest behaviors are available for ILM rules:
+
+* *Strict*: All copies specified in the ILM rule must be made before success is returned to the client.
+* *Balanced*: StorageGRID attempts to make all copies specified in the ILM rule at ingest; if this is not possible, interim copies are made and success is returned to the client. The copies specified in the ILM rule are made when possible.
+* *Dual Commit*: StorageGRID immediately makes interim copies of the object and returns success to the client. Copies specified in the ILM rule are made when possible.
+
+NOTE: Before selecting the ingest behavior for an ILM rule, read the full description of these settings in the instructions for managing objects with information lifecycle management.
+
+== Example of how the consistency control and ILM rule can interact
+
+Suppose you have a two-site grid with the following ILM rule and the following consistency level setting:
+
+* *ILM rule*: Create two object copies, one at the local site and one at a remote site. The Strict ingest behavior is selected.
+* *Consistency level*: "`strong-global`" (Object metadata is immediately distributed to all sites.)
+
+When a client stores an object to the grid, StorageGRID makes both object copies and distributes metadata to both sites before returning success to the client.
+
+The object is fully protected against loss at the time of the ingest successful message. For example, if the local site is lost shortly after ingest, copies of both the object data and the object metadata still exist at the remote site. The object is fully retrievable.
+
+If you instead used the same ILM rule and the "`strong-site`" consistency level, the client might receive a success message after object data is replicated to the remote site but before object metadata is distributed there. In this case, the level of protection of object metadata does not match the level of protection for object data. If the local site is lost shortly after ingest, object metadata is lost. The object cannot be retrieved.
+
+The inter-relationship between consistency levels and ILM rules can be complex. Contact NetApp if you require assistance.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+link:concept_storagegrid_s3_rest_api_operations.md#[GET Bucket consistency request]
+
+link:concept_storagegrid_s3_rest_api_operations.md#[PUT Bucket consistency request]

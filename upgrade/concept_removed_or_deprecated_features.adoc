@@ -1,0 +1,149 @@
+---
+permalink: upgrade/concept_removed_or_deprecated_features.html
+sidebar: sidebar
+keywords: 
+summary: 'Some features were removed or deprecated in StorageGRID 11.5. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.'
+---
+= Removed or deprecated features
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Some features were removed or deprecated in StorageGRID 11.5. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
+
+== Weak consistency control removed
+
+The Weak consistency control was removed for StorageGRID 11.5. After you upgrade, the following behaviors will apply:
+
+* Requests to set Weak consistency for an S3 bucket or Swift container will succeed, but the consistency level will actually be set to Available.
+* Existing buckets and containers that use Weak consistency will be silently updated to use Available consistency.
+* Requests that have a Weak consistency-control header will actually use Available consistency, if applicable.
+
+The Available consistency control behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations. The Available consistency control offers higher availability for HEAD operations than "`read-after-new-write`" if Storage Nodes are unavailable.
+
+== Alarm for grid health deprecated
+
+The `/grid/health/topology` API, which checks for active _alarms_ on nodes, is deprecated. In its place, a new `/grid/node-health` endpoint was added. This API returns the current status of each node by checking for active _alerts_ on nodes.
+
+== Compliance feature deprecated
+
+The S3 Object Lock feature in StorageGRID 11.5 replaces the Compliance feature that was available in previous StorageGRID versions. Because the new S3 Object Lock feature conforms to Amazon S3 requirements, it deprecates the proprietary StorageGRID Compliance feature, which is now referred to as "`legacy Compliance.`"
+
+If you previously enabled the global Compliance setting, the new global S3 Object Lock setting is enabled automatically when you upgrade to StorageGRID 11.5. Tenant users will no longer be able to create new buckets with Compliance enabled in StorageGRID; however, as required, tenant users can continue to use and manage any existing legacy Compliant buckets.
+
+In the Tenant Manager, a shield icon image:../media/shield_icon.png[Shield Icon] indicates a legacy Compliant bucket. Legacy Compliant buckets might also have a hold badge image:../media/hold_badge.png[Hold Badge] to indicate that the bucket is under a legal hold.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[KB: How to manage legacy Compliant buckets in StorageGRID 11.5]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+== "`S3 multipart part too small`" alert removed
+
+The *S3 multipart part too small* alert was removed. Previous, this alert was triggered if an S3 client attempted to complete a multipart upload with parts that did not meet Amazon S3 size limits. After the upgrade to StorageGRID 11.5, any multipart upload requests that do not meet the following size limits will fail:
+
+* Each part in a multipart upload must be between 5 MiB (5,242,880 bytes) and 5 GiB (5,368,709,120 bytes).
+* The last part can be smaller than 5 MiB (5,242,880 bytes).
+* In general, part sizes should be as large as possible. For example, use part sizes of 5 GiB for a 100 GiB object. Since each part is considered a unique object, using large part sizes reduces StorageGRID metadata overhead.
+* For objects smaller than 5 GiB, consider using non-multipart upload instead.
+
+== "Appliance link down on Grid Network" alerts removed
+
+The following alerts were removed. If the Grid Network is down, the metrics that would trigger these alerts are not accessible:
+
+* Services appliance link down on Grid Network
+* Storage appliance link down on Grid Network
+
+== Support for fully qualified domain name removed from SNMP configuration
+
+When configuring an SNMP server in the baseboard management controller (BMC) for the SG6000, SG100, or SG1000, you must now specify an IP address instead of a fully qualified domain name. If a fully qualified domain name was previously configured, change it to an IP address before upgrading to StorageGRID 11.5.
+
+== Legacy attributes removed
+
+The following legacy attributes were removed. As applicable, equivalent information is provided by Prometheus metrics:
+
+|===
+| Legacy attribute| Equivalent Prometheus metric
+a|
+BREC
+a|
+storagegrid_service_network_received_bytes
+a|
+BTRA
+a|
+storagegrid_service_network_transmitted_bytes
+a|
+CQST
+a|
+storagegrid_metadata_queries_average_latency_milliseconds
+a|
+HAIS
+a|
+storagegrid_http_sessions_incoming_attempted
+a|
+HCCS
+a|
+storagegrid_http_sessions_incoming_currently_established
+a|
+HEIS
+a|
+storagegrid_http_sessions_incoming_failed
+a|
+HISC
+a|
+storagegrid_http_sessions_incoming_successful
+a|
+LHAC
+a|
+_none_
+a|
+NREC
+a|
+_none_
+a|
+NTSO (Chosen Time Source Offset)
+a|
+storagegrid_ntp_chosen_time_source_offset_milliseconds
+a|
+NTRA
+a|
+_none_
+a|
+SLOD
+a|
+storagegrid_service_load
+a|
+SMEM
+a|
+storagegrid_service_memory_usage_bytes
+a|
+SUTM
+a|
+storagegrid_service_cpu_seconds
+a|
+SVUT
+a|
+storagegrid_service_uptime_seconds
+a|
+TRBS (Total bits per second received)
+a|
+_none_
+a|
+TRXB
+a|
+storagegrid_network_received_bytes
+a|
+TTBS (Total bits per second transmitted)
+a|
+_none_
+a|
+TTXB
+a|
+storagegrid_network_transmitted_bytes
+|===
+The following related changes were also made:
+
+* The network_received_bytes and network_transmitted_bytes Prometheus metrics were changed from gauges to counters because the values of these metrics only increase. If you are currently using these metrics in Prometheus queries, you should start using the `increase()` function in the query.
+* The Network Resources table was removed from the Resources tab for StorageGRID services. (Select *Support* > *Tools* > *Grid Topology*.Then, select *node* > *service* > *Resources*.)
+* The HTTP Sessions page was removed for Storage Nodes. Previously, you could access this page by selecting *Support* > *Tools* > *Grid Topology* and then selecting *Storage Node* > *LDR* > *HTTP*.
+* The HCCS (Currently Established Incoming Sessions) alarm was removed.
+* The NTSO (Chosen Time Source Offset) alarm was removed.

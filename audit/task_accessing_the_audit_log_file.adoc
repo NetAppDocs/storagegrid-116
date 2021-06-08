@@ -1,0 +1,26 @@
+---
+permalink: audit/task_accessing_the_audit_log_file.html
+sidebar: sidebar
+keywords: 
+summary: 'The audit share contains the active audit.log file and any compressed audit log files. For easy access to audit logs, you can configure client access to audit shares for both NFS and CIFS \(deprecated\). You can also access audit log files directly from the command line of the Admin Node.'
+---
+= Accessing the audit log file
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The audit share contains the active audit.log file and any compressed audit log files. For easy access to audit logs, you can configure client access to audit shares for both NFS and CIFS (deprecated). You can also access audit log files directly from the command line of the Admin Node.
+
+* You must have specific access permissions.
+* You must have the Passwords.txt file.
+* You must know the IP address of an Admin Node.
+
+. Log in to an Admin Node:
+ .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the password listed in the Passwords.txt file.
+. Go to the directory containing the audit log files:``cd /var/local/audit/export``
+. View the current or a saved audit log file, as required.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

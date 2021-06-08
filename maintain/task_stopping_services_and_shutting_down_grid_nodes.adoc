@@ -1,0 +1,82 @@
+---
+permalink: maintain/task_stopping_services_and_shutting_down_grid_nodes.html
+sidebar: sidebar
+keywords: 
+summary: 'Before you can power off a StorageGRID system, you must stop all services running on each grid node, and then shut down all VMware virtual machines, Docker containers, and StorageGRID appliances.'
+---
+= Stopping services and shutting down grid nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before you can power off a StorageGRID system, you must stop all services running on each grid node, and then shut down all VMware virtual machines, Docker containers, and StorageGRID appliances.
+
+If possible, you should stop services on the grid nodes in this order:
+
+* Stop services on Gateway Nodes first.
+* Stop services on the primary Admin Node last.
+
+This approach allows you to use the primary Admin Node to monitor the status of the other grid nodes for as long as possible.
+
+NOTE: If a single host includes more than one grid node, do not shut down the host until you have stopped all of the nodes on that host. If the host includes the primary Admin Node, shut down that host last.
+
+NOTE: If required, you can migrate nodes from one Linux host to another to perform host maintenance without impacting the functionality or availability of your grid.
+
+link:concept_linux_migrating_a_grid_node_to_a_new_host.md#[Linux: Migrating a grid node to a new host]
+
+. Stop all client applications from accessing the grid.
+. Log in to each Gateway Node:
+ .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the Passwords.txt file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Stop all services running on the node: `service servermanager stop`
++
+Services can take up to 15 minutes to shut down, and you might want to log in to the system remotely to monitor the shutdown process.
+
+. Repeat steps <<STEP_E5A7C21A98CA4A809A6C7D494C69DD7D,#STEP_E5A7C21A98CA4A809A6C7D494C69DD7D>> and <<STEP_481DF515C70E444B84D88296B753A181,#STEP_481DF515C70E444B84D88296B753A181>> to stop the services on all Storage Nodes, Archive Nodes, and non-primary Admin Nodes.
++
+You can stop the services on these nodes in any order.
++
+NOTE: If you issue the `service servermanager stop` command to stop the services on an appliance Storage Node, you must power cycle the appliance to restart the node.
+
+. Repeat steps <<STEP_E5A7C21A98CA4A809A6C7D494C69DD7D,#STEP_E5A7C21A98CA4A809A6C7D494C69DD7D>> and <<STEP_481DF515C70E444B84D88296B753A181,#STEP_481DF515C70E444B84D88296B753A181>> to stop the services on the primary Admin Node.
+. For nodes that are running on Linux hosts:
+ .. Log in to the host operating system.
+ .. Stop the node: `storagegrid node stop`
+ .. Shut down the host operating system.
+. For nodes that are running on VMware virtual machines and for appliance Storage Nodes, issue the shutdown command: `shutdown -h now`
++
+Perform this step regardless of the outcome of the `service servermanager stop` command.
++
+For the appliance, this command shuts down the compute controller, but the appliance is still powered on. You must complete the next step.
+
+. If you have appliance nodes:
+ ** For the SG100 or SG1000 services appliance
+  ... Turn off the power to the appliance.
+  ... Wait for the blue power LED to turn off.
+ ** For the SG6000 appliance
+  ... Wait for the green Cache Active LED on the back of the storage controller to turn off.
++
+This LED is on when cached data needs to be written to the drives. You must wait for this LED to turn off before you turn off power.
+
+  ... Turn off the power to the appliance, and wait for the blue power LED to turn off.
+ ** For the SG5700 appliance
+  ... Wait for the green Cache Active LED on the back of the storage controller to turn off.
++
+This LED is on when cached data needs to be written to the drives. You must wait for this LED to turn off before you turn off power.
+
+  ... Turn off the power to the appliance, and wait for all LED and seven-segment display activity to stop.
+. If required, log out of the command shell: `exit`
++
+The StorageGRID grid has now been shut down.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]

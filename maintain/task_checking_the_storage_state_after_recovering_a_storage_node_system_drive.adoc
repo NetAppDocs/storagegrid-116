@@ -1,0 +1,26 @@
+---
+permalink: maintain/task_checking_the_storage_state_after_recovering_a_storage_node_system_drive.html
+sidebar: sidebar
+keywords: 
+summary: 'After recovering the system drive for a Storage Node, you must verify that the desired state of the Storage Node is set to online and ensure that the state will be online by default whenever the Storage Node server is restarted.'
+---
+= Checking the storage state after recovering a Storage Node system drive
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After recovering the system drive for a Storage Node, you must verify that the desired state of the Storage Node is set to online and ensure that the state will be online by default whenever the Storage Node server is restarted.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* The Storage Node has been recovered, and data recovery is complete.
+
+. Select *Support* > *Tools* > *Grid Topology*.
+. Check the values of *Recovered Storage Node* > *LDR* > *Storage* > *Storage State -- Desired* and *Storage State -- Current*.
++
+The value of both attributes should be Online.
+
+. If the Storage State -- Desired is set to Read-only, complete the following steps:
+ .. Click the *Configuration* tab.
+ .. From the *Storage State -- Desired* drop-down list, select *Online*.
+ .. Click *Apply Changes*.
+ .. Click the *Overview* tab and confirm that the values of *Storage State -- Desired* and *Storage State -- Current* are updated to Online.

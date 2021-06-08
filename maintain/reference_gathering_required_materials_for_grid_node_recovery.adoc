@@ -1,0 +1,55 @@
+---
+permalink: maintain/reference_gathering_required_materials_for_grid_node_recovery.html
+sidebar: sidebar
+keywords: 
+summary: 'Before performing maintenance procedures, you must ensure you have the necessary materials to recover a failed grid node.'
+---
+= Gathering required materials for grid node recovery
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before performing maintenance procedures, you must ensure you have the necessary materials to recover a failed grid node.
+
+|===
+| Item| Notes
+a|
+StorageGRID installation archive
+
+a|
+If you need to recover a grid node, you need the StorageGRID installation archive for your platform. *Note:* You do not need to download files if you are recovering failed storage volumes on a Storage Node.
+
+a|
+Recovery Package .zip file
+a|
+Obtain a copy of the most recent Recovery Package .zip file:
+
+sgws-recovery-package-id-revision.zip
+
+The contents of the .zip file are updated each time the system is modified. You are directed to store the most recent version of the Recovery Package in a secure location after making such changes. Use the most recent copy to recover from grid failures.
+
+If the primary Admin Node is operating normally, you can download the Recovery Package from the Grid Manager. Select *Maintenance* > *System* > *Recovery Package*.
+
+If you cannot access the Grid Manager, you can find encrypted copies of the Recovery Package on some Storage Nodes that contain the ADC service. On each Storage Node, examine this location for the Recovery Package: `/var/local/install/sgws-recovery-package-<grid-id\>-<revision\>.zip.gpg`. Use the Recovery Package with the highest revision number.
+
+a|
+Passwords.txt file
+a|
+Contains the passwords required to access grid nodes on the command line. Included in the Recovery Package.
+a|
+Provisioning passphrase
+a|
+The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the Passwords.txt file.
+a|
+Current documentation for your platform
+a|
+For the current supported versions of your platform, see the Interoperability Matrix Tool.https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+
+Go to the platform vendor's website for documentation.
+
+|===
+*Related information*
+
+xref:task_downloading_and_extracting_the_storagegrid_installation_files.adoc[Downloading and extracting the StorageGRID installation files]
+
+xref:reference_web_browser_requirements.adoc[Web browser requirements]

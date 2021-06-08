@@ -1,0 +1,36 @@
+---
+permalink: tenant/task_deleting_your_own_s3_access_keys.html
+sidebar: sidebar
+keywords: 
+summary: 'If you are using an S3 tenant and you have the appropriate permission, you can delete your own S3 access keys. After an access key is deleted, it can no longer be used to access the objects and buckets in the tenant account.'
+---
+= Deleting your own S3 access keys
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you are using an S3 tenant and you have the appropriate permission, you can delete your own S3 access keys. After an access key is deleted, it can no longer be used to access the objects and buckets in the tenant account.
+
+* You must be signed in to the Tenant Manager using a supported browser.
+* You must have the Manage Your Own S3 Credentials permission.
+
+IMPORTANT: The S3 buckets and objects belonging to your account can be accessed using the access key ID and secret access key displayed for your account in the Tenant Manager. For this reason, protect access keys as you would a password. Rotate access keys on a regular basis, remove any unused keys from your account, and never share them with other users.
+
+. Select *STORAGE (S3)* > *My access keys*.
++
+The My access keys page appears and lists any existing access keys.
+
+. Select the check box for each access key you want to remove.
+. Select *Delete key*.
++
+A confirmation dialog box appears.
++
+image::../media/access_key_confirm_delete.png[Access Key - Confirm Delete]
+
+. Select *Delete key*.
++
+A confirmation message appears in the upper right corner of the page. Changes might take up to 15 minutes to take effect because of caching.
+
+*Related information*
+
+xref:concept_tenant_management_permissions.adoc[Tenant management permissions]

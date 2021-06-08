@@ -1,0 +1,139 @@
+---
+permalink: audit/reference_system_audit_messages.html
+sidebar: sidebar
+keywords: 
+summary: 'You should be familiar with audit messages belonging to the system audit category. These are events related to the auditing system itself, grid node states, system-wide task activity \(grid tasks\), and service backup operations, so that you can address potential issues.'
+---
+= System audit messages
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should be familiar with audit messages belonging to the system audit category. These are events related to the auditing system itself, grid node states, system-wide task activity (grid tasks), and service backup operations, so that you can address potential issues.
+
+|===
+| Code| Message title and description| See
+a|
+ECOC
+a|
+Corrupt Erasure Coded Data Fragment: Indicates that a corrupt erasure coded data fragment has been detected.
+a|
+link:concept_ecoc_corrupt_erasure_coded_data_fragment.md#[ECOC: Corrupt Erasure Coded Data Fragment]
+a|
+ETAF
+a|
+Security Authentication Failed: A connection attempt using Transport Layer Security (TLS) failed.
+a|
+link:concept_etaf_security_authentication_failed.md#[ETAF: Security Authentication Failed]
+a|
+GNRG
+a|
+GNDS Registration: A service updated or registered information about itself in the StorageGRID system.
+a|
+link:concept_gnrg_gnds_registration.md#[GNRG: GNDS Registration]
+a|
+GNUR
+a|
+GNDS Unregistration: A service has unregistered itself from the StorageGRID system.
+a|
+link:concept_gnur_gnds_unregistration.md#[GNUR: GNDS Unregistration]
+a|
+GTED
+a|
+Grid Task Ended: The CMN service finished processing the grid task.
+a|
+link:concept_gted_grid_task_ended.md#[GTED: Grid Task Ended]
+a|
+GTST
+a|
+Grid Task Started: The CMN service started to process the grid task.
+a|
+link:concept_gtst_grid_task_started.md#[GTST: Grid Task Started]
+a|
+GTSU
+a|
+Grid Task Submitted: A grid task was submitted to the CMN service.
+a|
+link:concept_gtsu_grid_task_submitted.md#[GTSU: Grid Task Submitted]
+a|
+IDEL
+a|
+ILM Initiated Delete: This audit message is generated when ILM starts the process of deleting an object.
+a|
+link:concept_idel_ilm_initiated_delete.md#[IDEL: ILM Initiated Delete]
+a|
+LKCU
+a|
+Overwritten Object Cleanup. This audit message is generated when an overwritten object is automatically removed to free up storage space.
+a|
+xref:concept_lkcu_overwritten_object_cleanup.adoc[LKCU: Overwritten Object Cleanup]
+a|
+LLST
+a|
+Location Lost: This audit message is generated when a location is lost.
+a|
+link:concept_llst_location_lost.md#[LLST: Location Lost]
+a|
+OLST
+a|
+Object Lost: A requested object cannot be located within the StorageGRID system.
+a|
+link:concept_olst_system_detected_lost_object.md#[OLST: System Detected Lost Object]
+a|
+ORLM
+a|
+Object Rules Met: Object data is stored as specified by the ILM rules.
+a|
+link:concept_orlm_object_rules_met.md#[ORLM: Object Rules Met]
+a|
+SADD
+a|
+Security Audit Disable: Audit message logging was turned off.
+a|
+link:concept_sadd_security_audit_disable.md#[SADD: Security Audit Disable]
+a|
+SADE
+a|
+Security Audit Enable: Audit message logging has been restored.
+a|
+link:concept_sade_security_audit_enable.md#[SADE: Security Audit Enable]
+a|
+SVRF
+a|
+Object Store Verify Fail: A content block failed verification checks.
+a|
+link:concept_svrf_object_store_verify_fail.md#[SVRF: Object Store Verify Fail]
+a|
+SVRU
+a|
+Object Store Verify Unknown: Unexpected object data detected in the object store.
+a|
+link:concept_svru_object_store_verify_unknown.md#[SVRU: Object Store Verify Unknown]
+a|
+SYSD
+a|
+Node Stop: A shutdown was requested.
+a|
+link:concept_sysd_node_stop.md#[SYSD: Node Stop]
+a|
+SYST
+a|
+Node Stopping: A service initiated a graceful stop.
+a|
+link:concept_syst_node_stopping.md#[SYST: Node Stopping]
+a|
+SYSU
+a|
+Node Start: A service started; the nature of the previous shutdown is indicated in the message.
+a|
+link:concept_sysu_node_start.md#[SYSU: Node Start]
+a|
+VLST
+a|
+User Initiated Volume Lost: The /proc/CMSI/Volume_Lost command was run.
+a|
+link:concept_vlst_user_initiated_volume_lost.md#[VLST: User Initiated Volume Lost]
+|===
+*Related information*
+
+xref:concept_lkcu_overwritten_object_cleanup.adoc[LKCU: Overwritten Object Cleanup]

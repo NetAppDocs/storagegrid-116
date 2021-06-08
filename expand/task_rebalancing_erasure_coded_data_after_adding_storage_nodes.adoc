@@ -1,0 +1,112 @@
+---
+permalink: expand/task_rebalancing_erasure_coded_data_after_adding_storage_nodes.html
+sidebar: sidebar
+keywords: 
+summary: 'In some cases, you might need to rebalance erasure-coded data after you add new Storage Nodes.'
+---
+= Rebalancing erasure-coded data after adding Storage Nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+In some cases, you might need to rebalance erasure-coded data after you add new Storage Nodes.
+
+* You must have completed the expansion steps to add the new Storage Nodes.
+* You must have reviewed the considerations for rebalancing erasure-coded data.
++
+xref:concept_considerations_for_rebalancing_erasure_coded_data.adoc[Considerations for rebalancing erasure-coded data]
++
+IMPORTANT: Only perform this procedure if the *Low Object Storage* alert has been triggered for one or more Storage Nodes at a site and you were unable to add the recommended number of new Storage Nodes.
+
+* You must have the Passwords.txt file.
+
+When the EC rebalance procedure is running, the performance of ILM operations and S3 and Swift client operations are likely to be impacted. For this reason, you should only perform this procedure in limited cases.
+
+NOTE: The EC rebalance procedure temporarily reserves a large amount of storage. Storage alerts might be triggered, but will resolve when the rebalance is complete. If there is not enough storage for the reservation, the EC rebalance procedure will fail. Storage reservations are released when the EC rebalance procedure completes, whether the procedure failed or succeeded.
+
+NOTE: S3 and Swift API operations to upload objects (or object parts) might fail during the EC rebalancing procedure if they require more than 24 hours to complete. Long-duration PUT operations will fail if the applicable ILM rule uses Strict or Balanced placement on ingest. The following error will be reported:
+
+----
+500 Internal Server Error
+----
+
+. Review the current object storage details for the site you plan to rebalance.
+ .. Select *Nodes*.
+ .. Select the first Storage Node at the site.
+ .. Select the *Storage* tab.
+ .. Hover your cursor over the Storage Used - Object Data chart to see the current amount of replicated data and erasure-coded data on the Storage Node.
+ .. Repeat these steps to view the other Storage Nodes at the site.
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the Passwords.txt file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Enter the following command: `rebalance-data start --site "site-name"`
++
+For "site-name", specify the first site where you added new Storage Node or nodes. Enclose site-name in quotes.
++
+The EC rebalance procedure starts, and a job ID is returned.
+
+. Copy the job ID.
+. Monitor the status of the EC rebalance procedure.
+ ** To view the status of a single EC rebalance procedure:
++
+----
+rebalance-data status --job-id job-id
+----
++
+For job-id, specify the ID that was returned when you started the procedure.
+
+ ** To view the status of the current EC rebalance procedure and any previously completed procedures:
++
+----
+rebalance-data status
+----
+
++
+NOTE: To get help on the rebalance-data command:
++
+----
+rebalance-data --help
+----
+. Perform additional steps, based on the status returned:
+ ** If the status is `In progress`, the EC rebalance operation is still running. You should periodically monitor the procedure until it completes.
+ ** If the status is `Failure`, go to step <<REBALANCE_FAIL,#REBALANCE_FAIL>>.
+ ** If the status is `Success`, go to step <<REBALANCE_SUCCESS,#REBALANCE_SUCCESS>>.
+. If the EC rebalance procedure is generating too much load (for example, ingest operations are affected), pause the procedure.
++
+----
+rebalance-data pause --job-id job-id
+----
+
+. If you need to terminate the EC rebalance procedure (for example, so you can perform a StorageGRID software upgrade), enter the following:
++
+----
+rebalance-data abort --job-id job-id
+----
++
+NOTE: When you terminate an EC rebalance procedure, any data fragments that have already been moved remain in the new location. Data is not moved back to the original location.
+
+. If the status of the EC rebalance procedure is `Failure`, follow these steps:
+ .. Confirm that all Storage Nodes at the site are connected to the grid.
+ .. Check for and resolve any alerts that might be affecting these Storage Nodes.
++
+For information about specific alerts, see the monitoring and troubleshooting instructions.
+
+ .. Restart the EC rebalance procedure: `rebalance-data start –-job-id job-id`
+ .. If the status of the EC rebalance procedure is still `Failure`, contact technical support.
+. If the status of the EC rebalance procedure is `Success`, optionally repeat step <<REVIEW_OBJECT_STORAGE,#REVIEW_OBJECT_STORAGE>> to review the updated object storage details for the site.
++
+Erasure-coded data should now be more balanced among the Storage Nodes at the site.
++
+NOTE: Replicated object data is not moved by the EC rebalance procedure.
+
+. If you are using erasure coding at more than one site, run this procedure for all other affected sites.
+
+*Related information*
+
+xref:concept_considerations_for_rebalancing_erasure_coded_data.adoc[Considerations for rebalancing erasure-coded data]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]

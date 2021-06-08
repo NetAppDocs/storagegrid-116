@@ -1,0 +1,75 @@
+---
+permalink: vmware/reference_where_to_go_next.html
+sidebar: sidebar
+keywords: 
+summary: 'After completing an installation, you must perform a series of integration and configuration steps. Some steps are required; others are optional.'
+---
+= Where to go next
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After completing an installation, you must perform a series of integration and configuration steps. Some steps are required; others are optional.
+
+== Required tasks
+
+* Configure VMware vSphere Hypervisor for automatic restart.
++
+You must configure the hypervisor to restart the virtual machines when the server restarts. Without an automatic restart, the virtual machines and grid nodes remain shut down after the server restarts. For details, see the VMware vSphere Hypervisor documentation.
+
+* Create a tenant account for each client protocol (Swift or S3) that will be used to store objects on your StorageGRID system.
+* Control system access by configuring groups and user accounts. Optionally, you can configure a federated identity source (such as Active Directory or OpenLDAP), so you can import administration groups and users. Or, you can create local groups and users.
+* Integrate and test the S3 or Swift API client applications you will use to upload objects to your StorageGRID system.
+* When you are ready, configure the information lifecycle management (ILM) rules and ILM policy you want to use to protect object data.
++
+NOTE: When you install StorageGRID, the default ILM policy, Baseline 2 Copies Policy, is active. This policy includes the stock ILM rule (Make 2 Copies), and it applies if no other policy has been activated.
+
+* If your installation includes appliance Storage Nodes, use SANtricity software to complete the following tasks:
+ ** Connect to each StorageGRID appliance.
+ ** Verify receipt of AutoSupport data.
+* If your StorageGRID system includes any Archive Nodes, configure the Archive Node's connection to the target external archival storage system.
+
+NOTE: If any Archive Nodes will use Tivoli Storage Manager as the external archival storage system, you must also configure Tivoli Storage Manager.
+
+* Review and follow the StorageGRID system hardening guidelines to eliminate security risks.
+* Configure email notifications for system alerts.
+
+== Optional tasks
+
+* If you want to receive notifications from the (legacy) alarm system, configure mailing lists and email notifications for alarms.
+* Update grid node IP addresses if they have changed since you planned your deployment and generated the Recovery Package. See information about changing IP addresses in the recovery and maintenance instructions.
+* Configure storage encryption, if required.
+* Configure storage compression to reduce the size of stored objects, if required.
+* Configure audit client access. You can configure access to the system for auditing purposes through an NFS or a CIFS file share. See the instructions for administering StorageGRID.
+
+NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-swift/home.html[Implementing Swift client applications]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-rn/home.html[StorageGRID release notes]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-harden/home.html[StorageGRID system hardening]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-upgrade/home.html[Upgrading StorageGRID]

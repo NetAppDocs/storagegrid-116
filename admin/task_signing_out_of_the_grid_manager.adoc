@@ -1,0 +1,41 @@
+---
+permalink: admin/task_signing_out_of_the_grid_manager.html
+sidebar: sidebar
+keywords: 
+summary: 'When you are done working with the Grid Manager, you must sign out to ensure that unauthorized users cannot access the StorageGRID system. Closing your browser might not sign you out of the system, based on browser cookie settings.'
+---
+= Signing out of the Grid Manager
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When you are done working with the Grid Manager, you must sign out to ensure that unauthorized users cannot access the StorageGRID system. Closing your browser might not sign you out of the system, based on browser cookie settings.
+
+. Locate the *Sign Out* link in the top-right corner of the user interface.
++
+image::../media/sign_out.gif[Sign Out link]
+
+. Click *Sign Out*.
++
+|===
+| Option| Description
+a|
+SSO not in use
+a|
+You are signed out of the Admin Node.     The Grid Manager sign in page is displayed.
++
+NOTE: If you signed into more than one Admin Node, you must sign out of each node.
+a|
+SSO enabled
+a|
+You are signed out of all Admin Nodes you were accessing.     The StorageGRID sign in page is displayed. *Grid Manager* is listed as the default in the *Recent Accounts* drop-down, and the *Account ID* field shows 0.
++
+NOTE: If SSO is enabled and you are also signed in to the Tenant Manager, you must also sign out of the tenant account to sign out of SSO.
++
+|===
+
+*Related information*
+
+xref:task_configuring_sso.adoc[Configuring single sign-on]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
