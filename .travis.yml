@@ -13,7 +13,7 @@ before_install:
 - sudo apt-get -y install graphicsmagick graphicsmagick-libmagick-dev-compat libmagickwand-dev
 install: bundle install --quiet --jobs=3 --retry=3
 script:
-- if [[ ! -z "$FEATURE_FLAG" ]]; then bundle exec rake buildAll; fi
+- if [[ "$FEATURE_FLAG" = true ]]; then bundle exec rake buildAll; fi
 - mkdir -p /tmp/output && bundle exec jekyll build --quiet --trace --destination /tmp/output
 - touch /tmp/output/.nojekyll
 deploy:
