@@ -1,0 +1,85 @@
+---
+permalink: upgrade/obtaining_required_materials_for_software_upgrade.html
+sidebar: sidebar
+keywords: 
+summary: 'Before you begin the software upgrade, you must obtain all required materials so you can complete the upgrade successfully.'
+---
+= Obtaining the required materials for a software upgrade
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before you begin the software upgrade, you must obtain all required materials so you can complete the upgrade successfully.
+
+|===
+| Item| Notes
+a|
+StorageGRID upgrade files
+a|
+You must download the required files to your service laptop:
+
+* *All platforms*: .upgrade file
+* *Any node on Red Hat Enterprise Linux or CentOS*: .upgrade file and RPM file (.zip or .tgz)
+* *Any node on Ubuntu or Debian*: .upgrade file and DEB file (.zip or .tgz)
+
+a|
+Service laptop
+a|
+The service laptop must have:
+
+* Network port
+* SSH client (for example, PuTTY)
+
+a|
+Supported web browser
+a|
+You must confirm that the web browser on the service laptop is supported for use with StorageGRID 11.5.
+
+See "`Web browser requirements.`"
+
+NOTE: Browser support has changed for StorageGRID 11.5. Confirm you are using a supported version.
+
+a|
+Recovery Package (.zip) file
+a|
+Before upgrading, you should download the most recent Recovery Package file in case any problems occur during the upgrade.
+
+After you upgrade the primary Admin Node, you must download a new copy of the Recovery Package file and save it in a safe location. The updated Recovery Package file allows you to restore the system if a failure occurs.
+
+See "`Downloading the Recovery Package`" for instructions.
+
+a|
+Passwords.txt file
+a|
+This file is included in the SAID package, which is part of the Recovery Package .zip file. You must obtain the latest version of the Recovery Package.
+a|
+Provisioning passphrase
+a|
+The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not listed in the Passwords.txt file.
+a|
+Related documentation
+a|
+
+* Release notes for StorageGRID 11.5. Be sure to read these carefully before starting the upgrade.
+* Instructions for administering StorageGRID
+* If you are upgrading a Linux deployment, the StorageGRID installation instructions for your Linux platform.
+* Other StorageGRID documentation, as required.
+
+|===
+*Related information*
+
+xref:web_browser_requirements.adoc[Web browser requirements]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation]
+
+xref:downloading_storagegrid_upgrade_files.adoc[Downloading the StorageGRID upgrade files]
+
+xref:downloading_recovery_package.adoc[Downloading the Recovery Package]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-rn/home.html[StorageGRID release notes]

@@ -1,0 +1,112 @@
+---
+permalink: tenant/enabling_or_disabling_last_access_time_updates.html
+sidebar: sidebar
+keywords: 
+summary: 'When grid administrators create the information lifecycle management \(ILM\) rules for a StorageGRID system, they can optionally specify that an object’s last access time be used to determine whether to move that object to a different storage location. If you are using an S3 tenant, you can take advantage of such rules by enabling last access time updates for the objects in an S3 bucket.'
+---
+= Enabling or disabling last access time updates
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When grid administrators create the information lifecycle management (ILM) rules for a StorageGRID system, they can optionally specify that an object's last access time be used to determine whether to move that object to a different storage location. If you are using an S3 tenant, you can take advantage of such rules by enabling last access time updates for the objects in an S3 bucket.
+
+These instructions only apply to StorageGRID systems that include at least one ILM rule that uses the *Last Access Time* option in its placement instructions. You can ignore these instructions if your StorageGRID system does not include such a rule.
+
+* You must be signed in to the Tenant Manager using a supported browser.
+* You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
+
+*Last Access Time* is one of the options available for the *Reference Time* placement instruction for an ILM rule. Setting the Reference Time for a rule to Last Access Time lets grid administrators specify that objects be placed in certain storage locations based on when those objects were last retrieved (read or viewed).
+
+For example, to ensure that recently viewed objects remain on faster storage, a grid administrator can create an ILM rule specifying the following:
+
+* Objects that have been retrieved in the past month should remain on local Storage Nodes.
+* Objects that have not been retrieved in the past month should be moved to an off-site location.
+
+NOTE: See the instructions for managing objects with information lifecycle management.
+
+By default, updates to last access time are disabled. If your StorageGRID system includes an ILM rule that uses the *Last Access Time* option and you want this option to apply to objects in this bucket, you must enable updates to last access time for the S3 buckets specified in that rule.
+
+IMPORTANT: Updating the last access time when an object is retrieved can reduce StorageGRID performance, especially for small objects.
+
+A performance impact occurs with last access time updates because StorageGRID must perform these additional steps every time objects are retrieved:
+
+* Update the objects with new timestamps
+* Add the objects to the ILM queue, so they can be reevaluated against current ILM rules and policy
+
+The table summarizes the behavior applied to all objects in the bucket when last access time is disabled or enabled.
+
+|===
+| Type of request| Behavior if last access time is disabled (default)| Behavior if last access time is enabled
+| Last access time updated?| Object added to ILM evaluation queue?| Last access time updated?| Object added to ILM evaluation queue?
+a|
+Request to retrieve an object, its access control list, or its metadata
+a|
+No
+a|
+No
+a|
+Yes
+a|
+Yes
+a|
+Request to update an object's metadata
+a|
+Yes
+a|
+Yes
+a|
+Yes
+a|
+Yes
+a|
+Request to copy an object from one bucket to another
+a|
+
+* No, for the source copy
+* Yes, for the destination copy
+
+a|
+
+* No, for the source copy
+* Yes, for the destination copy
+
+a|
+
+* Yes, for the source copy
+* Yes, for the destination copy
+
+a|
+
+* Yes, for the source copy
+* Yes, for the destination copy
+
+a|
+Request to complete a multipart upload
+a|
+Yes, for the assembled object
+a|
+Yes, for the assembled object
+a|
+Yes, for the assembled object
+a|
+Yes, for the assembled object
+|===
+
+. Select *STORAGE (S3)* > *Buckets*.
+. Select the bucket name from the list.
++
+The bucket details page appears.
+
+. Select *Bucket options* > *Last access time updates*.
+. Select the appropriate radio button to enable or disable last access time updates.
++
+image::../media/buckets_last_update_time_dialog_box.png[screenshot showing dialog box for setting last access time updates]
+
+. Select *Save changes*.
+
+*Related information*
+
+xref:tenant_management_permissions.adoc[Tenant management permissions]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]

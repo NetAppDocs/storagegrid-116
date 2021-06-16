@@ -1,0 +1,1051 @@
+---
+permalink: monitor/alerts_reference.html
+sidebar: sidebar
+keywords: 
+summary: 'The following table lists all default StorageGRID alerts. As required, you can create custom alert rules to fit your system management approach.'
+---
+= Alerts reference
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following table lists all default StorageGRID alerts. As required, you can create custom alert rules to fit your system management approach.
+
+See information about the commonly used Prometheus metrics to learn about the metrics used in some of these alerts.
+
+|===
+| Alert name| Description and recommended actions
+a|
+Appliance battery expired
+a|
+The battery in the appliance's storage controller has expired.
+
+. Replace the battery. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance battery failed
+a|
+The battery in the appliance's storage controller has failed.
+
+. Replace the battery. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance battery has insufficient learned capacity
+a|
+The battery in the appliance's storage controller has insufficient learned capacity.
+
+. Replace the battery. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance battery near expiration
+a|
+The battery in the appliance's storage controller is nearing expiration.
+
+. Replace the battery soon. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance battery removed
+a|
+The battery in the appliance's storage controller is missing.
+
+. Install a battery. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance battery too hot
+a|
+The battery in the appliance's storage controller is overheated.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Investigate possible reasons for the temperature increase, such as a fan or HVAC failure.
+. If this alert persists, contact technical support.
+
+a|
+Appliance BMC communication error
+a|
+Communication with the baseboard management controller (BMC) has been lost.
+
+. Confirm that the BMC is operating normally. Select *Nodes*, and then select the *Hardware* tab for the appliance node. Locate the Compute Controller BMC IP field, and browse to that IP.
+. Attempt to restore BMC communications by placing the node into maintenance mode and then powering the appliance off and back on. See the installation and maintenance instructions for your appliance.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance cache backup device failed
+a|
+A persistent cache backup device has failed.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Contact technical support.
+
+a|
+Appliance cache backup device insufficient capacity
+a|
+There is insufficient cache backup device capacity.Contact technical support.
+
+a|
+Appliance cache backup device write-protected
+a|
+A cache backup device is write-protected.Contact technical support.
+
+a|
+Appliance cache memory size mismatch
+a|
+The two controllers in the appliance have different cache sizes.Contact technical support.
+
+a|
+Appliance compute controller chassis temperature too high
+a|
+The temperature of the compute controller in a StorageGRID appliance has exceeded a nominal threshold.
+
+. Check the hardware components for overheating conditions, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance compute controller CPU temperature too high
+a|
+The temperature of the CPU in the compute controller in a StorageGRID appliance has exceeded a nominal threshold.
+
+. Check the hardware components for overheating conditions, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance compute controller needs attention
+a|
+A hardware fault has been detected in the compute controller of a StorageGRID appliance.
+
+. Check the hardware components for errors, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance compute controller power supply A has a problem
+a|
+Power supply A in the compute controller has a problem.This alert might indicate that the power supply has failed or that it has a problem providing power.
+
+. Check the hardware components for errors, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance compute controller power supply B has a problem
+a|
+Power supply B in the compute controller has a problem.This alert might indicate that the power supply has failed or that it has a problem providing power.
+
+. Check the hardware components for errors, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance compute hardware monitor service stalled
+a|
+The service that monitors storage hardware status has stopped reporting data.
+
+. Check the status of the eos-system-status service in the base-os.
+. If the service is in a stopped or error state, restart the service.
+. If this alert persists, contact technical support.
+
+a|
+Appliance Fibre Channel fault detected
+a|
+There is a problem with the Fibre Channel connection between the storage and compute controllers in the appliance.
+
+. Check the hardware components for errors (*Nodes* > *_appliance node_* > *Hardware*). If the status of any of the components is not "`Nominal`", take these actions:
+ .. Verify that the Fibre Channel cables between controllers are completely connected.
+ .. Ensure that the Fibre Channel cables are free of excessive bends.
+ .. Confirm that the SFP+ modules are properly seated.
+*Note:* If this problem persists, the StorageGRID system might take the problematic connection offline automatically.
+. If necessary, replace components. See the installation and maintenance instructions for your appliance.
+
+a|
+Appliance Fibre Channel HBA port failure
+a|
+A Fibre Channel HBA port is failing or has failed.Contact technical support.
+
+a|
+Appliance flash cache drives non-optimal
+a|
+The drives used for the SSD cache are non-optimal.
+
+. Replace the SSD cache drives. See the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance interconnect/battery canister removed
+a|
+The interconnect/battery canister is missing.
+
+. Replace the battery. The steps to remove and replace a battery are included in the procedure for replacing a storage controller in the appliance installation and maintenance instructions.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+. If this alert persists, contact technical support.
+
+a|
+Appliance LACP port missing
+a|
+A port on a StorageGRID appliance is not participating in the LACP bond.
+
+. Check the configuration for the switch. Ensure the interface is configured in the correct link aggregation group.
+. If this alert persists, contact technical support.
+
+a|
+Appliance overall power supply degraded
+a|
+The power of a StorageGRID appliance has deviated from the recommended operating voltage.
+
+. Check the status of power supply A and B to determine which power supply is operating abnormally, and follow the recommended actions:
+ ** If you have an SG100, SG1000, or SG6000, use the BMC.
+ ** If you have an SG5600 or SG5700, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Appliance storage controller A failure
+a|
+Storage controller A in a StorageGRID appliance has failed.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage controller B failure
+a|
+Storage controller B in a StorageGRID appliance has failed.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage controller drive failure
+a|
+One or more drives in a StorageGRID appliance has failed or is not optimal.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage controller hardware issue
+a|
+SANtricity software is reporting "Needs attention" for a component in a StorageGRID appliance.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage controller power supply A failure
+a|
+Power supply A in a StorageGRID appliance has deviated from the recommended operating voltage.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage controller power supply B failure
+a|
+Power supply B in a StorageGRID appliance has deviated from the recommended operating voltage.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance storage hardware monitor service stalled
+a|
+The service that monitors storage hardware status has stopped reporting data.
+
+. Check the status of the eos-system-status service in the base-os.
+. If the service is in a stopped or error state, restart the service.
+. If this alert persists, contact technical support.
+
+a|
+Appliance storage shelves degraded
+a|
+The status of one of the components in the storage shelf for a storage appliance is degraded.
+
+. Use SANtricity System Manager to check hardware components, and follow the recommended actions.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware:
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Appliance temperature exceeded
+a|
+The nominal or maximum temperature for the appliance's storage controller has been exceeded.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Investigate possible reasons for the temperature increase, such as a fan or HVAC failure.
+. If this alert persists, contact technical support.
+
+a|
+Appliance temperature sensor removed
+a|
+A temperature sensor has been removed. Contact technical support.
+a|
+Cassandra auto-compactor error
+a|
+The Cassandra auto-compactor has experienced an error.The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this condition persists, certain workloads will experience unexpectedly high metadata consumption.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Contact technical support.
+
+a|
+Cassandra auto-compactor metrics out of date
+a|
+The metrics that describe the Cassandra auto-compactor are out of date. The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this alert persists, certain workloads will experience unexpectedly high metadata consumption.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Contact technical support.
+
+a|
+Cassandra communication error
+a|
+The nodes that run the Cassandra service are having trouble communicating with each other.This alert indicates that something is interfering with node-to-node communications. There might be a network issue or the Cassandra service might be down on one or more Storage Nodes.
+
+. Determine if there is another alert affecting one or more Storage Nodes. This alert might be resolved when you resolve the other alert.
+. Check for a network issue that might be affecting one or more Storage Nodes.
+. Select *Support* > *Tools* > *Grid Topology*.
+. For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is"` Running.`"
+. If Cassandra is not running, follow the steps for starting or restarting a service in the recovery and maintenance instructions.
+. If all instances of the Cassandra service are now running and the alert is not resolved, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+Cassandra compactions overloaded
+a|
+The Cassandra compaction process is overloaded.If the compaction process is overloaded, read performance might be degraded and RAM might be used up. The Cassandra service might also become unresponsive or crash.
+
+. Restart the Cassandra service by following the steps for restarting a service in the recovery and maintenance instructions.
+. If this alert persists, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+Cassandra repair metrics out of date
+a|
+The metrics that describe Cassandra repair jobs are out of date. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
+
+. Reboot the node. From the Grid Manager, go to *Nodes*, select the node, and select the Tasks tab.
+. If this alert persists, contact technical support.
+
+a|
+Cassandra repair progress slow
+a|
+The progress of Cassandra database repairs is slow.When database repairs are slow, Cassandra data consistency operations are impeded. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
+
+. Confirm that all Storage Nodes are online and there are no networking-related alerts.
+. Monitor this alert for up to 2 days to see if the issue resolves on its own.
+. If database repairs continue to proceed slowly, contact technical support.
+
+a|
+Cassandra repair service not available
+a|
+The Cassandra repair service is not available.The Cassandra repair service exists on all Storage Nodes and provides critical repair functions for the Cassandra database. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
+
+. Select *Support* > *Tools* > *Grid Topology*.
+. For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra Reaper service is "Running."
+. If Cassandra Reaper is not running, follow the steps for starting or restarting a service in the recovery and maintenance instructions.
+. If all instances of the Cassandra Reaper service are now running and the alert is not resolved, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+Cloud Storage Pool connectivity error
+a|
+The health check for Cloud Storage Pools detected one or more new errors.
+
+. Go to the Cloud Storage Pools section of the Storage Pools page.
+. Look at the Last Error column to determine which Cloud Storage Pool has an error.
+. See the instructions for managing objects with information lifecycle management.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+a|
+DHCP lease expired
+a|
+The DHCP lease on a network interface has expired.If the DHCP lease has expired, follow the recommended actions:
+
+. Ensure there is connectivity between this node and the DHCP server on the affected interface.
+. Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+DHCP lease expiring soon
+a|
+The DHCP lease on a network interface is expiring soon.To prevent the DHCP lease from expiring, follow the recommended actions:
+
+. Ensure there is connectivity between this node and the DHCP server on the affected interface.
+. Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+DHCP server unavailable
+a|
+The DHCP server is unavailable.The StorageGRID node is unable to contact your DHCP server. The DHCP lease for the node's IP address cannot be validated.
+
+. Ensure there is connectivity between this node and the DHCP server on the affected interface.
+. Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+Disk I/O is very slow
+a|
+Very slow disk I/O might be impacting StorageGRID performance.
+
+. If the issue is related to a storage appliance node, use SANtricity System Manager to check for faulty drives, drives with predicted faults, or in-progress drive repairs. Also check the status of the Fibre Channel or SAS links between the appliance compute and storage controllers to see if any links are down or showing excessive error rates.
+. Examine the storage system that hosts this node's volumes to determine, and correct, the root cause of the slow I/O.
+. If this alert persists, contact technical support.
+
+NOTE: Affected nodes might disable services and reboot themselves to avoid impacting overall grid performance. When the underlying condition is cleared and these nodes detect normal I/O performance, they will return to full service automatically.
+
+a|
+Email notification failure
+a|
+The email notification for an alert could not be sent.This alert is triggered when an alert email notification fails or a test email (sent from the *Alerts* > *Email Setup* page) cannot be delivered.
+
+. Sign in to Grid Manager from the Admin Node listed in the *Site/Node* column of the alert.
+. Go to the *Alerts* > *Email Setup* page, check the settings, and change them if required.
+. Click *Send Test Email*, and check the inbox of a test recipient for the email. A new instance of this alert might be triggered if the test email cannot be sent.
+. If the test email could not be sent, confirm your email server is online.
+. If the server is working, select *Support* > *Tools* > *Logs*, and collect the log for the Admin Node. Specify a time period that is 15 minutes before and after the time of the alert.
+. Extract the downloaded archive, and review the contents of prometheus.log (/GID<gid><time_stamp>/<site_node>/<time_stamp>/metrics/prometheus.log).
+. If you are unable to resolve the problem, contact technical support.
+
+a|
+Expiration of certificates configured on Client Certificates page
+a|
+One or more certificates configured on the Client Certificates page are about to expire.
+
+. Select *Configuration* > *Access Control* > *Client Certificates*.
+. Select a certificate that will expire soon.
+. Select *Edit* to upload or generate a new certificate.
+. Repeat these steps for each certificate that will expire soon.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Expiration of load balancer endpoint certificate
+a|
+One or more load balancer endpoint certificates are about to expire.
+
+. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select an endpoint that has a certificate that will expire soon.
+. Select *Edit endpoint* to upload or generate a new certificate.
+. Repeat these steps for each endpoint that has an expired certificate or one that will expire soon.
+
+For more information about managing load balancer endpoints, see the instructions for administering StorageGRID.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Expiration of server certificate for Management Interface
+a|
+The server certificate used for the management interface is about to expire.
+
+. Select *Configuration* > *Network Settings* > *Server Certificates*.
+. In the Management Interface Server Certificate section, upload a new certificate.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Expiration of server certificate for Storage API Endpoints
+a|
+The server certificate used for accessing storage API endpoints is about to expire.
+
+. Select *Configuration* > *Network Settings* > *Server Certificates*.
+. In the Object Storage API Service Endpoints Server Certificate section, upload a new certificate.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Grid Network MTU mismatch
+a|
+The maximum transmission unit (MTU) setting for the Grid Network interface (eth0) differs significantly across nodes in the grid.The differences in MTU settings could indicate that some, but not all, eth0 networks are configured for jumbo frames. An MTU size mismatch of greater than 1000 might cause network performance problems.
+
+link:troubleshooting_storagegrid_system.md#[Troubleshooting the Grid Network MTU mismatch alert]
+
+a|
+High Java heap use
+a|
+A high percentage of Java heap space is being used.If the Java heap becomes full, metadata services can become unavailable and client requests can fail.
+
+. Review the ILM activity on the Dashboard. This alert might resolve on its own when the ILM workload decreases.
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. If this alert persists, contact technical support.
+
+a|
+High latency for metadata queries
+a|
+The average time for Cassandra metadata queries is too long.An increase in query latency can be caused by a hardware change, such as replacing a disk, or a workload change, such as a sudden increase in ingests.
+
+. Determine if there were any hardware or workload changes around the time the query latency increased.
+. If you are unable to resolve the problem, contact technical support.
+
+a|
+Identity federation synchronization failure
+a|
+Unable to synchronize federated groups and users from the identity source.
+
+. Confirm that the configured LDAP server is online and available.
+. Review the settings on the Identity Federation page. Confirm that all values are current. See "`Configuring a federated identity source`" in the instructions for administering StorageGRID.
+. Click *Test Connection* to validate the settings for the LDAP server.
+. If you cannot resolve the issue, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+ILM placement unachievable
+a|
+A placement instruction in an ILM rule cannot be achieved for certain objects.This alert indicates that a node required by a placement instruction is unavailable or that an ILM rule is misconfigured. For example, a rule might specify more replicated copies than there are Storage Nodes.
+
+. Ensure that all nodes are online.
+. If all nodes are online, review the placement instructions in all ILM rules that are used the active ILM policy. Confirm that there are valid instructions for all objects. See the instructions for managing objects with information lifecycle management.
+. As required, update rule settings and activate a new policy.
++
+NOTE: It might take up to 1 day for the alert to clear.
+
+. If the problem persists, contact technical support.
+
+NOTE: This alert might appear during an upgrade and could persist for 1 day after the upgrade is completed successfully. When this alert is triggered by an upgrade, it will clear on its own.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+a|
+ILM scan period too long
+a|
+The time required to scan, evaluate objects, and apply ILM is too long.If the estimated time to complete a full ILM scan of all objects is too long (see *Scan Period - Estimated* on the Dashboard), the active ILM policy might not be applied to newly ingested objects. Changes to the ILM policy might not be applied to existing objects.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Confirm that all Storage Nodes are online.
+. Temporarily reduce the amount of client traffic. For example, from the Grid Manager, select *Configuration* > *Network Settings* > *Traffic Classification*, and create a policy that limits bandwidth or the number of requests.
+. If disk I/O or CPU are overloaded, try to reduce the load or increase the resource.
+. If necessary, update ILM rules to use synchronous placement (default for rules created after StorageGRID 11.3).
+. If this alert persists, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+ILM scan rate low
+a|
+The ILM scan rate is set to less than 100 objects/second.This alert indicates that someone has changed the ILM scan rate for your system to less than 100 objects/second (default: 400 objects/second). The active ILM policy might not be applied to newly ingested objects. Subsequent changes to the ILM policy will not be applied to existing objects.
+
+. Determine if a temporary change was made to the ILM scan rate as part of an ongoing support investigation.
+. Contact technical support.
+
+IMPORTANT: Never change the ILM scan rate without contacting technical support.
+
+a|
+KMS CA certificate expiration
+a|
+The certificate authority (CA) certificate used to sign the key management server (KMS) certificate is about to expire.
+
+. Using the KMS software, update the CA certificate for the key management server.
+. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. Select the KMS that has a certificate status warning.
+. Select *Edit*.
+. Select *Next* to go to Step 2 (Upload Server Certificate).
+. Select *Browse* to upload the new certificate.
+. Select *Save*.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+KMS client certificate expiration
+a|
+The client certificate for a key management server is about to expire.
+
+. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. Select the KMS that has a certificate status warning.
+. Select *Edit*.
+. Select *Next* to go to Step 3 (Upload Client Certificates).
+. Select *Browse* to upload the new certificate.
+. Select *Browse* to upload the new private key.
+. Select *Save*.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+KMS configuration failed to load
+a|
+The configuration for the key management server exists but failed to load.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. If this alert persists, contact technical support.
+
+a|
+KMS connectivity error
+a|
+An appliance node could not connect to the key management server for its site.
+
+. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. Confirm that the port and hostname entries are correct.
+. Confirm that the server certificate, client certificate, and the client certificate private key are correct and not expired.
+. Ensure that firewall settings allow the appliance node to communicate with the specified KMS.
+. Correct any networking or DNS issues.
+. If you need assistance or this alert persists, contact technical support.
+
+a|
+KMS encryption key name not found
+a|
+The configured key management server does not have an encryption key that matches the name provided.
+
+. Confirm that the KMS assigned to the site is using the correct name for the encryption key and any prior versions.
+. If you need assistance or this alert persists, contact technical support.
+
+a|
+KMS encryption key rotation failed
+a|
+All appliance volumes were decrypted, but one or more volumes could not rotate to the latest key.Contact technical support.
+
+a|
+KMS is not configured
+a|
+No key management server exists for this site.
+
+. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. Add a KMS for this site or add a default KMS.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+KMS key failed to decrypt an appliance volume
+a|
+One or more volumes on an appliance with node encryption enabled could not be decrypted with the current KMS key.
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Ensure that the key management server (KMS) has the configured encryption key and any previous key versions.
+. If you need assistance or this alert persists, contact technical support.
+
+a|
+KMS server certificate expiration
+a|
+The server certificate used by the key management server (KMS) is about to expire.
+
+. Using the KMS software, update the server certificate for the key management server.
+. If you need assistance or this alert persists, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Large audit queue
+a|
+The disk queue for audit messages is full.
+
+. Check the load on the system--if there have been a significant number of transactions, the alert should resolve itself over time, and you can ignore the alert.
+. If the alert persists and increases in severity, view a chart of the queue size. If the number is steadily increasing over hours or days, the audit load has likely exceeded the audit capacity of the system.
+. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*Configuration* > *Monitoring* > *Audit*).
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
+
+a|
+Low audit log disk capacity
+a|
+The space available for audit logs is low.
+
+. Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
+. Contact technical support if the available space continues to decrease.
+
+a|
+Low available node memory
+a|
+The amount of RAM available on a node is low.Low available RAM could indicate a change in the workload or a memory leak with one or more nodes.
+
+. Monitor this alert to see if the issue resolves on its own.
+. If the available memory falls below the major alert threshold, contact technical support.
+
+a|
+Low free space for storage pool
+a|
+The amount of space available to store object data in a storage pool is low.
+
+. Select *ILM* > *Storage Pools*.
+. Select the storage pool listed in the alert, and select *View details*.
+. Determine where additional storage capacity is required. You can either add Storage Nodes to each site in the storage pool or add storage volumes (LUNs) to one or more existing Storage Nodes.
+. Perform an expansion procedure to increase storage capacity.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
+
+a|
+Low installed node memory
+a|
+The amount of installed memory on a node is low.Increase the amount of RAM available to the virtual machine or Linux host. Check the threshold value for the major alert to determine the default minimum requirement for a StorageGRID node. See the installation instructions for your platform:
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation]
+
+a|
+Low metadata storage
+a|
+The space available for storing object metadata is low.*Critical alert*
+
+. Stop ingesting objects.
+. Immediately add Storage Nodes in an expansion procedure.
+
+*Major alert*
+
+Immediately add Storage Nodes in an expansion procedure.
+
+*Minor alert*
+
+. Monitor the rate at which object metadata space is being used. Select *Nodes* > *Storage Node* > *Storage*, and view the Storage Used - Object Metadata graph.
+. Add Storage Nodes in an expansion procedure as soon as possible.
+
+Once new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
+
+link:troubleshooting_storagegrid_system.md#[Troubleshooting the Low metadata storage alert]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
+
+a|
+Low metrics disk capacity
+a|
+The space available for the metrics database is low.
+
+. Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
+. Contact technical support if the available space continues to decrease.
+
+a|
+Low object data storage
+a|
+The space available for storing object data is low.Perform an expansion procedure. You can add storage volumes (LUNs) to existing Storage Nodes, or you can add new Storage Nodes.
+
+link:troubleshooting_storagegrid_system.md#[Troubleshooting the Low object data storage alert]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
+
+a|
+Low root disk capacity
+a|
+The space available for the root disk is low.
+
+. Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
+. Contact technical support if the available space continues to decrease.
+
+a|
+Low system data capacity
+a|
+The space available for StorageGRID system data on the /var/local file system is low.
+
+. Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
+. Contact technical support if the available space continues to decrease.
+
+a|
+Node network connectivity error
+a|
+Errors have occurred while transferring data between nodes.Network connectivity errors might clear without manual intervention. Contact technical support if the errors do not clear.
+
+link:troubleshooting_storagegrid_system.md#[Troubleshooting the Network Receive Error (NRER) alarm]
+
+a|
+Node network reception frame error
+a|
+A high percentage of the network frames received by a node had errors.This alert might indicate a hardware issue, such as a bad cable or a failed transceiver on either end of the Ethernet connection.
+
+. If you are using an appliance, try replacing each SFP+ or SFP28 transceiver and cable, one at a time, to see if the alert clears.
+. If this alert persists, contact technical support.
+
+a|
+Node not in sync with NTP server
+a|
+The node's time is not in sync with the network time protocol (NTP) server.
+
+. Verify that you have specified at least four external NTP servers, each providing a Stratum 3 or better reference.
+. Check that all NTP servers are operating normally.
+. Verify the connections to the NTP servers. Make sure they are not blocked by a firewall.
+
+a|
+Node not locked with NTP server
+a|
+The node is not locked to a network time protocol (NTP) server.
+
+. Verify that you have specified at least four external NTP servers, each providing a Stratum 3 or better reference.
+. Check that all NTP servers are operating normally.
+. Verify the connections to the NTP servers. Make sure they are not blocked by a firewall.
+
+a|
+Non appliance node network down
+a|
+One or more network devices are down or disconnected. This alert indicates that a network interface (eth) for a node installed on a virtual machine or Linux host is not accessible.
+
+Contact technical support.
+
+a|
+Objects lost
+a|
+One or more objects have been lost from the grid.This alert might indicate that data has been permanently lost and is not retrievable.
+
+. Investigate this alert immediately. You might need to take action to prevent further data loss. You also might be able to restore a lost object if you take prompt action.
++
+link:troubleshooting_storagegrid_system.md#[Troubleshooting lost and missing object data]
+
+. When the underlying problem is resolved, reset the counter:
+ .. Select *Support* > *Tools* > *Grid Topology*.
+ .. For the Storage Node that raised the alert, select *site* > *grid node* > *LDR* > *Data Store* > *Configuration* > *Main*.
+ .. Select *Reset Lost Objects Count* and click *Apply Changes*.
+
+a|
+Platform services unavailable
+a|
+Too few Storage Nodes with the RSM service are running or available at a site.Make sure that the majority of the Storage Nodes that have the RSM service at the affected site are running and in a non-error state.
+
+See "`Troubleshooting platform services`" in the instructions for administering StorageGRID.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+a|
+Services appliance link down on Admin Network port 1
+a|
+The Admin Network port 1 on the appliance is down or disconnected.
+
+. Check the cable and physical connection to Admin Network port 1.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Services appliance link down on Admin Network (or Client Network)
+a|
+The appliance interface to the Admin Network (eth1) or the Client Network (eth2) is down or disconnected.
+
+. Check the cables, SFPs, and physical connections to the StorageGRID network.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Services appliance link down on network port 1, 2, 3, or 4
+a|
+Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
+
+. Check the cables, SFPs, and physical connections to the StorageGRID network.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Services appliance storage connectivity degraded
+a|
+One of the two SSDs in a services appliance has failed or is out of synchronization with the other.Appliance functionality is not impacted, but you should address the issue immediately. If both drives fail, the appliance will no longer function.
+
+. From the Grid Manager, select *Nodes* > ***_services appliance_, and then select the **Hardware* tab.
+. Review the message in the *Storage RAID Mode* field.
+. If the message shows the progress of a resynchronization operation, wait for the operation to complete and then confirm that the alert is resolved. A resynchronization message means that SSD was replaced recently or that it is being resynchronized for another reason.
+. If the message indicates that one of the SSDs has failed, replace the failed drive as soon as possible.
++
+For instructions on how to replace a drive in a services appliance, see the SG100 and SG1000 appliances installation and maintenance guide.
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+a|
+Storage appliance link down on Admin Network port 1
+a|
+The Admin Network port 1 on the appliance is down or disconnected.
+
+. Check the cable and physical connection to Admin Network port 1.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Storage appliance link down on Admin Network (or Client Network)
+a|
+The appliance interface to the Admin Network (eth1) or the Client Network (eth2) is down or disconnected.
+
+. Check the cables, SFPs, and physical connections to the StorageGRID network.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Storage appliance link down on network port 1, 2, 3, or 4
+a|
+Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
+
+. Check the cables, SFPs, and physical connections to the StorageGRID network.
+. Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+* link:managing_alerts.md#[Disabling an alert rule]
+
+a|
+Storage appliance storage connectivity degraded
+a|
+There is a problem with one or more connections between the compute controller and storage controller.
+
+. Go to the appliance to check the port indicator lights.
+. If a port's lights are off, confirm the cable is properly connected. As needed, replace the cable.
+. Wait up to five minutes.
++
+NOTE: If a second cable needs to be replaced, do not unplug it for at least 5 minutes. Otherwise, the root volume might become read-only, which requires a hardware restart.
+
+. From the Grid Manager, select *Nodes*. Then, select the Hardware tab of the node that had the problem. Verify that the alert condition has resolved.
+
+a|
+Storage device inaccessible
+a|
+A storage device cannot be accessed.This alert indicates that a volume cannot be mounted or accessed because of a problem with an underlying storage device.
+
+. Check the status of all storage devices used for the node:
+ ** If the node is installed on a virtual machine or Linux host, follow the instructions for your operating system to run hardware diagnostics or perform a filesystem check.
+  *** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
+  *** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
+  *** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation]
+ ** If the node is installed on an SG100, SG1000 or SG6000 appliance, use the BMC.
+ ** If the node is installed on a SG5600 or SG5700 appliance, use SANtricity System Manager.
+. If necessary, replace the component. See the installation and maintenance instructions for your appliance hardware.
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+ ** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+
+a|
+Tenant quota usage high
+a|
+A high percentage of tenant quota space is being used. If a tenant exceeds its quota, new ingests are rejected.
+
+NOTE: This alert rule is disabled by default because it might generate a lot of notifications.
+
+. From the Grid Manager, select *Tenants*.
+. Sort the table by *Quota Utilization*.
+. Select a tenant whose quota utilization is close to 100%.
+. Do either or both of the following:
+ ** Select *Edit* to increase the storage quota for the tenant.
+ ** Notify the tenant that their quota utilization is high.
+
+a|
+Unable to communicate with node
+a|
+One or more services are unresponsive, or the node cannot be reached.This alert indicates that a node is disconnected for an unknown reason. For example, a service on the node might be stopped, or the node might have lost its network connection because of a power failure or unexpected outage.
+
+Monitor this alert to see if the issue resolves on its own. If the issue persists:
+
+. Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
+. Confirm that all of the services on this node are running. If a service is stopped, try starting it. See the recovery and maintenance instructions.
+. Ensure that the host for the node is powered on. If it is not, start the host.
++
+NOTE: If more than one host is powered off, see the recovery and maintenance instructions.
+
+. Determine if there is a network connectivity issue between this node and the Admin Node.
+. If you cannot resolve the alert, contact technical support.
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+
+a|
+Unexpected node reboot
+a|
+A node rebooted unexpectedly within the last 24 hours.
+
+. Monitor this alert. The alert will be cleared after 24 hours. However, if the node reboots unexpectedly again, this alert will be triggered again.
+. If you cannot resolve the alert, there might be a hardware failure. Contact technical support.
+
+a|
+Unidentified corrupt object detected
+a|
+A file was found in replicated object storage that could not be identified as a replicated object.
+
+. Determine if there are any issues with the underlying storage on a Storage Node. For example, run hardware diagnostics or perform a filesystem check.
+. After resolving any storage issues, run foreground verification to determine if objects are missing and to replace them if possible.
+. Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
+. If you cannot resolve the alert, contact technical support.
+
+link:troubleshooting_storagegrid_system.md#[Running foreground verification]
+
+|===
+*Related information*
+
+xref:commonly_used_prometheus_metrics.adoc[Commonly used Prometheus metrics]

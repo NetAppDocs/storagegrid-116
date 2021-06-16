@@ -1,0 +1,153 @@
+---
+permalink: ilm/creating_proposed_ilm_policy.html
+sidebar: sidebar
+keywords: 
+summary: 'You can create a proposed ILM policy from scratch, or you can clone the current active policy if you want to start with the same set of rules.'
+---
+= Creating a proposed ILM policy
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can create a proposed ILM policy from scratch, or you can clone the current active policy if you want to start with the same set of rules.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have specific access permissions.
+* You must have created the ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules.
+* You must have created a default ILM rule for the policy that does not contain any filters.
++
+xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
+
+Typical reasons for creating a proposed ILM policy include:
+
+* You added a new site and need to use new ILM rules to place objects at that site.
+* You are decommissioning a site and you need to remove all rules that refer to the site.
+* You added a new tenant that has special data protection requirements.
+* You started to use a Cloud Storage Pool.
+
+IMPORTANT: Use the system's built-in policy, Baseline 2 Copies Policy, in test systems only. The Make 2 Copies rule in this policy uses the All Storage Nodes storage pool, which contains all sites. If your StorageGRID system has more than one site, two copies of an object might be placed on the same site.
+
+NOTE: If the global S3 Object Lock setting has been enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.
+
+xref:creating_ilm_policy_after_s3_object_lock_is_enabled.adoc[Creating an ILM policy after S3 Object Lock is enabled]
+
+. Select *ILM* > *Policies*.
++
+The ILM Policies page appears. From this page, you can review the list of proposed, active, and historical policies; create, edit, or remove a proposed policy; clone the active policy; or view the details for any policy.
++
+image::../media/ilm_policies_page.gif[ILM Policies page]
+
+. Determine how you want to create the proposed ILM policy.
++
+|===
+| Option| Steps
+a|
+Create a new proposed policy that has no rules already selected
+a|
+
+ .. If a proposed ILM policy currently exists, select that policy, and click *Remove*.
++
+You cannot create a new proposed policy if a proposed policy already exists.
+
+ .. Click *Create Proposed Policy*.
+
+a|
+Create a proposed policy based on the active policy
+a|
+
+ .. If a proposed ILM policy currently exists, select that policy, and click *Remove*.
++
+You cannot clone the active policy if a proposed policy already exists.
+
+ .. Select the active policy from the table.
+ .. Click *Clone*.
+
+a|
+Edit the existing proposed policy
+a|
+
+ .. Select the proposed policy from the table.
+ .. Click *Edit*.
+
++
+|===
+The Configure ILM Policy dialog box appears.
++
+If you are creating a new proposed policy, all fields are blank and no rules are selected.
++
+image::../media/ilm_policies_configure_ilm_policy.png[ILM Policies Configure ILM Policy]
++
+If you are cloning the active policy, the *Name* field shows the name of the active policy, appended by a version number ("`v2`" in the example). The rules used in the active policy are selected and shown in their current order.
++
+image::../media/ilm_policies_version.gif[ILM Policies Version]
+
+. Enter a unique name for the proposed policy in the *Name* field.
++
+You must enter at least 1 and no more than 64 characters. If you are cloning the active policy, you can use the current name with the appended version number or you can enter a new name.
+
+. Enter the reason you are creating a new proposed policy in the *Reason for change* field.
++
+You must enter at least 1 and no more than 128 characters.
+
+. To add rules to the policy, select *Select Rules*.
++
+The Select Rules for Policy dialog box appears, with all defined rules listed. If you are cloning a policy:
+
+ ** The rules used by the policy you are cloning are selected.
+ ** If the policy you are cloning used any rules with no filters that were not the default rule, you are prompted to remove all but one of those rules.
+ ** If the default rule used a filter, you are prompted to select a new default rule.
+ ** If the default rule was not the last rule, a button allows you to move the rule to the end of the new policy.
+image:../media/ilm_policies_select_rules_for_policy.png[ILM Policies Select Rules for Policy]
+
+. Select a rule name or the more details icon image:../media/icon_nms_more_details.gif[more details icon] to view the settings for that rule.
++
+This example shows the details of an ILM rule that makes two replicated copies at two sites.
++
+image::../media/ilm_rule_summary_page.png[ILM Rule Summary Page]
+
+. In the Select Default Rule section, select one default rule for the proposed policy.
++
+The default rule applies to any objects that do not match another rule in the policy. The default rule cannot use any filter and is always evaluated last.
++
+NOTE: If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and create a default rule.
++
+xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
++
+IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a policy. The Make 2 Copies rule uses a single storage pool, All Storage Nodes, which contains all sites. If your StorageGRID system has more than one site, two copies of an object might be placed on the same site.
+
+. In the Select Other Rules section, select any other rules you want to include in the policy.
++
+The other rules are evaluated before the default rule and must use at least one filter (tenant account, bucket name, or an advanced filter, such as object size).
+
+. When you are done selecting rules, select *Apply*.
++
+The rules you selected are listed. The default rule is at the end, with the other rules above it.
++
+image::../media/ilm_policies_selected_rules.png[ILM Policies Selected Rules]
++
+NOTE: A warning appears if the default rule does not retain objects forever. When you activate this policy, you must confirm that you want StorageGRID to delete objects when the placement instructions for the default rule elapse (unless a bucket lifecycle keeps the objects for longer).
++
+image::../media/ilm_policy_default_rule_not_forever.png[ILM Policy Default Rule Not Forever]
+
+. Drag and drop the rows for the non-default rules to determine the order in which these rules will be evaluated.
++
+You cannot move the default rule.
++
+IMPORTANT: You must confirm that the ILM rules are in the correct order. When the policy is activated, new and existing objects are evaluated by the rules in the order listed, starting at the top.
+
+. As required, click the delete icon image:../media/icon_nms_delete_new.gif[delete icon] to delete any rules that you do not want in the policy, or select *Select Rules* to add more rules.
+. When you are done, select *Save*.
++
+The ILM Policies page is updated:
+
+ ** The policy you saved is shown as Proposed. Proposed policies do not have start and end dates.
+ ** The *Simulate* and *Activate* buttons are enabled.
+image:../media/ilm_policy_proposed_policy_saved.png[ILM Policy Proposed Policy Saved]
+
+. Go to xref:simulating_ilm_policy.adoc[Simulating an ILM policy].
+
+*Related information*
+
+xref:what_ilm_policy_is.adoc[What an ILM policy is]
+
+xref:managing_objects_with_s3_object_lock.adoc[Managing objects with S3 Object Lock]
