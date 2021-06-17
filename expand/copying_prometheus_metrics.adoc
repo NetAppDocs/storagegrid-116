@@ -1,0 +1,45 @@
+---
+permalink: expand/copying_prometheus_metrics.html
+sidebar: sidebar
+keywords: 
+summary: 'After adding a new Admin Node, you can optionally copy the historical metrics maintained by Prometheus from the primary Admin Node to the new Admin Node. Copying the metrics ensures that historical metrics are consistent between Admin Nodes.'
+---
+= Copying Prometheus metrics
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After adding a new Admin Node, you can optionally copy the historical metrics maintained by Prometheus from the primary Admin Node to the new Admin Node. Copying the metrics ensures that historical metrics are consistent between Admin Nodes.
+
+* The new Admin Node must be installed and running.
+* You must have the Passwords.txt file.
+* You must have the provisioning passphrase.
+
+When you add an Admin Node, the software installation process creates a new Prometheus database. You can keep the historical metrics consistent between nodes by copying the Prometheus database from the primary Admin Node (the _source Admin Node_) to the new Admin Node.
+
+NOTE: Copying the Prometheus database might take an hour or more. Some Grid Manager features will be unavailable while services are stopped on the source Admin Node.
+
+. Log in to the source Admin Node:
+ .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the Passwords.txt file.
+. From the source Admin Node, stop the Prometheus service: `service prometheus stop`
+. Complete the following steps on the new Admin Node:
+ .. Log in to the new Admin Node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the Passwords.txt file.
+ .. Stop the Prometheus service: `service prometheus stop`
+ .. Add the SSH private key to the SSH agent. Enter:``ssh-add``
+ .. Enter the SSH Access Password listed in the Passwords.txt file.
+ .. Copy the Prometheus database from the source Admin Node to the new Admin Node: `/usr/local/prometheus/bin/prometheus-clone-db.sh Source_Admin_Node_IP`
+ .. When prompted, press *Enter* to confirm that you want to destroy the new Prometheus database on the new Admin Node.
++
+The original Prometheus database and its historical data are copied to the new Admin Node. When the copy operation is done, the script starts the new Admin Node. The following status appears:
++
+Database cloned, starting services
+
+ .. When you no longer require passwordless access to other servers, remove the private key from the SSH agent. Enter:``ssh-add -D``
+. Restart the Prometheus service on the source Admin Node.`service prometheus start`

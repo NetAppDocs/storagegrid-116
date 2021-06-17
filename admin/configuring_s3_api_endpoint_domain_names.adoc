@@ -1,0 +1,69 @@
+---
+permalink: admin/configuring_s3_api_endpoint_domain_names.html
+sidebar: sidebar
+keywords: 
+summary: 'To support S3 virtual hosted-style requests, you must use the Grid Manager to configure the list of endpoint domain names that S3 clients connect to.'
+---
+= Configuring S3 API endpoint domain names
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To support S3 virtual hosted-style requests, you must use the Grid Manager to configure the list of endpoint domain names that S3 clients connect to.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have specific access permissions.
+* You must have confirmed that a grid upgrade is not in progress.
++
+WARNING: Do not make any changes to the domain name configuration when a grid upgrade is in progress.
+
+To enable clients to use S3 endpoint domain names, you must do all of the following tasks:
+
+* Use the Grid Manager to add the S3 endpoint domain names to the StorageGRID system.
+* Ensure that the certificate the client uses for HTTPS connections to StorageGRID is signed for all domain names that the client requires.
++
+For example, if the endpoint is s3.company.com, you must ensure that the certificate used for HTTPS connections includes the s3.company.com endpoint and the endpoint's wildcard Subject Alternative Name (SAN): *.s3.company.com.
+
+* Configure the DNS server used by the client. Include DNS records for the IP addresses that clients use to make connections, and ensure that the records reference all required endpoint domain names, including any wildcard names.
++
+NOTE: Clients can connect to StorageGRID using the IP address of a Gateway Node, an Admin Node, or a Storage Node, or by connecting to the virtual IP address of a high availability group. You should understand how client applications connect to the grid so you include the correct IP addresses in the DNS records.
+
+The certificate a client uses for HTTPS connections depends on how the client connects to the grid:
+
+* If a client connects using the Load Balancer service, it uses the certificate for a specific load balancer endpoint.
++
+NOTE: Each load balancer endpoint has its own certificate, and each endpoint can be configured to recognize different endpoint domain names.
+
+* If the client connects to a Storage Node or to the CLB service on a Gateway Node, the client uses a grid custom server certificate that has been updated to include all required endpoint domain names.
++
+NOTE: The CLB service is deprecated.
+
+. Select *Configuration* > *Network Settings* > *Domain Names*.
++
+The Endpoint Domain Names page appears.
++
+image::../media/configure_endpoint_domain_names.png[screenshot of the Endpoint Domain Names dialog box]
+
+. Using the (+) icon to add additional fields, enter the list of S3 API endpoint domain names in the *Endpoint* fields.
++
+If this list is empty, support for S3 virtual hosted-style requests is disabled.
+
+. Click *Save*.
+. Ensure that the server certificates that clients use match the required endpoint domain names.
+ ** For clients that use the Load Balancer service, update the certificate associated with the load balancer endpoint that the client connects to.
+ ** For clients that connect directly to Storage Nodes or that use the CLB service on Gateway Nodes, update the custom server certificate for the grid.
+. Add the DNS records required to ensure that endpoint domain name requests can be resolved.
+
+Now, when clients use the endpoint bucket.s3.company.com, the DNS server resolves to the correct endpoint and the certificate authenticates the endpoint as expected.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+
+xref:viewing_ip_addresses.adoc[Viewing IP addresses]
+
+xref:creating_high_availability_group.adoc[Creating a high availability group]
+
+xref:configuring_custom_server_certificate_for_storage_node_or_clb.adoc[Configuring a custom server certificate for connections to the Storage Node or the CLB service]
+
+link:configuring_load_balancer_endpoints.md#[Creating load balancer endpoints]

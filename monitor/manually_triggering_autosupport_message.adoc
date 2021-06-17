@@ -1,0 +1,29 @@
+---
+permalink: monitor/manually_triggering_autosupport_message.html
+sidebar: sidebar
+keywords: 
+summary: 'To assist technical support in troubleshooting issues with your StorageGRID system, you can manually trigger an AutoSupport message to be sent.'
+---
+= Manually triggering an AutoSupport message
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To assist technical support in troubleshooting issues with your StorageGRID system, you can manually trigger an AutoSupport message to be sent.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have the Root Access or Other Grid Configuration permission.
+
+. Select *Support* > *Tools* > *AutoSupport*.
++
+The AutoSupport page appears with the *Settings* tab selected.
+
+. Select *Send User-Triggered AutoSupport*.
++
+StorageGRID attempts to send an AutoSupport message to technical support. If the attempt is successful, the *Most Recent Result* and *Last Successful Time* values on the *Results* tab are updated. If there is a problem, the *Most Recent Result* value updates to "Failed," and StorageGRID does not try to send the AutoSupport message again.
++
+NOTE: After sending an User-triggered AutoSupport message, refresh the AutoSupport page in your browser after 1 minute to access the most recent results.
+
+*Related information*
+
+link:managing_alarms.md#[Configuring email server settings for alarms (legacy system)]

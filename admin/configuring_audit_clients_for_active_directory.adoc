@@ -1,0 +1,153 @@
+---
+permalink: admin/configuring_audit_clients_for_active_directory.html
+sidebar: sidebar
+keywords: 
+summary: 'Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.'
+---
+= Configuring audit clients for Active Directory
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.
+
+* You must have the Passwords.txt file with the root/admin account password (available in the SAID package).
+* You must have the CIFS Active Directory username and password.
+* You must have the Configuration.txt file (available in the SAID package).
+
+NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the Passwords.txt file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Confirm that all services have a state of Running or Verified: `storagegrid-status`
++
+If all services are not Running or Verified, resolve issues before continuing.
+
+. Return to the command line, press *Ctrl*+*C*.
+. Start the CIFS configuration utility: `config_cifs.rb`
++
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+
+. Set the authentication for Active Directory: `set-authentication`
++
+In most deployments, you must set the authentication before adding the audit client. If authentication has already been set, an advisory message appears. If authentication has already been set, go to step <<STEP_C67DDAD13F434284B5A5089E2752E222,6>>.
+
+ .. When prompted for Workgroup or Active Directory installation: `ad`
+ .. When prompted, enter the name of the AD domain (short domain name).
+ .. When prompted, enter the domain controller's IP address or DNS hostname.
+ .. When prompted, enter the full domain realm name.
++
+Use uppercase letters.
+
+ .. When prompted to enable winbind support, type *y*.
++
+Winbind is used to resolve user and group information from AD servers.
+
+ .. When prompted, enter the NetBIOS name.
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+. Join the domain:
+ .. If not already started, start the CIFS configuration utility: `config_cifs.rb`
+ .. Join the domain: `join-domain`
+ .. You are prompted to test if the Admin Node is currently a valid member of the domain. If this Admin Node has not previously joined the domain, enter: `no`
+ .. When prompted, provide the Administrator's username: `administrator_username`
++
+where administrator_username is the CIFS Active Directory username, not the StorageGRID username.
+
+ .. When prompted, provide the Administrator's password: `administrator_password`
++
+were administrator_password is the CIFS Active Directory username, not the StorageGRID password.
+
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+. Verify that you have correctly joined the domain:
+ .. Join the domain: `join-domain`
+ .. When prompted to test if the server is currently a valid member of the domain, enter: `y`
++
+If you receive the message "`Join is OK,`" you have successfully joined the domain. If you do not get this response, try setting authentication and joining the domain again.
+
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+. Add an audit client: `add-audit-share`
+ .. When prompted to add a user or group, enter: `user`
+ .. When prompted to enter the audit user name, enter the audit user name.
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+. If more than one user or group is permitted to access the audit share, add additional users: `add-user-to-share`
++
+A numbered list of enabled shares is displayed.
+
+ .. Enter the number of the audit-export share.
+ .. When prompted to add a user or group, enter: `group`
++
+You are prompted for the audit group name.
+
+ .. When prompted for the audit group name, enter the name of the audit user group.
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+ .. Repeat step <<STEP_8DB715F6579C450088839690A0E80B11,9>> for each additional user or group that has access to the audit share.
+
+. Optionally, verify your configuration: `validate-config`
++
+The services are checked and displayed. You can safely ignore the following messages:
+
+ ** Can't find include file /etc/samba/includes/cifs-interfaces.inc
+ ** Can't find include file /etc/samba/includes/cifs-filesystem.inc
+ ** Can't find include file /etc/samba/includes/cifs-interfaces.inc
+ ** Can't find include file /etc/samba/includes/cifs-custom-config.inc
+ ** Can't find include file /etc/samba/includes/cifs-shares.inc
+ ** rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
++
+IMPORTANT: Do not combine the setting 'security=ads' with the 'password server' parameter. (by default Samba will discover the correct DC to contact automatically).
+
+
+ .. When prompted, press *Enter* to display the audit client configuration.
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+. Close the CIFS configuration utility: `exit`
+. If the StorageGRID deployment is a single site, go to step <<STEP_2BA3B3B8156C4180B81FF78A9B9AC3EB,13>>.
++
+or
++
+Optionally, if the StorageGRID deployment includes Admin Nodes at other sites, enable these audit shares as required:
+
+ .. Remotely log in to a site's Admin Node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the Passwords.txt file.
+ .. Repeat steps <<STEP_CBB85A1C30A94F4787F79B98C96FD936,4>> through <<STEP_4B0D0ABA168D4AD593EB45C17A7460AE,11>> to configure the audit shares for each Admin Node.
+ .. Close the remote secure shell login to the Admin Node: `exit`
+
+. Log out of the command shell: `exit`
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-upgrade/home.html[Upgrading StorageGRID]

@@ -1,0 +1,2901 @@
+---
+entries:
+- title: Home
+  url: "/index.html"
+- title: admin
+  url: "/admin/index.html"
+  entries:
+  - title: Administering a StorageGRID system
+    url: "/admin/administering_storagegrid_system.html"
+    entries:
+    - title: Web browser requirements
+      url: "/admin/web_browser_requirements.html"
+    - title: Signing in to the Grid Manager
+      url: "/admin/signing_in_to_grid_manager.html"
+    - title: Signing out of the Grid Manager
+      url: "/admin/signing_out_of_grid_manager.html"
+    - title: Changing your password
+      url: "/admin/changing_your_password.html"
+    - title: Changing the provisioning passphrase
+      url: "/admin/changing_provisioning_passphrase.html"
+    - title: Changing the browser session timeout
+      url: "/admin/changing_browser_session_timeout.html"
+    - title: Viewing StorageGRID license information
+      url: "/admin/viewing_storagegrid_license_information.html"
+    - title: Updating StorageGRID license information
+      url: "/admin/updating_storagegrid_license_information.html"
+    - title: Using the Grid Management API
+      url: "/admin/using_grid_management_api.html"
+      entries:
+      - title: Grid Management API operations
+        url: "/admin/grid_management_api_operations.html"
+      - title: Issuing API requests
+        url: "/admin/issuing_api_requests.html"
+      - title: Grid Management API versioning
+        url: "/admin/grid_management_api_versioning.html"
+      - title: Protecting against Cross-Site Request Forgery (CSRF)
+        url: "/admin/protecting_against_cross_site_request_forgery_csrf.html"
+      - title: Using the API if single sign-on is enabled
+        url: "/admin/using_api_if_sso_is_enabled.html"
+    - title: Using StorageGRID security certificates
+      url: "/admin/using_storagegrid_security_certificates.html"
+  - title: Controlling administrator access to StorageGRID
+    url: "/admin/controlling_administrator_access_to_storagegrid.html"
+    entries:
+    - title: Controlling access through firewalls
+      url: "/admin/controlling_access_through_firewalls.html"
+    - title: Using identity federation
+      url: "/admin/using_identity_federation.html"
+    - title: Managing admin groups
+      url: "/admin/managing_admin_groups.html"
+    - title: Managing local users
+      url: "/admin/managing_local_users.html"
+    - title: Using single sign-on (SSO) for StorageGRID
+      url: "/admin/using_single_sign_on.html"
+      entries:
+      - title: How single sign-on works
+        url: "/admin/how_sso_works.html"
+      - title: Requirements for using single sign-on
+        url: "/admin/requirements_for_sso.html"
+      - title: Configuring single sign-on
+        url: "/admin/configuring_sso.html"
+        entries:
+        - title: Confirming federated users can sign in
+          url: "/admin/confirming_federated_users_can_sign_in.html"
+        - title: Using sandbox mode
+          url: "/admin/using_sandbox_mode.html"
+        - title: Creating relying party trusts in AD FS
+          url: "/admin/creating_relying_party_trusts_in_ad_fs.html"
+        - title: Testing relying party trusts
+          url: "/admin/testing_relying_party_trusts.html"
+        - title: Enabling single sign-on
+          url: "/admin/enabling_single_sign_on.html"
+        - title: Disabling single sign-on
+          url: "/admin/disabling_single_sign_on.html"
+        - title: Temporarily disabling and reenabling single sign-on for one Admin
+            Node
+          url: "/admin/temporarily_disabling_and_reenabling_sso_for_admin_node.html"
+    - title: Configuring administrator client certificates
+      url: "/admin/configuring_administrator_client_certificates.html"
+  - title: Using identity federation
+    url: "/admin/using_identity_federation.html"
+  - title: Using single sign-on (SSO) for StorageGRID
+    url: "/admin/using_single_sign_on.html"
+    entries:
+    - title: How single sign-on works
+      url: "/admin/how_sso_works.html"
+    - title: Requirements for using single sign-on
+      url: "/admin/requirements_for_sso.html"
+    - title: Configuring single sign-on
+      url: "/admin/configuring_sso.html"
+      entries:
+      - title: Confirming federated users can sign in
+        url: "/admin/confirming_federated_users_can_sign_in.html"
+      - title: Using sandbox mode
+        url: "/admin/using_sandbox_mode.html"
+      - title: Creating relying party trusts in AD FS
+        url: "/admin/creating_relying_party_trusts_in_ad_fs.html"
+      - title: Testing relying party trusts
+        url: "/admin/testing_relying_party_trusts.html"
+      - title: Enabling single sign-on
+        url: "/admin/enabling_single_sign_on.html"
+      - title: Disabling single sign-on
+        url: "/admin/disabling_single_sign_on.html"
+      - title: Temporarily disabling and reenabling single sign-on for one Admin Node
+        url: "/admin/temporarily_disabling_and_reenabling_sso_for_admin_node.html"
+  - title: Configuring key management servers
+    url: "/admin/kms_configuring.html"
+    entries:
+    - title: Reviewing StorageGRID encryption methods
+      url: "/admin/reviewing_storagegrid_encryption_methods.html"
+    - title: Overview of KMS and appliance configuration
+      url: "/admin/kms_overview_of_kms_and_appliance_configuration.html"
+    - title: Considerations and requirements for using a key management server
+      url: "/admin/kms_considerations_and_requirements.html"
+    - title: Considerations for changing the KMS for a site
+      url: "/admin/kms_considerations_for_changing_for_site.html"
+    - title: Configuring StorageGRID as a client in the KMS
+      url: "/admin/kms_configuring_storagegrid_as_client.html"
+    - title: Adding a key management server (KMS)
+      url: "/admin/kms_adding.html"
+      entries:
+      - title: 'Step 1: Enter KMS Details'
+        url: "/admin/kms_adding_enter_kms_details.html"
+      - title: 'Step 2: Upload Server Certificate'
+        url: "/admin/kms_adding_upload_server_certificate.html"
+      - title: 'Step 3: Upload Client Certificates'
+        url: "/admin/kms_adding_upload_client_certificates.html"
+    - title: Viewing KMS details
+      url: "/admin/kms_viewing_details.html"
+    - title: Viewing encrypted nodes
+      url: "/admin/kms_viewing_encrypted_nodes.html"
+    - title: Editing a key management server (KMS)
+      url: "/admin/kms_editing.html"
+    - title: Removing a key management server (KMS)
+      url: "/admin/kms_removing.html"
+  - title: Managing tenants
+    url: "/admin/managing_tenants.html"
+    entries:
+    - title: Creating a tenant account
+      url: "/admin/creating_tenant_account.html"
+      entries:
+      - title: Creating a tenant account if StorageGRID is not using SSO
+        url: "/admin/creating_tenant_account_if_storagegrid_is_not_using_sso.html"
+      - title: Creating a tenant account if SSO is enabled
+        url: "/admin/creating_tenant_account_if_sso_is_enabled.html"
+    - title: Changing the password for a tenant&#8217;s local root user
+      url: "/admin/changing_password_for_tenant_local_root_user.html"
+    - title: Editing a tenant account
+      url: "/admin/editing_tenant_account.html"
+    - title: Deleting a tenant account
+      url: "/admin/deleting_tenant_account.html"
+    - title: Managing platform services for S3 tenant accounts
+      url: "/admin/managing_platform_services_for_s3_tenant_accounts.html"
+      entries:
+      - title: What platform services are
+        url: "/admin/what_platform_services_are.html"
+      - title: Networking and ports for platform services
+        url: "/admin/networking_and_ports_for_platform_services.html"
+      - title: Per-site delivery of platform services messages
+        url: "/admin/per_site_delivery_of_platform_services_messages.html"
+      - title: Troubleshooting platform services
+        url: "/admin/troubleshooting_platform_services.html"
+  - title: Configuring S3 and Swift client connections
+    url: "/admin/configuring_client_connections.html"
+    entries:
+    - title: 'Summary: IP addresses and ports for client connections'
+      url: "/admin/summary_ip_addresses_and_ports_for_client_connections.html"
+    - title: Managing load balancing
+      url: "/admin/managing_load_balancing.html"
+      entries:
+      - title: How load balancing works - Load Balancer service
+        url: "/admin/how_load_balancing_works_load_balancer_service.html"
+      - title: Configuring load balancer endpoints
+        url: "/admin/configuring_load_balancer_endpoints.html"
+      - title: How load balancing works - CLB service
+        url: "/admin/how_load_balancing_works_clb_service.html"
+    - title: Managing untrusted Client Networks
+      url: "/admin/managing_untrusted_client_networks.html"
+      entries:
+      - title: Specifying a node&#8217;s Client Network is untrusted
+        url: "/admin/specifying_node_client_network_is_untrusted.html"
+    - title: Managing high availability groups
+      url: "/admin/managing_high_availability_groups.html"
+      entries:
+      - title: What an HA group is
+        url: "/admin/what_ha_group_is.html"
+      - title: How HA groups are used
+        url: "/admin/how_ha_groups_are_used.html"
+      - title: Configuration options for HA groups
+        url: "/admin/configuration_options_for_ha_groups.html"
+      - title: Creating a high availability group
+        url: "/admin/creating_high_availability_group.html"
+      - title: Editing a high availability group
+        url: "/admin/editing_high_availability_group.html"
+      - title: Removing a high availability group
+        url: "/admin/removing_high_availability_group.html"
+    - title: Configuring S3 API endpoint domain names
+      url: "/admin/configuring_s3_api_endpoint_domain_names.html"
+    - title: Enabling HTTP for client communications
+      url: "/admin/enabling_http_for_client_communications.html"
+    - title: Controlling which client operations are permitted
+      url: "/admin/controlling_which_client_operations_are_permitted.html"
+  - title: Managing StorageGRID networks and connections
+    url: "/admin/managing_storagegrid_networks_and_connections.html"
+    entries:
+    - title: Guidelines for StorageGRID networks
+      url: "/admin/guidelines_for_storagegrid_networks.html"
+    - title: Viewing IP addresses
+      url: "/admin/viewing_ip_addresses.html"
+    - title: Supported ciphers for outgoing TLS connections
+      url: "/admin/supported_ciphers_for_outgoing_tls_connections.html"
+    - title: Changing network transfer encryption
+      url: "/admin/changing_network_transfer_encryption.html"
+    - title: Configuring server certificates
+      url: "/admin/configuring_server_certificates.html"
+      entries:
+      - title: Configuring a custom server certificate for the Grid Manager and the
+          Tenant Manager
+        url: "/admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.html"
+      - title: Restoring the default server certificates for the Grid Manager and
+          the Tenant Manager
+        url: "/admin/restoring_default_server_certificates_for_grid_manager_tenant_manager.html"
+      - title: Configuring a custom server certificate for connections to the Storage
+          Node or the CLB service
+        url: "/admin/configuring_custom_server_certificate_for_storage_node_or_clb.html"
+      - title: Restoring the default server certificates for the S3 and Swift REST
+          API endpoints
+        url: "/admin/restoring_default_server_certificates_for_s3_swift_api_endpoints.html"
+      - title: Copying the StorageGRID system&#8217;s CA certificate
+        url: "/admin/copying_storagegrid_system_ca_certificate.html"
+      - title: Configuring StorageGRID certificates for FabricPool
+        url: "/admin/configuring_storagegrid_certificates_for_fabricpool.html"
+      - title: Generating a self-signed server certificate for the management interface
+        url: "/admin/generating_self_signed_certificate_for_management_interface.html"
+    - title: Configuring Storage proxy settings
+      url: "/admin/configuring_storage_proxy_settings.html"
+    - title: Configuring Admin proxy settings
+      url: "/admin/configuring_admin_proxy_settings.html"
+    - title: Managing traffic classification policies
+      url: "/admin/managing_traffic_classification_policies.html"
+      entries:
+      - title: Creating traffic classification policies
+        url: "/admin/creating_traffic_classification_policies.html"
+      - title: Editing a traffic classification policy
+        url: "/admin/editing_traffic_classification_policy.html"
+      - title: Deleting a traffic classification policy
+        url: "/admin/deleting_traffic_classification_policy.html"
+      - title: Viewing network traffic metrics
+        url: "/admin/viewing_network_traffic_metrics.html"
+    - title: What link costs are
+      url: "/admin/what_link_costs_are.html"
+      entries:
+      - title: Updating link costs
+        url: "/admin/updating_link_costs.html"
+  - title: Configuring AutoSupport
+    url: "/admin/configuring_autosupport.html"
+    entries:
+    - title: Specifying the protocol for AutoSupport messages
+      url: "/admin/specifying_protocol_for_autosupport_messages.html"
+    - title: Enabling AutoSupport on Demand
+      url: "/admin/enabling_autosupport_on_demand.html"
+    - title: Disabling weekly AutoSupport messages
+      url: "/admin/disabling_weekly_autosupport_messages.html"
+    - title: Disabling event-triggered AutoSupport messages
+      url: "/admin/disabling_event_triggered_autosupport_messages.html"
+    - title: Manually triggering an AutoSupport message
+      url: "/admin/manually_triggering_autosupport_message.html"
+    - title: Adding an additional AutoSupport destination
+      url: "/admin/adding_autosupport_destination.html"
+    - title: Sending E-Series AutoSupport messages through StorageGRID
+      url: "/admin/sending_eseries_autosupport_messages_through_storagegrid.html"
+    - title: Troubleshooting AutoSupport messages
+      url: "/admin/troubleshooting_autosupport_messages.html"
+  - title: Managing Storage Nodes
+    url: "/admin/managing_storage_nodes.html"
+    entries:
+    - title: What a Storage Node is
+      url: "/admin/what_storage_node_is.html"
+    - title: Managing Storage Options
+      url: "/admin/managing_storage_options.html"
+      entries:
+      - title: What object segmentation is
+        url: "/admin/what_object_segmentation_is.html"
+      - title: What Storage Volume watermarks are
+        url: "/admin/what_storage_volume_watermarks_are.html"
+    - title: Managing object metadata storage
+      url: "/admin/managing_object_metadata_storage.html"
+    - title: Configuring global settings for stored objects
+      url: "/admin/configuring_global_settings_for_stored_objects.html"
+      entries:
+      - title: Configuring stored object compression
+        url: "/admin/configuring_stored_object_compression.html"
+      - title: Configuring stored object encryption
+        url: "/admin/configuring_stored_object_encryption.html"
+      - title: Configuring stored object hashing
+        url: "/admin/configuring_stored_object_hashing.html"
+    - title: Storage Node configuration settings
+      url: "/admin/storage_node_configuration_settings.html"
+    - title: Managing full Storage Nodes
+      url: "/admin/managing_full_storage_nodes.html"
+  - title: Managing Admin Nodes
+    url: "/admin/managing_admin_nodes.html"
+    entries:
+    - title: What an Admin Node is
+      url: "/admin/what_admin_node_is.html"
+    - title: Using multiple Admin Nodes
+      url: "/admin/using_multiple_admin_nodes.html"
+    - title: Identifying the primary Admin Node
+      url: "/admin/identifying_primary_admin_node.html"
+    - title: Selecting a preferred sender
+      url: "/admin/selecting_preferred_sender.html"
+    - title: Viewing notification status and queues
+      url: "/admin/viewing_notification_status_and_queues.html"
+    - title: How Admin Nodes show acknowledged alarms (legacy system)
+      url: "/admin/how_admin_nodes_show_acknowledged_alarms.html"
+    - title: Configuring audit client access
+      url: "/admin/configuring_audit_client_access.html"
+      entries:
+      - title: Configuring audit clients for CIFS
+        url: "/admin/configuring_audit_clients_for_cifs.html"
+        entries:
+        - title: Configuring audit clients for Workgroup
+          url: "/admin/configuring_audit_clients_for_workgroup.html"
+        - title: Configuring audit clients for Active Directory
+          url: "/admin/configuring_audit_clients_for_active_directory.html"
+        - title: Adding a user or group to a CIFS audit share
+          url: "/admin/adding_user_or_group_to_cifs_audit_share.html"
+        - title: Removing a user or group from a CIFS audit share
+          url: "/admin/removing_user_or_group_from_cifs_audit_share.html"
+        - title: Changing a CIFS audit share user or group name
+          url: "/admin/changing_cifs_audit_share_user_or_group_name.html"
+        - title: Verifying CIFS audit integration
+          url: "/admin/verifying_cifs_audit_integration.html"
+      - title: Configuring the audit client for NFS
+        url: "/admin/configuring_audit_client_for_nfs.html"
+        entries:
+        - title: Adding an NFS audit client to an audit share
+          url: "/admin/adding_nfs_audit_client_to_audit_share.html"
+        - title: Verifying NFS audit integration
+          url: "/admin/verifying_nfs_audit_integration.html"
+        - title: Removing an NFS audit client from the audit share
+          url: "/admin/removing_nfs_audit_client_from_audit_share.html"
+        - title: Changing the IP address of an NFS audit client
+          url: "/admin/changing_ip_address_of_nfs_audit_client.html"
+  - title: Managing Archive Nodes
+    url: "/admin/managing_archive_nodes.html"
+    entries:
+    - title: What an Archive Node is
+      url: "/admin/what_archive_node_is.html"
+      entries:
+      - title: What the ARC service is
+        url: "/admin/what_arc_service_is.html"
+    - title: Configuring Archive Node connections to archival storage
+      url: "/admin/configuring_archive_node_connections_to_archival_storage.html"
+      entries:
+      - title: Archiving to the cloud through the S3 API
+        url: "/admin/archiving_to_cloud_through_s3_api.html"
+        entries:
+        - title: Configuring connection settings for the S3 API
+          url: "/admin/configuring_connection_settings_for_s3_api.html"
+        - title: Modifying connection settings for S3 API
+          url: "/admin/modifying_connection_settings_for_s3_api.html"
+        - title: Modifying the Cloud Tiering Service state
+          url: "/admin/modifying_cloud_tiering_service_state.html"
+        - title: Resetting the Store Failure Count for S3 API connection
+          url: "/admin/resetting_store_failure_count_for_s3_api_connection.html"
+        - title: Migrating objects from Cloud Tiering - S3 to a Cloud Storage Pool
+          url: "/admin/migrating_objects_from_cloud_tiering_s3_to_cloud_storage_pool.html"
+      - title: Archiving to tape through TSM middleware
+        url: "/admin/archiving_to_tape_through_tsm_middleware.html"
+        entries:
+        - title: Configuring connections to TSM middleware
+          url: "/admin/configuring_connections_to_tsm_middleware.html"
+        - title: Optimizing an Archive Node for TSM middleware sessions
+          url: "/admin/optimizing_archive_node_for_tsm_middleware_sessions.html"
+        - title: Configuring the archive state and counters for TSM
+          url: "/admin/configuring_archive_store_for_tsm_middleware_connection.html"
+        - title: Managing an Archive Node when TSM server reaches capacity
+          url: "/admin/managing_archive_node_when_tsm_server_reaches_capacity.html"
+          entries:
+          - title: Setting Archive Node to read-only if TSM middleware reaches capacity
+            url: "/admin/setting_archive_node_to_read_only_if_tsm_middleware_reaches_capacity.html"
+      - title: Configuring Archive Node retrieve settings
+        url: "/admin/configuring_archive_node_retrieve_settings.html"
+      - title: Configuring Archive Node replication
+        url: "/admin/configuring_archive_node_replication.html"
+    - title: Setting Custom alarms for the Archive Node
+      url: "/admin/setting_custom_alarms_for_archive_node.html"
+    - title: Integrating Tivoli Storage Manager
+      url: "/admin/integrating_tivoli_storage_manager.html"
+      entries:
+      - title: Archive Node configuration and operation
+        url: "/admin/archive_node_configuration_and_operation.html"
+      - title: Configuration best practices
+        url: "/admin/configuration_best_practices.html"
+      - title: Completing the Archive Node setup
+        url: "/admin/completing_archive_node_setup.html"
+        entries:
+        - title: Installing a new TSM server
+          url: "/admin/installing_new_tsm_server.html"
+        - title: Configuring the TSM server
+          url: "/admin/configuring_tsm_server.html"
+          entries:
+          - title: Defining TSM tape and disk storage pools
+            url: "/admin/defining_tsm_tape_and_disk_storage_pools.html"
+          - title: Defining a domain policy and registering a node
+            url: "/admin/defining_domain_policy_and_registering_node.html"
+          - title: Creating and activating the domain policy
+            url: "/admin/creating_and_activating_domain_policy.html"
+  - title: Migrating data into StorageGRID
+    url: "/admin/migrating_data_into_storagegrid.html"
+    entries:
+    - title: Confirming capacity of the StorageGRID system
+      url: "/admin/confirming_capacity_of_storagegrid_system.html"
+    - title: Determining the ILM policy for migrated data
+      url: "/admin/determining_ilm_policy_for_migrated_data.html"
+    - title: Impact of migration on operations
+      url: "/admin/impact_of_migration_on_operations.html"
+    - title: Scheduling data migration
+      url: "/admin/scheduling_data_migration.html"
+    - title: Monitoring data migration
+      url: "/admin/monitoring_data_migration.html"
+    - title: Creating custom notifications for migration alarms
+      url: "/admin/creating_custom_notifications_for_migration_alarms.html"
+- title: audit
+  url: "/audit/index.html"
+  entries:
+  - title: Audit message overview
+    url: "/audit/audit_message_overview.html"
+    entries:
+    - title: Audit message flow and retention
+      url: "/audit/audit_message_flow_and_retention.html"
+    - title: Changing audit message levels
+      url: "/audit/changing_audit_message_levels.html"
+    - title: Accessing the audit log file
+      url: "/audit/accessing_audit_log_file.html"
+    - title: Audit log file rotation
+      url: "/audit/audit_log_file_rotation.html"
+  - title: Audit log file and message formats
+    url: "/audit/audit_file_and_message_formats.html"
+    entries:
+    - title: Audit log file format
+      url: "/audit/audit_log_file_format.html"
+      entries:
+      - title: Using the audit-explain tool
+        url: "/audit/using_audit_explain_tool.html"
+      - title: Using the audit-sum tool
+        url: "/audit/using_audit_sum_tool.html"
+    - title: Audit message format
+      url: "/audit/audit_message_format.html"
+      entries:
+      - title: Data types
+        url: "/audit/data_types.html"
+      - title: Event-specific data
+        url: "/audit/event_specific_data.html"
+      - title: Common elements in audit messages
+        url: "/audit/common_elements_in_audit_messages.html"
+      - title: Audit message examples
+        url: "/audit/audit_message_examples.html"
+  - title: Audit messages and the object lifecycle
+    url: "/audit/audit_messages_and_object_lifecycle.html"
+    entries:
+    - title: Object ingest transactions
+      url: "/audit/object_ingest_transactions.html"
+      entries:
+      - title: 'Example: S3 object ingest'
+        url: "/audit/example_s3_object_ingest.html"
+    - title: Object delete transactions
+      url: "/audit/object_delete_transactions.html"
+      entries:
+      - title: 'Example: S3 object deletion'
+        url: "/audit/example_s3_object_deletion.html"
+    - title: Object retrieve transactions
+      url: "/audit/object_retrieve_transactions.html"
+      entries:
+      - title: 'Example: S3 object retrieval'
+        url: "/audit/example_s3_object_retrieval.html"
+    - title: Metadata update messages
+      url: "/audit/metadata_update_messages.html"
+      entries:
+      - title: 'Example: S3 metadata update'
+        url: "/audit/example_s3_metadata_update.html"
+  - title: Audit messages
+    url: "/audit/audit_messages_main.html"
+    entries:
+    - title: Audit message categories
+      url: "/audit/audit_message_categories.html"
+      entries:
+      - title: System audit messages
+        url: "/audit/system_audit_messages.html"
+      - title: Object storage audit messages
+        url: "/audit/object_storage_audit_messages.html"
+      - title: Client read audit messages
+        url: "/audit/client_read_audit_messages.html"
+      - title: Client write audit messages
+        url: "/audit/client_write_audit_messages.html"
+      - title: Management audit message
+        url: "/audit/management_audit_message.html"
+    - title: Audit messages
+      url: "/audit/audit_messages_list.html"
+      entries:
+      - title: 'APCT: Archive Purge from Cloud-Tier'
+        url: "/audit/apct_archive_purge_from_cloud_tier.html"
+      - title: 'ARCB: Archive Object Retrieve Begin'
+        url: "/audit/arcb_archive_object_retrieve_begin.html"
+      - title: 'ARCE: Archive Object Retrieve End'
+        url: "/audit/arce_archive_object_retrieve_end.html"
+      - title: 'ARCT: Archive Retrieve from Cloud-Tier'
+        url: "/audit/arct_archive_retrieve_from_cloud_tier.html"
+      - title: 'AREM: Archive Object Remove'
+        url: "/audit/arem_archive_object_remove.html"
+      - title: 'ASCE: Archive Object Store End'
+        url: "/audit/asce_archive_object_store_end.html"
+      - title: 'ASCT: Archive Store Cloud-Tier'
+        url: "/audit/asct_archive_store_cloud_tier.html"
+      - title: 'ATCE: Archive Object Store Begin'
+        url: "/audit/atce_archive_object_store_begin.html"
+      - title: 'AVCC: Archive Validate Cloud-Tier Configuration'
+        url: "/audit/avcc_archive_validate_cloud_tier_configuration.html"
+      - title: 'CBRB: Object Receive Begin'
+        url: "/audit/cbrb_object_receive_begin.html"
+      - title: 'CBRE: Object Receive End'
+        url: "/audit/cbre_object_receive_end.html"
+      - title: 'CBSB: Object Send Begin'
+        url: "/audit/cbsb_object_send_begin.html"
+      - title: 'CBSE: Object Send End'
+        url: "/audit/cbse_object_send_end.html"
+      - title: 'ECOC: Corrupt Erasure Coded Data Fragment'
+        url: "/audit/ecoc_corrupt_erasure_coded_data_fragment.html"
+      - title: 'ETAF: Security Authentication Failed'
+        url: "/audit/etaf_security_authentication_failed.html"
+      - title: 'GNRG: GNDS Registration'
+        url: "/audit/gnrg_gnds_registration.html"
+      - title: 'GNUR: GNDS Unregistration'
+        url: "/audit/gnur_gnds_unregistration.html"
+      - title: 'GTED: Grid Task Ended'
+        url: "/audit/gted_grid_task_ended.html"
+      - title: 'GTST: Grid Task Started'
+        url: "/audit/gtst_grid_task_started.html"
+      - title: 'GTSU: Grid Task Submitted'
+        url: "/audit/gtsu_grid_task_submitted.html"
+      - title: 'IDEL: ILM Initiated Delete'
+        url: "/audit/idel_ilm_initiated_delete.html"
+      - title: 'LKCU: Overwritten Object Cleanup'
+        url: "/audit/lkcu_overwritten_object_cleanup.html"
+      - title: 'LLST: Location Lost'
+        url: "/audit/llst_location_lost.html"
+      - title: 'MGAU: Management audit message'
+        url: "/audit/mgau_management_audit_message.html"
+      - title: 'OLST: System Detected Lost Object'
+        url: "/audit/olst_system_detected_lost_object.html"
+      - title: 'ORLM: Object Rules Met'
+        url: "/audit/orlm_object_rules_met.html"
+      - title: 'OVWR: Object Overwrite'
+        url: "/audit/ovwr_object_overwrite.html"
+      - title: 'SADD: Security Audit Disable'
+        url: "/audit/sadd_security_audit_disable.html"
+      - title: 'SADE: Security Audit Enable'
+        url: "/audit/sade_security_audit_enable.html"
+      - title: 'SCMT: Object Store Commit'
+        url: "/audit/scmt_object_store_commit.html"
+      - title: 'SDEL: S3 DELETE'
+        url: "/audit/sdel_s3_delete.html"
+      - title: 'SGET: S3 GET'
+        url: "/audit/sget_s3_get.html"
+      - title: 'SHEA: S3 HEAD'
+        url: "/audit/shea_s3_head.html"
+      - title: 'SPOS: S3 POST'
+        url: "/audit/spos_s3_post.html"
+      - title: 'SPUT: S3 PUT'
+        url: "/audit/sput_s3_put.html"
+      - title: 'SREM: Object Store Remove'
+        url: "/audit/srem_object_store_remove.html"
+      - title: 'SUPD: S3 Metadata Updated'
+        url: "/audit/supd_s3_metadata_updated.html"
+      - title: 'SVRF: Object Store Verify Fail'
+        url: "/audit/svrf_object_store_verify_fail.html"
+      - title: 'SVRU: Object Store Verify Unknown'
+        url: "/audit/svru_object_store_verify_unknown.html"
+      - title: 'SYSD: Node Stop'
+        url: "/audit/sysd_node_stop.html"
+      - title: 'SYST: Node Stopping'
+        url: "/audit/syst_node_stopping.html"
+      - title: 'SYSU: Node Start'
+        url: "/audit/sysu_node_start.html"
+      - title: 'VLST: User Initiated Volume Lost'
+        url: "/audit/vlst_user_initiated_volume_lost.html"
+      - title: 'WDEL: Swift DELETE'
+        url: "/audit/wdel_swift_delete.html"
+      - title: 'WGET: Swift GET'
+        url: "/audit/wget_swift_get.html"
+      - title: 'WHEA: Swift HEAD'
+        url: "/audit/whea_swift_head.html"
+      - title: 'WPUT: Swift PUT'
+        url: "/audit/wput_swift_put.html"
+- title: expand
+  url: "/expand/index.html"
+  entries:
+  - title: Planning a StorageGRID expansion
+    url: "/expand/planning_expansion.html"
+    entries:
+    - title: Adding storage capacity
+      url: "/expand/adding_storage_capacity.html"
+      entries:
+      - title: Guidelines for adding object capacity
+        url: "/expand/guidelines_for_adding_object_capacity.html"
+      - title: Adding storage capacity for replicated objects
+        url: "/expand/adding_storage_capacity_for_replicated_objects.html"
+      - title: Adding storage capacity for erasure-coded objects
+        url: "/expand/adding_storage_capacity_for_erasure_coded_objects.html"
+      - title: Considerations for rebalancing erasure-coded data
+        url: "/expand/considerations_for_rebalancing_erasure_coded_data.html"
+    - title: Adding metadata capacity
+      url: "/expand/adding_metadata_capacity.html"
+    - title: Adding grid nodes to add capabilities to your system
+      url: "/expand/adding_grid_nodes_to_add_capabilities.html"
+    - title: Adding a new site
+      url: "/expand/adding_new_site.html"
+  - title: Preparing for an expansion
+    url: "/expand/preparing_for_expansion.html"
+  - title: Overview of expansion procedure
+    url: "/expand/overview_of_expansion_procedure.html"
+  - title: Adding storage volumes to Storage Nodes
+    url: "/expand/adding_storage_volumes_to_storage_nodes.html"
+    entries:
+    - title: 'VMware: Adding storage volumes to a Storage Node'
+      url: "/expand/vmware_adding_storage_volumes_to_storage_node.html"
+    - title: 'Linux: Adding direct-attached or SAN volumes to a Storage Node'
+      url: "/expand/linux_adding_direct_attached_or_san_volumes_to_storage_node.html"
+  - title: Adding grid nodes to an existing site or adding a new site
+    url: "/expand/adding_grid_nodes_to_existing_site_or_adding_new_site.html"
+    entries:
+    - title: Updating subnets for the Grid Network
+      url: "/expand/updating_subnets_for_grid_network.html"
+    - title: Deploying new grid nodes
+      url: "/expand/deploying_new_grid_nodes.html"
+    - title: Performing the expansion
+      url: "/expand/performing_expansion.html"
+  - title: Configuring your expanded StorageGRID system
+    url: "/expand/configuring_expanded_storagegrid_system.html"
+    entries:
+    - title: Verifying that the Storage Node is active
+      url: "/expand/verifying_storage_node_is_active.html"
+    - title: Copying the Admin Node database
+      url: "/expand/copying_admin_node_database.html"
+    - title: Copying Prometheus metrics
+      url: "/expand/copying_prometheus_metrics.html"
+    - title: Copying audit logs
+      url: "/expand/copying_audit_logs.html"
+    - title: Rebalancing erasure-coded data after adding Storage Nodes
+      url: "/expand/rebalancing_erasure_coded_data_after_adding_storage_nodes.html"
+  - title: Contacting technical support
+    url: "/expand/contacting_technical_support.html"
+- title: fabricpool
+  url: "/fabricpool/index.html"
+  entries:
+  - title: Configuring StorageGRID for FabricPool
+    url: "/fabricpool/configuring_storagegrid_for_fabricpool.html"
+  - title: Information needed to attach StorageGRID as a cloud tier
+    url: "/fabricpool/information_needed_to_attach_storagegrid_as_cloud_tier.html"
+    entries:
+    - title: Best practices for load balancing
+      url: "/fabricpool/best_practices_for_load_balancing.html"
+    - title: Best practices for high availability groups
+      url: "/fabricpool/best_practices_for_high_availability_groups.html"
+    - title: Configuring the DNS server for StorageGRID IP addresses
+      url: "/fabricpool/configuring_dns_for_storagegrid_ip_addresses.html"
+    - title: Creating a high availability (HA) group for FabricPool
+      url: "/fabricpool/creating_ha_group_for_fabricpool.html"
+    - title: Creating a load balancer endpoint for FabricPool
+      url: "/fabricpool/creating_load_balancer_endpoint_for_fabricpool.html"
+    - title: Creating a tenant account for FabricPool
+      url: "/fabricpool/creating_tenant_account_for_fabricpool.html"
+    - title: Creating an S3 bucket and obtaining an access key
+      url: "/fabricpool/creating_s3_bucket_and_access_key.html"
+  - title: Using StorageGRID information lifecycle management with FabricPool data
+    url: "/fabricpool/using_storagegrid_ilm_with_fabricpool_data.html"
+    entries:
+    - title: Example ILM policy for FabricPool data
+      url: "/fabricpool/example_ilm_policy_for_fabricpool_data.html"
+  - title: Creating a traffic classification policy for FabricPool
+    url: "/fabricpool/creating_traffic_classification_policy_for_fabricpool.html"
+  - title: Other best practices for StorageGRID and FabricPool
+    url: "/fabricpool/other_best_practices_for_storagegrid_and_fabricpool.html"
+- title: harden
+  url: "/harden/index.html"
+  entries:
+  - title: Unknown
+    entries:
+    - title: Hardening a StorageGRID system
+      url: "/harden/hardening_storagegrid_system.html"
+    - title: System hardening guidelines
+      url: "/harden/system_hardening_guidelines.html"
+      entries:
+      - title: Hardening guidelines for software upgrades
+        url: "/harden/hardening_guidelines_for_software_upgrades.html"
+      - title: Hardening guidelines for StorageGRID networks
+        url: "/harden/hardening_guidelines_for_storagegrid_networks.html"
+      - title: Hardening guidelines for StorageGRID nodes
+        url: "/harden/hardening_guidelines_for_storagegrid_nodes.html"
+      - title: Hardening guidelines for server certificates
+        url: "/harden/hardening_guideline_for_server_certificates.html"
+      - title: Other hardening guidelines
+        url: "/harden/other_hardening_guidelines.html"
+- title: ilm
+  url: "/ilm/index.html"
+  entries:
+  - title: Unknown
+    entries:
+    - title: Managing objects with information lifecycle management
+      url: "/ilm/managing_objects_with_information_lifecycle_management.html"
+      entries:
+      - title: How ILM operates throughout an object&#8217;s life
+        url: "/ilm/how_ilm_operates_throughout_objects_life.html"
+        entries:
+        - title: How objects are ingested
+          url: "/ilm/how_objects_are_ingested.html"
+          entries:
+          - title: Data-protection options for ingest
+            url: "/ilm/data_protection_options_for_ingest.html"
+          - title: Advantages, disadvantages, and limitations of the data-protection
+              options
+            url: "/ilm/advantages_disadvantages_of_ingest_options.html"
+        - title: How objects are stored (replication or erasure coding)
+          url: "/ilm/how_objects_are_stored_replication_erasure_coding.html"
+          entries:
+          - title: What replication is
+            url: "/ilm/what_replication_is.html"
+          - title: Why you should not use single-copy replication
+            url: "/ilm/why_you_should_not_use_single_copy_replication.html"
+          - title: What erasure coding is
+            url: "/ilm/what_erasure_coding_is.html"
+          - title: What erasure-coding schemes are
+            url: "/ilm/what_erasure_coding_schemes_are.html"
+          - title: Advantages, disadvantages, and requirements for erasure coding
+            url: "/ilm/advantages_disadvantages_and_requirements_for_ec.html"
+        - title: How object retention is determined
+          url: "/ilm/how_object_retention_is_determined.html"
+        - title: How objects are deleted
+          url: "/ilm/how_objects_are_deleted.html"
+          entries:
+          - title: How S3 versioned objects are deleted
+            url: "/ilm/how_s3_versioned_objects_are_deleted.html"
+      - title: What an ILM policy is
+        url: "/ilm/what_ilm_policy_is.html"
+      - title: What an ILM rule is
+        url: "/ilm/what_ilm_rule_is.html"
+        entries:
+        - title: What ILM rule filtering is
+          url: "/ilm/what_ilm_rule_filtering_is.html"
+        - title: What ILM rule placement instructions are
+          url: "/ilm/what_ilm_placement_instructions_are.html"
+      - title: Creating storage grades, storage pools, EC profiles, and regions
+        url: "/ilm/creating_storage_grades_storage_pools_ec_profiles_regions.html"
+        entries:
+        - title: Creating and assigning storage grades
+          url: "/ilm/creating_and_assigning_storage_grades.html"
+        - title: Configuring storage pools
+          url: "/ilm/configuring_storage_pools.html"
+          entries:
+          - title: What a storage pool is
+            url: "/ilm/what_storage_pool_is.html"
+          - title: Guidelines for creating storage pools
+            url: "/ilm/guidelines_for_creating_storage_pools.html"
+          - title: Using multiple storage pools for cross-site replication
+            url: "/ilm/using_multiple_storage_pools_for_cross_site_replication.html"
+          - title: Using a storage pool as a temporary location (deprecated)
+            url: "/ilm/using_storage_pool_as_temporary_location_deprecated.html"
+          - title: Creating a storage pool
+            url: "/ilm/creating_storage_pool.html"
+          - title: Viewing storage pool details
+            url: "/ilm/viewing_storage_pool_details.html"
+          - title: Editing a storage pool
+            url: "/ilm/editing_storage_pool.html"
+          - title: Removing a storage pool
+            url: "/ilm/removing_storage_pool.html"
+        - title: Using Cloud Storage Pools
+          url: "/ilm/using_cloud_storage_pools.html"
+          entries:
+          - title: What a Cloud Storage Pool is
+            url: "/ilm/what_cloud_storage_pool_is.html"
+          - title: Lifecycle of a Cloud Storage Pool object
+            url: "/ilm/lifecycle_of_cloud_storage_pool_object.html"
+          - title: When to use Cloud Storage Pools
+            url: "/ilm/when_to_use_cloud_storage_pools.html"
+          - title: Considerations for Cloud Storage Pools
+            url: "/ilm/considerations_for_cloud_storage_pools.html"
+          - title: Comparing Cloud Storage Pools and CloudMirror replication
+            url: "/ilm/comparing_cloud_storage_pools_to_cloudmirror_replication.html"
+          - title: Creating a Cloud Storage Pool
+            url: "/ilm/creating_cloud_storage_pool.html"
+            entries:
+            - title: 'S3: Specifying authentication details for a Cloud Storage Pool'
+              url: "/ilm/s3_authentication_details_for_cloud_storage_pool.html"
+            - title: 'C2S S3: Specifying authentication details for a Cloud Storage
+                Pool'
+              url: "/ilm/c2s_s3_authentication_details_for_cloud_storage_pool.html"
+            - title: 'Azure: Specifying authentication details for a Cloud Storage
+                Pool'
+              url: "/ilm/azure_authentication_details_for_cloud_storage_pool.html"
+          - title: Editing a Cloud Storage Pool
+            url: "/ilm/editing_cloud_storage_pool.html"
+          - title: Removing a Cloud Storage Pool
+            url: "/ilm/removing_cloud_storage_pool.html"
+          - title: Troubleshooting Cloud Storage Pools
+            url: "/ilm/troubleshooting_cloud_storage_pools.html"
+        - title: Configuring Erasure Coding profiles
+          url: "/ilm/configuring_erasure_coding_profiles.html"
+          entries:
+          - title: Creating an Erasure Coding profile
+            url: "/ilm/creating_erasure_coding_profile.html"
+          - title: Renaming an Erasure Coding profile
+            url: "/ilm/renaming_erasure_coding_profile.html"
+          - title: Deactivating an Erasure Coding profile
+            url: "/ilm/deactivating_erasure_coding_profile.html"
+        - title: Configuring regions (optional and S3 only)
+          url: "/ilm/configuring_regions_optional_and_s3_only.html"
+      - title: Creating an ILM rule
+        url: "/ilm/creating_ilm_rule.html"
+        entries:
+        - title: 'Step 1 of 3: Define basics'
+          url: "/ilm/step_1_of_3_define_basics.html"
+          entries:
+          - title: Using advanced filters in ILM rules
+            url: "/ilm/using_advanced_filters_in_ilm_rules.html"
+        - title: 'Step 2 of 3: Define placements'
+          url: "/ilm/step_2_of_3_define_placements.html"
+          entries:
+          - title: Using Last Access Time in ILM rules
+            url: "/ilm/using_last_access_time_in_ilm_rules.html"
+        - title: 'Step 3 of 3: Define ingest behavior'
+          url: "/ilm/step_3_of_3_define_ingest_behavior.html"
+        - title: Creating a default ILM rule
+          url: "/ilm/creating_default_ilm_rule.html"
+      - title: Creating an ILM policy
+        url: "/ilm/creating_ilm_policy.html"
+        entries:
+        - title: Creating a proposed ILM policy
+          url: "/ilm/creating_proposed_ilm_policy.html"
+        - title: Creating an ILM policy after S3 Object Lock is enabled
+          url: "/ilm/creating_ilm_policy_after_s3_object_lock_is_enabled.html"
+        - title: Simulating an ILM policy
+          url: "/ilm/simulating_ilm_policy.html"
+          entries:
+          - title: Examples for simulating ILM policies
+            url: "/ilm/examples_for_simulating_ilm_policies.html"
+        - title: Activating the ILM policy
+          url: "/ilm/activating_ilm_policy.html"
+        - title: Verifying an ILM policy with object metadata lookup
+          url: "/ilm/verifying_ilm_policy_with_object_metadata_lookup.html"
+      - title: Working with ILM rules and ILM policies
+        url: "/ilm/working_with_ilm_rules_and_ilm_policies.html"
+    - title: Creating an ILM rule
+      url: "/ilm/creating_ilm_rule.html"
+      entries:
+      - title: 'Step 1 of 3: Define basics'
+        url: "/ilm/step_1_of_3_define_basics.html"
+        entries:
+        - title: Using advanced filters in ILM rules
+          url: "/ilm/using_advanced_filters_in_ilm_rules.html"
+      - title: 'Step 2 of 3: Define placements'
+        url: "/ilm/step_2_of_3_define_placements.html"
+        entries:
+        - title: Using Last Access Time in ILM rules
+          url: "/ilm/using_last_access_time_in_ilm_rules.html"
+      - title: 'Step 3 of 3: Define ingest behavior'
+        url: "/ilm/step_3_of_3_define_ingest_behavior.html"
+      - title: Creating a default ILM rule
+        url: "/ilm/creating_default_ilm_rule.html"
+    - title: Creating an ILM policy
+      url: "/ilm/creating_ilm_policy.html"
+      entries:
+      - title: Creating a proposed ILM policy
+        url: "/ilm/creating_proposed_ilm_policy.html"
+      - title: Creating an ILM policy after S3 Object Lock is enabled
+        url: "/ilm/creating_ilm_policy_after_s3_object_lock_is_enabled.html"
+      - title: Simulating an ILM policy
+        url: "/ilm/simulating_ilm_policy.html"
+        entries:
+        - title: Examples for simulating ILM policies
+          url: "/ilm/examples_for_simulating_ilm_policies.html"
+      - title: Activating the ILM policy
+        url: "/ilm/activating_ilm_policy.html"
+      - title: Verifying an ILM policy with object metadata lookup
+        url: "/ilm/verifying_ilm_policy_with_object_metadata_lookup.html"
+    - title: Working with ILM rules and ILM policies
+      url: "/ilm/working_with_ilm_rules_and_ilm_policies.html"
+    - title: Managing objects with S3 Object Lock
+      url: "/ilm/managing_objects_with_s3_object_lock.html"
+      entries:
+      - title: Comparing S3 Object Lock to legacy Compliance
+        url: "/ilm/comparing_s3_object_lock_to_legacy_compliance.html"
+      - title: Workflow for S3 Object Lock
+        url: "/ilm/workflow_for_s3_object_lock.html"
+      - title: Requirements for S3 Object Lock
+        url: "/ilm/requirements_for_s3_object_lock.html"
+      - title: Enabling S3 Object Lock globally
+        url: "/ilm/enabling_s3_object_lock_globally.html"
+      - title: Resolving consistency errors when updating the S3 Object Lock or legacy
+          Compliance configuration
+        url: "/ilm/resolving_consistency_errors_when_updating_bucket_s3_object_lock_configuration.html"
+    - title: Example ILM rules and policies
+      url: "/ilm/example_ilm_rules_and_policies.html"
+      entries:
+      - title: 'Example 1: ILM rules and policy for object storage'
+        url: "/ilm/example_1_ilm_rules_and_policy_for_object_storage.html"
+      - title: 'Example 2: ILM rules and policy for EC object size filtering'
+        url: "/ilm/example_2_ilm_rules_and_policy_for_ec_object_size_filtering.html"
+      - title: 'Example 3: ILM rules and policy for better protection for image files'
+        url: "/ilm/example_3_ilm_rules_and_policy_for_better_protection_for_image_files.html"
+      - title: 'Example 4: ILM rules and policy for S3 versioned objects'
+        url: "/ilm/example_4_ilm_rules_and_policy_for_s3_versioned_objects.html"
+      - title: 'Example 5: ILM rules and policy for Strict ingest behavior'
+        url: "/ilm/example_5_ilm_rules_and_policy_for_strict_ingest_behavior.html"
+      - title: 'Example 6: Changing an ILM policy'
+        url: "/ilm/example_6_changing_ilm_policy.html"
+      - title: 'Example 7: Compliant ILM policy for S3 Object Lock'
+        url: "/ilm/example_7_compliant_ilm_policy_for_s3_object_lock.html"
+- title: maintain
+  url: "/maintain/index.html"
+  entries:
+  - title: Introduction to StorageGRID recovery and maintenance
+    url: "/maintain/introduction_to_storagegrid_recovery_and_maintenance.html"
+    entries:
+    - title: Web browser requirements
+      url: "/maintain/web_browser_requirements.html"
+    - title: Downloading the Recovery Package
+      url: "/maintain/downloading_recovery_package.html"
+  - title: StorageGRID hotfix procedure
+    url: "/maintain/storagegrid_hotfix_procedure.html"
+    entries:
+    - title: Considerations for applying a hotfix
+      url: "/maintain/considerations_for_applying_hotfix.html"
+    - title: Hotfix planning and preparation
+      url: "/maintain/hotfix_planning_and_preparation.html"
+      entries:
+      - title: How your system is affected when you apply a hotfix
+        url: "/maintain/how_your_system_is_affected_when_you_apply_hotfix.html"
+      - title: Obtaining the required materials for a hotfix
+        url: "/maintain/obtaining_required_materials_for_hotfix.html"
+      - title: Downloading the hotfix file
+        url: "/maintain/downloading_hotfix_file.html"
+      - title: Checking the system&#8217;s condition before applying a hotfix
+        url: "/maintain/checking_systems_condition_before_applying_hotfix.html"
+    - title: Applying the hotfix
+      url: "/maintain/applying_hotfix.html"
+  - title: Grid node recovery procedures
+    url: "/maintain/grid_node_recovery_procedures.html"
+    entries:
+    - title: Warnings and considerations for grid node recovery
+      url: "/maintain/warnings_and_considerations_for_grid_node_recovery.html"
+    - title: Gathering required materials for grid node recovery
+      url: "/maintain/gathering_required_materials_for_grid_node_recovery.html"
+      entries:
+      - title: Downloading and extracting the StorageGRID installation files
+        url: "/maintain/downloading_and_extracting_storagegrid_installation_files.html"
+    - title: Selecting a node recovery procedure
+      url: "/maintain/selecting_node_recovery_procedure.html"
+    - title: Recovering from Storage Node failures
+      url: "/maintain/recovering_from_storage_node_failures.html"
+      entries:
+      - title: Recovering a Storage Node that has been down more than 15 days
+        url: "/maintain/recovering_storage_node_that_has_been_down_more_than_15_days.html"
+      - title: Recovering a StorageGRID appliance Storage Node
+        url: "/maintain/recovering_storagegrid_appliance_storage_node.html"
+        entries:
+        - title: Preparing an appliance Storage Node for reinstallation
+          url: "/maintain/preparing_appliance_storage_node_for_reinstallation.html"
+        - title: Starting StorageGRID appliance installation
+          url: "/maintain/starting_storagegrid_appliance_installation.html"
+        - title: Monitoring StorageGRID appliance installation
+          url: "/maintain/monitoring_storagegrid_appliance_installation_sn.html"
+        - title: Selecting Start Recovery to configure an appliance Storage Node
+          url: "/maintain/selecting_start_recovery_to_configure_appliance_storage_node.html"
+        - title: Remounting and reformatting appliance storage volumes (&#8220;Manual
+            Steps&#8221;)
+          url: "/maintain/remounting_and_reformatting_appliance_storage_volumes.html"
+        - title: Restoring object data to a storage volume for an appliance
+          url: "/maintain/restoring_object_data_to_storage_volume_for_appliance.html"
+        - title: Checking the storage state after recovering an appliance Storage
+            Node
+          url: "/maintain/checking_storage_state_after_recovering_sga.html"
+      - title: Recovering from storage volume failure where the system drive is intact
+        url: "/maintain/recovering_from_storage_volume_failure_where_system_drive_is_intact.html"
+        entries:
+        - title: Reviewing warnings about storage volume recovery
+          url: "/maintain/reviewing_warnings_about_storage_volume_recovery.html"
+        - title: Identifying and unmounting failed storage volumes
+          url: "/maintain/identifying_and_unmounting_failed_storage_volumes.html"
+        - title: Recovering failed storage volumes and rebuilding the Cassandra database
+          url: "/maintain/recovering_failed_storage_volumes_and_rebuilding_cassandra_database.html"
+        - title: Restoring object data to a storage volume where the system drive
+            is intact
+          url: "/maintain/restoring_object_data_to_storage_volume_where_system_drive_is_intact.html"
+        - title: Checking the storage state after recovering storage volumes
+          url: "/maintain/checking_storage_state_after_recovering_storage_volumes.html"
+      - title: Recovering from system drive failure
+        url: "/maintain/recovering_from_system_drive_failure.html"
+        entries:
+        - title: Reviewing warnings for Storage Node system drive recovery
+          url: "/maintain/reviewing_warnings_for_system_drive_recovery.html"
+        - title: Replacing the Storage Node
+          url: "/maintain/replacing_storage_node.html"
+        - title: Selecting Start Recovery to configure a Storage Node
+          url: "/maintain/selecting_start_recovery_to_configure_storage_node.html"
+        - title: Remounting and reformatting storage volumes (&#8220;Manual Steps&#8221;)
+          url: "/maintain/remounting_and_reformatting_storage_volumes_manual_steps.html"
+        - title: Restoring object data to a storage volume, if required
+          url: "/maintain/restoring_object_data_to_storage_volume_if_required.html"
+        - title: Checking the storage state after recovering a Storage Node system
+            drive
+          url: "/maintain/checking_storage_state_after_recovering_storage_node_system_drive.html"
+    - title: Recovering from Admin Node failures
+      url: "/maintain/recovering_from_admin_node_failures.html"
+      entries:
+      - title: Recovering from primary Admin Node failures
+        url: "/maintain/recovering_from_primary_admin_node_failures.html"
+        entries:
+        - title: Copying audit logs from the failed primary Admin Node
+          url: "/maintain/copying_audit_logs_from_failed_primary_admin_node.html"
+        - title: Replacing the primary Admin Node
+          url: "/maintain/replacing_primary_admin_node.html"
+        - title: Configuring the replacement primary Admin Node
+          url: "/maintain/configuring_replacement_primary_admin_node.html"
+        - title: Restoring the audit log on the recovered primary Admin Node
+          url: "/maintain/restoring_audit_log_on_recovered_primary_admin_node.html"
+        - title: Resetting the preferred sender on the recovered primary Admin Node
+          url: "/maintain/resetting_preferred_sender_on_recovered_primary_admin_node.html"
+        - title: Restoring the Admin Node database when recovering a primary Admin
+            Node
+          url: "/maintain/restoring_admin_node_database_primary_admin_node.html"
+        - title: Restoring Prometheus metrics when recovering a primary Admin Node
+          url: "/maintain/restoring_prometheus_metrics_primary_admin_node.html"
+      - title: Recovering from non-primary Admin Node failures
+        url: "/maintain/recovering_from_non_primary_admin_node_failures.html"
+        entries:
+        - title: Copying audit logs from the failed non-primary Admin Node
+          url: "/maintain/copying_audit_logs_from_failed_non_primary_admin_node.html"
+        - title: Replacing a non-primary Admin Node
+          url: "/maintain/replacing_non_primary_admin_node.html"
+        - title: Selecting Start Recovery to configure a non-primary Admin Node
+          url: "/maintain/selecting_start_recovery_to_configure_non_primary_admin_node.html"
+        - title: Restoring the audit log on the recovered non-primary Admin Node
+          url: "/maintain/restoring_audit_log_on_recovered_non_primary_admin_node.html"
+        - title: Resetting the preferred sender on the recovered non-primary Admin
+            Node
+          url: "/maintain/resetting_preferred_sender_on_recovered_non_primary_admin_node.html"
+        - title: Restoring the Admin Node database when recovering a non-primary Admin
+            Node
+          url: "/maintain/restoring_admin_node_database_non_primary_admin_node.html"
+        - title: Restoring Prometheus metrics when recovering a non-primary Admin
+            Node
+          url: "/maintain/restoring_prometheus_metrics_non_primary_admin_node.html"
+    - title: Recovering from Gateway Node failures
+      url: "/maintain/recovering_from_gateway_node_failures.html"
+      entries:
+      - title: Replacing a Gateway Node
+        url: "/maintain/replacing_gateway_node.html"
+      - title: Selecting Start Recovery to configure a Gateway Node
+        url: "/maintain/selecting_start_recovery_to_configure_gateway_node.html"
+    - title: Recovering from Archive Node failures
+      url: "/maintain/recovering_from_archive_node_failures.html"
+      entries:
+      - title: Replacing an Archive Node
+        url: "/maintain/replacing_archive_node.html"
+      - title: Selecting Start Recovery to configure an Archive Node
+        url: "/maintain/selecting_start_recovery_to_configure_archive_node.html"
+      - title: Resetting Archive Node connection to the cloud
+        url: "/maintain/resetting_archive_node_connection_to_cloud.html"
+    - title: 'All grid node types: Replacing a VMware node'
+      url: "/maintain/all_node_types_replacing_vmware_node.html"
+    - title: 'All grid node types: Replacing a Linux node'
+      url: "/maintain/all_node_types_replacing_linux_node.html"
+      entries:
+      - title: Deploying new Linux hosts
+        url: "/maintain/deploying_new_linux_hosts.html"
+      - title: Restoring grid nodes to the host
+        url: "/maintain/restoring_existing_nodes.html"
+        entries:
+        - title: Restoring and validating grid nodes
+          url: "/maintain/restoring_and_validating_grid_nodes.html"
+          entries:
+          - title: Fixing missing network interface errors
+            url: "/maintain/fixing_mssing_network_interface_errors.html"
+          - title: Fixing missing block device errors
+            url: "/maintain/fixing_missing_block_device_errors.html"
+        - title: Starting the StorageGRID host service
+          url: "/maintain/starting_storagegrid_host_service.html"
+        - title: Recovering nodes that fail to start normally
+          url: "/maintain/recovering_nodes_that_fail_to_start_normally.html"
+      - title: 'What&#8217;s next: Performing additional recovery steps, if required'
+        url: "/maintain/whats_next_performing_additional_recovery_steps_if_required.html"
+    - title: Replacing a failed node with a services appliance
+      url: "/maintain/replacing_failed_node_with_services_appliance.html"
+      entries:
+      - title: Installing a services appliance (platform change only)
+        url: "/maintain/installing_services_appliance_platform_change_only.html"
+      - title: Preparing an appliance for reinstallation (platform replacement only)
+        url: "/maintain/preparing_appliance_for_reinstallation_platform_replacement_only.html"
+      - title: Starting software installation on a services appliance
+        url: "/maintain/starting_software_installation_on_services_appliance_recovery.html"
+      - title: Monitoring services appliance installation
+        url: "/maintain/monitoring_services_appliance_installation.html"
+  - title: How site recovery is performed by technical support
+    url: "/maintain/how_site_recovery_is_performed_by_technical_support.html"
+  - title: Decommission procedure
+    url: "/maintain/decommission_procedure.html"
+    entries:
+    - title: Grid node decommissioning
+      url: "/maintain/grid_node_decommissioning.html"
+      entries:
+      - title: Preparing to decommission grid nodes
+        url: "/maintain/preparing_to_decommission_grid_nodes.html"
+        entries:
+        - title: Considerations for decommissioning grid nodes
+          url: "/maintain/considerations_for_decommissioning_grid_nodes.html"
+          entries:
+          - title: Considerations for decommissioning Admin Nodes or a Gateway Nodes
+            url: "/maintain/considerations_for_decommissioning_admin_or_gateway_nodes.html"
+          - title: Considerations for decommissioning Storage Nodes
+            url: "/maintain/considerations_for_decommissioning_storage_nodes.html"
+            entries:
+            - title: Understanding the ADC quorum
+              url: "/maintain/understanding_adc_service_quorum.html"
+            - title: Reviewing the ILM policy and storage configuration
+              url: "/maintain/reviewing_ilm_policy_and_storage_configuration.html"
+            - title: Decommissioning disconnected Storage Nodes
+              url: "/maintain/decommissioning_disconnected_storage_nodes.html"
+            - title: Consolidating Storage Nodes
+              url: "/maintain/consolidating_storage_nodes.html"
+            - title: Decommissioning multiple Storage Nodes
+              url: "/maintain/decommissioning_multiple_storage_nodes.html"
+        - title: Checking data repair jobs
+          url: "/maintain/checking_data_repair_jobs.html"
+      - title: Gathering required materials
+        url: "/maintain/gathering_required_materials_node_decom.html"
+      - title: Accessing the Decommission Nodes page
+        url: "/maintain/accessing_decommission_nodes_page.html"
+      - title: Decommissioning disconnected grid nodes
+        url: "/maintain/decommissioning_disconnected_grid_nodes.html"
+      - title: Decommissioning connected grid nodes
+        url: "/maintain/decommissioning_connected_grid_nodes.html"
+      - title: Pausing and resuming the decommission process for Storage Nodes
+        url: "/maintain/pausing_and_resuming_decommission_process_for_storage_nodes.html"
+      - title: Troubleshooting node decommissioning
+        url: "/maintain/troubleshooting_node_decommissioning.html"
+    - title: Site decommissioning
+      url: "/maintain/site_decommissioning.html"
+      entries:
+      - title: Considerations for removing a site
+        url: "/maintain/considerations_for_removing_site.html"
+      - title: Gathering required materials
+        url: "/maintain/gathering_required_materials_site_decom.html"
+      - title: 'Step 1: Select Site'
+        url: "/maintain/step_1_select_site.html"
+      - title: 'Step 2: View Details'
+        url: "/maintain/step_2_view_details.html"
+      - title: 'Step 3: Revise ILM Policy'
+        url: "/maintain/step_3_revise_ilm_policy.html"
+      - title: 'Step 4: Remove ILM References'
+        url: "/maintain/step_4_remove_ilm_references.html"
+      - title: 'Step 5: Resolve Node Conflicts (and start decommission)'
+        url: "/maintain/step_5_resolve_node_conflicts.html"
+      - title: 'Step 6: Monitor Decommission'
+        url: "/maintain/step_6_monitor_decommission.html"
+  - title: Network maintenance procedures
+    url: "/maintain/network_maintenance_procedures.html"
+    entries:
+    - title: Updating subnets for the Grid Network
+      url: "/maintain/updating_subnets_for_grid_network.html"
+    - title: Configuring IP addresses
+      url: "/maintain/configuring_ip_addresses.html"
+      entries:
+      - title: Changing a node&#8217;s network configuration
+        url: "/maintain/changing_nodes_network_configuration.html"
+      - title: Adding to or changing subnet lists on the Admin Network
+        url: "/maintain/adding_to_or_changing_subnet_lists_on_admin_network.html"
+      - title: Adding to or changing subnet lists on the Grid Network
+        url: "/maintain/adding_to_or_changing_subnet_lists_on_grid_network.html"
+      - title: 'Linux: Adding interfaces to an existing node'
+        url: "/maintain/linux_adding_interfaces_to_existing_node.html"
+      - title: Changing IP addresses for all nodes in the grid
+        url: "/maintain/changing_ip_addresses_and_mtu_values_for_all_nodes_in_grid.html"
+    - title: Configuring DNS servers
+      url: "/maintain/configuring_dns_servers.html"
+      entries:
+      - title: Modifying the DNS configuration for a single grid node
+        url: "/maintain/modifying_dns_configuration_for_single_grid_node.html"
+    - title: Configuring NTP servers
+      url: "/maintain/configuring_ntp_servers.html"
+    - title: Restoring network connectivity for isolated nodes
+      url: "/maintain/restoring_network_connectivity_for_isolated_nodes.html"
+  - title: Host-level and middleware procedures
+    url: "/maintain/host_level_and_middleware_procedures.html"
+    entries:
+    - title: 'Linux: Migrating a grid node to a new host'
+      url: "/maintain/linux_migrating_grid_node_to_new_host.html"
+      entries:
+      - title: 'Linux: Exporting the node from the source host'
+        url: "/maintain/linux_exporting_node_from_source_host.html"
+      - title: 'Linux: Importing the node on the target host'
+        url: "/maintain/linux_importing_node_on_target_host.html"
+      - title: 'Linux: Starting the migrated node'
+        url: "/maintain/linux_starting_migrated_node.html"
+    - title: Archive Node maintenance for TSM middleware
+      url: "/maintain/archive_node_maintenance_for_tsm_middleware.html"
+    - title: 'VMware: Configuring a virtual machine for automatic restart'
+      url: "/maintain/wmware_configuring_virtual_machine_for_automatic_restart.html"
+  - title: 'Linux: Migrating a grid node to a new host'
+    url: "/maintain/linux_migrating_grid_node_to_new_host.html"
+    entries:
+    - title: 'Linux: Exporting the node from the source host'
+      url: "/maintain/linux_exporting_node_from_source_host.html"
+    - title: 'Linux: Importing the node on the target host'
+      url: "/maintain/linux_importing_node_on_target_host.html"
+    - title: 'Linux: Starting the migrated node'
+      url: "/maintain/linux_starting_migrated_node.html"
+  - title: Archive Node maintenance for TSM middleware
+    url: "/maintain/archive_node_maintenance_for_tsm_middleware.html"
+  - title: Grid node procedures
+    url: "/maintain/grid_node_procedures.html"
+    entries:
+    - title: Viewing Server Manager status and version
+      url: "/maintain/viewing_server_manager_status_and_version.html"
+    - title: Viewing current status of all services
+      url: "/maintain/viewing_current_status_of_all_services.html"
+    - title: Starting Server Manager and all services
+      url: "/maintain/starting_server_manager_and_all_services.html"
+    - title: Restarting Server Manager and all services
+      url: "/maintain/restarting_server_manager_and_all_services.html"
+    - title: Stopping Server Manager and all services
+      url: "/maintain/stopping_server_manager_and_all_services.html"
+    - title: Viewing current status of a service
+      url: "/maintain/viewing_current_status_of_service.html"
+    - title: Stopping a service
+      url: "/maintain/stopping_service.html"
+    - title: Placing an appliance into maintenance mode
+      url: "/maintain/placing_appliance_into_maintenance_mode.html"
+    - title: Forcing a service to terminate
+      url: "/maintain/forcing_service_to_terminate.html"
+    - title: Starting or restarting a service
+      url: "/maintain/starting_or_restarting_service.html"
+    - title: Removing port remaps
+      url: "/maintain/removing_port_remaps.html"
+    - title: Removing port remaps on bare metal hosts
+      url: "/maintain/removing_port_remaps_on_bare_metal_hosts.html"
+    - title: Rebooting a grid node
+      url: "/maintain/rebooting_grid_node.html"
+      entries:
+      - title: Rebooting a grid node from the Grid Manager
+        url: "/maintain/rebooting_grid_node_from_grid_manager.html"
+      - title: Rebooting a grid node from the command shell
+        url: "/maintain/rebooting_grid_node_from_command_shell.html"
+    - title: Shutting down a grid node
+      url: "/maintain/shutting_down_grid_node.html"
+    - title: Powering down a host
+      url: "/maintain/powering_down_host.html"
+    - title: Powering off and on all nodes in the grid
+      url: "/maintain/powering_off_and_on_all_nodes_in_grid.html"
+      entries:
+      - title: Stopping services and shutting down grid nodes
+        url: "/maintain/stopping_services_and_shutting_down_grid_nodes.html"
+      - title: Starting up the grid nodes
+        url: "/maintain/powering_on_grid_nodes.html"
+    - title: Using a DoNotStart file
+      url: "/maintain/using_donotstart_file.html"
+      entries:
+      - title: Adding a DoNotStart file for a service
+        url: "/maintain/adding_donotstart_file_for_service.html"
+      - title: Removing a DoNotStart file for a service
+        url: "/maintain/removing_donotstart_file_for_service.html"
+    - title: Troubleshooting Server Manager
+      url: "/maintain/troubleshooting_server_manager.html"
+      entries:
+      - title: Accessing the Server Manager log file
+        url: "/maintain/accessing_server_manager_log_file.html"
+      - title: Service with an error state
+        url: "/maintain/service_with_error_state.html"
+  - title: Appliance node cloning
+    url: "/maintain/appliance_node_cloning.html"
+    entries:
+    - title: How appliance node cloning works
+      url: "/maintain/how_appliance_node_cloning_works.html"
+    - title: Considerations and requirements for appliance node cloning
+      url: "/maintain/considerations_and_requirements_for_appliance_node_cloning.html"
+    - title: Appliance node cloning procedure
+      url: "/maintain/appliance_node_cloning_procedure.html"
+- title: monitor
+  url: "/monitor/index.html"
+  entries:
+  - title: Using the Grid Manager for monitoring
+    url: "/monitor/using_grid_manager_for_monitoring.html"
+    entries:
+    - title: Web browser requirements
+      url: "/monitor/web_browser_requirements.html"
+    - title: Viewing the Dashboard
+      url: "/monitor/viewing_dashboard.html"
+    - title: Viewing the Nodes page
+      url: "/monitor/viewing_nodes_page.html"
+  - title: Information you should monitor regularly
+    url: "/monitor/information_you_should_monitor_regularly.html"
+    entries:
+    - title: Monitoring system health
+      url: "/monitor/monitoring_system_health.html"
+      entries:
+      - title: Monitoring node connection states
+        url: "/monitor/monitoring_node_connection_states.html"
+      - title: Viewing current alerts
+        url: "/monitor/viewing_current_alerts.html"
+      - title: Viewing resolved alerts
+        url: "/monitor/viewing_resolved_alerts.html"
+      - title: Viewing a specific alert
+        url: "/monitor/viewing_specific_alert.html"
+      - title: Viewing legacy alarms
+        url: "/monitor/viewing_legacy_alarms.html"
+    - title: Monitoring storage capacity
+      url: "/monitor/monitoring_storage_capacity.html"
+      entries:
+      - title: Monitoring storage capacity for the entire grid
+        url: "/monitor/monitoring_storage_capacity_for_entire_grid.html"
+      - title: Monitoring storage capacity for each Storage Node
+        url: "/monitor/monitoring_storage_capacity_for_each_storage_node.html"
+      - title: Monitoring object metadata capacity for each Storage Node
+        url: "/monitor/monitoring_object_metadata_capacity_for_each_storage_node.html"
+    - title: Monitoring information lifecycle management
+      url: "/monitor/monitoring_information_lifecycle_management.html"
+    - title: Monitoring performance, networking, and system resources
+      url: "/monitor/monitoring_performance_networking_and_system_resources.html"
+      entries:
+      - title: Monitoring query latency
+        url: "/monitor/monitoring_query_latency.html"
+      - title: Monitoring network connections and performance
+        url: "/monitor/monitoring_network_connections_and_performance.html"
+      - title: Monitoring node-level resources
+        url: "/monitor/monitoring_node_level_resources.html"
+    - title: Monitoring tenant activity
+      url: "/monitor/monitoring_tenant_activity.html"
+    - title: Monitoring archival capacity
+      url: "/monitor/monitoring_archival_capacity.html"
+    - title: Monitoring load balancing operations
+      url: "/monitor/monitoring_load_balancing_operations.html"
+    - title: Applying hotfixes or upgrading software if necessary
+      url: "/monitor/applying_hotfixes_or_upgrading_software_if_necessary.html"
+  - title: Managing alerts and alarms
+    url: "/monitor/managing_alerts_and_alarms.html"
+    entries:
+    - title: Comparing alerts and alarms
+      url: "/monitor/comparing_alerts_and_alarms.html"
+    - title: Managing alerts
+      url: "/monitor/managing_alerts.html"
+    - title: Managing alarms (legacy system)
+      url: "/monitor/managing_alarms.html"
+  - title: Managing alerts
+    url: "/monitor/managing_alerts.html"
+  - title: Managing alarms (legacy system)
+    url: "/monitor/managing_alarms.html"
+  - title: Using SNMP monitoring
+    url: "/monitor/using_snmp_monitoring.html"
+    entries:
+    - title: Configuring the SNMP agent
+      url: "/monitor/configuring_snmp_agent.html"
+    - title: Updating the SNMP agent
+      url: "/monitor/updating_snmp_agent.html"
+  - title: Collecting additional StorageGRID data
+    url: "/monitor/collecting_additional_storagegrid_data.html"
+    entries:
+    - title: Using charts and reports
+      url: "/monitor/using_charts_and_reports.html"
+      entries:
+      - title: Types of charts and graphs
+        url: "/monitor/types_of_charts_and_graphs.html"
+        entries:
+        - title: Chart legend
+          url: "/monitor/chart_legend.html"
+      - title: Displaying charts and graphs
+        url: "/monitor/displaying_charts_and_graphs.html"
+      - title: Generating charts
+        url: "/monitor/generating_charts.html"
+      - title: Types of text reports
+        url: "/monitor/types_of_text_reports.html"
+      - title: Generating text reports
+        url: "/monitor/generating_text_reports.html"
+      - title: Exporting text reports
+        url: "/monitor/exporting_text_reports.html"
+    - title: Monitoring PUT and GET performance
+      url: "/monitor/monitoring_put_and_get_performance.html"
+    - title: Monitoring object verification operations
+      url: "/monitor/monitoring_object_verification_operations.html"
+    - title: Monitoring events
+      url: "/monitor/monitoring_events.html"
+      entries:
+      - title: Reviewing previous events
+        url: "/monitor/reviewing_previous_events.html"
+      - title: Resetting event counts
+        url: "/monitor/resetting_event_counts.html"
+      - title: Creating custom syslog events
+        url: "/monitor/creating_custom_syslog_events.html"
+      - title: Resetting the count of custom events to zero
+        url: "/monitor/resetting_count_of_custom_events_to_zero.html"
+    - title: Reviewing audit messages
+      url: "/monitor/reviewing_audit_messages.html"
+    - title: Collecting log files and system data
+      url: "/monitor/collecting_log_files_and_system_data.html"
+    - title: Manually triggering an AutoSupport message
+      url: "/monitor/manually_triggering_autosupport_message.html"
+    - title: Viewing the Grid Topology tree
+      url: "/monitor/viewing_grid_topology_tree.html"
+    - title: Reviewing support metrics
+      url: "/monitor/reviewing_support_metrics.html"
+    - title: Running diagnostics
+      url: "/monitor/running_diagnostics.html"
+    - title: Creating custom monitoring applications
+      url: "/monitor/creating_custom_monitoring_applications.html"
+  - title: Troubleshooting a StorageGRID system
+    url: "/monitor/troubleshooting_storagegrid_system.html"
+    entries:
+    - title: Troubleshooting certificate errors
+      url: "/monitor/troubleshooting_certificate_errors.html"
+  - title: Alerts reference
+    url: "/monitor/alerts_reference.html"
+    entries:
+    - title: Commonly used Prometheus metrics
+      url: "/monitor/commonly_used_prometheus_metrics.html"
+  - title: Alarms reference (legacy system)
+    url: "/monitor/alarms_reference.html"
+    entries:
+    - title: Alarms that generate SNMP notifications (legacy system)
+      url: "/monitor/alarms_that_generate_snmp_notifications.html"
+  - title: Log files reference
+    url: "/monitor/logs_files_reference.html"
+    entries:
+    - title: StorageGRID software logs
+      url: "/monitor/storagegrid_software_logs.html"
+    - title: Deployment and maintenance logs
+      url: "/monitor/deployment_and_maintenance_logs.html"
+    - title: Logs for third-party software
+      url: "/monitor/logs_for_third_party_software.html"
+    - title: About the bycast.log
+      url: "/monitor/about_bycast_log.html"
+      entries:
+      - title: File rotation for bycast.log
+        url: "/monitor/file_rotation_for_bycast_log.html"
+      - title: Messages in bycast.log
+        url: "/monitor/messages_in_bycast_log.html"
+      - title: Message severities in bycast.log
+        url: "/monitor/message_severities_in_bycast_log.html"
+      - title: Error codes in bycast.log
+        url: "/monitor/error_codes_in_bycast_log.html"
+- title: network
+  url: "/network/index.html"
+  entries:
+  - title: StorageGRID networking overview
+    url: "/network/storagegrid_networking_overview.html"
+    entries:
+    - title: StorageGRID network types
+      url: "/network/storagegrid_network_types.html"
+    - title: Network topology examples
+      url: "/network/network_topology_examples.html"
+      entries:
+      - title: Grid Network topology
+        url: "/network/grid_network_topology.html"
+      - title: Admin Network topology
+        url: "/network/admin_network_topology.html"
+      - title: Client Network topology
+        url: "/network/client_network_topology.html"
+      - title: Topology for all three networks
+        url: "/network/topology_for_all_three_networks.html"
+  - title: Networking requirements and guidelines
+    url: "/network/networking_requirements_and_guidelines.html"
+    entries:
+    - title: General networking requirements
+      url: "/network/general_networking_requirements.html"
+    - title: Network gateway requirements
+      url: "/network/network_gateway_requirements.html"
+    - title: Subnet requirements
+      url: "/network/subnet_requirements.html"
+    - title: Grid Network requirements
+      url: "/network/grid_network_requirements.html"
+    - title: Admin Network requirements
+      url: "/network/admin_network_requirements.html"
+    - title: Client Network requirements
+      url: "/network/client_network_requirements.html"
+  - title: Deployment-specific networking considerations
+    url: "/network/deployment_specific_networking_requirements.html"
+    entries:
+    - title: Linux deployments
+      url: "/network/linux_deployments.html"
+    - title: Host network configuration for Docker deployments
+      url: "/network/host_network_configuration_for_docker_deployments.html"
+    - title: Networking and ports for platform services and Cloud Storage Pools
+      url: "/network/networking_and_ports_for_platform_services_and_cloud_storage_pools.html"
+    - title: Appliance nodes
+      url: "/network/appliance_nodes.html"
+  - title: Network installation and provisioning
+    url: "/network/network_installation_and_provisioning.html"
+  - title: Post-installation guidelines
+    url: "/network/post_installation_guidelines.html"
+  - title: Network port reference
+    url: "/network/network_port_reference.html"
+    entries:
+    - title: Internal grid node communications
+      url: "/network/internal_grid_node_communications.html"
+    - title: External communications
+      url: "/network/external_communications.html"
+- title: primer
+  url: "/primer/index.html"
+  entries:
+  - title: About StorageGRID
+    url: "/primer/about_storagegrid.html"
+    entries:
+    - title: Hybrid clouds with StorageGRID
+      url: "/primer/hybrid_clouds_with_storagegrid.html"
+  - title: StorageGRID architecture and network topology
+    url: "/primer/storagegrid_architecture_and_network_topology.html"
+  - title: How StorageGRID manages data
+    url: "/primer/how_storagegrid_manages_data.html"
+    entries:
+    - title: What an object is
+      url: "/primer/what_object_is.html"
+    - title: How object data is protected
+      url: "/primer/how_object_data_is_protected.html"
+    - title: The life of an object
+      url: "/primer/life_of_object.html"
+      entries:
+      - title: Ingest data flow
+        url: "/primer/ingest_data_flow.html"
+      - title: Copy management
+        url: "/primer/copy_management.html"
+      - title: Retrieve data flow
+        url: "/primer/retrieve_data_flow.html"
+      - title: Delete data flow
+        url: "/primer/delete_data_flow.html"
+  - title: Exploring the Grid Manager
+    url: "/primer/exploring_grid_manager.html"
+  - title: Exploring the Tenant Manager
+    url: "/primer/exploring_tenant_manager.html"
+  - title: Using StorageGRID
+    url: "/primer/using_storagegrid.html"
+    entries:
+    - title: Controlling StorageGRID access
+      url: "/primer/controlling_storagegrid_access.html"
+    - title: Managing tenants and client connections
+      url: "/primer/managing_tenants_and_client_connections.html"
+    - title: Configuring network settings
+      url: "/primer/configuring_network_settings.html"
+    - title: Configuring system settings
+      url: "/primer/configuring_system_settings.html"
+    - title: Using information lifecycle management
+      url: "/primer/using_information_lifecycle_management.html"
+    - title: Monitoring StorageGRID operations
+      url: "/primer/monitoring_storagegrid_operations.html"
+      entries:
+      - title: Viewing the Nodes page
+        url: "/primer/viewing_nodes_page.html"
+        entries:
+        - title: Tabs for the Nodes page
+          url: "/primer/tabs_for_nodes_page.html"
+        - title: Prometheus metrics
+          url: "/primer/prometheus_metrics.html"
+        - title: StorageGRID attributes
+          url: "/primer/storagegrid_attributes.html"
+      - title: Monitoring and managing alerts
+        url: "/primer/monitoring_and_managing_alerts.html"
+      - title: Using SNMP monitoring
+        url: "/primer/using_snmp_monitoring.html"
+      - title: Reviewing audit messages
+        url: "/primer/reviewing_audit_messages.html"
+    - title: Performing maintenance procedures
+      url: "/primer/performing_maintenance_procedures.html"
+      entries:
+      - title: Downloading the Recovery Package
+        url: "/primer/downloading_recovery_package.html"
+    - title: Using StorageGRID support options
+      url: "/primer/using_storagegrid_support_options.html"
+- title: rhel
+  url: "/rhel/index.html"
+  entries:
+  - title: Installation overview
+    url: "/rhel/installation_overview.html"
+  - title: Planning and preparation
+    url: "/rhel/planning_and_preparation.html"
+    entries:
+    - title: Required materials
+      url: "/rhel/required_materials.html"
+    - title: Downloading and extracting the StorageGRID installation files
+      url: "/rhel/downloading_and_extracting_storagegrid_installation_files.html"
+    - title: CPU and RAM requirements
+      url: "/rhel/cpu_and_ram_requirements.html"
+    - title: Storage and performance requirements
+      url: "/rhel/storage_and_performance_requirements.html"
+    - title: Node container migration requirements
+      url: "/rhel/node_container_migration_requirements.html"
+    - title: Web browser requirements
+      url: "/rhel/web_browser_requirements.html"
+    - title: Deployment tools
+      url: "/rhel/deployment_tools.html"
+    - title: Preparing the hosts
+      url: "/rhel/preparing_hosts.html"
+      entries:
+      - title: Installing Linux
+        url: "/rhel/installing_linux.html"
+      - title: Configuring the host network
+        url: "/rhel/configuring_host_network.html"
+        entries:
+        - title: Considerations and recommendations for MAC address cloning
+          url: "/rhel/considerations_and_recommendations_for_mac_address_cloning.html"
+        - title: 'Example 1: 1-to-1 mapping to physical or virtual NICs'
+          url: "/rhel/example_1_1_to_1_mapping_to_physical_or_virtual_nics.html"
+        - title: 'Example 2: LACP bond carrying VLANs'
+          url: "/rhel/example_2_lacp_bond_carrying_vlans.html"
+      - title: Configuring host storage
+        url: "/rhel/configuring_host_storage.html"
+      - title: Configuring the Docker storage volume
+        url: "/rhel/configuring_docker_storage_volume.html"
+      - title: Installing Docker
+        url: "/rhel/installing_docker.html"
+      - title: Installing StorageGRID host services
+        url: "/rhel/installing_storagegrid_webscale_host_service.html"
+  - title: Deploying virtual grid nodes
+    url: "/rhel/deploying_virtual_grid_nodes.html"
+    entries:
+    - title: Creating node configuration files
+      url: "/rhel/creating_node_configuration_files.html"
+      entries:
+      - title: How grid nodes discover the primary Admin Node
+        url: "/rhel/how_grid_nodes_discover_primary_admin_node.html"
+      - title: Example node configuration files
+        url: "/rhel/example_node_configuration_files.html"
+    - title: Validating the StorageGRID configuration
+      url: "/rhel/validating_storagegrid_configuration.html"
+    - title: Starting the StorageGRID host service
+      url: "/rhel/starting_storagegrid_host_service.html"
+  - title: Configuring the grid and completing installation
+    url: "/rhel/configuring_grid_and_completing_installation.html"
+    entries:
+    - title: Navigating to the Grid Manager
+      url: "/rhel/navigating_to_grid_manager.html"
+    - title: Specifying the StorageGRID license information
+      url: "/rhel/specifying_storagegrid_license_information.html"
+    - title: Adding sites
+      url: "/rhel/adding_sites.html"
+    - title: Specifying Grid Network subnets
+      url: "/rhel/specifying_grid_network_subnets.html"
+    - title: Approving pending grid nodes
+      url: "/rhel/approving_pending_grid_nodes.html"
+    - title: Specifying Network Time Protocol server information
+      url: "/rhel/specifying_network_time_protocol_server_information.html"
+    - title: Specifying Domain Name System server information
+      url: "/rhel/specifying_domain_name_system_server_information.html"
+    - title: Specifying the StorageGRID system passwords
+      url: "/rhel/specifying_storagegrid_system_passwords.html"
+    - title: Reviewing your configuration and completing installation
+      url: "/rhel/reviewing_your_configuration_and_completing_installation.html"
+    - title: Post-installation guidelines
+      url: "/rhel/post_installation_guidelines.html"
+  - title: Automating the installation
+    url: "/rhel/automating_installation.html"
+    entries:
+    - title: Automating the installation and configuration of the StorageGRID host
+        service
+      url: "/rhel/automating_installation_and_configuration_of_storagegrid_host_service.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/rhel/automating_configuration_of_storagegrid.html"
+  - title: Overview of the installation REST API
+    url: "/rhel/overview_of_installation_rest_api.html"
+  - title: Where to go next
+    url: "/rhel/where_to_go_next.html"
+  - title: Troubleshooting installation issues
+    url: "/rhel/troubleshooting_installation_issues.html"
+  - title: Example /etc/sysconfig/network-scripts
+    url: "/rhel/example_etc_sysconfig_network_scripts.html"
+- title: s3
+  url: "/s3/index.html"
+  entries:
+  - title: Support for the S3 REST API
+    url: "/s3/support_for_s3_rest_api.html"
+    entries:
+    - title: Changes to S3 REST API support
+      url: "/s3/changes_to_s3_rest_api_support.html"
+    - title: Supported versions
+      url: "/s3/supported_versions.html"
+    - title: Support for StorageGRID platform services
+      url: "/s3/support_for_storagegrid_platform_services.html"
+  - title: Configuring tenant accounts and connections
+    url: "/s3/configuring_tenant_accounts_and_connections.html"
+  - title: How StorageGRID implements the S3 REST API
+    url: "/s3/how_storagegrid_implements_s3_rest_api.html"
+    entries:
+    - title: Conflicting client requests
+      url: "/s3/conflicting_client_requests.html"
+    - title: Consistency controls
+      url: "/s3/consistency_controls.html"
+    - title: How StorageGRID ILM rules manage objects
+      url: "/s3/how_storagegrid_ilm_rules_manage_objects.html"
+    - title: Object versioning
+      url: "/s3/object_versioning.html"
+    - title: Recommendations for implementing the S3 REST API
+      url: "/s3/recommendations_for_implementing_s3_rest_api.html"
+  - title: S3 REST API supported operations and limitations
+    url: "/s3/s3_rest_api_supported_operations_and_limitations.html"
+    entries:
+    - title: Date handling
+      url: "/s3/date_handling.html"
+    - title: Common request headers
+      url: "/s3/common_request_headers.html"
+    - title: Common response headers
+      url: "/s3/common_response_headers.html"
+    - title: Authenticating requests
+      url: "/s3/authenticating_requests.html"
+    - title: Operations on the service
+      url: "/s3/operations_on_service.html"
+    - title: Operations on buckets
+      url: "/s3/operations_on_buckets.html"
+      entries:
+      - title: Creating an S3 lifecycle configuration
+        url: "/s3/creating_s3_lifecycle_configuration.html"
+    - title: Custom operations on buckets
+      url: "/s3/custom_operations_on_buckets.html"
+    - title: Operations on objects
+      url: "/s3/operations_on_objects.html"
+      entries:
+      - title: Using S3 Object Lock
+        url: "/s3/using_s3_object_lock.html"
+      - title: Using server-side encryption
+        url: "/s3/using_server_side_encryption.html"
+      - title: GET Object
+        url: "/s3/get_object.html"
+      - title: HEAD  Object
+        url: "/s3/head_object.html"
+      - title: POST Object restore
+        url: "/s3/post_object_restore.html"
+      - title: PUT  Object
+        url: "/s3/put_object.html"
+      - title: PUT Object - Copy
+        url: "/s3/put_object_copy.html"
+  - title: StorageGRID S3 REST API operations
+    url: "/s3/storagegrid_s3_rest_api_operations.html"
+  - title: Bucket and group access policies
+    url: "/s3/bucket_and_group_access_policies.html"
+  - title: Configuring security for the REST API
+    url: "/s3/configuring_security_for_rest_api.html"
+  - title: Monitoring and auditing operations
+    url: "/s3/monitoring_and_auditing_operations.html"
+    entries:
+    - title: Monitoring object ingest and retrieval rates
+      url: "/s3/monitoring_object_ingest_and_retrieval_rates.html"
+    - title: Accessing and reviewing audit logs
+      url: "/s3/accessing_and_reviewing_audit_logs.html"
+      entries:
+      - title: S3 operations tracked in the audit logs
+        url: "/s3/s3_operations_tracked_in_audit_logs.html"
+  - title: Benefits of active, idle, and concurrent HTTP connections
+    url: "/s3/benefits_of_active_idle_and_concurrent_http_connections.html"
+    entries:
+    - title: Benefits of keeping idle HTTP connections open
+      url: "/s3/benefits_of_keeping_idle_http_connections_open.html"
+    - title: Benefits of active HTTP connections
+      url: "/s3/benefits_of_active_http_connections.html"
+    - title: Benefits of concurrent HTTP connections
+      url: "/s3/benefits_of_concurrent_http_connections.html"
+    - title: Separation of HTTP connection pools for read and write operations
+      url: "/s3/separation_of_http_connection_pools_for_read_and_write_operations.html"
+- title: sg100-1000
+  url: "/sg100-1000/index.html"
+  entries:
+  - title: SG100 and SG1000 appliances overview
+    url: "/sg100-1000/sg100_and_sg1000_appliances_overview.html"
+  - title: SG100 and SG1000 applications
+    url: "/sg100-1000/sg100_and_sg1000_applications.html"
+  - title: Installation and deployment overview
+    url: "/sg100-1000/installation_and_deployment_overview.html"
+  - title: Preparing for installation
+    url: "/sg100-1000/preparing_for_installation_sg100_and_sg1000.html"
+    entries:
+    - title: Preparing the site (SG100 and SG1000)
+      url: "/sg100-1000/preparing_site_sg100_and_sg1000.html"
+    - title: Unpacking the boxes (SG100 and SG1000)
+      url: "/sg100-1000/unpacking_boxes_sg100_and_sg1000.html"
+    - title: Obtaining additional equipment and tools (SG100 and SG1000)
+      url: "/sg100-1000/obtaining_additional_equipment_and_tools_sg100_and_sg1000.html"
+    - title: Web browser requirements
+      url: "/sg100-1000/web_browser_requirements.html"
+    - title: Reviewing appliance network connections
+      url: "/sg100-1000/reviewing_appliance_network_connections_sg100_and_sg1000.html"
+      entries:
+      - title: Port bond modes for the SG100 and SG1000 appliances
+        url: "/sg100-1000/port_bond_modes_for_sg100_and_sg1000.html"
+        entries:
+        - title: Network bond modes
+          url: "/sg100-1000/network_bond_modes_sg100_and_sg1000.html"
+        - title: Network bond modes for the management ports
+          url: "/sg100-1000/network_bond_modes_for_management_ports_sg100_and_sg1000.html"
+    - title: Gathering installation information (SG100 and SG1000)
+      url: "/sg100-1000/gathering_installation_information_sg100_and_sg1000.html"
+  - title: Installing the hardware
+    url: "/sg100-1000/installing_hardware_sg100_and_sg1000.html"
+    entries:
+    - title: Registering the hardware
+      url: "/sg100-1000/registering_hardware_sg100_and_sg1000.html"
+    - title: Installing the appliance into a cabinet or rack (SG100 and SG1000)
+      url: "/sg100-1000/installing_appliance_in_cabinet_or_rack_sg100_and_sg1000.html"
+    - title: Cabling the appliance SG100 and SG1000)
+      url: "/sg100-1000/cabling_appliance_sg100_and_sg1000.html"
+    - title: Connecting power cords and applying power (SG100 and SG1000)
+      url: "/sg100-1000/connecting_power_cords_and_applying_power_sg100_and_sg1000.html"
+    - title: Viewing status indicators on the SG100 and SG1000 appliances
+      url: "/sg100-1000/viewing_status_indicators_on_sg100_and_sg1000_appliances.html"
+  - title: Configuring StorageGRID connections
+    url: "/sg100-1000/configuring_storagegrid_connections_sg100_and_sg1000.html"
+    entries:
+    - title: Accessing the StorageGRID Appliance Installer
+      url: "/sg100-1000/accessing_storagegrid_appliance_installer_sg100_and_sg1000.html"
+    - title: Verifying and upgrading the StorageGRID Appliance Installer version
+      url: "/sg100-1000/verifying_and_upgrading_storagegrid_appliance_installer_version.html"
+    - title: Configuring network links (SG100 and SG1000)
+      url: "/sg100-1000/configuring_network_links_sg100_and_sg1000.html"
+    - title: Configuring StorageGRID IP addresses
+      url: "/sg100-1000/configuring_storagegrid_ip_addresses_sg100_and_sg1000.html"
+    - title: Verifying network connections
+      url: "/sg100-1000/verifying_network_connections.html"
+    - title: Verifying port-level network connections
+      url: "/sg100-1000/verifying_port_level_network_connections.html"
+  - title: Configuring the BMC interface
+    url: "/sg100-1000/configuring_bmc_interface_sg1000.html"
+    entries:
+    - title: Changing the root password for the BMC interface
+      url: "/sg100-1000/changing_root_password_for_bmc_interface_sg1000.html"
+    - title: Setting the IP address for the BMC management port
+      url: "/sg100-1000/setting_ip_address_for_bmc_management_port_sg1000.html"
+    - title: Accessing the BMC interface
+      url: "/sg100-1000/accessing_bmc_interface_sg1000.html"
+    - title: Configuring SNMP settings for the services appliance
+      url: "/sg100-1000/configuring_snmp_settings_for_sg1000.html"
+    - title: Setting up email notifications for alerts
+      url: "/sg100-1000/setting_up_email_notifications_for_alerts.html"
+  - title: 'Optional: Enabling node encryption'
+    url: "/sg100-1000/optional_enabling_node_encryption.html"
+  - title: Deploying a services appliance node
+    url: "/sg100-1000/deploying_services_appliance_node.html"
+    entries:
+    - title: Deploying a services appliance as a primary Admin Node
+      url: "/sg100-1000/deploying_services_appliance_as_primary_admin_node.html"
+    - title: Deploying a services appliance as a Gateway or non-primary Admin Node
+      url: "/sg100-1000/deploying_services_appliance_as_gateway_or_non_primary_admin_node.html"
+    - title: Monitoring the services appliance installation
+      url: "/sg100-1000/monitoring_services_appliance_installation.html"
+    - title: Automating appliance installation and configuration
+      url: "/sg100-1000/automating_appliance_installation_and_configuration.html"
+      entries:
+      - title: Automating appliance configuration using the StorageGRID Appliance
+          Installer
+        url: "/sg100-1000/automating_appliance_configuration_using_storagegrid_appliance_installer.html"
+      - title: Automating installation and configuration of appliance nodes using
+          the configure-sga.py script
+        url: "/sg100-1000/automating_installation_configuration_appliance_nodes_configure_sga_py_script.html"
+      - title: Automating the configuration of StorageGRID
+        url: "/sg100-1000/automating_configuration_of_storagegrid.html"
+    - title: Overview of installation REST APIs
+      url: "/sg100-1000/overview_of_installation_rest_apis.html"
+  - title: Troubleshooting the hardware installation
+    url: "/sg100-1000/troubleshooting_hardware_installation_sg100_and_sg1000.html"
+    entries:
+    - title: Viewing boot-up codes for the appliance
+      url: "/sg100-1000/viewing_boot_up_codes_for_appliance_sg100_and_sg1000.html"
+    - title: Viewing error codes for the appliance
+      url: "/sg100-1000/viewing_error_codes_for_sg1000_controller_sg100_and_sg1000.html"
+    - title: Hardware setup appears to hang
+      url: "/sg100-1000/hardware_setup_appears_to_hang_sg100_and_sg1000.html"
+    - title: Troubleshooting connection issues
+      url: "/sg100-1000/troubleshooting_connection_issues_sg100_and_sg1000.html"
+      entries:
+      - title: Unable to connect to the appliance
+        url: "/sg100-1000/unable_to_connect_to_appliance_sg100_and_sg1000.html"
+    - title: Rebooting the services appliance while the StorageGRID Appliance Installer
+        is running
+      url: "/sg100-1000/rebooting_services_appliance_while_sg_appliance_installer_is_running_sg100_and_sg1000.html"
+  - title: Maintaining the appliance
+    url: "/sg100-1000/maintaining_services_appliance_sg100_and_sg1000.html"
+    entries:
+    - title: Placing an appliance into maintenance mode
+      url: "/sg100-1000/placing_appliance_into_maintenance_mode.html"
+    - title: Turning the controller identify LED on and off
+      url: "/sg100-1000/turning_controller_identify_led_on_and_off.html"
+    - title: Locating the controller in a data center
+      url: "/sg100-1000/locating_controller_in_data_center.html"
+    - title: Replacing the services appliance
+      url: "/sg100-1000/replacing_services_appliance.html"
+    - title: Replacing a power supply in the services appliance
+      url: "/sg100-1000/replacing_power_supply_in_services_appliance.html"
+    - title: Replacing a fan in the services appliance
+      url: "/sg100-1000/replacing_fan_in_services_appliance.html"
+    - title: Replacing a drive in the services appliance
+      url: "/sg100-1000/replacing_drive_in_services_appliance.html"
+    - title: Changing the link configuration of the services appliance
+      url: "/sg100-1000/changing_link_configuration_of_services_appliance.html"
+    - title: Changing the MTU setting
+      url: "/sg100-1000/changing_mtu_setting.html"
+    - title: Checking the DNS server configuration
+      url: "/sg100-1000/checking_dns_server_configuration.html"
+    - title: Monitoring node encryption in maintenance mode
+      url: "/sg100-1000/monitoring_node_encryption_in_maintenance_mode.html"
+      entries:
+      - title: Clearing the key management server configuration
+        url: "/sg100-1000/clearing_key_management_server_configuration.html"
+- title: sg5600
+  url: "/sg5600/index.html"
+  entries:
+  - title: StorageGRID appliance overview
+    url: "/sg5600/storagegrid_appliance_overview.html"
+    entries:
+    - title: StorageGRID appliance features
+      url: "/sg5600/storagegrid_appliance_features.html"
+    - title: Hardware diagrams
+      url: "/sg5600/hardware_diagrams.html"
+  - title: Installation and deployment overview
+    url: "/sg5600/installation_and_deployment_overview.html"
+  - title: Preparing for installation
+    url: "/sg5600/preparing_for_installation.html"
+    entries:
+    - title: Preparing the site (SG5600)
+      url: "/sg5600/preparing_site_sg5600.html"
+    - title: Unpacking the boxes (SG5600)
+      url: "/sg5600/unpacking_boxes_sg5600.html"
+    - title: Obtaining additional equipment and tools (SG5600)
+      url: "/sg5600/obtaining_additional_equipment_and_tools_sg5600.html"
+    - title: Service laptop requirements
+      url: "/sg5600/service_laptop_requirements_sg5600.html"
+    - title: Web browser requirements
+      url: "/sg5600/web_browser_requirements.html"
+    - title: Reviewing appliance network connections
+      url: "/sg5600/reviewing_appliance_network_connections_sg5600.html"
+      entries:
+      - title: Port bond modes for the E5600SG controller ports
+        url: "/sg5600/port_bond_modes_for_e5600sg_controller_ports.html"
+        entries:
+        - title: Network bond modes for the 10-GbE ports
+          url: "/sg5600/network_bond_modes_for_10_gbe_ports.html"
+        - title: Network bond modes for the 1-GbE management ports
+          url: "/sg5600/network_bond_modes_for_1_gbe_managment_ports.html"
+    - title: Gathering installation information (SG5600)
+      url: "/sg5600/gathering_installation_information_sg5600.html"
+  - title: Installing the hardware
+    url: "/sg5600/installing_hardware.html"
+    entries:
+    - title: Registering the hardware
+      url: "/sg5600/registering_hardware.html"
+    - title: Installing the appliance in a cabinet or rack (SG5600)
+      url: "/sg5600/installing_appliance_in_cabinet_or_rack_sg5600.html"
+    - title: Cabling the appliance (SG5600)
+      url: "/sg5600/cabling_appliance_sg5600.html"
+    - title: Connecting the AC power cords (SG5600)
+      url: "/sg5600/connecting_ac_power_cords_sg5600.html"
+    - title: Turning power on (SG5600)
+      url: "/sg5600/turning_power_on_sg5600.html"
+    - title: Viewing boot-up status and reviewing error codes on the SG5600 controllers
+      url: "/sg5600/viewing_boot_up_status_and_reviewing_error_codes_on_sg5600_controllers.html"
+      entries:
+      - title: E5600SG controller seven-segment display codes
+        url: "/sg5600/e5600sg_controller_seven_segment_display_codes.html"
+  - title: Configuring the hardware
+    url: "/sg5600/configuring_hardware.html"
+    entries:
+    - title: Configuring StorageGRID connections
+      url: "/sg5600/configuring_storagegrid_connections.html"
+      entries:
+      - title: Accessing the StorageGRID Appliance Installer
+        url: "/sg5600/accessing_storagegrid_appliance_installer_sg5600.html"
+      - title: Verifying and upgrading the StorageGRID Appliance Installer version
+        url: "/sg5600/verifying_and_upgrading_storagegrid_appliance_installer_version.html"
+      - title: Configuring network links (SG5600)
+        url: "/sg5600/configuring_network_links_sg5600.html"
+      - title: Setting the IP configuration
+        url: "/sg5600/setting_ip_configuration_sg5600.html"
+      - title: Verifying network connections
+        url: "/sg5600/verifying_network_connections.html"
+      - title: Verifying port-level network connections
+        url: "/sg5600/verifying_port_level_network_connections.html"
+    - title: Configuring SANtricity Storage Manager
+      url: "/sg5600/configuring_santricity_storage_manager.html"
+      entries:
+      - title: Setting the IP address for the E2700 controller
+        url: "/sg5600/setting_ip_address_for_e2700_controller.html"
+      - title: Adding the appliance to SANtricity Storage Manager
+        url: "/sg5600/adding_appliance_to_santricity_storage_manager.html"
+      - title: Setting up SANtricity Storage Manager
+        url: "/sg5600/setting_up_santricity_storage_manager.html"
+        entries:
+        - title: Configuring AutoSupport
+          url: "/sg5600/configuring_autosupport.html"
+        - title: Verifying receipt of AutoSupport
+          url: "/sg5600/verifying_receipt_of_autosupport.html"
+        - title: Configuring email and SNMP trap alert notifications
+          url: "/sg5600/configuring_email_and_snmp_trap_alert_notifications.html"
+        - title: Setting passwords for SANtricity Storage Manager
+          url: "/sg5600/setting_passwords_for_santricity_storage_manager.html"
+    - title: 'Optional: Enabling node encryption'
+      url: "/sg5600/optional_enabling_node_encryption.html"
+    - title: 'Optional: Changing to RAID6 mode (SG5660 only)'
+      url: "/sg5600/optional_changing_to_raid6_mode_sg5660_only.html"
+    - title: 'Optional: Remapping network ports for the appliance'
+      url: "/sg5600/optional_remapping_network_ports_for_appliance_sg5600_and_sg5700.html"
+  - title: Deploying an appliance Storage Node
+    url: "/sg5600/deploying_appliance_storage_node.html"
+  - title: Monitoring the storage appliance installation
+    url: "/sg5600/monitoring_storage_appliance_installation.html"
+  - title: Automating appliance installation and configuration
+    url: "/sg5600/automating_appliance_installation_and_configuration.html"
+    entries:
+    - title: Automating appliance configuration using the StorageGRID Appliance Installer
+      url: "/sg5600/automating_appliance_configuration_using_storagegrid_appliance_installer.html"
+    - title: Automating installation and configuration of appliance nodes using the
+        configure-sga.py script
+      url: "/sg5600/automating_installation_configuration_appliance_nodes_configure_sga_py_script.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/sg5600/automating_configuration_of_storagegrid.html"
+  - title: Overview of installation REST APIs
+    url: "/sg5600/overview_of_installation_rest_apis.html"
+  - title: Troubleshooting the hardware installation
+    url: "/sg5600/troubleshooting_hardware_installation.html"
+    entries:
+    - title: Hardware setup appears to hang
+      url: "/sg5600/hardware_setup_progress_appears_to_hang.html"
+      entries:
+      - title: 'HE error: Error synchronizing with SANtricity OS Software'
+        url: "/sg5600/he_error_error_synchronizing_with_santricity_os_software.html"
+    - title: Troubleshooting connection issues
+      url: "/sg5600/troubleshooting_connection_issues.html"
+      entries:
+      - title: Unable to connect to StorageGRID appliance over the network
+        url: "/sg5600/unable_to_connect_to_storagegrid_appliance_over_network.html"
+    - title: Rebooting the controller while the StorageGRID Appliance Installer is
+        running
+      url: "/sg5600/rebooting_controller_while_storagegrid_appliance_installer_is_running.html"
+  - title: Maintaining the SG5600 appliance
+    url: "/sg5600/maintaining_sg5600_appliance.html"
+    entries:
+    - title: Placing an appliance into maintenance mode
+      url: "/sg5600/placing_appliance_into_maintenance_mode.html"
+    - title: Upgrading SANtricity OS on the storage controllers using the Grid Manager
+      url: "/sg5600/upgrading_santricity_os_on_storage_controllers_using_grid_manager_sg5600.html"
+    - title: Upgrading SANtricity OS on the E2700 controller using maintenance mode
+      url: "/sg5600/upgrading_santricity_os_on_e2700_controller_using_maintenance_mode.html"
+    - title: Upgrading drive firmware using SANtricity Storage Manager
+      url: "/sg5600/upgrading_drive_firmware_using_santricity_storage_manager.html"
+    - title: Replacing the E2700 controller
+      url: "/sg5600/replacing_e2700_controller.html"
+    - title: Replacing the E5600SG controller
+      url: "/sg5600/replacing_e5600sg_controller.html"
+    - title: Replacing other hardware components
+      url: "/sg5600/replacing_other_hardware_components_sg5600.html"
+    - title: Changing the link configuration of the E5600SG controller
+      url: "/sg5600/changing_link_configuration_of_e5600sg_controller.html"
+    - title: Changing the MTU setting
+      url: "/sg5600/changing_mtu_setting.html"
+    - title: Checking the DNS server configuration
+      url: "/sg5600/checking_dns_server_configuration.html"
+    - title: Monitoring node encryption in maintenance mode
+      url: "/sg5600/monitoring_node_encryption_in_maintenance_mode.html"
+      entries:
+      - title: Clearing the key management server configuration
+        url: "/sg5600/clearing_key_management_server_configuration.html"
+- title: sg5700
+  url: "/sg5700/index.html"
+  entries:
+  - title: StorageGRID appliance overview
+    url: "/sg5700/storagegrid_appliance_overview.html"
+    entries:
+    - title: Controllers in the StorageGRID appliance
+      url: "/sg5700/controllers_in_storagegrid_appliance.html"
+  - title: Installation and deployment overview
+    url: "/sg5700/installation_and_deployment_overview.html"
+  - title: Preparing for installation
+    url: "/sg5700/preparing_for_installation.html"
+    entries:
+    - title: Preparing the site (SG5700)
+      url: "/sg5700/preparing_site_sg5700.html"
+    - title: Unpacking the boxes (SG5700)
+      url: "/sg5700/unpacking_boxes_sg5700.html"
+    - title: Obtaining additional equipment and tools (SG5700)
+      url: "/sg5700/obtaining_additional_equipment_and_tools_sg5700.html"
+    - title: Web browser requirements
+      url: "/sg5700/web_browser_requirements.html"
+    - title: Reviewing appliance network connections
+      url: "/sg5700/reviewing_appliance_network_connections_sg5700.html"
+      entries:
+      - title: Port bond modes for E5700SG controller ports
+        url: "/sg5700/port_bond_modes_for_e5700sg_controller_ports.html"
+        entries:
+        - title: Network bond modes for the 10/25-GbE ports
+          url: "/sg5700/network_bond_modes_for_10_25_gbe_ports.html"
+        - title: Network bond modes for the 1-GbE management ports
+          url: "/sg5700/network_bond_modes_for_1_gbe_ports.html"
+    - title: Gathering installation information (SG5700)
+      url: "/sg5700/gathering_installation_information_sg5700.html"
+  - title: Installing the hardware
+    url: "/sg5700/installing_hardware.html"
+    entries:
+    - title: Registering the hardware
+      url: "/sg5700/registering_hardware.html"
+    - title: Installing the appliance in a cabinet or rack (SG5700)
+      url: "/sg5700/installing_appliance_in_cabinet_or_rack_sg5700.html"
+    - title: Cabling the appliance (SG5700)
+      url: "/sg5700/cabling_appliance_sg5700.html"
+    - title: Connecting power cords and applying power (SG5700)
+      url: "/sg5700/connecting_power_cords_and_applying_power_sg5700.html"
+    - title: Viewing SG5700 boot-up status codes
+      url: "/sg5700/viewing_sg5700_boot_up_status_codes.html"
+      entries:
+      - title: Status indicators on the E5700SG controller
+        url: "/sg5700/status_indicators_on_e5700sg_controller.html"
+  - title: Configuring the hardware
+    url: "/sg5700/configuring_hardware_sg5712_60.html"
+    entries:
+    - title: Configuring StorageGRID connections
+      url: "/sg5700/configuring_storagegrid_connections.html"
+      entries:
+      - title: Accessing the StorageGRID Appliance Installer
+        url: "/sg5700/accessing_storagegrid_appliance_installer_sg5700.html"
+      - title: Verifying and upgrading the StorageGRID Appliance Installer version
+        url: "/sg5700/verifying_and_upgrading_storagegrid_appliance_installer_version.html"
+      - title: Configuring network links (SG5700)
+        url: "/sg5700/configuring_network_links_sg5700.html"
+      - title: Setting the IP configuration
+        url: "/sg5700/setting_ip_configuration_sg5700.html"
+      - title: Verifying network connections
+        url: "/sg5700/verifying_network_connections.html"
+      - title: Verifying port-level network connections
+        url: "/sg5700/verifying_port_level_network_connections.html"
+    - title: Accessing and Configuring SANtricity System Manager
+      url: "/sg5700/accessing_and_configuring_santricity_system_manager.html"
+      entries:
+      - title: Setting up and Accessing SANtricity System Manager
+        url: "/sg5700/setting_up_and_accessing_santricity_system_manager.html"
+      - title: Reviewing the hardware status in SANtricity System Manager
+        url: "/sg5700/reviewing_hardware_status_in_santricity_system_manager.html"
+      - title: Setting the IP addresses for the storage controllers using the StorageGRID
+          Appliance Installer
+        url: "/sg5700/setting_ip_addresses_for_storage_controllers_using_storagegrid_appliance_installer.html"
+    - title: 'Optional: Enabling node encryption'
+      url: "/sg5700/optional_enabling_node_encryption.html"
+    - title: 'Optional: Changing the RAID mode (SG5760 only)'
+      url: "/sg5700/optional_changing_raid_mode_sg5760_only.html"
+    - title: 'Optional: Remapping network ports for the appliance'
+      url: "/sg5700/optional_remapping_network_ports_for_appliance_sg5600_and_sg5700.html"
+  - title: Deploying an appliance Storage Node
+    url: "/sg5700/deploying_appliance_storage_node.html"
+  - title: Monitoring the storage appliance installation
+    url: "/sg5700/monitoring_storage_appliance_installation.html"
+  - title: Automating appliance installation and configuration
+    url: "/sg5700/automating_appliance_installation_and_configuration.html"
+    entries:
+    - title: Automating appliance configuration using the StorageGRID Appliance Installer
+      url: "/sg5700/automating_appliance_configuration_using_storagegrid_appliance_installer.html"
+    - title: Automating installation and configuration of appliance nodes using the
+        configure-sga.py script
+      url: "/sg5700/automating_installation_configuration_appliance_nodes_configure_sga_py_script.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/sg5700/automating_configuration_of_storagegrid.html"
+  - title: Overview of installation REST APIs
+    url: "/sg5700/overview_of_installation_rest_apis.html"
+  - title: Troubleshooting the hardware installation
+    url: "/sg5700/troubleshooting_hardware_installation.html"
+    entries:
+    - title: Hardware setup appears to hang
+      url: "/sg5700/hardware_setup_appears_to_hang.html"
+      entries:
+      - title: 'HE error: Error synchronizing with SANtricity OS Software'
+        url: "/sg5700/he_error_error_synchronizing_with_santricity_os_software.html"
+    - title: Troubleshooting connection issues
+      url: "/sg5700/troubleshooting_connection_issues.html"
+      entries:
+      - title: Unable to connect to the appliance
+        url: "/sg5700/unable_to_connect_to_appliance.html"
+    - title: Rebooting the controller while the StorageGRID Appliance Installer is
+        running
+      url: "/sg5700/rebooting_controller_while_storagegrid_appliance_installer_is_running.html"
+  - title: Maintaining the SG5700 appliance
+    url: "/sg5700/maintaining_sg5700_appliance.html"
+    entries:
+    - title: Placing an appliance into maintenance mode
+      url: "/sg5700/placing_appliance_into_maintenance_mode.html"
+    - title: Upgrading SANtricity OS on the storage controller
+      url: "/sg5700/upgrading_santricity_os_on_storage_controller.html"
+      entries:
+      - title: Upgrading SANtricity OS on the storage controllers using the Grid Manager
+        url: "/sg5700/upgrading_santricity_os_on_storage_controllers_using_grid_manager_sg5700.html"
+      - title: Upgrading SANtricity OS on the E2800 controller using maintenance mode
+        url: "/sg5700/upgrading_santricity_os_on_e2800_controller_using_maintenance_mode.html"
+    - title: Upgrading drive firmware using SANtricity System Manager
+      url: "/sg5700/upgrading_drive_firmware_using_santricity_system_manager.html"
+    - title: Replacing the E2800 controller
+      url: "/sg5700/replacing_e2800_controller.html"
+    - title: Replacing the E5700SG controller
+      url: "/sg5700/replacing_e5700sg_controller.html"
+    - title: Replacing other hardware components
+      url: "/sg5700/replacing_other_hardware_components_sg5700.html"
+    - title: Changing the link configuration of the E5700SG controller
+      url: "/sg5700/changing_link_configuration_of_e5700sg_controller.html"
+    - title: Changing the MTU setting
+      url: "/sg5700/changing_mtu_setting.html"
+    - title: Checking the DNS server configuration
+      url: "/sg5700/checking_dns_server_configuration.html"
+    - title: Monitoring node encryption in maintenance mode
+      url: "/sg5700/monitoring_node_encryption_in_maintenance_mode.html"
+      entries:
+      - title: Clearing the key management server configuration
+        url: "/sg5700/clearing_key_management_server_configuration.html"
+- title: sg6000
+  url: "/sg6000/index.html"
+  entries:
+  - title: SG6000 appliances overview
+    url: "/sg6000/sg6000_appliances_overview.html"
+    entries:
+    - title: SG6060 overview
+      url: "/sg6000/sg6060_overview.html"
+    - title: SGF6024 overview
+      url: "/sg6000/sgf6024_overview.html"
+    - title: Controllers in the SG6000 appliances
+      url: "/sg6000/controllers_in_sg6000_appliances.html"
+  - title: Installation and deployment overview
+    url: "/sg6000/installation_and_deployment_overview.html"
+  - title: Preparing for installation
+    url: "/sg6000/preparing_for_installation.html"
+    entries:
+    - title: Preparing the site (SG6000)
+      url: "/sg6000/preparing_site_sg6000.html"
+    - title: Unpacking the boxes (SG6000)
+      url: "/sg6000/unpacking_boxes_sg6000.html"
+    - title: Obtaining additional equipment and tools (SG6000)
+      url: "/sg6000/obtaining_additional_equipment_and_tools_sg6000.html"
+    - title: Web browser requirements
+      url: "/sg6000/web_browser_requirements.html"
+    - title: Reviewing appliance network connections
+      url: "/sg6000/reviewing_appliance_network_connections_sg6000.html"
+      entries:
+      - title: Port bond modes for the SG6000-CN controller
+        url: "/sg6000/port_bond_modes_for_sg6000_cn_controller.html"
+        entries:
+        - title: Network bond modes for the 10/25-GbE ports
+          url: "/sg6000/network_bond_modes_for_10_25_gbe_ports.html"
+        - title: Network bond modes for the 1-GbE management ports
+          url: "/sg6000/network_bond_modes_for_1_gbe_management_ports.html"
+    - title: Gathering installation information (SG6000)
+      url: "/sg6000/gathering_installation_information_sg6000.html"
+  - title: Installing the hardware
+    url: "/sg6000/installing_hardware.html"
+    entries:
+    - title: Registering the hardware
+      url: "/sg6000/registering_hardware.html"
+    - title: 'SG6060: Installing 60-drive shelves into a cabinet or rack'
+      url: "/sg6000/sg6060_installing_60_drive_shelves_into_cabinet_or_rack.html"
+    - title: 'SG6060: Installing the drives'
+      url: "/sg6000/sg6060_installing_drives.html"
+    - title: 'SGF6024: Installing 24-drive shelves into a cabinet or rack'
+      url: "/sg6000/sgf6024_installing_24_drive_shelves_into_cabinet_or_rack.html"
+    - title: 'SG6000-CN: Installing into a cabinet or rack'
+      url: "/sg6000/sg6000_cn_installing_into_cabinet_or_rack.html"
+    - title: Cabling the appliance (SG6000)
+      url: "/sg6000/cabling_appliance_sg6000.html"
+    - title: 'SG6060: Cabling the optional expansion shelves'
+      url: "/sg6000/sg6060_cabling_optional_expansion_shelves.html"
+    - title: Connecting power cords and applying power (SG6000)
+      url: "/sg6000/connecting_power_cords_and_applying_power_sg6000.html"
+    - title: Viewing status indicators and buttons on the SG6000-CN controller
+      url: "/sg6000/viewing_status_indicators_and_buttons_on_sg6000_cn_controller.html"
+    - title: Viewing boot-up status codes for the SG6000 storage controllers
+      url: "/sg6000/viewing_boot_up_status_codes_for_sg6000_storage_controllers.html"
+  - title: Configuring the hardware
+    url: "/sg6000/configuring_hardware.html"
+    entries:
+    - title: Configuring StorageGRID connections
+      url: "/sg6000/configuring_storagegrid_connections.html"
+      entries:
+      - title: Accessing the StorageGRID Appliance Installer
+        url: "/sg6000/accessing_storagegrid_appliance_installer_sg6000.html"
+      - title: Verifying and upgrading the StorageGRID Appliance Installer version
+        url: "/sg6000/verifying_and_upgrading_storagegrid_appliance_installer_version.html"
+      - title: Configuring network links (SG6000)
+        url: "/sg6000/configuring_network_links_sg6000.html"
+      - title: Configuring StorageGRID IP addresses
+        url: "/sg6000/configuring_storagegrid_ip_addresses_sg6000.html"
+      - title: Verifying network connections
+        url: "/sg6000/verifying_network_connections.html"
+      - title: Verifying port-level network connections
+        url: "/sg6000/verifying_port_level_network_connections.html"
+    - title: Accessing and Configuring SANtricity System Manager
+      url: "/sg6000/accessing_and_configuring_santricity_system_manager.html"
+      entries:
+      - title: Setting up and Accessing SANtricity System Manager
+        url: "/sg6000/setting_up_and_accessing_santricity_system_manager.html"
+      - title: Reviewing the hardware status in SANtricity System Manager
+        url: "/sg6000/reviewing_hardware_status_in_santricity_system_manager.html"
+      - title: Setting the IP addresses for the storage controllers using the StorageGRID
+          Appliance Installer
+        url: "/sg6000/setting_ip_addresses_for_storage_controllers_using_storagegrid_appliance_installer.html"
+    - title: Configuring the BMC interface
+      url: "/sg6000/configuring_bmc_interface_sg6000.html"
+      entries:
+      - title: Changing the root password for the BMC interface
+        url: "/sg6000/changing_root_password_for_bmc_interface_sg6000.html"
+      - title: Setting the IP address for the BMC management port
+        url: "/sg6000/setting_ip_address_for_bmc_management_port_sg6000.html"
+      - title: Accessing the BMC interface
+        url: "/sg6000/accessing_bmc_interface_sg6000.html"
+      - title: Configuring SNMP settings for the SG6000-CN controller
+        url: "/sg6000/configuring_snmp_settings_for_sg6000_cn_controller.html"
+      - title: Setting up email notifications for alerts
+        url: "/sg6000/setting_up_email_notifications_for_alerts.html"
+    - title: 'Optional: Enabling node encryption'
+      url: "/sg6000/optional_enabling_node_encryption.html"
+    - title: 'Optional: Changing the RAID mode (SG6000 only)'
+      url: "/sg6000/optional_changing_raid_mode_sg6000_only.html"
+    - title: 'Optional: Remapping network ports for the appliance'
+      url: "/sg6000/optional_remapping_network_ports_for_appliance_sg6000.html"
+  - title: Deploying an appliance Storage Node
+    url: "/sg6000/deploying_appliance_storage_node.html"
+  - title: Monitoring the storage appliance installation
+    url: "/sg6000/monitoring_storage_appliance_installation.html"
+  - title: Automating appliance installation and configuration
+    url: "/sg6000/automating_appliance_installation_and_configuration.html"
+    entries:
+    - title: Automating appliance configuration using the StorageGRID Appliance Installer
+      url: "/sg6000/automating_appliance_configuration_using_storagegrid_appliance_installer.html"
+    - title: Automating installation and configuration of appliance nodes using the
+        configure-sga.py script
+      url: "/sg6000/automating_installation_configuration_appliance_nodes_configure_sga_py_script.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/sg6000/automating_configuration_of_storagegrid.html"
+  - title: Overview of installation REST APIs
+    url: "/sg6000/overview_of_installation_rest_apis.html"
+  - title: Troubleshooting the hardware installation
+    url: "/sg6000/troubleshooting_hardware_installation.html"
+    entries:
+    - title: Viewing boot-up codes for the SG6000-CN controller
+      url: "/sg6000/viewing_boot_up_codes_for_sg6000_cn_controller.html"
+    - title: Viewing error codes for the SG6000-CN controller
+      url: "/sg6000/viewing_error_codes_for_sg6000_cn_controller.html"
+    - title: Hardware setup appears to hang
+      url: "/sg6000/hardware_setup_appears_to_hang.html"
+    - title: Troubleshooting connection issues
+      url: "/sg6000/troubleshooting_connection_issues.html"
+      entries:
+      - title: Unable to connect to the appliance
+        url: "/sg6000/unable_to_connect_to_appliance.html"
+      - title: Expansion shelves do not appear in Appliance Installer
+        url: "/sg6000/expansion_shelves_do_not_appear_in_applliance_installer.html"
+    - title: Rebooting the SG6000-CN controller while the StorageGRID Appliance Installer
+        is running
+      url: "/sg6000/rebooting_sg6000_cn_controller_while_storagegrid_appliance_installer_is_running.html"
+  - title: Maintaining the SG6000 appliance
+    url: "/sg6000/maintaining_sg6000_appliance.html"
+    entries:
+    - title: Placing an appliance into maintenance mode
+      url: "/sg6000/placing_appliance_into_maintenance_mode.html"
+    - title: Upgrading SANtricity OS on the storage controllers
+      url: "/sg6000/upgrading_santricity_os_on_storage_controllers.html"
+      entries:
+      - title: Upgrading SANtricity OS on the storage controllers using the Grid Manager
+        url: "/sg6000/upgrading_santricity_os_on_storage_controllers_using_grid_manager_sg6000.html"
+      - title: Upgrading SANtricity OS on the storage controllers using maintenance
+          mode
+        url: "/sg6000/upgrading_santricity_os_on_storage_controllers_using_maintenance_mode_sg6000.html"
+    - title: Upgrading drive firmware using SANtricity System Manager
+      url: "/sg6000/upgrading_drive_firmware_using_santricity_system_manager.html"
+    - title: Adding an expansion shelf to a deployed SG6060
+      url: "/sg6000/adding_expansion_shelf_to_deployed_sg6060.html"
+    - title: Turning the controller identify LED on and off
+      url: "/sg6000/turning_controller_identify_led_on_and_off.html"
+    - title: Locating the controller in a data center
+      url: "/sg6000/locating_controller_in_data_center.html"
+    - title: Replacing a storage controller
+      url: "/sg6000/replacing_storage_controller_sg6000.html"
+    - title: Replacing hardware components in the storage controller shelf
+      url: "/sg6000/replacing_hardware_components_in_storage_controller_shelf.html"
+    - title: Replacing hardware components in the optional 60-drive expansion shelf
+      url: "/sg6000/replacing_hardware_components_in_optional_60_drive_expansion_shelf.html"
+    - title: Shutting down the SG6000-CN controller
+      url: "/sg6000/shutting_down_sg6000_cn_controller.html"
+    - title: Powering on the SG6000-CN controller and verifying operation
+      url: "/sg6000/powering_on_sg6000_cn_controller_and_verifying_operation.html"
+    - title: Replacing the SG6000-CN controller
+      url: "/sg6000/replacing_sg6000_cn_controller.html"
+    - title: Replacing a power supply in the SG6000-CN controller
+      url: "/sg6000/replacing_power_supply_in_sg6000_cn_controller.html"
+    - title: Removing the SG6000-CN controller from a cabinet or rack
+      url: "/sg6000/removing_sg6000_cn_controller_from_cabinet_or_rack.html"
+    - title: Reinstalling the SG6000-CN controller into a cabinet or rack
+      url: "/sg6000/reinstalling_sg6000_cn_controller_into_cabinet_or_rack.html"
+    - title: Removing the SG6000-CN controller cover
+      url: "/sg6000/removing_sg6000_cn_controller_cover.html"
+    - title: Reinstalling the SG6000-CN controller cover
+      url: "/sg6000/reinstalling_sg6000_cn_controller_cover.html"
+    - title: Replacing the Fibre Channel HBA in the SG6000-CN controller
+      url: "/sg6000/replacing_fibre_channel_hba_in_sg6000_cn_controller.html"
+      entries:
+      - title: Verifying the Fibre Channel HBA to replace
+        url: "/sg6000/verifying_fibre_channel_hba_to_replace.html"
+      - title: Removing the Fibre Channel HBA
+        url: "/sg6000/removing_fibre_channel_hba.html"
+      - title: Reinstalling the Fibre Channel HBA
+        url: "/sg6000/reinstalling_fibre_channel_hba.html"
+    - title: Changing the link configuration of the SG6000-CN controller
+      url: "/sg6000/changing_link_configuration_of_sg6000_cn_controller.html"
+    - title: Changing the MTU setting
+      url: "/sg6000/changing_mtu_setting.html"
+    - title: Checking the DNS server configuration
+      url: "/sg6000/checking_dns_server_configuration.html"
+    - title: Monitoring node encryption in maintenance mode
+      url: "/sg6000/monitoring_node_encryption_in_maintenance_mode.html"
+      entries:
+      - title: Clearing the key management server configuration
+        url: "/sg6000/clearing_key_management_server_configuration.html"
+- title: swift
+  url: "/swift/index.html"
+  entries:
+  - title: OpenStack Swift API support in StorageGRID
+    url: "/swift/openstack_swift_api_support_in_storagegrid.html"
+    entries:
+    - title: History of Swift API support in StorageGRID
+      url: "/swift/history_of_swift_api_support_in_storagegrid.html"
+    - title: How StorageGRID implements the Swift REST API
+      url: "/swift/how_storagegrid_implements_swift_rest_api.html"
+    - title: Recommendations for implementing the Swift REST API
+      url: "/swift/recommendations_for_implementing_swift_rest_api.html"
+  - title: Configuring tenant accounts and connections
+    url: "/swift/configuring_tenant_accounts_and_connections.html"
+    entries:
+    - title: How client connections can be configured
+      url: "/swift/how_client_connections_can_be_configured_for_swift.html"
+  - title: Swift REST API supported operations
+    url: "/swift/swift_rest_api_supported_operations.html"
+    entries:
+    - title: Supported Swift API endpoints
+      url: "/swift/supported_swift_api_endpoints.html"
+    - title: Account operations
+      url: "/swift/account_operations.html"
+    - title: Container operations
+      url: "/swift/container_operations.html"
+    - title: Object operations
+      url: "/swift/object_operations.html"
+    - title: OPTIONS request
+      url: "/swift/options_request.html"
+    - title: Error responses to Swift API operations
+      url: "/swift/error_responses_to_swift_api_operations.html"
+  - title: StorageGRID Swift REST API operations
+    url: "/swift/storagegrid_swift_rest_api_operations.html"
+    entries:
+    - title: GET container consistency request
+      url: "/swift/get_container_consistency_request.html"
+    - title: PUT container consistency request
+      url: "/swift/put_container_consistency_request.html"
+  - title: Configuring security for the REST API
+    url: "/swift/configuring_security_for_rest_api.html"
+  - title: Monitoring and auditing operations
+    url: "/swift/monitoring_and_auditing_operations.html"
+- title: tenant
+  url: "/tenant/index.html"
+  entries:
+  - title: Using the Tenant Manager
+    url: "/tenant/using_tenant_manager.html"
+    entries:
+    - title: Using a StorageGRID tenant account
+      url: "/tenant/using_storagegrid_tenant_account.html"
+    - title: Web browser requirements
+      url: "/tenant/web_browser_requirements.html"
+    - title: Signing in to the Tenant Manager
+      url: "/tenant/signing_in_to_tenant_manager.html"
+    - title: Signing out of the Tenant Manager
+      url: "/tenant/signing_out_of_tenant_manager.html"
+    - title: Understanding the Tenant Manager Dashboard
+      url: "/tenant/understanding_tenant_manager_dashboard.html"
+    - title: Understanding the Tenant Management API
+      url: "/tenant/understanding_tenant_management_api.html"
+      entries:
+      - title: Tenant Management API versioning
+        url: "/tenant/tenant_management_api_versioning.html"
+      - title: Protecting against Cross-Site Request Forgery (CSRF)
+        url: "/tenant/protecting_against_cross_site_request_forgery_csrf.html"
+  - title: Using a StorageGRID tenant account
+    url: "/tenant/using_storagegrid_tenant_account.html"
+  - title: Managing system access for tenant users
+    url: "/tenant/managing_system_access_for_tenant_users.html"
+    entries:
+    - title: Using identity federation
+      url: "/tenant/using_identity_federation.html"
+      entries:
+      - title: Configuring a federated identity source
+        url: "/tenant/configuring_federated_identity_source.html"
+        entries:
+        - title: Guidelines for configuring an OpenLDAP server
+          url: "/tenant/guidelines_for_configuring_openldap_server.html"
+      - title: Forcing synchronization with the identity source
+        url: "/tenant/forcing_synchronization_with_identity_source.html"
+      - title: Disabling identity federation
+        url: "/tenant/disabling_identity_federation.html"
+    - title: Managing groups
+      url: "/tenant/managing_groups.html"
+      entries:
+      - title: Tenant management permissions
+        url: "/tenant/tenant_management_permissions.html"
+      - title: Creating groups for an S3 tenant
+        url: "/tenant/creating_groups_for_s3_tenant.html"
+      - title: Creating groups for a Swift tenant
+        url: "/tenant/creating_groups_for_swift_tenant.html"
+      - title: Viewing and editing group details
+        url: "/tenant/viewing_and_editing_group_details.html"
+      - title: Adding users to a local group
+        url: "/tenant/adding_users_to_local_group.html"
+      - title: Editing a group name
+        url: "/tenant/editing_group_name.html"
+      - title: Duplicating a group
+        url: "/tenant/duplicating_group.html"
+      - title: Deleting a group
+        url: "/tenant/deleting_group.html"
+    - title: Managing local users
+      url: "/tenant/managing_local_users.html"
+  - title: Using identity federation
+    url: "/tenant/using_identity_federation.html"
+    entries:
+    - title: Configuring a federated identity source
+      url: "/tenant/configuring_federated_identity_source.html"
+      entries:
+      - title: Guidelines for configuring an OpenLDAP server
+        url: "/tenant/guidelines_for_configuring_openldap_server.html"
+    - title: Forcing synchronization with the identity source
+      url: "/tenant/forcing_synchronization_with_identity_source.html"
+    - title: Disabling identity federation
+      url: "/tenant/disabling_identity_federation.html"
+  - title: Managing groups
+    url: "/tenant/managing_groups.html"
+    entries:
+    - title: Tenant management permissions
+      url: "/tenant/tenant_management_permissions.html"
+    - title: Creating groups for an S3 tenant
+      url: "/tenant/creating_groups_for_s3_tenant.html"
+    - title: Creating groups for a Swift tenant
+      url: "/tenant/creating_groups_for_swift_tenant.html"
+    - title: Viewing and editing group details
+      url: "/tenant/viewing_and_editing_group_details.html"
+    - title: Adding users to a local group
+      url: "/tenant/adding_users_to_local_group.html"
+    - title: Editing a group name
+      url: "/tenant/editing_group_name.html"
+    - title: Duplicating a group
+      url: "/tenant/duplicating_group.html"
+    - title: Deleting a group
+      url: "/tenant/deleting_group.html"
+  - title: Managing local users
+    url: "/tenant/managing_local_users.html"
+  - title: Managing S3 tenant accounts
+    url: "/tenant/managing_s3_tenant_accounts.html"
+    entries:
+    - title: Managing S3 access keys
+      url: "/tenant/managing_s3_access_keys.html"
+      entries:
+      - title: Creating your own S3 access keys
+        url: "/tenant/creating_your_own_s3_access_keys.html"
+      - title: Viewing your S3 access keys
+        url: "/tenant/viewing_your_s3_access_keys.html"
+      - title: Deleting your own S3 access keys
+        url: "/tenant/deleting_your_own_s3_access_keys.html"
+      - title: Creating another user&#8217;s S3 access keys
+        url: "/tenant/creating_another_users_s3_access_keys.html"
+      - title: Viewing another user&#8217;s S3 access keys
+        url: "/tenant/viewing_another_users_s3_access_keys.html"
+      - title: Deleting another user&#8217;s S3 access keys
+        url: "/tenant/deleting_another_users_s3_access_keys.html"
+    - title: Managing S3 buckets
+      url: "/tenant/managing_s3_buckets.html"
+      entries:
+      - title: Using S3 Object Lock
+        url: "/tenant/using_s3_object_lock.html"
+        entries:
+        - title: S3 Object Lock workflow
+          url: "/tenant/s3_object_lock_workflow.html"
+        - title: Requirements for S3 Object Lock
+          url: "/tenant/requirements_for_s3_object_lock.html"
+      - title: Creating an S3 bucket
+        url: "/tenant/creating_s3_bucket.html"
+      - title: Viewing S3 bucket details
+        url: "/tenant/viewing_s3_bucket_details.html"
+      - title: Changing the consistency level
+        url: "/tenant/changing_consistency_level.html"
+      - title: Enabling or disabling last access time updates
+        url: "/tenant/enabling_or_disabling_last_access_time_updates.html"
+      - title: Configuring Cross-Origin Resource Sharing (CORS)
+        url: "/tenant/configuring_cross_origin_resource_sharing_cors.html"
+      - title: Deleting an S3 bucket
+        url: "/tenant/deleting_s3_bucket.html"
+  - title: Managing S3 access keys
+    url: "/tenant/managing_s3_access_keys.html"
+    entries:
+    - title: Creating your own S3 access keys
+      url: "/tenant/creating_your_own_s3_access_keys.html"
+    - title: Viewing your S3 access keys
+      url: "/tenant/viewing_your_s3_access_keys.html"
+    - title: Deleting your own S3 access keys
+      url: "/tenant/deleting_your_own_s3_access_keys.html"
+    - title: Creating another user&#8217;s S3 access keys
+      url: "/tenant/creating_another_users_s3_access_keys.html"
+    - title: Viewing another user&#8217;s S3 access keys
+      url: "/tenant/viewing_another_users_s3_access_keys.html"
+    - title: Deleting another user&#8217;s S3 access keys
+      url: "/tenant/deleting_another_users_s3_access_keys.html"
+  - title: Managing S3 buckets
+    url: "/tenant/managing_s3_buckets.html"
+    entries:
+    - title: Using S3 Object Lock
+      url: "/tenant/using_s3_object_lock.html"
+      entries:
+      - title: S3 Object Lock workflow
+        url: "/tenant/s3_object_lock_workflow.html"
+      - title: Requirements for S3 Object Lock
+        url: "/tenant/requirements_for_s3_object_lock.html"
+    - title: Creating an S3 bucket
+      url: "/tenant/creating_s3_bucket.html"
+    - title: Viewing S3 bucket details
+      url: "/tenant/viewing_s3_bucket_details.html"
+    - title: Changing the consistency level
+      url: "/tenant/changing_consistency_level.html"
+    - title: Enabling or disabling last access time updates
+      url: "/tenant/enabling_or_disabling_last_access_time_updates.html"
+    - title: Configuring Cross-Origin Resource Sharing (CORS)
+      url: "/tenant/configuring_cross_origin_resource_sharing_cors.html"
+    - title: Deleting an S3 bucket
+      url: "/tenant/deleting_s3_bucket.html"
+  - title: Managing S3 platform services
+    url: "/tenant/managing_s3_platform_services.html"
+    entries:
+    - title: What platform services are
+      url: "/tenant/what_platform_services_are.html"
+      entries:
+      - title: Understanding the CloudMirror replication service
+        url: "/tenant/understanding_cloudmirror_replication_service.html"
+      - title: Understanding notifications for buckets
+        url: "/tenant/understanding_notifications_for_buckets.html"
+      - title: Understanding the search integration service
+        url: "/tenant/understanding_search_integration_service.html"
+    - title: Considerations for using platform services
+      url: "/tenant/considerations_for_using_platform_services.html"
+    - title: Configuring platform services endpoints
+      url: "/tenant/configuring_platform_services_endpoints.html"
+      entries:
+      - title: What a platform services endpoint is
+        url: "/tenant/what_platform_services_endpoint_is.html"
+      - title: Specifying the URN for a platform services endpoint
+        url: "/tenant/specifying_urn_for_platform_services_endpoint.html"
+      - title: Creating a platform services endpoint
+        url: "/tenant/creating_platform_services_endpoint.html"
+      - title: Testing the connection for a platform services endpoint
+        url: "/tenant/testing_connection_for_platform_services_endpoint.html"
+      - title: Editing a platform services endpoint
+        url: "/tenant/editing_platform_services_endpoint.html"
+      - title: Deleting a platform services endpoint
+        url: "/tenant/deleting_platform_services_endpoint.html"
+      - title: Troubleshooting platform services endpoint errors
+        url: "/tenant/troubleshooting_platform_services_endpoint_errors.html"
+    - title: Configuring CloudMirror replication
+      url: "/tenant/configuring_cloudmirror_replication.html"
+    - title: Configuring event notifications
+      url: "/tenant/configuring_event_notifications.html"
+    - title: Using the search integration service
+      url: "/tenant/using_search_integration_service.html"
+      entries:
+      - title: Configuration XML for search integration
+        url: "/tenant/configuration_xml_for_search_configuration.html"
+      - title: Configuring the search integration service
+        url: "/tenant/configuring_search_integration_service.html"
+      - title: JSON generated by the search integration service
+        url: "/tenant/json_generated_by_search_integration_service.html"
+      - title: Object metadata included in metadata notifications
+        url: "/tenant/object_metadata_included_in_metadata_notifications.html"
+- title: ubuntu
+  url: "/ubuntu/index.html"
+  entries:
+  - title: Installation overview
+    url: "/ubuntu/installation_overview.html"
+  - title: Planning and preparation
+    url: "/ubuntu/planning_and_preparation.html"
+    entries:
+    - title: Required materials
+      url: "/ubuntu/required_materials.html"
+    - title: Downloading and extracting the StorageGRID installation files
+      url: "/ubuntu/downloading_and_extracting_storagegrid_installation_files.html"
+    - title: CPU and RAM requirements
+      url: "/ubuntu/cpu_and_ram_requirements.html"
+    - title: Storage and performance requirements
+      url: "/ubuntu/storage_and_performance_requirements.html"
+    - title: Node container migration requirements
+      url: "/ubuntu/node_container_migration_requirements.html"
+    - title: Web browser requirements
+      url: "/ubuntu/web_browser_requirements.html"
+    - title: Deployment tools
+      url: "/ubuntu/deployment_tools.html"
+    - title: Preparing the hosts
+      url: "/ubuntu/preparing_hosts.html"
+      entries:
+      - title: Installing Linux
+        url: "/ubuntu/installing_linux.html"
+      - title: Understanding AppArmor profile installation
+        url: "/ubuntu/understanding_apparmor_profile_installation.html"
+      - title: Configuring the host network
+        url: "/ubuntu/configuring_host_network.html"
+        entries:
+        - title: Considerations and recommendations for MAC address cloning
+          url: "/ubuntu/considerations_and_recommendations_for_mac_address_cloning.html"
+        - title: 'Example 1: 1-to-1 mapping to physical or virtual NICs'
+          url: "/ubuntu/example_1_1_to_1_mapping_to_physical_or_virtual_nics.html"
+        - title: 'Example 2: LACP bond carrying VLANs'
+          url: "/ubuntu/example_2_lacp_bond_carrying_vlans.html"
+      - title: Configuring host storage
+        url: "/ubuntu/configuring_host_storage.html"
+      - title: Configuring the Docker storage volume
+        url: "/ubuntu/configuring_docker_storage_volume.html"
+      - title: Installing Docker
+        url: "/ubuntu/installing_docker.html"
+      - title: Installing StorageGRID host services
+        url: "/ubuntu/installing_storagegrid_webscale_host_services.html"
+  - title: Deploying virtual grid nodes
+    url: "/ubuntu/deploying_virtual_grid_nodes.html"
+    entries:
+    - title: Creating node configuration files
+      url: "/ubuntu/creating_node_configuration_files.html"
+      entries:
+      - title: How grid nodes discover the primary Admin Node
+        url: "/ubuntu/how_grid_nodes_discover_primary_admin_node.html"
+      - title: Example node configuration files
+        url: "/ubuntu/example_node_configuration_files.html"
+    - title: Validating the StorageGRID configuration
+      url: "/ubuntu/validating_storagegrid_configuration.html"
+    - title: Starting the StorageGRID host service
+      url: "/ubuntu/starting_storagegrid_host_service.html"
+  - title: Configuring the grid and completing installation
+    url: "/ubuntu/configuring_grid_and_completing_installation.html"
+    entries:
+    - title: Navigating to the Grid Manager
+      url: "/ubuntu/navigating_to_grid_manager.html"
+    - title: Specifying the StorageGRID license information
+      url: "/ubuntu/specifying_storagegrid_license_information.html"
+    - title: Adding sites
+      url: "/ubuntu/adding_sites.html"
+    - title: Specifying Grid Network subnets
+      url: "/ubuntu/specifying_grid_network_subnets.html"
+    - title: Approving pending grid nodes
+      url: "/ubuntu/approving_pending_grid_nodes.html"
+    - title: Specifying Network Time Protocol server information
+      url: "/ubuntu/specifying_network_time_protocol_server_information.html"
+    - title: Specifying Domain Name System server information
+      url: "/ubuntu/specifying_domain_name_system_server_information.html"
+    - title: Specifying the StorageGRID system passwords
+      url: "/ubuntu/specifying_storagegrid_system_passwords.html"
+    - title: Reviewing your configuration and completing installation
+      url: "/ubuntu/reviewing_your_configuration_and_completing_installation.html"
+    - title: Post-installation guidelines
+      url: "/ubuntu/post_installation_guidelines.html"
+  - title: Automating the installation
+    url: "/ubuntu/automating_installation.html"
+    entries:
+    - title: Automating the installation and configuration of the StorageGRID host
+        service
+      url: "/ubuntu/automating_installation_and_configuration_of_storagegrid_host_service.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/ubuntu/automating_configuration_of_storagegrid.html"
+  - title: Overview of the installation REST API
+    url: "/ubuntu/overview_of_installation_rest_api.html"
+  - title: Where to go next
+    url: "/ubuntu/where_to_go_next.html"
+  - title: Troubleshooting installation issues
+    url: "/ubuntu/troubleshooting_installation_issues.html"
+  - title: Example /etc/network/interfaces
+    url: "/ubuntu/example_etc_network_interfaces.html"
+- title: upgrade
+  url: "/upgrade/index.html"
+  entries:
+  - title: About StorageGRID 11.5
+    url: "/upgrade/about_this_release.html"
+    entries:
+    - title: What&#8217;s new in StorageGRID 11.5
+      url: "/upgrade/whats_new.html"
+    - title: Removed or deprecated features
+      url: "/upgrade/removed_or_deprecated_features.html"
+    - title: Changes to the Grid Management API
+      url: "/upgrade/changes_to_grid_management_api.html"
+    - title: Changes to the Tenant Management API
+      url: "/upgrade/changes_to_tenant_management_api.html"
+  - title: Upgrade planning and preparation
+    url: "/upgrade/upgrade_planning_and_preparation.html"
+    entries:
+    - title: Estimating the time to complete an upgrade
+      url: "/upgrade/estimating_time_to_complete_upgrade.html"
+    - title: How your system is affected during the upgrade
+      url: "/upgrade/how_your_system_is_affected_during_upgrade.html"
+    - title: Impact of an upgrade on groups and user accounts
+      url: "/upgrade/impact_of_upgrade_on_groups_and_user_accounts.html"
+    - title: Verifying the installed version of StorageGRID
+      url: "/upgrade/verifying_installed_version_of_storagegrid.html"
+    - title: Obtaining the required materials for a software upgrade
+      url: "/upgrade/obtaining_required_materials_for_software_upgrade.html"
+      entries:
+      - title: Web browser requirements
+        url: "/upgrade/web_browser_requirements.html"
+    - title: Downloading the StorageGRID upgrade files
+      url: "/upgrade/downloading_storagegrid_upgrade_files.html"
+    - title: Downloading the Recovery Package
+      url: "/upgrade/downloading_recovery_package.html"
+    - title: Checking the system&#8217;s condition before upgrading software
+      url: "/upgrade/checking_systems_condition_before_upgrading_software.html"
+  - title: Performing the upgrade
+    url: "/upgrade/performing_upgrade.html"
+    entries:
+    - title: 'Linux: Installing the RPM or DEB package on all hosts'
+      url: "/upgrade/linux_installing_rpm_or_deb_package_on_all_hosts.html"
+    - title: Starting the upgrade
+      url: "/upgrade/starting_upgrade.html"
+    - title: Upgrading grid nodes and completing the upgrade
+      url: "/upgrade/upgrading_grid_nodes_and_completing_upgrade.html"
+    - title: Increasing the Metadata Reserved Space setting
+      url: "/upgrade/increasing_metadata_reserved_space_setting.html"
+  - title: Troubleshooting upgrade issues
+    url: "/upgrade/troubleshooting_upgrade_issues.html"
+    entries:
+    - title: Troubleshooting user interface issues
+      url: "/upgrade/troubleshooting_user_interface_issues.html"
+    - title: "&#8220;Docker image availability check&#8221; error messages"
+      url: "/upgrade/docker_image_availability_check_error_messages.html"
+- title: vmware
+  url: "/vmware/index.html"
+  entries:
+  - title: Installation overview
+    url: "/vmware/installation_overview.html"
+  - title: Planning and preparation
+    url: "/vmware/planning_and_preparation.html"
+    entries:
+    - title: Required materials
+      url: "/vmware/required_materials.html"
+    - title: Downloading and extracting the StorageGRID installation files
+      url: "/vmware/downloading_and_extracting_storagegrid_installation_files.html"
+    - title: Software requirements
+      url: "/vmware/software_requirements.html"
+    - title: CPU and RAM requirements
+      url: "/vmware/cpu_and_ram_requirements.html"
+    - title: Storage and performance requirements
+      url: "/vmware/storage_and_performance_requirements.html"
+    - title: Web browser requirements
+      url: "/vmware/web_browser_requirements.html"
+  - title: Deploying virtual machine grid nodes in VMware vSphere Web Client
+    url: "/vmware/deploying_virtual_machine_grid_nodes_in_vmware_vsphere_web_client.html"
+    entries:
+    - title: Collecting information about your deployment environment
+      url: "/vmware/collecting_information_about_your_deployment_environment.html"
+    - title: How grid nodes discover the primary Admin Node
+      url: "/vmware/how_grid_nodes_discover_primary_admin_node.html"
+    - title: Deploying a StorageGRID node as a virtual machine
+      url: "/vmware/deploying_storagegrid_node_as_virtual_machine.html"
+  - title: Configuring the grid and completing installation
+    url: "/vmware/configuring_grid_and_completing_installation.html"
+    entries:
+    - title: Navigating to the Grid Manager
+      url: "/vmware/navigating_to_grid_manager.html"
+    - title: Specifying the StorageGRID license information
+      url: "/vmware/specifying_storagegrid_license_information.html"
+    - title: Adding sites
+      url: "/vmware/adding_sites.html"
+    - title: Specifying Grid Network subnets
+      url: "/vmware/specifying_grid_network_subnets.html"
+    - title: Approving pending grid nodes
+      url: "/vmware/approving_pending_grid_nodes.html"
+    - title: Specifying Network Time Protocol server information
+      url: "/vmware/specifying_network_time_protocol_server_information.html"
+    - title: Specifying Domain Name System server information
+      url: "/vmware/specifying_domain_name_system_server_information.html"
+    - title: Specifying the StorageGRID system passwords
+      url: "/vmware/specifying_storagegrid_system_passwords.html"
+    - title: Reviewing your configuration and completing installation
+      url: "/vmware/reviewing_your_configuration_and_completing_installation.html"
+    - title: Post-installation guidelines
+      url: "/vmware/post_installation_guidelines.html"
+  - title: Automating the installation
+    url: "/vmware/automating_installation.html"
+    entries:
+    - title: Automating grid node deployment in VMware vSphere
+      url: "/vmware/automating_grid_node_deployment_in_vmware_vsphere.html"
+      entries:
+      - title: Defining the configuration file for your deployment
+        url: "/vmware/defining_configuration_file_for_your_deployment.html"
+        entries:
+        - title: Configuration file settings
+          url: "/vmware/configuration_file_settings.html"
+      - title: Running the Bash script
+        url: "/vmware/running_bash_script.html"
+    - title: Automating the configuration of StorageGRID
+      url: "/vmware/automating_configuration_of_storagegrid.html"
+  - title: Overview of the installation REST API
+    url: "/vmware/overview_of_installation_rest_api.html"
+  - title: Where to go next
+    url: "/vmware/where_to_go_next.html"
+  - title: Troubleshooting installation issues
+    url: "/vmware/troubleshooting_installation_issues.html"
+    entries:
+    - title: Virtual machine resource reservation requires adjustment
+      url: "/vmware/virtual_machine_resource_reservation_requires_adjustment.html"

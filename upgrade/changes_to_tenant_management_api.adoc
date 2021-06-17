@@ -1,0 +1,24 @@
+---
+permalink: upgrade/changes_to_tenant_management_api.html
+sidebar: sidebar
+keywords: 
+summary: 'StorageGRID 11.5 uses version 3 of the Tenant Management API. Version 3 deprecates version 2; however, version 1 and version 2 are still supported.'
+---
+= Changes to the Tenant Management API
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+StorageGRID 11.5 uses version 3 of the Tenant Management API. Version 3 deprecates version 2; however, version 1 and version 2 are still supported.
+
+IMPORTANT: You can continue to use version 1 and version 2 of the management API with StorageGRID 11.5; however, support for these versions of the API will be removed in a future release of StorageGRID. After upgrading to StorageGRID 11.5, the deprecated v1 and v2 APIs can be deactivated using the `PUT /grid/config/management` API.
+
+== New parameter for tenant Storage Usage API
+
+The `GET /org/usage` API now has a `strictConsistency` parameter. To enforce a strong-global consistency when retrieving storage usage information across Storage Nodes, set this parameter to `true`. When this parameter is set to `false` (default), StorageGRID attempts to retrieve usage information using strong-global consistency, but falls back to strong-site consistency if strong-global consistency cannot be met.
+
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]

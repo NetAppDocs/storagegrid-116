@@ -1,0 +1,54 @@
+---
+permalink: s3/index.html
+sidebar: sidebar
+keywords: 
+summary: ''
+---
+= S3 (Simple Storage Service) Implementation Guide
+:icons: font
+:imagesdir: ../media/
+
+* xref:support_for_s3_rest_api.adoc[Support for the S3 REST API]
+ ** xref:changes_to_s3_rest_api_support.adoc[Changes to S3 REST API support]
+ ** xref:supported_versions.adoc[Supported versions]
+ ** xref:support_for_storagegrid_platform_services.adoc[Support for StorageGRID platform services]
+* link:configuring_tenant_accounts_and_connections.md#configuring_tenant_accounts_and_connections[Configuring tenant accounts and connections]
+* xref:how_storagegrid_implements_s3_rest_api.adoc[How StorageGRID implements the S3 REST API]
+ ** xref:conflicting_client_requests.adoc[Conflicting client requests]
+ ** xref:consistency_controls.adoc[Consistency controls]
+ ** xref:how_storagegrid_ilm_rules_manage_objects.adoc[How StorageGRID ILM rules manage objects]
+ ** xref:object_versioning.adoc[Object versioning]
+ ** xref:recommendations_for_implementing_s3_rest_api.adoc[Recommendations for implementing the S3 REST API]
+* link:s3_rest_api_supported_operations_and_limitations.md#s3_rest_api_supported_operations_and_limitations[S3 REST API supported operations and limitations]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#date_handling[Date handling]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#common_request_headers[Common request headers]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#common_response_headers[Common response headers]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#authenticating_requests[Authenticating requests]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#operations_on_service[Operations on the service]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#operations_on_buckets[Operations on buckets]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#creating_s3_lifecycle_configuration[Creating an S3 lifecycle configuration]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#custom_operations_on_buckets[Custom operations on buckets]
+ ** link:s3_rest_api_supported_operations_and_limitations.md#operations_on_objects[Operations on objects]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#using_s3_object_lock[Using S3 Object Lock]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#using_server_side_encryption[Using server-side encryption]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#get_object[GET Object]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#head_object[HEAD Object]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#post_object_restore[POST Object restore]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#put_object[PUT Object]
+  *** link:s3_rest_api_supported_operations_and_limitations.md#put_object_copy[PUT Object - Copy]
+* link:storagegrid_s3_rest_api_operations.md#storagegrid_s3_rest_api_operations[StorageGRID S3 REST API operations]
+* link:bucket_and_group_access_policies.md#bucket_and_group_access_policies[Bucket and group access policies]
+* link:configuring_security_for_rest_api.md#configuring_security_for_rest_api[Configuring security for the REST API]
+* xref:monitoring_and_auditing_operations.adoc[Monitoring and auditing operations]
+ ** xref:monitoring_object_ingest_and_retrieval_rates.adoc[Monitoring object ingest and retrieval rates]
+ ** xref:accessing_and_reviewing_audit_logs.adoc[Accessing and reviewing audit logs]
+  *** xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
+* xref:benefits_of_active_idle_and_concurrent_http_connections.adoc[Benefits of active, idle, and concurrent HTTP connections]
+ ** xref:benefits_of_keeping_idle_http_connections_open.adoc[Benefits of keeping idle HTTP connections open]
+ ** xref:benefits_of_active_http_connections.adoc[Benefits of active HTTP connections]
+ ** xref:benefits_of_concurrent_http_connections.adoc[Benefits of concurrent HTTP connections]
+ ** xref:separation_of_http_connection_pools_for_read_and_write_operations.adoc[Separation of HTTP connection pools for read and write operations]
+* xref:copyright_and_trademark.adoc[Copyright, trademark, and machine translation]
+ ** xref:copyright.adoc[Copyright]
+ ** xref:trademark.adoc[Trademark]
+ ** xref:machine_translation_disclaimer.adoc[Machine translation]

@@ -1,0 +1,117 @@
+---
+permalink: upgrade/estimating_time_to_complete_upgrade.html
+sidebar: sidebar
+keywords: 
+summary: 'When planning an upgrade to StorageGRID 11.5, you must consider when to upgrade, based on how long the upgrade might take. You must also be aware of which operations you can and cannot perform during each stage of the upgrade.'
+---
+= Estimating the time to complete an upgrade
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When planning an upgrade to StorageGRID 11.5, you must consider when to upgrade, based on how long the upgrade might take. You must also be aware of which operations you can and cannot perform during each stage of the upgrade.
+
+The time required to complete a StorageGRID upgrade depends on a variety of factors such as client load and hardware performance.
+
+The table summarizes the main upgrade tasks and lists the approximate time required for each task. The steps after the table provide instructions you can use to estimate the upgrade time for your system.
+
+IMPORTANT: During the upgrade from StorageGRID 11.4 to 11.5, Cassandra database tables on Storage Nodes will be upgraded. The *Upgrade Database* task occurs in the background, but might require an extensive amount of time to complete. While the database is being upgraded, you can safely use new features, apply hotfixes, and perform node recovery operations. However, you might be prevented from performing other maintenance procedures.
+
+NOTE: If an expansion is urgently required, perform the expansion before upgrading to 11.5.
+
+|===
+| Upgrade task| Description| Approximate time required| During this task
+a|
+Start Upgrade Service
+a|
+Upgrade prechecks are run, the software file is distributed, and the upgrade service is started.
+a|
+3 minutes per grid node, unless validation errors are reported
+a|
+As required, you can run the upgrade prechecks manually before the scheduled upgrade maintenance window.
+a|
+Upgrade Grid Nodes (primary Admin Node)
+a|
+The primary Admin Node is stopped, upgraded, and restarted.
+a|
+Up to 30 minutes
+a|
+You cannot access the primary Admin Node. Connection errors are reported, which you can ignore.
+a|
+Upgrade Grid Nodes (all other nodes)
+a|
+The software on all other grid nodes is upgraded, in the order in which you approve the nodes. Every node in your system will be brought down one at a time for several minutes each.
+a|
+15 to 45 minutes per node, with appliance Storage Nodes requiring the most time *Note:* For appliance nodes, the StorageGRID Appliance Installer is automatically updated to the latest release.
+
+a|
+
+* Do not change the grid configuration.
+* Do not change the audit level configuration.
+* Do not update the ILM configuration.
+* Do not perform another maintenance procedure, such as hotfix, decommission, or expansion.
++
+NOTE: If you need to perform a recovery procedure, contact technical support.
+
+a|
+Enable Features
+a|
+The new features for the new version are enabled.
+a|
+Less than 5 minutes
+a|
+
+* Do not change the grid configuration.
+* Do not change the audit level configuration.
+* Do not update the ILM configuration.
+* Do not perform another maintenance procedure.
+
+a|
+Upgrade Database
+a|
+Cassandra database tables, which exist on all Storage Nodes, are upgraded.
+a|
+Hours or days, based on the amount of metadata in your system
+a|
+During the *Upgrade Database* task, the upgraded grid will operate normally; however, the upgrade will still be in progress. During this task, you can:
+
+* Use the new features in the new StorageGRID version.
+* Change the audit level configuration.
+* Update the ILM configuration.
+* Apply a hotfix.
+* Recover a node.
+
+NOTE: You cannot perform a decommission or expansion procedure until the *Final Upgrade Steps* complete.
+
+a|
+Final Upgrade Steps
+a|
+Temporary files are removed and the upgrade to the new release completes.
+a|
+5 minutes
+a|
+When the *Final Upgrade Steps* task completes, you can perform all maintenance procedures.
+|===
+
+. Estimate the time required to upgrade all grid nodes (consider all upgrade tasks except for *Upgrade Database*).
+ .. Multiply the number of nodes in your StorageGRID system by 30 minutes/node (average).
+ .. Add 1 hour to this time to account for the time required to download the.upgrade file, run precheck validations, and complete the final upgrade steps.
+. If you have Linux nodes, add 15 minutes for each node to account for the time required to download and install the RPM or DEB package.
+. Estimate the time required to upgrade the database.
+ .. From the Grid Manager, select *Nodes*.
+ .. Select the first entry in the tree (entire grid), and select the *Storage* tab.
+ .. Hover your cursor over the *Storage Used - Object Metadata* chart, and locate the *Used* value, which indicates how many bytes of object metadata are on your grid.
+ .. Divide the *Used* value by 1.5 TB/day to determine how many days will be needed to upgrade the database.
+. Calculate the total estimated time for the upgrade by adding the results of steps 1, 2, and 3.
+
+== Example: Estimating the time to upgrade from StorageGRID 11.4 to 11.5
+
+Suppose your system has 14 grid nodes, of which 8 are Linux nodes. Also, assume that the *Used* value for object metadata is 6 TB.
+
+. Multiply 14 by 30 minutes/node and add 1 hour. The estimated time to upgrade all nodes is 8 hours.
+. Multiple 8 by 15 minutes/node to account for the time to install the RPM or DEB package on the Linux nodes. The estimated time for this step is 2 hours.
+. Divide 6 by 1.5 TB/day. The estimated number of days for the *Upgrade Database* task is 4 days.
++
+NOTE: While the *Upgrade Database* task is running, you can safely use new features, apply hotfixes, and perform node recovery operations.
+
+. Add the values together. You should allow 5 days to complete the upgrade of your system to StorageGRID 11.5.0.
