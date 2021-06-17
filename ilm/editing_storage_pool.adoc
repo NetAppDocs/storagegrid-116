@@ -1,0 +1,37 @@
+---
+permalink: ilm/editing_storage_pool.html
+sidebar: sidebar
+keywords: 
+summary: 'You can edit a storage pool to change its name or to update sites and storage grades.'
+---
+= Editing a storage pool
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can edit a storage pool to change its name or to update sites and storage grades.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have specific access permissions.
+* You must have reviewed the guidelines for creating storage pools.
+* If you plan to edit a storage pool that is used by a rule in the active ILM policy, you must have considered how your changes will affect object data placement.
+
+If you are adding a new storage grade to a storage pool that is used in the active ILM policy, be aware that the Storage Nodes in the new storage grade will not be used automatically. To force StorageGRID to use a new storage grade, you must activate a new ILM policy after saving the edited storage pool.
+
+. Select *ILM* > *Storage Pools*.
++
+The Storage Pools page appears.
+
+. Select the radio button for the storage pool you want to edit.
++
+You cannot edit the All Storage Nodes storage pool.
+
+. Select *Edit*.
+. As required, change the storage pool name.
+. As required, select other sites and storage grades.
++
+NOTE: You are prevented from changing the site or storage grade if the storage pool is used in an Erasure Coding profile and the change would cause the erasure-coding scheme to become invalid. For example, if a storage pool used in a Erasure Coding profile currently includes a storage grade with only one site, you are prevented from using a storage grade with two sites since the change would make the erasure-coding scheme invalid.
+
+. Select *Save*.
+
+If you added a new storage grade to a storage pool used in the active ILM policy, activate a new ILM policy to force StorageGRID to use the new storage grade. For example, clone your existing ILM policy and then activate the clone.

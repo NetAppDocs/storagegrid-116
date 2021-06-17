@@ -1,0 +1,31 @@
+---
+permalink: upgrade/impact_of_upgrade_on_groups_and_user_accounts.html
+sidebar: sidebar
+keywords: 
+summary: 'You must understand the impact of the StorageGRID upgrade, so that you can update groups and user accounts appropriately after the upgrade is complete.'
+---
+= Impact of an upgrade on groups and user accounts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must understand the impact of the StorageGRID upgrade, so that you can update groups and user accounts appropriately after the upgrade is complete.
+
+== Changes to group permissions and options
+
+After upgrading to StorageGRID 11.5, optionally select the following new permissions and options (*Configuration* > *Access Control* > *Admin Groups*).
+
+|===
+| Permission or option| Description
+a|
+Storage Appliance Administrator
+a|
+Required to access the SANtricity System Manager user interface from Grid Manager.
+a|
+Access Mode
+a|
+When managing groups, you can select *Read-only* for this new option to prevent users from changing the settings and features that are selected for the group. Users in groups with read-only access mode can view settings, but they cannot change them.
+|===
+*Related information*
+
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

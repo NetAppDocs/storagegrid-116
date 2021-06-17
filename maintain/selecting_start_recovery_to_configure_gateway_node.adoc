@@ -1,0 +1,43 @@
+---
+permalink: maintain/selecting_start_recovery_to_configure_gateway_node.html
+sidebar: sidebar
+keywords: 
+summary: 'After replacing a Gateway Node, you must select Start Recovery in the Grid Manager to configure the new node as a replacement for the failed node.'
+---
+= Selecting Start Recovery to configure a Gateway Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After replacing a Gateway Node, you must select Start Recovery in the Grid Manager to configure the new node as a replacement for the failed node.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have the Maintenance or Root Access permission.
+* You must have the provisioning passphrase.
+* You must have deployed and configured the replacement node.
+
+. From the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Recovery*.
+. Select the grid node you want to recover in the Pending Nodes list.
++
+Nodes appear in the list after they fail, but you cannot select a node until it has been reinstalled and is ready for recovery.
+
+. Enter the *Provisioning Passphrase*.
+. Click *Start Recovery*.
++
+image::../media/4b_select_recovery_node.png[screenshot showing the Maintenance > Recovery page]
+
+. Monitor the progress of the recovery in the Recovering Grid Node table.
++
+NOTE: While the recovery procedure is running, you can click *Reset* to start a new recovery. An Info dialog box appears, indicating that the node will be left in an indeterminate state if you reset the procedure.
++
+image::../media/recovery_reset_warning.gif[screenshot showing the reset recovery warning dialog box]
++
+If you want to retry the recovery after resetting the procedure, you must restore the node to a pre-installed state, as follows:
+
+ ** *VMware*: Delete the deployed virtual grid node. Then, when you are ready to restart the recovery, redeploy the node.
+ ** *Linux*: Restart the node by running this command on the Linux host: `storagegrid node force-recovery node-name`
+ ** *Appliance*: If you want to retry the recovery after resetting the procedure, you must restore the appliance node to a pre-installed state by running `sgareinstall` on the node.
+
+*Related information*
+
+xref:preparing_appliance_for_reinstallation_platform_replacement_only.adoc[Preparing an appliance for reinstallation (platform replacement only)]

@@ -1,0 +1,45 @@
+---
+permalink: admin/specifying_node_client_network_is_untrusted.html
+sidebar: sidebar
+keywords: 
+summary: 'If you are using a Client Network, you can specify whether each node’s Client Network is trusted or untrusted. You can also specify the default setting for new nodes added in an expansion.'
+---
+= Specifying a node's Client Network is untrusted
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you are using a Client Network, you can specify whether each node's Client Network is trusted or untrusted. You can also specify the default setting for new nodes added in an expansion.
+
+* You must be signed in to the Grid Manager using a supported browser.
+* You must have the Root Access permission.
+* If you want an Admin Node or Gateway Node to accept inbound traffic only on explicitly configured endpoints, you have defined the load balancer endpoints.
++
+NOTE: Existing client connections might fail if load balancer endpoints have not been configured.
+
+. Select *Configuration* > *Network Settings* > *Untrusted Client Network*.
++
+The Untrusted Client Networks page appears.
++
+This page lists all nodes in your StorageGRID system. The Unavailable Reason column includes an entry if the Client Network on the node must be trusted.
++
+image::../media/untrusted_client_networks_page.png[Untrusted Client Networks]
+
+. In the Set New Node Default section, specify what the default setting should be when new nodes are added to the grid in an expansion procedure.
+ ** *Trusted*: When a node is added in an expansion, its Client Network is trusted.
+ ** *Untrusted*: When a node is added in an expansion, its Client Network is untrusted.
+As required, you can return to this page to change the setting for a specific new node.
+
++
+NOTE: This setting does not affect the existing nodes in your StorageGRID system.
+. In the *Select Untrusted Client Network Nodes* section, select the nodes that should allow client connections only on explicitly configured load balancer endpoints.
++
+You can select or unselect the check box in the title to select or unselect all nodes.
+
+. Click *Save*.
++
+The new firewall rules are immediately added and enforced. Existing client connections might fail if load balancer endpoints have not been configured.
+
+*Related information*
+
+link:configuring_load_balancer_endpoints.md#[Creating load balancer endpoints]

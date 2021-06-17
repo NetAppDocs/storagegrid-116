@@ -1,0 +1,53 @@
+---
+permalink: fabricpool/best_practices_for_load_balancing.html
+sidebar: sidebar
+keywords: 
+summary: 'Before attaching StorageGRID as a FabricPool cloud tier, you use the StorageGRID Grid Manager to configure at least one load balancer endpoint.'
+---
+= Best practices for load balancing
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before attaching StorageGRID as a FabricPool cloud tier, you use the StorageGRID Grid Manager to configure at least one load balancer endpoint.
+
+== What load balancing is
+
+When data is tiered from FabricPool to a StorageGRID system, StorageGRID uses a load balancer to manage the ingest and retrieval workload. Load balancing maximizes speed and connection capacity by distributing the FabricPool workload across multiple Storage Nodes.
+
+The StorageGRID Load Balancer service is installed on all Admin Nodes and all Gateway Nodes and provides Layer 7 load balancing. It performs Transport Layer Security (TLS) termination of client requests, inspects the requests, and establishes new secure connections to the Storage Nodes.
+
+The Load Balancer service on each node operates independently when forwarding client traffic to the Storage Nodes. Through a weighting process, the Load Balancer service routes more requests to Storage Nodes with higher CPU availability.
+
+Although the StorageGRID Load Balancer service is the recommended load balancing mechanism, you might want to integrate a third-party load balancer instead. For information, contact your NetApp account representative or refer to the following technical report:
+
+https://www.netapp.com/pdf.html?item=/media/17068-tr4626pdf.pdf[StorageGRID Load Balancer Options]
+
+NOTE: The separate Connection Load Balancer (CLB) service on Gateway Nodes is deprecated and no longer recommended for use with FabricPool.
+
+== Best practices for StorageGRID load balancing
+
+As a general best practice, each site in your StorageGRID system should include two or more nodes with the Load Balancer service. For example, a site might include both an Admin Node and a Gateway Node or even two Admin Nodes. Make sure that there is adequate networking, hardware, or virtualization infrastructure for each load-balancing node, whether you are using SG100 or SG1000 services appliances, bare metal nodes, or virtual machine (VM) based nodes.
+
+You must configure a StorageGRID load balancer endpoint to define the port that Gateway Nodes and Admin Nodes will use for incoming and outgoing FabricPool requests.
+
+== Best practices for the load balancer endpoint certificate
+
+When creating a load balancer endpoint for use with FabricPool, you must use HTTPS as the protocol. You can then either upload a certificate that is signed by either a publicly trusted or a private Certificate Authority (CA), or you can generate a self-signed certificate. The certificate allows ONTAP to authenticate with StorageGRID.
+
+As a best practice, you should use a CA server certificate to secure the connection. Certificates signed by a CA can be rotated nondisruptively.
+
+When requesting a CA certificate for use with the load balancer endpoint, ensure that the domain name on the certificate matches the server name you enter in ONTAP for that load balancer endpoint. If possible, use a wildcard (*) to allow for virtual-host-style URLs. For example:
+
+----
+*.s3.storagegrid.company.com
+----
+
+When you add StorageGRID as a FabricPool cloud tier, you must install the same certificate to the ONTAP cluster, as well as the root and any subordinate certificate authority (CA) certificates.
+
+NOTE: StorageGRID uses server certificates for a number of purposes. If you are connecting to the Load Balancer service, you do not need to upload the Object Storage API Service Endpoints Server Certificate.
+
+To learn more about the server certificate for a load balancing endpoint:
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID] > Managing load balancing
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-harden/home.html[StorageGRID system hardening] > Hardening guidelines for server certificates
