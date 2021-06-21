@@ -1,7 +1,7 @@
 ---
 permalink: network/external_communications.html
 sidebar: sidebar
-keywords: 
+keywords: external communications, ports, TCP, UDP, client communications
 summary: 'Clients need to communicate with grid nodes to ingest and retrieve content. The ports used depends on the object storage protocols chosen. These ports need to be accessible to the client.'
 ---
 = External communications
@@ -19,461 +19,409 @@ The following table shows the ports used for traffic into the nodes.
 
 NOTE: This list does not include ports that might be configured as load balancer endpoints. For more information, see the instructions for configuring load balancer endpoints.
 
+[cols="1a,1a,1a,1a,1a,2a" options="header"]
 |===
 | Port| TCP or UDP| Protocol| From| To| Details
-a|
-22
-a|
-TCP
-a|
-SSH
-a|
-Service laptop
-a|
-All nodes
-a|
-SSH or console access is required for procedures with console steps. Optionally, you can use port 2022 instead of 22.
-a|
-25
-a|
-TCP
-a|
-SMTP
-a|
-Admin Nodes
-a|
-Email server
-a|
-Used for alerts and email-based AutoSupport. You can override the default port setting of 25 using the Email Servers page.
-a|
-53
-a|
-TCP/ UDP
-a|
-DNS
-a|
-All nodes
-a|
-DNS servers
-a|
-Used for domain name system.
-a|
-67
-a|
-UDP
-a|
-DHCP
-a|
-All nodes
-a|
-DHCP service
-a|
-Optionally used to support DHCP-based network configuration. The dhclient service does not run for statically-configured grids.
-a|
-68
-a|
-UDP
-a|
-DHCP
-a|
-DHCP service
-a|
-All nodes
-a|
-Optionally used to support DHCP-based network configuration. The dhclient service does not run for grids that use static IP addresses.
-a|
-80
-a|
-TCP
-a|
-HTTP
-a|
-Browser
-a|
-Admin Nodes
-a|
-Port 80 redirects to port 443 for the Admin Node user interface.
-a|
-Browser
-a|
-Appliances
-a|
-Port 80 redirects to port 8443 for the StorageGRID Appliance Installer.
-a|
-Storage Nodes with ADC
-a|
-AWS
-a|
-Used for platform services messages sent to AWS or other external services that use HTTP. Tenants can override the default HTTP port setting of 80 when creating an endpoint.
-a|
-Storage Nodes
-a|
-AWS
-a|
-Cloud Storage Pools requests sent to AWS targets that use HTTP. Grid administrators can override the default HTTP port setting of 80 when configuring a Cloud Storage Pool.
-a|
-111
-a|
-TCP/ UDP
-a|
-RPCBind
-a|
-NFS client
-a|
-Admin Nodes
-a|
-Used by NFS-based audit export (portmap).*Note:* This port is required only if NFS-based audit export is enabled.
 
-a|
-123
-a|
-UDP
-a|
-NTP
-a|
-Primary NTP nodes
-a|
-External NTP
-a|
-Network time protocol service. Nodes selected as primary NTP sources also synchronize clock times with the external NTP time sources.
-a|
-137
-a|
-UDP
-a|
-NetBIOS
-a|
-SMB client
-a|
-Admin Nodes
-a|
-Used by SMB-based audit export for clients that require NetBIOS support.*Note:* This port is required only if SMB-based audit export is enabled.
+|22
+|TCP
+|SSH
+|Service laptop
+|All nodes
+|SSH or console access is required for procedures with console steps. Optionally, you can use port 2022 instead of 22.
 
-a|
-138
-a|
-UDP
-a|
-NetBIOS
-a|
-SMB client
-a|
-Admin Nodes
-a|
-Used by SMB-based audit export for clients that require NetBIOS support.*Note:* This port is required only if SMB-based audit export is enabled.
 
-a|
+|25
+|TCP
+|SMTP
+|Admin Nodes
+|Email server
+|Used for alerts and email-based AutoSupport. You can override the default port setting of 25 using the Email Servers page.
+
+|53
+|TCP/ UDP
+|DNS
+|All nodes
+|DNS servers
+|Used for domain name system.
+
+|67
+|UDP
+|DHCP
+|All nodes
+|DHCP service
+|Optionally used to support DHCP-based network configuration. The dhclient service does not run for statically-configured grids.
+
+|68
+|UDP
+|DHCP
+|DHCP service
+|All nodes
+|Optionally used to support DHCP-based network configuration. The dhclient service does not run for grids that use static IP addresses.
+
+|80
+|TCP
+|HTTP
+|Browser
+|Admin Nodes
+|Port 80 redirects to port 443 for the Admin Node user interface.
+
+|80
+|TCP
+|HTTP
+|Browser
+|Appliances
+|Port 80 redirects to port 8443 for the StorageGRID Appliance Installer.
+
+|80
+|TCP
+|HTTP
+|Storage Nodes with ADC
+|AWS
+|Used for platform services messages sent to AWS or other external services that use HTTP. Tenants can override the default HTTP port setting of 80 when creating an endpoint.
+
+
+|80
+|TCP
+|HTTP
+|Storage Nodes
+|AWS
+|Cloud Storage Pools requests sent to AWS targets that use HTTP. Grid administrators can override the default HTTP port setting of 80 when configuring a Cloud Storage Pool.
+
+|111
+|TCP/ UDP
+|RPCBind
+|NFS client
+|Admin Nodes
+|Used by NFS-based audit export (portmap). *Note:* This port is required only if NFS-based audit export is enabled.
+
+|123
+|UDP
+|NTP
+|Primary NTP nodes
+|External NTP
+|Network time protocol service. Nodes selected as primary NTP sources also synchronize clock times with the external NTP time sources.
+
+|137
+|UDP
+|NetBIOS
+|SMB client
+|Admin Nodes
+|Used by SMB-based audit export for clients that require NetBIOS support. *Note:* This port is required only if SMB-based audit export is enabled.
+
+|138
+|UDP
+|NetBIOS
+|SMB client
+|Admin Nodes
+|Used by SMB-based audit export for clients that require NetBIOS support.*Note:* This port is required only if SMB-based audit export is enabled.
+
+|
 139
-a|
+|
 TCP
-a|
+|
 SMB
-a|
+|
 SMB client
-a|
+|
 Admin Nodes
-a|
-Used by SMB-based audit export for clients that require NetBIOS support.*Note:* This port is required only if SMB-based audit export is enabled.
+|
+Used by SMB-based audit export for clients that require NetBIOS support. *Note:* This port is required only if SMB-based audit export is enabled.
 
-a|
+|
 161
-a|
+|
 TCP/ UDP
-a|
+|
 SNMP
-a|
+|
 SNMP client
-a|
+|
 All nodes
-a|
-Used for SNMP polling. All nodes provide basic information; Admin Nodes also provide alert and alarm data.Defaults to UDP port 161 when configured.
+|
+Used for SNMP polling. All nodes provide basic information; Admin Nodes also provide alert and alarm data. Defaults to UDP port 161 when configured. *Note:* This port is only required, and is only opened on the node firewall if SNMP is configured. If you plan to use SNMP, you can configure alternate ports. *Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
 
-NOTE: This port is only required, and is only opened on the node firewall if SNMP is configured. If you plan to use SNMP, you can configure alternate ports.
-
-NOTE: For information about using SNMP with StorageGRID, contact your NetApp account representative.
-
-a|
+|
 162
-a|
+|
 TCP/ UDP
-a|
+|
 SNMP Notifications
-a|
+|
 All nodes
-a|
+|
 Notification destinations
-a|
-Outbound SNMP notifications and traps default to UDP port 162. *Note:* This port is only required if SNMP is enabled and notification destinations are configured. If you plan to use SNMP, you can configure alternate ports.
+|
+Outbound SNMP notifications and traps default to UDP port 162. *Note:* This port is only required if SNMP is enabled and notification destinations are configured. If you plan to use SNMP, you can configure alternate ports. *Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
 
-NOTE: For information about using SNMP with StorageGRID, contact your NetApp account representative.
-
-a|
+|
 389
-a|
+|
 TCP/ UDP
-a|
+|
 LDAP
-a|
+|
 Storage Nodes with ADC
-a|
+|
 Active Directory/LDAP
-a|
+|
 Used for connecting to an Active Directory or LDAP server for Identity Federation.
-a|
-443
-a|
-TCP
-a|
-HTTPS
-a|
-Browser
-a|
-Admin Nodes
-a|
-Used by web browsers and management API clients for accessing the Grid Manager and Tenant Manager.
-a|
-Admin Nodes
-a|
-Active Directory
-a|
-Used by Admin Nodes connecting to Active Directory if single sign-on (SSO) is enabled.
-a|
-Archive Nodes
-a|
-Amazon S3
-a|
-Used for accessing Amazon S3 from Archive Nodes.
-a|
-Storage Nodes with ADC
-a|
-AWS
-a|
-Used for platform services messages sent to AWS or other external services that use HTTPS. Tenants can override the default HTTP port setting of 443 when creating an endpoint.
-a|
-Storage Nodes
-a|
-AWS
-a|
-Cloud Storage Pools requests sent to AWS targets that use HTTPS. Grid administrators can override the default HTTPS port setting of 443 when configuring a Cloud Storage Pool.
-a|
+
+|443
+|TCP
+|HTTPS
+|Browser
+|Admin Nodes
+|Used by web browsers and management API clients for accessing the Grid Manager and Tenant Manager.
+
+|443
+|TCP
+|HTTPS
+|Admin Nodes
+|Active Directory
+|Used by Admin Nodes connecting to Active Directory if single sign-on (SSO) is enabled.
+
+|443
+|TCP
+|HTTPS
+|Archive Nodes
+|Amazon S3
+|Used for accessing Amazon S3 from Archive Nodes.
+
+|443
+|TCP
+|HTTPS
+|Storage Nodes with ADC
+|AWS
+|Used for platform services messages sent to AWS or other external services that use HTTPS. Tenants can override the default HTTP port setting of 443 when creating an endpoint.
+
+|443
+|TCP
+|HTTPS
+|Storage Nodes
+|AWS
+|Cloud Storage Pools requests sent to AWS targets that use HTTPS. Grid administrators can override the default HTTPS port setting of 443 when configuring a Cloud Storage Pool.
+
+|
 445
-a|
+|
 TCP
-a|
+|
 SMB
-a|
+|
 SMB client
-a|
+|
 Admin Nodes
-a|
-Used by SMB-based audit export.*Note:* This port is required only if SMB-based audit export is enabled.
+|
+Used by SMB-based audit export. *Note:* This port is required only if SMB-based audit export is enabled.
 
-a|
+|
 903
-a|
+|
 TCP
-a|
+|
 NFS
-a|
+|
 NFS client
-a|
+|
 Admin Nodes
-a|
-Used by NFS-based audit export (`rpc.mountd`).*Note:* This port is required only if NFS-based audit export is enabled.
+|
+Used by NFS-based audit export (`rpc.mountd`). *Note:* This port is required only if NFS-based audit export is enabled.
 
-a|
+|
 2022
-a|
+|
 TCP
-a|
+|
 SSH
-a|
+|
 Service laptop
-a|
+|
 All nodes
-a|
+|
 SSH or console access is required for procedures with console steps. Optionally, you can use port 22 instead of 2022.
-a|
+|
 2049
-a|
+|
 TCP
-a|
+|
 NFS
-a|
+|
 NFS client
-a|
+|
 Admin Nodes
-a|
-Used by NFS-based audit export (nfs).*Note:* This port is required only if NFS-based audit export is enabled.
+|
+Used by NFS-based audit export (nfs). *Note:* This port is required only if NFS-based audit export is enabled.
 
-a|
+|
 5696
-a|
+|
 TCP
-a|
+|
 KMIP
-a|
+|
 Appliance
-a|
+|
 KMS
-a|
+|
 Key Management Interoperability Protocol (KMIP) external traffic from appliances configured for node encryption to the Key Management Server (KMS), unless a different port is specified on the KMS configuration page of the StorageGRID Appliance Installer.
-a|
+|
 8022
-a|
+|
 TCP
-a|
+|
 SSH
-a|
+|
 Service laptop
-a|
+|
 All nodes
-a|
+|
 SSH on port 8022 grants access to the base operating system on appliance and virtual node platforms for support and troubleshooting. This port is not used for Linux-based (bare metal) nodes and is not required to be accessible between grid nodes or during normal operations.
-a|
+|
 8082
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 S3 clients
-a|
+|
 Gateway Nodes
-a|
+|
 S3-related external traffic to Gateway Nodes (HTTPS).
-a|
+|
 8083
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 Swift clients
-a|
+|
 Gateway Nodes
-a|
+|
 Swift-related external traffic to Gateway Nodes (HTTPS).
-a|
+|
 8084
-a|
+|
 TCP
-a|
+|
 HTTP
-a|
+|
 S3 clients
-a|
+|
 Gateway Nodes
-a|
+|
 S3-related external traffic to Gateway Nodes (HTTP).
-a|
+|
 8085
-a|
+|
 TCP
-a|
+|
 HTTP
-a|
+|
 Swift clients
-a|
+|
 Gateway Nodes
-a|
+|
 Swift-related external traffic to Gateway Nodes (HTTP).
-a|
+|
 8443
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 Browser
-a|
+|
 Admin Nodes
-a|
+|
 Optional. Used by web browsers and management API clients for accessing the Grid Manager. Can be used to separate Grid Manager and Tenant Manager communications.
-a|
+|
 9022
-a|
+|
 TCP
-a|
+|
 SSH
-a|
+|
 Service laptop
-a|
+|
 Appliances
-a|
+|
 Grants access to StorageGRID appliances in pre-configuration mode for support and troubleshooting. This port is not required to be accessible between grid nodes or during normal operations.
-a|
+|
 9091
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 External Grafana service
-a|
+|
 Admin Nodes
-a|
-Used by external Grafana services for secure access to the StorageGRID Prometheus service.*Note:* This port is required only if certificate-based Prometheus access is enabled.
+|
+Used by external Grafana services for secure access to the StorageGRID Prometheus service. *Note:* This port is required only if certificate-based Prometheus access is enabled.
 
-a|
+|
 9443
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 Browser
-a|
+|
 Admin Nodes
-a|
+|
 Optional. Used by web browsers and management API clients for accessing the Tenant Manager. Can be used to separate Grid Manager and Tenant Manager communications.
-a|
+|
 18082
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 S3 clients
-a|
+|
 Storage Nodes
-a|
+|
 S3-related external traffic to Storage Nodes (HTTPS).
-a|
+|
 18083
-a|
+|
 TCP
-a|
+|
 HTTPS
-a|
+|
 Swift clients
-a|
+|
 Storage Nodes
-a|
+|
 Swift-related external traffic to Storage Nodes (HTTPS).
-a|
+|
 18084
-a|
+|
 TCP
-a|
+|
 HTTP
-a|
+|
 S3 clients
-a|
+|
 Storage Nodes
-a|
+|
 S3-related external traffic to Storage Nodes (HTTP).
-a|
+|
 18085
-a|
+|
 TCP
-a|
+|
 HTTP
-a|
+|
 Swift clients
-a|
+|
 Storage Nodes
-a|
+|
 Swift-related external traffic to Storage Nodes (HTTP).
 |===
 *Related information*
