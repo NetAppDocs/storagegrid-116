@@ -17,7 +17,6 @@ Object data is managed by the LDR service.
 
 == Content protection: replication
 
-[.lead]
 If an ILM rule's content placement instructions require replicated copies of object data, copies are made and stored to disk by the Storage Nodes that make up the configured storage pool.
 
 === Data flow
@@ -34,7 +33,6 @@ image::../media/replication_data_flow.png[diagram showing the process described 
 
 == Content protection: erasure coding
 
-[.lead]
 If an ILM rule includes instructions to make erasure coded copies of object data, the applicable erasure coding scheme breaks object data into data and parity fragments and distributes these fragments across the Storage Nodes configured in the Erasure Coding profile.
 
 === Data flow
@@ -52,7 +50,6 @@ image::../media/erasure_coding_data_flow.png[Erasure Coding Data Flow]
 
 == Content protection: Cloud Storage Pool
 
-[.lead]
 If an ILM rule's content placement instructions require that a replicated copy of object data is stored on a Cloud Storage Pool, object data is moved to the external S3 bucket or Azure Blob storage container that was specified for the Cloud Storage Pool.
 
 === Data flow
@@ -68,7 +65,6 @@ image::../media/cloud_storage_pool_data_flow.png[Cloud Storage Pool Data Flow]
 
 == Content protection: archive
 
-[.lead]
 An archive operation consists of a defined data flow between the StorageGRID system and the client.
 
 If the ILM policy requires that a copy of object data be archived, the ILM engine, which is a component of the LDR service, sends a request to the Archive Node, which in turn sends a copy of the object data to the targeted archival storage system.

@@ -13,13 +13,12 @@ A StorageGRID system consists of multiple types of grid nodes at one or more dat
 
 For additional information about StorageGRID network topology, requirements, and grid communications, see the networking guidelines.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
 
 == Deployment topologies
 
-[.lead]
 The StorageGRID system can be deployed to a single data center site or to multiple data center sites.
 
 === Single site
@@ -44,7 +43,6 @@ In a single-site or multi-site deployment, you can optionally include more than 
 
 == System architecture
 
-[.lead]
 This diagram shows how grid nodes are arranged within a StorageGRID system.
 
 image::../media/grid_nodes_and_components.png[diagram described by surrounding text]
@@ -55,13 +53,12 @@ S3 and Swift clients can connect to a Gateway Node or an Admin Node to use the l
 
 Objects can be stored within StorageGRID on software or hardware-based Storage Nodes, on external archival media such as tape, or in Cloud Storage Pools, which consist of external S3 buckets or Azure Blob storage containers.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Grid nodes and services
 
-[.lead]
 The basic building block of a StorageGRID system is the grid node. Nodes contain services, which are software modules that provide a set of capabilities to a grid node.
 
 The StorageGRID system uses four types of grid nodes:
@@ -110,6 +107,7 @@ See the NetApp Hardware Universe for complete specifications.
 
 The following table shows the primary services for Admin Nodes; however, this table does not list all node services.
 
+[cols="1a,2a" options="header"]
 |===
 | Service| Key function
 a|
@@ -127,12 +125,16 @@ Processes requests from the Grid Management API and the Tenant Management API.
 a|
 High Availability
 a|
-Manages high availability virtual IP addresses for groups of Admin Nodes and Gateway Nodes.*Note:* This service is also found on Gateway Nodes.
+Manages high availability virtual IP addresses for groups of Admin Nodes and Gateway Nodes.
+
+*Note*: This service is also found on Gateway Nodes.
 
 a|
 Load Balancer
 a|
-Provides load balancing of S3 and Swift traffic from clients to Storage Nodes. *Note:* This service is also found on Gateway Nodes.
+Provides load balancing of S3 and Swift traffic from clients to Storage Nodes.
+
+*Note*: This service is also found on Gateway Nodes.
 
 a|
 Network Management System (NMS)
@@ -154,6 +156,7 @@ The following table shows the primary services for Storage Nodes; however, this 
 
 NOTE: Some services, such as the ADC service and the RSM service, typically exist only on three Storage Nodes at each site.
 
+[cols="1a,2a" options="header"]
 |===
 | Service| Key function
 a|
@@ -206,22 +209,29 @@ Monitors the operating system and underlying hardware.
 
 The following table shows the primary services for Gateway Nodes; however, this table does not list all node services.
 
+[cols="1a,2a" options="header"]
 |===
 | Service| Key function
 a|
 Connection Load Balancer (CLB)
 a|
-Provides Layers 3 and 4 load balancing of S3 and Swift traffic from clients to Storage Nodes. Legacy load balancing mechanism.*Note:* The CLB service is deprecated.
+Provides Layers 3 and 4 load balancing of S3 and Swift traffic from clients to Storage Nodes. Legacy load balancing mechanism.
+
+*Note*: The CLB service is deprecated.
 
 a|
 High Availability
 a|
-Manages high availability virtual IP addresses for groups of Admin Nodes and Gateway Nodes.*Note:* This service is also found on Admin Nodes.
+Manages high availability virtual IP addresses for groups of Admin Nodes and Gateway Nodes.
+
+*Note*: This service is also found on Admin Nodes.
 
 a|
 Load Balancer
 a|
-Provides Layer 7 load balancing of S3 and Swift traffic from clients to Storage Nodes. This is the recommended load balancing mechanism.*Note:* This service is also found on Admin Nodes.
+Provides Layer 7 load balancing of S3 and Swift traffic from clients to Storage Nodes. This is the recommended load balancing mechanism.
+
+*Note*: This service is also found on Admin Nodes.
 
 a|
 Server Status Monitor (SSM)
@@ -233,6 +243,7 @@ Monitors the operating system and underlying hardware.
 
 The following table shows the primary services for Archive Nodes; however, this table does not list all node services.
 
+[cols="1a,2a" options="header"]
 |===
 | Service| Key function
 a|
@@ -349,7 +360,7 @@ Monitors hardware conditions and reports to the NMS service. An instance of the 
 +
 Performs trace collection to gather information for use by technical support. The trace collector service uses open source Jaeger software and is present on Admin Nodes.
 
-*Related information*
+.Related information
 
 https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
 
