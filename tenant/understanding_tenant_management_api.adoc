@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding_tenant_management_api.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can perform system management tasks using the Tenant Management REST API instead of the Tenant Manager user interface. For example, you might want to use the API to automate operations or to create multiple entities, such as users, more quickly.'
 ---
 = Understanding the Tenant Management API
@@ -34,6 +34,7 @@ NOTE: If single sign-on (SSO) is enabled for the StorageGRID system, you must pe
 * *config* -- Operations related to the product release and versions of the Tenant Management API. You can list the product release version and the major versions of the API supported by that release.
 * *containers* -- Operations on S3 buckets or Swift containers, as follows:
 +
+[cols="1a,3a" options="header"]
 |===
 | Protocol| Permission allows
 a|
@@ -83,7 +84,7 @@ IMPORTANT: Any API operations you perform using the API Docs webpage are live op
 . Click *Execute*.
 . Review the response code to determine if the request was successful.
 
-*Related information*
+.Related information
 
 xref:protecting_against_cross_site_request_forgery_csrf.adoc[Protecting against Cross-Site Request Forgery (CSRF)]
 
