@@ -1,7 +1,7 @@
 ---
 permalink: tenant/deleting_another_users_s3_access_keys.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are using an S3 tenant and you have appropriate permissions, you can delete another user’s S3 access keys. After an access key is deleted, it can no longer be used to access the objects and buckets in the tenant account.'
 ---
 = Deleting another user's S3 access keys
@@ -11,11 +11,13 @@ summary: 'If you are using an S3 tenant and you have appropriate permissions, yo
 [.lead]
 If you are using an S3 tenant and you have appropriate permissions, you can delete another user's S3 access keys. After an access key is deleted, it can no longer be used to access the objects and buckets in the tenant account.
 
+.What you'll need
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must have the Root Access permission.
 
 IMPORTANT: The S3 buckets and objects belonging to a user can be accessed using the access key ID and secret access key displayed for that user in the Tenant Manager. For this reason, protect access keys as you would a password. Rotate access keys on a regular basis, remove any unused keys from the account, and never share them with other users.
 
+.Steps
 . Select *ACCESS MANAGEMENT* > *Users*.
 +
 The Users page appears and lists the existing users.
@@ -35,6 +37,6 @@ image::../media/access_key_confirm_delete.png[Access Key - Confirm Delete]
 +
 A confirmation message appears in the upper right corner of the page. Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]

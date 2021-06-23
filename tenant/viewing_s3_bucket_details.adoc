@@ -1,7 +1,7 @@
 ---
 permalink: tenant/viewing_s3_bucket_details.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can view a list of the buckets and bucket settings in your tenant account.'
 ---
 = Viewing S3 bucket details
@@ -11,8 +11,10 @@ summary: 'You can view a list of the buckets and bucket settings in your tenant 
 [.lead]
 You can view a list of the buckets and bucket settings in your tenant account.
 
+.What you'll need
 * You must be signed in to the Tenant Manager using a supported browser.
 
+.Steps
 . Select *STORAGE (S3)* > *Buckets*.
 +
 The Buckets page appears and lists all buckets for the tenant account.
@@ -32,7 +34,8 @@ This column is not displayed if the global S3 Object lock setting is disabled. T
  ** Object Count: The number of objects in this bucket.
  ** Space Used: The logical size of all objects in this bucket. The logical size does not include the actual space required for replicated or erasure-coded copies or for object metadata.
  ** Date Created: The date and time the bucket was created.
-*Attention:* The Object Count and Space Used values displayed are estimates. These estimates are affected by the timing of ingests, network connectivity, and node status.
+
+IMPORTANT: The Object Count and Space Used values displayed are estimates. These estimates are affected by the timing of ingests, network connectivity, and node status.
 
 . To view and manage the settings for a bucket, select the bucket name.
 +
@@ -44,7 +47,7 @@ See the instructions for configuring each setting or platform service.
 +
 image::../media/bucket_details_page.png[Bucket Details Page]
 
-*Related information*
+.Related information
 
 xref:changing_consistency_level.adoc[Changing the consistency level]
 

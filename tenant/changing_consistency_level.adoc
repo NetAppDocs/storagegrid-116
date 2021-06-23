@@ -1,7 +1,7 @@
 ---
 permalink: tenant/changing_consistency_level.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are using an S3 tenant, you can use the Tenant Manager or the Tenant Management API to change the consistency control for operations performed on the objects in S3 buckets.'
 ---
 = Changing the consistency level
@@ -11,6 +11,7 @@ summary: 'If you are using an S3 tenant, you can use the Tenant Manager or the T
 [.lead]
 If you are using an S3 tenant, you can use the Tenant Manager or the Tenant Management API to change the consistency control for operations performed on the objects in S3 buckets.
 
+.What you'll need
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
 
@@ -18,6 +19,7 @@ Consistency level makes a trade-off between the availability of the objects and 
 
 NOTE: When you change a bucket's consistency level, only those objects that are ingested after the change are guaranteed to meet the revised level.
 
+.Steps
 . Select *STORAGE (S3)* > *Buckets*.
 . Select the bucket name from the list.
 +
@@ -29,6 +31,7 @@ image::../media/bucket_change_consistency_level.png[Bucket Change Consistency Le
 
 . Select a consistency level for operations performed on the objects in this bucket.
 +
+[cols="1a,3a" options="header"]
 |===
 | Consistency level| Description
 a|
@@ -46,7 +49,9 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 Read-after-new-write (Default)
 a|
-Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Matches Amazon S3 consistency guarantees.    *Note:* If your application attempts HEAD operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
+Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application attempts HEAD operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
 a|
 Available (eventual consistency for HEAD operations)
 a|
@@ -55,6 +60,6 @@ Behaves the same as the *Read-after-new-write* consistency level, but only provi
 
 . Select *Save changes*.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]

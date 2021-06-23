@@ -1,7 +1,7 @@
 ---
 permalink: tenant/creating_another_users_s3_access_keys.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are using an S3 tenant and you have the appropriate permission, you can create S3 access keys for other users, such as applications that need access to buckets and objects.'
 ---
 = Creating another user's S3 access keys
@@ -11,6 +11,7 @@ summary: 'If you are using an S3 tenant and you have the appropriate permission,
 [.lead]
 If you are using an S3 tenant and you have the appropriate permission, you can create S3 access keys for other users, such as applications that need access to buckets and objects.
 
+.What you'll need
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must have the Root Access permission.
 
@@ -23,6 +24,7 @@ Each key can have a specific expiration time or no expiration. Follow these guid
 
 IMPORTANT: The S3 buckets and objects belonging to a user can be accessed using the access key ID and secret access key displayed for that user in the Tenant Manager. For this reason, protect access keys as you would a password. Rotate access keys on a regular basis, remove any unused keys from the account, and never share them with other users.
 
+.Steps
 . Select *ACCESS MANAGEMENT* > *Users*.
 . Select the user whose S3 access keys you want to manage.
 +
@@ -47,6 +49,6 @@ image::../media/tenant_s3_access_key_save_keys.png[screenshot of the Save Keys d
 +
 The new key is listed on the Access keys tab of the user details page. Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]
