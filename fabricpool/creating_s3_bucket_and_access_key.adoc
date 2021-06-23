@@ -1,7 +1,7 @@
 ---
 permalink: fabricpool/creating_s3_bucket_and_access_key.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before using StorageGRID with a FabricPool workload, you must create an S3 bucket for your FabricPool data. You also need to obtain an access key and secret access key for the tenant account you will use for FabricPool.'
 ---
 = Creating an S3 bucket and obtaining an access key
@@ -11,8 +11,10 @@ summary: 'Before using StorageGRID with a FabricPool workload, you must create a
 [.lead]
 Before using StorageGRID with a FabricPool workload, you must create an S3 bucket for your FabricPool data. You also need to obtain an access key and secret access key for the tenant account you will use for FabricPool.
 
+.What you'll need
 * You must have created a tenant account for FabricPool use.
 
+.About this task
 These instructions describe how to use the StorageGRID Tenant Manager to create a bucket and obtain access keys. You can also perform these tasks using the Tenant Management API or the StorageGRID S3 REST API.
 
 To learn more:
@@ -20,6 +22,7 @@ To learn more:
 * http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 * http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 
+.Steps
 . Sign in to the Tenant Manager.
 +
 You can do either of the following:
@@ -33,7 +36,7 @@ You must create a unique bucket for each ONTAP cluster you plan to use.
 
  .. Select *STORAGE (S3)* > *Buckets*.
  .. Select *Create bucket*.
- .. The name of the StorageGRID bucket you will use with FabricPool. For example, `fabricpool-bucket`.
+ .. Enter the name of the StorageGRID bucket you will use with FabricPool. For example, `fabricpool-bucket`.
 +
 IMPORTANT: You cannot change the bucket name after creating the bucket.
 +

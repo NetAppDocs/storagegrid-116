@@ -13,93 +13,93 @@ Use this simple example policy as a starting point for your own ILM rules and po
 
 This example assumes you are designing the ILM rules and an ILM policy for a StorageGRID system that has four Storage Nodes at a single data center in Denver, Colorado. The FabricPool data in this example uses a bucket named `fabricpool-bucket`.
 
-CAUTION:
-
+[CAUTION]
+====
 The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
 To learn more:
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+====
 
+.Steps
 . Create a storage pool named *DEN*. Select the Denver site.
 . Create an Erasure Coding profile named *2 plus 1*. Select the 2+1 erasure-coding scheme and the *DEN* storage pool.
 . Create an ILM rule that applies only to the data in `fabricpool-bucket`. This example rule creates erasure-coded copies.
 +
+[cols="1a,1a" options="header"]
 |===
 | Rule definition| Example value
-a|
-Rule Name
-a|
-2 plus 1 erasure coding for FabricPool data
-a|
-Bucket Name
-a|
-`fabricpool-bucket`    You could also filter on the FabricPool tenant account.
-a|
-Advanced Filtering
-a|
-Object Size (MB) greater than 0.2 MB.     *Note:* FabricPool only writes 4 MB objects, but you must add an Object Size filter because this rule uses erasure coding.
-a|
-Reference Time
-a|
-Ingest Time
-a|
-Placement
-a|
-From day 0 store forever
-a|
-Type
-a|
-Erasure coded
-a|
-Location
-a|
-DEN (2 plus 1)
-a|
-Ingest Behavior
-a|
-Balanced
+
+|Rule Name
+|2 plus 1 erasure coding for FabricPool data
+
+|Bucket Name
+|`fabricpool-bucket`
+
+You could also filter on the FabricPool tenant account.
+
+|Advanced Filtering
+|Object Size (MB) greater than 0.2 MB.
+
+*Note:* FabricPool only writes 4 MB objects, but you must add an Object Size filter because this rule uses erasure coding.
+
+|Reference Time
+|Ingest Time
+
+|Placement
+|From day 0 store forever
+
+|Type
+|Erasure coded
+
+|Location
+|DEN (2 plus 1)
+
+|Ingest Behavior
+|Balanced
 |===
 
 . Create an ILM rule that will create two replicated copies of any objects not matched by the first rule. Do not select a basic filter (tenant account or bucket name) or any advanced filters.
 +
+[cols="1a,1a" options="header"]
 |===
 | Rule definition| Example value
-a|
+|
 Rule Name
-a|
+|
 Two replicated copies
-a|
+|
 Bucket Name
-a|
+|
 _none_
-a|
+|
 Advanced Filtering
-a|
+|
 _none_
-a|
+|
 Reference Time
-a|
+|
 Ingest Time
-a|
+|
 Placement
-a|
+|
 From day 0 store forever
-a|
+|
 Type
-a|
+|
 Replicated
-a|
+|
 Location
-a|
+|
 DEN
-a|
+|
 Copies
-a|
+|
 2
-a|
+|
 Ingest Behavior
-a|
+|
 Balanced
 |===
 

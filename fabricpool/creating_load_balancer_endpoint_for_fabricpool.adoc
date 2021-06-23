@@ -1,7 +1,7 @@
 ---
 permalink: fabricpool/creating_load_balancer_endpoint_for_fabricpool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.'
 ---
 = Creating a load balancer endpoint for FabricPool
@@ -11,6 +11,7 @@ summary: 'When configuring StorageGRID for use with FabricPool, you configure a 
 [.lead]
 When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission.
 * You have the following files:
@@ -18,10 +19,12 @@ When configuring StorageGRID for use with FabricPool, you configure a load balan
  ** Server Certificate Private Key: The custom server certificate private key file.
  ** CA Bundle: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
+.About this task
 For details about this task, see the following:
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID] > Creating a load balancer endpoint.
 
+.Steps
 . Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
 +
 image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
@@ -29,6 +32,7 @@ image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
 . Select *Add endpoint*.
 . Enter the following information.
 +
+[cols="1a,1a" options="header"]
 |===
 | Field| Description
 a|
@@ -38,10 +42,12 @@ A descriptive name for the endpoint
 a|
 Port
 a|
-The StorageGRID port you want to use for load balancing. This field defaults to 10433, but you can enter any unused external port. If you enter 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.    *Note:* Ports used by other grid services are not permitted. To see the list of ports used for internal and external communications:
-+
+The StorageGRID port you want to use for load balancing. This field defaults to 10433, but you can enter any unused external port. If you enter 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.
+
+*Note:* Ports used by other grid services are not permitted. To see the list of ports used for internal and external communications:
+
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines] > Network port reference
-+
+
 You must provide this same port number to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
 a|
 Protocol
