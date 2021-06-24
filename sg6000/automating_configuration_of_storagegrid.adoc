@@ -11,8 +11,11 @@ summary: 'After deploying the grid nodes, you can automate the configuration of 
 [.lead]
 After deploying the grid nodes, you can automate the configuration of the StorageGRID system.
 
+.What you'll need
+
 * You know the location of the following files from the installation archive.
 +
+[options="header"]
 |===
 | Filename| Description
 a|
@@ -31,9 +34,13 @@ Blank configuration file for use with the script
 
 * You have created a configure-storagegrid.json configuration file. To create this file, you can modify the sample configuration file (configure-storagegrid.sample.json) or the blank configuration file (configure-storagegrid.blank.json).
 
+.About this task
+
 You can use the configure-storagegrid.py Python script and the configure-storagegrid.json configuration file to automate the configuration of your StorageGRID system.
 
 NOTE: You can also configure the system using the Grid Manager or the Installation API.
+
+.Steps
 
 . Log in to the Linux machine you are using to run the Python script.
 . Change to the directory where you extracted the installation archive.
@@ -58,7 +65,7 @@ A Recovery Package .zip file is generated during the configuration process, and 
 
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
-If you specified that random passwords should be generated, you need to extract the Passwords.txt file and look for the passwords required to access your StorageGRID system.
+If you specified that random passwords should be generated, you need to extract the `Passwords.txt` file and look for the passwords required to access your StorageGRID system.
 
 ----
 ######################################################################

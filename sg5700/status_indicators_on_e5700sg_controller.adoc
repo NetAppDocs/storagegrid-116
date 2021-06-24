@@ -15,6 +15,7 @@ After the StorageGRID Appliance Installer has started, you should periodically r
 
 image::../media/e5700sg_leds.gif[Status indicators on the E5700SG controller]
 
+[options="header"]
 |===
 |  | Display| State| Description
 a|
@@ -98,6 +99,7 @@ During boot-up or after a hard reset of the appliance, the following occurs:
 
 During a normal boot-up of the appliance, the seven-segment display on the E5700SG controller shows the following codes in the order listed:
 
+[options="header"]
 |===
 | Code| Indicates
 a|
@@ -123,7 +125,9 @@ The hardware subsystem firmware update checks have been completed. Inter-control
 a|
 HE
 a|
-The system is awaiting connectivity with the E2800 controller and synchronizing with the SANtricity operating system.*Note:* If this boot procedure does not progress past this stage, check the connections between the two controllers.
+The system is awaiting connectivity with the E2800 controller and synchronizing with the SANtricity operating system.
++
+*Note:* If this boot procedure does not progress past this stage, check the connections between the two controllers.
 
 a|
 HC
@@ -143,6 +147,7 @@ StorageGRID is running.
 
 These codes represent error conditions that might be shown on the E5700SG controller as the appliance boots up. Additional two-digit hexadecimal codes are displayed if specific low-level hardware errors occur. If any of these codes persists for more than a second or two, or if you are unable to resolve the error by following one of the prescribed troubleshooting procedures, contact technical support.
 
+[options="header"]
 |===
 | Code| Indicates
 a|
@@ -206,7 +211,7 @@ EP
 a|
 Installation or communication with the E2800 controller has failed.
 |===
-*Related information*
+.Related information
 
 xref:troubleshooting_hardware_installation.adoc[Troubleshooting the hardware installation]
 

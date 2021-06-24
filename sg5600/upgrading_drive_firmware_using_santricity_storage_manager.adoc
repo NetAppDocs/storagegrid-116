@@ -11,6 +11,8 @@ summary: 'You upgrade your drive firmware to make sure you have all the latest f
 [.lead]
 You upgrade your drive firmware to make sure you have all the latest features and bug fixes.
 
+.What you'll need
+
 * The storage appliance has an Optimal status.
 * All drives have an Optimal status.
 * You have the latest version of SANtricity Storage Manager installed that is compatible with your StorageGRID version.
@@ -27,7 +29,9 @@ NOTE: Maintenance mode interrupts the connection to the storage controller, stop
 
 IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID appliance at a time. Doing so might cause data unavailability, depending on your deployment model and ILM policies.
 
-. Open a web browser, and enter the IP address as the URL for SANtricity Storage Manager:``+https://E2700_Controller_IP+``
+.Steps
+
+. Open a web browser, and enter the IP address as the URL for SANtricity Storage Manager: `+https://E2700_Controller_IP+`
 . Enter the SANtricity Storage Manager administrator username and password, if required.
 . From SANtricity Enterprise Management, select the *Devices* tab.
 +
@@ -96,7 +100,6 @@ The best practice is to upgrade all drives of the same model to the same firmwar
   *** The drive firmware download and upgrade begins, with Download Drive Firmware - Progress indicating the status of the firmware transfer for all drives.
   *** The status of each drive participating in the upgrade appears in the Transfer Progress column of Devices updated.
 A parallel drive firmware upgrade operation can take as much as 90 seconds to complete if all drives are upgraded on a 24-drive system. On a larger system, the execution time is slightly longer.
-
 +
 During the firmware upgrade process, you can:
   *** Select *Stop* to stop the firmware upgrade in progress. Any firmware upgrade currently in progress are completed. Any drives that have attempted firmware upgrade show their individual status. Any remaining drives are listed with a status of Not attempted.
@@ -148,7 +151,6 @@ The firmware was downloaded successfully.
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
 image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
-
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +

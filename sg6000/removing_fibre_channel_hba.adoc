@@ -11,6 +11,8 @@ summary: 'You might need to replace the Fibre Channel host bus adapter \(HBA\) i
 [.lead]
 You might need to replace the Fibre Channel host bus adapter (HBA) in the SG6000-CN controller if it is not functioning optimally or if it has failed.
 
+.What you'll need
+
 * You have the correct replacement Fibre Channel HBA.
 * You have determined which SG6000-CN controller contains the Fibre Channel HBA to replace.
 +
@@ -24,11 +26,15 @@ xref:locating_controller_in_data_center.adoc[Locating the controller in a data c
 +
 xref:removing_sg6000_cn_controller_cover.adoc[Removing the SG6000-CN controller cover]
 
+.About this task
+
 To prevent service interruptions, confirm that all other Storage Nodes are connected to the grid before starting the Fibre Channel HBA replacement or replace the adapter during a scheduled maintenance window when periods of service disruption are normally expected. See the information about determining node connection states in the instructions for managing objects with information lifecycle management.
 
 IMPORTANT: If you have ever used an ILM rule that creates only one copy of an object, you must replace the Fibre Channel HBA during a scheduled maintenance window. Otherwise, you might temporarily lose access to those objects during this procedure.
 
 See information about managing objects with information lifecycle management.
+
+.Steps
 
 . Wrap the strap end of the ESD wristband around your wrist, and secure the clip end to a metal ground to prevent static discharge.
 . Locate the riser assembly at the rear of the controller that contains the Fibre Channel HBA.
@@ -45,11 +51,13 @@ There are two adapters in the riser assembly: a Fibre Channel HBA and an Etherne
 . Open the blue adapter latch (circled) and carefully remove the Fibre Channel HBA from the riser assembly. Rock the adapter slightly to help remove the adapter from its connector. Do not use excessive force.
 . Place the adapter on a flat anti-static surface.
 
+.After you finish
+
 Install the replacement Fibre Channel HBA.
 
 xref:reinstalling_fibre_channel_hba.adoc[Reinstalling the Fibre Channel HBA]
 
-*Related information*
+.Related information
 
 xref:reinstalling_fibre_channel_hba.adoc[Reinstalling the Fibre Channel HBA]
 

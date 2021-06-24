@@ -11,6 +11,8 @@ summary: 'You might need to replace the E2800 controller if it is not functionin
 [.lead]
 You might need to replace the E2800 controller if it is not functioning optimally or if it has failed.
 
+.About this task
+
 * You have a replacement controller with the same part number as the controller you are replacing.
 * You have downloaded the instructions for replacing the simplex configuration of a failed E2800 controller canister.
 +
@@ -24,6 +26,8 @@ IMPORTANT: You will not be able to use the appliance until you unlock the drives
 * You must have specific access permissions.
 * You must be signed in to the Grid Manager using a supported browser.
 
+.About this task
+
 You can determine if you have a failed controller canister in two ways:
 
 * The Recovery Guru in SANtricity System Manager directs you to replace the controller.
@@ -36,6 +40,8 @@ xref:placing_appliance_into_maintenance_mode.adoc[Placing an appliance into main
 When you replace a controller, you must remove the battery from the original controller and install it in the replacement controller.
 
 NOTE: The E2800 controller in the appliance does not include a host interface card (HIC).
+
+.Steps
 
 . Follow the instructions in the E2800 controller replacement procedure to prepare to remove the controller.
 +
@@ -82,6 +88,7 @@ If this green LED is on, the controller is still using battery power. You must w
 +
 image::../media/e2800_internal_cache_active_led.gif[Green LED on E2800]
 +
+[options="header"]
 |===
 | Item| Description
 a|
@@ -99,6 +106,7 @@ Battery
 +
 image::../media/e2800_remove_battery.gif[Battery Latch]
 +
+[options="header"]
 |===
 | Item| Description
 a|
@@ -164,6 +172,6 @@ image::../media/node_rejoin_grid_confirmation.png[Appliance node rejoined grid]
 
 . From SANtricity System Manager, confirm that the new controller is Optimal, and collect support data.
 
-*Related information*
+.Related information
 
-http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Center]
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site]

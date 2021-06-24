@@ -11,6 +11,8 @@ summary: 'You can configure network links for the ports used to connect the appl
 [.lead]
 You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.
 
+.What you'll need
+
 If you plan to use the 25-GbE link speed for the 10/25-GbE ports:
 
 * You have installed SFP28 transceivers in the ports you plan to use.
@@ -25,10 +27,13 @@ If you plan to use Aggregate port bond mode, LACP network bond mode, or VLAN tag
 * You know the unique VLAN tag to use for each network. This VLAN tag will be added to each network packet to ensure that network traffic is routed to the correct network.
 * If you plan to use Active-Backup mode for the Admin Network, you have connected Ethernet cables to both management ports on the controller.
 
+.About this task
+
 This figure shows how the four 10/25-GbE ports are bonded in Fixed port bond mode (default configuration).
 
 image::../media/e5700sg_fixed_port.gif[Image showing how the 10/25-GbE ports on the E5700SG controller are bonded in fixed mode]
 
+[options="header"]
 |===
 | Callout| Which ports are bonded
 a|
@@ -44,6 +49,7 @@ This figure shows how the four 10/25-GbE ports are bonded in Aggregate port bond
 
 image::../media/e5700sg_aggregate_port.gif[Image showing how the 10/25-GbE ports on the E5700SG controller are bonded in aggregate mode]
 
+[options="header"]
 |===
 | Callout| Which ports are bonded
 a|
@@ -55,6 +61,7 @@ The table summarizes the options for configuring the four 10/25-GbE ports. The d
 
 * *Fixed (default) port bond mode*
 +
+[options="header"]
 |===
 | Network bond mode| Client Network disabled (default)| Client Network enabled
 a|
@@ -84,12 +91,11 @@ a|
  ** Ports 2 and 4 use an LACP bond for the Grid Network.
  ** Ports 1 and 3 use an LACP bond for the Client Network.
  ** VLAN tags can be specified for both networks for the convenience of the network administrator.
-
-+
 |===
 
 * *Aggregate port bond mode*
 +
+[options="header"]
 |===
 | Network bond mode| Client Network disabled (default)| Client Network enabled
 a|
@@ -104,7 +110,6 @@ a|
  ** Ports 1-4 use a single LACP bond for the Grid Network and the Client Network.
  ** Two VLAN tags allow Grid Network packets to be segregated from Client Network packets.
 
-+
 |===
 
 See the information about 10/25-GbE port connections for the E5700SG controller for more information about port bond and network bond modes.
@@ -112,6 +117,8 @@ See the information about 10/25-GbE port connections for the E5700SG controller 
 This figure shows how the two 1-GbE management ports on the E5700SG controller are bonded in Active-Backup network bond mode for the Admin Network.
 
 image::../media/e5700sg_bonded_management_ports.gif[SG6000 Bonded Mgmt Ports]
+
+.Steps
 
 . From the menu bar of the StorageGRID Appliance Installer, click *Configure Networking* > *Link Configuration*.
 +
@@ -160,6 +167,6 @@ image:../media/network_link_configuration_aggregate.gif[Screen shot showing Link
 +
 NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: `+https://E5700SG_Controller_IP:8443+`
 
-*Related information*
+.Related information
 
 xref:port_bond_modes_for_e5700sg_controller_ports.adoc[Port bond modes for E5700SG controller ports]

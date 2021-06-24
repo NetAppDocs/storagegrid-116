@@ -11,13 +11,19 @@ summary: 'You must access the StorageGRID Appliance Installer to verify the inst
 [.lead]
 You must access the StorageGRID Appliance Installer to verify the installer version and configure the connections between the appliance and the three StorageGRID networks: the Grid Network, the Admin Network (optional), and the Client Network (optional).
 
+.What you'll need
+
 * You are using any management client that can connect to the StorageGRID Admin Network, or you have a service laptop.
 * The client or service laptop has a supported web browser.
 * The SG6000-CN controller is connected to all of the StorageGRID networks you plan to use.
 * You know the IP address, gateway, and subnet for the SG6000-CN controller on these networks.
 * You have configured the network switches you plan to use.
 
+.About this task
+
 To initially access the StorageGRID Appliance Installer, you can use the DHCP-assigned IP address for the Admin Network port on the SG6000-CN controller (assuming the controller is connected to the Admin Network), or you can connect a service laptop directly to the SG6000-CN controller.
+
+.Steps
 
 . If possible, use the DHCP address for the Admin Network port on the SG6000-CN controller to access the StorageGRID Appliance Installer.
 +
@@ -54,6 +60,8 @@ The StorageGRID Appliance Installer Home page appears. The information and messa
 +
 NOTE: If you cannot access the Home page over a link-local connection, configure the service laptop IP address as `169.254.0.2`, and try again.
 
+.After you finish
+
 After accessing the StorageGRID Appliance Installer:
 
 * Verify that the StorageGRID Appliance Installer version on the appliance matches the software version installed on your StorageGRID system. Upgrade StorageGRID Appliance Installer, if necessary.
@@ -62,6 +70,6 @@ xref:verifying_and_upgrading_storagegrid_appliance_installer_version.adoc[Verify
 
 * Review any messages displayed on the StorageGRID Appliance Installer Home page and configure the link configuration and the IP configuration, as required.
 
-*Related information*
+.Related information
 
 xref:web_browser_requirements.adoc[Web browser requirements]

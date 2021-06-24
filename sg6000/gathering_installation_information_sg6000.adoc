@@ -11,8 +11,11 @@ summary: 'As you install and configure the StorageGRID appliance, you must make 
 [.lead]
 As you install and configure the StorageGRID appliance, you must make decisions and gather information about Ethernet switch ports, IP addresses, and port and network bond modes.
 
+.About this task
+
 You can use the following tables to record the required information for each network you connect to the appliance. These values are required to install and configure the hardware.
 
+[options="header"]
 |===
 | Information needed| Your value for controller A| Your value for controller B
 a|
@@ -28,7 +31,9 @@ a|
 a|
  
 a|
-DHCP-assigned IP address for management port 1, if available after power on**Note:** If the network you will connect to the storage controller includes a DHCP server, the network administrator can use the MAC address to determine the IP address that was assigned by the DHCP server.
+DHCP-assigned IP address for management port 1, if available after power on
++
+*Note:* If the network you will connect to the storage controller includes a DHCP server, the network administrator can use the MAC address to determine the IP address that was assigned by the DHCP server.
 
 a|
  
@@ -77,7 +82,9 @@ Choose one:
 * IPv6
 
 a|
-Speed and duplex mode**Note:** You must make sure the Ethernet switch for the SANtricity System Manager management network is set to autonegotiate.
+Speed and duplex mode
++
+*Note:* You must make sure the Ethernet switch for the SANtricity System Manager management network is set to autonegotiate.
 
 a|
 Must be:
@@ -89,6 +96,7 @@ Must be:
 
 * Autonegotiate (default)
 
+[options="header"]
 |===
 |===
 | Information needed| Your value
@@ -117,12 +125,16 @@ Switch port for the right port in the red circle in the diagram (Active-Backup n
 a|
  
 a|
-MAC address for the Admin Network port**Note:** The MAC address label on the front of the SG6000-CN controller lists the MAC address for the BMC management port. To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
+MAC address for the Admin Network port
++
+*Note:* The MAC address label on the front of the SG6000-CN controller lists the MAC address for the BMC management port. To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
 
 a|
  
 a|
-DHCP-assigned IP address for the Admin Network port, if available after power on *Note:* You can determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
+DHCP-assigned IP address for the Admin Network port, if available after power on 
++
+*Note:* You can determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
 
 a|
 
@@ -130,7 +142,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Admin Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance Storage Node on the Admin Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -215,7 +229,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Grid Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance Storage Node on the Grid Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -267,13 +283,16 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Client Network *Note:* If the Client Network is enabled, the default route on the controller will use the gateway specified here.
+Static IP address you plan to use for the appliance Storage Node on the Client Network 
++
+*Note:* If the Client Network is enabled, the default route on the controller will use the gateway specified here.
 
 a|
 
 * IPv4 address (CIDR):
 * Gateway:
 
+[options="header"]
 |===
 |===
 | Information needed| Your value
@@ -296,7 +315,7 @@ a|
 * Gateway:
 
 |===
-*Related information*
+.Related information
 
 xref:controllers_in_sg6000_appliances.adoc[Controllers in the SG6000 appliances]
 

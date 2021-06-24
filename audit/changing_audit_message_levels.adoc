@@ -1,7 +1,7 @@
 ---
 permalink: audit/changing_audit_message_levels.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category.'
 ---
 = Changing audit message levels
@@ -11,8 +11,12 @@ summary: 'You can adjust audit levels to increase or decrease the number of audi
 [.lead]
 You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
+
+.About this task
 
 The audit messages recorded in the audit log are filtered based on the settings on the *Configuration* > *Monitoring* > *Audit* page.
 
@@ -28,12 +32,16 @@ NOTE: These defaults apply if you initially installed StorageGRID using version 
 
 NOTE: During upgrades, audit level configurations will not be effective immediately.
 
+.Steps
+
 . Select *Configuration* > *Monitoring* > *Audit*.
 +
 image::../media/default_audit_settings.gif[screen shot of Configuration > Audit]
 
 . For each category of audit message, select an audit level from the drop-down list:
 +
+[cols=2*,options="header",cols="20,80"]
+[options="header"]
 |===
 | Audit level| Description
 a|
@@ -47,7 +55,7 @@ Only error messages are logged--audit messages for which the result code was not
 a|
 Normal
 a|
-Standard transactional messages are logged--the messages listed in this guide for the category.
+Standard transactional messages are logged--the messages listed in these instructions for the category.
 a|
 Debug
 a|
@@ -55,7 +63,7 @@ Deprecated. This level behaves the same as the Normal audit level.
 |===
 The messages included for any particular level include those that would be logged at the higher levels. For example, the Normal level includes all of the Error messages.
 
-. Under *Audit Protocol Headers*, enter the name of the HTTP request headers to be included in Client Read and Client Write audit messages. Use an asterisk (*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Click the plus sign to create a list of header name fields.
+. Under *Audit Protocol Headers*, enter the name of the HTTP request headers to be included in Client Read and Client Write audit messages. Use an asterisk (\*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Click the plus sign to create a list of header name fields.
 +
 NOTE: Audit protocol headers apply to S3 and Swift requests only.
 +
@@ -65,14 +73,14 @@ NOTE: Audit protocol request headers are logged only if the audit level for *Cli
 
 . Click *Save*.
 
-*Related information*
+.Related information
 
-xref:system_audit_messages.adoc[System audit messages]
+link:system_audit_messages.html[System audit messages]
 
-xref:object_storage_audit_messages.adoc[Object storage audit messages]
+link:object_storage_audit_messages.html[Object storage audit messages]
 
-xref:management_audit_message.adoc[Management audit message]
+link:management_audit_message.html[Management audit message]
 
-xref:client_read_audit_messages.adoc[Client read audit messages]
+link:client_read_audit_messages.html[Client read audit messages]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

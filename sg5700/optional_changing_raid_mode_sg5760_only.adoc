@@ -11,9 +11,13 @@ summary: 'If you have an SG5760 with 60 drives, you can change to a different RA
 [.lead]
 If you have an SG5760 with 60 drives, you can change to a different RAID mode to accommodate your storage and recovery requirements. You can only change the mode before deploying the StorageGRID appliance Storage Node.
 
+.What you'll need
+
 * You have an SG5760. If you have an SG5712, you must use DDP mode.
 * You are using any client that can connect to StorageGRID.
 * The client has a supported web browser.
+
+.About this task
 
 Before deploying the SG5760 appliance as a Storage Node, you can choose one of the following volume configuration options:
 
@@ -23,6 +27,8 @@ Before deploying the SG5760 appliance as a Storage Node, you can choose one of t
 
 IMPORTANT: If any volumes have already been configured or if StorageGRID was previously installed, changing the RAID mode causes the volumes to be removed and replaced. Any data on those volumes will be lost.
 
+.Steps
+
 . Using the service laptop, open a web browser and access the StorageGRID Appliance Installer: `+https://E5700SG_Controller_IP:8443+`
 +
 E5700SG_Controller_IP is any of the IP addresses for the E5700SG controller.
@@ -31,6 +37,6 @@ E5700SG_Controller_IP is any of the IP addresses for the E5700SG controller.
 . On the Configure RAID Mode page, select the desired RAID mode from the Mode drop-down list.
 . Click *Save*.
 
-*Related information*
+.Related information
 
-http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Center]
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site]

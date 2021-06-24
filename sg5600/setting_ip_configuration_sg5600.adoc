@@ -11,9 +11,13 @@ summary: 'You use the StorageGRID Appliance Installer to configure the IP addres
 [.lead]
 You use the StorageGRID Appliance Installer to configure the IP addresses and routing information used for the appliance Storage Node on the StorageGRID Grid, Admin, and Client Networks.
 
+.About this task
+
 You must either assign a static IP for the appliance on each connected network or assign a permanent lease for the address on the DHCP server.
 
 If you want to change the link configuration, see the instructions for changing the link configuration of the E5600SG controller.
+
+.Steps
 
 . In the StorageGRID Appliance Installer, select *Configure Networking* > *IP Configuration*.
 +
@@ -163,6 +167,6 @@ NOTE: If the Client Network is enabled, the default route is displayed. The defa
 +
 IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
 
-*Related information*
+.Related information
 
 xref:changing_link_configuration_of_e5600sg_controller.adoc[Changing the link configuration of the E5600SG controller]

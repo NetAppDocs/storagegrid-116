@@ -11,9 +11,13 @@ summary: 'Clearing the key management server \(KMS\) configuration disables node
 [.lead]
 Clearing the key management server (KMS) configuration disables node encryption on your appliance. After clearing the KMS configuration, the data on your appliance is permanently deleted and is no longer accessible. This data is not recoverable.
 
+.What you'll need
+
 IMPORTANT: If you need to preserve data on the appliance, you must perform a node decommission procedure before you clear the KMS configuration. When KMS is cleared, data on the appliance will be permanently deleted and no longer accessible. This data is not recoverable.
 
 Decommission the node to move any data it contains to other nodes in StorageGRID. See the recovery and maintenance instructions for grid node decommissioning.
+
+.About this task
 
 Clearing the appliance KMS configuration disables node encryption, removing the association between the appliance node and the KMS configuration for the StorageGRID site. Data on the appliance is then deleted and the appliance is left in a pre-install state. This process cannot be reversed.
 
@@ -28,6 +32,8 @@ IMPORTANT: Do not clear the KMS configuration if you plan to reinstall an applia
 * After decommissioning a appliance that had node encryption enabled.
 
 IMPORTANT: Decommission the appliance before clearing KMS to move its data to other nodes in your StorageGRID system. Clearing KMS before decommissioning the appliance will result in data loss and might render the appliance inoperable.
+
+.Steps
 
 . Open a browser, and enter one of the IP addresses for the appliance's compute controller.
 +
@@ -63,9 +69,11 @@ The StorageGRID Appliance Installer Home page appears.
 +
 Node encryption cannot be reenabled on the appliance until it is reinstalled in a grid.
 
+.After you finish
+
 After the appliance reboots and you have verified that KMS has been cleared and that the appliance in a pre-install state, you can physically remove the appliance from your StorageGRID system. See the recovery and maintenance instructions for information about preparing an appliance for reinstallation.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

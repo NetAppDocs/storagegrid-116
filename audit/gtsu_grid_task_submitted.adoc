@@ -11,6 +11,7 @@ summary: 'This audit message indicates that a grid task has been submitted to th
 [.lead]
 This audit message indicates that a grid task has been submitted to the CMN service.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -18,7 +19,9 @@ TSID
 a|
 Task ID
 a|
-Uniquely identifies a generated grid task and allows the task to be managed over its lifecycle. *Note:* The Task ID is assigned at the time that a grid task is generated, not the time that it is submitted. It is possible for a given grid task to be submitted multiple times, and in this case the Task ID field is not sufficient to uniquely link the Submitted, Started, and Ended audit messages.
+Uniquely identifies a generated grid task and allows the task to be managed over its lifecycle. 
++
+*Note:* The Task ID is assigned at the time that a grid task is generated, not the time that it is submitted. It is possible for a given grid task to be submitted multiple times, and in this case the Task ID field is not sufficient to uniquely link the Submitted, Started, and Ended audit messages.
 
 a|
 TTYP

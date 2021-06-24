@@ -11,6 +11,8 @@ summary: 'You upgrade your drive firmware to make sure you have all the latest f
 [.lead]
 You upgrade your drive firmware to make sure you have all the latest features and bug fixes.
 
+.What you'll need
+
 * The storage appliance has an Optimal status.
 * All drives have an Optimal status.
 * You have the latest version of SANtricity System Manager installed that is compatible with your StorageGRID version.
@@ -22,10 +24,13 @@ NOTE: Maintenance mode interrupts the connection to the storage controller, stop
 
 IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID appliance at a time. Doing so might cause data unavailability, depending on your deployment model and ILM policies.
 
+.Steps
+
 . Access SANtricity System Manager using one of these methods:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
  ** Use the Grid Manager and select *Nodes* > *appliance Storage Node* > *SANtricity System Manager*
-*Note:* If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: `+https://Storage_Controller_IP+`
++
+NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: `+https://Storage_Controller_IP+`
 . Enter the SANtricity System Manager administrator username and password, if required.
 . Verify the drive firmware version currently installed in the storage appliance:
  .. From SANtricity System Manager, select *Support* > *Upgrade Center*.
@@ -89,7 +94,6 @@ IMPORTANT: Stopping the drive firmware upgrade might result in data loss or unav
  .. (Optional) To see a list of what was upgraded, select *Save Log*.
 +
 The log file is saved in the downloads folder for your browser with the name latest-upgrade-log-timestamp.txt.
-
 +
 If any of the following errors occur during the upgrade procedure, take the appropriate recommended action.
  ** *Failed assigned drives*
@@ -159,12 +163,11 @@ Contact technical support to resolve this issue.
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
 image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
-
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
 image::../media/node_rejoin_grid_confirmation.png[Appliance node rejoined grid]
 
-*Related information*
+.Related information
 
 xref:upgrading_santricity_os_on_storage_controller.adoc[Upgrading SANtricity OS on the storage controller]

@@ -11,10 +11,13 @@ summary: 'The seven-segment displays on each controller show status and error co
 [.lead]
 The seven-segment displays on each controller show status and error codes as the appliance powers up.
 
+.About this task
+
 The E2800 controller and the E5700SG controller display different statuses and error codes.
 
 To understand what these codes mean, see the following resources:
 
+[options="header"]
 |===
 | Controller| Reference
 a|
@@ -31,6 +34,8 @@ a|
 
 |===
 
+.Steps
+
 . During boot-up, monitor progress by viewing the codes shown on the seven-segment displays.
  ** The seven-segment display on the E2800 controller shows the repeating sequence *OS, Sd, blank* to indicate that it is performing start-of-day processing.
  ** The seven-segment display on the E5700SG controller shows a sequence of codes, ending with *AA* and *FF*.
@@ -38,6 +43,7 @@ a|
 +
 image::../media/seven_segment_display_codes.gif[Seven-segment displays after controllers have booted up.]
 +
+[options="header"]
 |===
 | Controller| Seven-segment display
 a|
@@ -61,7 +67,7 @@ NOTE: If an IP address could not be assigned using DHCP, 0.0.0.0 is displayed.
 
 . If the seven-segment displays show other values, see "`Troubleshooting the hardware installation,`" and confirm you completed the installation steps correctly. If you are unable to resolve the problem, contact technical support.
 
-*Related information*
+.Related information
 
 xref:status_indicators_on_e5700sg_controller.adoc[Status indicators on the E5700SG controller]
 

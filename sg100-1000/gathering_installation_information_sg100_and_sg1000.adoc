@@ -23,6 +23,7 @@ image::../media/sg100_rj_45_ports_circled.png[]
 
 image::../media/sg1000_rj_45_ports_circled.png[SG1000 RJ-45 ports]
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -50,12 +51,16 @@ Switch port for the right port circled in the diagram (Active-Backup network bon
 a|
  
 a|
-MAC address for the Admin Network port**Note:** The MAC address label on the front of the appliance lists the MAC address for the BMC management port. To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
+MAC address for the Admin Network port
++
+*Note:* The MAC address label on the front of the appliance lists the MAC address for the BMC management port. To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
 
 a|
  
 a|
-DHCP-assigned IP address for the Admin Network port, if available after power on *Note:* You can determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
+DHCP-assigned IP address for the Admin Network port, if available after power on 
++
+*Note:* You can determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
 
 a|
 
@@ -63,7 +68,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance node on the Admin Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance node on the Admin Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -80,6 +87,7 @@ a|
 
 The four networking ports on the appliance connect to the StorageGRID Grid Network and the optional Client Network.
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -137,6 +145,7 @@ a|
 
 The Grid Network for StorageGRID is a required network, used for all internal StorageGRID traffic. The appliance connects to the Grid Network using the four network ports.
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -168,7 +177,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance node on the Grid Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance node on the Grid Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -190,6 +201,7 @@ a|
 
 The Client Network for StorageGRID is an optional network, typically used to provide client protocol access to the grid. The appliance connects to the Client Network using the four network ports.
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -230,7 +242,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance node on the Client Network *Note:* If the Client Network is enabled, the default route on the appliance will use the gateway specified here.
+Static IP address you plan to use for the appliance node on the Client Network 
++
+*Note:* If the Client Network is enabled, the default route on the appliance will use the gateway specified here.
 
 a|
 
@@ -251,6 +265,7 @@ image::../media/sg100_bmc_management_port.png[SG100 management port]
 
 image::../media/sg1000_bmc_management_port.png[SG1000 BMC management port]
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -272,7 +287,7 @@ a|
 * Gateway:
 
 |===
-*Related information*
+.Related information
 
 xref:sg100_and_sg1000_appliances_overview.adoc[SG100 and SG1000 appliances overview]
 

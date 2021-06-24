@@ -11,6 +11,7 @@ summary: 'When a Swift client issues a DELETE transaction, a request is made to 
 [.lead]
 When a Swift client issues a DELETE transaction, a request is made to remove the specified object or container. This message is issued by the server if the transaction is successful.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -30,7 +31,9 @@ HTRH
 a|
 HTTP Request Header
 a|
-List of logged HTTP request header names and values as selected during configuration.*Note:* X-Forwarded-For is automatically included if it is present in the request and if the X-Forwarded-For value is different from the request sender IP address (SAIP audit field).
+List of logged HTTP request header names and values as selected during configuration.
++
+*Note:* X-Forwarded-For is automatically included if it is present in the request and if the X-Forwarded-For value is different from the request sender IP address (SAIP audit field).
 
 a|
 MTME

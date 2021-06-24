@@ -11,6 +11,8 @@ summary: 'The services appliance has eight cooling fans. If one of the fans fail
 [.lead]
 The services appliance has eight cooling fans. If one of the fans fails, you must replace it as soon as possible to ensure that the appliance has proper cooling.
 
+.What you'll need
+
 * You have unpacked the replacement fan.
 * You have physically located the appliance where you are replacing the fan in the data center.
 +
@@ -21,6 +23,8 @@ xref:locating_controller_in_data_center.adoc[Locating the controller in a data c
 +
 xref:placing_appliance_into_maintenance_mode.adoc[Placing an appliance into maintenance mode]
 
+.About this task
+
 The appliance node will not be accessible while you replace the fan.
 
 The photograph shows a fan for the services appliance. The cooling fans are accessible after you take the top cover off of the appliance.
@@ -29,12 +33,14 @@ NOTE: Each of the two power supply units also contain a fan. Those fans are not 
 
 image::../media/fan_fru.png[Fan FRU]
 
+.Steps
+
 . When the appliance has been placed maintenance mode, shut down the appliance.
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Shut down the services appliance:``shutdown -h now``
 . Use one of two methods to verify that the power for the services appliance is off:

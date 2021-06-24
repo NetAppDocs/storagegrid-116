@@ -11,6 +11,8 @@ summary: 'After installing and configuring the storage appliance, you can deploy
 [.lead]
 After installing and configuring the storage appliance, you can deploy it as a Storage Node in a StorageGRID system. When you deploy an appliance as a Storage Node, you use the StorageGRID Appliance Installer included on the appliance.
 
+.What you'll need
+
 NOTE: If you are cloning an appliance node, continue following the process in recovery and maintenance.
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
@@ -21,6 +23,8 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery
 * The primary Admin Node for the StorageGRID system has been deployed.
 * All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * You have a service laptop with a supported web browser.
+
+.About this task
 
 Each storage appliance functions as a single Storage Node. Any appliance can connect to the Grid Network, the Admin Network, and the Client Network
 
@@ -37,6 +41,8 @@ NOTE: If you are performing an expansion or recovery operation, follow the appro
 * To add an appliance Storage Node to an existing StorageGRID system, see the instructions for expanding a StorageGRID system.
 * To deploy an appliance Storage Node as part of a recovery operation, see instructions for recovery and maintenance.
 
+.Steps
+
 . Open a browser, and enter one of the IP addresses for the appliance's compute controller.
 +
 `+https://Controller_IP:8443+`
@@ -51,6 +57,7 @@ If you have previously installed other nodes in this data center, the StorageGRI
 
 . If this IP address is not shown or you need to change it, specify the address:
 +
+[options="header"]
 |===
 | Option| Description
 a|
@@ -71,8 +78,6 @@ a|
  .. Select the primary Admin Node for the grid where this appliance Storage Node will be deployed.
  .. Click *Save*.
  .. Wait for the connection state for the new IP address to become ready.
-
-+
 |===
 
 . In the *Node name* field, enter the name you want to use for this appliance node, and click *Save*.
@@ -97,7 +102,7 @@ NOTE: If you need to access the Monitor Installation page manually, click *Monit
 +
 NOTE: If you need to deploy multiple appliance Storage Nodes at one time, you can automate the installation process by using the configure-sga.py appliance installation script. This script applies only to Storage Nodes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
 

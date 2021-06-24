@@ -11,12 +11,18 @@ summary: 'You must access the StorageGRID Appliance Installer to configure the c
 [.lead]
 You must access the StorageGRID Appliance Installer to configure the connections between the appliance and the three StorageGRID networks: the Grid Network, the Admin Network (optional), and the Client Network (optional).
 
+.What you'll need
+
 * You are using a supported web browser.
 * The appliance is connected to all of the StorageGRID networks you plan to use.
 * You know the IP address, gateway, and subnet for the appliance on these networks.
 * You have configured the network switches you plan to use.
 
+.About this task
+
 When you first access the StorageGRID Appliance Installer, you can use the DHCP-assigned IP address for the Admin Network (assuming the appliance is connected to the Admin Network) or the DHCP-assigned IP address for the Grid Network. Using the IP address for the Admin Network is preferred. Otherwise, if you access the StorageGRID Appliance Installer using the DHCP address for the Grid Network, you might lose connection with the StorageGRID Appliance Installer when you change link settings and when you enter a static IP.
+
+.Steps
 
 . Obtain the DHCP address for the appliance on the Admin Network (if it is connected) or the Grid Network (if the Admin Network is not connected).
 +
@@ -32,7 +38,8 @@ In the sequence:
 
   *** The first set of numbers is the DHCP address for the appliance Storage Node on the Admin Network, if it is connected. This IP address is assigned to management port 1 on the E5700SG controller.
   *** The second set of numbers is the DHCP address for the appliance Storage Node on the Grid Network. This IP address is assigned to 10/25-GbE ports 2 and 4 when you first apply power to the appliance.
-*Note:* If an IP address could not be assigned using DHCP, 0.0.0.0 is displayed.
++
+NOTE: If an IP address could not be assigned using DHCP, 0.0.0.0 is displayed.
 
  ** Provide the MAC address for management port 1 to your network administrator, so they can look up the DHCP address for this port on the Admin Network. The MAC address is printed on a label on the E5700SG controller, next to the port.
 
@@ -62,6 +69,6 @@ The StorageGRID Appliance Installer Home page appears. The information and messa
 NOTE: If you cannot access the Home page over a link-local connection, configure the service laptop IP address as `169.254.0.2`, and try again.
 . Review any messages displayed on the Home page and configure the link configuration and the IP configuration, as required.
 
-*Related information*
+.Related information
 
 xref:web_browser_requirements.adoc[Web browser requirements]

@@ -11,6 +11,8 @@ summary: 'When you deploy a services appliance as a Gateway Node or non-primary 
 [.lead]
 When you deploy a services appliance as a Gateway Node or non-primary Admin Node, you use the StorageGRID Appliance Installer included on the appliance.
 
+.What you'll need
+
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * Network links, IP addresses, and port remapping (if necessary) have been configured for the appliance using the StorageGRID Appliance Installer.
 +
@@ -22,6 +24,8 @@ NOTE: The CLB service is deprecated.
 * All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * You have a service laptop with a supported web browser.
 * You know the IP address assigned to the appliance. You can use the IP address for any attached StorageGRID network.
+
+.About this task
 
 To install StorageGRID on a services appliance node:
 
@@ -36,9 +40,11 @@ NOTE: If you need to deploy multiple appliance nodes at one time, you can automa
 
 xref:automating_appliance_installation_and_configuration.adoc[Automating appliance installation and configuration]
 
+.Steps
+
 . Open a browser, and enter the IP address for the appliance.
 +
-`+https://Controller_IP:8443+`
+`+https://_Controller_IP_:8443+`
 +
 The StorageGRID Appliance Installer Home page appears.
 
@@ -48,6 +54,7 @@ If you have previously installed other nodes in this data center, the StorageGRI
 
 . If this IP address is not shown or you need to change it, specify the address:
 +
+[options="header"]
 |===
 | Option| Description
 a|
@@ -69,7 +76,6 @@ a|
  .. Click *Save*.
  .. Wait for the connection state for the new IP address to become ready.
 
-+
 |===
 
 . In the *Node name* field, enter the name you want to use for this appliance node, and click *Save*.
@@ -106,6 +112,6 @@ NOTE: If you need to access the Monitor Installation page manually, click *Monit
 
 . If your grid includes multiple appliance nodes, repeat the previous steps for each appliance.
 
-*Related information*
+.Related information
 
 xref:deploying_services_appliance_as_primary_admin_node.adoc[Deploying a services appliance as a primary Admin Node]

@@ -11,9 +11,15 @@ summary: 'Management port 1 on the E2700 controller connects the appliance to th
 [.lead]
 Management port 1 on the E2700 controller connects the appliance to the management network for SANtricity Storage Manager. You must set a static IP address for the E2700 controller to ensure that you do not lose your management connection to the hardware and the controller firmware in the StorageGRID appliance.
 
+.What you'll need
+
 You are using a supported web browser.
 
+.About this task
+
 DHCP-assigned addresses could change at any time. Assign a static IP address to the controller to ensure consistent accessibility.
+
+.Steps
 
 . From the client, enter the URL for the StorageGRID Appliance Installer: `+https://E5600SG_Controller_IP:8443+`
 +
@@ -50,6 +56,6 @@ It might take a few minutes for your changes to be applied.
 +
 When you connect to SANtricity Storage Manager, you will use the new static IP address as the URL: `+https://E2700_Controller_IP+`.
 
-*Related information*
+.Related information
 
 http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61197[NetApp Documentation: SANtricity Storage Manager]

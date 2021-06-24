@@ -11,15 +11,17 @@ summary: 'You must connect the management port on the appliance to the service l
 [.lead]
 You must connect the management port on the appliance to the service laptop and connect the network ports on the appliance to the Grid Network and optional Client Network for StorageGRID.
 
+.What you'll need
+
 * You have an RJ-45 Ethernet cable for connecting the management port.
 * You have one of the following options for the network ports. These items are not provided with the appliance.
  ** One to four TwinAx cables for connecting the four network ports.
  ** For the SG100, one to four SFP+ or SFP28 transceivers if you plan to use optical cables for the ports.
  ** For the SG1000, one to four QSFP+ or QSFP28 transceivers if you plan to use optical cables for the ports.
 
-CAUTION:
+CAUTION: *Risk of exposure to laser radiation* -- Do not disassemble or remove any part of a SFP or QSFP transceiver. You might be exposed to laser radiation.
 
-*Risk of exposure to laser radiation* -- Do not disassemble or remove any part of a SFP or QSFP transceiver. You might be exposed to laser radiation.
+.About this task
 
 The following figures show the ports on the back of the appliance.
 
@@ -29,6 +31,7 @@ The following figures show the ports on the back of the appliance.
 
 image::../media/sg1000_connections.png[SG1000 port connections]
 
+[options="header"]
 |===
 |  | Port| Type of port| Function
 a|
@@ -59,7 +62,8 @@ a|
 a|
 Admin Network port on the appliance (labelled P1 in the figures)
 a|
-1-GbE (RJ-45)*Attention:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
+1-GbE (RJ-45)+
+*Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
 
 a|
 Connects the appliance to the Admin Network for StorageGRID.
@@ -69,7 +73,9 @@ a|
 a|
 Rightmost RJ-45 port on the appliance
 a|
-1-GbE (RJ-45)*Attention:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
+1-GbE (RJ-45)
++
+*Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
 
 a|
 
@@ -79,6 +85,8 @@ a|
 
 |===
 
+.Steps
+
 . Connect the BMC management port on the appliance to the management network, using an Ethernet cable.
 +
 Although this connection is optional, it is recommended to facilitate support.
@@ -87,6 +95,7 @@ Although this connection is optional, it is recommended to facilitate support.
 +
 NOTE: The four network ports must use the same link speed. See the following tables for the equipment required based on your hardware and link speed.
 +
+[options="header"]
 |===
 | SG100 link speed (GbE)| Required equipment
 a|
@@ -120,6 +129,7 @@ QFSP28 transceiver
 
  ** If you plan to use Fixed port bond mode (default), connect the ports to the StorageGRID Grid and Client Networks, as shown in the table.
 +
+[options="header"]
 |===
 | Port| Connects to...
 a|

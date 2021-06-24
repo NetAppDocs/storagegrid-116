@@ -11,6 +11,7 @@ summary: 'The Management category logs user requests to the Management API. Ever
 [.lead]
 The Management category logs user requests to the Management API. Every request that is not a GET or HEAD request to the API logs a response with the username, IP, and type of request to the API.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -74,7 +75,9 @@ MRSP
 a|
 Response body
 a|
-The content of the response (the response body) is logged by default. *Note:* Sensitive information is either deleted (for example, an S3 access key) or masked with asterisks (for example, a password).
+The content of the response (the response body) is logged by default. 
++
+*Note:* Sensitive information is either deleted (for example, an S3 access key) or masked with asterisks (for example, a password).
 
 a|
 MSIP

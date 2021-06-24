@@ -11,12 +11,16 @@ summary: 'To increase storage capacity, you can add one or two expansion shelves
 [.lead]
 To increase storage capacity, you can add one or two expansion shelves to an SG6060 that is deployed in a StorageGRID system.
 
+.What you'll need
+
 * You must have the provisioning passphrase.
 * You must be running StorageGRID 11.4 or later.
 * You have the expansion shelf and two SAS cables for each expansion shelf.
 * You have physically located the storage appliance where you are adding the expansion shelf in the data center.
 +
 xref:locating_controller_in_data_center.adoc[Locating the controller in a data center]
+
+.About this task
 
 To add an expansion shelf, you perform these high-level steps:
 
@@ -27,6 +31,8 @@ To add an expansion shelf, you perform these high-level steps:
 * Wait until the new volumes are configured.
 
 Completing the procedure for one or two expansion shelves should take one hour or less per appliance node. To minimize downtime, the following steps instruct you to install the new expansion shelves and drives before placing the SG6060 into maintenance mode. The remaining steps should take approximately 20 to 30 minutes per appliance node.
+
+.Steps
 
 . Follow the instructions for installing 60-drive shelves into a cabinet or rack.
 +
@@ -46,6 +52,7 @@ This drawing shows two expansion shelves. If you have only one, connect IOM A to
 +
 image::../media/expansion_shelves_connections_sg6060.png[SG6060 Expansion Shelf Connections]
 +
+[options="header"]
 |===
 | Callout| Description
 a|
@@ -146,7 +153,7 @@ The green checkmark icon means that no alerts are active and the node is connect
 +
 image::../media/storage_shelves_after_expansion.png[Storage Shelves After Expansion]
 
-*Related information*
+.Related information
 
 xref:unpacking_boxes_sg6000.adoc[Unpacking the boxes (SG6000)]
 

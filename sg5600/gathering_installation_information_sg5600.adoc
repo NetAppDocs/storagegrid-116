@@ -11,8 +11,11 @@ summary: 'As you install and configure the StorageGRID appliance, you must make 
 [.lead]
 As you install and configure the StorageGRID appliance, you must make decisions and gather information about Ethernet switch ports, IP addresses, and port and network bond modes.
 
+.About this task
+
 You can use the following tables to record information for each network you connect to the appliance. These values are required to install and configure the hardware.
 
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -24,12 +27,16 @@ MAC address for management port 1 (printed on a label near port P1)
 a|
  
 a|
-DHCP-assigned IP address for management port 1, if available after power on**Note:** If the network you will connect to the E2700 controller includes a DHCP server, the network administrator can use the MAC address to determine the IP address that was assigned by the DHCP server.
+DHCP-assigned IP address for management port 1, if available after power on
++
+*Note:* If the network you will connect to the E2700 controller includes a DHCP server, the network administrator can use the MAC address to determine the IP address that was assigned by the DHCP server.
 
 a|
  
 a|
-Speed and duplex mode**Note:** You must make sure the Ethernet switch for the SANtricity Storage Manager management network is set to autonegotiate.
+Speed and duplex mode
++
+*Note:* You must make sure the Ethernet switch for the SANtricity Storage Manager management network is set to autonegotiate.
 
 a|
 Must be:
@@ -59,6 +66,7 @@ For IPv6:
 * Routable IP address:
 * E2700 controller router IP address:
 
+[options="header"]
 |===
 |===
 | Information needed| Your value
@@ -91,7 +99,9 @@ MAC address for management port 1 (printed on a label near port P1)
 a|
  
 a|
-DHCP-assigned IP address for management port 1, if available after power on *Note:* If the Admin Network includes a DHCP server, the E5600SG controller displays the DHCP-assigned IP address on its seven-segment display after it boots up. You can also determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
+DHCP-assigned IP address for management port 1, if available after power on 
++
+*Note:* If the Admin Network includes a DHCP server, the E5600SG controller displays the DHCP-assigned IP address on its seven-segment display after it boots up. You can also determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
 
 a|
 
@@ -99,7 +109,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Admin Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance Storage Node on the Admin Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -167,7 +179,9 @@ VLAN tag(if VLAN tagging is enabled)
 a|
 Enter a value between 0 and 4095:
 a|
-DHCP-assigned IP address for the Grid Network, if available after power on**Note:** If the Grid Network includes a DHCP server, the E5600SG controller displays the DHCP-assigned IP address for the Grid Network on its seven-segment display after it boots up.
+DHCP-assigned IP address for the Grid Network, if available after power on
++
+*Note:* If the Grid Network includes a DHCP server, the E5600SG controller displays the DHCP-assigned IP address for the Grid Network on its seven-segment display after it boots up.
 
 a|
 
@@ -175,7 +189,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Grid Network**Note:** If your network does not have a gateway, specify the same static IPv4 address for the gateway.
+Static IP address you plan to use for the appliance Storage Node on the Grid Network
++
+*Note:* If your network does not have a gateway, specify the same static IPv4 address for the gateway.
 
 a|
 
@@ -183,7 +199,9 @@ a|
 * Gateway:
 
 a|
-Grid Network subnets (CIDR)*Note:* If the Client Network is not enabled, the default route on the controller will use the gateway specified here.
+Grid Network subnets (CIDR)
++
+*Note:* If the Client Network is not enabled, the default route on the controller will use the gateway specified here.
 
 a|
  
@@ -227,7 +245,9 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Client Network *Note:* If the Client Network is enabled, the default route on the controller will use the gateway specified here.
+Static IP address you plan to use for the appliance Storage Node on the Client Network 
++
+*Note:* If the Client Network is enabled, the default route on the controller will use the gateway specified here.
 
 a|
 
@@ -235,7 +255,7 @@ a|
 * Gateway:
 
 |===
-*Related information*
+.Related information
 
 xref:reviewing_appliance_network_connections_sg5600.adoc[Reviewing appliance network connections]
 

@@ -11,12 +11,15 @@ summary: 'Client read audit messages are logged when an S3 or Swift client appli
 [.lead]
 Client read audit messages are logged when an S3 or Swift client application makes a request to retrieve an object.
 
+[options="header"]
 |===
 | Code| Description| Used by| See
 a|
 SGET
 a|
-S3 GET: Logs a successful transaction to retrieve an object or list the objects in a bucket.*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
+S3 GET: Logs a successful transaction to retrieve an object or list the objects in a bucket.
++
+*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
 
 a|
 S3 client

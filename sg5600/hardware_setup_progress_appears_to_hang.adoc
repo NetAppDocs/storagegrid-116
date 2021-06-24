@@ -11,6 +11,8 @@ summary: 'The StorageGRID Appliance Installer might not be available if hardware
 [.lead]
 The StorageGRID Appliance Installer might not be available if hardware faults or cabling errors prevent the E5600SG controller from completing its boot-up processing.
 
+.Steps
+
 . Check the Needs Attention LED on either controller and look for a flashing error code.
 +
 During power up, the Service Action Allowed and Service Action Required LEDs are turned on while the hardware is initializing. The upper decimal point of the lower digit, called the diagnostic LED, also illuminates. The seven-segment display runs through a sequence of codes that are common for both controllers. This is normal and is not an indication of an error. When the hardware boots successfully, the Service Action LEDs are turned off, and the displays are driven by the firmware.
@@ -23,6 +25,7 @@ If an error occurs, the seven-segment display flashes a sequence, such as HE.
 
 . To understand what these codes mean, see the following resources:
 +
+[options="header"]
 |===
 | Controller| Reference
 a|
@@ -35,13 +38,15 @@ a|
 a|
 E2700 controller
 a|
-E-Series documentation    *Note:* The codes described for the E-Series E5600 controller do not apply to the E5600SG controller in the appliance.
+E-Series documentation    
++
+*Note:* The codes described for the E-Series E5600 controller do not apply to the E5600SG controller in the appliance.
 +
 |===
 
 . If this does not resolve the issue, contact technical support.
 
-*Related information*
+.Related information
 
 xref:e5600sg_controller_seven_segment_display_codes.adoc[E5600SG controller seven-segment display codes]
 

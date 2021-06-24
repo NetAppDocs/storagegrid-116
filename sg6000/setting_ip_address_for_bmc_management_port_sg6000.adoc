@@ -11,13 +11,19 @@ summary: 'Before you can access the BMC interface, you must configure the IP add
 [.lead]
 Before you can access the BMC interface, you must configure the IP address for the BMC management port on the SG6000-CN controller.
 
+.What you'll need
+
 * The management client is using a supported web browser.
 * You are using any management client that can connect to a StorageGRID network.
 * The BMC management port is connected to the management network you plan to use.
 +
 image::../media/sg6000_cn_bmc_management_port.gif[BMC management port on SG6000-CN controller]
 
+.About this task
+
 IMPORTANT: For support purposes, the BMC management port allows low-level hardware access. You should only connect this port to a secure, trusted, internal management network. If no such network is available, leave the BMC port unconnected or blocked, unless a BMC connection is requested by technical support.
+
+.Steps
 
 . From the client, enter the URL for the StorageGRID Appliance Installer: `+https://SG6000-CN_Controller_IP:8443+`
 +

@@ -11,6 +11,8 @@ summary: 'You can use the configure-sga.py script to automate many of the instal
 [.lead]
 You can use the configure-sga.py script to automate many of the installation and configuration tasks for StorageGRID appliance nodes, including installing and configuring a primary Admin Node. This script can be useful if you have a large number of appliances to configure. You can also use the script to generate a JSON file that contains appliance configuration information.
 
+.What you'll need
+
 * The appliance has been installed in a rack, connected to your networks, and powered on.
 * Network links and IP addresses have been configured for the primary Admin Node using the StorageGRID Appliance Installer.
 * If you are installing the primary Admin Node, you know its IP address.
@@ -21,6 +23,8 @@ You can use the configure-sga.py script to automate many of the installation and
 NOTE: This procedure is for advanced users with some experience using command-line interfaces. Alternatively, you can also use the StorageGRID Appliance Installer to automate the configuration.
 
 xref:automating_appliance_configuration_using_storagegrid_appliance_installer.adoc[Automating appliance configuration using the StorageGRID Appliance Installer]
+
+.Steps
 
 . Log in to the Linux machine you are using to run the Python script.
 . For general help with the script syntax and to see a list of the available parameters, enter the following:
@@ -37,7 +41,6 @@ The configure-sga.py script uses five subcommands:
  ** monitor for monitoring a StorageGRID installation
  ** reboot for rebooting the appliance
 If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the --help option you will get a different help text providing more detail on the options available within that subcommand:
-
 +
 ----
 configure-sga.py subcommand --help
@@ -52,7 +55,7 @@ configure-sga.py configure SGA-INSTALL-IP
 The results show current IP information for the appliance, including the IP address of the primary Admin Node and information about the Admin, Grid, and Client Networks.
 +
 ----
-Connecting to https://10.224.2.30:8443 (Checking version and connectivity.)
+Connecting to +https://10.224.2.30:8443+ (Checking version and connectivity.)
 2021/02/25 16:25:11: Performing GET on /api/versions... Received 200
 2021/02/25 16:25:11: Performing GET on /api/v2/system-info... Received 200
 2021/02/25 16:25:11: Performing GET on /api/v2/admin-connection... Received 200

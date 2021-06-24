@@ -11,6 +11,8 @@ summary: 'When you deploy a services appliance as a primary Admin Node, you use 
 [.lead]
 When you deploy a services appliance as a primary Admin Node, you use the StorageGRID Appliance Installer included on the appliance to install the StorageGRID software, or you upload the software version you want to install. You must install and configure the primary Admin Node before you install any other appliance node types. A primary Admin Node can connect to the Grid Network, and to the optional Admin Network and Client Network, if one or both are configured.
 
+.What you'll need
+
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * Network links, IP addresses, and port remapping (if necessary) have been configured for the appliance using the StorageGRID Appliance Installer.
 +
@@ -21,11 +23,15 @@ NOTE: The CLB service is deprecated.
 * You have a service laptop with a supported web browser.
 * You know one of the IP addresses assigned to the appliance. You can use the IP address for any attached StorageGRID network.
 
+.About this task
+
 To install StorageGRID on an appliance primary Admin Node:
 
 * You use the StorageGRID Appliance Installer to install the StorageGRID software. If you want to install a different version of the software, you first upload it using the StorageGRID Appliance Installer.
 * You wait as the software is installed.
 * When the software has been installed, the appliance is rebooted automatically.
+
+.Steps
 
 . Open a browser, and enter the IP address for the appliance.
 +
@@ -68,6 +74,6 @@ The Current state changes to "`Installation is in progress,`" and the Monitor In
 +
 NOTE: If you need to access the Monitor Installation page manually, click *Monitor Installation* from the menu bar.
 
-*Related information*
+.Related information
 
 xref:deploying_services_appliance_as_gateway_or_non_primary_admin_node.adoc[Deploying a services appliance as a Gateway or non-primary Admin Node]

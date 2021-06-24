@@ -11,6 +11,8 @@ summary: 'You can configure network links for the ports used to connect the appl
 [.lead]
 You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.
 
+.What you'll need
+
 * You have obtained the additional equipment required for your cable type and link speed.
 * You have connected the network ports to switches that support your chosen speed.
 
@@ -21,6 +23,8 @@ If you plan to use Aggregate port bond mode, LACP network bond mode, or VLAN tag
 * You understand how to configure the switches to use VLAN, LACP, and MLAG or equivalent.
 * You know the unique VLAN tag to use for each network. This VLAN tag will be added to each network packet to ensure that network traffic is routed to the correct network.
 
+.About this task
+
 The figures show how the four network ports are bonded in fixed port bond mode (default configuration).
 
 *SG100 fixed port bond mode* image:../media/sg100_fixed_port_draft.png[SG100 Fixed Port Bond Mode]
@@ -29,6 +33,7 @@ The figures show how the four network ports are bonded in fixed port bond mode (
 
 image::../media/sg1000_fixed_port.png[SG1000 Fixed Port Bond Mode]
 
+[options="header"]
 |===
 | Callout| Which ports are bonded
 a|
@@ -50,6 +55,7 @@ image::../media/sg100_aggregate_ports.png[Aggregate Port Bond Mode SG100]
 
 image::../media/sg1000_aggregate_ports.png[Aggregate Port Bond Mode SG1000]
 
+[options="header"]
 |===
 | Callout| Which ports are bonded
 a|
@@ -63,6 +69,7 @@ NOTE: The LACP transmit hash policy defaults to layer2+3 mode. If necessary, you
 
 * *Fixed (default) port bond mode*
 +
+[options="header"]
 |===
 | Network bond mode| Client Network disabled (default)| Client Network enabled
 a|
@@ -93,11 +100,11 @@ a|
  ** Ports 1 and 3 use an LACP bond for the Client Network.
  ** VLAN tags can be specified for both networks for the convenience of the network administrator.
 
-+
 |===
 
 * *Aggregate port bond mode*
-+
+
+[options="header"]
 |===
 | Network bond mode| Client Network disabled (default)| Client Network enabled
 a|
@@ -112,10 +119,9 @@ a|
  ** Ports 1-4 use a single LACP bond for the Grid Network and the Client Network.
  ** Two VLAN tags allow Grid Network packets to be segregated from Client Network packets.
 
-+
 |===
 
-For additional details, see the topic about GbE port connections for the services appliance.
+For additional details, see the article about GbE port connections for the services appliance.
 
 This figure shows how the two 1-GbE management ports on the SG100 are bonded in Active-Backup network bond mode for the Admin Network.
 
@@ -130,6 +136,8 @@ image::[Admin Network Ports Bonded SG100]
 *SG1000 Admin Network ports bonded*
 
 image::../media/sg1000_bonded_management_ports.png[Admin Network Ports Bonded SG1000]
+
+.Steps
 
 . From the menu bar of the StorageGRID Appliance Installer, click *Configure Networking* > *Link Configuration*.
 +
@@ -182,6 +190,6 @@ image:../media/sg1000_network_link_configuration_aggregate.png[Network Link Conf
 +
 NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: `+https://services_appliance_IP:8443+`
 
-*Related information*
+.Related information
 
 xref:obtaining_additional_equipment_and_tools_sg100_and_sg1000.adoc[Obtaining additional equipment and tools (SG100 and SG1000)]
