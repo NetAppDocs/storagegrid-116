@@ -11,6 +11,8 @@ summary: 'After completing the Linux installation on your hosts, you might need 
 [.lead]
 After completing the Linux installation on your hosts, you might need to perform some additional configuration to prepare a set of network interfaces on each host that are suitable for mapping into the StorageGRID nodes you will deploy later.
 
+.What you'll need
+
 * You have reviewed the StorageGRID networking guidelines.
 +
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
@@ -35,7 +37,7 @@ You can complete this task in many ways. For example, if your hosts are virtual 
 
 NOTE: Do not use bond or bridge devices directly as the container network interface. Doing so could prevent node start-up caused by a kernel issue with the use of MACVLAN with bond and bridge devices in the container namespace. Instead, use a non-bond device, such as a VLAN or virtual Ethernet (veth) pair. Specify this device as the network interface in the node configuration file.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
 

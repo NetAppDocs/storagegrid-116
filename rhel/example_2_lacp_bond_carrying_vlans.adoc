@@ -19,6 +19,8 @@ If you require separate VLANs and subnets for node networks on the same host, yo
 
 image::../media/rhel_install_vlan_diag_2.gif[This image is explained by the surrounding text.]
 
+.Steps
+
 . Aggregate all physical network interfaces that will be used for StorageGRID network connectivity into a single LACP bond.
 +
 Use the same name for the bond on every host, for example, bond0.
@@ -29,6 +31,6 @@ Note that steps 1 and 2 require appropriate configuration on the edge switches t
 +
 Sample interface configuration files for this per-host networking configuration scheme are provided.
 
-*Related information*
+.Related information
 
 xref:example_etc_sysconfig_network_scripts.adoc[Example /etc/sysconfig/network-scripts]

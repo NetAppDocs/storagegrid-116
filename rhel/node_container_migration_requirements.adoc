@@ -46,6 +46,8 @@ There are many ways to achieve consistent network interface naming across multip
 
 In order to achieve rapid, low-overhead node migrations, the StorageGRID node migration feature does not physically move node data. Instead, node migration is performed as a pair of export and import operations, as follows:
 
+.Steps
+
 . During the "`node export`" operation, a small amount of persistent state data is extracted from the node container running on HostA and cached on that node's system data volume. Then, the node container on HostA is deinstantiated.
 . During the "`node import`" operation, the node container on HostB that uses the same network interface and block storage mappings that were in effect on HostA is instantiated. Then, the cached persistent state data is inserted into the new instance.
 
@@ -55,7 +57,7 @@ The following example shows one solution for block device mapping for a StorageG
 
 image::../media/block_device_mapping_rhel.gif[This image is explained by the surrounding text.]
 
-*Related information*
+.Related information
 
 xref:configuring_host_network.adoc[Configuring the host network]
 

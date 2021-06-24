@@ -11,6 +11,8 @@ summary: 'The search integration service sends object metadata to a destination 
 [.lead]
 The search integration service sends object metadata to a destination search index whenever an object is created, deleted, or its metadata or tags are updated.
 
+.What you'll need
+
 * Platform services must be enabled for your tenant account by a StorageGRID administrator.
 * You must have already created an S3 bucket whose contents you want to index.
 * The endpoint that you intend to use as a destination for the search integration service must already exist, and you must have its URN.
@@ -59,7 +61,7 @@ As necessary, you can disable search integration for a bucket using either of th
 * Select *STORAGE (S3)* > *Buckets* and unselect the *Enable search integration* check box.
 * If you are using the S3 API directly, use a DELETE Bucket metadata notification request. See the instructions for implementing S3 client applications.
 
-*Related information*
+.Related information
 
 xref:understanding_search_integration_service.adoc[Understanding the search integration service]
 

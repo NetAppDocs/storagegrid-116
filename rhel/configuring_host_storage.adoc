@@ -11,6 +11,8 @@ summary: 'You must allocate block storage volumes to each host.'
 [.lead]
 You must allocate block storage volumes to each host.
 
+.What you'll need
+
 You have reviewed the following topics, which provide information you need to accomplish this task:
 
 link:storage_and_performance_requirements.md#[Storage and performance requirements]
@@ -87,6 +89,6 @@ This will cause the aliases to appear as block devices in the /dev/mapper direct
 
 NOTE: If you are setting up shared storage to support StorageGRID node migration and using device mapper multipathing, you can create and install a common /etc/multipath.conf on all co-located hosts. Just make sure to use a different Docker storage volume on each host. Using aliases and including the target hostname in the alias for each Docker storage volume LUN will make this easy to remember and is recommended.
 
-*Related information*
+.Related information
 
 xref:installing_docker.adoc[Installing Docker]
