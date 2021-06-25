@@ -23,7 +23,7 @@ The `audit-explain` tool, available on the primary Admin Node, provides simplifi
 
 IMPORTANT: The `audit-explain` tool is primarily intended for use by technical support during troubleshooting operations. Processing `audit-explain` queries can consume a large amount of CPU power, which might impact StorageGRID operations.
 
-This example shows typical output from the `audit-explain` tool. These four SPUT audit messages were generated when the S3 tenant with account ID 92484777680322627870 used S3 PUT requests to create a bucket named "`bucket1`" and add three objects to that bucket.
+This example shows typical output from the `audit-explain` tool. These four SPUT audit messages were generated when the S3 tenant with account ID 92484777680322627870 used S3 PUT requests to create a bucket named "bucket1" and add three objects to that bucket.
 
 ----
 SPUT S3 PUT bucket bucket1 account:92484777680322627870 usec:124673
@@ -79,7 +79,7 @@ Use the `help (-h)` option to see the available options. For example:
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
 . Enter the following command, where `/var/local/audit/export/audit.log` represents the name and the location of the file or files you want to analyze:
 +

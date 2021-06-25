@@ -1,7 +1,7 @@
 ---
 permalink: audit/idel_ilm_initiated_delete.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'This message is generated when ILM starts the process of deleting an object.'
 ---
 = IDEL: ILM Initiated Delete
@@ -66,7 +66,9 @@ LOCS
 a|
 Locations
 a|
-The storage location of object data within the StorageGRID system. The value for LOCS is "``" if the object has no locations (for example, it has been deleted).CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
+The storage location of object data within the StorageGRID system. The value for LOCS is "" if the object has no locations (for example, it has been deleted).
+
+CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
 
 CLDI: for replicated objects, the LDR node ID and the volume ID of the object's location.
 
@@ -83,7 +85,9 @@ RSLT
 a|
 Result
 a|
-The result of the ILM operation.SUCS: The ILM operation was successful.
+The result of the ILM operation.
+
+SUCS: The ILM operation was successful.
 
 a|
 RULE

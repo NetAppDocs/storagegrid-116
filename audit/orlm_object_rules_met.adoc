@@ -1,7 +1,7 @@
 ---
 permalink: audit/orlm_object_rules_met.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'This message is generated when the object is successfully stored and copied as specified by the ILM rules.'
 ---
 = ORLM: Object Rules Met
@@ -33,7 +33,9 @@ LOCS
 a|
 Locations
 a|
-The storage location of object data within the StorageGRID system. The value for LOCS is "``" if the object has no locations (for example, it has been deleted).CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
+The storage location of object data within the StorageGRID system. The value for LOCS is "" if the object has no locations (for example, it has been deleted).
+
+CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
 
 CLDI: for replicated objects, the LDR node ID and the volume ID of the object's location.
 
@@ -50,7 +52,9 @@ RSLT
 a|
 Result
 a|
-The result of the ILM operation.SUCS: The ILM operation was successful.
+The result of the ILM operation.
+
+SUCS: The ILM operation was successful.
 
 a|
 RULE
@@ -75,7 +79,9 @@ STAT
 a|
 Status
 a|
-The status of ILM operation.DONE: ILM operations against the object have completed.
+The status of ILM operation.
+
+DONE: ILM operations against the object have completed.
 
 DFER: The object has been marked for future ILM re-evaluation.
 

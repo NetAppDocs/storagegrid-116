@@ -1,7 +1,7 @@
 ---
 permalink: audit/spos_s3_post.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When an S3 client issues a POST Object restore request, a request is made to restore an object from AWS Glacier storage to a Cloud Storage Pool. This message is issued by the server if the transaction is successful.'
 ---
 = SPOS: S3 POST
@@ -44,15 +44,17 @@ a|
 HTTP Request Header
 a|
 List of logged HTTP request header names and values as selected during configuration.
-+
-*Note:* X-Forwarded-For is automatically included if it is present in the request and if the X-Forwarded-For value is different from the request sender IP address (SAIP audit field).
+
+*Note:* `X-Forwarded-For` is automatically included if it is present in the request and if the `X-Forwarded-For` value is different from the request sender IP address (SAIP audit field).
 
 a|
 RSLT
 a|
 Result Code
 a|
-Result of the POST Object restore request. Result is always:SUCS: Successful
+Result of the POST Object restore request. Result is always:
+
+SUCS: Successful
 
 a|
 S3AI
@@ -119,7 +121,9 @@ SUSR
 a|
 S3 User URN (request sender)
 a|
-The tenant account ID and the user name of the user making the request. The user can either be a local user or an LDAP user. For example: ``urn:sgws:identity::03393893651506583485:root``Empty for anonymous requests.
+The tenant account ID and the user name of the user making the request. The user can either be a local user or an LDAP user. For example: `urn:sgws:identity::03393893651506583485:root`
+
+Empty for anonymous requests.
 
 a|
 TIME

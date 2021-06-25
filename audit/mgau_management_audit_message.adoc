@@ -1,7 +1,7 @@
 ---
 permalink: audit/mgau_management_audit_message.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The Management category logs user requests to the Management API. Every request that is not a GET or HEAD request to the API logs a response with the username, IP, and type of request to the API.'
 ---
 = MGAU: Management audit message
@@ -50,7 +50,7 @@ The content of the request body. While the response body is logged by default, t
 * New NTP servers in *POST /grid/ntp-servers/update*
 * Decommissioned server IDs in *POST /grid/servers/decommission*
 
-NOTE: Sensitive information is either deleted (for example, an S3 access key) or masked with asterisks (for example, a password).
+*Note:* Sensitive information is either deleted (for example, an S3 access key) or masked with asterisks (for example, a password).
 
 a|
 MRMD
@@ -75,8 +75,8 @@ MRSP
 a|
 Response body
 a|
-The content of the response (the response body) is logged by default. 
-+
+The content of the response (the response body) is logged by default.
+
 *Note:* Sensitive information is either deleted (for example, an S3 access key) or masked with asterisks (for example, a password).
 
 a|

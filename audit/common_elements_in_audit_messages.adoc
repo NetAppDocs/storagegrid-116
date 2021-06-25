@@ -11,7 +11,7 @@ summary: 'All audit messages contain the common elements.'
 [.lead]
 All audit messages contain the common elements.
 
-[options="header"]
+[cols="1a,1a,6a" options="header"]
 |===
 | Code| Type| Description
 a|
@@ -35,7 +35,7 @@ UI64
 a|
 Audit Session Identifier: In previous releases, this element indicated the time at which the audit system was initialized after the service started up. This time value was measured in microseconds since the operating system epoch (00:00:00 UTC on 1 January, 1970).
 
-NOTE: This element is obsolete and no longer appears in audit messages.
+*Note:* This element is obsolete and no longer appears in audit messages.
 
 a|
 ASQN
@@ -44,7 +44,7 @@ UI64
 a|
 Sequence Count: In previous releases, this counter was incremented for each generated audit message on the grid node (ANID) and reset to zero at service restart.
 
-NOTE: This element is obsolete and no longer appears in audit messages.
+*Note:* This element is obsolete and no longer appears in audit messages.
 
 a|
 ATID
@@ -60,14 +60,14 @@ UI64
 a|
 Timestamp: The time the event was generated that triggered the audit message, measured in microseconds since the operating system epoch (00:00:00 UTC on 1 January, 1970). Note that most available tools for converting the timestamp to local date and time are based on milliseconds.
 
-Rounding or truncation of the logged timestamp might be required. The human‐readable time that appears at the beginning of the audit message in the audit.log file is the ATIM attribute in ISO 8601 format. The date and time are represented as `YYYY-MMDDTHH:MM:SS.UUUUUU`, where the `T` is a literal string character indicating the beginning of the time segment of the date. `UUUUUU` are microseconds.
+Rounding or truncation of the logged timestamp might be required. The human‐readable time that appears at the beginning of the audit message in the `audit.log` file is the ATIM attribute in ISO 8601 format. The date and time are represented as `_YYYY-MMDDTHH:MM:SS.UUUUUU_`, where the `T` is a literal string character indicating the beginning of the time segment of the date. `_UUUUUU_` are microseconds.
 
 a|
 ATYP
 a|
 FC32
 a|
-Event Type: A four‐character identifier of the event being logged. This governs the "`payload`" content of the message: the attributes that are included.
+Event Type: A four‐character identifier of the event being logged. This governs the "payload" content of the message: the attributes that are included.
 
 a|
 AVER
