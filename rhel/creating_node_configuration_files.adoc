@@ -1,7 +1,7 @@
 ---
 permalink: rhel/creating_node_configuration_files.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Node configuration files are small text files that provide the information the StorageGRID host service needs to start a node and connect it to the appropriate network and block storage resources. Node configuration files are used for virtual nodes and are not used for appliance nodes.'
 ---
 = Creating node configuration files
@@ -28,15 +28,15 @@ Node names must follow these rules:
 * Can contain one or more hyphens (-)
 * Must be no more than 32 characters, not including the .confextension
 
-Any files in /etc/storagegrid/nodes that do not follow these naming conventions will not be parsed by the host service.
+Any files in '/etc/storagegrid/node's that do not follow these naming conventions will not be parsed by the host service.
 
 If you have a multi-site topology planned for your grid, a typical node naming scheme might be:
 
 ----
-<site\>-<node-type\><node-number\>.conf
+<site>-<node type>-<node number>.conf
 ----
 
-For example, you might use dc1-adm1.conf for the first Admin Node in Data Center 1, and dc2-sn3.conf for the third Storage Node in Data Center 2. However, you can use any scheme you like, as long as all node names follow the naming rules.
+For example, you might use 'dc1-adm1.conf' for the first Admin Node in Data Center 1, and 'dc2-sn3.conf' for the third Storage Node in Data Center 2. However, you can use any scheme you like, as long as all node names follow the naming rules.
 
 == What is in a node configuration file?
 
@@ -49,22 +49,22 @@ The configuration files contain key/value pairs, with one key and one value per 
 
 Some keys are required for every node, while others are optional or only required for certain node types.
 
-The table defines the acceptable values for all supported keys. The middle column indicates whether the key is Required (R), a Best Practice (BP), or Optional (O).
+The table defines the acceptable values for all supported keys. In the middle column:
+
+R: required +
+BP: best practice +
+O: optional
 
 [options="header"]
 |===
 | Key| R, BP, or O?| Value
-a|
-*ADMIN_IP*
-
-a|
-*BP*
-a|
-Grid Network IPv4 address of the primary Admin Node for the grid to which this node belongs. Use the same value you specified for GRID_NETWORK_IP for the grid node with NODE_TYPE = VM_Admin_Node and ADMIN_ROLE = Primary. If you omit this parameter, the node attempts to discover a primary Admin Node using mDNS.
+a|ADMIN_IP
+a|BP
+a|Grid Network IPv4 address of the primary Admin Node for the grid to which this node belongs. Use the same value you specified for GRID_NETWORK_IP for the grid node with NODE_TYPE = VM_Admin_Node and ADMIN_ROLE = Primary. If you omit this parameter, the node attempts to discover a primary Admin Node using mDNS.
 
 See "`How grid nodes discover the primary Admin Node.`"
 
-NOTE: This value is ignored, and might be prohibited, on the primary Admin Node.
+*Note*: This value is ignored, and might be prohibited, on the primary Admin Node.
 
 a|
 ADMIN_NETWORK_CONFIG
@@ -95,7 +95,7 @@ O (*R*)
 a|
 IPv4 address of the local Admin Network gateway for this node. Must be on the subnet defined by ADMIN_NETWORK_IP and ADMIN_NETWORK_MASK. This value is ignored for DHCP-configured networks.
 
-NOTE: This parameter is required if ADMIN_NETWORK_ESL is specified.
+*Note*: This parameter is required if ADMIN_NETWORK_ESL is specified.
 
 Examples:
 
@@ -156,7 +156,7 @@ The maximum transmission unit (MTU) for this node on the Admin Network. Do not s
 
 If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value.
 
-IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
+*IMPORTANT*: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
 
 Examples:
 
@@ -164,13 +164,13 @@ Examples:
 * 8192
 
 a|
-*ADMIN_NETWORK_TARGET*
+ADMIN_NETWORK_TARGET
 a|
-*BP*
+BP
 a|
 Name of the host device that you will use for Admin Network access by the StorageGRID node. Only network interface names are supported. Typically, you use a different interface name than what was specified for GRID_NETWORK_TARGET or CLIENT_NETWORK_TARGET.
 
-NOTE: Do not use bond or bridge devices as the network target. Either configure a VLAN (or other virtual interface) on top of the bond device, or use a bridge and virtual Ethernet (veth) pair.
+*Note*: Do not use bond or bridge devices as the network target. Either configure a VLAN (or other virtual interface) on top of the bond device, or use a bridge and virtual Ethernet (veth) pair.
 
 *Best practice:* Specify a value even if this node will not initially have an Admin Network IP address. Then you can add an Admin Network IP address later, without having to reconfigure the node on the host.
 
@@ -191,9 +191,9 @@ Interface
 (This is the only supported value.)
 
 a|
-*ADMIN_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC*
+ADMIN_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC
 a|
-*BP*
+BP
 a|
 True or False
 
@@ -206,7 +206,7 @@ For more details on MAC cloning, see the considerations and recommendations for 
 xref:considerations_and_recommendations_for_mac_address_cloning.adoc[Considerations and recommendations for MAC address cloning]
 
 a|
-*ADMIN_ROLE*
+ADMIN_ROLE
 a|
 *R*
 a|
@@ -215,7 +215,7 @@ Primary or Non-Primary
 This key is only required when NODE_TYPE = VM_Admin_Node; do not specify it for other node types.
 
 a|
-*BLOCK_DEVICE_AUDIT_LOGS*
+BLOCK_DEVICE_AUDIT_LOGS
 a|
 *R*
 a|
@@ -228,7 +228,7 @@ Examples:
 * /dev/mapper/sgws-adm1-audit-logs
 
 a|
-*BLOCK_DEVICE_RANGEDB_00*
+BLOCK_DEVICE_RANGEDB_00
 
 BLOCK_DEVICE_RANGEDB_01
 
@@ -267,7 +267,7 @@ Path and name of the block device special file this node will use for persistent
 
 Only BLOCK_DEVICE_RANGEDB_00 is required; the rest are optional. The block device specified for BLOCK_DEVICE_RANGEDB_00 must be at least 4 TB; the others can be smaller.
 
-NOTE: Do not leave gaps. If you specify BLOCK_DEVICE_RANGEDB_05, you must also specify BLOCK_DEVICE_RANGEDB_04.
+*Note*: Do not leave gaps. If you specify BLOCK_DEVICE_RANGEDB_05, you must also specify BLOCK_DEVICE_RANGEDB_04.
 
 Examples:
 
@@ -276,7 +276,7 @@ Examples:
 * /dev/mapper/sgws-sn1-rangedb-0
 
 a|
-*BLOCK_DEVICE_TABLES*
+BLOCK_DEVICE_TABLES
 
 a|
 *R*
@@ -290,7 +290,7 @@ Examples:
 * /dev/mapper/sgws-adm1-tables
 
 a|
-*BLOCK_DEVICE_VAR_LOCAL*
+BLOCK_DEVICE_VAR_LOCAL
 
 a|
 *R*
@@ -380,7 +380,7 @@ The maximum transmission unit (MTU) for this node on the Client Network. Do not 
 
 If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value.
 
-IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
+*IMPORTANT*: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
 
 Examples:
 
@@ -388,10 +388,10 @@ Examples:
 * 8192
 
 a|
-*CLIENT_NETWORK_TARGET*
+CLIENT_NETWORK_TARGET
 
 a|
-*BP*
+BP
 
 a|
 Name of the host device that you will use for Client Network access by the StorageGRID node. Only network interface names are supported. Typically, you use a different interface name than what was specified for GRID_NETWORK_TARGET or ADMIN_NETWORK_TARGET.
@@ -417,9 +417,9 @@ Interface
 (This is only supported value.)
 
 a|
-*CLIENT_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC*
+CLIENT_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC
 a|
-*BP*
+BP
 a|
 True or False
 
@@ -443,7 +443,7 @@ STATIC or DHCP
 (Defaults to STATIC if not specified.)
 
 a|
-*GRID_NETWORK_GATEWAY*
+GRID_NETWORK_GATEWAY
 
 a|
 *R*
@@ -454,7 +454,7 @@ IPv4 address of the local Grid Network gateway for this node, which must be on t
 If the Grid Network is a single subnet with no gateway, use either the standard gateway address for the subnet (X.Y.Z.1) or this node's GRID_NETWORK_IP value; either value will simplify potential future Grid Network expansions.
 
 a|
-*GRID_NETWORK_IP*
+GRID_NETWORK_IP
 
 a|
 *R*
@@ -507,9 +507,9 @@ The maximum transmission unit (MTU) for this node on the Grid Network. Do not sp
 
 If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value.
 
-IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
+*IMPORTANT*: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
 
-IMPORTANT: For the best network performance, all nodes should be configured with similar MTU values on their Grid Network interfaces. The *Grid Network MTU mismatch* alert is triggered if there is a significant difference in MTU settings for the Grid Network on individual nodes. The MTU values do not have to be the same for all network types.
+*IMPORTANT*: For the best network performance, all nodes should be configured with similar MTU values on their Grid Network interfaces. The *Grid Network MTU mismatch* alert is triggered if there is a significant difference in MTU settings for the Grid Network on individual nodes. The MTU values do not have to be the same for all network types.
 
 Examples:
 
@@ -517,7 +517,7 @@ Examples:
 * 8192
 
 a|
-*GRID_NETWORK_TARGET*
+GRID_NETWORK_TARGET
 
 a|
 *R*
@@ -525,7 +525,7 @@ a|
 a|
 Name of the host device that you will use for Grid Network access by the StorageGRID node. Only network interface names are supported. Typically, you use a different interface name than what was specified for ADMIN_NETWORK_TARGET or CLIENT_NETWORK_TARGET.
 
-NOTE: Do not use bond or bridge devices as the network target. Either configure a VLAN (or other virtual interface) on top of the bond device, or use a bridge and virtual Ethernet (veth) pair.
+*Note*: Do not use bond or bridge devices as the network target. Either configure a VLAN (or other virtual interface) on top of the bond device, or use a bridge and virtual Ethernet (veth) pair.
 
 Examples:
 
@@ -544,7 +544,7 @@ Interface
 (This is the only supported value.)
 
 a|
-*GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC*
+GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC
 a|
 *BP*
 a|
@@ -567,7 +567,7 @@ O
 a|
 The maximum amount of RAM that this node is allowed to consume. If this key is omitted, the node has no memory restrictions. When setting this field for a production-level node, specify a value that is at least 24 GB and 16 to 32 GB less than the total system RAM.
 
-NOTE: The RAM value affects a node's actual metadata reserved space. See the instructions for administering StorageGRID for a description of what Metadata Reserved Space is.
+*Note*: The RAM value affects a node's actual metadata reserved space. See the instructions for administering StorageGRID for a description of what Metadata Reserved Space is.
 
 The format for this field is <number><unit>, where <unit> can be b, k, m, or g.
 
@@ -577,10 +577,10 @@ Examples:
 
 38654705664b
 
-NOTE: If you want to use this option, you must enable kernel support for memory cgroups.
+*Note*: If you want to use this option, you must enable kernel support for memory cgroups.
 
 a|
-*NODE_TYPE*
+NODE_TYPE
 
 a|
 *R*
@@ -600,9 +600,11 @@ a|
 O
 
 a|
-Remaps any port used by a node for internal grid node communications or external communications. Remapping ports is necessary if enterprise networking policies restrict one or more ports used by StorageGRID, as described in "`Internal grid node communications`" or "`External communications.`"*Attention:* Do not remap the ports you are planning to use to configure load balancer endpoints.
+Remaps any port used by a node for internal grid node communications or external communications. Remapping ports is necessary if enterprise networking policies restrict one or more ports used by StorageGRID, as described in "`Internal grid node communications`" or "`External communications.`"
 
-NOTE: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
+*IMPORTANT*: Do not remap the ports you are planning to use to configure load balancer endpoints.
+
+*Note*: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
 
 The format used is: <network type>/<protocol>/<default port used by grid node>/<new port>, where network type is grid, admin, or client, and protocol is tcp or udp.
 
@@ -619,7 +621,9 @@ a|
 O
 
 a|
-Remaps inbound communications to the specified port. If you specify PORT_REMAP_INBOUND but do not specify a value for PORT_REMAP, outbound communications for the port are unchanged.*Attention:* Do not remap the ports you are planning to use to configure load balancer endpoints.
+Remaps inbound communications to the specified port. If you specify PORT_REMAP_INBOUND but do not specify a value for PORT_REMAP, outbound communications for the port are unchanged.
+
+*IMPORTANT*: Do not remap the ports you are planning to use to configure load balancer endpoints.
 
 The format used is: <network type>/<protocol:>/<remapped port >/<default port used by grid node>, where network type is grid, admin, or client, and protocol is tcp or udp.
 
