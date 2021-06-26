@@ -11,7 +11,7 @@ summary: 'The audit share is automatically enabled as a read-only share.'
 [.lead]
 The audit share is automatically enabled as a read-only share.
 
-* You must have the Passwords.txt file with the root/admin password (available in the SAID package).
+* You must have the `Passwords.txt` file with the root/admin password (available in the SAID package).
 * You must have the Configuration.txt file (available in the SAID package).
 * The audit client must be using NFS Version 3 (NFSv3).
 
@@ -19,9 +19,9 @@ Perform this procedure for each Admin Node in a StorageGRID deployment from whic
 
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . Confirm that all services have a state of Running or Verified. Enter: `storagegrid-status`
@@ -70,9 +70,9 @@ The NFS configuration utility is displayed.
 
  .. Remotely log in to the site's Admin Node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
  .. Repeat steps <<STEP_E8102AA37377459DBCF213522A09F0A5,#STEP_E8102AA37377459DBCF213522A09F0A5>> through <<SUBSTEP_CA4371247D26468784FA5D4D969E4600,#SUBSTEP_CA4371247D26468784FA5D4D969E4600>> to configure the audit shares for each additional Admin Node.
  .. Close the remote secure shell login to the remote Admin Node. Enter: `exit`
 . Log out of the command shell: `exit`

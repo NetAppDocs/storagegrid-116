@@ -12,7 +12,7 @@ summary: 'You might not be able to sign in to the Grid Manager if the single sig
 You might not be able to sign in to the Grid Manager if the single sign-on (SSO) system goes down. In this case, you can temporarily disable and reenable SSO for one Admin Node. To disable and then reenable SSO, you must access the node's command shell.
 
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must know the password for the local root user.
 
 After you disable SSO for one Admin Node, you can sign in to the Grid Manager as the local root user. To secure your StorageGRID system, you must use the node's command shell to reenable SSO on the Admin Node as soon as you sign out.
@@ -21,9 +21,9 @@ IMPORTANT: Disabling SSO for one Admin Node does not affect the SSO settings for
 
 . Log in to an Admin Node:
  .. Enter the following command: `ssh admin@Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . Run the following command:``disable-saml``
@@ -61,6 +61,6 @@ A message indicates that single sign-on is enabled on the node.
 . From a web browser, access the Grid Manager from the same Admin Node.
 . Confirm that the StorageGRID Sign in page appears and that you must enter your SSO credentials to access the Grid Manager.
 
-*Related information*
+.Related information
 
 xref:configuring_sso.adoc[Configuring single sign-on]

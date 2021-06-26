@@ -1,7 +1,7 @@
 ---
 permalink: admin/signing_in_to_grid_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You access the Grid Manager sign-in page by entering the fully qualified domain name \(FQDN\) or IP address of an Admin Node into the address bar of a supported web browser.'
 ---
 = Signing in to the Grid Manager
@@ -11,12 +11,14 @@ summary: 'You access the Grid Manager sign-in page by entering the fully qualifi
 [.lead]
 You access the Grid Manager sign-in page by entering the fully qualified domain name (FQDN) or IP address of an Admin Node into the address bar of a supported web browser.
 
+.What you'll need
 * You must have your login credentials.
 * You must have the URL for the Grid Manager.
 * You must be using a supported web browser.
 * Cookies must be enabled in your web browser.
 * You must have specific access permissions.
 
+.About this task
 Each StorageGRID system includes one primary Admin Node and any number of non-primary Admin Nodes. You can sign in to the Grid Manager on any Admin Node to manage the StorageGRID system. However, the Admin Nodes are not exactly the same:
 
 * Alarm acknowledgments (legacy system) made on one Admin Node are not copied to other Admin Nodes. For this reason, the information displayed for alarms might not look the same on each Admin Node.
@@ -24,6 +26,7 @@ Each StorageGRID system includes one primary Admin Node and any number of non-pr
 
 If Admin Nodes are included in a high availability (HA) group, you connect using the virtual IP address of the HA group or a fully qualified domain name that maps to the virtual IP address. The primary Admin Node should be selected as the group's preferred Master, so that when you access the Grid Manager, you access it on the primary Admin Node unless the primary Admin Node is not available.
 
+.Steps
 . Launch a supported web browser.
 . In the browser's address bar, enter the URL for the Grid Manager:
 +
@@ -44,7 +47,9 @@ https://FQDN_or_Admin_Node_IP:port/
  ** If single sign-on (SSO) is not being used for your StorageGRID system:
   ... Enter your username and password for the Grid Manager.
   ... Click *Sign In*.
++
 image:../media/sign_in_grid_manager_no_sso.gif[Sign in page]
+
  ** If SSO is enabled for your StorageGRID system and this is the first time you have accessed the URL on this browser:
   ... Click *Sign in*. You can leave the Account ID field blank.
 +
@@ -65,6 +70,7 @@ When you are signed in, the home page of the Grid Manager appears, which include
 image::../media/grid_manager_dashboard.png[Dashboard]
 . If you want to sign in to another Admin Node:
 +
+[cols="1a,1a" options="header"]
 |===
 | Option| Steps
 a|
@@ -78,13 +84,15 @@ a|
 a|
 SSO enabled
 a|
-In the browser's address bar, enter the fully qualified domain name or IP address of the other Admin Node.    If you have signed in to one Admin Node, you can access other Admin Nodes without having to sign in again. However, if your SSO session expires, you are prompted for your credentials again.
-+
-IMPORTANT: SSO is not available on the restricted Grid Manager port. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
-+
+In the browser's address bar, enter the fully qualified domain name or IP address of the other Admin Node.
+
+If you have signed in to one Admin Node, you can access other Admin Nodes without having to sign in again. However, if your SSO session expires, you are prompted for your credentials again.
+
+*Note:* SSO is not available on the restricted Grid Manager port. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
+
 |===
 
-*Related information*
+.Related information
 
 xref:web_browser_requirements.adoc[Web browser requirements]
 

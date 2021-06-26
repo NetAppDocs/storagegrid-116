@@ -1,7 +1,7 @@
 ---
 permalink: admin/using_api_if_sso_is_enabled.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Using the API if single sign-on is enabled
@@ -16,12 +16,14 @@ If single sign-on (SSO) has been enabled for your StorageGRID system, you cannot
 [.lead]
 If single sign-on (SSO) has been enabled, you must issue a series of API requests to obtain an authentication token from AD FS that is valid for the Grid Management API or the Tenant Management API.
 
+.What you'll need
 * You know the SSO username and password for a federated user who belongs to a StorageGRID user group.
 * If you want to access the Tenant Management API, you know the tenant account ID.
 
+.About this task
 To obtain an authentication token, you can use one of the following examples:
 
-* The `storagegrid-ssoauth.py` Python script, which is located in the StorageGRID installation files directory (./rpms for Red Hat Enterprise Linux or CentOS, ./debs for Ubuntu or Debian, and ./vsphere for VMware).
+* The `storagegrid-ssoauth.py` Python script, which is located in the StorageGRID installation files directory (`./rpms` for Red Hat Enterprise Linux or CentOS, `./debs` for Ubuntu or Debian, and `./vsphere` for VMware).
 * An example workflow of curl requests.
 +
 The curl workflow might time out if you perform it too slowly. You might see the error: A valid SubjectConfirmation was not found on this Response.
@@ -203,7 +205,11 @@ You can now use `MYTOKEN` for other requests, similar to how you would use the A
 [.lead]
 If single sign-on (SSO) has been enabled, you must issue a series of API requests to sign out of the Grid Management API or the Tenant Management API.
 
+.About this task
+
 If required, you can sign out of the StorageGRID API simply by logging out from your organization's single logout page. Or, you can trigger single logout (SLO) from StorageGRID, which requires a valid StorageGRID bearer token.
+
+.Steps
 
 . To generate a signed logout request, pass `cookie "sso=true"` to the SLO API:
 +
