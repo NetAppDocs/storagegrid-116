@@ -1,7 +1,7 @@
 ---
 permalink: admin/summary_ip_addresses_and_ports_for_client_connections.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Client applications can connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability \(HA\) groups are configured, client applications can connect using the virtual IP address of the HA group.'
 ---
 = Summary: IP addresses and ports for client connections
@@ -111,19 +111,19 @@ Default Swift ports:
 
 To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* \https://<VIP-of-HA-group>:<LB-endpoint-port>
+* `\https://<VIP-of-HA-group>:<LB-endpoint-port>`
 
 For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
 
-* \https://192.0.2.5:10443
+* `\https://192.0.2.5:10443`
 
 To connect a Swift client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* \https://<VIP-of-HA-group>:<LB-endpoint-port>
+* `\https://<VIP-of-HA-group>:<LB-endpoint-port>`
 
 For example, if the virtual IP address of the HA group is 192.0.2.6 and the port number of a Swift Load Balancer endpoint is 10444, then a Swift client could use the following URL to connect to StorageGRID:
 
-* \https://192.0.2.6:10444
+* `\https://192.0.2.6:10444`
 
 It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
 

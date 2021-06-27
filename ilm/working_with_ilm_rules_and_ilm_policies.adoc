@@ -1,7 +1,7 @@
 ---
 permalink: ilm/working_with_ilm_rules_and_ilm_policies.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Working with ILM rules and ILM policies
@@ -13,14 +13,18 @@ Once you have created ILM rules and an ILM policy, you can continue to work with
 
 == Deleting an ILM rule
 
-[.lead]
 To keep the list of current ILM rules manageable, delete any ILM rules that you are not likely to use.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
+
 You cannot delete an ILM rule if it is currently used in the active policy or in the proposed policy. If you need to delete an ILM rule that is used a policy, you must perform these steps first:
 
+.Steps
 . Clone the active policy or edit the proposed policy.
 . Remove the ILM rule from the policy.
 . Save, simulate, and activate the new policy to make sure objects are protected as expected.
@@ -34,25 +38,34 @@ Confirm that the rule is not used in the active ILM policy or the proposed ILM p
 +
 The ILM rule is deleted.
 +
-NOTE: If you delete a rule that is used in a historical policy, an image:../media/icon_ilm_rule_historical.png[Icon ILM Rule Historical] icon appears for the rule when you view the policy, which indicates that the rule has become a historical rule.
-+
-image::../media/ilm_rule_historical.png[ILM Rule Historical]
+[NOTE]
+====
+If you delete a rule that is used in a historical policy, an image:../media/icon_ilm_rule_historical.png[Icon ILM Rule Historical] icon appears for the rule when you view the policy, which indicates that the rule has become a historical rule.
 
-*Related information*
+image::../media/ilm_rule_historical.png[ILM Rule Historical]
+====
+
+.Related information
 
 xref:creating_ilm_policy.adoc[Creating an ILM policy]
 
 == Editing an ILM rule
 
-[.lead]
+
 You might need to edit an ILM rule to change a filter or placement instruction.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
+
 You cannot edit a rule if it is being used in the proposed ILM policy or the active ILM policy. Instead, you can clone these rules and make any required changes to the cloned copy. You also cannot edit the stock ILM rule (Make 2 Copies) or ILM rules created before StorageGRID version 10.3.
 
 NOTE: Before adding an edited rule to the active ILM policy, be aware that a change to an object's placement instructions might cause an increased load on the system.
+
+.Steps
 
 . Select *ILM* > *Rules*.
 +
@@ -72,11 +85,15 @@ When editing an ILM rule, you cannot change its name.
 
 . Click *Save*.
 +
-NOTE: If you edit a rule that is used in a historical policy, an image:../media/icon_ilm_rule_historical.png[Icon ILM Rule Historical] icon appears for the rule when you view the policy, which indicates that the rule has become a historical rule.
-+
-image::../media/ilm_rule_historical.png[ILM Rule Historical]
 
-*Related information*
+[NOTE]
+====
+If you edit a rule that is used in a historical policy, an image:../media/icon_ilm_rule_historical.png[Icon ILM Rule Historical] icon appears for the rule when you view the policy, which indicates that the rule has become a historical rule.
+
+image::../media/ilm_rule_historical.png[ILM Rule Historical]
+====
+
+.Related information
 
 xref:creating_ilm_rule.adoc[Creating an ILM rule]
 
@@ -84,13 +101,18 @@ xref:using_advanced_filters_in_ilm_rules.adoc[Using advanced filters in ILM rule
 
 == Cloning an ILM rule
 
-[.lead]
 You cannot edit a rule if it is being used in the proposed ILM policy or the active ILM policy. Instead, you can clone a rule and make any required changes to the cloned copy. Then, if required, you can remove the original rule from the proposed policy and replace it with the modified version. You cannot clone an ILM rule if it was created using StorageGRID version 10.2 or earlier.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
+
 Before adding a cloned rule to the active ILM policy, be aware that a change to an object's placement instructions might cause an increased load on the system.
+
+.Steps
 
 . Select *ILM* > *Rules*.
 +
@@ -118,11 +140,14 @@ xref:using_advanced_filters_in_ilm_rules.adoc[Using advanced filters in ILM rule
 
 == Viewing the ILM policy activity queue
 
-[.lead]
 You can view the number of objects that are in the queue to be evaluated against the ILM policy at any time. You might want to monitor the ILM processing queue to determine system performance. A large queue might indicate that the system is not able to keep up with the ingest rate, the load from the client applications is too great, or that some abnormal condition exists.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
+
+.Steps
 
 . Select *Dashboard*.
 +

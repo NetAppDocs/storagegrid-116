@@ -1,7 +1,7 @@
 ---
 permalink: admin/kms_viewing_encrypted_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can view information about the appliance nodes in your StorageGRID system that have the Node Encryption setting enabled.'
 ---
 = Viewing encrypted nodes
@@ -29,7 +29,7 @@ image::../media/kms_encrypted_nodes_table.png[KMS Encrypted Nodes Table]
 
 . Review the information in the table for each appliance node.
 +
-[cols="1a,1a" options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Column| Description
 a|
@@ -47,10 +47,10 @@ The name of the StorageGRID site where the node is installed.
 a|
 KMS Display Name
 a|
-The descriptive name of the KMS used for the node. 
+The descriptive name of the KMS used for the node.
 
 If no KMS is listed, select the Configuration Details tab to add a KMS.
-+
+
 xref:kms_adding.adoc[Adding a key management server (KMS)]
 a|
 Key UID
@@ -61,7 +61,7 @@ A dash (--) indicates the key UID is unknown, possibly because of a connection i
 a|
 Status
 a|
-The status of the connection between the KMS and the appliance node. If the node is connected, the timestamp updates every 30 minutes. It can take several minutes for the connection status to update after the KMS configuration changes.    
+The status of the connection between the KMS and the appliance node. If the node is connected, the timestamp updates every 30 minutes. It can take several minutes for the connection status to update after the KMS configuration changes.
 
 *Note:* You must refresh your web browser to see the new values.
 

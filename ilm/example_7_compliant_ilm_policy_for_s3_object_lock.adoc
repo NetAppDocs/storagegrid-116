@@ -13,11 +13,9 @@ You can use the S3 bucket, ILM rules, and ILM policy in this example as a starti
 
 NOTE: If you used the legacy Compliance feature in previous StorageGRID releases, you can also use this example to help manage any existing buckets that have the legacy Compliance feature enabled.
 
-CAUTION:
+CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
-The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
-
-*Related information*
+.Related information
 
 xref:managing_objects_with_s3_object_lock.adoc[Managing objects with S3 Object Lock]
 
@@ -25,9 +23,10 @@ xref:creating_ilm_policy.adoc[Creating an ILM policy]
 
 == Bucket and objects for S3 Object Lock example
 
-[.lead]
+
 In this example, an S3 tenant account named Bank of ABC has used the Tenant Manager to create a bucket with S3 Object Lock enabled to store critical bank records.
 
+[cols="1a,2a" options="header"]
 |===
 | Bucket definition| Example value
 a|
@@ -47,6 +46,7 @@ image:../media/compliant_bucket.png[screen shot of an example compliant bucket]
 
 Each object and object version that is added to the bank-records bucket will use the following values for retain-until-date and legal hold settings.
 
+[cols="1a,2a" options="header"]
 |===
 | Setting for each object| Example value
 a|
@@ -67,9 +67,9 @@ A legal hold can be placed or lifted on any object version at any time during th
 
 == ILM rule 1 for S3 Object Lock example: Erasure Coding profile with bucket matching
 
-[.lead]
 This example ILM rule applies only to the S3 tenant account named Bank of ABC. It matches any object in the bank-records bucket and then uses erasure coding to store the object on Storage Nodes at three data center sites using a 6+3 Erasure Coding profile. This rule satisfies the requirements of buckets with S3 Object Lock enabled: an erasure-coded copy is kept on Storage Nodes from day 0 to forever, using Ingest Time as the reference time.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -92,6 +92,7 @@ Object Size (MB) greater than 0.20**Note:** This filter ensures that erasure cod
 |===
 image:../media/compliant_rule_ec_copy_step_1.png[screenshot of Example Compliant Rule EC Copy Step 1]
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -114,9 +115,10 @@ image:../media/compliant_rule_ec_copy_step_2.png[screenshot of Example Compliant
 
 == ILM rule 2 for S3 Object Lock example: Non-compliant rule
 
-[.lead]
+
 This example ILM rule initially stores two replicated object copies on Storage Nodes. After one year, it stores one copy on a Cloud Storage Pool forever. Because this rule uses a Cloud Storage Pool, it is not compliant and will not apply to the objects in buckets with S3 Object Lock enabled.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -138,6 +140,7 @@ Not specified
 |===
 image:../media/ilm_example_non_compliant_rule_step_1.png[Example Non-Compliant Rule Step 1]
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -155,9 +158,9 @@ a|
 
 == ILM rule 3 for S3 Object Lock example: Default rule
 
-[.lead]
 This example ILM rule copies object data to storage pools in two data centers. This compliant rule is designed to be the default rule in the ILM policy. It does not include any filters and it satisfies the requirements of buckets with S3 Object Lock enabled: two object copies are kept on Storage Nodes from day 0 to forever, using Ingest as the reference time.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -179,6 +182,7 @@ Not specified
 |===
 image:../media/compliant_rule_2_copies_2_data_centers_1.png[screenshot showing step 1 of creating default rule for compliance example]
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -194,7 +198,6 @@ image:../media/compliant_rule_2_copies_2_data_centers_2.png[screenshot showing s
 
 == Compliant ILM policy for S3 Object Lock example
 
-[.lead]
 To create an ILM policy that will effectively protect all objects in your system, including those in buckets with S3 Object Lock enabled, you must select ILM rules that satisfy the storage requirements for all objects. Then, you must simulate and activate the proposed policy.
 
 === Adding rules to the policy

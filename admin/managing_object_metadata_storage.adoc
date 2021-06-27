@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing_object_metadata_storage.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The object metadata capacity of a StorageGRID system controls the maximum number of objects that can be stored on that system. To ensure that your StorageGRID system has adequate space to store new objects, you must understand where and how StorageGRID stores object metadata.'
 ---
 = Managing object metadata storage
@@ -53,32 +53,26 @@ The _Metadata Reserved Space_ is a system-wide setting that represents the amoun
 [cols="1a,1a,1a" options="header"]
 |===
 | Version used for initial StorageGRID installation| Amount of RAM on Storage Nodes| Default Metadata Reserved Space setting for StorageGRID 11.5
-a|
-11.5
-a|
-128 GB or more on each Storage Node in the grid
-a|
-8 TB (8,000 GB)
-a|
-Less than 128 GB on any Storage Node in the grid
-a|
-3 TB (3,000 GB)
-a|
-11.1 to 11.4
-a|
-128 GB or more on each Storage Node at any one site
-a|
-4 TB (4,000 GB)
-a|
-Less than 128 GB on any Storage Node at each site
-a|
-3 TB (3,000 GB)
-a|
-11.0 or earlier
-a|
-Any amount
-a|
-2 TB (2,000 GB)
+
+|11.5
+|128 GB or more on each Storage Node in the grid
+|8 TB (8,000 GB)
+
+|
+|Less than 128 GB on any Storage Node in the grid
+|3 TB (3,000 GB)
+
+|11.1 to 11.4
+|128 GB or more on each Storage Node at any one site
+|4 TB (4,000 GB)
+
+|
+|Less than 128 GB on any Storage Node at each site
+|3 TB (3,000 GB)
+
+|11.0 or earlier
+|Any amount
+|2 TB (2,000 GB)
 |===
 To view the Metadata Reserved Space setting for your StorageGRID system:
 
@@ -229,9 +223,9 @@ And because object metadata capacity controls the maximum object count, when one
 .Related information
 
 * To learn how to monitor the object metadata capacity for each Storage Node:
-
++
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 
 * To increase the object metadata capacity for your system, you must add new Storage Nodes:
-
++
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]

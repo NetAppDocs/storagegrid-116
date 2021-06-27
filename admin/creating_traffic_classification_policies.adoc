@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating_traffic_classification_policies.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You create traffic classification policies if you want to monitor, and optionally limit, network traffic by bucket, tenant, IP subnet, or load balancer endpoint. Optionally, you can set limits for a policy based on bandwidth, the number of concurrent requests, or the request rate.'
 ---
 = Creating traffic classification policies
@@ -99,18 +99,20 @@ In the following list, *In* refers to traffic from S3 or Swift clients to the St
   *** Read Request Rate
   *** Write Requests Rate
 +
-*Note:* You can create policies to limit aggregate bandwidth or to limit per-request bandwidth. However, StorageGRID cannot limit both types of bandwidth at the same time. Aggregate bandwidth limits might impose an additional minor performance impact on non-limited traffic.
-
+[NOTE]
+====
+You can create policies to limit aggregate bandwidth or to limit per-request bandwidth. However, StorageGRID cannot limit both types of bandwidth at the same time. Aggregate bandwidth limits might impose an additional minor performance impact on non-limited traffic.
+====
 +
 For bandwidth limits, StorageGRID applies the policy that best matches the type of limit set. For example, if you have a policy that limits traffic in only one direction, then traffic in the opposite direction will be unlimited, even if there is traffic that matches additional policies that have bandwidth limits. StorageGRID implements "`best`" matches for bandwidth limits in the following order:
-
-  *** Exact IP address (/32 mask)
-  *** Exact bucket name
-  *** Bucket regex
-  *** Tenant
-  *** Endpoint
-  *** Non-exact CIDR matches (not /32)
-  *** Inverse matches
++
+  **** Exact IP address (/32 mask)
+  **** Exact bucket name
+  **** Bucket regex
+  **** Tenant
+  **** Endpoint
+  **** Non-exact CIDR matches (not /32)
+  **** Inverse matches
 
  .. In the *Value* field, enter a numerical value for the type of limit you chose.
 +

@@ -1,7 +1,7 @@
 ---
 permalink: ilm/example_2_ilm_rules_and_policy_for_ec_object_size_filtering.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Example 2: ILM rules and policy for EC object size filtering
@@ -17,9 +17,9 @@ The following ILM rules and policy are only examples. There are many ways to con
 
 == ILM rule 1 for example 2: Use EC for all objects larger than 200 KB
 
-[.lead]
 This example ILM rule erasure codes all objects larger than 200 KB (0.20 MB).
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -47,9 +47,9 @@ image::../media/policy_2_rule_1_ec_objects_placements.png[ILM rule 1 for example
 
 == ILM rule 2 for example 2: Two replicated copies
 
-[.lead]
 This example ILM rule creates two replicated copies and does not filter by object size. This rule is the second rule in the policy. Because ILM rule 1 for example 2 filters out all objects larger than 200 KB, ILM rule 2 for example 2 only applies to objects that are 200 KB or smaller.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -73,7 +73,6 @@ image:../media/ilm_rule_2_example_2_two_replicated_copies.png[Example ILM Rule 2
 
 == ILM policy for example 2: Use EC for objects larger than 200 KB
 
-[.lead]
 In this example policy, objects larger than 200 KB are erasure coded. Two replicated copies are made of all other objects.
 
 This example ILM policy includes the following ILM rules:

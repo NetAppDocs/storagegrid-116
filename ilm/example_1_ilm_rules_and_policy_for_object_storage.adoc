@@ -1,7 +1,7 @@
 ---
 permalink: ilm/example_1_ilm_rules_and_policy_for_object_storage.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Example 1: ILM rules and policy for object storage
@@ -11,15 +11,14 @@ summary: ''
 [.lead]
 You can use the following example rules and policy as a starting point when defining an ILM policy to meet your object protection and retention requirements.
 
-CAUTION:
-
-The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
+CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
 == ILM rule 1 for example 1: Copy object data to two data centers
 
 [.lead]
 This example ILM rule copies object data to storage pools in two data centers.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -43,9 +42,9 @@ image:../media/ilm_rule_two_copies_two_data_centers.png[ILM rule 1 for example 1
 
 == ILM rule 2 for example 1: Erasure Coding profile with bucket matching
 
-[.lead]
 This example ILM rule uses an Erasure Coding profile and an S3 bucket to determine where and how long the object is stored.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -72,7 +71,6 @@ image:../media/ilm_rule_ec_for_s3_bucket_finance_records.png[ILM rule 2 for exam
 
 == ILM policy for example 1
 
-[.lead]
 The StorageGRID system allows you to design sophisticated and complex ILM policies; however, in practice, most ILM policies are simple.
 
 A typical ILM policy for a multi-site topology might include ILM rules such as the following:

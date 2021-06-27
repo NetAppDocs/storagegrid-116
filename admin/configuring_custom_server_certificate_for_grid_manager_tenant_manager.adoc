@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.'
 ---
 = Configuring a custom server certificate for the Grid Manager and the Tenant Manager
@@ -20,10 +20,13 @@ You need to complete configuration on the server, and depending on the root Cert
 
 NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *primary Admin Node* > *CMN* > *Resources*.
 
-NOTE: If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
-+
+[NOTE]
+====
+If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
+
 * Your custom management interface server certificate expires.
 * You revert from a custom management interface server certificate to the default server certificate.
+====
 
 .Steps
 

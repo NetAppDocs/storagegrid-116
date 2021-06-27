@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating_ilm_policy_after_s3_object_lock_is_enabled.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If the global S3 Object Lock setting is enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.'
 ---
 = Creating an ILM policy after S3 Object Lock is enabled
@@ -11,13 +11,18 @@ summary: 'If the global S3 Object Lock setting is enabled, the steps for creatin
 [.lead]
 If the global S3 Object Lock setting is enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * The global S3 Object Lock setting must already be enabled for the StorageGRID system.
 +
-NOTE: If the global S3 Object Lock setting has not been enabled, use the general instructions for creating a proposed policy instead.
-+
+[NOTE]
+====
+If the global S3 Object Lock setting has not been enabled, use the general instructions for creating a proposed policy instead.
+
 xref:creating_proposed_ilm_policy.adoc[Creating a proposed ILM policy]
+====
 
 * You must have created the compliant and non-compliant ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules.
 +
@@ -26,6 +31,8 @@ link:example_7_compliant_ilm_policy_for_s3_object_lock.md#[Example 7: Compliant 
 * You must have created a compliant default ILM rule for the policy.
 +
 xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
+
+.Steps
 
 . Select *ILM* > *Policies*.
 +
@@ -54,9 +61,12 @@ image:../media/ilm_policy_select_rules_for_compliant_policy.png[ILM Policy Selec
 +
 The table in this section only lists the rules that are compliant and do not use any filters.
 +
-NOTE: If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and create a default rule that is compliant.
-+
+[NOTE]
+====
+If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and create a default rule that is compliant.
+
 xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
+====
 +
 IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a policy. The Make 2 Copies rule uses a single storage pool, All Storage Nodes, which contains all sites. If you use this rule, multiple copies of an object might be placed on the same site.
 

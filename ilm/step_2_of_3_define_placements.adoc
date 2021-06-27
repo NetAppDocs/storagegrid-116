@@ -1,7 +1,7 @@
 ---
 permalink: ilm/step_2_of_3_define_placements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Step 2 \(Define Placements\) of the Create ILM Rule wizard allows you to define the placement instructions that determine how long objects are stored, the type of copies \(replicated or erasure coded\), the storage location, and the number of copies.'
 ---
 = Step 2 of 3: Define placements
@@ -19,8 +19,11 @@ This example ILM rule creates two replicated copies for the first year. Each cop
 
 image::../media/ilm_create_ilm_rule_wizard_2.png[Create ILM Rule Wizard Page 2]
 
+.Steps
+
 . For *Reference Time*, select the type of time to use when calculating the start time for a placement instruction.
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
 a|
@@ -30,21 +33,25 @@ The time when the object was ingested.
 a|
 Last Access Time
 a|
-The time when the object was last retrieved (read or viewed).    *Note:* To use this option, updates to Last Access Time must be enabled for the S3 bucket or Swift container.
-+
+The time when the object was last retrieved (read or viewed).
+
+*Note:* To use this option, updates to Last Access Time must be enabled for the S3 bucket or Swift container.
+
 xref:using_last_access_time_in_ilm_rules.adoc[Using Last Access Time in ILM rules]
 a|
 Noncurrent Time
 a|
-The time an object version became noncurrent because a new version was ingested and replaced it as the current version.    *Note:* Noncurrent Time applies only to S3 objects in versioning-enabled buckets.
-+
+The time an object version became noncurrent because a new version was ingested and replaced it as the current version.
+
+*Note:* Noncurrent Time applies only to S3 objects in versioning-enabled buckets.
+
 You can use this option to reduce the storage impact of versioned objects by filtering for noncurrent object versions. See "`Example 4: ILM rules and policy for S3 versioned objects.`"
 a|
 User Defined Creation Time
 a|
 A time specified in user-defined metadata.
 |===
-*Note:* If you want to create a compliant rule, you must select *Ingest Time*.
+NOTE: If you want to create a compliant rule, you must select *Ingest Time*.
 
 . In the Placements section, select a starting time and a duration for the first time period.
 +
@@ -133,6 +140,7 @@ NOTE: Objects are automatically deleted at the end of the final time period unle
 +
 Each line in the diagram shows where and when object copies will be placed. The type of copy is represented by one of the following icons:
 +
+[cols="1a,2a"]
 |===
     a|
 image:../media/icon_nms_replicated.gif[Icon for replicated copies]

@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_audit_clients_for_active_directory.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.'
 ---
 = Configuring audit clients for Active Directory
@@ -120,11 +120,11 @@ The CIFS configuration utility is displayed.
 +
 The services are checked and displayed. You can safely ignore the following messages:
 
- ** Can't find include file /etc/samba/includes/cifs-interfaces.inc
- ** Can't find include file /etc/samba/includes/cifs-filesystem.inc
- ** Can't find include file /etc/samba/includes/cifs-interfaces.inc
- ** Can't find include file /etc/samba/includes/cifs-custom-config.inc
- ** Can't find include file /etc/samba/includes/cifs-shares.inc
+ ** Can't find include file `/etc/samba/includes/cifs-interfaces.inc`
+ ** Can't find include file `/etc/samba/includes/cifs-filesystem.inc`
+ ** Can't find include file `/etc/samba/includes/cifs-interfaces.inc`
+ ** Can't find include file `/etc/samba/includes/cifs-custom-config.inc`
+ ** Can't find include file `/etc/samba/includes/cifs-shares.inc`
  ** rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
 +
 IMPORTANT: Do not combine the setting 'security=ads' with the 'password server' parameter. (by default Samba will discover the correct DC to contact automatically).
