@@ -11,6 +11,7 @@ summary: 'The Archive Node writes to a disk storage pool. To archive content to 
 [.lead]
 The Archive Node writes to a disk storage pool. To archive content to tape, you must configure the disk storage pool to move content to a tape storage pool.
 
+.About this task
 For a TSM server, you must define a tape storage pool and a disk storage pool within Tivoli Storage Manager. After the disk pool is defined, create a disk volume and assign it to the disk pool. A tape pool is not required if your TSM server uses disk‐only storage.
 
 You must complete a number of steps on your TSM server before you can create a tape storage pool. (Create a tape library and at least one drive in the tape library. Define a path from the server to the library and from the server to the drives, and then define a device class for the drives.) The details of these steps can vary depending upon the hardware configuration and storage requirements of the site. For more information, see the TSM documentation.
@@ -18,6 +19,8 @@ You must complete a number of steps on your TSM server before you can create a t
 The following set of instructions illustrates the process. You should be aware that the requirements for your site could be different depending on the requirements of your deployment. For configuration details and for instructions, see the TSM documentation.
 
 NOTE: You must log onto the server with administrative privileges and use the dsmadmc tool to execute the following commands.
+
+.Steps
 
 . Create a tape library.
 +

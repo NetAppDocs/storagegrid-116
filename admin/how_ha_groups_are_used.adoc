@@ -18,8 +18,9 @@ You might want to use high availability (HA) groups for several reasons.
 An HA group can provide high availability only if all nodes included in the group provide the same services. When you create an HA group, add interfaces from the types of nodes that provide the services you require.
 
 * *Admin Nodes*: Include the Load Balancer service and enable access to the Grid Manager or the Tenant Manager.
-* *Gateway Nodes*: Include the Load Balancer service and the CLB service (deprecated).
+* *Gateway Nodes*: Include the Load Balancer service and the CLB service (deprecated). 
 
+[cols="1a,1a" options="header"]
 |===
 | Purpose of HA group| Add nodes of this type to the HA group
 a|
@@ -45,7 +46,9 @@ a|
 * Gateway Nodes
 
 a|
-S3 or Swift client access -- CLB service**Note:** The CLB service is deprecated.
+S3 or Swift client access -- CLB service
+
+*Note:* The CLB service is deprecated.
 
 a|
 

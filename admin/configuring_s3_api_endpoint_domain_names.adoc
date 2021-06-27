@@ -11,11 +11,15 @@ summary: 'To support S3 virtual hosted-style requests, you must use the Grid Man
 [.lead]
 To support S3 virtual hosted-style requests, you must use the Grid Manager to configure the list of endpoint domain names that S3 clients connect to.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * You must have confirmed that a grid upgrade is not in progress.
 +
-WARNING: Do not make any changes to the domain name configuration when a grid upgrade is in progress.
+CAUTION: Do not make any changes to the domain name configuration when a grid upgrade is in progress.
+
+.About this task
 
 To enable clients to use S3 endpoint domain names, you must do all of the following tasks:
 
@@ -23,6 +27,8 @@ To enable clients to use S3 endpoint domain names, you must do all of the follow
 * Ensure that the certificate the client uses for HTTPS connections to StorageGRID is signed for all domain names that the client requires.
 +
 For example, if the endpoint is s3.company.com, you must ensure that the certificate used for HTTPS connections includes the s3.company.com endpoint and the endpoint's wildcard Subject Alternative Name (SAN): *.s3.company.com.
+
+.Steps
 
 * Configure the DNS server used by the client. Include DNS records for the IP addresses that clients use to make connections, and ensure that the records reference all required endpoint domain names, including any wildcard names.
 +

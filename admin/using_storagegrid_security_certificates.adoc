@@ -1,7 +1,7 @@
 ---
 permalink: admin/using_storagegrid_security_certificates.html
 sidebar: sidebar
-keywords:
+keywords: 
 summary: 'Security certificates are small data files used to create secure, trusted connections between StorageGRID components and between StorageGRID components and external systems.'
 ---
 = Using StorageGRID security certificates
@@ -102,14 +102,16 @@ Server
 a|
 Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes or Admin Nodes. You upload or generate a load balancer certificate when you configure a load balancer endpoint.Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
 
-*Note:* The load balancer certificate is the most used certificate during normal StorageGRID operation.
+NOTE: The load balancer certificate is the most used certificate during normal StorageGRID operation.
 
 a|
 *Configuration* > *Network Settings* > *Load Balancer Endpoints*
 a|
 
 * link:configuring_load_balancer_endpoints.md#[Configuring load balancer endpoints]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-fabric/home.html[Configuring StorageGRID for FabricPool]
+* Creating a load balancer endpoint for FabricPool
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-fabric/home.html[Configuring StorageGRID for FabricPool]
 
 a|
 Management Interface Server Certificate

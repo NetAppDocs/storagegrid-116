@@ -16,6 +16,8 @@ You can create, edit, and remove load balancer endpoints.
 [.lead]
 Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS), and a service type (S3 or Swift). If you create an HTTPS endpoint, you must upload or generate a server certificate.
 
+.What you'll need
+
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
 * If you have previously remapped ports you intend to use for the Load Balancer service, you must have removed the remaps.
@@ -23,6 +25,8 @@ Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS)
 IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in the recovery and maintenance instructions for removing port remaps.
 +
 NOTE: The CLB service is deprecated.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
 +
@@ -123,11 +127,15 @@ xref:managing_untrusted_client_networks.adoc[Managing untrusted Client Networks]
 
 == Editing load balancer endpoints
 
-[.lead]
+
 For an unsecured (HTTP) endpoint, you can change the endpoint service type between S3 and Swift. For a secured (HTTPS) endpoint, you can edit the endpoint service type and view or change the security certificate.
+
+.What you'll need
 
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
 +
@@ -171,11 +179,15 @@ link:configuring_load_balancer_endpoints.md#[Creating load balancer endpoints]
 
 == Removing load balancer endpoints
 
-[.lead]
+
 If you no longer need a load balancer endpoint, you can remove it.
+
+.What you'll need
 
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
 +

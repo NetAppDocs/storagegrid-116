@@ -13,12 +13,15 @@ You can create admin groups to manage the security permissions for one or more a
 
 == Creating admin groups
 
-[.lead]
 Admin groups allow you to determine which users can access which features and operations in the Grid Manager and the Grid Management API.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * If you plan to import a federated group, you must have configured identity federation and the federated group must already exist in the configured identity source.
+
+.Steps
 
 . Select *Configuration* > *Access Control* > *Admin Groups*.
 +
@@ -60,7 +63,6 @@ link:managing_local_users.md#[Modifying a local user's account]
 
 == Admin group permissions
 
-[.lead]
 When creating admin user groups, you select one or more permissions to control access to specific features of the Grid Manager. You can then assign each user to one or more of these admin groups to determine which tasks that user can perform.
 
 You must assign at least one permission to each group; otherwise, users belonging to that group will not be able to sign in to the Grid Manager.
@@ -195,7 +197,6 @@ link:managing_admin_groups.md#[Deactivating features from the Grid Management AP
 
 === Deactivating features from the Grid Management API
 
-[.lead]
 You can use the Grid Management API to completely deactivate certain features in the StorageGRID system. When a feature is deactivated, no one can be assigned permissions to perform the tasks related to that feature.
 
 The Deactivated Features system allows you to prevent access to certain features in the StorageGRID system. Deactivating a feature is the only way to prevent the root user or users who belong to admin groups with the Root Access permission from being able to use that feature.
@@ -246,11 +247,14 @@ xref:using_grid_management_api.adoc[Using the Grid Management API]
 
 == Modifying an admin group
 
-[.lead]
 You can modify an admin group to change the permissions associated with the group. For local admin groups, you can also update the display name.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
+
+,Steps
 
 . Select *Configuration* > *Access Control* > *Admin Groups*.
 . Select the group.
@@ -279,13 +283,18 @@ link:managing_admin_groups.md#[Admin group permissions]
 
 == Deleting an admin group
 
-[.lead]
 You can delete an admin group when you want to remove the group from the system, and remove all permissions associated with the group. Deleting an admin group removes any admin users from the group, but does not delete the admin users.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
+
 When you delete a group, users assigned to that group will lose all access privileges to the Grid Manager, unless they are granted privileges by a different group.
+
+.Steps
 
 . Select *Configuration* > *Access Control* > *Admin Groups*.
 . Select the name of the group.

@@ -17,10 +17,12 @@ If single sign-on (SSO) has been enabled for your StorageGRID system, you cannot
 If single sign-on (SSO) has been enabled, you must issue a series of API requests to obtain an authentication token from AD FS that is valid for the Grid Management API or the Tenant Management API.
 
 .What you'll need
+
 * You know the SSO username and password for a federated user who belongs to a StorageGRID user group.
 * If you want to access the Tenant Management API, you know the tenant account ID.
 
 .About this task
+
 To obtain an authentication token, you can use one of the following examples:
 
 * The `storagegrid-ssoauth.py` Python script, which is located in the StorageGRID installation files directory (`./rpms` for Red Hat Enterprise Linux or CentOS, `./debs` for Ubuntu or Debian, and `./vsphere` for VMware).
@@ -43,6 +45,7 @@ When prompted, enter values for the following arguments:
  ** The domain where StorageGRID is installed
  ** The address for StorageGRID
  ** If you want to access the Tenant Management API, enter tenant account ID.
+ +
 image:../media/sso_auth_python_script.png[SSO Authentication Script]
 
 +

@@ -11,10 +11,16 @@ summary: 'You can use a script to generate a self-signed server certificate for 
 [.lead]
 You can use a script to generate a self-signed server certificate for management API clients that require strict hostname validation.
 
+.What you'll need
+
 * You must have specific access permissions.
 * You must have the `Passwords.txt` file.
 
+.About this task
+
 In production environments, you should use a certificate that is signed by a known Certificate Authority (CA). Certificates signed by a CA can be rotated non-disruptively. They are also more secure because they provide better protection against man-in-the-middle attacks.
+
+.Steps
 
 . Obtain the fully qualified domain name (FQDN) of each Admin Node.
 . Log in to the primary Admin Node:

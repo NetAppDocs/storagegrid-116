@@ -11,11 +11,15 @@ summary: 'Perform this procedure for each Admin Node in a StorageGRID deployment
 [.lead]
 Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.
 
+.What you'll need
+
 * You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
 * You must have the CIFS Active Directory username and password.
 * You must have the Configuration.txt file (available in the SAID package).
 
 NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+
+.Steps
 
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`

@@ -13,8 +13,9 @@ Before enabling single sign-on (SSO), review how the StorageGRID sign-in and sig
 
 == Signing in when SSO is enabled
 
-[.lead]
 When SSO is enabled and you sign in to StorageGRID, you are redirected to your organization's SSO page to validate your credentials.
+
+.Steps
 
 . Enter the fully qualified domain name or IP address of any StorageGRID Admin Node in a web browser.
 +
@@ -54,14 +55,17 @@ You do not need to reenter your SSO credentials.
 
 == Signing out when SSO is enabled
 
-[.lead]
+
 When SSO is enabled for StorageGRID, what happens when you sign out depends on what you are signed in to and where you are signing out from.
+
+.Steps
 
 . Locate the *Sign Out* link in the top-right corner of the user interface.
 . Click *Sign Out*.
 +
 The StorageGRID Sign in page appears. The *Recent Accounts* drop-down is updated to include *Grid Manager* or the name of the tenant, so you can access these user interfaces more quickly in the future.
 +
+[cols="1a,1a,1a" options="header"]
 |===
 | If you are signed in to...| And you sign out from...| You are signed out of...
 a|
@@ -87,4 +91,5 @@ Tenant Manager
 a|
 The Tenant Manager only. You must also sign out of the Grid Manager to sign out of SSO.
 |===
-*Note:* The table summarizes what happens when you sign out if you are using a single browser session. If you are signed in to StorageGRID across multiple browser sessions, you must sign out of all browser sessions separately.
+
+NOTE: The table summarizes what happens when you sign out if you are using a single browser session. If you are signed in to StorageGRID across multiple browser sessions, you must sign out of all browser sessions separately.

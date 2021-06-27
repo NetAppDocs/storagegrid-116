@@ -11,10 +11,16 @@ summary: 'NFS audit clients are granted access to an audit share based on their 
 [.lead]
 NFS audit clients are granted access to an audit share based on their IP address. You can remove an existing audit client by removing its IP address.
 
+.What you'll need
+
 * You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
 * You must have the Configuration.txt file (available in the SAID package).
 
+.About this task
+
 You cannot remove the last IP address permitted to access the audit share.
+
+.Steps
 
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`

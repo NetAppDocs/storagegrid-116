@@ -50,6 +50,7 @@ The _Metadata Reserved Space_ is a system-wide setting that represents the amoun
 * The software version you were using when you initially installed StorageGRID.
 * The amount of RAM on each Storage Node.
 
+[cols="1a,1a,1a" options="header"]
 |===
 | Version used for initial StorageGRID installation| Amount of RAM on Storage Nodes| Default Metadata Reserved Space setting for StorageGRID 11.5
 a|
@@ -92,6 +93,7 @@ In the screenshot, the *Metadata Reserved Space* value is 8,000 GB (8 TB). This 
 
 In contrast to the system-wide Metadata Reserved Space setting, the _actual reserved space_ for object metadata is determined for each Storage Node. For any given Storage Node, the actual reserved space for metadata depends on the size of volume 0 for the node and the system-wide *Metadata Reserved Space* setting.
 
+[cols="1a,1a" options="header"]
 |===
 | Size of volume 0 for the node| Actual reserved space for metadata
 a|
@@ -138,6 +140,7 @@ image::../media/metadata_allowed_space_volume_0.png[Metadata allowed space volum
 
 The following table summarizes how StorageGRID determines the allowed metadata space value for a Storage Node.
 
+[cols="1a,1a" options="header"]
 |===
 | Actual reserved space for metadata| Allowed metadata space
 a|
@@ -149,7 +152,8 @@ More than 4 TB
 a|
 (Actual reserved space for metadata − 1 TB) × 60%, up to a maximum of 2.64 TB
 |===
-*Note:* If your StorageGRID system stores (or is expected to store) more than 2.64 TB of metadata on any Storage Node, the allowed metadata space can be increased in some cases. If your Storage Nodes each have more than 128 GB of RAM and available free space on storage volume 0, contact your NetApp account representative. NetApp will review your requirements and increase the allowed metadata space for each Storage Node, if possible.
+
+NOTE: If your StorageGRID system stores (or is expected to store) more than 2.64 TB of metadata on any Storage Node, the allowed metadata space can be increased in some cases. If your Storage Nodes each have more than 128 GB of RAM and available free space on storage volume 0, contact your NetApp account representative. NetApp will review your requirements and increase the allowed metadata space for each Storage Node, if possible.
 
 To view the allowed metadata space for a Storage Node:
 
@@ -185,6 +189,7 @@ Consider the following example:
 * The *Metadata Reserved Space* setting is 4 TB.
 * The Storage Nodes have the following values for the actual reserved metadata space and the allowed metadata space.
 +
+[cols="1a,1a,1a,1a" options="header"]
 |===
 | Storage Node| Size of volume 0| Actual reserved metadata space| Allowed metadata space
 a|
@@ -221,14 +226,12 @@ Similarly, because StorageGRID maintains all object metadata for a StorageGRID s
 
 And because object metadata capacity controls the maximum object count, when one node runs out of metadata capacity, the grid is effectively full.
 
-== For more information
-
-To learn how to monitor the object metadata capacity for each Storage Node, see the instructions for monitoring and troubleshooting StorageGRID.
-
-To increase the object metadata capacity for your system, you must add new Storage Nodes. See the instructions for expanding StorageGRID.
-
 .Related information
 
+* To learn how to monitor the object metadata capacity for each Storage Node:
+
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+
+* To increase the object metadata capacity for your system, you must add new Storage Nodes:
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
