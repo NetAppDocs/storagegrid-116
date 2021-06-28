@@ -1,7 +1,7 @@
 ---
 permalink: rhel/automating_configuration_of_storagegrid.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After deploying the grid nodes, you can automate the configuration of the StorageGRID system.'
 ---
 = Automating the configuration of StorageGRID
@@ -11,25 +11,21 @@ summary: 'After deploying the grid nodes, you can automate the configuration of 
 [.lead]
 After deploying the grid nodes, you can automate the configuration of the StorageGRID system.
 
+.What you'll need
+
 * You know the location of the following files from the installation archive.
 +
+[options=header]
 |===
 | Filename| Description
-a|
-configure-storagegrid.py
-a|
-Python script used to automate the configuration
-a|
-configure-storagegrid.sample.json
-a|
-Sample configuration file for use with the script
-a|
-configure-storagegrid.blank.json
-a|
-Blank configuration file for use with the script
+a|`configure-storagegrid.py`
+a|Python script used to automate the configuration
+a|`configure-storagegrid.sample.json`
+a|Sample configuration file for use with the script
+a|`configure-storagegrid.blank.json`
+a|Blank configuration file for use with the script
 |===
 
-.What you'll need
 
 * You have created a configure-storagegrid.json configuration file. To create this file, you can modify the sample configuration file (configure-storagegrid.sample.json) or the blank configuration file (configure-storagegrid.blank.json).
 
@@ -48,7 +44,7 @@ For example:
 cd StorageGRID-Webscale-version/platform
 ----
 +
-where `platform` is debs, rpms, or vsphere.
+where `platform` is `debs`, `rpms`, or `vsphere`.
 
 . Run the Python script and use the configuration file you created.
 +
@@ -58,11 +54,11 @@ For example:
 ./configure-storagegrid.py ./configure-storagegrid.json --start-install
 ----
 
-A Recovery Package .zip file is generated during the configuration process, and it is downloaded to the directory where you are running the installation and configuration process. You must back up the Recovery Package file so that you can recover the StorageGRID system if one or more grid nodes fails. For example, copy it to a secure, backed up network location and to a secure cloud storage location.
+A Recovery Package `.zip` file is generated during the configuration process, and it is downloaded to the directory where you are running the installation and configuration process. You must back up the Recovery Package file so that you can recover the StorageGRID system if one or more grid nodes fails. For example, copy it to a secure, backed up network location and to a secure cloud storage location.
 
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
-If you specified that random passwords should be generated, you need to extract the Passwords.txt file and look for the passwords required to access your StorageGRID system.
+If you specified that random passwords should be generated, you need to extract the `Passwords.txt` file and look for the passwords required to access your StorageGRID system.
 
 ----
 ######################################################################
