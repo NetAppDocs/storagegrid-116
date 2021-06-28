@@ -1,7 +1,7 @@
 ---
 permalink: ubuntu/node_container_migration_requirements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The node migration feature allows you to manually move a node from one host to another. Typically, both hosts are in the same physical data center.'
 ---
 = Node container migration requirements
@@ -46,6 +46,8 @@ There are many ways to achieve consistent network interface naming across multip
 
 In order to achieve rapid, low-overhead node migrations, the StorageGRID node migration feature does not physically move node data. Instead, node migration is performed as a pair of export and import operations, as follows:
 
+.Steps
+
 . During the "`node export`" operation, a small amount of persistent state data is extracted from the node container running on HostA and cached on that node's system data volume. Then, the node container on HostA is deinstantiated.
 . During the "`node import`" operation, the node container on HostB that uses the same network interface and block storage mappings that were in effect on HostA is instantiated. Then, the cached persistent state data is inserted into the new instance.
 
@@ -57,6 +59,6 @@ image::../media/block_device_mapping_rhel.gif[This image is explained by the sur
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
+xref:configuring_host_network.adoc[Configuring the host network]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
