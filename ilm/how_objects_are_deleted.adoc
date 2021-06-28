@@ -1,7 +1,7 @@
 ---
 permalink: ilm/how_objects_are_deleted.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'StorageGRID can delete objects either in direct response to a client request or automatically as a result of the expiration of an S3 bucket lifecycle or the requirements of the ILM policy. Understanding the different ways that objects can be deleted and how StorageGRID handles delete requests can help you manage objects more effectively.'
 ---
 = How objects are deleted
@@ -20,6 +20,7 @@ When deleting objects, StorageGRID uses the method that optimizes delete perform
 
 The table summarizes when StorageGRID uses each method.
 
+[cols="1a,1a" options="header"]
 |===
 | Method of performing deletion| When used
 a|
@@ -30,8 +31,11 @@ When *any* of the following conditions are true:
 * Automatic object deletion has been triggered by one of the following events:
  ** The expiration date or number of days in the lifecycle configuration for an S3 bucket is reached.
  ** The last time period specified in an ILM rule elapses.
+
 *Note:* Objects in a bucket that has S3 Object Lock enabled cannot be deleted if they are under a legal hold or if a retain-until-date has been specified but not yet met.
+
 * An S3 or Swift client requests deletion and one or more of these conditions is true:
+
  ** Copies cannot be deleted within 30 seconds because, for example, an object location is temporarily unavailable.
  ** Background deletion queues are idle.
 

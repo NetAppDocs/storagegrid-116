@@ -21,7 +21,7 @@ To free space when deleting versioned objects, you must do one of the following:
 * *Bucket lifecycle*: Use the `NoncurrentVersionExpiration` action in the bucket lifecycle configuration. When the number of NoncurrentDays specified is met, StorageGRID permanently removes all copies of noncurrent object versions. These object versions cannot be recovered.
 * *ILM*: Add two ILM rules to your ILM policy. Use *Noncurrent Time* as the Reference Time in the first rule to match the noncurrent versions of the object. Use *Ingest Time* in the second rule to match the current version. The *Noncurrent Time* rule must appear in the policy above the *Ingest Time* rule.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 
