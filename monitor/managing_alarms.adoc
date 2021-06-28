@@ -13,7 +13,7 @@ The StorageGRID alarm system is the legacy system used to identify trouble spots
 
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
-*Related information*
+.Related information
 
 xref:alarms_reference.adoc[Alarms reference (legacy system)]
 
@@ -34,7 +34,7 @@ Default alarms are provided with each StorageGRID system and cannot be modified.
 
 Global Custom alarms monitor the status of all services of a given type in the StorageGRID system. You can create a Global Custom alarm to override a Default alarm. You can also create a new Global Custom alarm. This can be useful for monitoring any customized conditions of your StorageGRID system.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Viewing Default alarms (legacy system)]
 
@@ -217,7 +217,7 @@ Any acknowledged alarms are shown.
 +
 image::../media/current_alarms_page_show_acknowledged.png[Current Alarms Page Show Acknowledged]
 
-*Related information*
+.Related information
 
 xref:alarms_reference.adoc[Alarms reference (legacy system)]
 
@@ -266,7 +266,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 The alarms are listed in reverse chronological order.
  .. To return to the alarms history request form, click *History*.
 
-*Related information*
+.Related information
 
 xref:alarms_reference.adoc[Alarms reference (legacy system)]
 
@@ -363,7 +363,7 @@ image:../media/icon_nms_copy.gif[copy icon] Copy a row
 
 . Click *Apply Changes*.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Configuring email server settings for alarms (legacy system)]
 
@@ -452,7 +452,7 @@ When you are logged in as root, the prompt changes from `$` to `#`.
 +
 The alarm is cleared.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Disabling alarms (legacy system)]
 
@@ -463,7 +463,7 @@ StorageGRID system can automatically send email and SNMP notifications when an a
 
 By default, alarm email notifications are not sent. For email notifications, you must configure the email server and specify the email recipients. For SNMP notifications, you must configure the SNMP agent.
 
-*Related information*
+.Related information
 
 xref:using_snmp_monitoring.adoc[Using SNMP monitoring]
 
@@ -492,7 +492,7 @@ A service state notification is sent when a service (for example, the LDR servic
 
 A mailing list receives all notifications related to changes in the selected state.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Configuring email notifications for alarms (legacy system)]
 
@@ -550,7 +550,7 @@ You can enter a single email address or a comma-delineated list of email address
 +
 The SMTP mail server settings are saved. If you entered information for a test email, that email is sent. Test emails are sent to the mail server immediately and are not sent through the notifications queue. In a system with multiple Admin Nodes, each Admin Node sends an email. Receipt of the test email confirms that your SMTP mail server settings are correct and that the NMS service is successfully connecting to the mail server. A connection problem between the NMS service and the mail server triggers the legacy MINS (NMS Notification Status) alarm at the Minor severity level.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -637,7 +637,7 @@ Optionally, select an email template to add a unique header, footer, and subject
 +
 A new mailing list is created.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Creating alarm email templates (legacy system)]
 
@@ -663,7 +663,7 @@ If an email address (or list) belongs to multiple mailing lists, only one email 
 +
 Notifications will be sent to the mailing list when alarms with the selected alarm severity level or service state are triggered or changed.
 
-*Related information*
+.Related information
 
 link:managing_alarms.md#[Creating mailing lists for alarm notifications (legacy system)]
 
@@ -713,6 +713,6 @@ The Notifications page (*Configuration* > *Notifications*) displays the followin
 +
 image::../media/all_notifications_suppressed.gif[Notifications page with all email notifications suppressed]
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
