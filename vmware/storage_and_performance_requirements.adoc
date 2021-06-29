@@ -1,7 +1,7 @@
 ---
 permalink: vmware/storage_and_performance_requirements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must understand the storage and performance requirements for StorageGRID nodes hosted by virtual machines, so you can provide enough space to support the initial configuration and future storage expansion.'
 ---
 = Storage and performance requirements
@@ -37,40 +37,35 @@ In a production environment, the virtual machines for StorageGRID grid nodes mus
 
 NOTE: Disk snapshots cannot be used to restore grid nodes. Instead, refer to the recovery and maintenance procedures for each type of node.
 
+[cols="1a,2a" options="header"]
 |===
 | Node Type| Storage
-a|
-Admin Node
-a|
-100 GB LUN for OS
+|Admin Node
+|100 GB LUN for OS
 
 200 GB LUN for Admin Node tables
 
 200 GB LUN for Admin Node audit log
 
-a|
-Storage Node
-a|
-100 GB LUN for OS
+|Storage Node
+|100 GB LUN for OS
 
 3 LUNs for each Storage Node on this host
 
-NOTE: A Storage Node can have 1 to 16 storage LUNs; at least 3 storage LUNs are recommended.
+*Note*: A Storage Node can have 1 to 16 storage LUNs; at least 3 storage LUNs are recommended.
 
 Minimum size per LUN: 4 TB
 
 Maximum tested LUN size: 39 TB.
 
-a|
-Gateway Node
-a|
-100 GB LUN for OS
-a|
-Archive Node
-a|
-100 GB LUN for OS
+|Gateway Node
+|100 GB LUN for OS
+
+|Archive Node
+|100 GB LUN for OS
 |===
-*Attention:* Depending on the audit level configured, the size of user inputs such as S3 object key name, and how much audit log data you need to preserve, you might need to increase the size of the audit log LUN on each Admin Node. As a general rule, a grid generates approximately 1 KB of audit data per S3 operation, which would mean that a 200 GB LUN would support 70 million operations per day or 800 operations per second for two to three days.
+
+IMPORTANT: Depending on the audit level configured, the size of user inputs such as S3 object key name, and how much audit log data you need to preserve, you might need to increase the size of the audit log LUN on each Admin Node. As a general rule, a grid generates approximately 1 KB of audit data per S3 operation, which would mean that a 200 GB LUN would support 70 million operations per day or 800 operations per second for two to three days.
 
 == Storage requirements for Storage Nodes
 
@@ -97,6 +92,6 @@ For details, go to the instructions for administering StorageGRID and search for
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]

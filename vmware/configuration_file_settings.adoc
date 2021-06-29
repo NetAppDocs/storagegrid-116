@@ -1,7 +1,7 @@
 ---
 permalink: vmware/configuration_file_settings.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The deploy-vsphere-ovftool.ini configuration file contains the settings that are required to deploy virtual grid nodes.'
 ---
 = Configuration file settings
@@ -9,7 +9,7 @@ summary: 'The deploy-vsphere-ovftool.ini configuration file contains the setting
 :imagesdir: ../media/
 
 [.lead]
-The deploy-vsphere-ovftool.ini configuration file contains the settings that are required to deploy virtual grid nodes.
+The `deploy-vsphere-ovftool.ini` configuration file contains the settings that are required to deploy virtual grid nodes.
 
 The configuration file first lists global parameters, and then lists node-specific parameters in sections defined by node name. When the file is used:
 
@@ -30,7 +30,7 @@ You can use the `--powerOffTarget` and `--overwrite` options to shut down and re
 +
 IMPORTANT: You should deploy nodes to different datastores and specify OVFTOOL_ARGUMENTS for each node, instead of globally.
 
-* *SOURCE*: The path to the StorageGRID virtual machine template (.vmdk) file and the .ovf and .mf files for individual grid nodes. This defaults to the current directory.
+* *SOURCE*: The path to the StorageGRID virtual machine template (`.vmdk`) file and the `.ovf` and `.mf` files for individual grid nodes. This defaults to the current directory.
 +
 ----
 SOURCE = /downloads/StorageGRID-Webscale-version/vsphere
@@ -151,29 +151,29 @@ CLIENT_NETWORK_MTU = 8192
 IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
 +
 NOTE: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
-+
-The format used is: <network type>/<protocol>/<default port used by grid node>/<new port>, where network type is grid, admin, or client, and protocol is tcp or udp.
-+
+
+The format used is: `<network type>/<protocol>/<default port used by grid node>/<new port>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+
 For example:
-+
+
 ----
 PORT_REMAP = client/tcp/18082/443
 ----
-+
+
 If used alone, this example setting symmetrically maps both inbound and outbound communications for the grid node from port 18082 to port 443. If used in conjunction with PORT_REMAP_INBOUND, this example setting maps outbound communications from port 18082 to port 443.
 
 * *PORT_REMAP_INBOUND*: Remaps inbound communications for the specified port. If you specify PORT_REMAP_INBOUND but do not specify a value for PORT_REMAP, outbound communications for the port are unchanged.
 +
 IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
-+
-The format used is: <network type>/<protocol>/<new inbound port>/<default inbound port used by grid node>, where network type is grid, admin, or client, and protocol is tcp or udp.
-+
+
+The format used is: `<network type>/<protocol>/<new inbound port>/<default inbound port used by grid node>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+
 For example:
-+
+
 ----
 PORT_REMAP_INBOUND = client/tcp/443/18082
 ----
-+
+
 This example takes traffic that is sent to port 443 to pass an internal firewall and directs it to port 18082, where the grid node is listening for S3 requests.
 
 == Node-specific parameters
