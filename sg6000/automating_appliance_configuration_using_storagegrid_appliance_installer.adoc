@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/automating_appliance_configuration_using_storagegrid_appliance_installer.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can automate the configuration of an appliance by using a JSON file that contains the configuration information. You upload the file using the StorageGRID Appliance Installer.'
 ---
 = Automating appliance configuration using the StorageGRID Appliance Installer
@@ -36,18 +36,18 @@ xref:automating_installation_configuration_appliance_nodes_configure_sga_py_scri
 .Steps
 
 . Generate the JSON file using one of the following methods:
- ** The ConfigBuilder application
+** The ConfigBuilder application
 +
 https://configbuilder.netapp.com/[ConfigBuilder.netapp.com]
 
- ** The `configure-sga.py` appliance configuration script. You can download the script from StorageGRID Appliance Installer (*Help* > *Appliance Configuration Script*). See the instructions on automating the configuration using the configure-sga.py script.
+** The `configure-sga.py` appliance configuration script. You can download the script from StorageGRID Appliance Installer (*Help* > *Appliance Configuration Script*). See the instructions on automating the configuration using the configure-sga.py script.
 +
 xref:automating_installation_configuration_appliance_nodes_configure_sga_py_script.adoc[Automating installation and configuration of appliance nodes using the configure-sga.py script]
+
 +
-The node names in the JSON file must follow these requirements:
- ** Must be a valid hostname containing at least 1 and no more than 32 characters
- ** Can use letters, numbers, and hyphens are allowed
- ** Cannot start or end with a hyphen or contain only numbers
+The node names in the JSON file must follow these requirements: ** Must be a valid hostname containing at least 1 and no more than 32 characters
+** Can use letters, numbers, and hyphens are allowed
+** Cannot start or end with a hyphen or contain only numbers
 +
 IMPORTANT: Ensure that the node names (the top-level names) in the JSON file are unique, or you will not be able to configure more than one node using the JSON file.
 . Select *Advanced* > *Update Appliance Configuration*.

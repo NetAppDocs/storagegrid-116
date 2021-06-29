@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/deploying_appliance_storage_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After installing and configuring the storage appliance, you can deploy it as a Storage Node in a StorageGRID system. When you deploy an appliance as a Storage Node, you use the StorageGRID Appliance Installer included on the appliance.'
 ---
 = Deploying an appliance Storage Node
@@ -13,8 +13,8 @@ After installing and configuring the storage appliance, you can deploy it as a S
 
 .What you'll need
 
-NOTE: If you are cloning an appliance node, continue following the process in recovery and maintenance.
-
+* If you are cloning an appliance node, continue following the process in recovery and maintenance.
++
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
@@ -43,15 +43,14 @@ NOTE: If you are performing an expansion or recovery operation, follow the appro
 
 .Steps
 
-. Open a browser, and enter one of the IP addresses for the appliance's compute controller.
-+
-`+https://Controller_IP:8443+`
+. Open a browser, and enter one of the IP addresses for the appliance's compute controller. +
+`https://_Controller_IP_:8443`
 +
 The StorageGRID Appliance Installer Home page appears.
 +
 image::../media/appliance_installer_home_start_installation_enabled.gif[Appliance Installer home page for other node types (besides Admin Nodes)]
 
-. In the Primary Admin Node connection section, determine whether you need to specify the IP address for the primary Admin Node.
+. In the *Primary Admin Node connection* section, determine whether you need to specify the IP address for the primary Admin Node.
 +
 If you have previously installed other nodes in this data center, the StorageGRID Appliance Installer can discover this IP address automatically, assuming the primary Admin Node, or at least one other grid node with ADMIN_IP configured, is present on the same subnet.
 
@@ -84,12 +83,11 @@ a|
 +
 The node name is assigned to this appliance node in the StorageGRID system. It is shown on the Nodes page (Overview tab) in the Grid Manager. If required, you can change the name when you approve the node.
 
-. In the Installation section, confirm that the current state is "`Ready to start installation of node name into grid with primary Admin Node admin_ip`" and that the *Start Installation* button is enabled.
+. In the *Installation* section, confirm that the current state is "`Ready to start installation of node name into grid with primary Admin Node admin_ip`" and that the *Start Installation* button is enabled.
 +
 If the *Start Installation* button is not enabled, you might need to change the network configuration or port settings. For instructions, see the installation and maintenance instructions for your appliance.
 +
-NOTE: If you are deploying the Storage Node appliance as a node cloning target, stop the deployment process here and continue the node cloning procedure in recovery and maintenance.
-+
+NOTE: If you are deploying the Storage Node appliance as a node cloning target, stop the deployment process here and continue the node cloning procedure in recovery and maintenance. +
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 
 . From the StorageGRID Appliance Installer home page, click *Start Installation*.

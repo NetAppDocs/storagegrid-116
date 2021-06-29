@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/automating_installation_configuration_appliance_nodes_configure_sga_py_script.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can use the configure-sga.py script to automate many of the installation and configuration tasks for StorageGRID appliance nodes, including installing and configuring a primary Admin Node. This script can be useful if you have a large number of appliances to configure. You can also use the script to generate a JSON file that contains appliance configuration information.'
 ---
 = Automating installation and configuration of appliance nodes using the configure-sga.py script
@@ -19,9 +19,9 @@ You can use the configure-sga.py script to automate many of the installation and
 * If you are installing and configuring other nodes, the primary Admin Node has been deployed, and you know its IP address.
 * For all nodes other than the primary Admin Node, all Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * You have downloaded the configure-sga.py file. The file is included in the installation archive, or you can access it by clicking *Help* > *Appliance Installation Script* in the StorageGRID Appliance Installer.
-
++
 NOTE: This procedure is for advanced users with some experience using command-line interfaces. Alternatively, you can also use the StorageGRID Appliance Installer to automate the configuration.
-
++
 xref:automating_appliance_configuration_using_storagegrid_appliance_installer.adoc[Automating appliance configuration using the StorageGRID Appliance Installer]
 
 .Steps
@@ -33,18 +33,17 @@ xref:automating_appliance_configuration_using_storagegrid_appliance_installer.ad
 configure-sga.py --help
 ----
 +
-The configure-sga.py script uses five subcommands:
+The `configure-sga.py` script uses five subcommands:
 
- ** advanced for advanced StorageGRID appliance interactions, including BMC configuration and creating a JSON file containing the current configuration of the appliance
- ** configure for configuring the RAID mode, node name, and networking parameters
- ** install for starting a StorageGRID installation
- ** monitor for monitoring a StorageGRID installation
- ** reboot for rebooting the appliance
-If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the --help option you will get a different help text providing more detail on the options available within that subcommand:
+** `advanced` for advanced StorageGRID appliance interactions, including BMC configuration and creating a JSON file containing the current configuration of the appliance
+** `configure` for configuring the RAID mode, node name, and networking parameters
+** `install` for starting a StorageGRID installation
+** `monitor` for monitoring a StorageGRID installation
+** `reboot` for rebooting the appliance
+
 +
-----
-configure-sga.py subcommand --help
-----
+If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the --help option you will get a different help text providing more detail on the options available within that subcommand: +
+`configure-sga.py subcommand --help`
 
 . To confirm the current configuration of the appliance node, enter the following where SGA-install-ip is any one of the IP addresses for the appliance node:
 +

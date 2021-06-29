@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/configuring_network_links_sg6000.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.'
 ---
 = Configuring network links (SG6000)
@@ -13,7 +13,7 @@ You can configure network links for the ports used to connect the appliance to t
 
 .What you'll need
 
-NOTE: If you are cloning an appliance node, configure network links for the target appliance for all links used by the source appliance node.
+If you are cloning an appliance node, configure network links for the target appliance for all links used by the source appliance node.
 
 If you plan to use the 25-GbE link speed:
 
@@ -137,7 +137,7 @@ The first time you access this page:
  ** *Port bond mode* is set to *Fixed*.
  ** *Network bond mode* is set to *Active-Backup* for the Grid Network.
  ** The *Admin Network* is enabled, and the network bond mode is set to *Independent*.
- ** The**Client Network** is disabled.
+ ** The *Client Network* is disabled.
 image:../media/network_link_configuration_fixed.png[Network Link Configuration Fixed]
 
 . If you plan to use the 25-GbE link speed for the network ports, select *25GbE* from the Link speed drop-down list.
@@ -166,7 +166,8 @@ image:../media/network_link_configuration_aggregate.gif[Screen shot showing Link
 
 . When you are satisfied with your selections, click *Save*.
 +
-NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: `+https://SG6000-CN_Controller_IP:8443+`
+NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: +
+`https://_SG6000-CN_Controller_IP_:8443`
 
 .Related information
 

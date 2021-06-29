@@ -40,9 +40,10 @@ The MAC address label lists the MAC address for the BMC management port.
 To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
 
  .. Provide the MAC address to your network administrator, so they can look up the DHCP address for the appliance on the Admin Network.
- .. From the client, enter this URL for the StorageGRID Appliance Installer: `+https://services-appliance_IP:8443+`
+ .. From the client, enter this URL for the StorageGRID Appliance Installer: +
+`https://_services-appliance_IP_:8443`
 +
-For `services-appliance_IP`, use the DHCP address.
+For `_services-appliance_IP_`, use the DHCP address.
 
  .. If you are prompted with a security alert, view and install the certificate using the browser's installation wizard.
 +
