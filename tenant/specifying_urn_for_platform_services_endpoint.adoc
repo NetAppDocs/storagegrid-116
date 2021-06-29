@@ -1,7 +1,7 @@
 ---
 permalink: tenant/specifying_urn_for_platform_services_endpoint.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you create a platform services endpoint, you must specify a Unique Resource Name \(URN\). You will use the URN to reference the endpoint when you create configuration XML for the platform service. The URN for each endpoint must be unique.'
 ---
 = Specifying the URN for a platform services endpoint
@@ -24,39 +24,35 @@ For example, if you are specifying the URN for a CloudMirror endpoint hosted on 
 
 The next element of the URN specifies the type of platform service, as follows:
 
+[cols="2a,1a" options="header"]
 |===
-| Service| Type
-a|
-CloudMirror replication
-a|
-`s3`
-a|
-Notifications
-a|
-`sns`
-a|
-Search integration
-a|
-`es`
+|Service |Type
+|CloudMirror replication
+m|s3
+
+|Notifications
+m|sns
+
+|Search integration
+m|es
 |===
 For example, to continue specifying the URN for a CloudMirror endpoint hosted on StorageGRID, you would add `s3` to get `urn:sgws:s3`.
 
 The final element of the URN identifies the specific target resource at the destination URI.
 
+[cols="1a,2a" options="header"]
 |===
 | Service| Specific resource
-a|
-CloudMirror replication
-a|
-bucket-name
-a|
-Notifications
-a|
-sns-topic-name
-a|
-Search integration
-a|
-domain-name/index-name/type-name**Note:** If the Elasticsearch cluster is *not* configured to create indexes automatically, you must create the index manually before you create the endpoint.
+a|CloudMirror replication
+m|bucket-name
+
+a|Notifications
+m|sns-topic-name
+
+|Search integration
+|`domain-name/index-name/type-name`
+
+*Note:* If the Elasticsearch cluster is *not* configured to create indexes automatically, you must create the index manually before you create the endpoint.
 
 |===
 

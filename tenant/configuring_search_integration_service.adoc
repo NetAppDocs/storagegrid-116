@@ -1,7 +1,7 @@
 ---
 permalink: tenant/configuring_search_integration_service.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The search integration service sends object metadata to a destination search index whenever an object is created, deleted, or its metadata or tags are updated.'
 ---
 = Configuring the search integration service
@@ -18,11 +18,15 @@ The search integration service sends object metadata to a destination search ind
 * The endpoint that you intend to use as a destination for the search integration service must already exist, and you must have its URN.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission, which allows you to manage the settings for all S3 buckets in your tenant account. These permissions override the permission settings in group or bucket policies when configuring the bucket using the Tenant Manager.
 
+.About this task
+
 After you configure the search integration service for a source bucket, creating an object or updating an object's metadata or tags triggers object metadata to be sent to the destination endpoint. If you enable the search integration service for a bucket that already contains objects, metadata notifications are not automatically sent for existing objects. You must update these existing objects to ensure that their metadata is added to the destination search index.
 
+.Steps
+
 . Use a text editor to create the metadata notification XML required to enable search integration.
- ** See the information about configuration XML for search integration.
- ** When configuring the XML, use the URN of a search integration endpoint as the destination.
+ * See the information about configuration XML for search integration.
+ * When configuring the XML, use the URN of a search integration endpoint as the destination.
 
 +
 ----
@@ -55,6 +59,8 @@ NOTE: Platform services must be enabled for each tenant account by a StorageGRID
 In the example shown earlier, all objects added to the bucket trigger a metadata notification.
 
  .. Confirm that a JSON document that contains the object's metadata and tags was added to the search index specified in the endpoint.
+
+.After you finish
 
 As necessary, you can disable search integration for a bucket using either of the following methods:
 

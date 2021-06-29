@@ -93,7 +93,9 @@ NOTE: This list does not include ports that might be configured as load balancer
 |RPCBind
 |NFS client
 |Admin Nodes
-|Used by NFS-based audit export (portmap). *Note:* This port is required only if NFS-based audit export is enabled.
+|Used by NFS-based audit export (portmap).
+
+*Note:* This port is required only if NFS-based audit export is enabled.
 
 |123
 |UDP
@@ -107,14 +109,18 @@ NOTE: This list does not include ports that might be configured as load balancer
 |NetBIOS
 |SMB client
 |Admin Nodes
-|Used by SMB-based audit export for clients that require NetBIOS support. *Note:* This port is required only if SMB-based audit export is enabled.
+|Used by SMB-based audit export for clients that require NetBIOS support.
+
+*Note:* This port is required only if SMB-based audit export is enabled.
 
 |138
 |UDP
 |NetBIOS
 |SMB client
 |Admin Nodes
-|Used by SMB-based audit export for clients that require NetBIOS support.*Note:* This port is required only if SMB-based audit export is enabled.
+|Used by SMB-based audit export for clients that require NetBIOS support.
+
+*Note:* This port is required only if SMB-based audit export is enabled.
 
 |
 139
@@ -127,7 +133,9 @@ SMB client
 |
 Admin Nodes
 |
-Used by SMB-based audit export for clients that require NetBIOS support. *Note:* This port is required only if SMB-based audit export is enabled.
+Used by SMB-based audit export for clients that require NetBIOS support.
+
+*Note:* This port is required only if SMB-based audit export is enabled.
 
 |
 161
@@ -140,7 +148,11 @@ SNMP client
 |
 All nodes
 |
-Used for SNMP polling. All nodes provide basic information; Admin Nodes also provide alert and alarm data. Defaults to UDP port 161 when configured. *Note:* This port is only required, and is only opened on the node firewall if SNMP is configured. If you plan to use SNMP, you can configure alternate ports. *Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
+Used for SNMP polling. All nodes provide basic information; Admin Nodes also provide alert and alarm data. Defaults to UDP port 161 when configured.
+
+*Note:* This port is only required, and is only opened on the node firewall if SNMP is configured. If you plan to use SNMP, you can configure alternate ports.
+
+*Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
 
 |
 162
@@ -153,7 +165,11 @@ All nodes
 |
 Notification destinations
 |
-Outbound SNMP notifications and traps default to UDP port 162. *Note:* This port is only required if SNMP is enabled and notification destinations are configured. If you plan to use SNMP, you can configure alternate ports. *Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
+Outbound SNMP notifications and traps default to UDP port 162.
+
+*Note:* This port is only required if SNMP is enabled and notification destinations are configured. If you plan to use SNMP, you can configure alternate ports.
+
+*Note:* For information about using SNMP with StorageGRID, contact your NetApp account representative.
 
 |
 389
@@ -214,7 +230,9 @@ SMB client
 |
 Admin Nodes
 |
-Used by SMB-based audit export. *Note:* This port is required only if SMB-based audit export is enabled.
+Used by SMB-based audit export.
+
+*Note:* This port is required only if SMB-based audit export is enabled.
 
 |
 903
@@ -227,7 +245,9 @@ NFS client
 |
 Admin Nodes
 |
-Used by NFS-based audit export (`rpc.mountd`). *Note:* This port is required only if NFS-based audit export is enabled.
+Used by NFS-based audit export (`rpc.mountd`).
+
+*Note:* This port is required only if NFS-based audit export is enabled.
 
 |
 2022
@@ -252,7 +272,9 @@ NFS client
 |
 Admin Nodes
 |
-Used by NFS-based audit export (nfs). *Note:* This port is required only if NFS-based audit export is enabled.
+Used by NFS-based audit export (nfs).
+
+*Note:* This port is required only if NFS-based audit export is enabled.
 
 |
 5696
@@ -361,7 +383,9 @@ External Grafana service
 |
 Admin Nodes
 |
-Used by external Grafana services for secure access to the StorageGRID Prometheus service. *Note:* This port is required only if certificate-based Prometheus access is enabled.
+Used by external Grafana services for secure access to the StorageGRID Prometheus service.
+
+*Note:* This port is required only if certificate-based Prometheus access is enabled.
 
 |
 9443
@@ -424,7 +448,7 @@ Storage Nodes
 |
 Swift-related external traffic to Storage Nodes (HTTP).
 |===
-*Related information*
+.Related information
 
 xref:internal_grid_node_communications.adoc[Internal grid node communications]
 
