@@ -11,6 +11,8 @@ summary: 'You might need to decommission a node that is not currently connected 
 [.lead]
 You might need to decommission a node that is not currently connected to the grid (one whose Health is Unknown or Administratively Down).
 
+.What you'll need
+
 * You understand the requirements and considerations for decommissioning grid nodes.
 +
 xref:considerations_for_decommissioning_grid_nodes.adoc[Considerations for decommissioning grid nodes]
@@ -59,6 +61,8 @@ Before decommissioning a disconnected *Admin Node* or *Gateway Node*, note the f
 * When you decommission a disconnected Admin Node, you will lose the audit logs from that node; however, these logs should also exist on the primary Admin Node.
 * You can safely decommission a Gateway Node while it is disconnected.
 
+.Steps
+
 . Attempt to bring any disconnected grid nodes back online or to recover them.
 +
 See the recovery procedures for instructions.
@@ -85,7 +89,7 @@ The decommission procedure starts, and the progress is displayed for each node. 
 +
 image::../media/decommission_nodes_procedure_in_progress_disconnected.png[screenshot of node decommissioning in progress]
 
-. As soon as the new Recovery Package is available, click the link or select *Maintenance* > *System* > *Recovery Package* to access the Recovery Package page. Then, download the .zip file.
+. As soon as the new Recovery Package is available, click the link or select *Maintenance* > *System* > *Recovery Package* to access the Recovery Package page. Then, download the `.zip` file.
 +
 See the instructions for downloading the Recovery Package.
 +
@@ -138,7 +142,7 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.htm
 +
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
 
-*Related information*
+.Related information
 
 xref:grid_node_recovery_procedures.adoc[Grid node recovery procedures]
 

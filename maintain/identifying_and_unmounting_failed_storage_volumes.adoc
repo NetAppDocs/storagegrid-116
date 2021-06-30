@@ -11,7 +11,11 @@ summary: 'When recovering a Storage Node with failed storage volumes, you must i
 [.lead]
 When recovering a Storage Node with failed storage volumes, you must identify and unmount the failed volumes. You must verify that only the failed storage volumes are reformatted as part of the recovery procedure.
 
+.What you'll need
+
 You must be signed in to the Grid Manager using a supported browser.
+
+.About this task
 
 You should recover failed storage volumes as soon as possible.
 
@@ -33,6 +37,8 @@ In the following example, device /dev/sdc has a volume size of 4 TB, is mounted 
 
 image::../media/mounting_storage_devices.gif[Volume size sample]
 
+.Steps
+
 . Complete the following steps to record the failed storage volumes and their device names:
  .. Select *Support* > *Tools* > *Grid Topology*.
  .. Select *site* > *failed Storage Node* > *LDR* > *Storage* > *Overview* > *Main*, and look for object stores with alarms.
@@ -46,9 +52,9 @@ Object stores are numbered in hex notation. For example, 0000 is the first volum
 image::../media/ssm_storage_volumes.gif[example showing object stores and mount points]
 . Log in to the failed Storage Node:
  .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.

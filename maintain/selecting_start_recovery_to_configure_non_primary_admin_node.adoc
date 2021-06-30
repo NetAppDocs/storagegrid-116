@@ -11,10 +11,14 @@ summary: 'After replacing a non-primary Admin Node, you must select Start Recove
 [.lead]
 After replacing a non-primary Admin Node, you must select Start Recovery in the Grid Manager to configure the new node as a replacement for the failed node.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Maintenance or Root Access permission.
 * You must have the provisioning passphrase.
 * You must have deployed and configured the replacement node.
+
+.Steps
 
 . From the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Recovery*.
 . Select the grid node you want to recover in the Pending Nodes list.
@@ -42,7 +46,7 @@ If you want to retry the recovery after resetting the procedure, you must restor
 +
 NOTE: To configure a relying party trust, see the instructions for administering StorageGRID. To access the default server certificate, log in to the command shell of the Admin Node. Go to the /var/local/mgmt-api directory, and select the server.crt file.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

@@ -11,6 +11,8 @@ summary: 'The replacement node must be configured as the primary Admin Node for 
 [.lead]
 The replacement node must be configured as the primary Admin Node for your StorageGRID system.
 
+.What you'll need
+
 * For primary Admin Nodes hosted on virtual machines, the virtual machine must be deployed, powered on, and initialized.
 * For primary Admin Nodes hosted on a services appliance, you have replaced the appliance and have installed software. See the installation guide for your appliance.
 +
@@ -19,7 +21,9 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.htm
 * You must have the latest backup of the Recovery Package file (sgws-recovery-package-id-revision.zip).
 * You must have the provisioning passphrase.
 
-. Open your web browser and navigate to https://primary_admin_node_ip.
+.Steps
+
+. Open your web browser and navigate to `https://primary_admin_node_ip`.
 +
 image::../media/install_or_recover_primary_admin_node.png[Install or recover Primary Admin Node]
 
@@ -46,7 +50,7 @@ NOTE: To configure a relying party trust, see the instructions for administering
   *** If the versions displayed in the *Software Version* fields are the same, you do not need to apply a hotfix.
   *** If the versions displayed in the *Software Version* fields are different, you must apply a hotfix to update the recovered primary Admin Node to the same version.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

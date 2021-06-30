@@ -11,14 +11,15 @@ summary: 'After you validate the migrated node, you start the node by running a 
 [.lead]
 After you validate the migrated node, you start the node by running a command on the target Linux host.
 
+.Steps
+
 . Start the node on the new host.
 +
 ----
 sudo storagegrid node start DC1-S3
+Starting node DC1-S3
 ----
 +
-`Starting node DC1-S3`
-
 . In the Grid Manager, verify that the status of the node is green with no alarms raised against it.
 +
 IMPORTANT: Verifying that the status of the node is green ensures that the migrated node has fully restarted and rejoined the grid. If the status is not green, do not migrate any additional nodes so that you will not have more than one node out of service.

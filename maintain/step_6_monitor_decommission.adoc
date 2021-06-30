@@ -11,6 +11,8 @@ summary: 'From Step 6 \(Monitor Decommission\) of the Decommission Site page wiz
 [.lead]
 From Step 6 (Monitor Decommission) of the Decommission Site page wizard, you can monitor the progress as the site is removed.
 
+.About this task
+
 When StorageGRID removes a connected site, it removes nodes in this order:
 
 . Gateway Nodes
@@ -25,6 +27,8 @@ When StorageGRID removes a disconnected site, it removes nodes in this order:
 
 Each Gateway Node or Admin Node might only require a few minutes or an hour to remove; however, Storage Nodes might take days or weeks.
 
+.Steps
+
 . As soon as a new Recovery Package has been generated, download the file.
 +
 image::../media/decommission_site_step_6_recovery_package.png[Site Decommission Step 6 Recovery Package]
@@ -32,7 +36,7 @@ image::../media/decommission_site_step_6_recovery_package.png[Site Decommission 
 NOTE: Download the Recovery Package as soon as possible to ensure you can recover your grid if something goes wrong during the decommission procedure.
 
  .. Select the link in the message, or select *Maintenance* > *System* > *Recovery Package*.
- .. Download the .zip file.
+ .. Download the `.zip` file.
 +
 See the instructions for downloading the Recovery Package.
 +
@@ -156,6 +160,6 @@ Complete these steps after you complete the site decommission procedure:
 * If the site included one or more Admin Nodes and single sign-on (SSO) is enabled for your StorageGRID system, remove all relying party trusts for the site from Active Directory Federation Services (AD FS).
 * After the nodes have been gracefully powered off automatically as part of the connected site decommission procedure, remove the associated virtual machines.
 
-*Related information*
+.Related information
 
 xref:downloading_recovery_package.adoc[Downloading the Recovery Package]

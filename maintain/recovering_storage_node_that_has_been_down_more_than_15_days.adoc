@@ -11,8 +11,12 @@ summary: 'If a single Storage Node has been offline and not connected to other S
 [.lead]
 If a single Storage Node has been offline and not connected to other Storage Nodes for more than 15 days, you must rebuild Cassandra on the node.
 
+.What you'll need
+
 * You have checked that a Storage Node decommissioning is not in progress, or you have paused the node decommission procedure. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Decommission*.)
 * You have checked that an expansion is not in progress. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Expansion*.)
+
+.About this task
 
 Storage Nodes have a Cassandra database that includes object metadata. If a Storage Node has not been able to communicate with other Storage Nodes for more than 15 days, StorageGRID assumes that node's Cassandra database is stale. The Storage Node cannot rejoin the grid until Cassandra has been rebuilt using information from other Storage Nodes.
 
@@ -30,12 +34,14 @@ NOTE: If more than one Storage Node at a site has failed, a site recovery proced
 
 xref:how_site_recovery_is_performed_by_technical_support.adoc[How site recovery is performed by technical support]
 
+.Steps
+
 . If necessary, power on the Storage Node that needs to be recovered.
 . Log in to the grid node:
  .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
@@ -69,6 +75,6 @@ Cassandra not started because it has been offline for more than 15 day grace per
  .. Select *DDS* > *Data Store*.
  .. Confirm that the *Data Store Status* is "`Up`" and the *Data Store State* is "`Normal.`"
 
-*Related information*
+.Related information
 
 xref:recovering_from_system_drive_failure.adoc[Recovering from system drive failure]

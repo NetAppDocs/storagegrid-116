@@ -11,13 +11,17 @@ summary: 'If you need to change the Grid Network IP address for all nodes in the
 [.lead]
 If you need to change the Grid Network IP address for all nodes in the grid, you must follow this special procedure. You cannot do a grid-wide Grid Network IP change using the procedure to change individual nodes.
 
-* You must have the Passwords.txt file.
+.What you'll need
+
+* You must have the `Passwords.txt` file.
 
 To ensure that the grid starts up successfully, you must make all the changes at once.
 
 NOTE: This procedure applies to the Grid Network only. You cannot use this procedure to change IP addresses on the Admin or Client Networks.
 
 If you want to change the IP addresses and MTU for the nodes at one site only, follow the instructions for changing a node's network configuration.
+
+.Steps
 
 . Plan ahead for changes that you need to make outside of the Change IP tool, such as changes to DNS or NTP, and changes to the single sign-on (SSO) configuration, if used.
 +
@@ -31,9 +35,9 @@ IMPORTANT: If necessary, add the new subnet for the new IP addresses.
 
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . Start the Change IP tool by entering the following command: `change-ip`
@@ -95,7 +99,7 @@ IMPORTANT: The entire grid must be shut down at once, so that all nodes are down
  .. Select *Maintenance* > *System* > *Recovery Package*.
  .. Enter the provisioning passphrase.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

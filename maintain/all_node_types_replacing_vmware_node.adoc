@@ -11,11 +11,15 @@ summary: 'When you recover a failed StorageGRID node that was hosted on VMware, 
 [.lead]
 When you recover a failed StorageGRID node that was hosted on VMware, you must remove the failed node and deploy a recovery node.
 
+.What you'll need
+
 You must have determined that the virtual machine cannot be restored, and must be replaced.
 
 You use the VMware vSphere Web Client to first remove the virtual machine associated with the failed grid node. Then, you can deploy a new virtual machine.
 
 This procedure is only one step in the grid node recovery process. The node removal and deployment procedure is the same for all VMware nodes, including Admin Nodes, Storage Nodes, Gateway Nodes, and Archive Nodes.
+
+.Steps
 
 . Log in to VMware vSphere Web Client.
 . Navigate to the failed grid node virtual machine.
