@@ -13,9 +13,9 @@ After the primary Admin Node has been upgraded, you must upgrade all other grid 
 
 .Steps
 . Review the Upgrade Progress section on the Software Upgrade page, which provides information about each major upgrade task.
- .. Start Upgrade Service is the first upgrade task. During this task, the software file is distributed to the grid nodes, and the upgrade service is started.
- .. When the Start Upgrade Service task is complete, the Upgrade Grid Nodes task starts.
- .. While the Upgrade Grid Nodes task is in progress, the Grid Node Status table appears and shows the upgrade stage for each grid node in your system.
+ .. *Start Upgrade Service* is the first upgrade task. During this task, the software file is distributed to the grid nodes, and the upgrade service is started.
+ .. When the *Start Upgrade Service* task is complete, the *Upgrade Grid Nodes* task starts.
+ .. While the *Upgrade Grid Nodes* task is in progress, the Grid Node Status table appears and shows the upgrade stage for each grid node in your system.
 . After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, download a new copy of the Recovery Package.
 +
 IMPORTANT: You must download a new copy of the Recovery Package file after you upgrade the software version on the primary Admin Node. The Recovery Package file allows you to restore the system if a failure occurs.
@@ -46,7 +46,7 @@ IMPORTANT: When the upgrade starts on a grid node, the services on that node are
 +
 As shown in the example, when the Stage reaches *Stopping services*, the *Remove* button is hidden and you can no longer remove the node.
 +
-image::../media/software_upgrade_two_nodes_queued.gif[screeen shot showing Stage is Stopping services]
+image::../media/software_upgrade_two_nodes_queued.gif[screen shot showing Stage is Stopping services]
 
 . Wait for each node to proceed through the upgrade stages, which include Queued, Stopping services, Stopping container, Cleaning up Docker images, Upgrading base OS packages, Rebooting, and Starting services.
 +
@@ -101,7 +101,7 @@ In the StorageGRID 11.5._x.y_ version number:
 +
 See the recovery and maintenance instructions for information about applying hotfixes.
 
-*Related information*
+.Related information
 
 xref:downloading_recovery_package.adoc[Downloading the Recovery Package]
 

@@ -17,11 +17,12 @@ The S3 Object Lock feature in StorageGRID 11.5 is an object-protection solution 
 
 S3 Object Lock lets tenant users comply with regulations that require certain objects to be retained for a fixed amount of time or indefinitely.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
 == KMS encryption key management
 
@@ -29,7 +30,8 @@ You can now configure one or more external key management servers (KMS) in the G
 
 NOTE: If you want to use encryption key management, you must use the StorageGRID Appliance Installer to enable the *Node Encryption* setting for the appliance before you add the appliance to the grid.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Usability enhancements for information lifecycle management (ILM)
 
@@ -47,7 +49,8 @@ NOTE: Using the All Storage Nodes storage pool is not recommended because this s
 * You can now remove the stock Make 2 Copies rule (which uses the All Storage Nodes storage pool) as long as it is not used in an active or proposed policy.
 * Objects stored in a Cloud Storage Pool can now be deleted immediately (synchronous deletion).
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
 == Enhancements to the Grid Manager
 
@@ -70,20 +73,23 @@ NOTE: If AutoSupport has not been enabled, a reminder message now appears on the
 * When viewing the *Storage Used - Object Data* chart on the Nodes page, you can now see estimates for the amount of replicated object data and the amount of erasure-coded data on the grid, site, or Storage Node (*Nodes* > *_grid/site/Storage Node_* > *Storage*).
 * Grid Manager menu options were reorganized to make options easier to find. For example, a new *Network Settings* submenu was added to the *Configuration* menu and options in the *Maintenance* and *Support* menus are now listed in alphabetic order.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Enhancements to the Tenant Manager
 
 * The appearance and organization of the Tenant Manager user interface has been completely redesigned to improve the user experience.
 * The new Tenant Manager dashboard provides a high-level summary of each account: it provides bucket details and shows the number of buckets or containers, groups, users, and platform services endpoints (if configured).
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
 == Client certificates for Prometheus metrics export
 
 You can now upload or generate client certificates (*Configuration* > *Access Control* > *Client Certificates*), which can be used to provide secure, authenticated access to the StorageGRID Prometheus database. For example, you can use client certificates if you need to monitor StorageGRID externally using Grafana.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Load balancer enhancements
 
@@ -93,7 +99,8 @@ NOTE: CPU awareness will be not enabled until at least two-thirds of the Storage
 
 * For added security, you can now specify a binding mode for each load balancer endpoint. Endpoint pinning lets you restrict the accessibility of each endpoint to specific high availability groups or node interfaces.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Object metadata changes
 
@@ -115,13 +122,14 @@ The new values for the Metadata Reserved Space setting increase the allowed meta
 ====
 If your Storage Nodes have enough RAM and sufficient space on volume 0, you can manually increase the Metadata Reserved Space setting up to 8 TB after you upgrade. Reserving additional metadata space after the StorageGRID 11.5 upgrade will simplify future hardware and software upgrades.
 
-link:/upgrade/increasing_metadata_reserved_space_setting.html[Increasing metadata reserved space]
+xref:increasing_metadata_reserved_space_setting.adoc[Increasing the Metadata Reserved Space setting]
 ====
 +
 NOTE: If your StorageGRID system stores (or is expected to store) more than 2.64 TB of metadata on any Storage Node, the allowed metadata space can be increased in some cases. If your Storage Nodes each have available free space on storage volume 0 and more than 128 GB of RAM, contact your NetApp account representative. NetApp will review your requirements and increase the allowed metadata space for each Storage Node, if possible.
 * *Automatic cleanup of deleted metadata*: When 20% or more of the metadata stored on a Storage Node is ready to be removed (because the corresponding objects were deleted), StorageGRID can now perform an automatic compaction on that Storage Node. This background process only runs if the load on the system is low--that is, when there is available CPU, disk space, and memory. The new compaction process removes metadata for deleted objects sooner than in previous releases and helps to free up space for new objects to be stored.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
 == Changes to S3 REST API support
 
@@ -135,15 +143,18 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 * By default, the S3 GET Storage Usage request now attempts to retrieve the storage used by a tenant account and its buckets using strong-global consistency. If strong-global consistency cannot be achieved, StorageGRID attempts to retrieve the usage information using strong-site consistency.
 * The `Content-MD5` request header is now correctly supported.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 
 == Maximum size for CloudMirror objects increased to 5 TB
 
 The maximum size for objects that can be replicated to a destination bucket by the CloudMirror replication service was increased to 5 TB, which is the maximum object size supported by StorageGRID.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+.Learn more
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-swift/home.html[Implementing Swift client applications]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-swift/home.html[Implementing Swift client applications]
 
 == New alerts added
 
@@ -173,22 +184,25 @@ The following new alerts were added for StorageGRID 11.5:
 * Tenant quota usage high
 * Unexpected node reboot
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 
 == TCP support for SNMP traps
 
 You can now select Transmission Control Protocol (TCP) as the protocol for SNMP trap destinations. Previously, only the User Datagram Protocol (UDP) protocol was supported.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 
 == Installation and networking enhancements
 
 * *MAC address cloning*: You can now use MAC address cloning to enhance the security of certain environments. MAC address cloning enables you to use a dedicated virtual NIC for the Grid Network, Admin Network, and Client Network. Having the Docker container use the MAC address of the dedicated NIC on the host allows you to avoid using promiscuous mode network configurations. Three new MAC address cloning keys were added to the node configuration file for Linux-based (bare metal) nodes.
 * *Automatic discovery of DNS and NTP host routes*: Previously, there were restrictions on which network your NTP and DNS servers had to connect to, such as the requirement that you could not have all of your NTP and DNS servers on the Client Network. Now, those restrictions are removed.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
 
 == Support for rebalancing erasure-coded (EC) data after Storage Node expansion
 
@@ -196,7 +210,8 @@ The EC rebalance procedure is a new command-line script that might be required a
 
 IMPORTANT: You should only perform the EC rebalance procedure in limited cases. For example, if you cannot add the recommended number of Storage Nodes in an expansion, you can use the EC rebalance procedure to allow additional erasure-coded objects to be stored.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expanding a StorageGRID system]
 
 == New and revised maintenance procedures
 
@@ -207,7 +222,8 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-expansion/home.html[Expa
 +
 NOTE: If you use SSH to log in to a node after upgrading to StorageGRID 11.5, you will receive a warning that the host key has changed. This behavior is expected and you can safely approve the new key.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 
 == Changes to StorageGRID appliances
 
@@ -216,13 +232,15 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery
 * *UDP port connectivity*: You can now test the network connectivity of a StorageGRID appliance to UDP ports, such as those used for an external NFS or DNS server. From the StorageGRID Appliance Installer, select *Configure Networking* > *Port Connectivity Test (nmap)*.
 * *Automating installation and configuration*: A new JSON configuration upload page was added to the StorageGRID Appliance Installer (*Advanced* > *Update Appliance Configuration*). This page enables you to use one file to configure multiple appliances in large grids. Additionally, the `configure-sga.py` Python script has been updated to match the capabilities of the StorageGRID Appliance Installer.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+.Learn more
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
 
 == Changes to audit messages
 
@@ -240,13 +258,16 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG
   *** WPUT (Swift PUT)
  ** The CSIZ (Previous Object Size) field was added to the OVWR (Object Overwrite) audit message.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
+.Learn more
+
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
 
 == New nms.requestlog file
 
 A new log file, `/var/local/log/nms.requestlog`, is maintained on all Admin Nodes. This file contains information about outgoing connections from the Management API to internal StorageGRID services.
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
+.Learn more
+* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 
 == StorageGRID documentation changes
 
