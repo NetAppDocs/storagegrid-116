@@ -27,6 +27,7 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing o
 . Create an Erasure Coding profile named *2 plus 1*. Select the 2+1 erasure-coding scheme and the *DEN* storage pool.
 . Create an ILM rule that applies only to the data in `fabricpool-bucket`. This example rule creates erasure-coded copies.
 +
+
 [cols="1a,1a" options="header"]
 |===
 | Rule definition| Example value
@@ -62,6 +63,7 @@ You could also filter on the FabricPool tenant account.
 
 . Create an ILM rule that will create two replicated copies of any objects not matched by the first rule. Do not select a basic filter (tenant account or bucket name) or any advanced filters.
 +
+
 [cols="1a,1a" options="header"]
 |===
 | Rule definition| Example value

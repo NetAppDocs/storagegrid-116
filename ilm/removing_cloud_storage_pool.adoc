@@ -1,7 +1,7 @@
 ---
 permalink: ilm/removing_cloud_storage_pool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can remove a Cloud Storage Pool that is not used in an ILM rule and that does not contain object data.'
 ---
 = Removing a Cloud Storage Pool
@@ -11,14 +11,16 @@ summary: 'You can remove a Cloud Storage Pool that is not used in an ILM rule an
 [.lead]
 You can remove a Cloud Storage Pool that is not used in an ILM rule and that does not contain object data.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * You have confirmed that the S3 bucket or Azure container does not contain any objects. An error occurs if you attempt to remove a Cloud Storage Pool if it contains objects. See "`Troubleshooting Cloud Storage Pools.`"
 +
-NOTE: When you create a Cloud Storage Pool, StorageGRID writes a marker file to the bucket or container to identify it as a Cloud Storage Pool. Do not remove this file, which is named x-ntap-sgws-cloud-pool-uuid.
+NOTE: When you create a Cloud Storage Pool, StorageGRID writes a marker file to the bucket or container to identify it as a Cloud Storage Pool. Do not remove this file, which is named `x-ntap-sgws-cloud-pool-uuid`.
 
 * You have already removed any ILM rules that might have used the pool.
 
+.Steps
 . Select *ILM* > *Storage Pools*.
 +
 The Storage Pools page appears.

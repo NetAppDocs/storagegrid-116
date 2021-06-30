@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating_erasure_coding_profile.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To create an Erasure Coding profile, you associate a storage pool containing Storage Nodes with an erasure-coding scheme. This association determines the number of data and parity fragments created and where the system distributes these fragments.'
 ---
 = Creating an Erasure Coding profile
@@ -11,6 +11,8 @@ summary: 'To create an Erasure Coding profile, you associate a storage pool cont
 [.lead]
 To create an Erasure Coding profile, you associate a storage pool containing Storage Nodes with an erasure-coding scheme. This association determines the number of data and parity fragments created and where the system distributes these fragments.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * You must have created a storage pool that includes exactly one site or a storage pool that includes three or more sites. No erasure-coding schemes are available for a storage pool that has only two sites.
@@ -18,6 +20,8 @@ To create an Erasure Coding profile, you associate a storage pool containing Sto
 The storage pools used in Erasure Coding profiles must include exactly one site or three or more sites. If you want to provide site redundancy, the storage pool must have at least three sites.
 
 NOTE: You must select a storage pool that contains Storage Nodes. You cannot use Archive Nodes for erasure-coded data.
+
+.Steps
 
 . Select *ILM* > *Erasure Coding*.
 +
