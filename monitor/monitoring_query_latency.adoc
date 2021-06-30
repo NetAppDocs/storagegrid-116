@@ -1,7 +1,7 @@
 ---
 permalink: monitor/monitoring_query_latency.html
 sidebar: sidebar
-keywords: 
+keywords: monitoring, query latency
 summary: 'Client actions such as storing, retrieving, or deleting objects create queries to the grid’s distributed database of object metadata. You should monitor trends in query latency to ensure that grid resources are adequate for the current load.'
 ---
 = Monitoring query latency
@@ -11,14 +11,17 @@ summary: 'Client actions such as storing, retrieving, or deleting objects create
 [.lead]
 Client actions such as storing, retrieving, or deleting objects create queries to the grid's distributed database of object metadata. You should monitor trends in query latency to ensure that grid resources are adequate for the current load.
 
+.What you'll need
 You must be signed in to the Grid Manager using a supported browser.
 
+.About this task
 Temporary increases in query latency are normal and can be caused by a sudden increase in ingest requests. Failed queries are also normal and can result from transient network issues or nodes that are temporarily unavailable. However, if the average time to perform a query increases, overall grid performance declines.
 
-If you notice that query latency is increasing over time, you should consider adding additional Storage Nodes in an expansion procedure to satisfy future workloads .
+If you notice that query latency is increasing over time, you should consider adding additional Storage Nodes in an expansion procedure to satisfy future workloads.
 
 The *High latency for metadata queries* alert is triggered if the average time for queries is too long.
 
+.Steps
 . Select *Nodes* > *_Storage Node_* > *Objects*.
 . Scroll down to the Queries table and view the value for Average Latency.
 +

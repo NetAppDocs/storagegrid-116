@@ -1,7 +1,7 @@
 ---
 permalink: monitor/monitoring_load_balancing_operations.html
 sidebar: sidebar
-keywords: 
+keywords: load balancing, monitoring
 summary: 'If you are using a load balancer to manage client connections to StorageGRID, you should monitor load balancing operations after you configure the system initially and after you make any configuration changes or perform an expansion.'
 ---
 = Monitoring load balancing operations
@@ -11,9 +11,11 @@ summary: 'If you are using a load balancer to manage client connections to Stora
 [.lead]
 If you are using a load balancer to manage client connections to StorageGRID, you should monitor load balancing operations after you configure the system initially and after you make any configuration changes or perform an expansion.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
 You can use the Load Balancer service on Admin Nodes or Gateway Nodes, an external third-party load balancer, or the CLB service on Gateway Nodes to distribute client requests across multiple Storage Nodes.
 
 NOTE: The CLB service is deprecated.
@@ -24,6 +26,7 @@ If you configured a high availability (HA) group of Gateway Nodes or Admin Nodes
 
 See the section on configuring client connections in the instructions for administering StorageGRID.
 
+.Steps
 . If S3 or Swift clients connect using the Load Balancer service, check that Admin Nodes or Gateway Nodes are actively distributing traffic as you expect:
  .. Select *Nodes*.
  .. Select a Gateway Node or Admin Node.

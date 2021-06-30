@@ -11,8 +11,10 @@ summary: 'The information lifecycle management \(ILM\) system provides data mana
 [.lead]
 The information lifecycle management (ILM) system provides data management for all objects stored on the grid. You must monitor ILM operations to understand if the grid can handle the current load, or if more resources are required.
 
+.What you'll need
 You must be signed in to the Grid Manager using a supported browser.
 
+.About this task
 The StorageGRID system manages objects by applying the active ILM policy. The ILM policy and associated ILM rules determine how many copies are made, the type of copies that are created, where copies are placed, and the length of time each copy is retained.
 
 Object ingest and other object-related activities can exceed the rate at which StorageGRID can evaluate ILM, causing the system to queue objects whose ILM placement instructions cannot be fulfilled in near real time. You can monitor whether StorageGRID is keeping up with client actions by charting the Awaiting - Client attribute.
@@ -31,8 +33,9 @@ Temporary spikes in the chart of Awaiting - Client are to be expected. But if th
 
 You can further investigate ILM queues using the *Nodes* page.
 
+.Steps
 . Select *Nodes*.
-. Select *grid name* > *ILM*.
+. Select *_grid name_* > *ILM*.
 . Hover your cursor over the ILM Queue graph to see the value of following attributes at a given point in time:
  ** *Objects queued (from client operations)*: The total number of objects awaiting ILM evaluation because of client operations (for example, ingest).
  ** *Objects queued (from all operations)*: The total number of objects awaiting ILM evaluation.
