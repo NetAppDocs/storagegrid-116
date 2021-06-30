@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/changing_link_configuration_of_e5700sg_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can change the Ethernet link configuration of the E5700SG controller. You can change the port bond mode, the network bond mode, and the link speed.'
 ---
 = Changing the link configuration of the E5700SG controller
@@ -14,7 +14,7 @@ You can change the Ethernet link configuration of the E5700SG controller. You ca
 .What you'll need
 
 You must place the E5700SG controller into maintenance mode. Putting a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access.
-+
+
 xref:placing_appliance_into_maintenance_mode.adoc[Placing an appliance into maintenance mode]
 
 .About this task
@@ -32,6 +32,7 @@ Options for changing the Ethernet link configuration of the E5700SG controller i
 +
 image::../media/link_configuration_option.gif[Link Configuration]
 
+[#change_link_configuration, start=2]
 . Make the desired changes to the link configuration.
 +
 For more information on the options, see "`Configuring network links.`"
@@ -46,7 +47,7 @@ If you made changes to the VLAN settings, the subnet for the appliance might hav
 xref:setting_ip_configuration_sg5700.adoc[Setting the IP configuration]
 
 . From the StorageGRID Appliance Installer, select *Configure Networking* > *Ping Test*.
-. Use the Ping Test tool to check connectivity to IP addresses on any networks that might have been affected by the link configuration changes you made in step <<STEP_05DFADB1B61643D4912DA21008288954,#STEP_05DFADB1B61643D4912DA21008288954>>.
+. Use the Ping Test tool to check connectivity to IP addresses on any networks that might have been affected by the link configuration changes you made in the  <<change_link_configuration,Change link configuration>> step.
 +
 In addition to any other tests you choose to perform, confirm that you can ping the grid IP address of the primary Admin Node, and the grid IP address of at least one other Storage Node. If necessary, correct any link configuration issues.
 

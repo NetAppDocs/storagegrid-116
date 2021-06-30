@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/upgrading_drive_firmware_using_santricity_system_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You upgrade your drive firmware to make sure you have all the latest features and bug fixes.'
 ---
 = Upgrading drive firmware using SANtricity System Manager
@@ -28,9 +28,11 @@ IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID applia
 
 . Access SANtricity System Manager using one of these methods:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
- ** Use the Grid Manager and select *Nodes* > *appliance Storage Node* > *SANtricity System Manager*
+ ** Use the Grid Manager and select *Nodes* > `*appliance Storage Node*` > *SANtricity System Manager*
 +
-NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: `+https://Storage_Controller_IP+`
+NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: +
+`https://_Storage_Controller_IP_`
+
 . Enter the SANtricity System Manager administrator username and password, if required.
 . Verify the drive firmware version currently installed in the storage appliance:
  .. From SANtricity System Manager, select *Support* > *Upgrade Center*.
@@ -46,6 +48,7 @@ In this example:
 
   *** The drive firmware revision is *MS02*.
   *** The drive identifier is *KPM51VUG800G*.
++
 Select *View drives* in the Associated Drives column to display where these drives are installed in your storage appliance.
 
  .. Close the Upgrade Drive Firmware window.
@@ -65,7 +68,7 @@ image:../media/storagegrid_drive_firmware_download.png[E-Series Disk Firmware pa
  .. From SANtricity System Manager, under Drive Firmware upgrade, select *Begin Upgrade*.
  .. Select *Browse*, and select the new drive firmware files that you downloaded from the Support site.
 +
-Drive firmware files have a filename similar to D_HUC101212CSS600_30602291_MS01_2800_0002.dlp.
+Drive firmware files have a filename similar to + `D_HUC101212CSS600_30602291_MS01_2800_0002.dlp`
 +
 You can select up to four drive firmware files, one at a time. If more than one drive firmware file is compatible with the same drive, you get a file conflict error. Decide which drive firmware file you want to use for the upgrade and remove the other one.
 
@@ -96,6 +99,7 @@ IMPORTANT: Stopping the drive firmware upgrade might result in data loss or unav
 The log file is saved in the downloads folder for your browser with the name latest-upgrade-log-timestamp.txt.
 +
 If any of the following errors occur during the upgrade procedure, take the appropriate recommended action.
+
  ** *Failed assigned drives*
 +
 One reason for the failure might be that the drive does not have the appropriate signature. Make sure that the affected drive is an authorized drive. Contact technical support for more information.

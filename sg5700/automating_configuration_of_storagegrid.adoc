@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/automating_configuration_of_storagegrid.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After deploying the grid nodes, you can automate the configuration of the StorageGRID system.'
 ---
 = Automating the configuration of StorageGRID
@@ -19,24 +19,24 @@ After deploying the grid nodes, you can automate the configuration of the Storag
 |===
 | Filename| Description
 a|
-configure-storagegrid.py
+`configure-storagegrid.py`
 a|
 Python script used to automate the configuration
 a|
-configure-storagegrid.sample.json
+`configure-storagegrid.sample.json`
 a|
 Sample configuration file for use with the script
 a|
-configure-storagegrid.blank.json
+`configure-storagegrid.blank.json`
 a|
 Blank configuration file for use with the script
 |===
 
-* You have created a configure-storagegrid.json configuration file. To create this file, you can modify the sample configuration file (configure-storagegrid.sample.json) or the blank configuration file (configure-storagegrid.blank.json).
+* You have created a `configure-storagegrid.json` configuration file. To create this file, you can modify the sample configuration file (`configure-storagegrid.sample.json`) or the blank configuration file (`configure-storagegrid.blank.json`).
 
 .About this task
 
-You can use the configure-storagegrid.py Python script and the configure-storagegrid.json configuration file to automate the configuration of your StorageGRID system.
+You can use the `configure-storagegrid.py` Python script and the `configure-storagegrid.json` configuration file to automate the configuration of your StorageGRID system.
 
 NOTE: You can also configure the system using the Grid Manager or the Installation API.
 
@@ -45,13 +45,10 @@ NOTE: You can also configure the system using the Grid Manager or the Installati
 . Log in to the Linux machine you are using to run the Python script.
 . Change to the directory where you extracted the installation archive.
 +
-For example:
+For example: +
+`cd StorageGRID-Webscale-version/_platform_`
 +
-----
-cd StorageGRID-Webscale-version/platform
-----
-+
-where `platform` is debs, rpms, or vsphere.
+where `_platform_` is `debs`, `rpms`, or `vsphere`.
 
 . Run the Python script and use the configuration file you created.
 +
@@ -61,7 +58,7 @@ For example:
 ./configure-storagegrid.py ./configure-storagegrid.json --start-install
 ----
 
-A Recovery Package .zip file is generated during the configuration process, and it is downloaded to the directory where you are running the installation and configuration process. You must back up the Recovery Package file so that you can recover the StorageGRID system if one or more grid nodes fails. For example, copy it to a secure, backed up network location and to a secure cloud storage location.
+A Recovery Package `.zip` file is generated during the configuration process, and it is downloaded to the directory where you are running the installation and configuration process. You must back up the Recovery Package file so that you can recover the StorageGRID system if one or more grid nodes fails. For example, copy it to a secure, backed up network location and to a secure cloud storage location.
 
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 

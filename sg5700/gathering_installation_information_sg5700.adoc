@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/gathering_installation_information_sg5700.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'As you install and configure the StorageGRID appliance, you must make decisions and gather information about Ethernet switch ports, IP addresses, and port and network bond modes.'
 ---
 = Gathering installation information (SG5700)
@@ -15,24 +15,28 @@ As you install and configure the StorageGRID appliance, you must make decisions 
 
 You can use the following tables to record the required information for each network you connect to the appliance. These values are required to install and configure the hardware.
 
+== Information needed to connect to SANtricity System Manager on the E2800 controller
+
+You must connect the E2800 controller to the management network you will use for SANtricity System Manager.
+
 [options="header"]
 |===
 | Information needed| Your value
 a|
 Ethernet switch port you will connect to management port 1
 a|
- 
+
 a|
 MAC address for management port 1 (printed on a label near port P1)
 a|
- 
+
 a|
 DHCP-assigned IP address for management port 1, if available after power on
 
 *Note:* If the network you will connect to the E2800 controller includes a DHCP server, the network administrator can use the MAC address to determine the IP address that was assigned by the DHCP server.
 
 a|
- 
+
 a|
 Speed and duplex mode
 
@@ -65,9 +69,13 @@ For IPv6:
 * IPv6 address:
 * Routable IP address:
 * E2800 controller router IP address:
+|===
+
+== Information needed to connect the E5700SG controller to the Admin Network
+
+The Admin Network for StorageGRID is an optional network, used for system administration and maintenance. The appliance connects to the Admin Network using the 1-GbE management ports on the E5700SG controller.
 
 [options="header"]
-|===
 |===
 | Information needed| Your value
 a|
@@ -89,13 +97,13 @@ Choose one:
 a|
 Switch port for port 1
 a|
- 
+
 a|
 Switch port for port 2 (Active-Backup network bond mode only)
 a|
- 
+
 a|
-DHCP-assigned IP address for management port 1, if available after power on 
+DHCP-assigned IP address for management port 1, if available after power on
 
 *Note:* If the Admin Network includes a DHCP server, the E5700SG controller displays the DHCP-assigned IP address on its seven-segment display after it boots up. You can also determine the DHCP-assigned IP address by using the MAC address to look up the assigned IP.
 
@@ -117,14 +125,21 @@ a|
 a|
 Admin Network subnets (CIDR)
 a|
- 
 |===
+
+== Information needed to connect and configure the 10/25-GbE ports on the E5700SG controller
+
+The four 10/25-GbE ports on the E5700SG controller connect to the StorageGRID Grid Network and Client Network.
+
+NOTE: See "10/25-GbE port connections for the E5700SG controller" for more information about the options for these ports.
+
+[options="header"]
 |===
 | Information needed| Your value
 a|
 Link speed
 
-NOTE: If you select 25 GbE, you must install SPF28 transceivers. Auto-negotiation is not supported, so you must also configure the ports and the connected switches for 25GbE.
+*Note:* If you select 25 GbE, you must install SPF28 transceivers. Auto-negotiation is not supported, so you must also configure the ports and the connected switches for 25GbE.
 
 a|
 Choose one:
@@ -145,23 +160,32 @@ a|
 Switch port for port 1 (Client Network)
 
 a|
- 
+
 a|
 Switch port for port 2 (Grid Network)
 
 a|
- 
+
 a|
 Switch port for port 3 (Client Network)
 
 a|
- 
+
 a|
 Switch port for port 4 (Grid Network)
 
 a|
- 
+
 |===
+
+== Information needed to connect the E5700SG controller to the Grid Network
+
+The Grid Network for StorageGRID is a required network, used for all internal StorageGRID traffic. The appliance connects to the Grid Network using the 10/25-GbE ports on the E5700SG controller.
+
+NOTE: See "10/25-GbE port connections for the E5700SG controller" for more information about the options for
+these ports.
+
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -211,8 +235,17 @@ Grid Network subnets (CIDR)
 *Note:* If the Client Network is not enabled, the default route on the controller will use the gateway specified here.
 
 a|
- 
+
 |===
+
+== Information needed to connect the E5700SG controller to the Client Network
+
+The Client Network for StorageGRID is an optional network, typically used to provide client protocol access to the grid. The appliance connects to the Client Network using the 10/25-GbE ports on the E5700SG controller.
+
+NOTE: See "10/25-GbE port connections for the E5700SG controller" for more information about the options for
+these ports.
+
+[options="header"]
 |===
 | Information needed| Your value
 a|
@@ -252,7 +285,7 @@ a|
 * Gateway:
 
 a|
-Static IP address you plan to use for the appliance Storage Node on the Client Network 
+Static IP address you plan to use for the appliance Storage Node on the Client Network
 
 *Note:* If the Client Network is enabled, the default route on the controller will use the gateway specified here.
 

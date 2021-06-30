@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/replacing_e5700sg_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to replace the E5700SG controller if it is not functioning optimally or if it has failed.'
 ---
 = Replacing the E5700SG controller
@@ -33,12 +33,13 @@ NOTE: If you are replacing the controller before installing StorageGRID software
 
 . When the appliance has been placed maintenance mode, shut down the E5700SG controller.
  .. Log in to the grid node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
- .. Shut down the E5700SG controller:``shutdown -h now``
+ .. Shut down the E5700SG controller: +
+`shutdown -h now`
  .. Wait for any data in cache memory to be written to the drives.
 +
 The green Cache Active LED on the back of the E2800 controller is on when cached data needs to be written to the drives. You must wait for this LED to turn off.
@@ -73,11 +74,11 @@ After the controllers have successfully booted up, the seven-segment displays sh
 
  ** E2800 controller:
 +
-The final state is 99.
+The final state is `99`.
 
  ** E5700SG controller:
 +
-The final state is HA.
+The final state is `HA`.
 
 . Confirm that the appliance Storage Node appears in the Grid Manager and that no alarms appear.
 

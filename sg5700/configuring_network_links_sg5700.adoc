@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/configuring_network_links_sg5700.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.'
 ---
 = Configuring network links (SG5700)
@@ -136,7 +136,8 @@ The first time you access this page:
  ** *Port bond mode* is set to *Fixed*.
  ** *Network bond mode* for the Grid Network is set to *Active-Backup*.
  ** The *Admin Network* is enabled, and the network bond mode is set to *Independent*.
- ** The**Client Network** is disabled.
+ ** The *Client Network* is disabled.
++
 image:../media/network_link_configuration_fixed.png[Screen shot showing default Link Configuration settings]
 
 . If you plan to use the 25-GbE link speed for the 10/25 GbE ports, select *25GbE* from the Link speed drop-down list.
@@ -161,6 +162,7 @@ The example shows:
 
  ** *Aggregate* and *LACP* selected for the Grid and the Client networks. You must specify a unique VLAN tag for each network. You can select values between 0 and 4095.
  ** *Active-Backup* selected for the Admin Network.
++
 image:../media/network_link_configuration_aggregate.gif[Screen shot showing Link Configuration settings for Aggregate mode]
 
 . When you are satisfied with your selections, click *Save*.

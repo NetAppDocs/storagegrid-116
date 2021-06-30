@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/upgrading_santricity_os_on_storage_controllers_using_grid_manager_sg5700.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'For storage controllers currently using SANtricity OS 08.42.20.00 \(11.42\) or newer, you must use the Grid Manager to apply an upgrade.'
 ---
 = Upgrading SANtricity OS on the storage controllers using the Grid Manager
@@ -25,9 +25,7 @@ You cannot perform other software updates (StorageGRID software upgrade or a hot
 
 The procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
 
-CAUTION:
-
-The following steps are only applicable when you are using the Grid Manager to perform the upgrade. The storage controllers in the SG5700 series appliance cannot be upgraded using the Grid Manager when the controllers are using SANtricity OS older than 08.42.20.00 (11.42).
+CAUTION: The following steps are only applicable when you are using the Grid Manager to perform the upgrade. The storage controllers in the SG5700 series appliance cannot be upgraded using the Grid Manager when the controllers are using SANtricity OS older than 08.42.20.00 (11.42).
 
 NOTE: This procedure will automatically upgrade the NVSRAM to the most recent version associated with the SANtricity OS upgrade. You do not need to apply a separate NVSRAM upgrade file.
 
@@ -101,17 +99,19 @@ IMPORTANT: Do not approve the SANtricity OS upgrade for an appliance storage nod
 NOTE: If the order in which nodes are upgraded is important, approve nodes or groups of nodes one at a time and wait until the upgrade is complete on each node before approving the next node(s).
 
  ** Click one or more *Approve* buttons to add one or more nodes to the SANtricity OS upgrade queue.
+
++
 NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
+
 +
-After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue.
-+
+After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. +
 For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column:
 
- ** Storage Node was already upgraded.
- ** SANtricity OS upgrade is not applicable to this node.
- ** SANtricity OS file is not compatible with this node.
-The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message.
+** Storage Node was already upgraded.
+** SANtricity OS upgrade is not applicable to this node.
+** SANtricity OS file is not compatible with this node.
 +
+The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message. +
 The message "`SANtricity OS file is not compatible with this node`" indicates that the node requires a SANtricity OS file different than the one the process is attempting to install. After you complete the current SANtricity OS upgrade, download the SANtricity OS appropriate for the node and repeat the upgrade process.
 
 . If you need to remove a node or all nodes from the SANtricity OS upgrade queue, click *Remove* or *Remove All*.
