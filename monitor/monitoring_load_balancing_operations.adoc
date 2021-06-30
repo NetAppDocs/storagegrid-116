@@ -47,16 +47,16 @@ Nodes in an active-backup HA group might take the Backup role from time to time.
 Nodes with the role of Master and nodes that are not in an HA group should be actively distributing requests to clients.
 
  .. For each Gateway Node that should be actively distributing client requests, select *Support* > *Tools* > *Grid Topology*.
- .. Select *Gateway Node* > *CLB* > *HTTP* > *Overview* > *Main*.
+ .. Select *_Gateway Node_* > *CLB* > *HTTP* > *Overview* > *Main*.
  .. Review the number of *Incoming Sessions - Established* to verify that the Gateway Node has been actively handling requests.
 . Verify that these requests are being evenly distributed to Storage Nodes.
- .. Select *Storage Node* > *LDR* > *HTTP*.
+ .. Select *_Storage Node_* > *LDR* > *HTTP*.
  .. Review the number of *Currently Established incoming Sessions*.
  .. Repeat for each Storage Node in the grid.
 +
 The number of sessions should be roughly equal across all Storage Nodes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

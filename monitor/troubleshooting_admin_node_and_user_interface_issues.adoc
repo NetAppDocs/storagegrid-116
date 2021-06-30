@@ -18,7 +18,7 @@ There are several tasks you can perform to help determine the source of issues r
 If you experience an error when you are signing in to a StorageGRID Admin Node, your system might have an issue with the identity federation configuration, a networking or hardware problem, an issue with Admin Node services, or an issue with the Cassandra database on connected Storage Nodes.
 
 .What you'll need
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must have specific access permissions.
 
 .About this task
@@ -57,9 +57,9 @@ If the federated user account is not working, try signing in to the Grid Manager
 
 . Use Secure Shell (ssh) to log in to the Admin Node:
  .. Enter the following command: `ssh admin@Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . View the status of all services running on the grid node: `storagegrid-status`
@@ -125,9 +125,9 @@ Admin Nodes use the ADC service during the authentication process.
 
 . From the Admin Node, log in to each of the ADC Storage Nodes, using the IP addresses you identified.
  .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . View the status of all services running on the grid node: `storagegrid-status`
