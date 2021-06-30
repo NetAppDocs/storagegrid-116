@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/deploying_appliance_storage_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After installing and configuring the storage appliance, you can deploy it as a Storage Node in a StorageGRID system. When you deploy an appliance as a Storage Node, you use the StorageGRID Appliance Installer included on the appliance.'
 ---
 = Deploying an appliance Storage Node
@@ -13,8 +13,8 @@ After installing and configuring the storage appliance, you can deploy it as a S
 
 .What you'll need
 
-NOTE: If you are cloning an appliance node, continue following the process in recovery and maintenance.
-
+* If you are cloning an appliance node, continue following the process in recovery and maintenance.
++
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
@@ -50,7 +50,7 @@ The StorageGRID Appliance Installer Home page appears.
 +
 image::../media/appliance_installer_home_start_installation_enabled.gif[Appliance Installer home page for other node types (besides Admin Nodes)]
 
-. In the Primary Admin Node connection section, determine whether you need to specify the IP address for the primary Admin Node.
+. In the *Primary Admin Node* connection section, determine whether you need to specify the IP address for the primary Admin Node.
 +
 If you have previously installed other nodes in this data center, the StorageGRID Appliance Installer can discover this IP address automatically, assuming the primary Admin Node, or at least one other grid node with ADMIN_IP configured, is present on the same subnet.
 
@@ -99,7 +99,7 @@ NOTE: If you need to access the Monitor Installation page manually, click *Monit
 
 . If your grid includes multiple appliance Storage Nodes, repeat these steps for each appliance.
 +
-NOTE: If you need to deploy multiple appliance Storage Nodes at one time, you can automate the installation process by using the configure-sga.py appliance installation script. This script applies only to Storage Nodes.
+NOTE: If you need to deploy multiple appliance Storage Nodes at one time, you can automate the installation process by using the `configure-sga.py` appliance installation script. This script applies only to Storage Nodes.
 
 .Related information
 

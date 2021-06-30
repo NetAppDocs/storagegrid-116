@@ -41,14 +41,11 @@ The `configure-sga.py` script uses five subcommands:
 ** `monitor` for monitoring a StorageGRID installation
 ** `reboot` for rebooting the appliance
 +
-If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the --help option you will get a different help text providing more detail on the options available within that subcommand: +
-`configure-sga.py subcommand --help`
+If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the `--help` option you will get a different help text providing more detail on the options available within that subcommand: +
+`configure-sga.py _subcommand_ --help`
 
-. To confirm the current configuration of the appliance node, enter the following where SGA-install-ip is any one of the IP addresses for the appliance node:
-+
-----
-configure-sga.py configure SGA-INSTALL-IP
-----
+. To confirm the current configuration of the appliance node, enter the following where `_SGA-install-ip_` is any one of the IP addresses for the appliance node: +
+`configure-sga.py configure _SGA-INSTALL-IP_`
 +
 The results show current IP information for the appliance, including the IP address of the primary Admin Node and information about the Admin, Grid, and Client Networks.
 +

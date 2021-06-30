@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/upgrading_santricity_os_on_storage_controllers_using_grid_manager_sg5600.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Use the Grid Manager to apply a SANtricity OS upgrade.'
 ---
 = Upgrading SANtricity OS on the storage controllers using the Grid Manager
@@ -21,11 +21,11 @@ Use the Grid Manager to apply a SANtricity OS upgrade.
 
 .About this task
 
+You cannot perform other software updates (StorageGRID software upgrade or a hotfix) until you have completed the SANtricity OS upgrade process. If you attempt to start a hotfix or a StorageGRID software upgrade before the SANtricity OS upgrade process has finished, you are redirected to the SANtricity OS upgrade page.
+
+The procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
+
 CAUTION: The following steps are only applicable when you are using the Grid Manager to perform the upgrade.
-
-NOTE: You cannot perform other software updates (StorageGRID software upgrade or a hotfix) until you have completed the SANtricity OS upgrade process. If you attempt to start a hotfix or a StorageGRID software upgrade before the SANtricity OS upgrade process has finished, you are redirected to the SANtricity OS upgrade page.
-
-NOTE: The procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
 
 NOTE: This procedure will automatically upgrade the NVSRAM to the most recent version associated with the SANtricity OS upgrade. You do not need to apply a separate NVSRAM upgrade file.
 
@@ -106,11 +106,11 @@ NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtrici
 
 +
 After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. +
-For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column:
+For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column: +
 
- ** Storage Node was already upgraded.
- ** SANtricity OS upgrade is not applicable to this node.
- ** SANtricity OS file is not compatible with this node.
+*** Storage Node was already upgraded.
+*** SANtricity OS upgrade is not applicable to this node.
+*** SANtricity OS file is not compatible with this node.
 
 +
 The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message. +

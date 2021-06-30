@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/upgrading_drive_firmware_using_santricity_storage_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You upgrade your drive firmware to make sure you have all the latest features and bug fixes.'
 ---
 = Upgrading drive firmware using SANtricity Storage Manager
@@ -73,7 +73,8 @@ image:../media/sg_storage_mgr_download_drive_firmware.png[E-Series Disk Firmware
  .. From the SANtricity Storage Manager Download Drive Firmware - Add Packages window, select *Add*.
  .. Navigate to the directory that contains the firmware files and select up to four firmware files.
 +
-Drive firmware files have a filename similar to D_HUC101212CSS600_30602291_MS01_2800_0002.dlp.
+Drive firmware files have a filename similar to +
+`D_HUC101212CSS600_30602291_MS01_2800_0002.dlp`
 +
 Selecting more than one firmware file to upgrade the firmware of the same drive might result in a file conflict error. If a file conflict error occurs, an error dialog appears. To resolve this error, select *OK* and remove all other firmware files except the one that you want to use for upgrading the firmware of the drive. To remove a firmware file, select the firmware file in the Packages to Be Transferred information area, and select *Remove*. In addition, you can only select up to four drive firmware packages at one time.
 
@@ -96,18 +97,21 @@ You can use either of these upgrade methods because the appliance is in maintena
  .. In Compatible Drives, select the drives for which you want to upgrade the selected firmware files.
   *** For one or more drives, select each drive you want to upgrade.
   *** For all compatible drives, select *Select all*.
++
 The best practice is to upgrade all drives of the same model to the same firmware revision.
  .. Select *Finish*; then, type `yes` and select *OK*.
   *** The drive firmware download and upgrade begins, with Download Drive Firmware - Progress indicating the status of the firmware transfer for all drives.
   *** The status of each drive participating in the upgrade appears in the Transfer Progress column of Devices updated.
-A parallel drive firmware upgrade operation can take as much as 90 seconds to complete if all drives are upgraded on a 24-drive system. On a larger system, the execution time is slightly longer.
+
 +
-During the firmware upgrade process, you can:
-  *** Select *Stop* to stop the firmware upgrade in progress. Any firmware upgrade currently in progress are completed. Any drives that have attempted firmware upgrade show their individual status. Any remaining drives are listed with a status of Not attempted.
+A parallel drive firmware upgrade operation can take as much as 90 seconds to complete if all drives are upgraded on a 24-drive system. On a larger system, the execution time is slightly longer. +
+During the firmware upgrade process, you can: +
+*** Select *Stop* to stop the firmware upgrade in progress. Any firmware upgrade currently in progress are completed. Any drives that have attempted firmware upgrade show their individual status. Any remaining drives are listed with a status of Not attempted.
 +
 IMPORTANT: Stopping the drive firmware upgrade in process might result in data loss or unavailable drives.
++
+*** Select *Save As* to save a text report of the firmware upgrade progress summary. The report saves with a default .log file extension. If you want to change the file extension or directory, change the parameters in Save Drive Download Log.
 
-  *** Select *Save As* to save a text report of the firmware upgrade progress summary. The report saves with a default .log file extension. If you want to change the file extension or directory, change the parameters in Save Drive Download Log.
  .. Use Download Drive Firmware - Progress to monitor the progress of the drive firmware upgrades. The Drives Updated area contains a list of drives that are scheduled for firmware upgrade and the transfer status of each drive's download and upgrade.
 +
 The progress and status of each drive that is participating in the upgrade appears in the Transfer Progress column. Take the appropriate recommended action if any errors occur during the upgrade.
