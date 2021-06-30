@@ -1,7 +1,7 @@
 ---
 permalink: monitor/investigating_lost_objects.html
 sidebar: sidebar
-keywords:
+keywords: lost objects, investigating
 summary: 'When the *Objects lost* alert and the legacy LOST (Lost Objects) alarm are triggered, you must investigate immediately. Collect information about the affected objects and contact technical support.'
 ---
 
@@ -16,7 +16,7 @@ When the *Objects lost* alert and the legacy LOST (Lost Objects) alarm are trigg
 .What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 
 .About this task
 The *Objects lost* alert and the LOST alarm indicate that StorageGRID believes that there are no copies of an object in the grid. Data might have been permanently lost.
@@ -37,9 +37,9 @@ image::../media/nodes_storage_nodes_objects_page_lost_object.png[Nodes Storage N
 . From an Admin Node, access the audit log to determine the unique identifier (UUID) of the object that triggered the *Objects lost* alert and the LOST alarm:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Change to the directory where the audit logs are located. Enter: `cd /var/local/audit/export/`
  .. Use grep to extract the Object Lost (OLST) audit messages. Enter: `grep OLST audit_file_name`

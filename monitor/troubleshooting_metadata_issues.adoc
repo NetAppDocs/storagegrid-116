@@ -72,7 +72,7 @@ The Services: Status - Cassandra (SVST) alarm indicates that you might need to r
 .What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 
 .About this task
 If Cassandra is stopped for more than 15 days (for example, the Storage Node is powered off), Cassandra will not start when the node is brought back online. You must rebuild the Cassandra database for the affected DDS service.
@@ -98,9 +98,9 @@ image::../media/cassandra_not_running.gif[Overview: SSM: Services page]
 . Try restarting Cassandra from the Storage Node:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Enter: `/etc/init.d/cassandra status`
  .. If Cassandra is not running, restart it: `/etc/init.d/cassandra restart`
@@ -125,9 +125,9 @@ image::../media/cassandra_not_running_chart.png[Overview: SSM: Services page]
 . To review the servermanager.log file on the Storage Node:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Enter: `cat /var/local/log/servermanager.log`
 +

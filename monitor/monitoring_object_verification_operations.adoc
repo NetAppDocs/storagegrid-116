@@ -1,7 +1,7 @@
 ---
 permalink: monitor/monitoring_object_verification_operations.html
 sidebar: sidebar
-keywords: 
+keywords: object, verification
 summary: 'The StorageGRID system can verify the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.'
 ---
 = Monitoring object verification operations
@@ -11,8 +11,10 @@ summary: 'The StorageGRID system can verify the integrity of object data on Stor
 [.lead]
 The StorageGRID system can verify the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.
 
+.What you'll need
 You must be signed in to the Grid Manager using a supported browser.
 
+.About this task
 There are two verification processes that work together to ensure data integrity:
 
 * *Background verification* runs automatically, continuously checking the correctness of object data.
@@ -27,6 +29,7 @@ Foreground verification allows you to verify the existence of replicated and era
 
 To review results from background and foreground verifications, such as corrupt or missing objects, you can look at the Nodes page for a Storage Node. You should investigate any instances of corrupt or missing object data immediately, to determine the root cause.
 
+.Steps
 . Select *Nodes*.
 . Select *Storage Node* > *Objects*.
 . To check the verification results:
@@ -36,7 +39,7 @@ image::../media/nodes_storage_node_object_verification.png[Nodes > Storage Node 
 +
 NOTE: Click an attribute's name in the table to display help text.
 
- ** To check erasure-coded fragment verification, select *Storage Node* > *ILM* and look at the attributes in the Erasure Coding Verification table.
+ ** To check erasure-coded fragment verification, select *_Storage Node_* > *ILM* and look at the attributes in the Erasure Coding Verification table.
 +
 image::../media/nodes_storage_node_ilm_ec_verification.gif[Nodes > Storage Node > ILM > EC Verification]
 +
