@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/increasing_metadata_reserved_space_setting.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After you upgrade to StorageGRID 11.5, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.'
 ---
 = Increasing the Metadata Reserved Space setting
@@ -11,9 +11,12 @@ summary: 'After you upgrade to StorageGRID 11.5, you might be able to increase t
 [.lead]
 After you upgrade to StorageGRID 11.5, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission or the Grid Topology Page Configuration and Other Grid Configuration permissions.
 * You have started the StorageGRID 11.5 upgrade and the *Enable New Features* upgrade task has completed.
+
+.About this task
 
 You might be able to manually increase the system-wide Metadata Reserved Space setting up to 8 TB after upgrading to StorageGRID 11.5. Reserving additional metadata space after the 11.5 upgrade will simplify future hardware and software upgrades.
 
@@ -30,6 +33,7 @@ For a detailed explanation of how the Metadata Reserved Space setting affects th
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
+.Steps
 . Sign in to the Grid Manager using a supported browser.
 . Determine the current Metadata Reserved Space setting.
  .. Select *Configuration* > *System Settings* > *Storage Options*.
