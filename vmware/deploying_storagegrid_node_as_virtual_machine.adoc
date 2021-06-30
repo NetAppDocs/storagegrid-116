@@ -62,7 +62,7 @@ vsphere-storage.mf
 |The template file and manifest file for a Storage Node.
 |===
 
-* The .vdmk, .ovf, and .mf files are all in the same directory.
+* The `.vdmk`, `.ovf`, and `.mf` files are all in the same directory.
 * You have a plan to minimize failure domains. For example, you should not deploy all Gateway Nodes on a single virtual machine server.
 +
 IMPORTANT: In a production deployment, do not run more than one Storage Node on a single virtual machine server. Using a dedicated virtual machine host for each Storage Node provides an isolated failure domain.
@@ -95,16 +95,20 @@ If you need to remap any of the node's ports, do not power on the new node until
 . Using VCenter, deploy an OVF template.
 +
 If you specify a URL, point to a folder containing the following files. Otherwise, select each of these files from a local directory.
-
- * NetApp-SG-version-SHA.vmdk
- * vsphere-node.ovf
- * vsphere-node.mf
++
+----
+NetApp-SG-version-SHA.vmdk
+vsphere-node.ovf
+vsphere-node.mf
+----
 +
 For example, if this is the first node you are deploying, use these files to deploy the primary Admin Node for your StorageGRID system:
-
- * NetApp-SG-version-SHA.vmdk
- * vsphere-primary-admin.ovf
- * vsphere-primary-admin.mf
++
+----
+NetApp-SG-version-SHA.vmdk
+sphere-primary-admin.ovf
+sphere-primary-admin.mf
+----
 
 . Provide a name for the virtual machine.
 +
@@ -120,7 +124,7 @@ NOTE: Depending on your version of vCenter, the order of the steps will vary for
 NOTE: If you are deploying a node as part of recovery operation, perform the instructions in  the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
 +
 When deploying a Storage Node, use 3 or more storage volumes, with each storage volume being 4 TB or larger. You must assign at least 4 TB to volume 0.
-
++
 IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs may provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
 
 . Select networks.
@@ -156,7 +160,7 @@ If you omit the primary Admin Node IP address, the IP address will be automatica
   *** If you select DHCP, the *Client network IP*, *Client network mask*, and *Client network gateway* are automatically assigned.
 . Review the virtual machine configuration and make any changes necessary.
 . When you are ready to complete, select *Finish* to start the upload of the virtual machine.
-[#storage recovery step]
+[#step_recovery_storage]
 . If you deployed this node as part of recovery operation and this is not a full-node recovery, perform these steps after deployment is complete:
  .. Right-click the virtual machine, and select *Edit Settings*.
  .. Select each default virtual hard disk that has been designated for storage, and select *Remove*.
