@@ -32,7 +32,7 @@ IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID applia
 .Steps
 
 . Open a web browser, and enter the IP address as the URL for SANtricity Storage Manager: +
-`https://_E2700_Controller_IP_`
+`*https://_E2700_Controller_IP_*`
 . Enter the SANtricity Storage Manager administrator username and password, if required.
 . From SANtricity Enterprise Management, select the *Devices* tab.
 +
@@ -53,7 +53,9 @@ In this example:
 
   *** The drive firmware revision is *NE00*.
   *** The drive identifier is *HUH728080AL5204*.
-Select *View Associated Drives* to display where these drives are installed in your Storage Appliance.
+
++
+Select *View Associated Drives* to display where these drives are installed in your storage appliance.
 . Download and prepare the available drive firmware upgrade:
  .. Open your web browser, navigate to NetApp Support web site, and log in using your ID and password.
 +
@@ -100,53 +102,55 @@ You can use either of these upgrade methods because the appliance is in maintena
 +
 The best practice is to upgrade all drives of the same model to the same firmware revision.
  .. Select *Finish*; then, type `yes` and select *OK*.
-  *** The drive firmware download and upgrade begins, with Download Drive Firmware - Progress indicating the status of the firmware transfer for all drives.
-  *** The status of each drive participating in the upgrade appears in the Transfer Progress column of Devices updated.
-
+*** The drive firmware download and upgrade begins, with Download Drive Firmware - Progress indicating the status of the firmware transfer for all drives.
+*** The status of each drive participating in the upgrade appears in the Transfer Progress column of Devices updated.
 +
-A parallel drive firmware upgrade operation can take as much as 90 seconds to complete if all drives are upgraded on a 24-drive system. On a larger system, the execution time is slightly longer. +
-During the firmware upgrade process, you can: +
+A parallel drive firmware upgrade operation can take as much as 90 seconds to complete if all drives are upgraded on a 24-drive system. On a larger system, the execution time is slightly longer.
++
+
+ .. During the firmware upgrade process, you can: +
 *** Select *Stop* to stop the firmware upgrade in progress. Any firmware upgrade currently in progress are completed. Any drives that have attempted firmware upgrade show their individual status. Any remaining drives are listed with a status of Not attempted.
 +
 IMPORTANT: Stopping the drive firmware upgrade in process might result in data loss or unavailable drives.
+
 +
 *** Select *Save As* to save a text report of the firmware upgrade progress summary. The report saves with a default .log file extension. If you want to change the file extension or directory, change the parameters in Save Drive Download Log.
 
- .. Use Download Drive Firmware - Progress to monitor the progress of the drive firmware upgrades. The Drives Updated area contains a list of drives that are scheduled for firmware upgrade and the transfer status of each drive's download and upgrade.
+.. Use Download Drive Firmware - Progress to monitor the progress of the drive firmware upgrades. The Drives Updated area contains a list of drives that are scheduled for firmware upgrade and the transfer status of each drive's download and upgrade.
 +
 The progress and status of each drive that is participating in the upgrade appears in the Transfer Progress column. Take the appropriate recommended action if any errors occur during the upgrade.
 
-  *** *Pending*
+  **** *Pending*
 +
 This status is shown for an online firmware download operation that has been scheduled but has not yet started.
 
-  *** *In progress*
+  **** *In progress*
 +
 The firmware is being transferred to the drive.
 
-  *** *Reconstruction in progress*
+  **** *Reconstruction in progress*
 +
 This status is shown if a volume transfer takes place during the rapid reconstruction of a drive. This is typically due to a controller reset or failure and the controller owner transfers the volume.
 +
 The system will initiate a full reconstruction of the drive.
 
-  *** *Failed - partial*
+  **** *Failed - partial*
 +
 The firmware was only partially transferred to the drive before a problem prevented the rest of the file from being transferred.
 
-  *** *Failed - invalid state*
+  **** *Failed - invalid state*
 +
 The firmware is not valid.
 
-  *** *Failed - other*
+  **** *Failed - other*
 +
 The firmware could not be downloaded, possibly because of a physical problem with the drive.
 
-  *** *Not attempted*
+  **** *Not attempted*
 +
 The firmware was not downloaded, which may be due to a number of different reasons such as the download was stopped before it could occur, or the drive did not qualify for the upgrade, or the download could not occur due to an error.
 
-  *** *Successful*
+  **** *Successful*
 +
 The firmware was downloaded successfully.
 . After the drive firmware upgrade completes:
