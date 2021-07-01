@@ -13,18 +13,20 @@ You must prepare for the StorageGRID expansion by obtaining required materials a
 
 == Gathering required materials
 
-[.lead]
 Before you perform an expansion operation, you must gather the materials listed in the following table.
 
+[cols="1a,2a" options="header"]
 |===
 | Item| Notes
 a|
 StorageGRID installation archive
 
 a|
-If you are adding new grid nodes or a new site, you must download and extract the StorageGRID installation archive. You must use the same version that is currently running on the grid. For details, see the instructions for downloading and extracting the StorageGRID installation files.
+If you are adding new grid nodes or a new site, you must download and extract the StorageGRID installation archive. You must use the same version that is currently running on the grid.
 
-NOTE: You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
+For details, see the instructions for downloading and extracting the StorageGRID installation files.
+
+*Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
 a|
 Service laptop
@@ -38,7 +40,7 @@ The service laptop must meet the following requirements:
 a|
 Provisioning passphrase
 a|
-The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the Passwords.txt file.
+The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the `Passwords.txt` file.
 
 a|
 StorageGRID documentation
@@ -54,7 +56,7 @@ a|
 For supported versions, see the Interoperability Matrix.
 
 |===
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -66,13 +68,14 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[R
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
 
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
 
 === Web browser requirements
 
-[.lead]
+
 You must use a supported web browser.
 
+[cols="1a,1a" options="header"]
 |===
 | Web browser| Minimum supported version
 a|
@@ -90,6 +93,7 @@ a|
 |===
 You should set the browser window to a recommended width.
 
+[cols="1a,1a" options="header"]
 |===
 | Browser width| Pixels
 a|
@@ -104,56 +108,54 @@ a|
 
 == Downloading and extracting the StorageGRID installation files
 
-[.lead]
+
 Before you can add new grid nodes or a new site, you must download the appropriate StorageGRID installation archive and extract the files.
 
 You must perform expansion operations using the version of StorageGRID that is currently running on the grid.
 
 . Go to the NetApp Downloads page for StorageGRID.
 +
-https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID]
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^]
 
 . Select the version of StorageGRID that is currently running on the grid.
 . Sign in with the username and password for your NetApp account.
 . Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
-. In the *Install StorageGRID* column of the download page, select the .tgz or .zip file for your platform.
+. In the *Install StorageGRID* column of the download page, select the `.tgz` or `.zip` file for your platform.
 +
 The version shown in the installation archive file must match the version of the software that is currently installed.
 +
-Use the .zip file if you are running Windows on the service laptop.
+Use the `.zip` file if you are running Windows on the service laptop.
 +
+[cols="1a,1a" options="header"]
 |===
 | Platform| Installation archive
 a|
 VMware
-a|
+m|
+StorageGRID-Webscale-_version_-VMware-_uniqueID_.zip
 
- ** StorageGRID-Webscale-version-VMware-uniqueID.zip
- ** StorageGRID-Webscale-version-VMware-uniqueID.tgz
+StorageGRID-Webscale-_version_-VMware-_uniqueID_.tgz
 
 a|
 Red Hat Enterprise Linux or CentOS
-a|
+m|
 
- ** StorageGRID-Webscale-version-RPM-uniqueID.zip
- ** StorageGRID-Webscale-version-RPM-uniqueID.tgz
+StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip
+
+StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz
 
 a|
-    Ubuntu or Debian
-+
-and
-+
-Appliance
-a|
+Ubuntu or Debian and Appliance
 
- ** StorageGRID-Webscale-version-DEB-uniqueID.zip
- ** StorageGRID-Webscale-version-DEB-uniqueID.tgz
+m|
+StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip
+
+StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz
 
 a|
 OpenStack/other Hypervisor
-a|
-    To expand an existing deployment on OpenStack, you must deploy a virtual machine running one of the supported Linux distributions listed above and follow the appropriate instructions for Linux.
-+
+a|To expand an existing deployment on OpenStack, you must deploy a virtual machine running one of the supported Linux distributions listed above and follow the appropriate instructions for Linux.
+
 |===
 
 . Download and extract the archive file.
@@ -163,129 +165,134 @@ The paths listed in the step for each platform are relative to the top-level dir
 
 . If you are expanding a VMware system, select the appropriate files.
 +
+[cols="1a,1a" options="header"]
 |===
 | Path and file name| Description
-a|
-./vsphere/README
-a|
-A text file that describes all of the files contained in the StorageGRID download file.
-a|
-./vsphere/NLF000000.txt
-a|
-A free license that does not provide any support entitlement for the product.
-a|
-./vsphere/NetApp-SG-version-SHA.vmdk
-a|
-The virtual machine disk file that is used as a template for creating grid node virtual machines.
-a|
-    ./vsphere/vsphere-primary-admin.ovf
-+
+
+m|./vsphere/README
+a| A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./vsphere/NLF000000.txt
+a|A free license that does not provide any support entitlement for the product.
+
+m|./vsphere/NetApp-SG-_version_-SHA.vmdk
+a|The virtual machine disk file that is used as a template for creating grid node virtual machines.
+
+m|./vsphere/vsphere-primary-admin.ovf
+
 ./vsphere/vsphere-primary-admin.mf
-a|
-The Open Virtualization Format template file (.ovf) and manifest file (.mf) for deploying the primary Admin Node.
-a|
-    ./vsphere/vsphere-non-primary-admin.ovf
-+
+a|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
+
+m|./vsphere/vsphere-non-primary-admin.ovf
+
 ./vsphere/vsphere-non-primary-admin.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying non-primary Admin Nodes.
-a|
-    ./vsphere/vsphere-archive.ovf
-+
+
+a|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
+
+m|./vsphere/vsphere-archive.ovf
+
 ./vsphere/vsphere-archive.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying Archive Nodes.
-a|
-    ./vsphere/vsphere-gateway.ovf
-+
+
+a|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
+
+m|./vsphere/vsphere-gateway.ovf
+
 ./vsphere/vsphere-gateway.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying Gateway Nodes.
-a|
-    ./vsphere/vsphere-storage.ovf
-+
+
+a|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
+
+m|./vsphere/vsphere-storage.ovf
+
 ./vsphere/vsphere-storage.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying virtual machine-based Storage Nodes.
-a|
-*Deployment scripting tool*
-a|
-*Description*
-a|
+
+a| The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
+
+h|Deployment scripting tool
+h|Description
+
+m|
 ./vsphere/deploy-vsphere-ovftool.sh
 a|
 A Bash shell script used to automate the deployment of virtual grid nodes.
-a|
+m|
 ./vsphere/deploy-vsphere-ovftool-sample.ini
 a|
-A sample configuration file for use with the deploy-vsphere-ovftool.sh script.
-a|
+A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
+m|
 ./vsphere/configure-storagegrid.py
 a|
 A Python script used to automate the configuration of a StorageGRID system.
-a|
+m|
 ./vsphere/configure-sga.py
 a|
 A Python script used to automate the configuration of StorageGRID appliances.
-a|
+m|
 ./vsphere/storagegrid-ssoauth.py
 a|
 An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-a|
+m|
 ./vsphere/configure-storagegrid.sample.json
 a|
-A sample configuration file for use with the configure-storagegrid.py script.
-a|
+A sample configuration file for use with the `configure-storagegrid.py` script.
+m|
 ./vsphere/configure-storagegrid.blank.json
 a|
-A blank configuration file for use with the configure-storagegrid.py script.
+A blank configuration file for use with the `configure-storagegrid.py` script.
 |===
 
 . If you are expanding a Red Hat Enterprise Linux or CentOS system, select the appropriate files.
 +
+[cols="1a,1a" options="header"]
 |===
 | Path and file name| Description
-a|
+m|
 ./rpms/README
 a|
 A text file that describes all of the files contained in the StorageGRID download file.
-a|
+m|
 ./rpms/NLF000000.txt
 a|
 A free license that does not provide any support entitlement for the product.
-a|
+m|
 ./rpms/StorageGRID-Webscale-Images-version-SHA.rpm
 a|
 RPM package for installing the StorageGRID node images on your RHEL or CentOS hosts.
-a|
+m|
 ./rpms/StorageGRID-Webscale-Service-version-SHA.rpm
 a|
 RPM package for installing the StorageGRID host service on your RHEL or CentOS hosts.
-a|
-*Deployment scripting tool*
-a|
-*Description*
-a|
+
+h|
+Deployment scripting tool
+h|
+Description
+
+m|
 ./rpms/configure-storagegrid.py
 a|
 A Python script used to automate the configuration of a StorageGRID system.
-a|
+
+m|
 ./rpms/configure-sga.py
 a|
 A Python script used to automate the configuration of StorageGRID appliances.
-a|
+
+m|
 ./rpms/configure-storagegrid.sample.json
 a|
-A sample configuration file for use with the configure-storagegrid.py script.
-a|
+A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|
 ./rpms/storagegrid-ssoauth.py
 a|
 An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-a|
+
+m|
 ./rpms/configure-storagegrid.blank.json
 a|
-A blank configuration file for use with the configure-storagegrid.py script.
-a|
+A blank configuration file for use with the `configure-storagegrid.py` script.
+
+m|
 ./rpms/extras/ansible
 a|
 Example Ansible role and playbook for configuring RHEL or CentOS hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
@@ -293,53 +300,65 @@ Example Ansible role and playbook for configuring RHEL or CentOS hosts for Stora
 
 . If you are expanding an Ubuntu or Debian system, select the appropriate files.
 +
+[cols="1a,1a" options="header"]
 |===
 | Path and file name| Description
-a|
+
+m|
 ./debs/README
 a|
 A text file that describes all of the files contained in the StorageGRID download file.
-a|
+
+m|
 ./debs/NLF000000.txt
 a|
 A non-production NetApp License File that you can use for testing and proof of concept deployments.
-a|
+
+m|
 ./debs/storagegrid-webscale-images-version-SHA.deb
 a|
 DEB package for installing the StorageGRID node images on Ubuntu or Debian hosts.
-a|
+
+m|
 ./debs/storagegrid-webscale-images-version-SHA.deb.md5
 a|
-MD5 checksum for the file /debs/storagegrid-webscale-images-version-SHA.deb.
-a|
+MD5 checksum for the file `/debs/storagegrid-webscale-images-version-SHA.deb`.
+
+m|
 ./debs/storagegrid-webscale-service-version-SHA.deb
 a|
 DEB package for installing the StorageGRID host service on Ubuntu or Debian hosts.
-a|
-*Deployment scripting tool*
-a|
-*Description*
-a|
+
+
+h|Deployment scripting tool
+h|Description
+
+m|
 ./debs/configure-storagegrid.py
 a|
 A Python script used to automate the configuration of a StorageGRID system.
-a|
+
+m|
 ./debs/configure-sga.py
 a|
 A Python script used to automate the configuration of StorageGRID appliances.
-a|
+
+m|
 ./debs/storagegrid-ssoauth.py
 a|
 An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-a|
+
+m|
 ./debs/configure-storagegrid.sample.json
 a|
-A sample configuration file for use with the configure-storagegrid.py script.
-a|
+A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|
 ./debs/configure-storagegrid.blank.json
 a|
-A blank configuration file for use with the configure-storagegrid.py script.
-a|
+A blank configuration file for use with the `configure-storagegrid.py` script.
+
+m|
 ./debs/extras/ansible
 a|
 Example Ansible role and playbook for configuring Ubuntu or Debian hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
@@ -347,22 +366,24 @@ Example Ansible role and playbook for configuring Ubuntu or Debian hosts for Sto
 
 . If you are expanding a StorageGRID appliance-based system, select the appropriate files.
 +
+[cols="1a,1a" options="header"]
 |===
 | Path and file name| Description
-a|
+
+m|
 ./debs/storagegrid-webscale-images-version-SHA.deb
 a|
 DEB package for installing the StorageGRID node images on your appliances.
-a|
+
+m|
 ./debs/storagegrid-webscale-images-version-SHA.deb.md5
 a|
 Checksum of the DEB installation package used by the StorageGRID Appliance Installer to validate that the package is intact after upload.
 |===
-*Note:* For appliance installation, these files are only required if you need to avoid network traffic. The appliance can download the required files from the primary Admin Node.
+NOTE: For appliance installation, these files are only required if you need to avoid network traffic. The appliance can download the required files from the primary Admin Node.
 
 == Verifying hardware and networking
 
-[.lead]
 Before you begin the expansion of your StorageGRID system, you must ensure that you have installed and configured the necessary hardware to support the new grid nodes or new site.
 
 For information about supported versions, see the Interoperability Matrix.
@@ -375,6 +396,6 @@ Do not use network address translation (NAT) on the Grid Network between grid no
 
 *Related information*
 
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
 
 xref:updating_subnets_for_grid_network.adoc[Updating subnets for the Grid Network]

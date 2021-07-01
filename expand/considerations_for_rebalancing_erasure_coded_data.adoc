@@ -1,7 +1,7 @@
 ---
 permalink: expand/considerations_for_rebalancing_erasure_coded_data.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are performing an expansion to add Storage Nodes and your ILM policy includes one or more ILM rules to erasure code data, you might need to perform the EC rebalance procedure after the expansion is complete.'
 ---
 = Considerations for rebalancing erasure-coded data
@@ -73,6 +73,8 @@ xref:adding_storage_capacity_for_erasure_coded_objects.adoc[Adding storage capac
 
 You cannot perform certain maintenance procedures at the same time you are running the EC rebalance procedure.
 
+[cols="1a,1a" options="header"]
+
 |===
 | Procedure| Allowed during EC rebalance procedure?
 a|
@@ -119,6 +121,6 @@ No. You must terminate the EC rebalance procedure before running other maintenan
 
 While the EC rebalance procedure is running, avoid making ILM changes that might change the location of existing erasure-coded objects. For example, do not start using an ILM rule that has a different Erasure Coding profile. If you need to make such ILM changes, you should abort the EC rebalance procedure.
 
-*Related information*
+.Related information
 
 xref:rebalancing_erasure_coded_data_after_adding_storage_nodes.adoc[Rebalancing erasure-coded data after adding Storage Nodes]

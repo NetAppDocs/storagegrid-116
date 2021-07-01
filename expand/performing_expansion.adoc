@@ -1,7 +1,7 @@
 ---
 permalink: expand/performing_expansion.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you perform the expansion, the new grid nodes are added to your existing StorageGRID deployment.'
 ---
 = Performing the expansion
@@ -11,6 +11,8 @@ summary: 'When you perform the expansion, the new grid nodes are added to your e
 [.lead]
 When you perform the expansion, the new grid nodes are added to your existing StorageGRID deployment.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Maintenance or Root Access permission.
 * You must have the provisioning passphrase.
@@ -18,6 +20,7 @@ When you perform the expansion, the new grid nodes are added to your existing St
 * If you are adding Storage Nodes, you must have confirmed that all data-repair operations performed as part of a recovery are complete. See the steps for checking data repair jobs in the recovery and maintenance instructions.
 * If you are adding a new site, you must review and update ILM rules before starting the expansion procedure to ensure that object copies are not stored to the new site until after the expansion is complete. For example, if a rule uses the default storage pool (All Storage Nodes), you must create a new storage pool that contains only the existing Storage Nodes and update the ILM rule to use the new storage pool. Otherwise, objects will be copied to the new site as soon as the first node at that site becomes active. See the instructions for managing objects with information lifecycle management.
 
+.About this task
 Performing the expansion includes these phases:
 
 . You configure the expansion by specifying whether you are adding new grid nodes or a new site and approving the grid nodes you want to add.
@@ -27,6 +30,7 @@ Performing the expansion includes these phases:
 +
 IMPORTANT: Some tasks might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is relatively empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer. You can look at the "`streamed`" percentage shown during the "`Starting Cassandra and streaming data`" stage to determine how complete the Cassandra streaming operation is.
 
+.Steps
 . Select *Maintenance* > *Maintenance Tasks* > *Expansion*.
 +
 The Grid Expansion page appears. The Pending Nodes section lists all nodes that are ready to be added.
@@ -103,7 +107,7 @@ You must download an updated copy of the Recovery Package file as soon as possib
 
  .. Click the download link.
  .. Enter the provisioning passphrase, and click *Start Download*.
- .. When the download completes, open the .zip file and confirm it includes a gpt-backup directory and a *_SAID.zip file. Then, extract the *_SAID.zip file, go to the /GID*_REV* directory, and confirm you can open the passwords.txt file.
+ .. When the download completes, open the `.zip` file and confirm it includes a `gpt-backup` directory and a `_SAID.zip` file. Then, extract the `_SAID.zip` file, go to the `/GID*_REV*` directory, and confirm you can open the `passwords.txt` file.
  .. Copy the downloaded Recovery Package file (.zip) to two safe, secure, and separate locations.
 +
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
@@ -118,9 +122,11 @@ IMPORTANT: Do not reboot any Storage Nodes during Step 4 (Starting services on t
 
 . Continue monitoring the expansion until all tasks are complete and the *Configure Expansion* button reappears.
 
+.After you finish
+
 Depending on which types of grid nodes you added, you must perform additional integration and configuration steps.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 

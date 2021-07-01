@@ -1,7 +1,7 @@
 ---
 permalink: expand/deploying_new_grid_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Deploying new grid nodes
@@ -15,7 +15,6 @@ When you expand the grid, the nodes you add do not have to match the existing no
 
 == VMware: Deploying grid nodes
 
-[.lead]
 You must deploy a virtual machine in VMware vSphere for each VMware node you want to add in the expansion.
 
 . Deploy the new grid node as a virtual machine and connect it to one or more StorageGRID networks.
@@ -30,7 +29,6 @@ xref:performing_expansion.adoc[Performing the expansion]
 
 == Linux: Deploying grid nodes
 
-[.lead]
 You can deploy grid nodes on new Linux hosts or on existing Linux hosts. If you need additional Linux hosts to support the CPU, RAM, and storage requirements of the StorageGRID nodes you want to add to your grid, you prepare them in the same way you prepared the hosts when you first installed them. Then, you deploy the expansion nodes in the same way you deployed grid nodes during installation.
 
 * You have the instructions for installing StorageGRID for your version of Linux, and you have reviewed the hardware and storage requirements.
@@ -61,7 +59,6 @@ xref:performing_expansion.adoc[Performing the expansion]
 
 == Appliances: Deploying Storage, Gateway, or non-primary Admin Nodes
 
-[.lead]
 To install the StorageGRID software on an appliance node, you use the StorageGRID Appliance Installer, which is included on the appliance. In an expansion, each storage appliance functions as a single Storage Node, and each services appliance functions as a single Gateway Node or non-primary Admin Node. Any appliance can connect to the Grid Network, the Admin Network, and the Client Network.
 
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
@@ -71,13 +68,13 @@ Configuring appliance hardware includes the required steps for configuring Stora
 
 * All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * The StorageGRID Appliance Installer version on the replacement appliance matches the software version of your StorageGRID system. (If the versions do not match, you must upgrade the StorageGRID Appliance Installer firmware.)
-
++
 For instructions, see the appliance installation and maintenance instructions.
-
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
++
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
 * You have a service laptop with a supported web browser.
 * You know one of the IP addresses assigned to the appliance's compute controller. You can use the IP address for any attached StorageGRID network.
 
@@ -102,6 +99,8 @@ If you have previously installed other nodes in this data center, the StorageGRI
 
 . If this IP address is not shown or you need to change it, specify the address:
 +
+[cols="1a,2a" options="header"]
+
 |===
 | Option| Description
 a|
