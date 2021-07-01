@@ -1,7 +1,7 @@
 ---
 permalink: sg100-1000/deploying_services_appliance_as_gateway_or_non_primary_admin_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you deploy a services appliance as a Gateway Node or non-primary Admin Node, you use the StorageGRID Appliance Installer included on the appliance.'
 ---
 = Deploying a services appliance as a Gateway or non-primary Admin Node
@@ -86,19 +86,16 @@ The node name is assigned to this appliance node in the StorageGRID system. It i
  .. Download the installation archive from the NetApp Downloads page for StorageGRID.
 +
 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID]
-
  .. Extract the archive.
  .. From the StorageGRID Appliance Installer, select *Advanced* > *Upload StorageGRID Software*.
  .. Click *Remove* to remove the current software package.
-
-     ![Appliance Installer - Remove Current Software](../media/appliance_installer_rmv_current_software.png)
-
++
+image::../media/appliance_installer_rmv_current_software.png[Appliance Installer - Remove Current Software]
  .. Click *Browse* for the software package you downloaded and extracted, and then click *Browse* for the checksum file.
-
-     ![Appliance Installer - Upload SG Software](../media/appliance_installer_upload_sg_software.png)
-
++
+image::../media/appliance_installer_upload_sg_software.png[Appliance Installer - Upload SG Software]
  .. Select *Home* to return to the Home page.
-. In the Installation section, confirm that the current state is "`Ready to start installation of `_node name_` into grid with primary Admin Node `_admin_ip_`" and that the *Start Installation* button is enabled.
+. In the Installation section, confirm that the current state is "Ready to start installation of `_node name_` into grid with primary Admin Node `_admin_ip_` " and that the *Start Installation* button is enabled.
 +
 If the *Start Installation* button is not enabled, you might need to change the network configuration or port settings. For instructions, see the installation and maintenance instructions for your appliance.
 

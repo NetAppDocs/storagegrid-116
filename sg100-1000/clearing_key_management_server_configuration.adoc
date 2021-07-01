@@ -1,7 +1,7 @@
 ---
 permalink: sg100-1000/clearing_key_management_server_configuration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Clearing the key management server \(KMS\) configuration disables node encryption on your appliance. After clearing the KMS configuration, the data on your appliance is permanently deleted and is no longer accessible. This data is not recoverable.'
 ---
 = Clearing the key management server configuration
@@ -13,7 +13,9 @@ Clearing the key management server (KMS) configuration disables node encryption 
 
 .What you'll need
 
-IMPORTANT: If you need to preserve data on the appliance, you must perform a node decommission procedure before you clear the KMS configuration. When KMS is cleared, data on the appliance will be permanently deleted and no longer accessible. This data is not recoverable.
+If you need to preserve data on the appliance, you must perform a node decommission procedure before you clear the KMS configuration.
+
+IMPORTANT: When KMS is cleared, data on the appliance will be permanently deleted and no longer accessible. This data is not recoverable.
 
 Decommission the node to move any data it contains to other nodes in StorageGRID. See the recovery and maintenance instructions for grid node decommissioning.
 
@@ -49,7 +51,9 @@ image::../media/clear_kms.png[KMS clear configuration]
 IMPORTANT: If the KMS configuration is cleared, data on the appliance will be permanently deleted. This data is not recoverable.
 
 . At the bottom of the window, select *Clear KMS Key and Delete Data*.
-. If you are sure that you want to clear the KMS configuration, type `clear` and select *Clear KMS Key and Delete Data*.
+. If you are sure that you want to clear the KMS configuration, type +
+`clear` +
+and select *Clear KMS Key and Delete Data*.
 +
 image::../media/fde_disable_confirmation.png[KMS clear confirmation]
 +

@@ -1,7 +1,7 @@
 ---
 permalink: sg100-1000/configuring_network_links_sg100_and_sg1000.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.'
 ---
 = Configuring network links (SG100 and SG1000)
@@ -103,7 +103,7 @@ a|
 |===
 
 * *Aggregate port bond mode*
-
++
 [options="header"]
 |===
 | Network bond mode| Client Network disabled (default)| Client Network enabled
@@ -129,9 +129,7 @@ These figures shows how the two 1-GbE management ports on the appliance are bond
 
 *SG100 Admin Network ports bonded*
 
-image::../media/sg100_bonded_management_ports.png[]
-
-image::[Admin Network Ports Bonded SG100]
+image::../media/sg100_bonded_management_ports.png[Admin Network Ports Bonded SG100]
 
 *SG1000 Admin Network ports bonded*
 
@@ -143,7 +141,9 @@ image::../media/sg1000_bonded_management_ports.png[Admin Network Ports Bonded SG
 +
 The Network Link Configuration page displays a diagram of your appliance with the network and management ports numbered.
 +
-*SG100 ports* image:../media/sg100_configuring_network_ports.png[SG100 rear connectors]
+*SG100 ports*
++
+image:../media/sg100_configuring_network_ports.png[SG100 rear connectors]
 +
 *SG1000 ports*
 +
@@ -159,8 +159,8 @@ The first time you access this page:
  ** *Port bond mode* is set to *Fixed*.
  ** *Network bond mode* is set to *Active-Backup* for the Grid Network.
  ** The *Admin Network* is enabled, and the network bond mode is set to *Independent*.
- ** The**Client Network** is disabled.
-image:../media/sg1000_network_link_configuration_fixed.png[Network Link Configuration Fixed]
+ ** The *Client Network* is disabled.
+ image:../media/sg1000_network_link_configuration_fixed.png[Network Link Configuration Fixed]
 
 . Select the link speed for the network ports from the *Link speed* drop-down list.
 +
@@ -188,7 +188,8 @@ image:../media/sg1000_network_link_configuration_aggregate.png[Network Link Conf
 
 . When you are satisfied with your selections, click *Save*.
 +
-NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: `+https://services_appliance_IP:8443+`
+NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: +
+`https://_services_appliance_IP_:8443`
 
 .Related information
 
