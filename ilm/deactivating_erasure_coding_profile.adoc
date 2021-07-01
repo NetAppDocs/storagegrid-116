@@ -68,59 +68,59 @@ a|
 In an ILM rule that has never been used in any ILM policy
 a|
 
-  ... Edit or delete all affected ILM rules. If you edit the rule, remove all placements that use the Erasure Coding profile.
-  ... Continue with this procedure.
+  . Edit or delete all affected ILM rules. If you edit the rule, remove all placements that use the Erasure Coding profile.
+  . Continue with this procedure.
 
 a|
-link:working_with_ilm_rules_and_ilm_policies.md#[Editing an ILM rule]
+xref:working_with_ilm_rules_and_ilm_policies.adoc[Working with ILM rules and ILM policies]
 a|
 In an ILM rule that is currently in the active ILM policy
 a|
 
-  ... Clone the active policy.
-  ... Remove the ILM rule that uses the Erasure Coding profile.
-  ... Add one or more new ILM rules to ensure objects are protected.
-  ... Save, simulate, and activate the new policy.
-  ... Wait for the new policy to be applied and for existing objects to be moved to new locations based on the new rules you added.
+  . Clone the active policy.
+  . Remove the ILM rule that uses the Erasure Coding profile.
+  . Add one or more new ILM rules to ensure objects are protected.
+  . Save, simulate, and activate the new policy.
+  . Wait for the new policy to be applied and for existing objects to be moved to new locations based on the new rules you added.
 +
 *Note*; Depending on the number of objects and the size of your StorageGRID system, it might take weeks or even months for ILM operations to move the objects to new locations, based on the new ILM rules.
 +
 While you can safely attempt to deactivate an Erasure Coding profile while it is still associated with data, the deactivation operation will fail. An error message will inform you if the profile is not yet ready to be deactivated.
 
-  ... Edit or delete the rule you removed from the policy. If you edit the rule, remove all placements that use the Erasure Coding profile.
-  ... Continue with this procedure.
+  . Edit or delete the rule you removed from the policy. If you edit the rule, remove all placements that use the Erasure Coding profile.
+  . Continue with this procedure.
 
 a|
 
-  *** link:creating_ilm_policy.md#[Creating an ILM policy]
-  *** link:working_with_ilm_rules_and_ilm_policies.md#[Editing an ILM rule]
+  * xref:creating_ilm_policy.adoc[Creating an ILM policy]
+  * xref:working_with_ilm_rules_and_ilm_policies.adoc[Working with ILM rules and ILM policies]
 
 a|
 In an ILM rule that is currently in a proposed ILM policy
 a|
 
-  ... Edit the proposed policy.
-  ... Remove the ILM rule that uses the Erasure Coding profile.
-  ... Add one or more new ILM rules to ensure all objects are protected.
-  ... Save the proposed policy.
-  ... Edit or delete the rule you removed from the policy. If you edit the rule, remove all placements that use the Erasure Coding profile.
-  ... Continue with this procedure.
+  . Edit the proposed policy.
+  . Remove the ILM rule that uses the Erasure Coding profile.
+  . Add one or more new ILM rules to ensure all objects are protected.
+  . Save the proposed policy.
+  . Edit or delete the rule you removed from the policy. If you edit the rule, remove all placements that use the Erasure Coding profile.
+  . Continue with this procedure.
 
 a|
 
-  *** link:creating_ilm_policy.md#[Creating an ILM policy]
-  *** link:working_with_ilm_rules_and_ilm_policies.md#[Editing an ILM rule]
+  * xref:creating_ilm_policy.adoc[Creating an ILM policy]
+  * xref:working_with_ilm_rules_and_ilm_policies.adoc[Working with ILM rules and ILM policies]
 
 a|
 In an ILM rule that is in a historical ILM policy
 a|
 
-  ... Edit or delete the rule. If you edit the rule, remove all placements that use the Erasure Coding profile. (The rule will now appear as a historical rule in the historical policy.)
-  ... Continue with this procedure.
+  . Edit or delete the rule. If you edit the rule, remove all placements that use the Erasure Coding profile. (The rule will now appear as a historical rule in the historical policy.)
+  . Continue with this procedure.
 
 a|
 
-  *** link:working_with_ilm_rules_and_ilm_policies.md#[Editing an ILM rule]
+  * xref:working_with_ilm_rules_and_ilm_policies.adoc[Working with ILM rules and ILM policies]
 
 +
 |===

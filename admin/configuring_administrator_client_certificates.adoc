@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_administrator_client_certificates.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Configuring administrator client certificates
@@ -15,7 +15,6 @@ If you need to access StorageGRID using an external monitoring tool, you must up
 
 == Adding administrator client certificates
 
-[.lead]
 To add a client certificate, you can provide your own certificate or generate one using the Grid Manager.
 
 .What you'll need
@@ -42,10 +41,11 @@ image::../media/certificate_admin_upload.png[Certificate -Admin - Upload]
 
 . Type a name between 1 and 32 characters for the certificate.
 . To access Prometheus metrics using your external monitoring tool, select the *Allow Prometheus* check box.
-. Upload or generate a certificate.
- ** To upload a certificate, go to step link:configuring_administrator_client_certificates.md#STEP_UPLOAD_CERT[configuring_administrator_client_certificates.md#STEP_UPLOAD_CERT].
- ** To generate a certificate, go to step link:configuring_administrator_client_certificates.md#STEP_GEN_CERT[configuring_administrator_client_certificates.md#STEP_GEN_CERT].
-. To upload a certificate:
+. Upload  or generate a certificate:
+.. To upload a certificate, go <<upload_cert,here>>.
+.. To generate a certificate, go <<generate_cert,here>>.
+
+. [[upload_cert]]To upload a certificate:
  .. Select *Upload Client Certificate*.
  .. Browse for the public key for the certificate.
 +
@@ -56,7 +56,8 @@ image::../media/certificate_admin_upload_cert_file.png[Certificate - Admin - Upl
  .. Select *Copy certificate to clipboard* and paste the certificate to your external monitoring tool.
  .. Use an editing tool to copy and paste the private key to your external monitoring tool.
  .. Select *Save* to save the certificate in the Grid Manager.
-. To generate a certificate:
+
+. [[generate_cert]]To generate a certificate:
  .. Select *Generate Client Certificate*.
  .. Enter the domain name or IP address of the Admin Node.
  .. Optionally, enter an X.509 subject, also referred to as the Distinguished Name (DN), to identify the administrator who owns the certificate.
@@ -108,7 +109,6 @@ xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 
 == Editing administrator client certificates
-
 
 You can edit a certificate to change its name, enable or disable Prometheus access, or upload a new certificate when the current one has expired.
 

@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_s3_api_endpoint_domain_names.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To support S3 virtual hosted-style requests, you must use the Grid Manager to configure the list of endpoint domain names that S3 clients connect to.'
 ---
 = Configuring S3 API endpoint domain names
@@ -26,7 +26,7 @@ To enable clients to use S3 endpoint domain names, you must do all of the follow
 * Use the Grid Manager to add the S3 endpoint domain names to the StorageGRID system.
 * Ensure that the certificate the client uses for HTTPS connections to StorageGRID is signed for all domain names that the client requires.
 +
-For example, if the endpoint is s3.company.com, you must ensure that the certificate used for HTTPS connections includes the s3.company.com endpoint and the endpoint's wildcard Subject Alternative Name (SAN): *.s3.company.com.
+For example, if the endpoint is `s3.company.com`, you must ensure that the certificate used for HTTPS connections includes the `s3.company.com` endpoint and the endpoint's wildcard Subject Alternative Name (SAN): `*.s3.company.com`.
 
 .Steps
 
@@ -60,7 +60,9 @@ If this list is empty, support for S3 virtual hosted-style requests is disabled.
  ** For clients that connect directly to Storage Nodes or that use the CLB service on Gateway Nodes, update the custom server certificate for the grid.
 . Add the DNS records required to ensure that endpoint domain name requests can be resolved.
 
-Now, when clients use the endpoint bucket.s3.company.com, the DNS server resolves to the correct endpoint and the certificate authenticates the endpoint as expected.
+.Result
+
+Now, when clients use the endpoint `bucket.s3.company.com`, the DNS server resolves to the correct endpoint and the certificate authenticates the endpoint as expected.
 
 .Related information
 
@@ -72,4 +74,4 @@ xref:creating_high_availability_group.adoc[Creating a high availability group]
 
 xref:configuring_custom_server_certificate_for_storage_node_or_clb.adoc[Configuring a custom server certificate for connections to the Storage Node or the CLB service]
 
-link:configuring_load_balancer_endpoints.md#[Creating load balancer endpoints]
+xref:configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints]
