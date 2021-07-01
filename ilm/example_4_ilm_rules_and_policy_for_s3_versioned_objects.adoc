@@ -13,9 +13,7 @@ If you have an S3 bucket with versioning enabled, you can manage the noncurrent 
 
 As this example shows, you can control the amount of storage used by versioned objects by using different placement instructions for noncurrent object versions.
 
-CAUTION:
-
-The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
+CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
 NOTE: If you create ILM policies to manage noncurrent object versions, be aware that you must know the object version's UUID or CBID to simulate the policy. To find an object's UUID and CBID, use Object Metadata Lookup while the object is still current.
 
@@ -26,7 +24,6 @@ xref:how_s3_versioned_objects_are_deleted.adoc[How S3 versioned objects are dele
 xref:verifying_ilm_policy_with_object_metadata_lookup.adoc[Verifying an ILM policy with object metadata lookup]
 
 == ILM rule 1 for example 4: Save three copies for 10 years
-
 
 This example ILM rule stores a copy of each object at three data centers for 10 years.
 

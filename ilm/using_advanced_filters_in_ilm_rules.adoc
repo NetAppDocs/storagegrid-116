@@ -12,6 +12,7 @@ summary: 'Advanced filtering allows you to create ILM rules that apply only to s
 Advanced filtering allows you to create ILM rules that apply only to specific objects based on their metadata. When you set up advanced filtering for a rule, you select the type of metadata you want to match, select an operator, and specify a metadata value. When objects are evaluated, the ILM rule is applied only to those objects that have metadata matching the advanced filter.
 
 The table shows the types of metadata you can specify in advanced filters, the operators you can use for each type of metadata, and the metadata values expected.
+
 [cols="1a,1a,2a" options="header"]
 |===
 | Metadata type| Supported operators| Metadata value
@@ -30,7 +31,7 @@ a|
 a|
 Time and date the object was ingested.
 
-*Note*: To avoid resource issues when activating an new ILM policy, you can use the Ingest Time advanced filter in any rule that might change the location of large numbers of existing objects. Set Ingest Time to be greater than or equal to the approximate time when the new policy will go into effect to ensure that existing objects are not moved unnecessarily.
+*Note:* To avoid resource issues when activating an new ILM policy, you can use the Ingest Time advanced filter in any rule that might change the location of large numbers of existing objects. Set Ingest Time to be greater than or equal to the approximate time when the new policy will go into effect to ensure that existing objects are not moved unnecessarily.
 
 a|
 Key
@@ -68,7 +69,7 @@ a|
 a|
 Time and date the object was last retrieved (read or viewed).
 
-*Note*: If you plan to use last access time as an advanced filter, Last Access Time updates must be enabled for the S3 bucket or Swift container.
+*Note:* If you plan to use last access time as an advanced filter, Last Access Time updates must be enabled for the S3 bucket or Swift container.
 
 xref:using_last_access_time_in_ilm_rules.adoc[Using Last Access Time in ILM rules]
 
@@ -83,7 +84,7 @@ a|
 a|
 The region where an S3 bucket was created. Use *ILM* > *Regions* to define the regions that are shown.
 
-*Note*: A value of us-east-1 will match objects in buckets created in the us-east-1 region as well as objects in buckets that have no region specified.
+*Note:* A value of us-east-1 will match objects in buckets created in the us-east-1 region as well as objects in buckets that have no region specified.
 
 xref:configuring_regions_optional_and_s3_only.adoc[Configuring regions (optional and S3 only)]
 
@@ -104,7 +105,7 @@ The object's size in MB.
 
 To filter on object sizes smaller than 1 MB, type in a decimal value. For example, set the *Object Size (MB)* advanced filter to *greater than 0.2* for any rule that makes erasure-coded copies. This setting ensures that erasure coding is not used for objects 200 KB or smaller.
 
-*Note*: Your browser type and locale settings control whether you need to use a period or a comma as the decimal separator.
+*Note:* Your browser type and locale settings control whether you need to use a period or a comma as the decimal separator.
 
 a|
 User Metadata
@@ -127,7 +128,7 @@ Key-value pair, where *User Metadata Name* is the key and *User Metadata Value* 
 
 For example, to filter on objects that have user metadata of `color=blue`, specify `color` for *User Metadata Name*, `equals` for the operator, and `blue` for *User Metadata Value*.
 
-*Note*: User-metadata names are not case sensitive; user-metadata values are case sensitive.
+*Note:* User-metadata names are not case sensitive; user-metadata values are case sensitive.
 
 a|
 Object Tag (S3 only)
@@ -150,7 +151,7 @@ Key-value pair, where *Object Tag Name* is the key and *Object Tag Value* is the
 
 For example, to filter on objects that have an object tag of `Image=True`, specify `Image` for *Object Tag Name*, `equals` for the operator, and `True` for *Object Tag Value*.
 
-*Note*: Object tag names and object tag values are case sensitive. You must enter these items exactly as they were defined for the object.
+*Note:* Object tag names and object tag values are case sensitive. You must enter these items exactly as they were defined for the object.
 
 |===
 
@@ -158,8 +159,8 @@ For example, to filter on objects that have an object tag of `Image=True`, speci
 
 When you define advanced filtering, you can specify multiple types of metadata and multiple metadata values. For example, if you want a rule to match objects between 10 MB and 100 MB in size, you would select the *Object Size* metadata type and specify two metadata values.
 
-* The first metadata value specifies objects greater than or equal to 10 MB
-* The second metadata value specifies objects less than or equal to 100 MB
+* The first metadata value specifies objects greater than or equal to 10 MB.
+* The second metadata value specifies objects less than or equal to 100 MB.
 
 image::../media/advanced_filtering_size_between.gif[Advanced Filtering example for object size]
 

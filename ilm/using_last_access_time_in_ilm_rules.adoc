@@ -11,6 +11,8 @@ summary: 'You can use Last Access Time as the reference time in an ILM rule. For
 [.lead]
 You can use Last Access Time as the reference time in an ILM rule. For example, you might want to leave objects that have been viewed in the last three months on local Storage Nodes, while moving objects that have not been viewed as recently to an off-site location. You can also use Last Access Time as an advanced filter if you want an ILM rule to apply only to objects that were last accessed on a specific date.
 
+.About this task
+
 Before using Last Access Time in an ILM rule, review the following considerations:
 
 * When using Last Access Time as a reference time, be aware that changing the Last Access Time for an object does not trigger an immediate ILM evaluation. Instead, the object's placements are assessed and the object is moved as required when background ILM evaluates the object. This could take two weeks or more after the object is accessed.

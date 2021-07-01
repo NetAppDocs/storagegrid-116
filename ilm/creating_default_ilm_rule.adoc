@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating_default_ilm_rule.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Every ILM policy must have a default rule that does not filter objects. Before creating an ILM policy, you must create at least one ILM rule that can be used as the default rule for the policy.'
 ---
 = Creating a default ILM rule
@@ -11,9 +11,11 @@ summary: 'Every ILM policy must have a default rule that does not filter objects
 [.lead]
 Every ILM policy must have a default rule that does not filter objects. Before creating an ILM policy, you must create at least one ILM rule that can be used as the default rule for the policy.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
 The default rule is the last rule to be evaluated in an ILM policy, so it cannot use any filters. The placement instructions for the default rule are applied to any objects that are not matched by another rule in the policy.
 
 In this example policy, the first rule applies only to objects belonging to Tenant A. The default rule, which is last, applies to objects belonging to all other tenant accounts.
@@ -30,6 +32,8 @@ IMPORTANT: Do not use a rule that creates erasure-coded copies as the default ru
 
 * In general, the default rule should retain objects forever.
 * If you are using (or you plan to enable) the global S3 Object Lock setting, the default rule for the active or proposed policy must be compliant.
+
+.Steps
 
 . Select *ILM* > *Rules*.
 +

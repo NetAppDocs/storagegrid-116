@@ -11,6 +11,8 @@ summary: 'Step 2 \(Define Placements\) of the Create ILM Rule wizard allows you 
 [.lead]
 Step 2 (Define Placements) of the Create ILM Rule wizard allows you to define the placement instructions that determine how long objects are stored, the type of copies (replicated or erasure coded), the storage location, and the number of copies.
 
+.About this task
+
 An ILM rule can include one or more placement instructions. Each placement instruction applies to a single period of time. When you use more than one instruction, the time periods must be contiguous, and at least one instruction must start on day 0. The instructions can continue either forever, or until you no longer require any object copies.
 
 Each placement instruction can have multiple lines if you want to create different types of copies or use different locations during that time period.
@@ -76,16 +78,19 @@ image::../media/ilm_rule_with_multiple_storage_pools.png[Placement instructions 
 
  .. Select the number of copies you want to make.
 +
-IMPORTANT: A warning appears if you change the number of copies to 1. An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists during a time period, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
-+
+[IMPORTANT]
+====
+A warning appears if you change the number of copies to 1. An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists during a time period, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
 image::../media/ilm_create_ilm_rule_warning_for_1_copy.png[Create ILM Rule Page 2 Warning for 1 Copy]
-+
+
 To avoid these risks, do one or more of the following:
 
   *** Increase the number of copies for the time period.
   *** Click the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
   *** Select *erasure coded* for Type, instead of *replicated*.
 You can safely ignore this warning if this rule already creates multiple copies for all time periods.
+====
 
  .. If you specified only one storage pool, ignore the *Temporary location* field.
 +
@@ -167,7 +172,7 @@ Step 3 (Define Ingest Behavior) appears.
 
 xref:what_ilm_placement_instructions_are.adoc[What ILM rule placement instructions are]
 
-link:example_4_ilm_rules_and_policy_for_s3_versioned_objects.md#[Example 4: ILM rules and policy for S3 versioned objects]
+xref:example_4_ilm_rules_and_policy_for_s3_versioned_objects.adoc[Example 4: ILM rules and policy for S3 versioned objects]
 
 xref:why_you_should_not_use_single_copy_replication.adoc[Why you should not use single-copy replication]
 

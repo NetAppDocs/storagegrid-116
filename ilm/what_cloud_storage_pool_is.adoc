@@ -56,7 +56,7 @@ If the Cloud Storage Pool is an Amazon S3 bucket:
 
 If the Cloud Storage Pool is an Azure Blob storage container, StorageGRID transitions the object to the Archive tier.
 
-*Note*: In general, do not configure Azure Blob Storage lifecycle management for the container used for a Cloud Storage Pool. POST Object restore operations on objects in the Cloud Storage Pool can be affected by the configured lifecycle.
+*Note:* In general, do not configure Azure Blob Storage lifecycle management for the container used for a Cloud Storage Pool. POST Object restore operations on objects in the Cloud Storage Pool can be affected by the configured lifecycle.
 
 a|
 What controls object placement?
@@ -85,7 +85,7 @@ Multiple.
 a|
 One copy in the Cloud Storage Pool and, optionally, one or more copies in StorageGRID.
 
-*Note*: You cannot store an object in more than one Cloud Storage Pool at any given time.
+*Note:* You cannot store an object in more than one Cloud Storage Pool at any given time.
 
 a|
 What are the advantages?
