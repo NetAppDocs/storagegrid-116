@@ -1,7 +1,7 @@
 ---
 permalink: maintain/configuring_replacement_primary_admin_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The replacement node must be configured as the primary Admin Node for your StorageGRID system.'
 ---
 = Configuring the replacement primary Admin Node
@@ -18,7 +18,7 @@ The replacement node must be configured as the primary Admin Node for your Stora
 +
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
 
-* You must have the latest backup of the Recovery Package file (sgws-recovery-package-id-revision.zip).
+* You must have the latest backup of the Recovery Package file (`sgws-recovery-package-<id-revision>.zip`).
 * You must have the provisioning passphrase.
 
 .Steps
@@ -38,7 +38,7 @@ The recovery process begins. The Grid Manager might become unavailable for a few
 
 . If single sign-on (SSO) is enabled for your StorageGRID system and the relying party trust for the Admin Node you recovered was configured to use the default Management Interface Server Certificate, update (or delete and recreate) the node's relying party trust in Active Directory Federation Services (AD FS). Use the new default server certificate that was generated during the Admin Node recovery process.
 +
-NOTE: To configure a relying party trust, see the instructions for administering StorageGRID. To access the default server certificate, log in to the command shell of the Admin Node. Go to the /var/local/mgmt-api directory, and select the server.crt file.
+NOTE: To configure a relying party trust, see the instructions for administering StorageGRID. To access the default server certificate, log in to the command shell of the Admin Node. Go to the `/var/local/mgmt-api` directory, and select the `server.crt` file.
 
 . Determine if you need to apply a hotfix.
  .. Sign in to the Grid Manager using a supported browser.

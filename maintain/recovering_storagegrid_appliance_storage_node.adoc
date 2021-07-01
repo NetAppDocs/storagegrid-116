@@ -1,7 +1,7 @@
 ---
 permalink: maintain/recovering_storagegrid_appliance_storage_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The procedure for recovering a failed StorageGRID appliance Storage Node is the same whether you are recovering from the loss of the system drive or from the loss of storage volumes only.'
 ---
 = Recovering a StorageGRID appliance Storage Node
@@ -15,13 +15,9 @@ You must prepare the appliance and reinstall software, configure the node to rej
 
 image::../media/overview_sga_recovery.gif[Overview flowchart of StorageGRID appliance recovery]
 
-CAUTION:
+CAUTION: If more than one Storage Node has failed (or is offline), contact technical support. Do not perform the following recovery procedure. Data loss could occur.
 
-If more than one Storage Node has failed (or is offline), contact technical support. Do not perform the following recovery procedure. Data loss could occur.
-
-CAUTION:
-
-If this is the second Storage Node failure in less than 15 days after a Storage Node failure or recovery, contact technical support. Rebuilding Cassandra on two or more Storage Nodes within 15 days can result in data loss.
+CAUTION: If this is the second Storage Node failure in less than 15 days after a Storage Node failure or recovery, contact technical support. Rebuilding Cassandra on two or more Storage Nodes within 15 days can result in data loss.
 
 NOTE: If more than one Storage Node at a site has failed, a site recovery procedure might be required. Contact technical support.
 

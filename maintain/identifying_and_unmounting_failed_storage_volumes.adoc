@@ -1,7 +1,7 @@
 ---
 permalink: maintain/identifying_and_unmounting_failed_storage_volumes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When recovering a Storage Node with failed storage volumes, you must identify and unmount the failed volumes. You must verify that only the failed storage volumes are reformatted as part of the recovery procedure.'
 ---
 = Identifying and unmounting failed storage volumes
@@ -25,15 +25,13 @@ NOTE: You must finish this procedure before performing manual steps to recover t
 
 NOTE: Repair the hardware and properly attach the disks before running the `reboot` command.
 
-CAUTION:
-
-Identify failed storage volumes carefully. You will use this information to verify which volumes must be reformatted. Once a volume has been reformatted, data on the volume cannot be recovered.
+CAUTION: Identify failed storage volumes carefully. You will use this information to verify which volumes must be reformatted. Once a volume has been reformatted, data on the volume cannot be recovered.
 
 To correctly recover failed storage volumes, you need to know both the device names of the failed storage volumes and their volume IDs.
 
-At installation, each storage device is assigned a file system universal unique identifier (UUID) and is mounted to a rangedb directory on the Storage Node using that assigned file system UUID. The file system UUID and the rangedb directory are listed in the /etc/fstab file. The device name, rangedb directory, and the size of the mounted volume are displayed in the Grid Manager.
+At installation, each storage device is assigned a file system universal unique identifier (UUID) and is mounted to a rangedb directory on the Storage Node using that assigned file system UUID. The file system UUID and the rangedb directory are listed in the `/etc/fstab` file. The device name, rangedb directory, and the size of the mounted volume are displayed in the Grid Manager.
 
-In the following example, device /dev/sdc has a volume size of 4 TB, is mounted to /var/local/rangedb/0, using the device name /dev/disk/by-uuid/822b0547-3b2b-472e-ad5e-e1cf1809faba in the /etc/fstab file:
+In the following example, device `/dev/sdc` has a volume size of 4 TB, is mounted to `/var/local/rangedb/0`, using the device name `/dev/disk/by-uuid/822b0547-3b2b-472e-ad5e-e1cf1809faba` in the /`etc/fstab` file:
 
 image::../media/mounting_storage_devices.gif[Volume size sample]
 
@@ -47,7 +45,7 @@ image::../media/ldr_storage_object_stores.gif[Object stores section]
 
  .. Select *site* > *failed Storage Node* > *SSM* > *Resources* > *Overview* > *Main*. Determine the mount point and volume size of each failed storage volume identified in the previous step.
 +
-Object stores are numbered in hex notation. For example, 0000 is the first volume and 000F is the sixteenth volume. In the example, the object store with an ID of 0000 corresponds to /var/local/rangedb/0 with device name sdc and a size of 107 GB.
+Object stores are numbered in hex notation. For example, 0000 is the first volume and 000F is the sixteenth volume. In the example, the object store with an ID of 0000 corresponds to `/var/local/rangedb/0` with device name sdc and a size of 107 GB.
 +
 image::../media/ssm_storage_volumes.gif[example showing object stores and mount points]
 . Log in to the failed Storage Node:

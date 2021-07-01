@@ -1,7 +1,7 @@
 ---
 permalink: maintain/selecting_start_recovery_to_configure_non_primary_admin_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After replacing a non-primary Admin Node, you must select Start Recovery in the Grid Manager to configure the new node as a replacement for the failed node.'
 ---
 = Selecting Start Recovery to configure a non-primary Admin Node
@@ -44,7 +44,7 @@ If you want to retry the recovery after resetting the procedure, you must restor
 
 . If single sign-on (SSO) is enabled for your StorageGRID system and the relying party trust for the Admin Node you recovered was configured to use the default Management Interface Server Certificate, update (or delete and recreate) the node's relying party trust in Active Directory Federation Services (AD FS). Use the new default server certificate that was generated during the Admin Node recovery process.
 +
-NOTE: To configure a relying party trust, see the instructions for administering StorageGRID. To access the default server certificate, log in to the command shell of the Admin Node. Go to the /var/local/mgmt-api directory, and select the server.crt file.
+NOTE: To configure a relying party trust, see the instructions for administering StorageGRID. To access the default server certificate, log in to the command shell of the Admin Node. Go to the `/var/local/mgmt-api` directory, and select the `server.crt` file.
 
 .Related information
 

@@ -1,7 +1,7 @@
 ---
 permalink: maintain/restoring_object_data_to_storage_volume_if_required.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If the sn-recovery-postinstall.sh script is needed to reformat one or more failed storage volumes, you must restore object data to the reformatted storage volume from other Storage Nodes and Archive Nodes. These steps are not required unless one or more storage volumes were reformatted.'
 ---
 = Restoring object data to a storage volume, if required
@@ -185,12 +185,12 @@ The output lists information, including `repair ID`, for all previously and curr
 ----
 root@DC1-ADM1:~ # repair-data show-ec-repair-status
 
- Repair ID   Scope                   Start Time  End Time  State  Est Bytes Affected Bytes Repaired  Retry Repair
-==========================================================================================================
- 949283   DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:27:06.9  Success   17359            17359           No
- 949292   DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:37:06.9  Failure   17359            0               Yes
- 949294   DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:47:06.9  Failure   17359            0               Yes
- 949299   DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:57:06.9  Failure   17359            0               Yes
+Repair ID Scope Start Time End Time State Est Bytes Affected/Repaired Retry Repair
+==================================================================================
+949283 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:27:06.9 Success 17359 17359 No
+949292 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:37:06.9 Failure 17359 0 Yes
+949294 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:47:06.9 Failure 17359 0 Yes
+949299 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:57:06.9 Failure 17359 0 Yes
 ----
  .. If the output shows that the repair operation failed, use the `--repair-id` option to retry the repair.
 +
