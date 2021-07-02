@@ -11,8 +11,10 @@ summary: 'If one or more nodes are disconnected from the grid, critical StorageG
 [.lead]
 If one or more nodes are disconnected from the grid, critical StorageGRID operations might be affected. You must monitor node connection states and address any issues promptly.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 
+.About this task
 Nodes can have one of three connection states:
 
 * *Not connected - Unknown* image:../media/icon_alarm_blue_unknown.png[blue question mark icon]: The node is not connected to the grid for an unknown reason. For example, the network connection between nodes has been lost or the power is down. The *Unable to communicate with node* alert might also be triggered. Other alerts might be active as well. This situation requires immediate attention.
@@ -22,6 +24,7 @@ NOTE: A node might appear as Unknown during managed shutdown operations. You can
 * *Not connected - Administratively down* image:../media/icon_alarm_gray_administratively_down.png[gray questionmark icon]: The node is not connected to the grid for an expected reason. For example, the node, or services on the node, has been gracefully shut down, the node is rebooting, or the software is being upgraded. One or more alerts might also be active.
 * *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark]: The node is connected to the grid.
 
+.Steps
 . If a blue or gray icon appears on the Health panel of the Dashboard, click the icon or click *Grid details*. (The blue or gray icons and the *Grid details* link appear only if at least one node is disconnected from the grid.)
 +
 The Overview page for the first blue node in the node tree appears. If there are no blue nodes, the Overview page for the first gray node in the tree appears.
