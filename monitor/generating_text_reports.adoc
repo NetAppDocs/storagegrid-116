@@ -12,12 +12,10 @@ summary: 'Text reports display a textual representation of attribute data values
 Text reports display a textual representation of attribute data values that have been processed by the NMS service. You can report on a data center site, grid node, component, or service.
 
 .What you'll need
-
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
 .About this task
-
 For attribute data that is expected to be continuously changing, this attribute data is sampled by the NMS service (at the source) at regular intervals. For attribute data that changes infrequently (for example, data based on events such as state or status changes), an attribute value is sent to the NMS service when the value changes.
 
 The type of report displayed depends on the configured time period. By default, aggregate text reports are generated for time periods longer than one week.
@@ -25,7 +23,6 @@ The type of report displayed depends on the configured time period. By default, 
 Gray text indicates the service was administratively down during the time it was sampled. Blue text indicates the service was in an unknown state.
 
 .Steps
-
 . Select *Support* > *Tools* > *Grid Topology*.
 . Select *_grid node_* > *_component or service_* > *Reports* > *Text*.
 . Select the attribute to report on from the *Attribute* drop-down list.
@@ -39,7 +36,7 @@ The report appears after a few moments. Allow several minutes for tabulation of 
 
 . If you selected Custom Query, you need to customize the time period to report on by entering the *Start Date* and *End Date*.
 +
-Use the format YYYY/MM/DDHH:MM:SS in local time. Leading zeros are required to match the format. For example, 2017/4/6 7:30:00 fails validation. The correct format is: 2017/04/06 07:30:00.
+Use the format `YYYY/MM/DDHH:MM:SS` in local time. Leading zeros are required to match the format. For example, 2017/4/6 7:30:00 fails validation. The correct format is: 2017/04/06 07:30:00.
 
 . Click *Update*.
 +

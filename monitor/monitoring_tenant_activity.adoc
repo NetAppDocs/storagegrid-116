@@ -1,7 +1,7 @@
 ---
 permalink: monitor/monitoring_tenant_activity.html
 sidebar: sidebar
-keywords: 
+keywords: monitoring, tenant activity
 summary: 'All client activity is associated with a tenant account. You can use the Grid Manager to monitor a tenant’s storage usage or network traffic, or you can use the audit log or Grafana dashboards to gather more detailed information about how tenants are using StorageGRID.'
 ---
 = Monitoring tenant activity
@@ -11,11 +11,14 @@ summary: 'All client activity is associated with a tenant account. You can use t
 [.lead]
 All client activity is associated with a tenant account. You can use the Grid Manager to monitor a tenant's storage usage or network traffic, or you can use the audit log or Grafana dashboards to gather more detailed information about how tenants are using StorageGRID.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access or Administrator permission.
 
+.About this task
 IMPORTANT: The Space used values are estimates. These estimates are affected by the timing of ingests, network connectivity, and node status.
 
+.Steps
 . Select *Tenants* to review the amount of storage used by all tenants.
 +
 The Space Used, Quota Utilization, Quota, and Object Count are listed for each tenant. If a quota is not set for a tenant, the Quota Utilization field contains a dash (--) and the Quota field indicates "`Unlimited.`"
