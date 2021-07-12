@@ -32,7 +32,7 @@ After a Swift tenant account is created, users with the Root Access permission c
 
 IMPORTANT: Swift users must have the Root Access permission to access the Tenant Manager. However, the Root Access permission does not allow users to authenticate into the Swift REST API to create containers and ingest objects. Users must have the Swift Administrator permission to authenticate into the Swift REST API.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -79,6 +79,7 @@ Client applications connect to StorageGRID using the IP address of a grid node a
 
 The table summarizes the different ways that clients can connect to StorageGRID and the IP addresses and ports that are used for each type of connection. Contact your StorageGRID administrator for more information, or see the instructions for administering StorageGRID for a description of how to find this information in the Grid Manager.
 
+[options="header"]
 |===
 | Where connection is made| Service that client connects to| IP address| Port
 a|
@@ -177,7 +178,7 @@ NOTE: The CLB service is deprecated.
 
 If the *Enable HTTP Connection* option is selected, clients must use different ports for HTTP than they use for HTTPS. See the instructions for administering StorageGRID.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -248,7 +249,7 @@ swift
 delete test_container
 ----
 
-*Related information*
+.Related information
 
 link:configuring_tenant_accounts_and_connections.md#[Creating and configuring Swift tenant accounts]
 

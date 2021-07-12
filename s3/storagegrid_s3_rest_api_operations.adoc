@@ -33,6 +33,7 @@ Host: host
 
 In the response XML, `<Consistency>` will return one of the following values:
 
+[options="header"]
 |===
 | Consistency control| Description
 a|
@@ -73,7 +74,7 @@ Content-Type: application/xml
 <Consistency xmlns="http://s3.storagegrid.com/doc/2015-02-01/">read-after-new-write</Consistency>
 ----
 
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -90,6 +91,7 @@ You must have the s3:PutBucketConsistency permission, or be account root, to com
 
 The `x-ntap-sg-consistency` parameter must contain one of the following values:
 
+[options="header"]
 |===
 | Consistency control| Description
 a|
@@ -125,7 +127,7 @@ Authorization: authorization string
 Host: host
 ----
 
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -199,7 +201,7 @@ Authorization: authorization string
 Host: host
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
@@ -263,6 +265,7 @@ The response body includes the metadata notification configuration for the bucke
 
 Each metadata notification configuration includes one or more rules. Each rule specifies the objects that it applies to and the destination where StorageGRID should send object metadata. Destinations must be specified using the URN of a StorageGRID endpoint.
 
+[options="header"]
 |===
 | Name| Description| Required
 a|
@@ -369,7 +372,7 @@ Content-Type: application/xml
 </MetadataNotificationConfiguration>
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
@@ -410,6 +413,7 @@ Destinations must be specified using the URN of a StorageGRID endpoint. The endp
 
 The table describes the elements in the metadata notification configuration XML.
 
+[options="header"]
 |===
 | Name| Description| Required
 a|
@@ -541,7 +545,7 @@ Host: host
 </MetadataNotificationConfiguration>
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
@@ -577,6 +581,7 @@ The table lists all the fields that are included in the JSON document that is se
 
 The document name includes the bucket name, object name, and version ID if present.
 
+[options="header"]
 |===
 | Type| Item name| Description
 a|
@@ -681,7 +686,7 @@ Content-Type: application/xml
 
 Every object version stored will contribute to the `ObjectCount` and `DataBytes` values in the response. Delete markers are not added to the `ObjectCount` total.
 
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -722,7 +727,7 @@ The Compliance feature is deprecated.
 Contact your StorageGRID administrator if you need to create new Compliant buckets.
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -774,6 +779,7 @@ Content-Type: application/xml
 </SGCompliance>
 ----
 
+[options="header"]
 |===
 | Name| Description
 a|
@@ -800,7 +806,7 @@ a|
 
 If the bucket was not created to be compliant, the HTTP status code for the response is `404 Not Found`, with an S3 error code of `XNoSuchBucketCompliance`.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -841,6 +847,7 @@ Content-Length: 152
 </SGCompliance>
 ----
 
+[options="header"]
 |===
 | Name| Description
 a|
@@ -888,7 +895,7 @@ Consistency-Control: strong-site
 * If the bucket was not created to be compliant, the HTTP status code for the response is `404 Not Found`.
 * If `RetentionPeriodMinutes` in the request is less than the bucket's current retention period, the HTTP status code is `400 Bad Request`.
 
-*Related information*
+.Related information
 
 link:storagegrid_s3_rest_api_operations.md#[Deprecated: PUT Bucket request modifications for compliance]
 

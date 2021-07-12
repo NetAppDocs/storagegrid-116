@@ -13,7 +13,7 @@ The StorageGRID system implements the Simple Storage Service API (API Version 20
 
 The StorageGRID system supports both virtual hosted-style requests and path-style requests.
 
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -29,6 +29,7 @@ The StorageGRID system only supports valid HTTP date formats for any headers tha
 [.lead]
 The StorageGRID system supports common request headers defined by the _Simple Storage Service API Reference_, with one exception.
 
+[options="header"]
 |===
 | Request header| Implementation
 a|
@@ -45,7 +46,7 @@ x-amz-security-token
 a|
 Not implemented. Returns `XNotImplemented`.
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -54,6 +55,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services 
 [.lead]
 The StorageGRID system supports all of the common response headers defined by the _Simple Storage Service API Reference_, with one exception.
 
+[options="header"]
 |===
 | Response header| Implementation
 a|
@@ -61,7 +63,7 @@ x-amz-id-2
 a|
 Not used
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -89,6 +91,7 @@ You can use query parameters to add authentication information to a URL. This is
 [.lead]
 The StorageGRID system supports the following operations on the service.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -104,7 +107,7 @@ OPTIONS /
 a|
 Client applications can issue `OPTIONS /` requests to the S3 port on a Storage Node, without providing S3 authentication credentials, to determine whether the Storage Node is available. You can use this request for monitoring, or to allow external load balancers to identify when a Storage Node is down.
 |===
-*Related information*
+.Related information
 
 link:storagegrid_s3_rest_api_operations.md#[GET Storage Usage request]
 
@@ -125,6 +128,7 @@ You can check whether updates to last access time are enabled or disabled for in
 
 The following table describes how StorageGRID implements S3 REST API bucket operations. To perform any of these operations, the necessary access credentials must be provided for the account.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -345,7 +349,7 @@ This implementation uses the versioning subresource to set the versioning state 
 * Suspended: Disables versioning for the objects in the bucket. All objects added to the bucket receive the version ID null.
 
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html[Amazon Web Services (AWS) Documentation: Cross-Region Replication]
 
@@ -515,7 +519,7 @@ The success response includes the object's metadata and indicates that the objec
 }
 ----
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
 
@@ -528,6 +532,7 @@ The StorageGRID system supports custom bucket operations that are added on to th
 
 The following table lists the custom bucket operations supported by StorageGRID.
 
+[options="header"]
 |===
 | Operation| Description| For more information
 a|
@@ -591,7 +596,7 @@ Deprecated but supported: Allows you to modify the compliance settings for an ex
 a|
 link:storagegrid_s3_rest_api_operations.md#[Deprecated: PUT Bucket compliance request]
 |===
-*Related information*
+.Related information
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -613,6 +618,7 @@ The following conditions apply to all object operations:
 
 The following table describes how StorageGRID implements S3 REST API object operations.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -722,7 +728,7 @@ Conflicting client requests, such as two clients writing to the same key, are re
 If the `versionId` query parameter is not specified in the request, the operation add tags to the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`MethodNotAllowed`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
 |===
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -797,7 +803,7 @@ If the new legal-hold value is ON, the object is placed under a legal hold. If t
  ** The retain-until-date value must be in the format `2020-08-10T21:46:00Z`. Fractional seconds are allowed, but only 3 decimal digits are preserved (milliseconds precision). Other ISO 8601 formats are not allowed.
  ** If an object version has an existing retain-until-date, you can only increase it. The new value must be in the future.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -845,6 +851,7 @@ The SSE request header is supported by the following object operations:
 
 To encrypt an object with a unique key that you manage, you use three request headers:
 
+[options="header"]
 |===
 | Request header| Description
 a|
@@ -887,7 +894,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 * If CloudMirror replication is configured for the bucket, you cannot ingest SSE-C objects. The ingest operation will fail.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[GET Object]
 
@@ -948,6 +955,7 @@ If an object has been stored in a Cloud Storage Pool (see the instructions for m
 
 NOTE: If an object is stored in a Cloud Storage Pool and one or more copies of the object also exist on the grid, GET Object requests will attempt to retrieve data from the grid, before retrieving it from the Cloud Storage Pool.
 
+[options="header"]
 |===
 | State of object| Behavior of GET Object
 a|
@@ -1000,7 +1008,7 @@ In these cases:
 * The GET Object request might return some data but stop midway through the transfer.
 * A subsequent GET Object request might return `403 Forbidden`.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1046,6 +1054,7 @@ If the object is stored in a Cloud Storage Pool (see the instructions for managi
 
 The response headers provide information about the state of an object as it is moved to a Cloud Storage Pool, optionally transitioned to a non-retrievable state, and restored.
 
+[options="header"]
 |===
 | State of object| Response to HEAD object
 a|
@@ -1119,7 +1128,7 @@ If you uploaded a multipart object or if StorageGRID split a large object into s
 
 If a `versionId` subresource is not specified, the operation fetches the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`Not Found`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1148,6 +1157,7 @@ If an object has been stored in a Cloud Storage Pool (see the instructions for m
 
 NOTE: If an object is stored in a Cloud Storage Pool and one or more copies of the object also exist on the grid, there is no need to restore the object by issuing a POST Object restore request. Instead, the local copy can be retrieved directly, using a GET Object request.
 
+[options="header"]
 |===
 | State of object| Behavior of POST Object restore
 a|
@@ -1185,7 +1195,7 @@ a|
 `200 OK` *Note:* If an object has been restored to a retrievable state, you can change its `expiry-date` by reissuing the POST Object restore request with a new value for `Days`. The restoration date is updated relative to the time of the request.
 
 |===
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1335,7 +1345,7 @@ If versioning is enabled for a bucket, a unique `versionId` is automatically gen
 
 If versioning is suspended, the object version is stored with a null `versionId` and if a null version already exists it will be overwritten.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1461,7 +1471,7 @@ If you use server-side encryption, the request headers you provide depend on whe
 
 If the source bucket is versioned, you can use the `x-amz-copy-source` header to copy the latest version of an object. To copy a specific version of an object, you must explicitly specify the version to copy using the `versionId` subresource. If the destination bucket is versioned, the generated version is returned in the `x-amz-version-id` response header. If versioning is suspended for the target bucket, then `x-amz-version-id` returns a "`null`" value.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1490,6 +1500,7 @@ The following conditions and notes apply to all multipart upload operations:
 * All of the multipart upload operations support StorageGRID consistency controls.
 * As required, you can use server-side encryption with multipart uploads. To use SSE (server-side encryption with StorageGRID-managed keys), you include the `x-amz-server-side-encryption` request header in the Initiate Multipart Upload request only. To use SSE-C (server-side encryption with customer-provided keys), you specify the same three encryption key request headers in the Initiate Multipart Upload request and in each subsequent Upload Part request.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -1523,7 +1534,7 @@ a|
 Implemented with all Amazon S3 REST API behavior
 
 |===
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -1635,7 +1646,7 @@ The following request header is not supported and returns `XNotImplemented`
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1669,7 +1680,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1758,7 +1769,7 @@ If this occurs, an alarm is raised in the Grid Manager on Total Events (SMTT). T
 
 A tenant can trigger the failed replication or notification by updating the object's metadata or tags. A tenant can resubmit the existing values to avoid making unwanted changes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1769,6 +1780,7 @@ The StorageGRID system supports all standard S3 REST API error responses that ap
 
 === Supported S3 API error codes
 
+[options="header"]
 |===
 | Name| HTTP status
 a|
@@ -1927,6 +1939,7 @@ a|
 
 === StorageGRID custom error codes
 
+[options="header"]
 |===
 | Name| Description| HTTP status
 a|

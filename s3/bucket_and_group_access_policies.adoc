@@ -11,7 +11,7 @@ summary: ''
 [.lead]
 StorageGRID uses the Amazon Web Services (AWS) policy language to allow S3 tenants to control access to buckets and objects within those buckets. The StorageGRID system implements a subset of the S3 REST API policy language. Access policies for the S3 API are written in JSON.
 
-*Related information*
+.Related information
 
 link:bucket_and_group_access_policies.md#[S3 bucket policy examples]
 
@@ -38,6 +38,7 @@ Policy statements are built using this structure to specify permissions: Grant <
 
 Each policy element is used for a specific function:
 
+[options="header"]
 |===
 | Element| Description
 a|
@@ -110,7 +111,7 @@ In the following example, the statement is using the Effect, Principal, Action, 
 
 The bucket policy has a size limit of 20,480 bytes, and the group policy has a size limit of 5,120 bytes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
@@ -176,7 +177,7 @@ In policy statements, you can use the Resource element to specify the bucket or 
 
 * The resource value can specify a bucket that does not yet exist when a group policy is created.
 
-*Related information*
+.Related information
 
 link:bucket_and_group_access_policies.md#[Specifying variables in a policy]
 
@@ -243,6 +244,7 @@ The tables lists the permissions that apply to buckets and the permissions that 
 
 === Permissions that apply to buckets
 
+[options="header"]
 |===
 | Permissions| S3 REST API operations| Custom for StorageGRID
 a|
@@ -497,6 +499,7 @@ a|
 
 === Permissions that apply to objects
 
+[options="header"]
 |===
 | Permissions| S3 REST API operations| Custom for StorageGRID
 a|
@@ -664,7 +667,7 @@ Possible settings for this permission include:
 
 IMPORTANT: If the current S3 policy allows overwrite, and the PutOverwriteObject permission is set to Deny, the client cannot overwrite an object's data, user-defined metadata, or object tagging. In addition, if the *Prevent Client Modification* check box is selected (*Configuration* > *Grid Options*), that setting overrides the setting of the PutOverwriteObject permission.
 
-*Related information*
+.Related information
 
 link:bucket_and_group_access_policies.md#[S3 group policy examples]
 
@@ -702,6 +705,7 @@ Condition operators are categorized as follows:
 * IP address
 * Null check
 
+[options="header"]
 |===
 | Condition operators| Description
 a|
@@ -772,6 +776,7 @@ Checks if a condition key is present in the current request context.
 
 === Supported condition keys
 
+[options="header"]
 |===
 | Category| Applicable condition keys| Description
 a|
@@ -830,6 +835,7 @@ In this example, the variable `${aws:username}` is part of the condition value i
 		...
 ----
 
+[options="header"]
 |===
 | Variable| Description
 a|
@@ -867,6 +873,7 @@ Special character. Uses the character as a literal $ character.
 [.lead]
 Sometimes a policy can grant permissions that are dangerous for security or dangerous for continued operations, such as locking out the root user of the account. The StorageGRID S3 REST API implementation is less restrictive during policy validation than Amazon, but equally strict during policy evaluation.
 
+[options="header"]
 |===
 | Policy description| Policy type| Amazon behavior| StorageGRID behavior
 a|
@@ -987,7 +994,7 @@ PUT#2 -------> OK
 PUT#1 -------> PUT#2 ---X (denied)
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1205,7 +1212,7 @@ In this example, the `Deny` Effect for PutOverwriteObject and DeleteObject ensur
 }
 ----
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
 
@@ -1296,7 +1303,7 @@ In this example, members of the group are only permitted to list and access thei
 }
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
