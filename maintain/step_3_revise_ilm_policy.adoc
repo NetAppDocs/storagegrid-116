@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_3_revise_ilm_policy.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 3 \(Revise ILM Policy\) of the Decommission Site wizard, you can determine if the site is referred to by the active ILM policy.'
 ---
 = Step 3: Revise ILM Policy
@@ -95,13 +95,9 @@ IMPORTANT: You must confirm that the ILM rules are in the correct order. When th
 
 . Ingest test objects, and simulate the proposed policy to ensure that the correct rules are applied.
 +
-CAUTION:
+CAUTION: Errors in an ILM policy can cause unrecoverable data loss. Carefully review and simulate the policy before activating it to confirm that it will work as intended.
 +
-Errors in an ILM policy can cause unrecoverable data loss. Carefully review and simulate the policy before activating it to confirm that it will work as intended.
-+
-CAUTION:
-+
-When you activate a new ILM policy, StorageGRID uses it to manage all objects, including existing objects and newly ingested objects. Before activating a new ILM policy, review any changes to the placement of existing replicated and erasure-coded objects. Changing an existing object's location might result in temporary resource issues when the new placements are evaluated and implemented.
+CAUTION: When you activate a new ILM policy, StorageGRID uses it to manage all objects, including existing objects and newly ingested objects. Before activating a new ILM policy, review any changes to the placement of existing replicated and erasure-coded objects. Changing an existing object's location might result in temporary resource issues when the new placements are evaluated and implemented.
 
 . Activate the new policy.
 +

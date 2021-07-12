@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_6_monitor_decommission.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 6 \(Monitor Decommission\) of the Decommission Site page wizard, you can monitor the progress as the site is removed.'
 ---
 = Step 6: Monitor Decommission
@@ -39,6 +39,7 @@ NOTE: Download the Recovery Package as soon as possible to ensure you can recove
  .. Download the `.zip` file.
 +
 See the instructions for downloading the Recovery Package.
+
 +
 NOTE: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
@@ -56,85 +57,70 @@ image::../media/decommission_site_step_6_storage_node.png[Decommission Site Step
 +
 If you are monitoring the progress of a connected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
+[cols=1a,1a options="header"]
 |===
 | Stage| Estimated duration
-a|
-Pending
-a|
-Minute or less
-a|
-Wait for Locks
-a|
-Minutes
-a|
-Prepare Task
-a|
-Minute or less
-a|
-Marking LDR Decommissioned
-a|
-Minutes
-a|
-Decommissioning Replicated and Erasure Coded Data
-a|
-Hours, days, or weeks based on the amount of data    *Note:* If you need to perform other maintenance activities, you can pause the site decommission during this stage.
-a|
-LDR Set State
-a|
-Minutes
-a|
-Flush Audit Queues
-a|
-Minutes to hours, based on the number of messages and network latency.
-a|
-Complete
-a|
-Minutes
+
+|Pending
+|Minute or less
+
+|Wait for Locks
+|Minutes
+
+|Prepare Task
+|Minute or less
+
+|Marking LDR Decommissioned
+|Minutes
+
+|Decommissioning Replicated and Erasure Coded Data
+|Hours, days, or weeks based on the amount of data
+*Note*: If you need to perform other maintenance activities, you can pause the site decommission during this stage.
+
+|LDR Set State
+|Minutes
+
+|Flush Audit Queues
+|Minutes to hours, based on the number of messages and network latency.
+
+|Complete
+|Minutes
 |===
+
 If you are monitoring the progress of a disconnected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
+[cols=1a,1a options="header"]
 |===
 | Stage| Estimated duration
-a|
-Pending
-a|
-Minute or less
-a|
-Wait for Locks
-a|
-Minutes
-a|
-Prepare Task
-a|
-Minute or less
-a|
-Disable External Services
-a|
-Minutes
-a|
-Certificate Revocation
-a|
-Minutes
-a|
-Node Unregister
-a|
-Minutes
-a|
-Storage Grade Unregister
-a|
-Minutes
-a|
-Storage Group Removal
-a|
-Minutes
-a|
-Entity Removal
-a|
-Minutes
-a|
-Complete
-a|
-Minutes
+|Pending
+|Minute or less
+
+|Wait for Locks
+|Minutes
+
+|Prepare Task
+|Minute or less
+
+|Disable External Services
+|Minutes
+
+|Certificate Revocation
+|Minutes
+
+|Node Unregister
+|Minutes
+
+|Storage Grade Unregister
+|Minutes
+
+|Storage Group Removal
+|Minutes
+
+|Entity Removal
+|Minutes
+
+|Complete
+|Minutes
 |===
 
 . After all nodes have reached the Complete stage, wait for the remaining site decommission operations to complete.

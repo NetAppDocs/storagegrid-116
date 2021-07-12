@@ -1,7 +1,7 @@
 ---
 permalink: maintain/reviewing_ilm_policy_and_storage_configuration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you plan to decommission a Storage Node, you should review your StorageGRID system’s ILM policy before starting the decommissioning process.'
 ---
 = Reviewing the ILM policy and storage configuration
@@ -28,22 +28,19 @@ NOTE: An ILM policy that cannot be satisfied will lead to backlogs and alarms, a
 
 Verify that the proposed topology that will result from the decommissioning process satisfies the ILM policy by assessing the factors listed in the table.
 
+[cols="1a,2a" options="header"]
 |===
 | Area to assess| Notes
-a|
-Available capacity
-a|
-Will there be enough storage capacity to accommodate all of the object data stored in the StorageGRID system, including the permanent copies of object data currently stored on the Storage Node to be decommissioned?Will there be enough capacity to handle the anticipated growth in stored object data for a reasonable interval of time after decommissioning is complete?
+|Available capacity
+|Will there be enough storage capacity to accommodate all of the object data stored in the StorageGRID system, including the permanent copies of object data currently stored on the Storage Node to be decommissioned?Will there be enough capacity to handle the anticipated growth in stored object data for a reasonable interval of time after decommissioning is complete?
 
-a|
-Location of storage
-a|
-If enough capacity remains in the StorageGRID system as a whole, is the capacity in the right locations to satisfy the StorageGRID system's business rules?
-a|
-Storage type
-a|
-Will there be enough storage of the appropriate type after decommissioning is complete? For example, ILM rules might dictate that content be moved from one type of storage to another as content ages. If so, you must ensure that enough storage of the appropriate type is available in the final configuration of the StorageGRID system.
+|Location of storage
+|If enough capacity remains in the StorageGRID system as a whole, is the capacity in the right locations to satisfy the StorageGRID system's business rules?
+
+|Storage type
+|Will there be enough storage of the appropriate type after decommissioning is complete? For example, ILM rules might dictate that content be moved from one type of storage to another as content ages. If so, you must ensure that enough storage of the appropriate type is available in the final configuration of the StorageGRID system.
 |===
+
 .Related information
 
 xref:consolidating_storage_nodes.adoc[Consolidating Storage Nodes]
