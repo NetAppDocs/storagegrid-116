@@ -24,10 +24,13 @@ As required, you can increase or decrease the timeout period by setting the GUI 
 
 If single sign-on (SSO) is enabled and a user's browser session times out, the system behaves as if the user clicked *Sign Out* manually. The user must reenter their SSO credentials to access StorageGRID again.
 
+[NOTE]
+====
 User session timeout can also be controlled by the following:
 
 * A separate, non-configurable StorageGRID timer, which is included for system security. By default, each user's authentication token expires 16 hours after the user signs in. When a user's authentication expires, that user is automatically signed out, even if the value for the GUI Inactivity Timeout has not been reached. To renew the token, the user must sign back in.
 * Timeout settings for the identity provider, assuming SSO is enabled for StorageGRID.
+====
 
 .Steps
 . Select *Configuration* > *System Settings* > *Display Options*.
