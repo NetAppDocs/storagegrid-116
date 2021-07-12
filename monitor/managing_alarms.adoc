@@ -49,6 +49,7 @@ link:managing_alarms.md#[Disabling Global Custom alarms (legacy system)]
 [.lead]
 A legacy alarm is triggered when a StorageGRID attribute reaches a threshold value that evaluates to true against a combination of alarm class (Default or Global Custom) and alarm severity level.
 
+[options="header"]
 |===
 | Icon| Color| Alarm severity| Meaning
 a|
@@ -102,6 +103,7 @@ You can use this example to understand how Global Custom alarms and Default alar
 
 For the following example, an attribute has a Global Custom alarm and a Default alarm defined and enabled as shown in the following table.
 
+[options="header"]
 |===
 | Global Custom alarm threshold (enabled)| Default alarm threshold (enabled)
 a|
@@ -311,6 +313,7 @@ Specify four characters or use wildcards (for example, A??? or AB*). Asterisks (
 The Default alarm is copied to the Global Custom alarms table.
 . Make any necessary changes to the Global Custom alarms settings:
 +
+[options="header"]
 |===
 | Heading| Description
 a|
@@ -321,7 +324,6 @@ a|
 Attribute
 a|
 Select the name and code of the attribute being monitored from the list of all attributes applicable to the selected service or component.
-+
 To display information about the attribute, click *Info*image:../media/icon_nms_info.gif[information icon] next to the attribute's name.
 a|
 Severity
@@ -347,15 +349,13 @@ a|
 Value
 a|
 The alarm's threshold value used to test against the attribute's actual value using the operator.
-+
 The entry can be a single number, a range of numbers specified with a colon (1:3), or a comma-delineated list of numbers and ranges.
 a|
 Additional Recipients
 a|
 A supplementary list of email addresses to be notified when the alarm is triggered. This is in addition to the mailing list configured on the *Alarms* > *Email Setup* page. Lists are comma delineated. 
 
-\r\n+\r\n*Note:* Mailing lists require SMTP server setup in order to operate. Before adding mailing lists, confirm that SMTP is configured.
-+
+*Note:* Mailing lists require SMTP server setup in order to operate. Before adding mailing lists, confirm that SMTP is configured.
 Notifications for Custom alarms can override notifications from Global Custom or Default alarms.
 a|
 Actions
@@ -396,9 +396,7 @@ You can disable one of the legacy Default alarms for the entire system.
 .About this task
 Disabling an alarm for an attribute that currently has an alarm triggered does not clear the current alarm. The alarm will be disabled the next time the attribute crosses the alarm threshold, or you can clear the triggered alarm.
 
-CAUTION:
-
-Do not disable any of the legacy alarms until you have completely transitioned to the new alert system. Otherwise, you might not detect an underlying problem until it has prevented a critical operation from completing.
+IMPORTANT: Do not disable any of the legacy alarms until you have completely transitioned to the new alert system. Otherwise, you might not detect an underlying problem until it has prevented a critical operation from completing.
 
 .Steps
 . Select *Support* > *Alarms (legacy)* > *Global Alarms*.
@@ -539,6 +537,7 @@ image::../media/email_server_settings.png[Email Server Settings]
 
 . Add the following SMTP mail server settings:
 +
+[options="header"]
 |===
 | Item| Description
 a|
@@ -597,6 +596,7 @@ image::../media/edit_email_templates.gif[Email Template page]
 
 . In the new row add the following:
 +
+[options="header"]
 |===
 | Item| Description
 a|
@@ -643,6 +643,7 @@ image::../media/email_lists_page.gif[Email Lists page]
 
 . In the new row, add the following:
 +
+[options="header"]
 |===
 | Item| Description
 a|

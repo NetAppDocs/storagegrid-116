@@ -59,6 +59,7 @@ image::../media/alert_rules_page.png[Alert Rules Page]
 
 . Review the information in the alert rules table:
 +
+[options="header"]
 |===
 | Column header| Description
 a|
@@ -131,6 +132,7 @@ If an alert rule is disabled, its expressions are not evaluated and no alerts ar
 
 . Enter the following information:
 +
+[options="header"]
 |===
 | Field| Description
 a|
@@ -144,7 +146,7 @@ A description of the problem that is occurring.     The description is the alert
 a|
 Recommended Actions
 a|
-Optionally, the recommended actions to take when this alert is triggered.     Enter recommended actions as plain text (no formatting codes). Recommended actions for alert rules can be between 0 and 1,024 characters.
+Optionally, the recommended actions to take when this alert is triggered. Enter recommended actions as plain text (no formatting codes). Recommended actions for alert rules can be between 0 and 1,024 characters.
 |===
 
 . In the Conditions section, enter a Prometheus expression for one or more of the alert severity levels.
@@ -223,6 +225,7 @@ IMPORTANT: In general, disabling a default alert rule is not recommended. If an 
 +
 NOTE: You cannot edit this information for default alert rules.
 +
+[options="header"]
 |===
 | Field| Description
 a|
@@ -407,6 +410,7 @@ The Email (SMTP) Server, Transport Layer Security (TLS), Email Addresses, and Fi
 +
 If your SMTP server requires authentication, you must provide both a username and a password. You must also require TLS and provide a CA certificate.
 +
+[options="header"]
 |===
 | Field| Enter
 a|
@@ -431,7 +435,7 @@ image:../media/alerts_email_smtp_server.png[Alerts Email SMTP Server]
 . In the Email Addresses section, enter email addresses for the sender and for each recipient.
  .. For the *Sender Email Address*, specify a valid email address to use as the From address for alert notifications.
 +
-For example: `storagegrid-alerts@example.com`
+For example: `_storagegrid-alerts@example.com_`
 
  .. In the Recipients section, enter an email address for each email list or person who should receive an email when an alert occurs.
 +
@@ -460,6 +464,7 @@ NOTE: If you need to edit the email setup, click the pencil icon to update this 
 image::../media/alerts_email_tls.png[Alerts Email TLS]
 . In the Filters section, select which alert severity levels should result in email notifications, unless the rule for a specific alert has been silenced.
 +
+[options="header"]
 |===
 | Severity| Description
 a|
@@ -510,6 +515,7 @@ Email notifications include the following information:
 
 image::../media/alerts_email_notification.png[Alerts Email Notification]
 
+[options="header"]
 |===
 | Callout| Description
 a|
@@ -544,6 +550,7 @@ To prevent an excessive number of email notifications from being sent when alert
 
 Refer to the following table for examples of how StorageGRID groups multiple alerts in email notifications.
 
+[options="header"]
 |===
 | Behavior| Example
 a|
@@ -649,6 +656,7 @@ image::../media/alerts_create_silence.png[Alerts > Create Silence]
 
 . Select or enter the following information:
 +
+[options="header"]
 |===
 | Field| Description
 a|
@@ -663,8 +671,7 @@ Optionally, a description of the silence. For example, describe the purpose of t
 a|
 Duration
 a|
-How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years). 
-+   
+How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years).   
 *Note:* You should not silence an alert rule for an extended amount of time. If an alert rule is silenced, you might not detect an underlying problem until it prevents a critical operation from completing. However, you might need to use an extended silence if an alert is triggered by a specific, intentional configuration, such as might be the case for the *Services appliance link down* alerts and the *Storage appliance link down* alerts.
 a|
 Severity
@@ -674,13 +681,13 @@ a|
 Nodes
 a|
 Which node or nodes you want this silence to apply to. You can suppress an alert rule or all rules on the entire grid, a single site, or a single node. If you select the entire grid, the silence applies to all sites and all nodes. If you select a site, the silence applies only to the nodes at that site.
-+
 *Note:* You cannot select more than one node or more than one site for each silence. You must create additional silences if you want to suppress the same alert rule on more than one node or more than one site at one time.
 |===
 
 . Click *Save*.
 . If you want to modify or end a silence before it expires, you can edit or remove it.
 +
+[options="header"]
 |===
 | Option| Description
 a|
