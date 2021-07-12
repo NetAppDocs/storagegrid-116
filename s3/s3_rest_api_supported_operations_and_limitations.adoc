@@ -236,8 +236,7 @@ This operation creates a new bucket. By creating the bucket, you become the buck
  ** Must not look like a text-formatted IP address.
  ** Should not use periods in virtual hosted style requests. Periods will cause problems with server wildcard certificate verification.
 * By default, buckets are created in the `us-east-1` region; however, you can use the ``LocationConstraint``request element in the request body to specify a different region. When using the `LocationConstraint` element, you must specify the exact name of a region that has been defined using the Grid Manager or the Grid Management API. Contact your system administrator if you do not know the region name you should use.
-+
-NOTE: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
+*Note*: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
 
 * You can include the `x-amz-bucket-object-lock-enabled` request header to create a bucket with S3 Object Lock enabled.
 +
@@ -276,7 +275,7 @@ StorageGRID does not support these actions:
 
 To understand how the Expiration action in a bucket lifecycle interacts with ILM placement instructions, see "`How ILM operates throughout an object's life`" in the instructions for managing objects with information lifecycle management.
 
-NOTE: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
+*Note*: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
 
 a|
 PUT Bucket notification
@@ -635,7 +634,7 @@ To remove a specific version, the requestor must be the bucket owner and use the
 * If an object is deleted without the `versionId` subresource on a version enabled bucket, it results in the generation of a delete marker. The `versionId` for the delete marker is returned using the `x-amz-version-id` response header, and the `x-amz-delete-marker` response header is returned set to `true`.
 * If an object is deleted without the `versionId` subresource on a version suspended bucket, it results in a permanent deletion of an already existing 'null' version or a 'null' delete marker, and the generation of a new 'null' delete marker. The `x-amz-delete-marker` response header is returned set to `true`.
 
-NOTE: In certain cases, multiple delete markers might exist for an object.
+*note*: In certain cases, multiple delete markers might exist for an object.
 
 a|
 DELETE Multiple Objects
@@ -1086,7 +1085,7 @@ a|
 
 The value for `expiry-date` is set to some distant time in the future.
 
-NOTE: If the copy on the grid is not available (for example, a Storage Node is down), you must issue a POST Object restore request to restore the copy from the Cloud Storage Pool before you can successfully retrieve the object.
+*Note*: If the copy on the grid is not available (for example, a Storage Node is down), you must issue a POST Object restore request to restore the copy from the Cloud Storage Pool before you can successfully retrieve the object.
 
 a|
 Object transitioned to a non-retrievable state, and no copy exists on the grid
@@ -1171,7 +1170,7 @@ Object in Cloud Storage Pool but not yet transitioned to a non-retrievable state
 a|
 `200 OK` No changes are made.
 
-NOTE: Before an object has been transitioned to a non-retrievable state, you cannot change its `expiry-date`.
+*Note*: Before an object has been transitioned to a non-retrievable state, you cannot change its `expiry-date`.
 
 a|
 Object transitioned to a non-retrievable state
@@ -1181,7 +1180,7 @@ a|
 
 Optionally, use the `Tier` request element to determine how long the restore job will take to finish (`Expedited`, `Standard`, or `Bulk`). If you do not specify `Tier`, the `Standard` tier is used.
 
-IMPORTANT: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
+*Attention*: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
 
 a|
 Object in process of being restored from a non-retrievable state
@@ -1317,12 +1316,12 @@ The `REDUCED_REDUNDANCY` option is best used when the ILM rule that matches the 
 
 +
 Using the `REDUCED_REDUNDANCY` option is not recommended in other circumstances. `REDUCED_REDUNDANCY` increases the risk of object data loss during ingest. For example, you might lose data if the single copy is initially stored on a Storage Node that fails before ILM evaluation can occur.
-+
-IMPORTANT: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
-+
+
+*Attention*: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
 Specifying `REDUCED_REDUNDANCY` only affects how many copies are created when an object is first ingested. It does not affect how many copies of the object are made when the object is evaluated by the active ILM policy, and does not result in data being stored at lower levels of redundancy in the StorageGRID system.
-+
-NOTE: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
+
+*Note*: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
 
 ==== Request headers for server-side encryption
 
@@ -1333,7 +1332,7 @@ You can use the following request headers to encrypt an object with server-side 
 * *SSE-C*: Use all three of these headers if you want to encrypt the object with a unique key that you provide and manage.
  ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
  ** `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the new object.
- ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key.
+ ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key. 
 *Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
 +
@@ -1455,8 +1454,8 @@ This means that if the ILM rule uses the Strict option for ingest behavior, no a
 If you use server-side encryption, the request headers you provide depend on whether the source object is encrypted and on whether you plan to encrypt the target object.
 
 * If the source object is encrypted using a customer-provided key (SSE-C), you must include the following three headers in the PUT Object - Copy request, so the object can be decrypted and then copied:
- ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`: Specify `AES256`.
- ** `x-amz-copy-source​-server-side-encryption-customer-key`: Specify the encryption key you provided when you created the source object.
+ ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm` Specify `AES256`.
+ ** `x-amz-copy-source​-server-side-encryption-customer-key` Specify the encryption key you provided when you created the source object.
  ** `x-amz-copy-source​-server-side-encryption-customer-key-MD5`: Specify the MD5 digest you provided when you created the source object.
 * If you want to encrypt the target object (the copy) with a unique key that you provide and manage, include the following three headers:
  ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
