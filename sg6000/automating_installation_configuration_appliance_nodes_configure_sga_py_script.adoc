@@ -20,8 +20,7 @@ You can use the `configure-sga.py` script to automate many of the installation a
 * For all nodes other than the primary Admin Node, all Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * You have downloaded the `configure-sga.py` file. The file is included in the installation archive, or you can access it by clicking *Help* > *Appliance Installation Script* in the StorageGRID Appliance Installer.
 +
-NOTE: This procedure is for advanced users with some experience using command-line interfaces. Alternatively, you can also use the StorageGRID Appliance Installer to automate the configuration.
-+
+NOTE: This procedure is for advanced users with some experience using command-line interfaces. Alternatively, you can also use the StorageGRID Appliance Installer to automate the configuration. +
 xref:automating_appliance_configuration_using_storagegrid_appliance_installer.adoc[Automating appliance configuration using the StorageGRID Appliance Installer]
 
 .Steps
@@ -40,6 +39,7 @@ The `configure-sga.py` script uses five subcommands:
 ** `install` for starting a StorageGRID installation
 ** `monitor` for monitoring a StorageGRID installation
 ** `reboot` for rebooting the appliance
+
 +
 If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the `--help` option you will get a different help text providing more detail on the options available within that subcommand: +
 `configure-sga.py _subcommand_ --help`
@@ -130,7 +130,7 @@ Connecting to +https://10.224.2.30:8443+ (Checking version and connectivity.)
 . If you need to change any of the values in the current configuration, use the `configure` subcommand to update them. For example, if you want to change the IP address that the appliance uses for connection to the primary Admin Node to `172.16.2.99`, enter the following: +
 `configure-sga.py configure --admin-ip 172.16.2.99 _SGA-INSTALL-IP_`
 
-. If you want to back up the appliance configuration to a JSON file, use the advanced and `backup-file` subcommands. For example, if you want to back up the configuration of an appliance with IP address `_SGA-INSTALL-IP_` to a file named `appliance-SG1000.json`, enter the following: +
+. If you want to back up the appliance configuration to a JSON file, use the `advanced` and `backup-file` subcommands. For example, if you want to back up the configuration of an appliance with IP address `_SGA-INSTALL-IP_` to a file named `appliance-SG1000.json`, enter the following: +
 `configure-sga.py advanced --backup-file appliance-SG1000.json _SGA-INSTALL-IP_`
 +
 The JSON file containing the configuration information is written to the same directory you executed the script from.

@@ -28,7 +28,7 @@ IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID applia
 
 . Access SANtricity System Manager using one of these methods:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
- ** Use the Grid Manager and select *Nodes* > ``*appliance Storage Node*`` > *SANtricity System Manager*
+ ** Use the Grid Manager and select *Nodes* > `*_appliance Storage Node_*` > *SANtricity System Manager*
 +
 NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: +
 `*https://_Storage_Controller_IP_*`
@@ -51,7 +51,9 @@ In this example:
 +
 Select *View drives* in the Associated Drives column to display where these drives are installed in your storage appliance.
 
++
  .. Close the Upgrade Drive Firmware window.
+
 . Download and prepare the available drive firmware upgrade:
  .. Under Drive Firmware upgrade, select *NetApp Support*.
  .. On the NetApp Support web site, select the *Downloads* tab, and then select *E-Series Disk Drive Firmware*.
@@ -68,7 +70,8 @@ image:../media/storagegrid_drive_firmware_download.png[E-Series Disk Firmware pa
  .. From SANtricity System Manager, under Drive Firmware upgrade, select *Begin Upgrade*.
  .. Select *Browse*, and select the new drive firmware files that you downloaded from the Support site.
 +
-Drive firmware files have a filename similar to + `D_HUC101212CSS600_30602291_MS01_2800_0002.dlp`.
+Drive firmware files have a filename similar to +
+`D_HUC101212CSS600_30602291_MS01_2800_0002.dlp`.
 +
 You can select up to four drive firmware files, one at a time. If more than one drive firmware file is compatible with the same drive, you get a file conflict error. Decide which drive firmware file you want to use for the upgrade and remove the other one.
 

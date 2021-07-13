@@ -92,20 +92,20 @@ You can scroll through the list of nodes by using the left and right arrows at t
 +
 IMPORTANT: Do not approve the SANtricity OS upgrade for an appliance storage node unless you are sure the node is ready to be stopped and rebooted.When the SANtricity OS upgrade is approved on a node, the services on that node are stopped. Later, when the node is upgraded, the appliance node is rebooted. These operations might cause service interruptions for clients that are communicating with the node.
 
- ** Click either of the *Approve All* buttons to add all Storage Nodes to the SANtricity OS upgrade queue.
++
+** Click either of the *Approve All* buttons to add all Storage Nodes to the SANtricity OS upgrade queue.
 +
 NOTE: If the order in which nodes are upgraded is important, approve nodes or groups of nodes one at a time and wait until the upgrade is complete on each node before approving the next node(s).
 
- ** Click one or more *Approve* buttons to add one or more nodes to the SANtricity OS upgrade queue.
-
 +
-NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
-
+** Click one or more *Approve* buttons to add one or more nodes to the SANtricity OS upgrade queue.
 +
 NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
 
 +
 After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. +
+
++
 For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column: +
 
 *** Storage Node was already upgraded.

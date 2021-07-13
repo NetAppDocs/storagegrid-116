@@ -35,7 +35,7 @@ NOTE: This procedure will automatically upgrade the NVSRAM to the most recent ve
 +
 Be sure to choose the correct SANtricity OS version for the storage controllers in your appliance. The SG6060 uses the E2800 controller, and the SGF6024 uses the EF570 controller.
 +
-https://mysupport.netapp.com/site/products/all/details/eseries-santricityos/downloads-tab[NetApp Downloads: SANtricity OS]
+https://mysupport.netapp.com/site/products/all/details/eseries-santricityos/downloads-tab[NetApp Downloads: SANtricity OS^]
 
 . Sign in to the Grid Manager using a supported browser.
 . Select *Maintenance*. Then, in the System section of the menu, select *Software Update*.
@@ -94,22 +94,25 @@ You can scroll through the list of nodes by using the left and right arrows at t
 +
 IMPORTANT: Do not approve the SANtricity OS upgrade for an appliance storage node unless you are sure the node is ready to be stopped and rebooted.When the SANtricity OS upgrade is approved on a node, the services on that node are stopped. Later, when the node is upgraded, the appliance node is rebooted. These operations might cause service interruptions for clients that are communicating with the node.
 
++
 ** Click either of the *Approve All* buttons to add all Storage Nodes to the SANtricity OS upgrade queue.
 +
 NOTE: If the order in which nodes are upgraded is important, approve nodes or groups of nodes one at a time and wait until the upgrade is complete on each node before approving the next node(s).
 
++
 ** Click one or more *Approve* buttons to add one or more nodes to the SANtricity OS upgrade queue.
-
 +
 NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
 
 +
 After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. +
+
++
 For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column:
 
- ** Storage Node was already upgraded.
- ** SANtricity OS upgrade is not applicable to this node.
- ** SANtricity OS file is not compatible with this node.
+*** Storage Node was already upgraded.
+*** SANtricity OS upgrade is not applicable to this node.
+*** SANtricity OS file is not compatible with this node.
 
 +
 The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message. +
@@ -140,6 +143,6 @@ NOTE: For any nodes with a status of Needs Attention, use maintenance mode to pe
 
 .Related information
 
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
 
 xref:upgrading_santricity_os_on_storage_controllers_using_maintenance_mode_sg6000.adoc[Upgrading SANtricity OS on the storage controllers using maintenance mode]

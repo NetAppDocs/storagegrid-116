@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/replacing_sg6000_cn_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to replace the SG6000-CN controller if it is not functioning optimally or if it has failed.'
 ---
 = Replacing the SG6000-CN controller
@@ -39,8 +39,7 @@ The green Cache Active LED on the back of the E2800 controller is on when cached
 . If the StorageGRID networks attached to the controller use DHCP servers, update DNS/network and IP address settings.
  .. Locate the MAC address label on the front of the SG6000-CN controller, and determine the MAC address for the Admin Network port.
 +
-NOTE: The MAC address label lists the MAC address for the BMC management port.
-+
+NOTE: The MAC address label lists the MAC address for the BMC management port. +
 To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
 
  .. Ask your network administrator to associate the DNS/network and IP address for the controller you removed with the MAC address for the replacement controller.
@@ -62,7 +61,7 @@ IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step o
 +
 If the node controller IP address is not valid or is not in the expected range, reconfigure the IP address as described in the recovery and maintenance instructions.
 +
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance^]
 
 .Related information
 
