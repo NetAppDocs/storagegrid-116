@@ -70,7 +70,7 @@ The consistency control level being applied to the container. The following valu
 * *strong-site*: Guarantees read-after-write consistency for all client requests within a site.
 * *read-after-new-write*: Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees.
 +
-NOTE: If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, use the "`available`" level.
+*Note*: If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, use the "`available`" level.
 
 * *available* (eventual consistency for HEAD operations): Behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations. Offers higher availability for HEAD operations than "`read-after-new-write`" if Storage Nodes are unavailable.
 

@@ -15,7 +15,7 @@ StorageGRID supports the following Swift API endpoints: the info URL, the auth U
 
 You can determine the capabilities and limitations of the StorageGRID Swift implementation by issuing a GET request to the Swift base URL with the /info path.
 
-`\https://_FQDN_ | _Node IP_:_Swift Port_/info/`
+`https://_FQDN_ | _Node IP:Swift Port_/info/`
 
 In the request:
 
@@ -38,7 +38,7 @@ The StorageGRID implementation of Swift allows unauthenticated access to the inf
 A client can use the Swift auth URL to authenticate as a tenant account user.
 
 ----
-`\https://_FQDN_ | _Node IP_:_Swift Port_/auth/v1.0/`
+`https://_FQDN_ | _Node IP_:Swift Port_/auth/v1.0/`
 ----
 
 You must provide the tenant account ID, user name, and password as parameters in the `X-Auth-User` and `X-Auth-Key` request headers, as follows:
