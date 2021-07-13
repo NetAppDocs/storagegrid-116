@@ -51,7 +51,7 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 read-after-new-write
 a|
-(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees. *Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
 a|
 available (eventual consistency for HEAD operations)
@@ -109,7 +109,7 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 read-after-new-write
 a|
-(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees. *Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
 a|
 available (eventual consistency for HEAD operations)
@@ -853,7 +853,7 @@ Content-Length: 152
 a|
 RetentionPeriodMinutes
 a|
-The length of the retention period for objects added to this bucket, in minutes. The retention period starts when the object is ingested into the grid.*Attention:* When specifying a new value for RetentionPeriodMinutes, you must specify a value that is equal to or greater than the bucket's current retention period. After the bucket's retention period is set, you cannot decrease that value; you can only increase it.
+The length of the retention period for objects added to this bucket, in minutes. The retention period starts when the object is ingested into the grid. *Attention:* When specifying a new value for RetentionPeriodMinutes, you must specify a value that is equal to or greater than the bucket's current retention period. After the bucket's retention period is set, you cannot decrease that value; you can only increase it.
 
 a|
 LegalHold

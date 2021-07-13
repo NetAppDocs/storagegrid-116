@@ -15,15 +15,13 @@ StorageGRID supports the following Swift API endpoints: the info URL, the auth U
 
 You can determine the capabilities and limitations of the StorageGRID Swift implementation by issuing a GET request to the Swift base URL with the /info path.
 
-----
-https://FQDN \| Node_IP:Swift_Port/info/
-----
+`\https://_FQDN_ | _Node IP_:_Swift Port_/info/`
 
 In the request:
 
-* `FQDN` is the fully qualified domain name.
-* `Node_IP` is the IP address for the Storage Node or the Gateway Node on the StorageGRID network.
-* `Swift_Port` is the port number used for Swift API connections on the Storage Node or Gateway Node.
+* `_FQDN_` is the fully qualified domain name.
+* `_Node IP_` is the IP address for the Storage Node or the Gateway Node on the StorageGRID network.
+* `_Swift Port_` is the port number used for Swift API connections on the Storage Node or Gateway Node.
 
 For example, the following info URL would request information from a Storage Node with the IP address of 10.99.106.103 and using port 18083.
 
@@ -40,23 +38,23 @@ The StorageGRID implementation of Swift allows unauthenticated access to the inf
 A client can use the Swift auth URL to authenticate as a tenant account user.
 
 ----
-https://FQDN \| Node_IP:Swift_Port/auth/v1.0/
+`\https://_FQDN_ | _Node IP_:_Swift Port_/auth/v1.0/`
 ----
 
 You must provide the tenant account ID, user name, and password as parameters in the `X-Auth-User` and `X-Auth-Key` request headers, as follows:
 
 ----
-X-Auth-User: Tenant_Account_ID:Username
+X-Auth-User: `_Tenant_Account_ID:Username_`
 ----
 
 ----
-X-Auth-Key: Password
+X-Auth-Key: _Password_
 ----
 
 In the request headers:
 
-* `Tenant_Account_ID` is the account ID assigned by StorageGRID when the Swift tenant was created. This is the same tenant account ID used on the Tenant Manager sign-in page.
-* `Username` is the name of a tenant user that has been created in the Tenant Manager. This user must belong to a group that has the Swift Administrator permission. The tenant's root user cannot be configured to use the Swift REST API.
+* `_Tenant_Account_ID_` is the account ID assigned by StorageGRID when the Swift tenant was created. This is the same tenant account ID used on the Tenant Manager sign-in page.
+* `_Username_` is the name of a tenant user that has been created in the Tenant Manager. This user must belong to a group that has the Swift Administrator permission. The tenant's root user cannot be configured to use the Swift REST API.
 +
 If Identity Federation is enabled for the tenant account, provide the username and password of the federated user from the LDAP server. Alternatively, provide the LDAP user's domain name. For example:
 +
@@ -83,7 +81,7 @@ Tokens are generated for a specific tenant account. A valid token for one accoun
 A client application can issue Swift REST API calls to perform supported account, container, and object operations against a Gateway Node or Storage Node. Storage requests are addressed to the storage URL returned in the authentication response. The request must also include the X-Auth-Token header and value returned from the auth request.
 
 ----
-https://FQDN \| IP:Swift_Port/v1/Tenant_Account_ID
+`\https://_FQDN_ | _IP:Swift_Port/v1/Tenant_Account_ID_`
 [/container][/object]
 X-Auth-Token: token
 ----
