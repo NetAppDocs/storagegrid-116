@@ -57,7 +57,7 @@ image::../media/decommission_site_step_6_storage_node.png[Decommission Site Step
 +
 If you are monitoring the progress of a connected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
-[cols=1a,1a options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Stage| Estimated duration
 
@@ -75,6 +75,7 @@ If you are monitoring the progress of a connected site decommission, refer to th
 
 |Decommissioning Replicated and Erasure Coded Data
 |Hours, days, or weeks based on the amount of data
+
 *Note*: If you need to perform other maintenance activities, you can pause the site decommission during this stage.
 
 |LDR Set State
@@ -86,10 +87,10 @@ If you are monitoring the progress of a connected site decommission, refer to th
 |Complete
 |Minutes
 |===
-
++
 If you are monitoring the progress of a disconnected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
-[cols=1a,1a options="header"]
+[cols="1a,1a" options="header"]
 |===
 | Stage| Estimated duration
 |Pending
@@ -122,7 +123,7 @@ If you are monitoring the progress of a disconnected site decommission, refer to
 |Complete
 |Minutes
 |===
-
+[start=4]
 . After all nodes have reached the Complete stage, wait for the remaining site decommission operations to complete.
  ** During the *Repair Cassandra* step, StorageGRID makes any necessary repairs to the Cassandra clusters that remain in your grid. These repairs might take several days or more, depending on how many Storage Nodes remain in your grid.
 +
@@ -140,7 +141,9 @@ image::../media/decommission_site_step_6_remove_configuration.png[Decommission S
 +
 image::../media/decommission_site_success_message.png[Decommission Site Success Message]
 
-Complete these steps after you complete the site decommission procedure:
+.After you finish
+
+Complete these tasks after you complete the site decommission procedure:
 
 * Ensure that the drives of all Storage Nodes in the decommissioned site are wiped clean. Use a commercially available data wiping tool or service to permanently and securely remove data from the drives.
 * If the site included one or more Admin Nodes and single sign-on (SSO) is enabled for your StorageGRID system, remove all relying party trusts for the site from Active Directory Federation Services (AD FS).

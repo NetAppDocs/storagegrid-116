@@ -1,7 +1,7 @@
 ---
 permalink: maintain/restoring_network_connectivity_for_isolated_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Under certain circumstances, such as site- or grid-wide IP address changes, one or more groups of nodes might not be able to contact the rest of the grid.'
 ---
 = Restoring network connectivity for isolated nodes
@@ -24,16 +24,18 @@ To resolve the isolation issue, you run a command line utility on each isolated 
 
 NOTE: If the multicast Domain Name System (mDNS) is disabled in the networks, the command line utility might have to be run on each isolated node.
 
-. Access the node and check /var/local/log/dynip.log for isolation messages.
+. Access the node and check `/var/local/log/dynip.log` for isolation messages.
++
+For example:
 +
 ----
- [2018-01-09T19:11:00.545] UpdateQueue - WARNING -- Possible isolation, no contact with other nodes.
+[2018-01-09T19:11:00.545] UpdateQueue - WARNING -- Possible isolation, no contact with other nodes.
 If this warning persists, manual action may be required.
 ----
 +
 If you are using the VMware console, it will contain a message that the node might be isolated.
 +
-On Linux deployments, isolation messages would appear in /var/log/storagegrid/node/<nodename>.log files.
+On Linux deployments, isolation messages would appear in `/var/log/storagegrid/node/<nodename>.log` files.
 
 . If the isolation messages are recurring and persistent, run the following command:
 +
@@ -54,4 +56,5 @@ Local node found on remote node. Update complete.
  ** The node's services have started.
  ** The status of the Dynamic IP Service is "`Running`" after you run the `storagegrid-status` command.
  ** In the Grid Topology tree, the node no longer appears disconnected from the rest of the grid.
-*Attention:* If running the `add_node_ip.py` command does not solve the problem, there could be other networking issues that need to be resolved.
+
+IMPORTANT: If running the `add_node_ip.py` command does not solve the problem, there could be other networking issues that need to be resolved.

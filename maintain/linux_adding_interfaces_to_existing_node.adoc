@@ -1,7 +1,7 @@
 ---
 permalink: maintain/linux_adding_interfaces_to_existing_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you want to add an interface to a Linux-based node that you did not install initially, you must use this procedure.'
 ---
 = Linux: Adding interfaces to an existing node
@@ -23,8 +23,10 @@ To provide addressing information, you must use the Change IP tool. See the info
 
 xref:changing_nodes_network_configuration.adoc[Changing a node's network configuration]
 
+.Steps
+
 . Log in to the Linux server hosting the node that needs the new network assignment.
-. Edit the node configuration file at /etc/storagegrid/nodes/<node-name>.conf.
+. Edit the node configuration file at `/etc/storagegrid/nodes/<node-name>.conf`.
 +
 IMPORTANT: Do not specify any other network parameters, or a validation error will result.
 

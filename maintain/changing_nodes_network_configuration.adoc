@@ -1,7 +1,7 @@
 ---
 permalink: maintain/changing_nodes_network_configuration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can change the network configuration of one or more nodes using the Change IP tool. You can change the configuration of the Grid Network, or add, change, or remove the Admin or Client Networks.'
 ---
 = Changing a node's network configuration
@@ -60,6 +60,8 @@ image::../media/change_ip_tool_main_menu.png[screenshot showing welcome screen o
  ** *3*: Single node -- select by current IP
  ** *4*: All nodes at a site
  ** *5*: All nodes in the grid
++
+
 *Note:* If you want to update all nodes, allow "all" to remain selected.
 
 +
@@ -74,8 +76,10 @@ After you make your selection, the prompt shows the node name, network name (Gri
 
 +
 Editing the IP address, prefix length, gateway, or MTU of a DHCP-configured interface will change the interface to static. When you select to change an interface configured by DHCP, a warning is displayed to inform you that the interface will change to static.
+
 +
 Interfaces configured as `fixed` cannot be edited.
+
  .. To set a new value, enter it in the format shown for the current value.
  .. To leave the current value unchanged, press *Enter*.
  .. If the data type is `IP/mask`, you can delete the Admin or Client Network from the node by entering *d* or *0.0.0.0/0*.
@@ -88,6 +92,8 @@ Your changes are held until cleared or applied.
 image::../media/change_ip_tool_edit_ip_mask_sample_output.png[screenshot described by surrounding text]
 
  ** *6*: Shows edits in output that displays the full configuration. Changes are highlighted in green (additions) or red (deletions).
+
++
 *Note:* Certain command line interfaces might show additions and deletions using strikethrough formatting. Proper display depends on your terminal client supporting the necessary VT100 escape sequences.
 . Select option *7* to validate all changes.
 +
@@ -124,22 +130,22 @@ If you were unaware that the proposed changes require nodes to be restarted, you
 
 +
 When you select *apply* or *stage*, a new network configuration file is generated, provisioning is performed, and nodes are updated with new working information.
+
 +
 During provisioning, the output displays the status as updates are applied.
+
 +
 ----
 Generating new grid networking description file...
-----
-+
-----
+
 Running provisioning...
-----
-+
-----
+
 Updating grid network configuration on Name
 ----
+
 +
 After applying or staging changes, a new Recovery Package is generated as a result of the grid configuration change.
+
 . If you selected *stage*, follow these steps after provisioning is complete:
  .. Make the physical or virtual networking changes that are required.
 +

@@ -1,7 +1,7 @@
 ---
 permalink: maintain/configuring_ntp_servers.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can add, update, or remove network time protocol \(NTP\) servers to ensure that data is synchronized accurately between grid nodes in your StorageGRID system.'
 ---
 = Configuring NTP servers
@@ -32,7 +32,7 @@ The specified external NTP servers must use the NTP protocol. You must specify N
 
 NOTE: When specifying the external NTP source for a production-level StorageGRID installation, do not use the Windows Time (W32Time) service on a version of Windows earlier than Windows Server 2016. The time service on earlier versions of Windows is not sufficiently accurate and is not supported by Microsoft for use in high-accuracy environments, such as StorageGRID.
 
-https://support.microsoft.com/en-us/help/939322/support-boundary-to-configure-the-windows-time-service-for-high-accura[Support boundary to configure the Windows Time service for high-accuracy environments]
+https://support.microsoft.com/en-us/help/939322/support-boundary-to-configure-the-windows-time-service-for-high-accura[Support boundary to configure the Windows Time service for high-accuracy environments^]
 
 If you encounter problems with the stability or availability of the NTP servers originally specified during installation, you can update the list of external NTP sources that the StorageGRID system uses by adding additional servers, or updating or removing existing servers.
 
