@@ -15,14 +15,14 @@ Perform this procedure for each Admin Node in a StorageGRID deployment from whic
 
 * You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
 * You must have the CIFS Active Directory username and password.
-* You must have the Configuration.txt file (available in the SAID package).
+* You must have the `Configuration.txt` file (available in the SAID package).
 
 NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
 
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -52,7 +52,7 @@ If all services are not Running or Verified, resolve issues before continuing.
 
 . Set the authentication for Active Directory: `set-authentication`
 +
-In most deployments, you must set the authentication before adding the audit client. If authentication has already been set, an advisory message appears. If authentication has already been set, go to step <<STEP_C67DDAD13F434284B5A5089E2752E222,6>>.
+In most deployments, you must set the authentication before adding the audit client. If authentication has already been set, an advisory message appears. If authentication has already been set, go to the next step.
 
  .. When prompted for Workgroup or Active Directory installation: `ad`
  .. When prompted, enter the name of the AD domain (short domain name).
@@ -74,13 +74,13 @@ The CIFS configuration utility is displayed.
  .. If not already started, start the CIFS configuration utility: `config_cifs.rb`
  .. Join the domain: `join-domain`
  .. You are prompted to test if the Admin Node is currently a valid member of the domain. If this Admin Node has not previously joined the domain, enter: `no`
- .. When prompted, provide the Administrator's username: `administrator_username`
+ .. When prompted, provide the Administrator's username: `_administrator_username_`
 +
-where administrator_username is the CIFS Active Directory username, not the StorageGRID username.
+where `_administrator_username_` is the CIFS Active Directory username, not the StorageGRID username.
 
- .. When prompted, provide the Administrator's password: `administrator_password`
+ .. When prompted, provide the Administrator's password: `_administrator_password_`
 +
-were administrator_password is the CIFS Active Directory username, not the StorageGRID password.
+were `_administrator_password_` is the CIFS Active Directory username, not the StorageGRID password.
 
  .. When prompted, press *Enter*.
 +
@@ -143,11 +143,11 @@ or
 Optionally, if the StorageGRID deployment includes Admin Nodes at other sites, enable these audit shares as required:
 
  .. Remotely log in to a site's Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
- .. Repeat steps <<STEP_CBB85A1C30A94F4787F79B98C96FD936,4>> through <<STEP_4B0D0ABA168D4AD593EB45C17A7460AE,11>> to configure the audit shares for each Admin Node.
+ .. Repeat these steps to configure the audit shares for each Admin Node.
  .. Close the remote secure shell login to the Admin Node: `exit`
 
 . Log out of the command shell: `exit`

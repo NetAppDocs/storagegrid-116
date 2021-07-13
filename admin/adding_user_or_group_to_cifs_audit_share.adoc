@@ -1,7 +1,7 @@
 ---
 permalink: admin/adding_user_or_group_to_cifs_audit_share.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can add a user or group to a CIFS audit share that is integrated with AD authentication.'
 ---
 = Adding a user or group to a CIFS audit share
@@ -14,7 +14,7 @@ You can add a user or group to a CIFS audit share that is integrated with AD aut
 .What you'll need
 
 * You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
-* You must have the Configuration.txt file (available in the SAID package).
+* You must have the `Configuration.txt` file (available in the SAID package).
 
 .About this task
 
@@ -25,7 +25,7 @@ NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -57,7 +57,7 @@ If all services are not Running or Verified, resolve issues before continuing.
 +
 A numbered list of audit shares that have been configured is displayed.
 
-. When prompted, enter the number for the audit share (audit-export): `audit_share_number`
+. When prompted, enter the number for the audit share (audit-export): `_audit_share_number_`
 +
 You are asked if you would like to give a user or a group access to this audit share.
 
@@ -70,7 +70,7 @@ The user or group is added as read-only for the audit share both in the server's
 +
 The CIFS configuration utility is displayed.
 
-. Repeat steps <<STEP_AA0683DB8B6F4AEF8C93306889CCEBD8,5>> to <<STEP_718AE83AFD934B109C99DE404FBFBAB6,8>> for each user or group that has access to the audit share.
+. Repeat these steps for each user or group that has access to the audit share.
 . Optionally, verify your configuration: `validate-config`
 +
 The services are checked and displayed. You can safely ignore the following messages:
@@ -86,14 +86,14 @@ The services are checked and displayed. You can safely ignore the following mess
 
 . Close the CIFS configuration utility: `exit`
 . Determine if you need to enable additional audit shares, as follows:
- ** If the StorageGRID deployment is a single site, go to step <<STEP_3C45603B25804133B8FD7AA82E7AFC8E,14>>.
+ ** If the StorageGRID deployment is a single site, go to the next step.
  ** If the StorageGRID deployment includes Admin Nodes at other sites, enable these audit shares as required:
 
  .. Remotely log in to a site's Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
- .. Repeat steps <<STEP_8C53BBB661524E819C981DFA3EEC7D66,4>> through <<STEP_B2F91F358DE641418F1A446C955F8701,12>> to configure the audit shares for each Admin Node.
+ .. Repeat these steps to configure the audit shares for each Admin Node.
  .. Close the remote secure shell login to the remote Admin Node: `exit`
 . Log out of the command shell: `exit`

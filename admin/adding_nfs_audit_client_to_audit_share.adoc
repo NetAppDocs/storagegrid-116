@@ -1,7 +1,7 @@
 ---
 permalink: admin/adding_nfs_audit_client_to_audit_share.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'NFS audit clients are granted access to an audit share based on their IP address. Grant access to the audit share to a new NFS audit client by adding its IP address to the audit share.'
 ---
 = Adding an NFS audit client to an audit share
@@ -14,13 +14,13 @@ NFS audit clients are granted access to an audit share based on their IP address
 .What you'll need
 
 * You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
-* You must have the Configuration.txt file (available in the SAID package).
+* You must have the `Configuration.txt` file (available in the SAID package).
 * The audit client must be using NFS Version 3 (NFSv3).
 
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -42,10 +42,10 @@ When you are logged in as root, the prompt changes from `$` to `#`.
 
 . Enter: `add-ip-to-share`
 +
-A list of NFS audit shares enabled on the Admin Node is displayed. The audit share is listed as: /var/local/audit/export
+A list of NFS audit shares enabled on the Admin Node is displayed. The audit share is listed as: `/var/local/audit/export`
 
-. Enter the number of the audit share: `audit_share_number`
-. When prompted, enter the audit client's IP address or IP address range for the audit share: `client_IP_address`
+. Enter the number of the audit share: `_audit_share_number_`
+. When prompted, enter the audit client's IP address or IP address range for the audit share: `_client_IP_address_`
 +
 The audit client is added to the audit share.
 
@@ -53,7 +53,7 @@ The audit client is added to the audit share.
 +
 The NFS configuration utility is displayed.
 
-. Repeat from step <<STEP_C031405E18EF422EBCB1DC8C0AC8CD3D,3>> for each audit client that should be added to the audit share.
+. Repeat the steps for each audit client that should be added to the audit share.
 . Optionally, verify your configuration: `validate-config`
 +
 The services are checked and displayed.
@@ -63,18 +63,16 @@ The services are checked and displayed.
 The NFS configuration utility is displayed.
 
 . Close the NFS configuration utility: `exit`
-. If the StorageGRID deployment is a single site, go to step <<STEP_EE192A67A0F941229E4548D20E76E41B,11>>.
+. If the StorageGRID deployment is a single site, go to the next step.
 +
--- or --
-+
-Optionally, if the StorageGRID deployment includes Admin Nodes at other sites, enable these audit shares as required:
+Otherwise, if the StorageGRID deployment includes Admin Nodes at other sites, optionally enable these audit shares as required:
 
  .. Remotely log in to a site's Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
- .. Repeat steps <<STEP_0B2C788AB35347CDB4803E8FB39FA2BF,2>> through <<STEP_0F143B4A033E4CF48D052AAA64EF9C09,9>> to configure the audit shares for each Admin Node.
+ .. Repeat these steps to configure the audit shares for each Admin Node.
  .. Close the remote secure shell login to the remote Admin Node: `exit`
 
 . Log out of the command shell: `exit`
