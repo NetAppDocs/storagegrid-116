@@ -1,7 +1,7 @@
 ---
 permalink: maintain/archive_node_maintenance_for_tsm_middleware.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Archive Node maintenance for TSM middleware
@@ -15,12 +15,10 @@ If the server hosting the Archive Node fails, replace the server and follow the 
 
 == Fault with archival storage devices
 
-[.lead]
 If you determine that there is a fault with the archival storage device that the Archive Node is accessing through Tivoli Storage Manager (TSM), take the Archive Node offline to limit the number of alarms displayed in the StorageGRID system. You can then use the administrative tools of the TSM server or the storage device, or both, to further diagnose and resolve the problem.
 
 === Taking the Target component offline
 
-[.lead]
 Before undertaking any maintenance of the TSM middleware server that might result in it becoming unavailable to the Archive Node, take the Target component offline to limit the number of alarms that are triggered if the TSM middleware server becomes unavailable.
 
 .What you'll need
@@ -36,42 +34,40 @@ You must be signed in to the Grid Manager using a supported browser.
 
 == Tivoli Storage Manager administrative tools
 
-[.lead]
-The dsmadmc tool is the administrative console for the TSM middleware server that is installed on the Archive Node. You can access the tool by typing dsmadmc at the command line of the server. Log in to the administrative console using the same administrative user name and password that is configured for the ARC service.
+The dsmadmc tool is the administrative console for the TSM middleware server that is installed on the Archive Node. You can access the tool by typing `dsmadmc` at the command line of the server. Log in to the administrative console using the same administrative user name and password that is configured for the ARC service.
 
-The tsmquery.rb script was created to generate status information from dsmadmc in a more readable form. You can run this script by entering the following command at the command line of the Archive Node: /usr/local/arc/tsmquery.rb status
+The `tsmquery.rb` script was created to generate status information from dsmadmc in a more readable form. You can run this script by entering the following command at the command line of the Archive Node: `/usr/local/arc/tsmquery.rb status`
 
 For more information about the TSM administrative console dsmadmc, see the _Tivoli Storage Manager for Linux: Administratorʹs Reference_.
 
 == Object permanently unavailable
 
-[.lead]
 When the Archive Node requests an object from the Tivoli Storage Manager (TSM) server and the retrieval fails, the Archive Node retries the request after an interval of 10 seconds. If the object is permanently unavailable (for example, because the object is corrupted on tape), the TSM API has no way to indicate this to the Archive Node, so the Archive Node continues to retry the request.
 
 When this situation occurs, an alarm is triggered, and the value continues to increase. To see the alarm, select *Support* > *Tools* > *Grid Topology*. Then, select *Archive Node* > *ARC* > *Retrieve* > *Request Failures*.
 
-If the object is permanently unavailable, you must identify the object and then manually cancel the Archive Node's request, as described in the procedure "`Determining if objects are permanently unavailable`".
+If the object is permanently unavailable, you must identify the object and then manually cancel the Archive Node's request as described in the procedure, <<determining_objects_permanently_unavailable,Determining if objects are permanently unavailable>>.
 
 A retrieval can also fail if the object is temporarily unavailable. In this case, subsequent retrieval requests should eventually succeed.
 
 If the StorageGRID system is configured to use an ILM rule that creates a single object copy and that copy cannot be retrieved, the object is lost and cannot be recovered. However, you must still follow the procedure to determine if the object is permanently unavailable to "`clean up`" the StorageGRID system, to cancel the Archive Node's request, and to purge metadata for the lost object.
 
-.Related information
-
-link:archive_node_maintenance_for_tsm_middleware.md#[Determining if objects are permanently unavailable]
-
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
-
+[#determining_objects_permanently_unavailable]
 === Determining if objects are permanently unavailable
 
-[.lead]
 You can determine if objects are permanently unavailable by making a request using the TSM administrative console.
+
+.What you'll need
 
 * You must have specific access permissions.
 * You must have the `Passwords.txt` file.
 * You must know the IP address of an Admin Node.
 
+.About this task
+
 This example is provided for your information only; this procedure cannot help you identify all failure conditions that might result in unavailable objects or tape volumes. For information about TSM administration, see TSM Server documentation.
+
+.Steps
 
 . Log in to an Admin Node:
  .. Enter the following command: `ssh admin@Admin_Node_IP`
@@ -79,7 +75,7 @@ This example is provided for your information only; this procedure cannot help y
 . Identify the object or objects that could not be retrieved by the Archive Node:
  .. Go to the directory containing the audit log files: `cd /var/local/audit/export`
 +
-The active audit log file is named audit.log. Once a day, the active audit.log file is saved, and a new audit.log file is started. The name of the saved file indicates when it was saved, in the format yyyy-mm-dd.txt. After a day, the saved file is compressed and renamed, in the format yyyy-mm-dd.txt.gz, which preserves the original date.
+The active audit log file is named audit.log. Once a day, the active `audit.log` file is saved, and a new `audit.log` file is started. The name of the saved file indicates when it was saved, in the format `yyyy-mm-dd.txt`. After a day, the saved file is compressed and renamed, in the format `yyyy-mm-dd.txt.gz`, which preserves the original date.
 
  .. Search the relevant audit log file for messages indicating that an archived object could not be retrieved. For example, enter: `grep ARCE audit.log | less -n`
 +
@@ -98,7 +94,7 @@ For more information see the instructions for understanding audit messages.
 You might also want to record the following additional information used by the TSM to identify objects saved by the Archive Node:
 
   *** *File Space Name*: Equivalent to the Archive Node ID. To find the Archive Node ID, select *Support* > *Tools* > *Grid Topology*. Then, select *Archive Node* > *ARC* > *Target* > *Overview*.
-  *** *High Level Name*: Equivalent to the volume ID assigned to the object by the Archive Node. The volume ID takes the form of a date (20091127), and is recorded as the VLID of the object in archive audit messages.
+  *** *High Level Name*: Equivalent to the volume ID assigned to the object by the Archive Node. The volume ID takes the form of a date (for example, `20091127`), and is recorded as the VLID of the object in archive audit messages.
   *** *Low Level Name*: Equivalent to the CBID assigned to an object by the StorageGRID system.
 
  .. Log out of the command shell: `exit`
@@ -109,7 +105,7 @@ Use the administrative user name and password that are configured for the ARC se
 
  .. Determine if the object is permanently unavailable.
 +
-For example, you might search the TSM activity log for a data integrity error for that object. The following example shows a search of the activity log for the past day for an object with CBID 498D8A1F681F05B3.
+For example, you might search the TSM activity log for a data integrity error for that object. The following example shows a search of the activity log for the past day for an object with CBID `498D8A1F681F05B3`.
 +
 ----
 > query actlog begindate=-1 search=276C14E94082CC69
@@ -121,18 +117,18 @@ integrity error detected. (SESSION: 9139359)
 >
 ----
 +
-Note that depending on the nature of the error, the CBID might not be recorded in the TSM activity log. You might need to search the log for other TSM errors around the time of the request failure.
+Depending on the nature of the error, the CBID might not be recorded in the TSM activity log. You might need to search the log for other TSM errors around the time of the request failure.
 
  .. If an entire tape is permanently unavailable, identify the CBIDs for all objects stored on that volume: `query content TSM_Volume_Name`
 +
-where TSM_Volume_Name is the TSM name for the unavailable tape. The following is an example of the output for this command:
+where `TSM_Volume_Name` is the TSM name for the unavailable tape. The following is an example of the output for this command:
 +
 ----
  > query content TSM-Volume-Name
-Node Name       Type Filespace  FSID Client's Name for File Name
---------------- ---- ---------- ---- ----------------------------
-DEV-ARC-20      Arch /19130020  216  /20081201/ C1D172940E6C7E12
-DEV-ARC-20      Arch /19130020  216  /20081201/ F1D7FBC2B4B0779E
+Node Name     Type Filespace  FSID Client's Name for File Name
+------------- ---- ---------- ---- ----------------------------
+DEV-ARC-20    Arch /19130020  216  /20081201/ C1D172940E6C7E12
+DEV-ARC-20    Arch /19130020  216  /20081201/ F1D7FBC2B4B0779E
 ----
 +
 The `Client’s Name for File Name` is the same as the Archive Node volume ID (or TSM "`high level name`") followed by the object's CBID (or TSM "`low level name`"). That is, the `Client’s Name for File Name` takes the form `/Archive Node volume ID /CBID`. In the first line of the example output, the `Client’s Name for File Name` is `/20081201/ C1D172940E6C7E12`.
@@ -152,13 +148,13 @@ IMPORTANT: Use the ADE Console with caution. If the console is used improperly, 
  .. Access the ADE console of the ARC service: `telnet localhost 1409`
  .. Cancel the request for the object: `/proc/BRTR/cancel -c CBID`
 +
-where CBID is the identifier of the object that cannot be retrieved from the TSM.
+where `CBID` is the identifier of the object that cannot be retrieved from the TSM.
 +
-If the only copies of the object are on tape, the "`bulk retrieval`" request is canceled with a message "`1 requests canceled`". If copies of the object exist elsewhere in the system, the object retrieval is processed by a different module so the response to the message is "`0 requests canceled`".
+If the only copies of the object are on tape, the "`bulk retrieval`" request is canceled with a message, "`1 requests canceled`". If copies of the object exist elsewhere in the system, the object retrieval is processed by a different module so the response to the message is "`0 requests canceled`".
 
- .. Issue a command to notify the StorageGRID system that an object copy has been lost and that an additional copy must be made: `/proc/CMSI/Object_Lost CBIDnode_ID`
+ .. Issue a command to notify the StorageGRID system that an object copy has been lost and that an additional copy must be made: `/proc/CMSI/Object_Lost CBID node_ID`
 +
-where CBID is the identifier of the object that cannot be retrieved from the TSM server, and node_ID is the node ID of the Archive Node where the retrieval failed.
+where `CBID` is the identifier of the object that cannot be retrieved from the TSM server, and `node_ID` is the node ID of the Archive Node where the retrieval failed.
 +
 You must enter a separate command for each lost object copy: entering a range of CBIDs is not supported.
 +

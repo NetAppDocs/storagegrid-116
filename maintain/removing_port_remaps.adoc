@@ -1,7 +1,7 @@
 ---
 permalink: maintain/removing_port_remaps.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you want to configure an endpoint for the Load Balancer service, and you want to use a port that has already been configured as the Mapped-To Port of a port remap, you must first remove the existing port remap, or the endpoint will not be effective. You must run a script on each Admin Node and Gateway Node that has conflicting remapped ports to remove all of the node’s port remaps.'
 ---
 = Removing port remaps
@@ -11,15 +11,17 @@ summary: 'If you want to configure an endpoint for the Load Balancer service, an
 [.lead]
 If you want to configure an endpoint for the Load Balancer service, and you want to use a port that has already been configured as the Mapped-To Port of a port remap, you must first remove the existing port remap, or the endpoint will not be effective. You must run a script on each Admin Node and Gateway Node that has conflicting remapped ports to remove all of the node's port remaps.
 
-CAUTION:
+.About this task
 
-This procedure removes all port remaps. If you need to keep some of the remaps, contact technical support.
+CAUTION: This procedure removes all port remaps. If you need to keep some of the remaps, contact technical support.
 
 For information about configuring load balancer endpoints, see the instructions for administering StorageGRID.
 
 IMPORTANT: If the port remap provides client access, the client should be reconfigured to use a different port configured as an load balancer endpoint if possible, to avoid loss of service, Otherwise, removing the port mapping will result in loss of client access and should be scheduled appropriately.
 
 IMPORTANT: This procedure does not work for a StorageGRID system deployed as a container on bare metal hosts. See the instructions for removing port remaps on bare metal hosts.
+
+.Steps
 
 . Log in to the node.
  .. Enter the following command: `ssh -p 8022 admin@node_IP`
