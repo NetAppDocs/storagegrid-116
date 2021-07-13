@@ -64,7 +64,7 @@ This script might take hours to run on storage volumes that contain data.
 
  .. As the script runs, review the output and answer any prompts.
 +
-NOTE: As required, you can use the tail -f command to monitor the contents of the script's log file (`/var/local/log/sn-remount-volumes.log`) . The log file contains more detailed information than the command line output.
+NOTE: As required, you can use the `tail -f` command to monitor the contents of the script's log file (`/var/local/log/sn-remount-volumes.log`) . The log file contains more detailed information than the command line output.
 +
 
 ----
@@ -86,18 +86,10 @@ Mount and unmount device /dev/sdc and checking file system consistency:
 Error: File system consistency check retry failed on device /dev/sdc.
 You can see the diagnosis information in the /var/local/log/sn-remount-volumes.log.
 
-This volume could be new or damaged. If you run sn-recovery-postinstall.sh,
-this volume and any data on this volume will be deleted. If you only had two
-copies of object data, you will temporarily have only a single copy.
-StorageGRID Webscale will attempt to restore data redundancy by making
-additional replicated copies or EC fragments, according to the rules in
-the active ILM policy.
+This volume could be new or damaged. If you run sn-recovery-postinstall.sh, this volume and any data on this volume will be deleted. If you only had two copies of object data, you will temporarily have only a single copy.
+StorageGRID Webscale will attempt to restore data redundancy by making additional replicated copies or EC fragments, according to the rules in the active ILM policy.
 
-Do not continue to the next step if you believe that the data remaining on
-this volume cannot be rebuilt from elsewhere in the grid (for example, if
-your ILM policy uses a rule that makes only one copy or if volumes have
-failed on multiple nodes). Instead, contact support to determine how to
-recover your data.
+Do not continue to the next step if you believe that the data remaining on this volume cannot be rebuilt from elsewhere in the grid (for example, if your ILM policy uses a rule that makes only one copy or if volumes have failed on multiple nodes). Instead, contact support to determine how to recover your data.
 
 ====== Device /dev/sdd ======
 Mount and unmount device /dev/sdd and checking file system consistency:
@@ -108,18 +100,10 @@ File system check might take a long time. Do you want to continue? (y or n) [y/N
 Error: File system consistency check retry failed on device /dev/sdd.
 You can see the diagnosis information in the /var/local/log/sn-remount-volumes.log.
 
-This volume could be new or damaged. If you run sn-recovery-postinstall.sh,
-this volume and any data on this volume will be deleted. If you only had two
-copies of object data, you will temporarily have only a single copy.
-StorageGRID Webscale will attempt to restore data redundancy by making
-additional replicated copies or EC fragments, according to the rules in
-the active ILM policy.
+This volume could be new or damaged. If you run sn-recovery-postinstall.sh, this volume and any data on this volume will be deleted. If you only had two copies of object data, you will temporarily have only a single copy.
+StorageGRID Webscale will attempt to restore data redundancy by making additional replicated copies or EC fragments, according to the rules in the active ILM policy.
 
-Do not continue to the next step if you believe that the data remaining on
-this volume cannot be rebuilt from elsewhere in the grid (for example, if
-your ILM policy uses a rule that makes only one copy or if volumes have
-failed on multiple nodes). Instead, contact support to determine how to
-recover your data.
+Do not continue to the next step if you believe that the data remaining on this volume cannot be rebuilt from elsewhere in the grid (for example, if your ILM policy uses a rule that makes only one copy or if volumes have failed on multiple nodes). Instead, contact support to determine how to recover your data.
 
 ====== Device /dev/sde ======
 Mount and unmount device /dev/sde and checking file system consistency:
@@ -192,7 +176,7 @@ The Progress bar and the Stage column on the Recovery page provide a high-level 
 +
 image::../media/recovering_cassandra.png[screenshot showing recovery progress in Grid Management Interface]
 
-. Return to the Monitor Install page of the StorageGRID Appliance Installer by entering http://Controller_IP:8080, using the IP address of the compute controller.
+. Return to the Monitor Install page of the StorageGRID Appliance Installer by entering `http://Controller_IP:8080`, using the IP address of the compute controller.
 +
 The Monitor Install page shows the installation progress while the script is running.
 

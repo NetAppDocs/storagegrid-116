@@ -17,7 +17,7 @@ Follow the requirements for each StorageGRID network type.
 * If you configure an interface using static addressing, you must specify a gateway address other than 0.0.0.0.
 * If you do not have a gateway, the best practice is to set the gateway address to be the IP address of the network interface.
 
-== Subnet requirements
+== Subnets
 
 IMPORTANT: Each network must be connected to its own subnet that does not overlap with any other network on the node.
 
@@ -30,7 +30,7 @@ The following restrictions are enforced by the Grid Manager during deployment. T
 * The subnets in the AESL cannot overlap with any subnets in the GNSL.
 * The Client Network subnet cannot overlap the Grid Network subnet, the Admin Network subnet, any subnet in the GNSL, or any subnet in the AESL.
 
-== Grid Network requirements
+== Grid Network
 
 * At deployment time, each grid node must be attached to the Grid Network and must be able to communicate with the primary Admin Node using the networking configuration you specify when deploying the node.
 * During normal grid operations, each grid node must be able to communicate with all other grid nodes over the Grid Network.
@@ -39,7 +39,7 @@ NOTE: The Grid Network must be directly routable between each node. Network addr
 
 * If the Grid Network consists of multiple subnets, add them to the Grid Network Subnet List (GNSL). Static routes are created on all nodes for each subnet in the GNSL.
 
-== Admin Network requirements
+== Admin Network
 
 The Admin Network is optional. If you plan to configure an Admin Network, follow these requirements and guidelines.
 
@@ -49,7 +49,7 @@ NOTE: The Admin Network and AESL can be unique to each node, as long as the desi
 
 NOTE: You must define at least one subnet on the Admin Network to enable inbound connections from external subnets. Static routes are automatically generated on each node for each subnet in the AESL.
 
-== Client Network requirements
+== Client Network
 
 The Client Network is optional. If you plan to configure a Client Network, note the following considerations.
 
