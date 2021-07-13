@@ -54,7 +54,7 @@ NOTE: If you have adequate permissions, the existing federated groups from the G
 +
 The tenant account is created.
 
-. Optionally, access the new tenant. Otherwise, go to step <<STEP_SIGN_IN_LATER,#STEP_SIGN_IN_LATER>>.
+. Optionally, access the new tenant. Otherwise, go to the step for  <<STEP_SIGN_IN_LATER,accessing the tenant later>>.
 +
 [cols="1a,2a" options="header"]
 |===
@@ -66,13 +66,11 @@ Click *Restricted* to learn more about accessing this tenant account.
 
 The URL for the Tenant Manager has this format:
 
-----
-https://FQDN_or_Admin_Node_IP:port/?accountId=20-digit-account-id/
-----
+`https://_FQDN_or_Admin_Node_IP:port_/?accountId=_20-digit-account-id_/`
 
- ** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
- ** port is the tenant-only port
- ** 20-digit-account-id is the tenant's unique account ID
+ ** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+ ** `_port_` is the tenant-only port
+ ** `_20-digit-account-id_` is the tenant's unique account ID
 
 a|
 Accessing the Grid Manager on port 443 but you did not set a password for the local root user
@@ -81,10 +79,10 @@ Click *Sign In*, and enter the credentials for a user in the Root Access federat
 a|
 Accessing the Grid Manager on port 443 and you set a password for the local root user
 a|
-Go to step <<STEP_SIGN_IN_AS_ROOT,#STEP_SIGN_IN_AS_ROOT>>.
+Go to the next step to <<STEP_SIGN_IN_AS_ROOT,sign in as root>>.
 |===
 
-. Sign in to the tenant:
+. [[STEP_SIGN_IN_AS_ROOT]]Sign in to the tenant as root:
  .. From the Configure Tenant Account dialog box, click the *Sign in as root* button.
 +
 image::../media/configure_tenant_account.gif[Screenshot of Step 2 - Configure Tenant Account]
@@ -98,7 +96,8 @@ image::../media/step_2_sign_in_as_root.gif[Sign in as root]
 Each link opens the corresponding page in the Tenant Manager. To complete the page, see the instructions for using tenant accounts.
 
  .. Click *Finish*.
-. To access the tenant later:
+
+. [[STEP_SIGN_IN_LATER]]To access the tenant later:
 +
 [cols="1a,2a" options="header"]
 |===
@@ -109,13 +108,12 @@ a|
 
  ** From the Grid Manager, select *Tenants*, and click *Sign in* to the right of the tenant name.
  ** Enter the tenant's URL in a web browser:
++
+`https://_FQDN_or_Admin_Node_IP_/?accountId=_20-digit-account-id_/`
++
 
-----
-https://FQDN_or_Admin_Node_IP/?accountId=20-digit-account-id/
-----
-
-  *** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
-  *** 20-digit-account-id is the tenant's unique account ID
+  *** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+  *** `_20-digit-account-id_` is the tenant's unique account ID
 
 a|
 A restricted port
@@ -124,13 +122,12 @@ a|
  ** From the Grid Manager, select *Tenants*, and click *Restricted*.
  ** Enter the tenant's URL in a web browser:
 +
-----
-https://FQDN_or_Admin_Node_IP:port/?accountId=20-digit-account-id
-----
+`https://_FQDN_or_Admin_Node_IP:port_/?accountId=_20-digit-account-id_`
++
 
-  *** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
-  *** port is the tenant-only restricted port
-  *** 20-digit-account-id is the tenant's unique account ID
+  *** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+  *** `_port_` is the tenant-only restricted port
+  *** `_20-digit-account-id_` is the tenant's unique account ID
 
 +
 |===

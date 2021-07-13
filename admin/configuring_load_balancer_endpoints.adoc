@@ -82,7 +82,7 @@ image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
 
  .. Browse for the server certificate and the certificate private key.
 +
-To enable S3 clients to connect using an S3 API endpoint domain name, use a multi-domain or wildcard certificate that matches all domain names that the client might use to connect to the grid. For example, the server certificate might use the domain name*.example.com.
+To enable S3 clients to connect using an S3 API endpoint domain name, use a multi-domain or wildcard certificate that matches all domain names that the client might use to connect to the grid. For example, the server certificate might use the domain name `*._example_.com`.
 +
 xref:configuring_s3_api_endpoint_domain_names.adoc[Configuring S3 API endpoint domain names]
 
@@ -97,7 +97,7 @@ image::../media/load_balancer_endpoint_generate_cert.png[Generate Cert]
 
  .. Enter a domain name or an IP address.
 +
-You can use wildcards to represent the fully qualified domain names of all Admin Nodes and Gateway Nodes running the Load Balancer service. For example, `*.sgws.foo.com` uses the `*` wildcard to represent `gn1.sgws.foo.com` and `gn2.sgws.foo.com`.
+You can use wildcards to represent the fully qualified domain names of all Admin Nodes and Gateway Nodes running the Load Balancer service. For example, `*.sgws.foo.com` uses the * wildcard to represent `gn1.sgws.foo.com` and `gn2.sgws.foo.com`.
 +
 xref:configuring_s3_api_endpoint_domain_names.adoc[Configuring S3 API endpoint domain names]
 

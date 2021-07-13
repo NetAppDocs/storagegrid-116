@@ -18,7 +18,7 @@ Because a single custom server certificate is used for all Admin Nodes, you must
 
 You need to complete configuration on the server, and depending on the root Certificate Authority (CA) you are using, users might also need to install the root CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *primary Admin Node* > *CMN* > *Resources*.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
 
 [NOTE]
 ====
@@ -33,8 +33,8 @@ If you are accessing the Grid Manager or Tenant Manager using a domain name inst
 . Select *Configuration* > *Network Settings* > *Server Certificates*.
 . In the Management Interface Server Certificate section, click *Install Custom Certificate*.
 . Upload the required server certificate files:
- ** *Server Certificate*: The custom server certificate file (.crt).
- ** *Server Certificate Private Key*: The custom server certificate private key file (.key).
+ ** *Server Certificate*: The custom server certificate file (`.crt`).
+ ** *Server Certificate Private Key*: The custom server certificate private key file (`.key`).
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 

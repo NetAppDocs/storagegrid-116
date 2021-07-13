@@ -1,7 +1,7 @@
 ---
 permalink: admin/troubleshooting_platform_services.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The endpoints used in platform services are created and maintained by tenant users in the Tenant Manager; however, if a tenant has issues configuring or using platform services, you might be able to use the Grid Manager to help resolve the issue.'
 ---
 = Troubleshooting platform services
@@ -31,7 +31,7 @@ Tenant users can go to the Endpoints page to review the most recent error messag
 
 image::../media/endpoints_last_error.png[screenshot of Endpoints page showing Last Error column]
 
-NOTE: Some error messages in the **Last error**column might include a logID in parentheses. A grid administrator or technical support can use this ID to locate more detailed information about the error in the bycast.log.
+NOTE: Some error messages in the *Last error* column might include a logID in parentheses. A grid administrator or technical support can use this ID to locate more detailed information about the error in the bycast.log.
 
 == Issues related to proxy servers
 
@@ -48,7 +48,7 @@ Some platform services issues might cause client operations on the S3 bucket to 
 To check the status of services:
 
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *site* > *Storage Node* > *SSM* > *Services*.
+. Select *_site_* > *_Storage Node_* > *SSM* > *Services*.
 
 == Recoverable and unrecoverable endpoint errors
 
@@ -65,10 +65,10 @@ Other errors are unrecoverable. For example, an unrecoverable error occurs if th
 If StorageGRID encounters an unrecoverable endpoint error, the Total Events (SMTT) alarm is triggered in the Grid Manager. To view the Total Events alarm:
 
 . Select *Nodes*.
-. Select *site* > *grid node* > *Events*.
+. Select *_site_* > *_grid node_* > *Events*.
 . View Last Event at the top of the table.
 +
-Event messages are also listed in /var/local/log/bycast-err.log.
+Event messages are also listed in `/var/local/log/bycast-err.log`.
 
 . Follow the guidance provided in the SMTT alarm contents to correct the issue.
 . Click *Reset event counts*.
@@ -96,7 +96,7 @@ CloudMirror requests are more likely to be affected by the performance of the de
 To view the request failure rate for platform services:
 
 . Select *Nodes*.
-. Select *site* > *Platform Services*.
+. Select *_site_* > *Platform Services*.
 . View the Request Failure Rate chart.
 +
 image::../media/nodes_page_site_level_platform_services.gif[Nodes Page Site-Level Platform Services]

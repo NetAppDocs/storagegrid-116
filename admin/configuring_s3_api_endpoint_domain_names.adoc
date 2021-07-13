@@ -28,7 +28,6 @@ To enable clients to use S3 endpoint domain names, you must do all of the follow
 +
 For example, if the endpoint is `s3.company.com`, you must ensure that the certificate used for HTTPS connections includes the `s3.company.com` endpoint and the endpoint's wildcard Subject Alternative Name (SAN): `*.s3.company.com`.
 
-.Steps
 
 * Configure the DNS server used by the client. Include DNS records for the IP addresses that clients use to make connections, and ensure that the records reference all required endpoint domain names, including any wildcard names.
 +
@@ -43,6 +42,8 @@ NOTE: Each load balancer endpoint has its own certificate, and each endpoint can
 * If the client connects to a Storage Node or to the CLB service on a Gateway Node, the client uses a grid custom server certificate that has been updated to include all required endpoint domain names.
 +
 NOTE: The CLB service is deprecated.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Domain Names*.
 +

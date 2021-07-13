@@ -11,6 +11,7 @@ summary: 'Client applications can connect to StorageGRID using the IP address of
 [.lead]
 Client applications can connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability (HA) groups are configured, client applications can connect using the virtual IP address of the HA group.
 
+.About this task
 This table summarizes the different ways that clients can connect to StorageGRID and the IP addresses and ports that are used for each type of connection. The instructions describe how to find this information in the Grid Manager if load balancer endpoints and high availability (HA) groups are already configured.
 
 [cols="1a,1a,1a,1a" options="header"]
@@ -107,11 +108,11 @@ Default Swift ports:
 * HTTP:18085
 
 |===
-*Examples*
+.Examples
 
 To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* `\https://<VIP-of-HA-group>:<LB-endpoint-port>`
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
 
 For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
 
@@ -119,7 +120,7 @@ For example, if the virtual IP address of the HA group is 192.0.2.5 and the port
 
 To connect a Swift client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* `\https://<VIP-of-HA-group>:<LB-endpoint-port>`
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
 
 For example, if the virtual IP address of the HA group is 192.0.2.6 and the port number of a Swift Load Balancer endpoint is 10444, then a Swift client could use the following URL to connect to StorageGRID:
 
@@ -139,9 +140,9 @@ It is possible to configure a DNS name for the IP address that clients use to co
 +
 You can establish connections from client applications to any of the IP addresses in the list:
 
-  *** **eth0:**Grid Network
-  *** *eth1:* Admin Network (optional)
-  *** **eth2:**Client Network (optional)
+  * *eth0:* Grid Network
+  * *eth1:* Admin Network (optional)
+  * *eth2:* Client Network (optional)
 +
 NOTE: If you are viewing an Admin Node or a Gateway Node and it is the active node in a high availability group, the virtual IP address of the HA group is shown on eth2.
 . To find the virtual IP address of a high availability group:
