@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/changing_link_configuration_of_e5600sg_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can change the Ethernet link configuration of the E5600SG controller. You can change the port bond mode, the network bond mode, and the link speed.'
 ---
 = Changing the link configuration of the E5600SG controller
@@ -32,7 +32,7 @@ Options for changing the Ethernet link configuration of the E5600SG controller i
 +
 image::../media/link_configuration_option.gif[Link Configuration]
 
-[#change_link_configuration, start=2]
+[#change_link_configuration_sg5600, start=2]
 . Make the desired changes to the link configuration.
 +
 For more information on the options, see "`Configuring network links.`"
@@ -47,7 +47,7 @@ If you made changes to the VLAN settings, the subnet for the appliance might hav
 xref:setting_ip_configuration_sg5600.adoc[Setting the IP configuration]
 
 . From the StorageGRID Appliance Installer, select *Configure Networking* > *Ping Test*.
-. Use the Ping Test tool to check connectivity to IP addresses on any networks that may have been affected by the link configuration changes you made in the <<change_link_configuration,Change link configuration>> step.
+. Use the Ping Test tool to check connectivity to IP addresses on any networks that may have been affected by the link configuration changes you made in the <<change_link_configuration_sg5600,Change link configuration>> step.
 +
 In addition to any other tests you choose to perform, confirm that you can ping the grid IP address of the primary Admin Node, and the grid IP address of at least one other Storage Node. If necessary, correct any link configuration issues.
 
