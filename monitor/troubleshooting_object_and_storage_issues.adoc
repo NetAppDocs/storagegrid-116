@@ -22,7 +22,6 @@ Depending on the problem, you might want to confirm where object data is being s
  ** *Swift container and object name*: When an object is ingested through the Swift interface, the client application uses a container and object name combination to store and identify the object.
 
 .Steps
-
 . Select *ILM* > *Object Metadata Lookup*.
 . Type the object's identifier in the *Identifier* field.
 +
@@ -42,6 +41,7 @@ The object metadata lookup results appear. This page lists the following types o
  ** For object copies in a Cloud Storage Pool, the location of the object, including the name of the external bucket and the object's unique identifier.
  ** For segmented objects and multipart objects, a list of object segments including segment identifiers and data sizes. For objects with more than 100 segments, only the first 100 segments are shown.
  ** All object metadata in the unprocessed, internal storage format. This raw metadata includes internal system metadata that is not guaranteed to persist from release to release.
++
 The following example shows the object metadata lookup results for an S3 test object that is stored as two replicated copies.
 
 +
@@ -59,14 +59,14 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-swift/home.html[Implemen
 
 The underlying storage on a Storage Node is divided into object stores. These object stores are physical partitions that act as mount points for StorageGRID system's storage. Object stores are also known as storage volumes.
 
-You can view object store information for each Storage Node. Object stores are shown at the bottom of the *Nodes* > *Storage Node* > *Storage* page.
+You can view object store information for each Storage Node. Object stores are shown at the bottom of the *Nodes* > *_Storage Node_* > *Storage* page.
 
 image::../media/nodes_page_storage_nodes_storage_tables.png[Nodes Page Storage Node Storage Tables]
 
 To see more details about each Storage Node, follow these steps:
 
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *site* > *Storage Node* > *LDR* > *Storage* > *Overview* > *Main*.
+. Select *site* > *_Storage Node_* > *LDR* > *Storage* > *Overview* > *Main*.
 
 image::../media/storage_node_object_stores.png[Storage Node object store]
 

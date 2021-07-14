@@ -1,8 +1,8 @@
 ---
 permalink: monitor/managing_alerts.html
 sidebar: sidebar
-keywords: 
-summary: ''
+keywords: alert rules, managing
+summary: 'Alerts allow you to monitor various events and conditions within your StorageGRID system. You can manage alerts by creating custom alerts, editing or disabling the default alerts, setting up email notifications for alerts, and silencing alert notifications.'
 ---
 = Managing alerts
 :icons: font
@@ -11,7 +11,7 @@ summary: ''
 [.lead]
 Alerts allow you to monitor various events and conditions within your StorageGRID system. You can manage alerts by creating custom alerts, editing or disabling the default alerts, setting up email notifications for alerts, and silencing alert notifications.
 
-*Related information*
+.Related information
 
 xref:viewing_current_alerts.adoc[Viewing current alerts]
 
@@ -46,9 +46,11 @@ Alert rules define the conditions that trigger specific alerts. StorageGRID incl
 [.lead]
 You can view the list of all default and custom alert rules to learn which conditions will trigger each alert and to see whether any alerts are disabled.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.Steps
 . Select *Alerts* > *Alert Rules*.
 +
 The Alert Rules page appears.
@@ -57,6 +59,7 @@ image::../media/alert_rules_page.png[Alert Rules Page]
 
 . Review the information in the alert rules table:
 +
+[options="header"]
 |===
 | Column header| Description
 a|
@@ -87,7 +90,7 @@ a|
 Whether this alert rule is currently enabled or disabled. The conditions for disabled alert rules are not evaluated, so no alerts are triggered.
 |===
 
-*Related information*
+.Related information
 
 xref:alerts_reference.adoc[Alerts reference]
 
@@ -96,9 +99,11 @@ xref:alerts_reference.adoc[Alerts reference]
 [.lead]
 You can create custom alert rules to define your own conditions for triggering alerts.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.About this task
 StorageGRID does not validate custom alerts. If you decide to create custom alert rules, follow these general guidelines:
 
 * Look at the conditions for the default alert rules, and use them as examples for your custom alert rules.
@@ -127,6 +132,7 @@ If an alert rule is disabled, its expressions are not evaluated and no alerts ar
 
 . Enter the following information:
 +
+[options="header"]
 |===
 | Field| Description
 a|
@@ -140,8 +146,7 @@ A description of the problem that is occurring.     The description is the alert
 a|
 Recommended Actions
 a|
-Optionally, the recommended actions to take when this alert is triggered.     Enter recommended actions as plain text (no formatting codes). Recommended actions for alert rules can be between 0 and 1,024 characters.
-+
+Optionally, the recommended actions to take when this alert is triggered. Enter recommended actions as plain text (no formatting codes). Recommended actions for alert rules can be between 0 and 1,024 characters.
 |===
 
 . In the Conditions section, enter a Prometheus expression for one or more of the alert severity levels.
@@ -174,7 +179,7 @@ The default is 5 minutes.
 +
 The dialog box closes, and the new custom alert rule appears in the Alert Rules table.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -187,13 +192,16 @@ https://prometheus.io/docs/querying/basics/[Prometheus: Query basics]
 [.lead]
 You can edit an alert rule to change the trigger conditions, For a custom alert rule, you can also update the rule name, description, and recommended actions.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.About this task
 When you edit a default alert rule, you can change the conditions for minor, major, and critical alerts; and the duration. When you edit a custom alert rule, you can also edit the rule's name, description, and recommended actions.
 
 IMPORTANT: Be careful when deciding to edit an alert rule. If you change trigger values, you might not detect an underlying problem until it prevents a critical operation from completing.
 
+.Steps
 . Select *Alerts* > *Alert Rules*.
 +
 The Alert Rules page appears.
@@ -217,6 +225,7 @@ IMPORTANT: In general, disabling a default alert rule is not recommended. If an 
 +
 NOTE: You cannot edit this information for default alert rules.
 +
+[options="header"]
 |===
 | Field| Description
 a|
@@ -270,7 +279,7 @@ The default is 5 minutes.
 +
 If you edited a default alert rule, *Default** appears in the Type column. If you disabled a default or custom alert rule, *Disabled* appears in the *Status* column.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -283,13 +292,16 @@ https://prometheus.io/docs/querying/basics/[Prometheus: Query basics]
 [.lead]
 You can change the enabled/disabled state for a default or custom alert rule.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.About this task
 When an alert rule is disabled, its expressions are not evaluated and no alerts are triggered.
 
 IMPORTANT: In general, disabling a default alert rule is not recommended. If an alert rule is disabled, you might not detect an underlying problem until it prevents a critical operation from completing.
 
+.Steps
 . Select *Alerts* > *Alert Rules*.
 +
 The Alert Rules page appears.
@@ -314,9 +326,11 @@ NOTE: If you disable the alert rule for a current alert, you must wait a few min
 [.lead]
 You can remove a custom alert rule if you no longer want to use it.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.Steps
 . Select *Alerts* > *Alert Rules*.
 +
 The Alert Rules page appears.
@@ -343,6 +357,7 @@ When an alert is triggered, StorageGRID can send email notifications and Simple 
 [.lead]
 If you want StorageGRID to send SNMP notifications when alerts occur, you must enable the StorageGRID SNMP agent and configure one or more trap destinations.
 
+.About this task
 You can use the *Configuration* > *Monitoring* > *SNMP Agent* option in the Grid Manager or the SNMP endpoints for the Grid Management API to enable and configure the StorageGRID SNMP agent. The SNMP agent supports all three versions of the SNMP protocol.
 
 To learn how to configure the SNMP agent, see the section for using SNMP monitoring.
@@ -356,7 +371,7 @@ Trap and inform notifications are sent when a default or custom alert is trigger
 
 NOTE: Trap and inform notifications are also sent when certain alarms (legacy system) are triggered at specified severity levels or higher; however, SNMP notifications are not sent for every alarm or every alarm severity.
 
-*Related information*
+.Related information
 
 xref:using_snmp_monitoring.adoc[Using SNMP monitoring]
 
@@ -371,13 +386,16 @@ xref:alarms_that_generate_snmp_notifications.adoc[Alarms that generate SNMP noti
 [.lead]
 If you want email notifications to be sent when alerts occur, you must provide information about your SMTP server. You must also enter email addresses for the recipients of alert notifications.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.What you'll need
 Because alarms and alerts are independent systems, the email setup used for alert notifications is not used for alarm notifications and AutoSupport messages. However, you can use the same email server for all notifications.
 
 If your StorageGRID deployment includes multiple Admin Nodes, you can select which Admin Node should be the preferred sender of alert notifications. The same "`preferred sender`" is also used for alarm notifications and AutoSupport messages. By default, the primary Admin Node is selected. For details, see the instructions for administering StorageGRID.
 
+.Steps
 . Select *Alerts* > *Email Setup*.
 +
 The Email Setup page appears.
@@ -392,6 +410,7 @@ The Email (SMTP) Server, Transport Layer Security (TLS), Email Addresses, and Fi
 +
 If your SMTP server requires authentication, you must provide both a username and a password. You must also require TLS and provide a CA certificate.
 +
+[options="header"]
 |===
 | Field| Enter
 a|
@@ -416,7 +435,7 @@ image:../media/alerts_email_smtp_server.png[Alerts Email SMTP Server]
 . In the Email Addresses section, enter email addresses for the sender and for each recipient.
  .. For the *Sender Email Address*, specify a valid email address to use as the From address for alert notifications.
 +
-For example: storagegrid-alerts@example.com
+For example: `_storagegrid-alerts@example.com_`
 
  .. In the Recipients section, enter an email address for each email list or person who should receive an email when an alert occurs.
 +
@@ -445,6 +464,7 @@ NOTE: If you need to edit the email setup, click the pencil icon to update this 
 image::../media/alerts_email_tls.png[Alerts Email TLS]
 . In the Filters section, select which alert severity levels should result in email notifications, unless the rule for a specific alert has been silenced.
 +
+[options="header"]
 |===
 | Severity| Description
 a|
@@ -480,7 +500,7 @@ Sending a test email does not save your settings. You must click *Save*.
 +
 The email settings are saved.
 
-*Related information*
+.Related information
 
 link:managing_alerts.md#[Troubleshooting alert email notifications]
 
@@ -495,6 +515,7 @@ Email notifications include the following information:
 
 image::../media/alerts_email_notification.png[Alerts Email Notification]
 
+[options="header"]
 |===
 | Callout| Description
 a|
@@ -518,7 +539,7 @@ a|
 a|
 The hostname of the Admin Node that sent the notification.
 |===
-*Related information*
+.Related information
 
 link:managing_alerts.md#[Silencing alert notifications]
 
@@ -529,6 +550,7 @@ To prevent an excessive number of email notifications from being sent when alert
 
 Refer to the following table for examples of how StorageGRID groups multiple alerts in email notifications.
 
+[options="header"]
 |===
 | Behavior| Example
 a|
@@ -582,9 +604,11 @@ a|
 [.lead]
 If the *Email notification failure* alert is triggered or you are unable to receive the test alert email notification, follow these steps to resolve the issue.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.Steps
 . Verify your settings.
  .. Select *Alerts* > *Email Setup*.
  .. Verify that the Email (SMTP) Server settings are correct.
@@ -595,7 +619,7 @@ If the *Email notification failure* alert is triggered or you are unable to rece
 +
 Technical support can use the information in the logs to help determine what went wrong. For example, the prometheus.log file might show an error when connecting to the server you specified.
 
-*Related information*
+.Related information
 
 xref:collecting_log_files_and_system_data.adoc[Collecting log files and system data]
 
@@ -604,9 +628,11 @@ xref:collecting_log_files_and_system_data.adoc[Collecting log files and system d
 [.lead]
 Optionally, you can configure silences to temporarily suppress alert notifications.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Manage Alerts or Root Access permission.
 
+.About this task
 You can silence alert rules on the entire grid, a single site, or a single node and for one or more severities. Each silence suppresses all notifications for a single alert rule or for all alert rules.
 
 If you have enabled the SNMP agent, silences also suppress SNMP traps and informs.
@@ -615,6 +641,7 @@ IMPORTANT: Be careful when deciding to silence an alert rule. If you silence an 
 
 NOTE: Because alarms and alerts are independent systems, you cannot use this functionality to suppress alarm notifications.
 
+.Steps
 . Select *Alerts* > *Silences*.
 +
 The Silences page appears.
@@ -629,12 +656,14 @@ image::../media/alerts_create_silence.png[Alerts > Create Silence]
 
 . Select or enter the following information:
 +
+[options="header"]
 |===
 | Field| Description
 a|
 Alert Rule
 a|
-The name of the alert rule you want to silence. You can select any default or custom alert rule, even if the alert rule is disabled.    *Note:* Select *All rules* if you want to silence all alert rules using the criteria specified in this dialog box.
+The name of the alert rule you want to silence. You can select any default or custom alert rule, even if the alert rule is disabled.    
+*Note:* Select *All rules* if you want to silence all alert rules using the criteria specified in this dialog box.
 a|
 Description
 a|
@@ -642,7 +671,8 @@ Optionally, a description of the silence. For example, describe the purpose of t
 a|
 Duration
 a|
-How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years).    *Note:* You should not silence an alert rule for an extended amount of time. If an alert rule is silenced, you might not detect an underlying problem until it prevents a critical operation from completing. However, you might need to use an extended silence if an alert is triggered by a specific, intentional configuration, such as might be the case for the *Services appliance link down* alerts and the *Storage appliance link down* alerts.
+How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years).   
+*Note:* You should not silence an alert rule for an extended amount of time. If an alert rule is silenced, you might not detect an underlying problem until it prevents a critical operation from completing. However, you might need to use an extended silence if an alert is triggered by a specific, intentional configuration, such as might be the case for the *Services appliance link down* alerts and the *Storage appliance link down* alerts.
 a|
 Severity
 a|
@@ -650,13 +680,14 @@ Which alert severity or severities should be silenced. If the alert is triggered
 a|
 Nodes
 a|
-Which node or nodes you want this silence to apply to. You can suppress an alert rule or all rules on the entire grid, a single site, or a single node. If you select the entire grid, the silence applies to all sites and all nodes. If you select a site, the silence applies only to the nodes at that site.    *Note:* You cannot select more than one node or more than one site for each silence. You must create additional silences if you want to suppress the same alert rule on more than one node or more than one site at one time.
-+
+Which node or nodes you want this silence to apply to. You can suppress an alert rule or all rules on the entire grid, a single site, or a single node. If you select the entire grid, the silence applies to all sites and all nodes. If you select a site, the silence applies only to the nodes at that site.
+*Note:* You cannot select more than one node or more than one site for each silence. You must create additional silences if you want to suppress the same alert rule on more than one node or more than one site at one time.
 |===
 
 . Click *Save*.
 . If you want to modify or end a silence before it expires, you can edit or remove it.
 +
+[options="header"]
 |===
 | Option| Description
 a|
@@ -676,13 +707,13 @@ a|
  .. Select *Alerts* > *Silences*.
  .. From the table, select the radio button for the silence you want to remove.
  .. Click *Remove*.
- .. Click **OK**to confirm you want to remove this silence.
+ .. Click *OK* to confirm you want to remove this silence.
 +
-NOTE: Notifications will now be sent when this alert is triggered (unless suppressed by another silence). If this alert is currently triggered, it might take few minutes for email or SNMP notifications to be sent and for the Alerts page to update.
+*Note*: Notifications will now be sent when this alert is triggered (unless suppressed by another silence). If this alert is currently triggered, it might take few minutes for email or SNMP notifications to be sent and for the Alerts page to update.
 
 +
 |===
 
-*Related information*
+.Related information
 
 xref:configuring_snmp_agent.adoc[Configuring the SNMP agent]

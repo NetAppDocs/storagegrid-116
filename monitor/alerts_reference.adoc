@@ -1,7 +1,7 @@
 ---
 permalink: monitor/alerts_reference.html
 sidebar: sidebar
-keywords: 
+keywords: alerts, reference
 summary: 'The following table lists all default StorageGRID alerts. As required, you can create custom alert rules to fit your system management approach.'
 ---
 = Alerts reference
@@ -13,6 +13,7 @@ The following table lists all default StorageGRID alerts. As required, you can c
 
 See information about the commonly used Prometheus metrics to learn about the metrics used in some of these alerts.
 
+[options="header"]
 |===
 | Alert name| Description and recommended actions
 a|
@@ -486,7 +487,7 @@ The email notification for an alert could not be sent.This alert is triggered wh
 . Click *Send Test Email*, and check the inbox of a test recipient for the email. A new instance of this alert might be triggered if the test email cannot be sent.
 . If the test email could not be sent, confirm your email server is online.
 . If the server is working, select *Support* > *Tools* > *Logs*, and collect the log for the Admin Node. Specify a time period that is 15 minutes before and after the time of the alert.
-. Extract the downloaded archive, and review the contents of prometheus.log (/GID<gid><time_stamp>/<site_node>/<time_stamp>/metrics/prometheus.log).
+. Extract the downloaded archive, and review the contents of `prometheus.log` `(_/GID<gid><time_stamp>/<site_node>/<time_stamp>/metrics/prometheus.log)`.
 . If you are unable to resolve the problem, contact technical support.
 
 a|
@@ -766,7 +767,7 @@ Immediately add Storage Nodes in an expansion procedure.
 
 *Minor alert*
 
-. Monitor the rate at which object metadata space is being used. Select *Nodes* > *Storage Node* > *Storage*, and view the Storage Used - Object Metadata graph.
+. Monitor the rate at which object metadata space is being used. Select *Nodes* > *_Storage Node_* > *Storage*, and view the Storage Used - Object Metadata graph.
 . Add Storage Nodes in an expansion procedure as soon as possible.
 
 Once new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
@@ -859,7 +860,7 @@ link:troubleshooting_storagegrid_system.md#[Troubleshooting lost and missing obj
 
 . When the underlying problem is resolved, reset the counter:
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. For the Storage Node that raised the alert, select *site* > *grid node* > *LDR* > *Data Store* > *Configuration* > *Main*.
+ .. For the Storage Node that raised the alert, select *_site_* > *_grid node_* > *LDR* > *Data Store* > *Configuration* > *Main*.
  .. Select *Reset Lost Objects Count* and click *Apply Changes*.
 
 a|
