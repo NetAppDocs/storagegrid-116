@@ -11,7 +11,7 @@ summary: 'Audit messages exchanged within the StorageGRID system include standar
 [.lead]
 Audit messages exchanged within the StorageGRID system include standard information common to all messages and specific content describing the event or activity being reported.
 
-If the summary information provided by the audit-explain and audit-sum tools is insufficient, refer to this section to understand the general format of all audit messages.
+If the summary information provided by the `audit-explain` and `audit-sum` tools is insufficient, refer to this section to understand the general format of all audit messages.
 
 The following is an example audit message as it might appear in the audit log file:
 
@@ -42,7 +42,7 @@ The following list describes the attribute elements:
 * `type` is a four-character identifier of the programming data type of the value, such as UI64, FC32, and so on. The type is enclosed in parentheses `( )`.
 * `value` is the content of the attribute, typically a numeric or text value. Values always follow a colon (`:`). Values of data type CSTR are surrounded by double quotes `" "`.
 
-*Related information*
+.Related information
 
 xref:using_audit_explain_tool.adoc[Using the audit-explain tool]
 

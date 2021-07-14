@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/cabling_appliance_sg5700.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must connect the two controllers to each other, connect the management ports on each controller, and connect the 10/25-GbE ports on the E5700SG controller to the Grid Network and optional Client Network for StorageGRID.'
 ---
 = Cabling the appliance (SG5700)
@@ -10,6 +10,8 @@ summary: 'You must connect the two controllers to each other, connect the manage
 
 [.lead]
 You must connect the two controllers to each other, connect the management ports on each controller, and connect the 10/25-GbE ports on the E5700SG controller to the Grid Network and optional Client Network for StorageGRID.
+
+.What you'll need
 
 * You have unpacked the following items, which are included with the appliance:
  ** Two power cords.
@@ -20,14 +22,15 @@ You must connect the two controllers to each other, connect the management ports
  ** One to four SFP28 transceivers, if you plan to use 25-GbE link speed.
  ** Ethernet cables for connecting the management ports.
 
-CAUTION:
+CAUTION: *Risk of exposure to laser radiation* -- Do not disassemble or remove any part of an SFP transceiver. You might be exposed to laser radiation.
 
-*Risk of exposure to laser radiation* -- Do not disassemble or remove any part of an SFP transceiver. You might be exposed to laser radiation.
+.About this task
 
 The figure shows the two controllers in the SG5760, with the E2800 controller on the top and the E5700SG controller on the bottom. In the SG5712, the E2800 controller is to the left of the E5700SG controller when viewed from the back.
 
 image::../media/sg5760_connections.gif[Connections on the SG5760 appliance]
 
+[options="header"]
 |===
 |  | Port| Type of port| Function
 a|
@@ -48,6 +51,8 @@ a|
 a|
 Connects to the network where you access SANtricity System Manager. You can use the Admin Network for StorageGRID or an independent management network.
 a|
+2
+a|
 Management port 2 on the E2800 controller
 a|
 1-GbE (RJ-45)
@@ -61,6 +66,8 @@ a|
 1-GbE (RJ-45)
 a|
 Connects the E5700SG controller to the Admin Network for StorageGRID.
+a|
+3
 a|
 Management port 2 on the E5700SG controller
 a|
@@ -76,14 +83,19 @@ a|
 a|
 10/25-GbE ports 1-4 on the E5700SG controller
 a|
-10-GbE or 25-GbE**Note:** The SFP+ transceivers included with the appliance support 10-GbE link speeds. If you want to use 25-GbE link speeds for the four network ports, you must provide SFP28 transceivers.
+10-GbE or 25-GbE
+
+*Note:* The SFP+ transceivers included with the appliance support 10-GbE link speeds. If you want to use 25-GbE link speeds for the four network ports, you must provide SFP28 transceivers.
 
 a|
 Connect to the Grid Network and the Client Network for StorageGRID. See "`10/25-GbE port connections for the E5700SG controller.`"
 |===
 
+.Steps
+
 . Connect the E2800 controller to the E5700SG controller, using two optical cables and four of the eight SFP+ transceivers.
 +
+[options="header"]
 |===
 | Connect this port...| To this port...
 a|
@@ -110,6 +122,7 @@ NOTE: All ports must use the same link speed. Install SFP+ transceivers if you p
 
  ** If you plan to use Fixed port bond mode (default), connect the ports to the StorageGRID Grid and Client Networks, as shown in the table.
 +
+[options="header"]
 |===
 | Port| Connects to...
 a|
@@ -132,7 +145,7 @@ Grid Network
 
  ** If you plan to use the Aggregate port bond mode, connect one or more of the network ports to one or more switches. You should connect at least two of the four ports to avoid having a single point of failure. If you use more than one switch for a single LACP bond, the switches must support MLAG or equivalent.
 
-*Related information*
+.Related information
 
 xref:accessing_storagegrid_appliance_installer_sg5700.adoc[Accessing the StorageGRID Appliance Installer]
 

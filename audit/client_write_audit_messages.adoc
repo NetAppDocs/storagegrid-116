@@ -1,7 +1,7 @@
 ---
 permalink: audit/client_write_audit_messages.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Client write audit messages are logged when an S3 or Swift client application makes a request to create or modify an object.'
 ---
 = Client write audit messages
@@ -11,6 +11,7 @@ summary: 'Client write audit messages are logged when an S3 or Swift client appl
 [.lead]
 Client write audit messages are logged when an S3 or Swift client application makes a request to create or modify an object.
 
+[options="header"]
 |===
 | Code| Description| Used by| See
 a|
@@ -23,11 +24,13 @@ S3 clients
 Swift clients
 
 a|
-link:ovwr_object_overwrite.md#[OVWR: Object Overwrite]
+xref:ovwr_object_overwrite.adoc[OVWR: Object Overwrite]
 a|
 SDEL
 a|
-S3 DELETE: Logs a successful transaction to delete an object or bucket.*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
+S3 DELETE: Logs a successful transaction to delete an object or bucket.
+
+*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
 
 a|
 S3 client
@@ -40,11 +43,13 @@ S3 POST: Logs a successful transaction to restore an object from AWS Glacier sto
 a|
 S3 client
 a|
-link:spos_s3_post.md#[SPOS: S3 POST]
+xref:spos_s3_post.adoc[SPOS: S3 POST]
 a|
 SPUT
 a|
-S3 PUT: Logs a successful transaction to create a new object or bucket.*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
+S3 PUT: Logs a successful transaction to create a new object or bucket.
+
+*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
 
 a|
 S3 client
