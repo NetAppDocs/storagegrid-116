@@ -15,7 +15,7 @@ If a Storage Node includes fewer than 16 storage volumes, you can increase its c
 .What you'll need
 
 * You must have access to the instructions for installing StorageGRID for your Linux platform.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must have specific access permissions.
 
 IMPORTANT: Do not attempt to add storage volumes to a Storage Node while a software upgrade, recovery procedure, or another expansion procedure is active.
@@ -47,16 +47,18 @@ You might have to rescan for devices.
 . Using a text editor such as vim or pico, edit the node configuration file for the Storage Node, which can be found at `/etc/storagegrid/nodes/<node-name>.conf`.
 . Locate the section of the node configuration file that contains the existing object storage block device mappings.
 +
-In the example, this section is in *bold*.
+In the example, `BLOCK_DEVICE_RANGEDB_00` to `BLOCK_DEVICE_RANGEDB_03` are the existing object storage block device mappings.
 +
+
+[subs="specialcharacters,quotes"]
 ----
 NODE_TYPE = VM_Storage_Node
 ADMIN_IP = 10.1.0.2
 BLOCK_DEVICE_VAR_LOCAL = /dev/mapper/sgws-sn1-var-local
-**BLOCK_DEVICE_RANGEDB_00 = /dev/mapper/sgws-sn1-rangedb-0
-BLOCK_DEVICE_RANGEDB_01 = /dev/mapper/sgws-sn1-rangedb-1
-BLOCK_DEVICE_RANGEDB_02 = /dev/mapper/sgws-sn1-rangedb-2
-BLOCK_DEVICE_RANGEDB_03 = /dev/mapper/sgws-sn1-rangedb-3**
+*BLOCK_DEVICE_RANGEDB_00 = /dev/mapper/sgws-sn1-rangedb-0*
+*BLOCK_DEVICE_RANGEDB_01 = /dev/mapper/sgws-sn1-rangedb-1*
+*BLOCK_DEVICE_RANGEDB_02 = /dev/mapper/sgws-sn1-rangedb-2*
+*BLOCK_DEVICE_RANGEDB_03 = /dev/mapper/sgws-sn1-rangedb-3*
 GRID_NETWORK_TARGET = bond0.1001
 ADMIN_NETWORK_TARGET = bond0.1002
 CLIENT_NETWORK_TARGET = bond0.1003
@@ -67,12 +69,13 @@ GRID_NETWORK_GATEWAY = 10.1.0.1
 
 . Add new object storage block device mappings corresponding to the block storage volumes you added for this Storage Node.
 +
-Make sure to start at the next BLOCK_DEVICE_RANGEDB_NN. Do not leave a gap.
+Make sure to start at the next `BLOCK_DEVICE_RANGEDB_nn`. Do not leave a gap.
 
- ** For the example above, start at BLOCK_DEVICE_RANGEDB_04.
- ** In the example below, four new block storage volumes have been added to the node. The new mappings are in *bold*.
+ ** Based on the example above, start at `BLOCK_DEVICE_RANGEDB_04`.
+ ** In the example below, four new block storage volumes have been added to the node: `BLOCK_DEVICE_RANGEDB_04` to `BLOCK_DEVICE_RANGEDB_07`.
 
 +
+[subs="specialcharacters,quotes"]
 ----
 NODE_TYPE = VM_Storage_Node
 ADMIN_IP = 10.1.0.2
@@ -81,10 +84,10 @@ BLOCK_DEVICE_RANGEDB_00 = /dev/mapper/sgws-sn1-rangedb-0
 BLOCK_DEVICE_RANGEDB_01 = /dev/mapper/sgws-sn1-rangedb-1
 BLOCK_DEVICE_RANGEDB_02 = /dev/mapper/sgws-sn1-rangedb-2
 BLOCK_DEVICE_RANGEDB_03 = /dev/mapper/sgws-sn1-rangedb-3
-**BLOCK_DEVICE_RANGEDB_04 = /dev/mapper/sgws-sn1-rangedb-4
-BLOCK_DEVICE_RANGEDB_05 = /dev/mapper/sgws-sn1-rangedb-5
-BLOCK_DEVICE_RANGEDB_06 = /dev/mapper/sgws-sn1-rangedb-6
-BLOCK_DEVICE_RANGEDB_07 = /dev/mapper/sgws-sn1-rangedb-7**
+*BLOCK_DEVICE_RANGEDB_04 = /dev/mapper/sgws-sn1-rangedb-4*
+*BLOCK_DEVICE_RANGEDB_05 = /dev/mapper/sgws-sn1-rangedb-5*
+*BLOCK_DEVICE_RANGEDB_06 = /dev/mapper/sgws-sn1-rangedb-6*
+*BLOCK_DEVICE_RANGEDB_07 = /dev/mapper/sgws-sn1-rangedb-7*
 GRID_NETWORK_TARGET = bond0.1001
 ADMIN_NETWORK_TARGET = bond0.1002
 CLIENT_NETWORK_TARGET = bond0.1003
@@ -157,12 +160,12 @@ The status is updated automatically.
 . Verify that the Storage Node is online:
  .. Sign in to the Grid Manager using a supported browser.
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *_Storage Node_* > *LDR* > *Storage*.
+ .. Select *_site_* > *_Storage Node_* > *LDR* > *Storage*.
  .. Select the *Configuration* tab and then the *Main* tab.
  .. If the *Storage State - Desired* drop-down list is set to Read-only or Offline, select *Online*.
  .. Click *Apply Changes*.
 . To see the new object stores:
- .. Select *Nodes* > *_Storage Node_* > *Storage*.
+ .. Select *Nodes* > *_site_* > *_Storage Node_* > *Storage*.
  .. View the details in the *Object Stores* table.
 
 .Result

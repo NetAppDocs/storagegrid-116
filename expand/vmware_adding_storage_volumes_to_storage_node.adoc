@@ -14,7 +14,7 @@ If a Storage Node includes fewer than 16 storage volumes, you can increase its c
 
 .What you'll need
 * You must have access to the instructions for installing StorageGRID for VMware deployments.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must have specific access permissions.
 
 IMPORTANT: Do not attempt to add storage volumes to a Storage Node while a software upgrade, recovery procedure, or another expansion procedure is active.
@@ -38,7 +38,7 @@ NOTE: Do not use *Power Off* or *Reset* to restart the virtual machine.
 
 . Configure the new storage for use by the Storage Node:
  .. Log in to the grid node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
@@ -71,12 +71,12 @@ The status is updated automatically.
 . Verify that the Storage Node is online:
  .. Sign in to the Grid Manager using a supported browser.
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *_Storage Node_* > *LDR* > *Storage*.
+ .. Select *_site_* > *_Storage Node_* > *LDR* > *Storage*.
  .. Select the *Configuration* tab and then the *Main* tab.
  .. If the *Storage State - Desired* drop-down list is set to Read-only or Offline, select *Online*.
  .. Click *Apply Changes*.
 . To see the new object stores:
- .. Select *Nodes* > *_Storage Node_* > *Storage*.
+ .. Select *Nodes* > *_site_* > *_Storage Node_* > *Storage*.
  .. View the details in the *Object Stores* table.
 
 .Result

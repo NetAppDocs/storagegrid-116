@@ -14,7 +14,7 @@ When you add a new Admin Node through an expansion procedure, its AMS service on
 .What you'll need
 
 * You must have completed the required expansion steps to add an Admin Node.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 
 .About this task
 
@@ -23,14 +23,15 @@ To make the historical audit messages from other Admin Nodes available on the ex
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh _admin@primary_Admin_Node_IP_`
+ .. Enter the following command: `ssh _admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . Stop the AMS service to prevent it from creating a new file: `service ams stop`
-. Rename the audit.log file to ensure that it does not overwrite the file on the expansion Admin Node you are copying it to:
+
+. Rename the `audit.log` file to ensure that it does not overwrite the file on the expansion Admin Node you are copying it to:
 +
 `cd /var/local/audit/export` +
 `ls -l` +

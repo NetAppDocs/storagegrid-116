@@ -13,7 +13,7 @@ When adding Admin Nodes through an expansion procedure, you can optionally copy 
 
 .What you'll need
 * You must have completed the required expansion steps to add an Admin Node.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must have the provisioning passphrase.
 
 .About this task
@@ -33,7 +33,7 @@ Use these steps to stop the MI service and the Management API service on both th
 
 . Complete the following steps on the primary Admin Node:
  .. Log in to the Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
@@ -43,15 +43,15 @@ Use these steps to stop the MI service and the Management API service on both th
  .. Stop the Management Application Program Interface (mgmt-api) service: `service mgmt-api stop`
 . Complete the following steps on the expansion Admin Node:
  .. Log in to the expansion Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
  .. Stop the MI service: `service mi stop`
  .. Stop the mgmt-api service: `service mgmt-api stop`
  .. Add the SSH private key to the SSH agent. Enter:``ssh-add``
- .. Enter the SSH Access Password listed in the Passwords.txt file.
- .. Copy the database from the source Admin Node to the expansion Admin Node: `/usr/local/mi/bin/mi-clone-db.sh Source_Admin_Node_IP`
+ .. Enter the SSH Access Password listed in the `Passwords.txt` file.
+ .. Copy the database from the source Admin Node to the expansion Admin Node: `/usr/local/mi/bin/mi-clone-db.sh _Source_Admin_Node_IP_`
  .. When prompted, confirm that you want to overwrite the MI database on the expansion Admin Node.
 +
 The database and its historical data are copied to the expansion Admin Node. When the copy operation is done, the script starts the expansion Admin Node.
