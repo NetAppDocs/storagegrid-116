@@ -11,11 +11,15 @@ summary: 'You must allocate block storage volumes to each host.'
 [.lead]
 You must allocate block storage volumes to each host.
 
+.What you'll need
+
 You have reviewed the following topics, which provide information you need to accomplish this task:
 
 link:storage_and_performance_requirements.md#[Storage and performance requirements]
 
 link:node_container_migration_requirements.md#[Node container migration requirements]
+
+.About this task
 
 When allocating block storage volumes (LUNs) to hosts, use the tables in "`Storage requirements`" to determine the following:
 
@@ -46,7 +50,7 @@ lrwxrwxrwx 1 root root  9 Sep 19 18:53 pci-0000:03:00.0-scsi-0:0:3:0 -> ../../sd
 
 Results will differ for each installation.
 
-TIP: Assign friendly names to each of these block storage volumes to simplify the initial StorageGRID installation and future maintenance procedures. If you are using the device mapper multipath driver for redundant access to shared storage volumes, you can use the `alias` field in your `/etc/multipath.conf` file.
+Assign friendly names to each of these block storage volumes to simplify the initial StorageGRID installation and future maintenance procedures. If you are using the device mapper multipath driver for redundant access to shared storage volumes, you can use the `alias` field in your `/etc/multipath.conf` file.
 
 For example:
 

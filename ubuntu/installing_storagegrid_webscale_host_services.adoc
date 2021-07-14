@@ -11,6 +11,8 @@ summary: 'You use the StorageGRID DEB package to install the StorageGRID host se
 [.lead]
 You use the StorageGRID DEB package to install the StorageGRID host services.
 
+.About this task
+
 These instructions describe how to install the host services from the DEB packages. As an alternative, you can use the APT repository metadata included in the installation archive to install the DEB packages remotely. See the APT repository instructions for your Linux operating system.
 
 .Steps
@@ -21,7 +23,7 @@ For example, place them in the `/tmp` directory, so you can use the example comm
 
 . Log in to each host as root or using an account with sudo permission, and run the following commands.
 +
-You must install the images package first, and the service package second. If you placed the packages in a directory other than `/tmp`, modify the command to reflect the path you used.
+You must install the `images` package first, and the `service` package second. If you placed the packages in a directory other than `/tmp`, modify the command to reflect the path you used.
 +
 ----
 sudo dpkg --install /tmp/storagegrid-webscale-images-version-SHA.deb
