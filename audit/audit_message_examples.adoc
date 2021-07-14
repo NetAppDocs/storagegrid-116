@@ -1,7 +1,7 @@
 ---
 permalink: audit/audit_message_examples.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can find detailed information in each audit message. All audit messages use the same format.'
 ---
 = Audit message examples
@@ -28,7 +28,8 @@ The audit message contains information about the event being recorded, as well a
 
 To identify which event is recorded by the audit message, look for the ATYP attribute (highlighted below):
 
-====
+[subs="specialcharacters,quotes"]
+----
 2014-07-17T21:17:58.959669
 [AUDT:[RSLT(FC32):SUCS][TIME(UI64):246979][S3AI(CSTR):"bc644d
 381a87d6cc216adcd963fb6f95dd25a38aa2cb8c9a358e8c5087a6af5f"][
@@ -37,13 +38,14 @@ Y(CSTR):"hello1"][CBID(UI64):0x50C4F7AC2BC8EDF7][CSIZ(UI64):0
 ][AVER(UI32):10][ATIM(UI64):1405631878959669][*ATYP\(FC32\):SP*
 *UT*][ANID(UI32):12872812][AMID(FC32):S3RQ][ATID(UI64):1579224
 144102530435]]
-====
+----
 
 The value of the ATYP attribute is SPUT. SPUT represents an S3 PUT transaction, which logs the ingest of an object to a bucket.
 
 The following audit message also shows the bucket to which the object is associated:
 
-====
+[subs="specialcharacters,quotes"]
+----
 2014-07-17T21:17:58.959669
 [AUDT:[RSLT(FC32):SUCS][TIME(UI64):246979][S3AI(CSTR):"bc644d
 381a87d6cc216adcd963fb6f95dd25a38aa2cb8c9a358e8c5087a6af5f"][
@@ -52,12 +54,13 @@ KY(CSTR):"hello1"][CBID(UI64):0x50C4F7AC2BC8EDF7][CSIZ(UI64):
 0][AVER(UI32):10][ATIM(UI64):1405631878959669][ATYP(FC32):SPU
 T][ANID(UI32):12872812][AMID(FC32):S3RQ][ATID(UI64):157922414
 4102530435]]
-====
+----
 
 To discover when the PUT event occurred, note the Universal Coordinated Time (UTC) timestamp at the beginning of the audit message. This value is a human‐readable version of the ATIM attribute of the audit message itself:
 
-====
-      *2014-07-17T21:17:58.959669*
+[subs="specialcharacters,quotes"]
+----
+*2014-07-17T21:17:58.959669*
 [AUDT:[RSLT(FC32):SUCS][TIME(UI64):246979][S3AI(CSTR):"bc644d
 381a87d6cc216adcd963fb6f95dd25a38aa2cb8c9a358e8c5087a6af5f"][
 S3AK(CSTR):"UJXDKKQOXB7YARDS71Q2"][S3BK(CSTR):"s3small1"][S3K
@@ -65,7 +68,7 @@ Y(CSTR):"hello1"][CBID(UI64):0x50C4F7AC2BC8EDF7][CSIZ(UI64):0
 ][AVER(UI32):10][*ATIM\(UI64\):1405631878959669*][ATYP(FC32):SP
 UT][ANID(UI32):12872812][AMID(FC32):S3RQ][ATID(UI64):15792241
 44102530435]]
-====
+----
 
 ATIM records the time, in microseconds, since the beginning of the UNIX epoch. In the example, the value `1405631878959669` translates to Thursday, 17-Jul-2014 21:17:59 UTC.
 
