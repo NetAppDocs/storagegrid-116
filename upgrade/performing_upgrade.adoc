@@ -11,6 +11,8 @@ summary: 'The Software Upgrade page guides you through the process of uploading 
 [.lead]
 The Software Upgrade page guides you through the process of uploading the required file and upgrading all of the grid nodes in your StorageGRID system.
 
+.What you'll need
+
 You are aware of the following:
 
 * You must upgrade all grid nodes for all data center sites from the primary Admin Node, using the Grid Manager.
@@ -21,6 +23,12 @@ You are aware of the following:
 * When the upgrade starts on a grid node, the services on that node are stopped. Later, the grid node is rebooted. Do not approve the upgrade for a grid node unless you are sure that node is ready to be stopped and rebooted.
 * When all grid nodes have been upgraded, new features are enabled and you can resume operations; however, you must wait to perform a decommission or expansion procedure until the background *Upgrade Database* task and the *Final Upgrade Steps* task have completed.
 * You must complete the upgrade on the same hypervisor platform you started with.
+
+.Steps
+. xref:linux_installing_rpm_or_deb_package_on_all_hosts.adoc[Linux: Installing the RPM or DEB package on all hosts]
+. xref:starting_upgrade.adoc[Starting the upgrade]
+. xref:upgrading_grid_nodes_and_completing_upgrade.adoc[Upgrading grid nodes and completing the upgrade]
+. xref:increasing_metadata_reserved_space_setting.adoc[Increasing the Metadata Reserved Space setting]
 
 .Related information
 

@@ -145,6 +145,6 @@ The following related changes were also made:
 
 * The `network_received_bytes` and `network_transmitted_bytes` Prometheus metrics were changed from gauges to counters because the values of these metrics only increase. If you are currently using these metrics in Prometheus queries, you should start using the `increase()` function in the query.
 * The Network Resources table was removed from the Resources tab for StorageGRID services. (Select *Support* > *Tools* > *Grid Topology*.Then, select *_node_* > *_service_* > *Resources*.)
-* The HTTP Sessions page was removed for Storage Nodes. Previously, you could access this page by selecting *Support* > *Tools* > *Grid Topology* and then selecting *Storage Node* > *LDR* > *HTTP*.
+* The HTTP Sessions page was removed for Storage Nodes. Previously, you could access this page by selecting *Support* > *Tools* > *Grid Topology* and then selecting *_Storage Node_* > *LDR* > *HTTP*.
 * The HCCS (Currently Established Incoming Sessions) alarm was removed.
 * The NTSO (Chosen Time Source Offset) alarm was removed.
