@@ -13,6 +13,7 @@ The following table lists all of the legacy Default alarms. If an alarm is trigg
 
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
+[options="header"]
 |===
 | Code| Name| Service| Recommended action
 a|
@@ -595,6 +596,15 @@ HTTP State
 a|
 BLDR
 a|
+See recommended actions for HSTU.
+
+a|
+HSTU
+a|
+HTTP Status
+a|
+BLDR
+a|
 HSTE and HSTU are related to the HTTP protocol for all LDR traffic, including S3, Swift, and other internal StorageGRID traffic. An alarm indicates that one of the following situations has occurred:
 
 * The HTTP protocol has been taken offline manually.
@@ -608,13 +618,6 @@ If necessary, wait for the LDR service to restart.
 Select *Support* > *Tools* > *Grid Topology*. Then select *Storage Node* > *LDR* > *Configuration*. If the HTTP protocol is offline, place it online. Verify that the Auto-Start HTTP attribute is enabled.
 
 If the HTTP protocol remains offline, contact technical support.
-
-a|
-HSTU
-a|
-HTTP Status
-a|
-BLDR
 a|
 HTAS
 a|

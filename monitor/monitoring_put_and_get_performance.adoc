@@ -1,7 +1,7 @@
 ---
 permalink: monitor/monitoring_put_and_get_performance.html
 sidebar: sidebar
-keywords: 
+keywords: put, get, performance
 summary: 'You can monitor the performance of certain operations, such as object store and retrieve, to help identify changes that might require further investigation.'
 ---
 = Monitoring PUT and GET performance
@@ -11,6 +11,7 @@ summary: 'You can monitor the performance of certain operations, such as object 
 [.lead]
 You can monitor the performance of certain operations, such as object store and retrieve, to help identify changes that might require further investigation.
 
+.About this task
 To monitor PUT and GET performance, you can run S3 and Swift commands directly from a workstation or by using the open-source S3tester application. Using these methods allows you to assess performance independently of factors that are external to StorageGRID, such as issues with a client application or issues with an external network.
 
 When performing tests of PUT and GET operations, use the following guidelines:
@@ -27,6 +28,6 @@ When analyzing results, look at the average time required to satisfy a request, 
 
 * You can download S3tester from github:https://github.com/s3tester
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
