@@ -80,7 +80,9 @@ You cannot perform certain maintenance procedures at the same time you are runni
 a|
 Additional EC rebalance procedures
 a|
-No. You can only run one EC rebalance procedure at a time.
+No.
+
+You can only run one EC rebalance procedure at a time.
 a|
 Decommission procedure
 
@@ -95,27 +97,37 @@ No.
 a|
 Expansion procedure
 a|
-No. If you need to add new Storage Nodes in an expansion, you should wait to run the EC rebalance procedure until after you have added all new nodes. If an EC rebalance procedure is in progress when you add new Storage Nodes, data will not be moved to those nodes.
+No.
+
+If you need to add new Storage Nodes in an expansion, you should wait to run the EC rebalance procedure until after you have added all new nodes. If an EC rebalance procedure is in progress when you add new Storage Nodes, data will not be moved to those nodes.
 
 a|
 Upgrade procedure
 a|
-No. If you need to upgrade StorageGRID software, you should perform the upgrade procedure before or after running the EC rebalance procedure. As required, you can terminate the EC rebalance procedure to perform a software upgrade.
+No.
+
+If you need to upgrade StorageGRID software, you should perform the upgrade procedure before or after running the EC rebalance procedure. As required, you can terminate the EC rebalance procedure to perform a software upgrade.
 
 a|
 Appliance node clone procedure
 a|
-No. If you need to clone an appliance Storage Node, you should wait to run the EC rebalance procedure until after you have added the new node. If an EC rebalance procedure is in progress when you add new Storage Nodes, data will not be moved to those nodes.
+No.
+
+If you need to clone an appliance Storage Node, you should wait to run the EC rebalance procedure until after you have added the new node. If an EC rebalance procedure is in progress when you add new Storage Nodes, data will not be moved to those nodes.
 
 a|
 Hotfix procedure
 a|
-Yes. You can apply a StorageGRID hotfix while the EC rebalance procedure is running.
+Yes.
+
+You can apply a StorageGRID hotfix while the EC rebalance procedure is running.
 
 a|
 Other maintenance procedures
 a|
-No. You must terminate the EC rebalance procedure before running other maintenance procedures.
+No.
+
+You must terminate the EC rebalance procedure before running other maintenance procedures.
 
 |===
 
