@@ -54,7 +54,7 @@ When you are logged in as root, the prompt changes from `$` to `#`.
 +
 `rebalance-data start --site "_site-name_"`
 +
-For `"_site-name_"`, specify the first site where you added new Storage Node or nodes. Enclose site-name in quotes.
+For `"_site-name_"`, specify the first site where you added new Storage Node or nodes. Enclose `site-name` in quotes.
 +
 The EC rebalance procedure starts, and a job ID is returned.
 
@@ -84,15 +84,11 @@ To get help on the rebalance-data command:
  ** If the status is `Success`, perform the <<rebalance_succeed,success step>>.
 . If the EC rebalance procedure is generating too much load (for example, ingest operations are affected), pause the procedure.
 +
-----
-rebalance-data pause --job-id job-id
-----
+`rebalance-data pause --job-id _job-id_`
 
 . If you need to terminate the EC rebalance procedure (for example, so you can perform a StorageGRID software upgrade), enter the following:
 +
-----
-rebalance-data abort --job-id job-id
-----
+`rebalance-data abort --job-id _job-id_`
 +
 NOTE: When you terminate an EC rebalance procedure, any data fragments that have already been moved remain in the new location. Data is not moved back to the original location.
 
@@ -102,7 +98,9 @@ NOTE: When you terminate an EC rebalance procedure, any data fragments that have
 +
 For information about specific alerts, see the monitoring and troubleshooting instructions.
 
- .. Restart the EC rebalance procedure: `rebalance-data start –-job-id job-id`
+ .. Restart the EC rebalance procedure:
+ +
+`rebalance-data start –-job-id _job-id_`
  .. If the status of the EC rebalance procedure is still `Failure`, contact technical support.
 . [[rebalance_succeed]]If the status of the EC rebalance procedure is `Success`, optionally <<review_object_storage,review object storage>> to see the updated details for the site.
 +
