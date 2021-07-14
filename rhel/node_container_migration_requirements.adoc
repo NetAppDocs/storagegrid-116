@@ -1,7 +1,7 @@
 ---
 permalink: rhel/node_container_migration_requirements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The node migration feature allows you to manually move a node from one host to another. Typically, both hosts are in the same physical data center.'
 ---
 = Node container migration requirements
@@ -46,14 +46,12 @@ There are many ways to achieve consistent network interface naming across multip
 
 In order to achieve rapid, low-overhead node migrations, the StorageGRID node migration feature does not physically move node data. Instead, node migration is performed as a pair of export and import operations, as follows:
 
-.Steps
-
 . During the "`node export`" operation, a small amount of persistent state data is extracted from the node container running on HostA and cached on that node's system data volume. Then, the node container on HostA is deinstantiated.
 . During the "`node import`" operation, the node container on HostB that uses the same network interface and block storage mappings that were in effect on HostA is instantiated. Then, the cached persistent state data is inserted into the new instance.
 
 Given this mode of operation, all of the node's system data and object storage volumes must be accessible from both HostA and HostB for the migration to be allowed, and to work. In addition, they must have been mapped into the node using names that are guaranteed to refer to the same LUNs on HostA and HostB.
 
-The following example shows one solution for block device mapping for a StorageGRID Storage Node, where DM multipathing is in use on the hosts, and the alias field has been used in /etc/multipath.conf to provide consistent, friendly block device names available on all hosts.
+The following example shows one solution for block device mapping for a StorageGRID Storage Node, where DM multipathing is in use on the hosts, and the alias field has been used in `/etc/multipath.conf` to provide consistent, friendly block device names available on all hosts.
 
 image::../media/block_device_mapping_rhel.gif[This image is explained by the surrounding text.]
 

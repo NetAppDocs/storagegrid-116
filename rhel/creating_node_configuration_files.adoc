@@ -17,7 +17,7 @@ You must place the configuration file for each StorageGRID node in the `/etc/sto
 
 == What do I name the node configuration files?
 
-The names of the configuration files are significant. The format is `<node-name>.conf`, where `<node-name>` is a name you assign to the node. This name appears in the StorageGRID Installer and is used for node maintenance operations, such as node migration.
+The names of the configuration files are significant. The format is `node-name.conf`, where `node-name` is a name you assign to the node. This name appears in the StorageGRID Installer and is used for node maintenance operations, such as node migration.
 
 Node names must follow these rules:
 
@@ -33,7 +33,7 @@ Any files in `/etc/storagegrid/nodes` that do not follow these naming convention
 If you have a multi-site topology planned for your grid, a typical node naming scheme might be:
 
 ----
-<site>-<node type>-<node number>.conf
+site-nodetype-nodenumber.conf
 ----
 
 For example, you might use `dc1-adm1.conf` for the first Admin Node in Data Center 1, and `dc2-sn3.conf` for the third Storage Node in Data Center 2. However, you can use any scheme you like, as long as all node names follow the naming rules.
@@ -445,7 +445,7 @@ a|Remaps any port used by a node for internal grid node communications or extern
 
 *Note*: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
 
-The format used is: `<network type>/<protocol>/<default port used by grid node>/<new port>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+The format used is: `<network type>/<protocol>/<default port used by grid node>/<new port>`, where `<network type>` is grid, admin, or client, and protocol is tcp or udp.
 
 For example:
 
@@ -459,7 +459,7 @@ a|Remaps inbound communications to the specified port. If you specify PORT_REMAP
 
 *IMPORTANT*: Do not remap the ports you are planning to use to configure load balancer endpoints.
 
-The format used is: `<network type>/<protocol:>/<remapped port >/<default port used by grid node>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+The format used is: `<network type>/<protocol:>/<remapped port >/<default port used by grid node>`, where `<network type>` is grid, admin, or client, and protocol is tcp or udp.
 
 For example:
 

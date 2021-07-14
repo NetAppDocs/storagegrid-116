@@ -1,7 +1,7 @@
 ---
 permalink: rhel/starting_storagegrid_host_service.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To start your StorageGRID nodes, and ensure they restart after a host reboot, you must enable and start the StorageGRID host service.'
 ---
 = Starting the StorageGRID host service
@@ -26,7 +26,7 @@ sudo systemctl start storagegrid
 sudo storagegrid node status node-name
 ----
 +
-For any node that returns a status of Not-Running or Stopped, run the following command:
+For any node that returns a status of "`Not-Running`" or "`Stopped`", run the following command:
 +
 ----
 sudo storagegrid node start node-name
