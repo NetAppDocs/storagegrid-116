@@ -1,7 +1,7 @@
 ---
 permalink: swift/configuring_tenant_accounts_and_connections.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Configuring tenant accounts and connections
@@ -32,7 +32,7 @@ After a Swift tenant account is created, users with the Root Access permission c
 
 IMPORTANT: Swift users must have the Root Access permission to access the Tenant Manager. However, the Root Access permission does not allow users to authenticate into the Swift REST API to create containers and ingest objects. Users must have the Swift Administrator permission to authenticate into the Swift REST API.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -79,6 +79,7 @@ Client applications connect to StorageGRID using the IP address of a grid node a
 
 The table summarizes the different ways that clients can connect to StorageGRID and the IP addresses and ports that are used for each type of connection. Contact your StorageGRID administrator for more information, or see the instructions for administering StorageGRID for a description of how to find this information in the Grid Manager.
 
+[options="header"]
 |===
 | Where connection is made| Service that client connects to| IP address| Port
 a|
@@ -94,7 +95,7 @@ a|
 a|
 HA group
 a|
-CLB**Note:** The CLB service is deprecated.
+CLB *Note:* The CLB service is deprecated.
 
 a|
 Virtual IP address of an HA group
@@ -127,10 +128,10 @@ a|
 a|
 Gateway Node
 a|
-CLB**Note:** The CLB service is deprecated.
+CLB *Note:* The CLB service is deprecated.
 
 a|
-IP address of the Gateway Node**Note:** By default, HTTP ports for CLB and LDR are not enabled.
+IP address of the Gateway Node *Note:* By default, HTTP ports for CLB and LDR are not enabled.
 
 a|
 Default Swift ports:
@@ -177,7 +178,7 @@ NOTE: The CLB service is deprecated.
 
 If the *Enable HTTP Connection* option is selected, clients must use different ports for HTTP than they use for HTTPS. See the instructions for administering StorageGRID.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -186,21 +187,24 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 [.lead]
 You can use the Swift CLI to test your connection to the StorageGRID system and to verify that you can read and write objects to the system.
 
+.What you'll need
 * You must have downloaded and installed python-swiftclient, the Swift command-line client.
 +
 https://swiftstack.com/docs/integration/python-swiftclient.html[SwiftStack: python-swiftclient]
 
 * You must have a Swift tenant account in the StorageGRID system.
 
+.About this task
 If you have not configured security, you must add the `--insecure` flag to each of these commands.
 
+.Steps
 . Query the info URL for your StorageGRID Swift deployment:
 +
 ----
 swift
--U <Tenant_Account_ID:User_Name\>
--K <User_Password\>
--A https://<FQDN \| IP\>:<Port\>/info
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/info
 capabilities
 ----
 +
@@ -211,9 +215,9 @@ This is sufficient to test that your Swift deployment is functional. To further 
 ----
 touch test_object
 swift
--U <Tenant_Account_ID:Account_User_Name\>
--K <User_Password\>
--A https://<FQDN \| IP\>:<Port\>/auth/v1.0
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
 upload test_container test_object
 --object-name test_object
 ----
@@ -222,9 +226,9 @@ upload test_container test_object
 +
 ----
 swift
--U <Tenant_Account_ID:Account_User_Name\>
--K <User_Password\>
--A https://<FQDN \| IP\>:<Port\>/auth/v1.0
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
 list test_container
 ----
 
@@ -232,9 +236,9 @@ list test_container
 +
 ----
 swift
--U <Tenant_Account_ID:Account_User_Name\>
--K <User_Password\>
--A https://<FQDN \| IP\>:<Port\>/auth/v1.0
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
 delete test_container test_object
 ----
 
@@ -242,13 +246,13 @@ delete test_container test_object
 +
 ----
 swift
--U <Tenant_Account_ID:Account_User_Name\>
--K <User_Password\>
--A https://<FQDN \| IP\>:<Port\>/auth/v1.0
+-U `<_Tenant_Account_ID:Account_User_Name_>`
+-K `<_User_Password_>`
+-A `\https://<_FQDN_ | _IP_>:<_Port_>/auth/v1.0'
 delete test_container
 ----
 
-*Related information*
+.Related information
 
 link:configuring_tenant_accounts_and_connections.md#[Creating and configuring Swift tenant accounts]
 

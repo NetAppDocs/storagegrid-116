@@ -1,8 +1,8 @@
 ---
 permalink: s3/configuring_tenant_accounts_and_connections.html
 sidebar: sidebar
-keywords: 
-summary: ''
+keywords: configuring, tenant, connections
+summary: 'Configuring StorageGRID to accept connections from client applications requires creating one or more tenant accounts and setting up the connections.'
 ---
 = Configuring tenant accounts and connections
 :icons: font
@@ -34,7 +34,7 @@ After an S3 tenant account is created, tenant users can access the Tenant Manage
 
 IMPORTANT: S3 tenant users can create and manage S3 buckets with the Tenant Manager, but they must have S3 access keys and use the S3 REST API to ingest and manage objects.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -70,7 +70,7 @@ If an administrator creates an HA group, the network interfaces of multiple Admi
 
 For more information about each option, see the instructions for administering StorageGRID.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -83,6 +83,7 @@ Client applications connect to StorageGRID using the IP address of a grid node a
 
 The table summarizes the different ways that clients can connect to StorageGRID and the IP addresses and ports that are used for each type of connection. Contact your StorageGRID administrator for more information, or see the instructions for administering StorageGRID for a description of how to find this information in the Grid Manager.
 
+[options="header"]
 |===
 | Where connection is made| Service that client connects to| IP address| Port
 a|
@@ -98,7 +99,8 @@ a|
 a|
 HA group
 a|
-CLB**Note:** The CLB service is deprecated.
+CLB
+**Note:** The CLB service is deprecated.
 
 a|
 Virtual IP address of an HA group
@@ -131,10 +133,12 @@ a|
 a|
 Gateway Node
 a|
-CLB**Note:** The CLB service is deprecated.
+CLB
+**Note:** The CLB service is deprecated.
 
 a|
-IP address of the Gateway Node**Note:** By default, HTTP ports for CLB and LDR are not enabled.
+IP address of the Gateway Node
+**Note:** By default, HTTP ports for CLB and LDR are not enabled.
 
 a|
 Default S3 ports:
@@ -160,15 +164,15 @@ Default S3 ports:
 
 To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* https://<VIP-of-HA-group>:<LB-endpoint-port>
+* `https://<VIP-of-HA-group>:<LB-endpoint-port>`
 
 For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
 
-* https://192.0.2.5:10443
+* `https://192.0.2.5:10443`
 
 It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -185,7 +189,7 @@ NOTE: The CLB service is deprecated.
 
 If the *Enable HTTP Connection* option is selected, clients must use different ports for HTTP than they use for HTTPS. See the instructions for administering StorageGRID.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -217,7 +221,7 @@ See the instructions for administering StorageGRID for more information.
 
 After these steps have been completed, you can use virtual hosted-style requests (for example, bucket.s3.company.com).
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -228,9 +232,11 @@ link:configuring_security_for_rest_api.md#[Configuring security for the REST API
 [.lead]
 You can use the Amazon Web Services Command Line Interface (AWS CLI) to test your connection to the system and to verify that you can read and write objects to the system.
 
+.What you'll need
 * You must have downloaded and installed the AWS CLI from https://aws.amazon.com/cli[aws.amazon.com/cli].
 * You must have created an S3 tenant account in the StorageGRID system.
 
+.Steps
 . Configure the Amazon Web Services settings to use the account you created in the StorageGRID system:
  .. Enter configuration mode:``aws configure``
  .. Enter the AWS Access Key ID for the account you created.

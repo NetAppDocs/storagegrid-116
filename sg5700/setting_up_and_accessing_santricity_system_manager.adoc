@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/setting_up_and_accessing_santricity_system_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to access SANtricity System Manager on the storage controller to monitor the hardware in the storage controller shelf or to configure E-Series AutoSupport.'
 ---
 = Setting up and Accessing SANtricity System Manager
@@ -10,6 +10,8 @@ summary: 'You might need to access SANtricity System Manager on the storage cont
 
 [.lead]
 You might need to access SANtricity System Manager on the storage controller to monitor the hardware in the storage controller shelf or to configure E-Series AutoSupport.
+
+.What you'll need
 
 * You are using a supported web browser.
 * To access SANtricity System Manager through Grid Manager, you must have installed StorageGRID, and you must have the Storage Appliance Administrator permission or Root Access permission.
@@ -20,6 +22,8 @@ NOTE: You must have SANtricity firmware 8.70 or higher to access SANtricity Syst
 
 IMPORTANT: Accessing SANtricity System Manager from the Grid Manager or from the Appliance Installer is generally meant only for monitoring your hardware and configuring E-Series AutoSupport. Many features and operations within SANtricity System Manager such as upgrading firmware do not apply to monitoring your StorageGRID appliance. To avoid issues, always follow the hardware installation and maintenance instructions for your appliance.
 
+.About this task
+
 There are three ways to access SANtricity System Manager, depending upon what stage of the installation and configuration process you are in:
 
 * If the appliance has not yet been deployed as a node in your StorageGRID system, you should use the Advanced tab in the StorageGRID Appliance Installer.
@@ -29,7 +33,7 @@ NOTE: Once the node is deployed, you can no longer use the StorageGRID Appliance
 * If the appliance has been deployed as a node in your StorageGRID system, use the SANtricity System Manager tab on the Nodes page in Grid Manager.
 * If you cannot use the StorageGRID Appliance Installer or Grid Manager, you can access SANtricity System Manager directly using a web browser connected to the management port.
 
-This procedure includes steps for your initial access to SANtricity System Manager. If you have already set up SANtricity System Manager, go to step <<STEP_A0FB138E43A04D8D8C365E75B47BA818,#STEP_A0FB138E43A04D8D8C365E75B47BA818>>.
+This procedure includes steps for your initial access to SANtricity System Manager. If you have already set up SANtricity System Manager, go to the  <<config_hardware_alerts_sg5700,Configure hardware alerts>> step.
 
 NOTE: Using either the Grid Manager or the StorageGRID Appliance Installer enables you to access SANtricity System Manager without having to configure or connect the management port of the appliance.
 
@@ -46,16 +50,19 @@ You can use SANtricity System Manager to configure the following settings:
 +
 For additional details on E-Series AutoSupport, see the E-Series documentation center.
 +
-http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Center]
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site^]
 
 * Drive Security keys, which are needed to unlock secured drives (this step is required if the Drive Security feature is enabled)
 * Administrator password for accessing SANtricity System Manager
 
+.Steps
+
 . Do one of the following:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
- ** Use the Grid Manager and select *Nodes* > *appliance Storage Node* > *SANtricity System Manager*
-*Note:* If these options are not available or the login page does not appear, you must use the IP address of the storage controller. Access SANtricity System Manager by browsing to the storage controller IP: `+https://Storage_Controller_IP+`
-
+ ** Use the Grid Manager and select *Nodes* > `*_appliance Storage Node_*` > *SANtricity System Manager*
++
+NOTE: If these options are not available or the login page does not appear, you must use the IP address of the storage controller. Access SANtricity System Manager by browsing to the storage controller IP: +
+`*https://_Storage_Controller_IP_*`
 +
 The login page for SANtricity System Manager appears.
 . Set or enter the administrator password.
@@ -74,6 +81,7 @@ The SANtricity System Manager home page appears.
 +
 image::../media/sam_home_page.gif[Screen shot of SANtricity System Manager home page]
 
+[#config_hardware_alerts_sg5700,start=4]
 . Configure hardware alerts.
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Settings* > *Alerts* section of the online help to learn about alerts.
@@ -82,11 +90,10 @@ image::../media/sam_home_page.gif[Screen shot of SANtricity System Manager home 
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Support* > *Support Center* section of the online help to learn about the AutoSupport feature.
  .. Follow the "`How To`" instructions to manage AutoSupport.
-
 +
 For specific instructions on configuring a StorageGrid proxy for sending E-Series AutoSupport messages without using the management port, go to the instructions for administering StorageGRID and search for "proxy settings for E-Series AutoSupport."
 +
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID^]
 . If the Drive Security feature is enabled for the appliance, create and manage the security key.
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Settings* > *System* > *Security key management* section of the online help to learn about Drive Security.
@@ -94,4 +101,4 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 . Optionally, change the administrator password.
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Home* > *Storage array administration* section of the online help to learn about the administrator password.
- .. Follow the "`How To`" instructions to change the password.
+ .. Follow the "How To" instructions to change the password.

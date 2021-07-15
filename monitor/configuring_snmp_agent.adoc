@@ -1,7 +1,7 @@
 ---
 permalink: monitor/configuring_snmp_agent.html
 sidebar: sidebar
-keywords: 
+keywords: configuring, snmp agent
 summary: 'You can configure the StorageGRID SNMP agent if you want to use a third-party SNMP management system for read-only MIB access and notifications.'
 ---
 = Configuring the SNMP agent
@@ -11,11 +11,14 @@ summary: 'You can configure the StorageGRID SNMP agent if you want to use a thir
 [.lead]
 You can configure the StorageGRID SNMP agent if you want to use a third-party SNMP management system for read-only MIB access and notifications.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission.
 
+.About this task
 The StorageGRID SNMP agent supports all three versions of the SNMP protocol. You can configure the agent for one or more versions.
 
+.Steps
 . Select *Configuration* > *Monitoring* > *SNMP Agent*.
 +
 The SNMP Agent page appears.
@@ -156,12 +159,13 @@ image::../media/snmp_create_trap_destination.png[SNMP Create Trap Destination]
  .. In the *Version* field, select which SNMP version will be used for this notification.
  .. Complete the form, based on which version you selected
 +
+[cols="1a,1a" options="header"]
 |===
 | Version| Specify this information
 a|
 SNMPv1
 a|
-        *Note:* For SNMPv1, the SNMP agent can only send traps. Informs are not supported.
+*Note:* For SNMPv1, the SNMP agent can only send traps. Informs are not supported.
 
   ... In the *Host* field, enter an IPv4 or IPv6 address (or FQDN) to receive the trap.
   ... For *Port*, use the default (162), unless you must use another value. (162 is the standard port for SNMP traps.)
@@ -207,6 +211,6 @@ image::../media/snmp_other_config_trap_dest_table.png[SNMP Other Configurations 
 +
 The new SNMP agent configuration becomes active.
 
-*Related information*
+.Related information
 
 link:managing_alerts.md#[Silencing alert notifications]

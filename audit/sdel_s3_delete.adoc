@@ -1,7 +1,7 @@
 ---
 permalink: audit/sdel_s3_delete.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When an S3 client issues a DELETE transaction, a request is made to remove the specified object or bucket. This message is issued by the server if the transaction is successful.'
 ---
 = SDEL: S3 DELETE
@@ -11,6 +11,7 @@ summary: 'When an S3 client issues a DELETE transaction, a request is made to re
 [.lead]
 When an S3 client issues a DELETE transaction, a request is made to remove the specified object or bucket. This message is issued by the server if the transaction is successful.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -48,7 +49,9 @@ HTRH
 a|
 HTTP Request Header
 a|
-List of logged HTTP request header names and values as selected during configuration. *Note:* X-Forwarded-For is automatically included if it is present in the request and if the X-Forwarded-For value is different from the request sender IP address (SAIP audit field).
+List of logged HTTP request header names and values as selected during configuration.
+
+*Note:* `X-Forwarded-For` is automatically included if it is present in the request and if the `X-Forwarded-For` value is different from the request sender IP address (SAIP audit field).
 
 a|
 MTME
@@ -61,7 +64,9 @@ RSLT
 a|
 Result Code
 a|
-Result of the DELETE transaction. Result is always:SUCS: Successful
+Result of the DELETE transaction. Result is always:
+
+SUCS: Successful
 
 a|
 S3AI
@@ -122,7 +127,9 @@ SUSR
 a|
 S3 User URN (request sender)
 a|
-The tenant account ID and the user name of the user making the request. The user can either be a local user or an LDAP user. For example: ``urn:sgws:identity::03393893651506583485:root``Empty for anonymous requests.
+The tenant account ID and the user name of the user making the request. The user can either be a local user or an LDAP user. For example: `urn:sgws:identity::03393893651506583485:root`
+
+Empty for anonymous requests.
 
 a|
 TIME

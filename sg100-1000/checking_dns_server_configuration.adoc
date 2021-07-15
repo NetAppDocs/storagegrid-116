@@ -11,9 +11,13 @@ summary: 'You can check and temporarily change the domain name system \(DNS\) se
 [.lead]
 You can check and temporarily change the domain name system (DNS) servers that are currently in use by this appliance node.
 
+.What you'll need
+
 The appliance has been placed maintenance mode.
 
 xref:placing_appliance_into_maintenance_mode.adoc[Placing an appliance into maintenance mode]
+
+.About this task
 
 You might need to change the DNS server settings if an encrypted appliance cannot connect to the key management server (KMS) or KMS cluster because the hostname for the KMS was specified as a domain name instead of an IP address. Any changes that you make to the DNS settings for the appliance are temporary and are lost when you exit maintenance mode. To make these changes permanent, specify the DNS servers in Grid Manager (*Maintenance* > *Network* > *DNS Servers*).
 
@@ -24,6 +28,8 @@ You might need to change the DNS server settings if an encrypted appliance canno
 To resolve a DNS issue preventing KMS connection, specify the IP address of one or more DNS servers in the StorageGRID Appliance Installer. These temporary DNS settings allow the appliance to connect to the KMS and decrypt data on the node.
 
 For example, if the DNS server for the grid changes while an encrypted node was offline, the node will not be able to reach the KMS when it comes back online, since it is still using the previous DNS values. Entering the new DNS server IP address in the StorageGRID Appliance Installer allows a temporary KMS connection to decrypt the node data.
+
+.Steps
 
 . From the StorageGRID Appliance Installer, select *Configure Networking* > *DNS Configuration*.
 . Verify that the DNS servers specified are correct.
@@ -42,7 +48,6 @@ The node uses the DNS server settings specified on this page to reconnect to the
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
 image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
-
 +
 NOTE: When the node reboots and rejoins the grid, it uses the system-wide DNS servers listed in the Grid Manager. After rejoining the grid, the appliance will no longer use the temporary DNS servers specified in the StorageGRID Appliance Installer while the appliance was in maintenance mode.
 +

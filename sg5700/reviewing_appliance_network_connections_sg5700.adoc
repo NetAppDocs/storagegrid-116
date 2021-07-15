@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/reviewing_appliance_network_connections_sg5700.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before installing the StorageGRID appliance, you should understand which networks can be connected to the appliance and how the ports on each controller are used.'
 ---
 = Reviewing appliance network connections
@@ -28,6 +28,7 @@ When you install a StorageGRID appliance, you must connect the two controllers t
 
 image::../media/sg5760_connections.gif[Connections on SG5760 appliance]
 
+[options="header"]
 |===
 |  | Port| Type of port| Function
 a|
@@ -47,6 +48,9 @@ a|
 1-GbE (RJ-45)
 a|
 Connects to the network where you access SANtricity System Manager. You can use the Admin Network for StorageGRID or an independent management network.
+
+a|
+2
 a|
 Management port 2 on the E2800 controller
 a|
@@ -61,6 +65,9 @@ a|
 1-GbE (RJ-45)
 a|
 Connects the E5700SG controller to the Admin Network for StorageGRID.
+
+a|
+3
 a|
 Management port 2 on the E5700SG controller
 a|
@@ -76,12 +83,14 @@ a|
 a|
 10/25-GbE ports 1-4 on the E5700SG controller
 a|
-10-GbE or 25-GbE**Note:** The SFP+ transceivers included with the appliance support 10-GbE link speeds. If you want to use 25-GbE link speeds for the four network ports, you must provide SFP28 transceivers.
+10-GbE or 25-GbE
+
+*Note:* The SFP+ transceivers included with the appliance support 10-GbE link speeds. If you want to use 25-GbE link speeds for the four network ports, you must provide SFP28 transceivers.
 
 a|
 Connect to the Grid Network and the Client Network for StorageGRID. See "`10/25-GbE port connections for the E5700SG controller.`"
 |===
-*Related information*
+.Related information
 
 xref:gathering_installation_information_sg5700.adoc[Gathering installation information (SG5700)]
 
@@ -89,10 +98,10 @@ xref:cabling_appliance_sg5700.adoc[Cabling the appliance (SG5700)]
 
 xref:port_bond_modes_for_e5700sg_controller_ports.adoc[Port bond modes for E5700SG controller ports]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines^]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-vmw/home.html[VMware installation^]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation^]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-ub/home.html[Ubuntu or Debian installation^]

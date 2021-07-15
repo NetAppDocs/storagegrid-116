@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/replacing_sg6000_cn_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to replace the SG6000-CN controller if it is not functioning optimally or if it has failed.'
 ---
 = Replacing the SG6000-CN controller
@@ -11,15 +11,21 @@ summary: 'You might need to replace the SG6000-CN controller if it is not functi
 [.lead]
 You might need to replace the SG6000-CN controller if it is not functioning optimally or if it has failed.
 
+.What you'll need
+
 * You have a replacement controller with the same part number as the controller you are replacing.
 * You have labels to identify each cable that is connected to the controller.
 * You have physically located the controller to replace in the data center.
 +
 xref:locating_controller_in_data_center.adoc[Locating the controller in a data center]
 
+.About this task
+
 The appliance Storage Node will not be accessible when you replace the SG6000-CN controller. If the SG6000-CN controller is functioning sufficiently, you can perform a controlled shutdown at the start of this procedure.
 
 NOTE: If you are replacing the controller before installing StorageGRID software, you might not be able to access the StorageGRID Appliance Installer immediately after completing this procedure. While you can access the StorageGRID Appliance Installer from other hosts on the same subnet as the appliance, you cannot access it from hosts on other subnets. This condition should resolve itself within 15 minutes (when any ARP cache entries for the original controller time out), or you can clear the condition immediately by purging any old ARP cache entries manually from the local router or gateway.
+
+.Steps
 
 . If the SG6000-CN controller is functioning sufficiently to allow for a controlled shutdown, shut down the SG6000-CN controller.
 +
@@ -33,14 +39,12 @@ The green Cache Active LED on the back of the E2800 controller is on when cached
 . If the StorageGRID networks attached to the controller use DHCP servers, update DNS/network and IP address settings.
  .. Locate the MAC address label on the front of the SG6000-CN controller, and determine the MAC address for the Admin Network port.
 +
-NOTE: The MAC address label lists the MAC address for the BMC management port.
-+
+NOTE: The MAC address label lists the MAC address for the BMC management port. +
 To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
 
  .. Ask your network administrator to associate the DNS/network and IP address for the controller you removed with the MAC address for the replacement controller.
 +
 IMPORTANT: You must ensure that all IP addresses for the original controller have been updated before you apply power to the replacement controller. Otherwise, the controller will obtain new DHCP IP addresses when it boots up and might not be able to reconnect to StorageGRID. This step applies to all StorageGRID networks that are attached to the controller.
-
 +
 NOTE: If the original controller used static IP address, the new controller will automatically adopt the IP addresses of the controller you removed.
 . Remove and replace the SG6000-CN controller:
@@ -57,9 +61,9 @@ IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step o
 +
 If the node controller IP address is not valid or is not in the expected range, reconfigure the IP address as described in the recovery and maintenance instructions.
 +
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance^]
 
-*Related information*
+.Related information
 
 xref:sg6000_cn_installing_into_cabinet_or_rack.adoc[SG6000-CN: Installing into a cabinet or rack]
 

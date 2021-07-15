@@ -1,7 +1,7 @@
 ---
 permalink: audit/accessing_audit_log_file.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The audit share contains the active audit.log file and any compressed audit log files. For easy access to audit logs, you can configure client access to audit shares for both NFS and CIFS \(deprecated\). You can also access audit log files directly from the command line of the Admin Node.'
 ---
 = Accessing the audit log file
@@ -9,18 +9,24 @@ summary: 'The audit share contains the active audit.log file and any compressed 
 :imagesdir: ../media/
 
 [.lead]
-The audit share contains the active audit.log file and any compressed audit log files. For easy access to audit logs, you can configure client access to audit shares for both NFS and CIFS (deprecated). You can also access audit log files directly from the command line of the Admin Node.
+The audit share contains the active `audit.log` file and any compressed audit log files. For easy access to audit logs, you can configure client access to audit shares for both NFS and CIFS (deprecated). You can also access audit log files directly from the command line of the Admin Node.
+
+.What you'll need
 
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must know the IP address of an Admin Node.
 
+.Steps
+
 . Log in to an Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
-. Go to the directory containing the audit log files:``cd /var/local/audit/export``
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+. Go to the directory containing the audit log files:
++
+`cd /var/local/audit/export`
 . View the current or a saved audit log file, as required.
 
-*Related information*
+.Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID^]

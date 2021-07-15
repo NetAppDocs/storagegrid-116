@@ -13,6 +13,7 @@ StorageGRID platform services enable StorageGRID tenant accounts to leverage ext
 
 The following table summarizes the available platform services and the S3 APIs used to configure them.
 
+[options="header"]
 |===
 | Platform service| Purpose| S3 API used to configure the service
 a|
@@ -32,7 +33,8 @@ Search integration
 a|
 Sends object metadata for objects stored in a StorageGRID bucket to a configured Elasticsearch index.
 a|
-PUT Bucket metadata notification**Note:** This is a StorageGRID custom S3 API.
+PUT Bucket metadata notification
+**Note:** This is a StorageGRID custom S3 API.
 
 |===
 A grid administrator must enable the use of platform services for a tenant account before they can be used. Then, a tenant administrator must create an endpoint that represents the remote service in the tenant account. This step is required before a service can be configured.
@@ -46,7 +48,7 @@ Before using platform services, you must be aware of the following recommendatio
 * CloudMirror replication is not supported if the source bucket has S3 Object Lock enabled.
 * CloudMirror replication will fail with an AccessDenied error if the destination bucket has legacy Compliance enabled.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 

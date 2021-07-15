@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/replacing_e2700_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to replace the E2700 controller if it is not functioning optimally or it has failed.'
 ---
 = Replacing the E2700 controller
@@ -11,10 +11,14 @@ summary: 'You might need to replace the E2700 controller if it is not functionin
 [.lead]
 You might need to replace the E2700 controller if it is not functioning optimally or it has failed.
 
+.What you'll need
+
 * You have a replacement controller with the same part number as the controller you are replacing.
 * You have labels to identify each cable that is connected to the controller.
 * You have antistatic protection.
 * You must have the Maintenance or Root Access permission. For details, see the instructions for administering StorageGRID.
+
+.About this task
 
 You can determine if you have a failed controller by checking the amber Service Action Required LED on the controller (shown as 1 in the illustration). If this LED is on, the controller should be replaced.
 
@@ -23,6 +27,8 @@ image::../media/e2700_controller_sar_led.gif[Service Action Required LED on E270
 The appliance Storage Node will not be accessible when you replace the controller. If the E2700 controller is functioning sufficiently, you can place the E5600SG controller into maintenance mode.
 
 When you replace a controller, you must remove the battery from the original controller and install it in the replacement controller.
+
+.Steps
 
 . Prepare to remove the controller.
 +
@@ -78,8 +84,8 @@ image::../media/node_rejoin_grid_confirmation.png[Appliance node rejoined grid]
 
 . From SANtricity Storage Manager, confirm that the new controller is Optimal, and collect support data.
 
-*Related information*
+.Related information
 
-https://mysupport.netapp.com/info/web/ECMP11751516.html[NetApp E-Series and EF-Series Hardware Replacement Procedures]
+https://mysupport.netapp.com/info/web/ECMP11751516.html[NetApp E-Series and EF-Series Hardware Replacement Procedures^]
 
-http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765[NetApp Documentation: E2700 Series]
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765[NetApp Documentation: E2700 Series^]

@@ -1,7 +1,7 @@
 ---
 permalink: sg6000/cabling_appliance_sg6000.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must connect the storage controllers to the SG6000-CN controller, connect the management ports on all three controllers, and connect the network ports on the SG6000-CN controller to the Grid Network and optional Client Network for StorageGRID.'
 ---
 = Cabling the appliance (SG6000)
@@ -11,15 +11,17 @@ summary: 'You must connect the storage controllers to the SG6000-CN controller, 
 [.lead]
 You must connect the storage controllers to the SG6000-CN controller, connect the management ports on all three controllers, and connect the network ports on the SG6000-CN controller to the Grid Network and optional Client Network for StorageGRID.
 
+.What you'll need
+
 * You have the four optical cables provided with the appliance for connecting the two storage controllers to the SG6000-CN controller.
 * You have RJ-45 Ethernet cables (four minimum) for connecting the management ports.
 * You have one of the following options for the network ports. These items are not provided with the appliance.
  ** One to four TwinAx cables for connecting the four network ports.
  ** One to four SFP+ or SFP28 transceivers if you plan to use optical cables for the ports.
++
+CAUTION: *Risk of exposure to laser radiation* -- Do not disassemble or remove any part of an SFP transceiver. You might be exposed to laser radiation.
 
-CAUTION:
-
-*Risk of exposure to laser radiation* -- Do not disassemble or remove any part of an SFP transceiver. You might be exposed to laser radiation.
+.About this task
 
 The following figure shows the three controllers in the SG6060 appliance, with the SG6000-CN compute controller on the top and the two E2800 storage controllers on the bottom.
 
@@ -29,6 +31,7 @@ The following figure shows the three controllers in the SGF6024 appliance, with 
 
 image::../media/sg6000_ef570_connections.png[SG6000 to SGF570 Connections]
 
+[options="header"]
 |===
 |  | Port| Type of port| Function
 a|
@@ -70,15 +73,21 @@ a|
 a|
 Admin Network port on the SG6000-CN controller (labelled P1 in the figure)
 a|
-1-GbE (RJ-45)*Attention:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
+1-GbE (RJ-45)
+
+*Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
 
 a|
 Connects the SG6000-CN controller to the Admin Network for StorageGRID.
 
+|
+4
 a|
 Rightmost RJ-45 port on the SG6000-CN controller
 a|
-1-GbE (RJ-45)*Attention:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
+1-GbE (RJ-45)
+
+*Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
 
 a|
 
@@ -97,6 +106,8 @@ a|
 Connects to the network where you access SANtricity System Manager.
 
 a|
+5
+a|
 Management port 2 on each storage controller
 
 a|
@@ -104,6 +115,8 @@ a|
 a|
 Reserved for technical support.
 |===
+
+.Steps
 
 . Connect the BMC management port on the SG6000-CN controller to the management network, using an Ethernet cable.
 +
@@ -116,6 +129,7 @@ NOTE: The four network ports must use the same link speed. Install SFP+ transcei
 
  ** If you plan to use Fixed port bond mode (default), connect the ports to the StorageGRID Grid and Client Networks, as shown in the table.
 +
+[options="header"]
 |===
 | Port| Connects to...
 a|
@@ -143,7 +157,7 @@ Grid Network
 +
 Do not use management port 2 (P2) on the storage controllers (the RJ-45 port on the right). This port is reserved for technical support.
 
-*Related information*
+.Related information
 
 xref:port_bond_modes_for_sg6000_cn_controller.adoc[Port bond modes for the SG6000-CN controller]
 
