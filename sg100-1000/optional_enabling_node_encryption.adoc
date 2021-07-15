@@ -1,7 +1,7 @@
 ---
 permalink: sg100-1000/optional_enabling_node_encryption.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you enable node encryption, the disks in your appliance can be protected by secure key management server \(KMS\) encryption against physical loss or removal from the site. You must select and enable node encryption during appliance installation and cannot unselect node encryption once the KMS encryption process starts.'
 ---
 = Optional: Enabling node encryption
@@ -11,7 +11,11 @@ summary: 'If you enable node encryption, the disks in your appliance can be prot
 [.lead]
 If you enable node encryption, the disks in your appliance can be protected by secure key management server (KMS) encryption against physical loss or removal from the site. You must select and enable node encryption during appliance installation and cannot unselect node encryption once the KMS encryption process starts.
 
+.What you'll need
+
 Review the information about KMS in the instructions for administering StorageGRID.
+
+.About this task
 
 An appliance that has node encryption enabled connects to the external key management server (KMS) that is configured for the StorageGRID site. Each KMS (or KMS cluster) manages the encryption keys for all appliance nodes at the site. These keys encrypt and decrypt the data on each disk in an appliance that has node encryption enabled.
 
@@ -24,11 +28,12 @@ IMPORTANT: Any data that exists before an appliance that has node encryption ena
 
 Without the KMS key needed to decrypt the disk, data on the appliance cannot be retrieved and is effectively lost. This is the case whenever the decryption key cannot be retrieved from the KMS. The key becomes inaccessible if a customer clears the KMS configuration, a KMS key expires, connection to the KMS is lost, or the appliance is removed from the StorageGRID system where its KMS keys are installed.
 
-. Open a browser, and enter one of the IP addresses for the appliance's compute controller.
+.Steps
+
+. Open a browser, and enter one of the IP addresses for the appliance's compute controller. +
+`*https://_Controller_IP_:8443*`
 +
-`+https://Controller_IP:8443+`
-+
-`Controller_IP` is the IP address of the compute controller (not the storage controller) on any of the three StorageGRID networks.
+`_Controller_IP_` is the IP address of the compute controller (not the storage controller) on any of the three StorageGRID networks.
 +
 The StorageGRID Appliance Installer Home page appears.
 +
@@ -51,10 +56,12 @@ KMS-controlled encryption begins when the appliance accesses the KMS keys config
 +
 NOTE: Appliances are initially configured with a random non-KMS encryption key assigned to each disk volume. The disks are encrypted using this temporary encryption key, that is not secure, until the appliance that has node encryption enabled accesses the KMS keys configured for your StorageGRID site.
 
+.After you finish
+
 You can view node-encryption status, KMS details, and the certificates in use when the appliance node is in maintenance mode.
 
-*Related information*
+.Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID^]
 
 xref:monitoring_node_encryption_in_maintenance_mode.adoc[Monitoring node encryption in maintenance mode]

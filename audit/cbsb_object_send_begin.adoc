@@ -1,7 +1,7 @@
 ---
 permalink: audit/cbsb_object_send_begin.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'During normal system operations, content blocks are continuously transferred between different nodes as data is accessed, replicated and retained. When transfer of a content block from one node to another is initiated, this message is issued by the source entity.'
 ---
 = CBSB: Object Send Begin
@@ -11,6 +11,7 @@ summary: 'During normal system operations, content blocks are continuously trans
 [.lead]
 During normal system operations, content blocks are continuously transferred between different nodes as data is accessed, replicated and retained. When transfer of a content block from one node to another is initiated, this message is issued by the source entity.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -30,7 +31,9 @@ CTDR
 a|
 Transfer Direction
 a|
-Indicates if the CBID transfer was push-initiated or pull-initiated:PUSH: The transfer operation was requested by the sending entity.
+Indicates if the CBID transfer was push-initiated or pull-initiated:
+
+PUSH: The transfer operation was requested by the sending entity.
 
 PULL: The transfer operation was requested by the receiving entity.
 
@@ -63,7 +66,9 @@ RSLT
 a|
 Transfer Start Status
 a|
-Status at the time the transfer was started:SUCS: transfer started successfully.
+Status at the time the transfer was started:
+
+SUCS: transfer started successfully.
 
 |===
-This audit message means a node-to-node data transfer operation was initiated on a single piece of content, as identified by its Content Block Identifier. The operation requests data from "`Start Sequence Count`" to "`Expected End Sequence Count`". Sending and receiving nodes are identified by their node IDs. This information can be used to track system data flow, and when combined with storage audit messages, to verify replica counts.
+This audit message means a node-to-node data transfer operation was initiated on a single piece of content, as identified by its Content Block Identifier. The operation requests data from "Start Sequence Count" to "Expected End Sequence Count". Sending and receiving nodes are identified by their node IDs. This information can be used to track system data flow, and when combined with storage audit messages, to verify replica counts.

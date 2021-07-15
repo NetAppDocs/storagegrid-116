@@ -11,9 +11,13 @@ summary: 'If you have an SG5660 with 60 drives, you can change the volume config
 [.lead]
 If you have an SG5660 with 60 drives, you can change the volume configuration from its default and recommended setting, Dynamic Disk Pools (DDP), to RAID6. You can only change the mode before deploying the StorageGRID appliance Storage Node.
 
+.What you'll need
+
 * You have an SG5660. The SG5612 does not support RAID6. If you have an SG5612, you must use DDP mode.
 
 IMPORTANT: If any volumes have already been configured or if StorageGRID was previously installed, changing the RAID mode causes the volumes to be removed and replaced. Any data on those volumes will be lost.
+
+.About this task
 
 Before deploying a StorageGRID appliance Storage Node, you can choose from two volume configuration options:
 
@@ -22,10 +26,13 @@ Before deploying a StorageGRID appliance Storage Node, you can choose from two v
 +
 IMPORTANT: Using RAID6 is not recommended for most StorageGRID environments. Although RAID6 can increase storage efficiency to 88% (compared to 80% for DDP), DDP mode provides more efficient recovery from drive failures.
 
-. Using the service laptop, open a web browser and access the StorageGRID Appliance Installer: `+https://E5600SG_Controller_IP:8443+`
+.Steps
+
+. Using the service laptop, open a web browser and access the StorageGRID Appliance Installer: +
+`*https://_E5600SG_Controller_IP_:8443*`
 +
-E5600SG_Controller_IP is any of the IP addresses for the E5600SG controller.
+Where `_E5600SG_Controller_IP_` is any of the IP addresses for the E5600SG controller.
 
 . From the menu bar, select *Advanced* > *RAID Mode*.
-. On the Configure RAID Mode page, select *RAID6* from the Mode drop-down list.
+. On the *Configure RAID Mode* page, select *RAID6* from the Mode drop-down list.
 . Click *Save*.

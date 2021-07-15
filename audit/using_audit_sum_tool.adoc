@@ -1,7 +1,7 @@
 ---
 permalink: audit/using_audit_sum_tool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can use the audit-sum tool to count the write, read, head, and delete audit messages and to see the minimum, maximum, and average time \(or size\) for each operation type.'
 ---
 = Using the audit-sum tool
@@ -9,17 +9,21 @@ summary: 'You can use the audit-sum tool to count the write, read, head, and del
 :imagesdir: ../media/
 
 [.lead]
-You can use the audit-sum tool to count the write, read, head, and delete audit messages and to see the minimum, maximum, and average time (or size) for each operation type.
+You can use the `audit-sum` tool to count the write, read, head, and delete audit messages and to see the minimum, maximum, and average time (or size) for each operation type.
+
+.What you'll need
 
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must know the IP address of the primary Admin Node.
 
-The audit-sum tool, available on the primary Admin Node, summarizes how many write, read, and delete operations were logged and how long these operations took.
+.About this task
 
-IMPORTANT: The audit-sum tool is primarily intended for use by technical support during troubleshooting operations. Processing audit-sum queries can consume a large amount of CPU power, which might impact StorageGRID operations.
+The `audit-sum` tool, available on the primary Admin Node, summarizes how many write, read, and delete operations were logged and how long these operations took.
 
-This example shows typical output from the audit-sum tool. This example shows how long protocol operations took.
+IMPORTANT: The `audit-sum` tool is primarily intended for use by technical support during troubleshooting operations. Processing `audit-sum` queries can consume a large amount of CPU power, which might impact StorageGRID operations.
+
+This example shows typical output from the `audit-sum` tool. This example shows how long protocol operations took.
 
 ----
   message group           count     min(sec)        max(sec)    average(sec)
@@ -31,8 +35,9 @@ This example shows typical output from the audit-sum tool. This example shows ho
   SPUT                  1771398        0.011        1770.563           0.487
 ----
 
-The audit-sum tool provides counts and times for the following S3, Swift, and ILM audit messages in an audit log:
+The `audit-sum` tool provides counts and times for the following S3, Swift, and ILM audit messages in an audit log:
 
+[cols=3*,options="header",cols="14,43,43"]
 |===
 | Code| Description| Refer to
 a|
@@ -40,19 +45,19 @@ ARCT
 a|
 Archive Retrieve from Cloud-Tier
 a|
-link:arct_archive_retrieve_from_cloud_tier.md#[ARCT: Archive Retrieve from Cloud-Tier]
+xref:arct_archive_retrieve_from_cloud_tier.adoc[ARCT: Archive Retrieve from Cloud-Tier]
 a|
 ASCT
 a|
 Archive Store Cloud-Tier
 a|
-link:asct_archive_store_cloud_tier.md#[ASCT: Archive Store Cloud-Tier]
+xref:asct_archive_store_cloud_tier.adoc[ASCT: Archive Store Cloud-Tier]
 a|
 IDEL
 a|
 ILM Initiated Delete: Logs when ILM starts the process of deleting an object.
 a|
-link:idel_ilm_initiated_delete.md#[IDEL: ILM Initiated Delete]
+xref:idel_ilm_initiated_delete.adoc[IDEL: ILM Initiated Delete]
 a|
 SDEL
 a|
@@ -102,7 +107,7 @@ Swift PUT: Logs a successful transaction to create a new object or container.
 a|
 xref:wput_swift_put.adoc[WPUT: Swift PUT]
 |===
-The audit-sum tool can process plain or compressed audit logs. For example:
+The `audit-sum` tool can process plain or compressed audit logs. For example:
 
 ----
 audit-sum audit.log
@@ -112,7 +117,7 @@ audit-sum audit.log
 audit-sum 2019-08-12.txt.gz
 ----
 
-The audit-sum tool can also process multiple files at once. For example:
+The `audit-sum` tool can also process multiple files at once. For example:
 
 ----
 audit-sum audit.log 2019-08-12.txt.gz 2019-08-13.txt.gz
@@ -122,7 +127,7 @@ audit-sum audit.log 2019-08-12.txt.gz 2019-08-13.txt.gz
 audit-sum /var/local/audit/export/*
 ----
 
-Finally, the audit-sum tool can also accept input from a pipe, which allows you to filter and preprocess the input using the grep command or other means. For example:
+Finally, the `audit-sum` tool can also accept input from a pipe, which allows you to filter and preprocess the input using the `grep` command or other means. For example:
 
 ----
 grep WGET audit.log | audit-sum
@@ -136,7 +141,7 @@ grep bucket1 audit.log | audit-sum
 grep SPUT audit.log | grep bucket1 | audit-sum
 ----
 
-NOTE: This tool does not accept compressed files as piped input. To process compressed files, provide their file names as command-line arguments, or use the zcat tool to decompress the files first. For example:
+NOTE: This tool does not accept compressed files as piped input. To process compressed files, provide their file names as command-line arguments, or use the `zcat` tool to decompress the files first. For example:
 
 ----
 audit-sum audit.log.gz
@@ -146,19 +151,27 @@ audit-sum audit.log.gz
 zcat audit.log.gz | audit-sum
 ----
 
-You can use command-line options to summarize operations on buckets separately from operations on objects or to group message summaries by bucket name, by time period, or by target type. By default, the summaries show the minimum, maximum, and average operation time, but you can use the size (-s) option to look at object size instead.
+You can use command-line options to summarize operations on buckets separately from operations on objects or to group message summaries by bucket name, by time period, or by target type. By default, the summaries show the minimum, maximum, and average operation time, but you can use the `size (-s)` option to look at object size instead.
 
-Use the help (-h) option to see the available options. For example:
+Use the `help (-h)` option to see the available options. For example:
 
+----
  $ audit-sum -h
+----
+
+.Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
 . If you want to analyze all messages related to write, read, head, and delete operations, follow these steps:
- .. Enter the following command, where /var/local/audit/export/audit.log represents the name and the location of the file or files you want to analyze: `$ audit-sum /var/local/audit/export/audit.log`
+ .. Enter the following command, where `/var/local/audit/export/audit.log` represents the name and the location of the file or files you want to analyze:
 +
-This example shows typical output from the audit-sum tool. This example shows how long protocol operations took.
+----
+$ audit-sum /var/local/audit/export/audit.log
+----
++
+This example shows typical output from the `audit-sum` tool. This example shows how long protocol operations took.
 +
 ----
   message group           count     min(sec)        max(sec)    average(sec)
@@ -197,7 +210,11 @@ Total:          201906 operations
 ----
 +
 From this example output, you can see that the three slowest S3 GET requests were for objects about 5 GB in size, which is much larger than the other objects. The large size accounts for the slow worst-case retrieval times.
-. If you want to determine what sizes of objects are being ingested into and retrieved from your grid, use the size option (-s): `audit-sum -s audit.log`
+. If you want to determine what sizes of objects are being ingested into and retrieved from your grid, use the size option (`-s`):
++
+----
+audit-sum -s audit.log
+----
 +
 ----
   message group           count       min(MB)          max(MB)      average(MB)
@@ -212,7 +229,11 @@ From this example output, you can see that the three slowest S3 GET requests wer
 In this example, the average object size for SPUT is under 2.5 MB, but the average size for SGET is much larger. The number of SPUT messages is much higher than the number of SGET messages, indicating that most objects are never retrieved.
 
 . If you want to determine if retrievals were slow yesterday:
- .. Issue the command on the appropriate audit log and use the group-by-time option (-gt), followed by the time period (for example, 15M, 1H, 10S):``grep SGET audit.log | audit-sum -gt 1H``
+ .. Issue the command on the appropriate audit log and use the group-by-time option (`-gt`), followed by the time period (for example, 15M, 1H, 10S):
++
+----
+ grep SGET audit.log | audit-sum -gt 1H
+----
 +
 ----
   message group           count    min(sec)       max(sec)   average(sec)
@@ -231,7 +252,11 @@ In this example, the average object size for SPUT is under 2.5 MB, but the avera
 +
 These results show that S3 GET traffic spiked between 06:00 and 07:00. The max and average times are both considerably higher at these times as well, and they did not ramp up gradually as the count increased. This suggests that capacity was exceeded somewhere, perhaps in the network or in the grid's ability to process requests.
 
- .. To determine what size objects were being retrieved each hour yesterday, add the size option (-s) to the command:``grep SGET audit.log | audit-sum -gt 1H -s``
+ .. To determine what size objects were being retrieved each hour yesterday, add the size option (`-s`) to the command:
++
+----
+grep SGET audit.log | audit-sum -gt 1H -s
+----
 +
 ----
   message group           count       min(B)          max(B)      average(B)
@@ -250,11 +275,19 @@ These results show that S3 GET traffic spiked between 06:00 and 07:00. The max a
 +
 These results indicate that some very large retrievals occurred when the overall retrieval traffic was at its maximum.
 
- .. To see more detail, use the audit-explain tool to review all the SGET operations during that hour: `grep 2019-09-05T06 audit.log | grep SGET | audit-explain | less`
+ .. To see more detail, use the `audit-explain` tool to review all the SGET operations during that hour:
 +
-If the output of the grep command is expected to be many lines, add the less command to show the contents of the audit log file one page (one screen) at a time.
+----
+grep 2019-09-05T06 audit.log | grep SGET | audit-explain | less
+----
++
+If the output of the grep command is expected to be many lines, add the `less` command to show the contents of the audit log file one page (one screen) at a time.
 . If you want to determine if SPUT operations on buckets are slower than SPUT operations for objects:
- .. Start by using the -go option, which groups messages for object and bucket operations separately: `grep SPUT sample.log | audit-sum -go`
+ .. Start by using the `-go` option, which groups messages for object and bucket operations separately:
++
+----
+grep SPUT sample.log | audit-sum -go
+----
 +
 ----
   message group           count     min(sec)        max(sec)    average(sec)
@@ -265,7 +298,11 @@ If the output of the grep command is expected to be many lines, add the less com
 +
 The results show that SPUT operations for buckets have different performance characteristics than SPUT operations for objects.
 
- .. To determine which buckets have the slowest SPUT operations, use the -gb option, which groups messages by bucket: `grep SPUT audit.log | audit-sum -gb`
+ .. To determine which buckets have the slowest SPUT operations, use the `-gb` option, which groups messages by bucket:
++
+----
+grep SPUT audit.log | audit-sum -gb
+----
 +
 ----
   message group                  count     min(sec)        max(sec)    average(sec)
@@ -276,7 +313,11 @@ The results show that SPUT operations for buckets have different performance cha
   SPUT.ldt002                  1564563        0.011          51.569           0.361
 ----
 
- .. To determine which buckets have the largest SPUT object size, use both the -gb and the -s options: `grep SPUT audit.log | audit-sum -gb -s`
+ .. To determine which buckets have the largest SPUT object size, use both the `-gb` and the `-s` options:
++
+----
+grep SPUT audit.log | audit-sum -gb -s
+----
 +
 ----
   message group                  count       min(B)          max(B)      average(B)
@@ -287,6 +328,6 @@ The results show that SPUT operations for buckets have different performance cha
   SPUT.ldt002                  1564563        0.000         999.972           0.352
 ----
 
-*Related information*
+.Related information
 
 xref:using_audit_explain_tool.adoc[Using the audit-explain tool]

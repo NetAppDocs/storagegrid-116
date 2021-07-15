@@ -1,7 +1,7 @@
 ---
 permalink: audit/whea_swift_head.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When a Swift client issues a HEAD transaction, a request is made to check for the existence of an account, container, or object, and retrieve any relevant metadata. This message is issued by the server if the transaction is successful.'
 ---
 = WHEA: Swift HEAD
@@ -11,6 +11,7 @@ summary: 'When a Swift client issues a HEAD transaction, a request is made to ch
 [.lead]
 When a Swift client issues a HEAD transaction, a request is made to check for the existence of an account, container, or object, and retrieve any relevant metadata. This message is issued by the server if the transaction is successful.
 
+[options="header"]
 |===
 | Code| Field| Description
 a|
@@ -30,14 +31,18 @@ HTRH
 a|
 HTTP Request Header
 a|
-List of logged HTTP request header names and values as selected during configuration.*Note:* X-Forwarded-For is automatically included if it is present in the request and if the X-Forwarded-For value is different from the request sender IP address (SAIP audit field).
+List of logged HTTP request header names and values as selected during configuration.
+
+*Note:* `X-Forwarded-For` is automatically included if it is present in the request and if the `X-Forwarded-For` value is different from the request sender IP address (SAIP audit field).
 
 a|
 RSLT
 a|
 Result Code
 a|
-Result of the HEAD transaction. Result is always:SUCS: successful
+Result of the HEAD transaction. Result is always:
+
+SUCS: successful
 
 a|
 SAIP
