@@ -20,14 +20,16 @@ To keep the list of current ILM rules manageable, delete any ILM rules that you 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
-.About this task
-
+[NOTE]
+====
 You cannot delete an ILM rule if it is currently used in the active policy or in the proposed policy. If you need to delete an ILM rule that is used a policy, you must perform these steps first:
 
-.Steps
 . Clone the active policy or edit the proposed policy.
 . Remove the ILM rule from the policy.
 . Save, simulate, and activate the new policy to make sure objects are protected as expected.
+====
+
+.Steps
 . Select *ILM* > *Rules*.
 . Review the table entry for the rule you want to remove.
 +

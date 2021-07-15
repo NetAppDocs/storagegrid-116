@@ -33,10 +33,12 @@ When compared to Dual commit, the Balanced and Strict options have some disadvan
 
 == Limitations on object placements with the Balanced or Strict options
 
-* The Balanced or Strict options cannot be used for ILM rules that have any of these placement instructions:
- ** Placement in a Cloud Storage Pool at day 0.
- ** Placement in an Archive Node at day 0.
- ** Placements in a Cloud Storage Pool or an Archive Node when the rule has a User Defined Creation Time as its Reference Time.
+The Balanced or Strict options cannot be used for ILM rules that have any of these placement instructions:
+
+* Placement in a Cloud Storage Pool at day 0.
+* Placement in an Archive Node at day 0.
+* Placements in a Cloud Storage Pool or an Archive Node when the rule has a User Defined Creation Time as its Reference Time.
+
 These restrictions exist because StorageGRID cannot synchronously make copies to a Cloud Storage Pool or an Archive Node, and a User Defined Creation Time could resolve to the present.
 
 == How ILM rules and consistency controls interact to affect data protection

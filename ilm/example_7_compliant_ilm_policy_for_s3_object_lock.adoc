@@ -44,30 +44,30 @@ us-east-1 (default)
 |===
 image:../media/compliant_bucket.png[screen shot of an example compliant bucket]
 
-Each object and object version that is added to the bank-records bucket will use the following values for retain-until-date and legal hold settings.
+Each object and object version that is added to the bank-records bucket will use the following values for `retain-until-date` and `legal hold` settings.
 
 [cols="1a,2a" options="header"]
 |===
 | Setting for each object| Example value
 a|
-retain-until-date
+`retain-until-date`
 a|
 `"2030-12-30T23:59:59Z"` (December 30, 2030)
 
-Each object version has its own retain-until-date setting. This setting can be increased, but not decreased.
+Each object version has its own `retain-until-date` setting. This setting can be increased, but not decreased.
 
 a|
-legal hold
+`legal hold`
 a|
 `"OFF"` (Not in effect)
 
-A legal hold can be placed or lifted on any object version at any time during the retention period. If an object is under a legal hold, the object cannot be deleted even if the retain-until-date has been reached.
+A legal hold can be placed or lifted on any object version at any time during the retention period. If an object is under a legal hold, the object cannot be deleted even if the `retain-until-date` has been reached.
 
 |===
 
 == ILM rule 1 for S3 Object Lock example: Erasure Coding profile with bucket matching
 
-This example ILM rule applies only to the S3 tenant account named Bank of ABC. It matches any object in the bank-records bucket and then uses erasure coding to store the object on Storage Nodes at three data center sites using a 6+3 Erasure Coding profile. This rule satisfies the requirements of buckets with S3 Object Lock enabled: an erasure-coded copy is kept on Storage Nodes from day 0 to forever, using Ingest Time as the reference time.
+This example ILM rule applies only to the S3 tenant account named Bank of ABC. It matches any object in the `bank-records` bucket and then uses erasure coding to store the object on Storage Nodes at three data center sites using a 6+3 Erasure Coding profile. This rule satisfies the requirements of buckets with S3 Object Lock enabled: an erasure-coded copy is kept on Storage Nodes from day 0 to forever, using Ingest Time as the reference time.
 
 [cols="1a,2a" options="header"]
 |===
@@ -83,7 +83,7 @@ Bank of ABC
 a|
 Bucket Name
 a|
-bank-records
+`bank-records`
 a|
 Advanced filtering
 a|

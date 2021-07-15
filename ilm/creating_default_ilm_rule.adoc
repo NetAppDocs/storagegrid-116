@@ -62,18 +62,18 @@ The default rule cannot specify any filters.
 Step 2 (Define Placements) appears.
 
 . Specify the placement instructions for the default rule.
- ** The default rule should retain objects forever. A warning appears when you activate a new policy if the default rule does not retain objects forever. You must confirm this is the behavior you expect.
- ** The default rule should create replicated copies.
+ * The default rule should retain objects forever. A warning appears when you activate a new policy if the default rule does not retain objects forever. You must confirm this is the behavior you expect.
+ * The default rule should create replicated copies.
 +
 IMPORTANT: Do not use a rule that creates erasure-coded copies as the default rule for a policy. Erasure-coding rules should include the *Object Size (MB) greater than 0.2* advanced filter to prevent smaller objects from being erasure coded.
 
- ** If you are using (or you plan to enable) the global S3 Object Lock setting, the default rule must be compliant:
-  *** It must create at least two replicated object copies or one erasure-coded copy.
-  *** These copies must exist on Storage Nodes for the entire duration of each line in the placement instructions.
-  *** Object copies cannot be saved in a Cloud Storage Pool.
-  *** Object copies cannot be saved on Archive Nodes.
-  *** At least one line of the placement instructions must start at day 0, using Ingest Time as the reference time.
-  *** At least one line of the placement instructions must be "`forever.`"
+ * If you are using (or you plan to enable) the global S3 Object Lock setting, the default rule must be compliant:
+  ** It must create at least two replicated object copies or one erasure-coded copy.
+  ** These copies must exist on Storage Nodes for the entire duration of each line in the placement instructions.
+  ** Object copies cannot be saved in a Cloud Storage Pool.
+  ** Object copies cannot be saved on Archive Nodes.
+  ** At least one line of the placement instructions must start at day 0, using Ingest Time as the reference time.
+  ** At least one line of the placement instructions must be "`forever.`"
 . Click *Refresh* to update the Retention Diagram and to confirm your placement instructions.
 . Click *Next*.
 +

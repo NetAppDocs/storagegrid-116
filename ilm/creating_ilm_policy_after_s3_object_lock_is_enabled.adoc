@@ -57,7 +57,7 @@ The Select Rules for Policy dialog box appears, with all defined rules listed.
 image:../media/ilm_policy_select_rules_for_compliant_policy.png[ILM Policy Select Rules for Compliant Policy]
 
 . Select a rule name or the more details icon image:../media/icon_nms_more_details.gif[more details icon] to view the settings for that rule.
-. In the Select Default Rule section, select one default rule for the proposed policy.
+. In the *Select Default Rule* section, select one default rule for the proposed policy.
 +
 The table in this section only lists the rules that are compliant and do not use any filters.
 +
@@ -70,7 +70,7 @@ xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
 +
 IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a policy. The Make 2 Copies rule uses a single storage pool, All Storage Nodes, which contains all sites. If you use this rule, multiple copies of an object might be placed on the same site.
 
-. In the Select Other Rules section, select any other rules you want to include in the policy.
+. In the *Select Other Rules* section, select any other rules you want to include in the policy.
  .. If you need a different "`default`" rule for objects in non-compliant S3 buckets, optionally select one non-compliant rule that does not use a filter.
 +
 For example, you might want to use a Cloud Storage Pool or an Archive Node to store objects in buckets that do not have S3 Object Lock enabled.

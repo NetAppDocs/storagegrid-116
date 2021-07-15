@@ -20,27 +20,30 @@ image::../media/cloud_storage_pool_create_azure.png[Cloud Storage Pool Create Az
 * You must know the name of the storage account and the secret key. You can use the Azure portal to find these values.
 
 .Steps
-. In the Service Endpoint section, enter the Uniform Resource Identifier (URI) used to access the Blob storage container used for the Cloud Storage Pool.
+. In the *Service Endpoint* section, enter the Uniform Resource Identifier (URI) used to access the Blob storage container used for the Cloud Storage Pool.
 +
 Specify the URI in one of the following formats:
 
  ** `+https://host:port+`
  ** `+http://host:port+`
+
 +
 If you do not specify a port, by default port 443 is used for HTTPS URIs and port 80 is used for HTTP URIs.
-+
+ +
+ +
 *Example URI for Azure Blob storage container*:
-+
+ +
 `https://_myaccount_.blob.core.windows.net`
 
 
-. In the Authentication section, provide the following information:
+. In the *Authentication* section, provide the following information:
  .. For *Account Name*, enter the name of the Blob storage account that owns the external service container.
  .. For *Account Key*, enter the secret key for the Blob storage account.
 
 +
 NOTE: For Azure endpoints, you must use Shared Key authentication.
-. In the Server Verification section, select which method should be used to validate the certificate for TLS connections to the Cloud Storage Pool:
+
+. In the *Server Verification* section, select which method should be used to validate the certificate for TLS connections to the Cloud Storage Pool:
 +
 [cols="1a,2a" options="header"]
 |===
