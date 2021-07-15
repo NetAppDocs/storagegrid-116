@@ -1,7 +1,7 @@
 ---
 permalink: maintain/applying_hotfix.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The hotfix is first applied automatically to the primary Admin Node. Then, you must approve the application of the hotfix to other grid nodes until all nodes are running the same software version. You can customize the approval sequence by selecting to approve individual grid nodes, groups of grid nodes, or all grid nodes.'
 ---
 = Applying the hotfix
@@ -11,7 +11,7 @@ summary: 'The hotfix is first applied automatically to the primary Admin Node. T
 [.lead]
 The hotfix is first applied automatically to the primary Admin Node. Then, you must approve the application of the hotfix to other grid nodes until all nodes are running the same software version. You can customize the approval sequence by selecting to approve individual grid nodes, groups of grid nodes, or all grid nodes.
 
-* You have reviewed all of the considerations and completed all of the steps in "`Hotfix planning and preparation.`"
+* You have reviewed all of the considerations and completed all of the steps in "Hotfix planning and preparation."
 * You must have the provisioning passphrase.
 * You must have Root Access or the Maintenance permission.
 * You can delay applying a hotfix to a node, but the hotfix process is not complete until you apply the hotfix to all nodes.
@@ -34,7 +34,7 @@ image::../media/hotfix_choose_file.png[Hotfix Choose File]
  .. Select *Browse*.
  .. Locate and select the file.
 +
-hotfix-install-version
+`hotfix-install-_version_`
 
  .. Select *Open*.
 +
@@ -68,8 +68,8 @@ NOTE: If any errors are reported, resolve them, re-upload the hotfix file, and s
   *** Gateway Nodes
   *** Storage Nodes
   *** Archive Nodes
-*Note:* The progress bar reaches completion, and then the primary Admin Node is shown first with stage "`Complete.`"
-
++
+NOTE: The progress bar reaches completion, and then the primary Admin Node is shown first with stage "Complete."
 +
 image::../media/hotfix_progress_table.png[Hotfix Progress Table]
 
@@ -84,7 +84,8 @@ IMPORTANT: Do not approve the hotfix for a node unless you are sure the node is 
 NOTE: The *Approve All* button at the top of the page approves all nodes listed on the page, while the *Approve All* button at the top of a table grouping only approves all nodes in that group. If the order in which nodes are upgraded is important, approve nodes or groups of nodes one at a time and wait until the upgrade is complete on each node before approving the next node(s).
 
  ** Select the top-level *Approve All* button at the top of the page to add all nodes in the grid to the hotfix queue.
-*Note:* You must complete the StorageGRID hotfix before you can start a different software update. If you are unable to complete the hotfix, contact technical support.
++
+NOTE: You must complete the StorageGRID hotfix before you can start a different software update. If you are unable to complete the hotfix, contact technical support.
 
 . If you need to remove a node or all nodes from the hotfix queue, select *Remove* or *Remove All*.
 +

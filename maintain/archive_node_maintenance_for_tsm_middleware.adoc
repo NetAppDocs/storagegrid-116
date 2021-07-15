@@ -35,7 +35,7 @@ You must be signed in to the Grid Manager using a supported browser.
 [.lead]
 The dsmadmc tool is the administrative console for the TSM middleware server that is installed on the Archive Node. You can access the tool by typing dsmadmc at the command line of the server. Log in to the administrative console using the same administrative user name and password that is configured for the ARC service.
 
-The tsmquery.rb script was created to generate status information from dsmadmc in a more readable form. You can run this script by entering the following command at the command line of the Archive Node: /usr/local/arc/tsmquery.rb status
+The `tsmquery.rb` script was created to generate status information from dsmadmc in a more readable form. You can run this script by entering the following command at the command line of the Archive Node: `/usr/local/arc/tsmquery.rb status`
 
 For more information about the TSM administrative console dsmadmc, see the _Tivoli Storage Manager for Linux: Administratorʹs Reference_.
 
@@ -64,14 +64,14 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 You can determine if objects are permanently unavailable by making a request using the TSM administrative console.
 
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must know the IP address of an Admin Node.
 
 This example is provided for your information only; this procedure cannot help you identify all failure conditions that might result in unavailable objects or tape volumes. For information about TSM administration, see TSM Server documentation.
 
 . Log in to an Admin Node:
  .. Enter the following command: `ssh admin@Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 . Identify the object or objects that could not be retrieved by the Archive Node:
  .. Go to the directory containing the audit log files: `cd /var/local/audit/export`
 +
@@ -141,10 +141,10 @@ You will need the CBID of each object stored on the volume and the node ID of th
 IMPORTANT: Use the ADE Console with caution. If the console is used improperly, it is possible to interrupt system operations and corrupt data. Enter commands carefully, and only use the commands documented in this procedure.
 
  .. If you are not already logged in to the Archive Node, log in as follows:
-  ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
  .. Access the ADE console of the ARC service: `telnet localhost 1409`
  .. Cancel the request for the object: `/proc/BRTR/cancel -c CBID`
 +
@@ -160,9 +160,9 @@ You must enter a separate command for each lost object copy: entering a range of
 +
 In most cases, the StorageGRID system immediately begins to make additional copies of object data to ensure that the system's ILM policy is followed.
 +
-However, if the ILM rule for the object specified that only one copy be made and that copy has now been lost, the object cannot be recovered. In this case running the Object_Lost command purges the lost object's metadata from the StorageGRID system.
+However, if the ILM rule for the object specified that only one copy be made and that copy has now been lost, the object cannot be recovered. In this case running the `Object_Lost` command purges the lost object's metadata from the StorageGRID system.
 +
-When the Object_Lost command completes successfully, the following message is returned:
+When the `Object_Lost` command completes successfully, the following message is returned:
 +
 ----
 CLOC_LOST_ANS returned result ‘SUCS’

@@ -2,24 +2,22 @@
 permalink: maintain/fixing_missing_block_device_errors.html
 sidebar: sidebar
 keywords: 
-summary: 'The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the /etc/storagegrid/nodes/<node-name\>.conf file, a missing block device error displays.'
+summary: 'The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the `/etc/storagegrid/nodes/_node-name_.conf` file, a missing block device error displays.'
 ---
 = Fixing missing block device errors
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the /etc/storagegrid/nodes/<node-name>.conf file, a missing block device error displays.
+The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the /etc/storagegrid/nodes/_node-name_.conf file, a missing block device error displays.
 
 If you observe an error matching this pattern:
 
-----
-Checking configuration file /etc/storagegrid/nodes/node-name.conf for node node-name...
-ERROR: node-name: BLOCK_DEVICE_PURPOSE = path-name
-       node-name: path-name does not exist
-----
+`Checking configuration file /etc/storagegrid/nodes/_node-name_.conf for node _node-name_...`
+`ERROR: _node-name_: BLOCK_DEVICE_PURPOSE = _path-name_`
+`       _node-name_: _path-name_ does not exist`
 
-It means that /etc/storagegrid/nodes/node-name.conf maps the block device used by node-name for PURPOSE to the given path-name in the Linux file system, but there is not a valid block device special file, or softlink to a block device special file, at that location.
+It means that `/etc/storagegrid/nodes/_node-name_.conf` maps the block device used by _node-name_ for PURPOSE to the given path-name in the Linux file system, but there is not a valid block device special file, or softlink to a block device special file, at that location.
 
 Verify that you completed the steps in "`Deploying new Linux hosts.`" Use the same persistent device names for all block devices as were used on the original host.
 

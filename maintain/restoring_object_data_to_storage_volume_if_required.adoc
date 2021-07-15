@@ -9,7 +9,7 @@ summary: 'If the sn-recovery-postinstall.sh script is needed to reformat one or 
 :imagesdir: ../media/
 
 [.lead]
-If the sn-recovery-postinstall.sh script is needed to reformat one or more failed storage volumes, you must restore object data to the reformatted storage volume from other Storage Nodes and Archive Nodes. These steps are not required unless one or more storage volumes were reformatted.
+If the `sn-recovery-postinstall.sh` script is needed to reformat one or more failed storage volumes, you must restore object data to the reformatted storage volume from other Storage Nodes and Archive Nodes. These steps are not required unless one or more storage volumes were reformatted.
 
 * You must have confirmed that the recovered Storage Node has a Connection State of *Connected*image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the *Nodes* > *Overview* tab in the Grid Manager.
 
@@ -54,10 +54,10 @@ NOTE: The EC repair job temporarily reserves a large amount of storage. Storage 
 For more information on using the `repair-data` script, enter `repair-data --help` from the command line of the primary Admin Node.
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 . Use the `/etc/hosts` file to find the hostname of the Storage Node for the restored storage volumes. To see a list of all nodes in the grid, enter the following: `cat /etc/hosts`

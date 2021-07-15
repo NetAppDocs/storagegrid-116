@@ -9,17 +9,16 @@ summary: 'If the host network is not configured correctly or a name is misspelle
 :imagesdir: ../media/
 
 [.lead]
-If the host network is not configured correctly or a name is misspelled, an error occurs when StorageGRID checks the mapping specified in the /etc/storagegrid/nodes/<node-name>.conf file.
+If the host network is not configured correctly or a name is misspelled, an error occurs when StorageGRID checks the mapping specified in the `/etc/storagegrid/nodes/_node-name_.conf` file.
 
 You might see an error or warning matching this pattern:
 
-----
-Checking configuration file /etc/storagegrid/nodes/<node-name>.conf for node <node-name>...
-ERROR: <node-name>: GRID_NETWORK_TARGET = <host-interface-name>
-       <node-name>: Interface '<host-interface-name>' does not exist
-----
+`Checking configuration file `/etc/storagegrid/nodes/_node-name_.conf` for node _node-name_...`
+`ERROR: _node-name_: GRID_NETWORK_TARGET = _host-interface-name_`
+`       _node-name_: Interface '_host-interface-name_' does not exist`
 
-The error could be reported for the Grid Network, the Admin Network, or the Client Network. This error means that the /etc/storagegrid/nodes/<node-name>.conf file maps the indicated StorageGRID network to the host interface named <host-interface-name>, but there is no interface with that name on the current host.
+
+The error could be reported for the Grid Network, the Admin Network, or the Client Network. This error means that the `/etc/storagegrid/nodes/_node-name_.conf` file maps the indicated StorageGRID network to the host interface named <host-interface-name>, but there is no interface with that name on the current host.
 
 If you receive this error, verify that you completed the steps in "`Deploying new Linux hosts.`" Use the same names for all host interfaces as were used on the original host.
 

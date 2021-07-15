@@ -13,7 +13,7 @@ If you want to retain the historical information about attributes, alarms, and a
 
 * The recovered Admin Node must be installed and running.
 * The StorageGRID system must include at least two Admin Nodes.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 * You must have the provisioning passphrase.
 
 If an Admin Node fails, the historical information stored in its Admin Node database is lost. This database includes the following information:
@@ -29,23 +29,23 @@ If you restored a non-primary Admin Node, you can restore the historical informa
 NOTE: Copying the Admin Node database might take several hours. Some Grid Manager features will be unavailable while services are stopped on the source node.
 
 . Log in to the source Admin Node:
- .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 . Run the following command from the source Admin Node. Then, enter the provisioning passphrase if prompted. `recover-access-points`
 . From the source Admin Node, stop the MI service: `service mi stop`
 . From the source Admin Node, stop the Management Application Program Interface (mgmt-api) service: `service mgmt-api stop`
 . Complete the following steps on the recovered Admin Node:
  .. Log in to the recovered Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
  .. Stop the MI service: `service mi stop`
  .. Stop the mgmt-api service: `service mgmt-api stop`
  .. Add the SSH private key to the SSH agent. Enter:``ssh-add``
- .. Enter the SSH Access Password listed in the Passwords.txt file.
+ .. Enter the SSH Access Password listed in the `Passwords.txt` file.
  .. Copy the database from the source Admin Node to the recovered Admin Node: `/usr/local/mi/bin/mi-clone-db.sh Source_Admin_Node_IP`
  .. When prompted, confirm that you want to overwrite the MI database on the recovered Admin Node.
 +

@@ -46,10 +46,10 @@ NOTE: If a storage volume is reformatted, any data on that volume is lost. You m
  ** Starts the services on the Storage Node.
 
 . Log in to the recovered Storage Node:
- .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
@@ -63,7 +63,7 @@ This script might take hours to run on storage volumes that contain data.
 
  .. As the script runs, review the output and answer any prompts.
 +
-NOTE: As required, you can use the tail -f command to monitor the contents of the script's log file (/var/local/log/sn-remount-volumes.log) . The log file contains more detailed information than the command line output.
+NOTE: As required, you can use the `tail -f` command to monitor the contents of the script's log file (/var/local/log/sn-remount-volumes.log) . The log file contains more detailed information than the command line output.
 +
 ----
 root@SG:~ # sn-remount-volumes
@@ -189,7 +189,7 @@ NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repair
 
 . As the `sn-recovery-postinstall.sh` script runs, monitor the Recovery page in the Grid Manager.
 +
-The Progress bar and the Stage column on the Recovery page provide a high-level status of the sn-recovery-postinstall.sh script.
+The Progress bar and the Stage column on the Recovery page provide a high-level status of the `sn-recovery-postinstall.sh` script.
 +
 image::../media/recovering_cassandra.png[screenshot showing recovery progress in Grid Management Interface]
 
