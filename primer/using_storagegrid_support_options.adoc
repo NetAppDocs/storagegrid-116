@@ -25,7 +25,7 @@ AutoSupport messages include information such as the following:
 * System-level and location-level attribute information
 * Recent alerts and alarms (legacy system)
 * Current status of all grid tasks, including historical data
-* Events information as listed on the *Nodes* > *Grid Node* > *Events* page
+* Events information as listed on the *Nodes* > *_node_* > *Events* page
 * Admin Node database usage
 * Number of lost or missing objects
 * Grid configuration settings
@@ -88,7 +88,7 @@ To help troubleshoot a problem, you might need to collect log files and forward 
 
 StorageGRID uses log files to capture events, diagnostic messages, and error conditions. The bycast.log file is maintained for every grid node and is the primary troubleshooting file. StorageGRID also creates log files for individual StorageGRID services, log files related to deployment and maintenance activities, and log files related to third-party applications.
 
-Users who have the appropriate permissions and who know the provisioning passphrase for your StorageGRID system can use the Logs page in the Grid Manager to gather log files, system data, and configuration data. When you collect logs, you select a node or nodes and specify a time period. Data is collected and archived in a .tar.gz file, which you can download to a local computer. Inside this file, there is one log file archive for each grid node.
+Users who have the appropriate permissions and who know the provisioning passphrase for your StorageGRID system can use the Logs page in the Grid Manager to gather log files, system data, and configuration data. When you collect logs, you select a node or nodes and specify a time period. Data is collected and archived in a `.tar.gz` file, which you can download to a local computer. Inside this file, there is one log file archive for each grid node.
 
 image::../media/support_logs_select_nodes.gif[screenshot of log collection UI]
 
