@@ -13,7 +13,7 @@ The StorageGRID system implements the Simple Storage Service API (API Version 20
 
 The StorageGRID system supports both virtual hosted-style requests and path-style requests.
 
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -29,6 +29,7 @@ The StorageGRID system only supports valid HTTP date formats for any headers tha
 [.lead]
 The StorageGRID system supports common request headers defined by the _Simple Storage Service API Reference_, with one exception.
 
+[options="header"]
 |===
 | Request header| Implementation
 a|
@@ -45,7 +46,7 @@ x-amz-security-token
 a|
 Not implemented. Returns `XNotImplemented`.
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -54,6 +55,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services 
 [.lead]
 The StorageGRID system supports all of the common response headers defined by the _Simple Storage Service API Reference_, with one exception.
 
+[options="header"]
 |===
 | Response header| Implementation
 a|
@@ -61,7 +63,7 @@ x-amz-id-2
 a|
 Not used
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
 
@@ -89,6 +91,7 @@ You can use query parameters to add authentication information to a URL. This is
 [.lead]
 The StorageGRID system supports the following operations on the service.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -104,7 +107,7 @@ OPTIONS /
 a|
 Client applications can issue `OPTIONS /` requests to the S3 port on a Storage Node, without providing S3 authentication credentials, to determine whether the Storage Node is available. You can use this request for monitoring, or to allow external load balancers to identify when a Storage Node is down.
 |===
-*Related information*
+.Related information
 
 link:storagegrid_s3_rest_api_operations.md#[GET Storage Usage request]
 
@@ -125,6 +128,7 @@ You can check whether updates to last access time are enabled or disabled for in
 
 The following table describes how StorageGRID implements S3 REST API bucket operations. To perform any of these operations, the necessary access credentials must be provided for the account.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -232,8 +236,7 @@ This operation creates a new bucket. By creating the bucket, you become the buck
  ** Must not look like a text-formatted IP address.
  ** Should not use periods in virtual hosted style requests. Periods will cause problems with server wildcard certificate verification.
 * By default, buckets are created in the `us-east-1` region; however, you can use the ``LocationConstraint``request element in the request body to specify a different region. When using the `LocationConstraint` element, you must specify the exact name of a region that has been defined using the Grid Manager or the Grid Management API. Contact your system administrator if you do not know the region name you should use.
-+
-NOTE: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
+*Note*: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
 
 * You can include the `x-amz-bucket-object-lock-enabled` request header to create a bucket with S3 Object Lock enabled.
 +
@@ -272,7 +275,7 @@ StorageGRID does not support these actions:
 
 To understand how the Expiration action in a bucket lifecycle interacts with ILM placement instructions, see "`How ILM operates throughout an object's life`" in the instructions for managing objects with information lifecycle management.
 
-NOTE: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
+*Note*: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
 
 a|
 PUT Bucket notification
@@ -345,7 +348,7 @@ This implementation uses the versioning subresource to set the versioning state 
 * Suspended: Disables versioning for the objects in the bucket. All objects added to the bucket receive the version ID null.
 
 |===
-*Related information*
+.Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html[Amazon Web Services (AWS) Documentation: Cross-Region Replication]
 
@@ -515,7 +518,7 @@ The success response includes the object's metadata and indicates that the objec
 }
 ----
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
 
@@ -528,6 +531,7 @@ The StorageGRID system supports custom bucket operations that are added on to th
 
 The following table lists the custom bucket operations supported by StorageGRID.
 
+[options="header"]
 |===
 | Operation| Description| For more information
 a|
@@ -591,7 +595,7 @@ Deprecated but supported: Allows you to modify the compliance settings for an ex
 a|
 link:storagegrid_s3_rest_api_operations.md#[Deprecated: PUT Bucket compliance request]
 |===
-*Related information*
+.Related information
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -613,6 +617,7 @@ The following conditions apply to all object operations:
 
 The following table describes how StorageGRID implements S3 REST API object operations.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -629,7 +634,7 @@ To remove a specific version, the requestor must be the bucket owner and use the
 * If an object is deleted without the `versionId` subresource on a version enabled bucket, it results in the generation of a delete marker. The `versionId` for the delete marker is returned using the `x-amz-version-id` response header, and the `x-amz-delete-marker` response header is returned set to `true`.
 * If an object is deleted without the `versionId` subresource on a version suspended bucket, it results in a permanent deletion of an already existing 'null' version or a 'null' delete marker, and the generation of a new 'null' delete marker. The `x-amz-delete-marker` response header is returned set to `true`.
 
-NOTE: In certain cases, multiple delete markers might exist for an object.
+*note*: In certain cases, multiple delete markers might exist for an object.
 
 a|
 DELETE Multiple Objects
@@ -722,7 +727,7 @@ Conflicting client requests, such as two clients writing to the same key, are re
 If the `versionId` query parameter is not specified in the request, the operation add tags to the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`MethodNotAllowed`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
 |===
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -797,7 +802,7 @@ If the new legal-hold value is ON, the object is placed under a legal hold. If t
  ** The retain-until-date value must be in the format `2020-08-10T21:46:00Z`. Fractional seconds are allowed, but only 3 decimal digits are preserved (milliseconds precision). Other ISO 8601 formats are not allowed.
  ** If an object version has an existing retain-until-date, you can only increase it. The new value must be in the future.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -845,6 +850,7 @@ The SSE request header is supported by the following object operations:
 
 To encrypt an object with a unique key that you manage, you use three request headers:
 
+[options="header"]
 |===
 | Request header| Description
 a|
@@ -887,7 +893,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 * If CloudMirror replication is configured for the bucket, you cannot ingest SSE-C objects. The ingest operation will fail.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[GET Object]
 
@@ -948,6 +954,7 @@ If an object has been stored in a Cloud Storage Pool (see the instructions for m
 
 NOTE: If an object is stored in a Cloud Storage Pool and one or more copies of the object also exist on the grid, GET Object requests will attempt to retrieve data from the grid, before retrieving it from the Cloud Storage Pool.
 
+[options="header"]
 |===
 | State of object| Behavior of GET Object
 a|
@@ -1000,7 +1007,7 @@ In these cases:
 * The GET Object request might return some data but stop midway through the transfer.
 * A subsequent GET Object request might return `403 Forbidden`.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1046,6 +1053,7 @@ If the object is stored in a Cloud Storage Pool (see the instructions for managi
 
 The response headers provide information about the state of an object as it is moved to a Cloud Storage Pool, optionally transitioned to a non-retrievable state, and restored.
 
+[options="header"]
 |===
 | State of object| Response to HEAD object
 a|
@@ -1077,7 +1085,7 @@ a|
 
 The value for `expiry-date` is set to some distant time in the future.
 
-NOTE: If the copy on the grid is not available (for example, a Storage Node is down), you must issue a POST Object restore request to restore the copy from the Cloud Storage Pool before you can successfully retrieve the object.
+*Note*: If the copy on the grid is not available (for example, a Storage Node is down), you must issue a POST Object restore request to restore the copy from the Cloud Storage Pool before you can successfully retrieve the object.
 
 a|
 Object transitioned to a non-retrievable state, and no copy exists on the grid
@@ -1119,7 +1127,7 @@ If you uploaded a multipart object or if StorageGRID split a large object into s
 
 If a `versionId` subresource is not specified, the operation fetches the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`Not Found`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1148,6 +1156,7 @@ If an object has been stored in a Cloud Storage Pool (see the instructions for m
 
 NOTE: If an object is stored in a Cloud Storage Pool and one or more copies of the object also exist on the grid, there is no need to restore the object by issuing a POST Object restore request. Instead, the local copy can be retrieved directly, using a GET Object request.
 
+[options="header"]
 |===
 | State of object| Behavior of POST Object restore
 a|
@@ -1161,7 +1170,7 @@ Object in Cloud Storage Pool but not yet transitioned to a non-retrievable state
 a|
 `200 OK` No changes are made.
 
-NOTE: Before an object has been transitioned to a non-retrievable state, you cannot change its `expiry-date`.
+*Note*: Before an object has been transitioned to a non-retrievable state, you cannot change its `expiry-date`.
 
 a|
 Object transitioned to a non-retrievable state
@@ -1171,7 +1180,7 @@ a|
 
 Optionally, use the `Tier` request element to determine how long the restore job will take to finish (`Expedited`, `Standard`, or `Bulk`). If you do not specify `Tier`, the `Standard` tier is used.
 
-IMPORTANT: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
+*Attention*: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
 
 a|
 Object in process of being restored from a non-retrievable state
@@ -1185,7 +1194,7 @@ a|
 `200 OK` *Note:* If an object has been restored to a retrievable state, you can change its `expiry-date` by reissuing the POST Object restore request with a new value for `Days`. The restoration date is updated relative to the time of the request.
 
 |===
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1307,12 +1316,12 @@ The `REDUCED_REDUNDANCY` option is best used when the ILM rule that matches the 
 
 +
 Using the `REDUCED_REDUNDANCY` option is not recommended in other circumstances. `REDUCED_REDUNDANCY` increases the risk of object data loss during ingest. For example, you might lose data if the single copy is initially stored on a Storage Node that fails before ILM evaluation can occur.
-+
-IMPORTANT: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
-+
+
+*Attention*: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
 Specifying `REDUCED_REDUNDANCY` only affects how many copies are created when an object is first ingested. It does not affect how many copies of the object are made when the object is evaluated by the active ILM policy, and does not result in data being stored at lower levels of redundancy in the StorageGRID system.
-+
-NOTE: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
+
+*Note*: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
 
 ==== Request headers for server-side encryption
 
@@ -1323,7 +1332,7 @@ You can use the following request headers to encrypt an object with server-side 
 * *SSE-C*: Use all three of these headers if you want to encrypt the object with a unique key that you provide and manage.
  ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
  ** `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the new object.
- ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key.
+ ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key. 
 *Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
 +
@@ -1335,7 +1344,7 @@ If versioning is enabled for a bucket, a unique `versionId` is automatically gen
 
 If versioning is suspended, the object version is stored with a null `versionId` and if a null version already exists it will be overwritten.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1445,8 +1454,8 @@ This means that if the ILM rule uses the Strict option for ingest behavior, no a
 If you use server-side encryption, the request headers you provide depend on whether the source object is encrypted and on whether you plan to encrypt the target object.
 
 * If the source object is encrypted using a customer-provided key (SSE-C), you must include the following three headers in the PUT Object - Copy request, so the object can be decrypted and then copied:
- ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`: Specify `AES256`.
- ** `x-amz-copy-source​-server-side-encryption-customer-key`: Specify the encryption key you provided when you created the source object.
+ ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm` Specify `AES256`.
+ ** `x-amz-copy-source​-server-side-encryption-customer-key` Specify the encryption key you provided when you created the source object.
  ** `x-amz-copy-source​-server-side-encryption-customer-key-MD5`: Specify the MD5 digest you provided when you created the source object.
 * If you want to encrypt the target object (the copy) with a unique key that you provide and manage, include the following three headers:
  ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
@@ -1461,7 +1470,7 @@ If you use server-side encryption, the request headers you provide depend on whe
 
 If the source bucket is versioned, you can use the `x-amz-copy-source` header to copy the latest version of an object. To copy a specific version of an object, you must explicitly specify the version to copy using the `versionId` subresource. If the destination bucket is versioned, the generated version is returned in the `x-amz-version-id` response header. If versioning is suspended for the target bucket, then `x-amz-version-id` returns a "`null`" value.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1490,6 +1499,7 @@ The following conditions and notes apply to all multipart upload operations:
 * All of the multipart upload operations support StorageGRID consistency controls.
 * As required, you can use server-side encryption with multipart uploads. To use SSE (server-side encryption with StorageGRID-managed keys), you include the `x-amz-server-side-encryption` request header in the Initiate Multipart Upload request only. To use SSE-C (server-side encryption with customer-provided keys), you specify the same three encryption key request headers in the Initiate Multipart Upload request and in each subsequent Upload Part request.
 
+[options="header"]
 |===
 | Operation| Implementation
 a|
@@ -1523,7 +1533,7 @@ a|
 Implemented with all Amazon S3 REST API behavior
 
 |===
-*Related information*
+.Related information
 
 xref:consistency_controls.adoc[Consistency controls]
 
@@ -1635,7 +1645,7 @@ The following request header is not supported and returns `XNotImplemented`
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1669,7 +1679,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
-*Related information*
+.Related information
 
 link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
 
@@ -1758,7 +1768,7 @@ If this occurs, an alarm is raised in the Grid Manager on Total Events (SMTT). T
 
 A tenant can trigger the failed replication or notification by updating the object's metadata or tags. A tenant can resubmit the existing values to avoid making unwanted changes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -1769,6 +1779,7 @@ The StorageGRID system supports all standard S3 REST API error responses that ap
 
 === Supported S3 API error codes
 
+[options="header"]
 |===
 | Name| HTTP status
 a|
@@ -1927,6 +1938,7 @@ a|
 
 === StorageGRID custom error codes
 
+[options="header"]
 |===
 | Name| Description| HTTP status
 a|
