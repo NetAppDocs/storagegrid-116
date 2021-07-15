@@ -1,7 +1,7 @@
 ---
 permalink: tenant/configuring_cross_origin_resource_sharing_cors.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can configure Cross-Origin Resource Sharing \(CORS\) for an S3 bucket if you want that bucket and objects in that bucket to be accessible to web applications in other domains.'
 ---
 = Configuring Cross-Origin Resource Sharing (CORS)
@@ -16,7 +16,11 @@ You can configure Cross-Origin Resource Sharing (CORS) for an S3 bucket if you w
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
 
-Cross-Origin Resource Sharing (CORS) is a security mechanism that allows client web applications in one domain to access resources in a different domain. For example, suppose you use an S3 bucket named `Images` to store graphics. By configuring CORS for the `Images` bucket, you can allow the images in that bucket to be displayed on the website http://www.example.com.
+.About this task
+
+Cross-Origin Resource Sharing (CORS) is a security mechanism that allows client web applications in one domain to access resources in a different domain. For example, suppose you use an S3 bucket named `Images` to store graphics. By configuring CORS for the `Images` bucket, you can allow the images in that bucket to be displayed on the website `http://www.example.com`.
+
+.Steps
 
 . Use a text editor to create the XML required to enable CORS.
 +

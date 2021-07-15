@@ -53,30 +53,32 @@ The type of platform service that the endpoint supports is shown beside the endp
 . In the *URI* field, specify the Unique Resource Identifier (URI) of the endpoint.
 +
 Use one of the following formats:
-
++
 ----
 https://host:port
 http://host:port
 ----
-
++
 If you do not specify a port, port 443 is used for HTTPS URIs and port 80 is used for HTTP URIs.
-
++
 For example, the URI for a bucket hosted on StorageGRID might be:
-
++
 ----
 https://s3.example.com:10443
 ----
-
++
 In this example, `s3.example.com` represents the DNS entry for the virtual IP (VIP) of the StorageGRID high availability (HA) group, and `10443` represents the port defined in the load balancer endpoint.
-
++
 NOTE: Whenever possible, you should connect to a HA group of load-balancing nodes to avoid a single point of failure.
 
++
 Similarly, the URI for a bucket hosted on AWS might be:
-
++
 ----
 https://s3-aws-region.amazonaws.com
 ----
 
++
 NOTE: If the endpoint is used for the CloudMirror replication service, do not include the bucket name in the URI. You include the bucket name in the *URN* field.
 
 . Enter the Unique Resource Name (URN) for the endpoint.
@@ -89,7 +91,7 @@ NOTE: You cannot change an endpoint's URN after the endpoint has been created.
 image::../media/endpoint_create_authentication_type.png[Create Endpoint - Authentication Type]
 +
 The credentials that you supply must have write permissions for the destination resource.
-
++
 [cols="1a,2a,2a" options="header"]
 |===
 | Authentication type| Description| Credentials
