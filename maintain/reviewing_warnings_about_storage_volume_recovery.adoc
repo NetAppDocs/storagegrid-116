@@ -1,7 +1,7 @@
 ---
 permalink: maintain/reviewing_warnings_about_storage_volume_recovery.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before recovering failed storage volumes for a Storage Node, you must review the following warnings.'
 ---
 = Reviewing warnings about storage volume recovery
@@ -20,13 +20,9 @@ If volume 0 fails and needs to be recovered, the Cassandra database might be reb
 
 When Cassandra is rebuilt, the system uses information from other Storage Nodes. If too many Storage Nodes are offline, some Cassandra data might not be available. If Cassandra has been rebuilt recently, Cassandra data might not yet be consistent across the grid. Data loss can occur if Cassandra is rebuilt when too many Storage Nodes are offline or if two or more Storage Nodes are rebuilt within 15 days of each other.
 
-CAUTION:
+CAUTION: If more than one Storage Node has failed (or is offline), contact technical support. Do not perform the following recovery procedure. Data loss could occur.
 
-If more than one Storage Node has failed (or is offline), contact technical support. Do not perform the following recovery procedure. Data loss could occur.
-
-CAUTION:
-
-If this is the second Storage Node failure in less than 15 days after a Storage Node failure or recovery, contact technical support. Rebuilding Cassandra on two or more Storage Nodes within 15 days can result in data loss.
+CAUTION: If this is the second Storage Node failure in less than 15 days after a Storage Node failure or recovery, contact technical support. Rebuilding Cassandra on two or more Storage Nodes within 15 days can result in data loss.
 
 NOTE: If more than one Storage Node at a site has failed, a site recovery procedure might be required. Contact technical support.
 
@@ -36,7 +32,7 @@ IMPORTANT: If ILM rules are configured to store only one replicated copy and the
 
 NOTE: If you encounter a Services: Status - Cassandra (SVST) alarm during recovery, see the monitoring and troubleshooting instructions to recover from the alarm by rebuilding Cassandra. After Cassandra is rebuilt, alarms should clear. If alarms do not clear, contact technical support.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 

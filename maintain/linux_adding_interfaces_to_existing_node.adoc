@@ -1,7 +1,7 @@
 ---
 permalink: maintain/linux_adding_interfaces_to_existing_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you want to add an interface to a Linux-based node that you did not install initially, you must use this procedure.'
 ---
 = Linux: Adding interfaces to an existing node
@@ -22,6 +22,8 @@ You perform this procedure on the Linux server hosting the node that needs the n
 To provide addressing information, you must use the Change IP tool. See the information about changing a node's network configuration.
 
 xref:changing_nodes_network_configuration.adoc[Changing a node's network configuration]
+
+.Steps
 
 . Log in to the Linux server hosting the node that needs the new network assignment.
 . Edit the node configuration file at `/etc/storagegrid/nodes/_node-name_.conf`.
@@ -44,7 +46,7 @@ CLIENT_NETWORK_MAC = aa:57:61:07:ea:5c
 . Resolve all validation errors.
 . Run the node reload command: `sudo storagegrid node reload _node-name_`
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
 

@@ -1,7 +1,7 @@
 ---
 permalink: tenant/object_metadata_included_in_metadata_notifications.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The table lists all the fields that are included in the JSON document that is sent to the destination endpoint when search integration is enabled.'
 ---
 = Object metadata included in metadata notifications
@@ -13,49 +13,29 @@ The table lists all the fields that are included in the JSON document that is se
 
 The document name includes the bucket name, object name, and version ID if present.
 
+[cols="1a,2a" options="header"]
 |===
-| Type| Item name| Description
-a|
-Bucket and object information
-a|
-bucket
-a|
-Name of the bucket
-a|
-key
-a|
-Object key name
-a|
-versionID
-a|
-Object version, for objects in versioned buckets
-a|
-region
-a|
-Bucket region, for example `us-east-1`
-a|
-System metadata
-a|
-size
-a|
-Object size (in bytes) as visible to an HTTP client
-a|
-md5
-a|
-Object hash
-a|
-User metadata
-a|
-metadatakey:value
+| Type| Item name and description
+.4+|Bucket and object information
+|`bucket`: Name of the bucket
+|`key`: Object key name
+|`versionID`: Object version, for objects in versioned buckets
+|`region`: Bucket region, for example `us-east-1`
 
-a|
-All user metadata for the object, as key-value pairs
-a|
-Tags
-a|
-tags key:value
+.2+|System metadata
+|`size`: Object size (in bytes) as visible to an HTTP client
+|`md5`: Object hash
 
-a|
-All object tags defined for the object, as key-value pairs
+|User metadata
+|`metadata`: All user metadata for the object, as key-value pairs
+
+`key:value`
+
+|Tags
+|`tags`: All object tags defined for the object, as key-value pairs
+
+`key:value`
+
 |===
-*Note:* For tags and user metadata, StorageGRID passes dates and numbers to Elasticsearch as strings or as S3 event notifications. To configure Elasticsearch to interpret these strings as dates or numbers, follow the Elasticsearch instructions for dynamic field mapping and for mapping date formats. You must enable the dynamic field mappings on the index before you configure the search integration service. After a document is indexed, you cannot edit the document's field types in the index.
+
+NOTE: For tags and user metadata, StorageGRID passes dates and numbers to Elasticsearch as strings or as S3 event notifications. To configure Elasticsearch to interpret these strings as dates or numbers, follow the Elasticsearch instructions for dynamic field mapping and for mapping date formats. You must enable the dynamic field mappings on the index before you configure the search integration service. After a document is indexed, you cannot edit the document's field types in the index.

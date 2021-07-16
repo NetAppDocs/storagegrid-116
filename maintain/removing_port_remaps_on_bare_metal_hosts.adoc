@@ -11,13 +11,15 @@ summary: 'If you want to configure an endpoint for the Load Balancer service, an
 [.lead]
 If you want to configure an endpoint for the Load Balancer service, and you want to use a port that has already been configured as the Mapped-To Port of a port remap, you must first remove the existing port remap, or the endpoint will not be effective. If you are running StorageGRID on bare metal hosts, follow this procedure instead of the general procedure for removing port remaps. You must edit the node configuration file for each Admin Node and Gateway Node that has conflicting remapped ports to remove all of the node's port remaps and restart the node.
 
-CAUTION:
+.About this task
 
-This procedure removes all port remaps. If you need to keep some of the remaps, contact technical support.
+CAUTION: This procedure removes all port remaps. If you need to keep some of the remaps, contact technical support.
 
 For information about configuring load balancer endpoints, see the instructions for administering StorageGRID.
 
 IMPORTANT: This procedure can result in temporary loss of service as nodes are restarted.
+
+.Steps
 
 . Log in to the host supporting the node. Log in as root or with an account that has sudo permission.
 . Run the following command to temporarily disable the node: `sudo storagegrid node stop _node-name_`

@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_6_monitor_decommission.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 6 \(Monitor Decommission\) of the Decommission Site page wizard, you can monitor the progress as the site is removed.'
 ---
 = Step 6: Monitor Decommission
@@ -10,6 +10,8 @@ summary: 'From Step 6 \(Monitor Decommission\) of the Decommission Site page wiz
 
 [.lead]
 From Step 6 (Monitor Decommission) of the Decommission Site page wizard, you can monitor the progress as the site is removed.
+
+.About this task
 
 When StorageGRID removes a connected site, it removes nodes in this order:
 
@@ -25,6 +27,8 @@ When StorageGRID removes a disconnected site, it removes nodes in this order:
 
 Each Gateway Node or Admin Node might only require a few minutes or an hour to remove; however, Storage Nodes might take days or weeks.
 
+.Steps
+
 . As soon as a new Recovery Package has been generated, download the file.
 +
 image::../media/decommission_site_step_6_recovery_package.png[Site Decommission Step 6 Recovery Package]
@@ -35,6 +39,7 @@ NOTE: Download the Recovery Package as soon as possible to ensure you can recove
  .. Download the `.zip` file.
 +
 See the instructions for downloading the Recovery Package.
+
 +
 NOTE: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
@@ -52,87 +57,73 @@ image::../media/decommission_site_step_6_storage_node.png[Decommission Site Step
 +
 If you are monitoring the progress of a connected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
+[cols="1a,2a" options="header"]
 |===
 | Stage| Estimated duration
-a|
-Pending
-a|
-Minute or less
-a|
-Wait for Locks
-a|
-Minutes
-a|
-Prepare Task
-a|
-Minute or less
-a|
-Marking LDR Decommissioned
-a|
-Minutes
-a|
-Decommissioning Replicated and Erasure Coded Data
-a|
-Hours, days, or weeks based on the amount of data    *Note:* If you need to perform other maintenance activities, you can pause the site decommission during this stage.
-a|
-LDR Set State
-a|
-Minutes
-a|
-Flush Audit Queues
-a|
-Minutes to hours, based on the number of messages and network latency.
-a|
-Complete
-a|
-Minutes
+
+|Pending
+|Minute or less
+
+|Wait for Locks
+|Minutes
+
+|Prepare Task
+|Minute or less
+
+|Marking LDR Decommissioned
+|Minutes
+
+|Decommissioning Replicated and Erasure Coded Data
+|Hours, days, or weeks based on the amount of data
+
+*Note*: If you need to perform other maintenance activities, you can pause the site decommission during this stage.
+
+|LDR Set State
+|Minutes
+
+|Flush Audit Queues
+|Minutes to hours, based on the number of messages and network latency.
+
+|Complete
+|Minutes
 |===
++
 If you are monitoring the progress of a disconnected site decommission, refer to this table to understand the decommission stages for a Storage Node:
 +
+[cols="1a,1a" options="header"]
 |===
 | Stage| Estimated duration
-a|
-Pending
-a|
-Minute or less
-a|
-Wait for Locks
-a|
-Minutes
-a|
-Prepare Task
-a|
-Minute or less
-a|
-Disable External Services
-a|
-Minutes
-a|
-Certificate Revocation
-a|
-Minutes
-a|
-Node Unregister
-a|
-Minutes
-a|
-Storage Grade Unregister
-a|
-Minutes
-a|
-Storage Group Removal
-a|
-Minutes
-a|
-Entity Removal
-a|
-Minutes
-a|
-Complete
-a|
-Minutes
-|===
+|Pending
+|Minute or less
 
+|Wait for Locks
+|Minutes
+
+|Prepare Task
+|Minute or less
+
+|Disable External Services
+|Minutes
+
+|Certificate Revocation
+|Minutes
+
+|Node Unregister
+|Minutes
+
+|Storage Grade Unregister
+|Minutes
+
+|Storage Group Removal
+|Minutes
+
+|Entity Removal
+|Minutes
+
+|Complete
+|Minutes
+|===
+[start=4]
 . After all nodes have reached the Complete stage, wait for the remaining site decommission operations to complete.
  ** During the *Repair Cassandra* step, StorageGRID makes any necessary repairs to the Cassandra clusters that remain in your grid. These repairs might take several days or more, depending on how many Storage Nodes remain in your grid.
 +
@@ -150,12 +141,14 @@ image::../media/decommission_site_step_6_remove_configuration.png[Decommission S
 +
 image::../media/decommission_site_success_message.png[Decommission Site Success Message]
 
-Complete these steps after you complete the site decommission procedure:
+.After you finish
+
+Complete these tasks after you complete the site decommission procedure:
 
 * Ensure that the drives of all Storage Nodes in the decommissioned site are wiped clean. Use a commercially available data wiping tool or service to permanently and securely remove data from the drives.
 * If the site included one or more Admin Nodes and single sign-on (SSO) is enabled for your StorageGRID system, remove all relying party trusts for the site from Active Directory Federation Services (AD FS).
 * After the nodes have been gracefully powered off automatically as part of the connected site decommission procedure, remove the associated virtual machines.
 
-*Related information*
+.Related information
 
 xref:downloading_recovery_package.adoc[Downloading the Recovery Package]

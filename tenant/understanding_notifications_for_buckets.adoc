@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding_notifications_for_buckets.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can enable event notification for an S3 bucket if you want StorageGRID to send notifications about specified events to a destination Amazon Simple Notification Service \(SNS\).'
 ---
 = Understanding notifications for buckets
@@ -25,7 +25,8 @@ StorageGRID event notification follows the Amazon S3 API with the following limi
  ** `s3:ReducedRedundancyLostObject`
  ** `s3:ObjectRestore:Completed`
 * Event notifications sent from StorageGRID use the standard JSON format except that they do not include some keys and use specific values for others, as shown in the table:
-+
+
+[cols="1a,2a" options="header"]
 |===
 | Key name| StorageGRID value
 a|
@@ -46,6 +47,6 @@ a|
 `urn:sgws:s3:::bucket_name`
 |===
 
-*Related information*
+.Related information
 
 xref:configuring_event_notifications.adoc[Configuring event notifications]

@@ -1,7 +1,7 @@
 ---
 permalink: maintain/changing_ip_addresses_and_mtu_values_for_all_nodes_in_grid.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you need to change the Grid Network IP address for all nodes in the grid, you must follow this special procedure. You cannot do a grid-wide Grid Network IP change using the procedure to change individual nodes.'
 ---
 = Changing IP addresses for all nodes in the grid
@@ -11,6 +11,8 @@ summary: 'If you need to change the Grid Network IP address for all nodes in the
 [.lead]
 If you need to change the Grid Network IP address for all nodes in the grid, you must follow this special procedure. You cannot do a grid-wide Grid Network IP change using the procedure to change individual nodes.
 
+.What you'll need
+
 * You must have the `Passwords.txt` file.
 
 To ensure that the grid starts up successfully, you must make all the changes at once.
@@ -18,6 +20,8 @@ To ensure that the grid starts up successfully, you must make all the changes at
 NOTE: This procedure applies to the Grid Network only. You cannot use this procedure to change IP addresses on the Admin or Client Networks.
 
 If you want to change the IP addresses and MTU for the nodes at one site only, follow the instructions for changing a node's network configuration.
+
+.Steps
 
 . Plan ahead for changes that you need to make outside of the Change IP tool, such as changes to DNS or NTP, and changes to the single sign-on (SSO) configuration, if used.
 +
@@ -65,6 +69,7 @@ image::../media/change_ip_tool_edit_ip_mask_sample_output.png[screenshot describ
 +
 NOTE: Certain command line interfaces might show additions and deletions using strikethrough formatting. Proper display depends on your terminal client supporting the necessary VT100 escape sequences.
 
+[start=7]
 . Select option *7* to validate all changes.
 +
 This validation ensures that the rules for the Grid Network, such as not using overlapping subnets, are not violated.
@@ -97,7 +102,7 @@ IMPORTANT: The entire grid must be shut down at once, so that all nodes are down
  .. Select *Maintenance* > *System* > *Recovery Package*.
  .. Enter the provisioning passphrase.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

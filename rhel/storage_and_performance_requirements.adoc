@@ -1,7 +1,7 @@
 ---
 permalink: rhel/storage_and_performance_requirements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must understand the storage requirements for StorageGRID nodes, so you can provide enough space to support the initial configuration and future storage expansion.'
 ---
 = Storage and performance requirements
@@ -47,52 +47,38 @@ The maximum tested LUN size is 39 TB.
 
 NOTE: These numbers are for each host, not for the entire grid.
 
+[options="header"]
 |===
-| LUN purpose| Storage category| Number of LUNs| Minimum size/LUN
-a|
-Docker storage pool
-a|
-Container pool
-a|
-1
-a|
-Total number of nodes × 100 GB
-a|
-/var/local volume
-a|
-System data
-a|
-1 for each node on this host
-a|
-90 GB
-a|
-Storage Node
-a|
-Object data
-a|
-3 for each Storage Node on this host**Note:** A software-based Storage Node can have 1 to 16 storage volumes; at least 3 storage volumes are recommended.
+a| LUN purpose| Storage category| Number of LUNs| Minimum size/LUN
+a|Docker storage pool
+a|Container pool
+a|1
+a|Total number of nodes × 100 GB
 
-a|
-4,000 GB See "`Storage requirements for Storage Nodes`" below for more information.
+a|`/var/local` volume
+a|System data
+a|1 for each node on this host
+a|90 GB
 
-a|
-Admin Node audit logs
-a|
-System data
-a|
-1 for each Admin Node on this host
-a|
-200 GB
-a|
-Admin Node tables
-a|
-System data
-a|
-1 for each Admin Node on this host
-a|
-200 GB
+a|Storage Node
+a|Object data
+a|3 for each Storage Node on this host
+
+*Note:* A software-based Storage Node can have 1 to 16 storage volumes; at least 3 storage volumes are recommended.
+
+a|4,000 GB See <<storage_req_SN,Storage requirements for Storage Nodes>> for more information.
+
+a|Admin Node audit logs
+a|System data
+a|1 for each Admin Node on this host
+a|200 GB
+
+a|Admin Node tables
+a|System data
+a|1 for each Admin Node on this host
+a|200 GB
 |===
-*Attention:* Depending on the audit level configured, the size of user inputs such as S3 object key name, and how much audit log data you need to preserve, you might need to increase the size of the audit log LUN on each Admin Node. As a general rule, a grid generates approximately 1 KB of audit data per S3 operation, which would mean that a 200 GB LUN would support 70 million operations per day or 800 operations per second for two to three days.
+IMPORTANT: Depending on the audit level configured, the size of user inputs such as S3 object key name, and how much audit log data you need to preserve, you might need to increase the size of the audit log LUN on each Admin Node. As a general rule, a grid generates approximately 1 KB of audit data per S3 operation, which would mean that a 200 GB LUN would support 70 million operations per day or 800 operations per second for two to three days.
 
 == Minimum storage space for a host
 
@@ -100,113 +86,84 @@ The following table shows the minimum storage space required for each type of no
 
 NOTE: Disk snapshots cannot be used to restore grid nodes. Instead, refer to the recovery and maintenance procedures for each type of node.
 
+[options="header"]
 |===
 | Type of node| Container pool| System data| Object data
-a|
+|
 Storage Node
-a|
-100 GB
-a|
-90 GB
-a|
-4,000 GB
-a|
-Admin Node
-a|
-100 GB
-a|
-490 GB (3 LUNs)
-a|
-_not applicable_
-a|
-Gateway Node
-a|
-100 GB
-a|
-90 GB
-a|
-_not applicable_
-a|
-Archive Node
-a|
-100 GB
-a|
-90 GB
-a|
-_not applicable_
+a|100 GB
+a|90 GB
+a|4,000 GB
+
+a|Admin Node
+a|100 GB
+a|490 GB (3 LUNs)
+a|_not applicable_
+
+a|Gateway Node
+a|100 GB
+a|90 GB
+a|_not applicable_
+
+a|Archive Node
+a|100 GB
+a|90 GB
+a|_not applicable_
 |===
 
 == Example: Calculating the storage requirements for a host
 
 Suppose you plan to deploy three nodes on the same host: one Storage Node, one Admin Node, and one Gateway Node. You should provide a minimum of nine storage volumes to the host. You will need a minimum of 300 GB of performance-tier storage for the node containers, 670 GB of performance-tier storage for system data and transaction logs, and 12 TB of capacity-tier storage for object data.
 
+[options="header"]
 |===
 | Type of node| LUN purpose| Number of LUNs| LUN size
+|Storage Node
+a|Docker storage pool
+a|1
+a|300 GB (100 GB/node)
+
+a|Storage Node
+a|`/var/local` volume
+a|1
+a|90 GB
+
+|Storage Node
+a|Object data
+a|3
+a|4,000 GB
+
+a|Admin Node
+a|`/var/local` volume
+a|1
+a|90 GB
+
+|Admin Node
+a|Admin Node audit logs
+a|1
+a|200 GB
+
+|Admin Node
+a|Admin Node tables
+a|1
+a|200 GB
+
+a|Gateway Node
+a|`/var/local` volume
+a|1
+a|90 GB
+
+a|*Total*
 a|
- 
-a|
-Docker storage pool
-a|
-1
-a|
-300 GB (100 GB/node)
-a|
-Storage Node
-a|
-/var/local volume
-a|
-1
-a|
-90 GB
-a|
-Object data
-a|
-3
-a|
-4,000 GB
-a|
-Admin Node
-a|
-/var/local volume
-a|
-1
-a|
-90 GB
-a|
-Admin Node audit logs
-a|
-1
-a|
-200 GB
-a|
-Admin Node tables
-a|
-1
-a|
-200 GB
-a|
-Gateway Node
-a|
-/var/local volume
-a|
-1
-a|
-90 GB
-a|
-*Total*
-a|
- 
-a|
-*9*
-a|
-*Container pool:* 300 GB
+a|*9*
+a|*Container pool:* 300 GB
 
 *System data:* 670 GB
 
 *Object data:* 12,000 GB
 
 |===
-
+[#storage_req_SN]
 == Storage requirements for Storage Nodes
 
 A software-based Storage Node can have 1 to 16 storage volumes--3 or more storage volumes are recommended. Each storage volume should be 4 TB or larger.
@@ -232,7 +189,7 @@ For details, go to the instructions for administering StorageGRID and search for
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
-*Related information*
+.Related information
 
 xref:node_container_migration_requirements.adoc[Node container migration requirements]
 

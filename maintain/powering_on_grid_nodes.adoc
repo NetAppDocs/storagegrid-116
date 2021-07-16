@@ -1,7 +1,7 @@
 ---
 permalink: maintain/powering_on_grid_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Follow this sequence to start up the grid nodes after a complete shutdown.'
 ---
 = Starting up the grid nodes
@@ -11,9 +11,11 @@ summary: 'Follow this sequence to start up the grid nodes after a complete shutd
 [.lead]
 Follow this sequence to start up the grid nodes after a complete shutdown.
 
-CAUTION:
+.What you'll need
 
-If the entire grid has been shut down for more than 15 days, you must contact technical support before starting up any grid nodes. Do not attempt the recovery procedures that rebuild Cassandra data. Doing so might result in data loss.
+CAUTION: If the entire grid has been shut down for more than 15 days, you must contact technical support before starting up any grid nodes. Do not attempt the recovery procedures that rebuild Cassandra data. Doing so might result in data loss.
+
+.About this task
 
 If possible, you should power on the grid nodes in this order:
 
@@ -21,6 +23,8 @@ If possible, you should power on the grid nodes in this order:
 * Apply power to Gateway Nodes last.
 
 NOTE: If a host includes multiple grid nodes, the nodes will come back online automatically when you power on the host.
+
+.Steps
 
 . Power on the hosts for the primary Admin Node and any non-primary Admin Nodes.
 +

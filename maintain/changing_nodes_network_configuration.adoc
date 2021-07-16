@@ -1,7 +1,7 @@
 ---
 permalink: maintain/changing_nodes_network_configuration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can change the network configuration of one or more nodes using the Change IP tool. You can change the configuration of the Grid Network, or add, change, or remove the Admin or Client Networks.'
 ---
 = Changing a node's network configuration
@@ -11,7 +11,11 @@ summary: 'You can change the network configuration of one or more nodes using th
 [.lead]
 You can change the network configuration of one or more nodes using the Change IP tool. You can change the configuration of the Grid Network, or add, change, or remove the Admin or Client Networks.
 
+.What you'll need
+
 You must have the `Passwords.txt` file.
+
+.About this task
 
 *Linux:* If you are adding a grid node to the Admin Network or Client Network for the first time, and you did not previously configure ADMIN_NETWORK_TARGET or CLIENT_NETWORK_TARGET in the node configuration file, you must do so now.
 
@@ -34,6 +38,8 @@ IMPORTANT: If single sign-on (SSO) is enabled for your StorageGRID system and yo
 
 NOTE: Any changes you make to the network using the Change IP tool are propagated to the installer firmware for the StorageGRID appliances. That way, if StorageGRID software is reinstalled on an appliance, or if an appliance is placed into maintenance mode, the networking configuration will be correct.
 
+.Steps
+
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -54,6 +60,8 @@ image::../media/change_ip_tool_main_menu.png[screenshot showing welcome screen o
  ** *3*: Single node -- select by current IP
  ** *4*: All nodes at a site
  ** *5*: All nodes in the grid
++
+
 *Note:* If you want to update all nodes, allow "all" to remain selected.
 
 +
@@ -68,8 +76,10 @@ After you make your selection, the prompt shows the node name, network name (Gri
 
 +
 Editing the IP address, prefix length, gateway, or MTU of a DHCP-configured interface will change the interface to static. When you select to change an interface configured by DHCP, a warning is displayed to inform you that the interface will change to static.
+
 +
 Interfaces configured as `fixed` cannot be edited.
+
  .. To set a new value, enter it in the format shown for the current value.
  .. To leave the current value unchanged, press *Enter*.
  .. If the data type is `IP/mask`, you can delete the Admin or Client Network from the node by entering *d* or *0.0.0.0/0*.
@@ -120,22 +130,22 @@ If you were unaware that the proposed changes require nodes to be restarted, you
 
 +
 When you select *apply* or *stage*, a new network configuration file is generated, provisioning is performed, and nodes are updated with new working information.
+
 +
 During provisioning, the output displays the status as updates are applied.
+
 +
 ----
 Generating new grid networking description file...
-----
-+
-----
+
 Running provisioning...
-----
-+
-----
+
 Updating grid network configuration on Name
 ----
+
 +
 After applying or staging changes, a new Recovery Package is generated as a result of the grid configuration change.
+
 . If you selected *stage*, follow these steps after provisioning is complete:
  .. Make the physical or virtual networking changes that are required.
 +
@@ -149,7 +159,7 @@ After applying or staging changes, a new Recovery Package is generated as a resu
  .. Select *Maintenance* > *System* > *Recovery Package*.
  .. Enter the provisioning passphrase.
 
-*Related information*
+.Related information
 
 xref:linux_adding_interfaces_to_existing_node.adoc[Linux: Adding interfaces to an existing node]
 

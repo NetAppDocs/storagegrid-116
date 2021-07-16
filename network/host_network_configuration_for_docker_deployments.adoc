@@ -1,7 +1,7 @@
 ---
 permalink: network/host_network_configuration_for_docker_deployments.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before starting your StorageGRID deployment on a Docker container platform, determine which networks \(Grid, Admin, Client\) each node will use. You must ensure that each node’s network interface is configured on the correct virtual or physical host interface, and that each network has sufficient bandwidth.'
 ---
 = Host network configuration for Docker deployments
@@ -26,43 +26,18 @@ NOTE: A physical interface on the host can be used by the host itself and one or
 
 The following table provides the minimum bandwidth recommendations for each type of StorageGRID node and each type of network. You must provision each physical or virtual host with sufficient network bandwidth to meet the aggregate minimum bandwidth requirements for the total number and type of StorageGRID nodes you plan to run on that host.
 
+[options="header"]
 |===
-| Type of node| Type of network
-| Grid| Admin| Client
-a|
-Admin
-a|
-10 Gbps
-a|
-1 Gbps
-a|
-1 Gbps
-a|
-Gateway
-a|
-10 Gbps
-a|
-1 Gbps
-a|
-10 Gbps
-a|
-Storage
-a|
-10 Gbps
-a|
-1 Gbps
-a|
-10 Gbps
-a|
-Archive
-a|
-10 Gbps
-a|
-1 Gbps
-a|
-10 Gbps
+a| Type of node 3+|Type of network
+
+a| |Grid |Admin |Client
+a|Admin |10 Gbps |1 Gbps |1 Gbps
+a|Gateway |10 Gbps |1 Gbps |10 Gbps
+a|Storage |10 Gbps |1 Gbps |10 Gbps
+a|Archive |10 Gbps |1 Gbps |10 Gbps
 |===
-*Note:* This table does not include SAN bandwidth, which is required for access to shared storage. If you are using shared storage accessed over Ethernet (iSCSI or FCoE), you should provision separate physical interfaces on each host to provide sufficient SAN bandwidth. To avoid introducing a bottleneck, SAN bandwidth for a given host should roughly match the aggregate Storage Node network bandwidth for all Storage Nodes running on that host.
+
+NOTE: This table does not include SAN bandwidth, which is required for access to shared storage. If you are using shared storage accessed over Ethernet (iSCSI or FCoE), you should provision separate physical interfaces on each host to provide sufficient SAN bandwidth. To avoid introducing a bottleneck, SAN bandwidth for a given host should roughly match the aggregate Storage Node network bandwidth for all Storage Nodes running on that host.
 
 Use the table to determine the minimum number of network interfaces to provision on each host, based on the number and type of StorageGRID nodes you plan to run on that host.
 
@@ -76,7 +51,7 @@ In this scenario, you should provide a minimum of 11 + 20 + 10 = 41 Gbps of netw
 
 For some recommended ways of configuring physical and network resources on the hosts in your StorageGRID cluster to prepare for your StorageGRID deployment, see the information about configuring the host network in the installation instructions for your Linux platform.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
 

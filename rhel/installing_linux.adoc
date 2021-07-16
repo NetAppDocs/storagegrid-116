@@ -1,7 +1,7 @@
 ---
 permalink: rhel/installing_linux.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must install Red Hat Enterprise Linux or CentOS Linux on all grid hosts. Use the NetApp Interoperability Matrix Tool to get a list of supported versions.'
 ---
 = Installing Linux
@@ -10,6 +10,8 @@ summary: 'You must install Red Hat Enterprise Linux or CentOS Linux on all grid 
 
 [.lead]
 You must install Red Hat Enterprise Linux or CentOS Linux on all grid hosts. Use the NetApp Interoperability Matrix Tool to get a list of supported versions.
+
+.Steps
 
 . Install Linux on all physical or virtual grid hosts according to the distributor's instructions or your standard procedure.
 +
@@ -21,11 +23,11 @@ You might need these additional packages later in this installation procedure.
 
 . If swap is enabled:
  .. Run the following command: `$ sudo swapoff --all`
- .. Remove all swap entries from /etc/fstab to persist the settings.
+ .. Remove all swap entries from `/etc/fstab` to persist the settings.
 
 +
 IMPORTANT: Failing to disable swap entirely can severely lower performance.
 
-*Related information*
+.Related information
 
 https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]

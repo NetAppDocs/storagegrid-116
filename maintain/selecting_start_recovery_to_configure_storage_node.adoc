@@ -11,6 +11,8 @@ summary: 'After replacing a Storage Node, you must select Start Recovery in the 
 [.lead]
 After replacing a Storage Node, you must select Start Recovery in the Grid Manager to configure the new node as a replacement for the failed node.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Maintenance or Root Access permission.
 * You must have the provisioning passphrase.
@@ -18,10 +20,14 @@ After replacing a Storage Node, you must select Start Recovery in the Grid Manag
 * You must know the start date of any repair jobs for erasure-coded data.
 * You must have verified that the Storage Node has not been rebuilt within the last 15 days.
 
+.About this task
+
 If the Storage Node is installed as a container on a Linux host, you must perform this step only if one of these is true:
 
 * You had to use the `--force` flag to import the node, or you issued `storagegrid node force-recovery _node-name_`
 * You had to do a full node reinstall, or you needed to restore /var/local.
+
+.Steps
 
 . From the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Recovery*.
 . Select the grid node you want to recover in the Pending Nodes list.
@@ -48,6 +54,6 @@ If you want to retry the recovery after resetting the procedure, you must restor
 +
 image::../media/recovery_reset_button.gif[screenshot showing the stage "waiting for manual steps"]
 
-*Related information*
+.Related information
 
 xref:preparing_appliance_for_reinstallation_platform_replacement_only.adoc[Preparing an appliance for reinstallation (platform replacement only)]

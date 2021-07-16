@@ -1,7 +1,7 @@
 ---
 permalink: maintain/stopping_server_manager_and_all_services.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Server Manager is intended to run at all times, but you might need to stop Server Manager and all services running on a grid node.'
 ---
 = Stopping Server Manager and all services
@@ -11,9 +11,15 @@ summary: 'Server Manager is intended to run at all times, but you might need to 
 [.lead]
 Server Manager is intended to run at all times, but you might need to stop Server Manager and all services running on a grid node.
 
+.What you'll need
+
 You must have the `Passwords.txt` file.
 
+.About this task
+
 The only scenario that requires you to stop Server Manager while keeping the operating system running is when you need to integrate Server Manager to other services. If there is a requirement to stop the Server Manager for servicing of the hardware or reconfiguration of the server, the entire server should be halted.
+
+.Steps
 
 . Log in to the grid node:
  .. Enter the following command: `ssh admin@_grid_node_IP_`

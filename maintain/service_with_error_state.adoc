@@ -11,9 +11,15 @@ summary: 'If you detect that a service has entered an error state, attempt to re
 [.lead]
 If you detect that a service has entered an error state, attempt to restart the service.
 
+.What you'll need
+
 You must have the `Passwords.txt` file.
 
+.About this task
+
 Server Manager monitors services and restarts any that have stopped unexpectedly. If a service fails, Server Manager attempts to restart it. If there are three failed attempts to start a service within five minutes, the service enters an error state. Server Manager does not attempt another restart.
+
+.Steps
 
 . Log in to the grid node:
  .. Enter the following command: `ssh admin@_grid_node_IP_`
@@ -45,6 +51,6 @@ If the service fails to restart, contact technical support.
 
 . Log out of the command shell: `exit`
 
-*Related information*
+.Related information
 
 xref:removing_donotstart_file_for_service.adoc[Removing a DoNotStart file for a service]

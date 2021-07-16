@@ -6,7 +6,6 @@ summary: 'There are several tasks you can perform to help determine the source o
 ---
 
 = Troubleshooting network, hardware, and platform issues
-:experimental:
 :icons: font
 :imagesdir: ../media/
 
@@ -91,7 +90,7 @@ The differences in MTU settings could indicate that some, but not all, eth0 netw
 +
 *Example*: `change-mtu.py -n node 1500 grid admin`
 +
-NOTE: On Linux-based nodes, if the desired MTU value for the network in the container exceeds the value already configured on the host interface, you must first configure the host interface to have the desired MTU value, and then use the `change-mtu.py` script to change the MTU value of the network in the container.
+*Note*: On Linux-based nodes, if the desired MTU value for the network in the container exceeds the value already configured on the host interface, you must first configure the host interface to have the desired MTU value, and then use the `change-mtu.py` script to change the MTU value of the network in the container.
 +
 Use the following arguments for modifying the MTU on Linux- or VMware-based nodes.
 +
@@ -150,7 +149,7 @@ NRER alarms can be caused by the following issues with networking hardware that 
 . Follow the troubleshooting steps for all potential causes of the NRER alarm given your network configuration.
  ** If the error is caused by FEC mismatch, perform the following steps:
 +
-NOTE: These steps are applicable only for NRER errors caused by FEC mismatch on StorageGRID appliances.
+*Note*: These steps are applicable only for NRER errors caused by FEC mismatch on StorageGRID appliances.
 
   ... Check the FEC status of the port in the switch attached to your StorageGRID appliance.
   ... Check the physical integrity of the cables from the appliance to the switch.
@@ -159,7 +158,7 @@ NOTE: These steps are applicable only for NRER errors caused by FEC mismatch on 
 (You cannot configure FEC settings on StorageGRID appliances. Instead, the appliances attempt to discover and mirror the FEC settings on the switch ports they are connected to. If the links are forced to 25-GbE or 100-GbE network speeds, the switch and NIC might fail to negotiate a common FEC setting. Without a common FEC setting, the network will fall back to "`no-FEC`" mode. When FEC is not enabled, the connections are more susceptible to errors caused by electrical noise.)
 
 +
-NOTE: StorageGRID appliances support Firecode (FC) and Reed Solomon (RS) FEC, as well as no FEC.
+*Note*: StorageGRID appliances support Firecode (FC) and Reed Solomon (RS) FEC, as well as no FEC.
 
  ** If the error is caused by a switch port and NIC MTU mismatch, check that the MTU size configured on the node is the same as the MTU setting for the switch port.
 +

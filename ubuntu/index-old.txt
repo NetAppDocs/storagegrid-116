@@ -1,0 +1,58 @@
+---
+permalink: ubuntu/index-old.html
+sidebar: sidebar
+keywords:
+summary: ''
+---
+= Installation Guide
+:icons: font
+:imagesdir: ../media/
+
+* xref:installation_overview.adoc[Installation overview]
+* xref:planning_and_preparation.adoc[Planning and preparation]
+ ** xref:required_materials.adoc[Required materials]
+ ** xref:downloading_and_extracting_storagegrid_installation_files.adoc[Downloading and extracting the StorageGRID installation files]
+ ** xref:cpu_and_ram_requirements.adoc[CPU and RAM requirements]
+ ** xref:storage_and_performance_requirements.adoc[Storage and performance requirements]
+ ** xref:node_container_migration_requirements.adoc[Node container migration requirements]
+ ** xref:web_browser_requirements.adoc[Web browser requirements]
+ ** xref:deployment_tools.adoc[Deployment tools]
+ ** xref:preparing_hosts.adoc[Preparing the hosts]
+  *** xref:installing_linux.adoc[Installing Linux]
+  *** xref:understanding_apparmor_profile_installation.adoc[Understanding AppArmor profile installation]
+  *** xref:configuring_host_network.adoc[Configuring the host network]
+   **** xref:considerations_and_recommendations_for_mac_address_cloning.adoc[Considerations and recommendations for MAC address cloning]
+   **** xref:example_1_1_to_1_mapping_to_physical_or_virtual_nics.adoc[Example 1: 1-to-1 mapping to physical or virtual NICs]
+   **** xref:example_2_lacp_bond_carrying_vlans.adoc[Example 2: LACP bond carrying VLANs]
+  *** xref:configuring_host_storage.adoc[Configuring host storage]
+  *** xref:configuring_docker_storage_volume.adoc[Configuring the Docker storage volume]
+  *** xref:installing_docker.adoc[Installing Docker]
+  *** xref:installing_storagegrid_webscale_host_services.adoc[Installing StorageGRID host services]
+* xref:deploying_virtual_grid_nodes.adoc[Deploying virtual grid nodes]
+ ** xref:creating_node_configuration_files.adoc[Creating node configuration files]
+  *** xref:how_grid_nodes_discover_primary_admin_node.adoc[How grid nodes discover the primary Admin Node]
+  *** xref:example_node_configuration_files.adoc[Example node configuration files]
+ ** xref:validating_storagegrid_configuration.adoc[Validating the StorageGRID configuration]
+ ** xref:starting_storagegrid_host_service.adoc[Starting the StorageGRID host service]
+* xref:configuring_grid_and_completing_installation.adoc[Configuring the grid and completing installation]
+ ** xref:navigating_to_grid_manager.adoc[Navigating to the Grid Manager]
+ ** xref:specifying_storagegrid_license_information.adoc[Specifying the StorageGRID license information]
+ ** xref:adding_sites.adoc[Adding sites]
+ ** xref:specifying_grid_network_subnets.adoc[Specifying Grid Network subnets]
+ ** xref:approving_pending_grid_nodes.adoc[Approving pending grid nodes]
+ ** xref:specifying_network_time_protocol_server_information.adoc[Specifying Network Time Protocol server information]
+ ** xref:specifying_domain_name_system_server_information.adoc[Specifying Domain Name System server information]
+ ** xref:specifying_storagegrid_system_passwords.adoc[Specifying the StorageGRID system passwords]
+ ** xref:reviewing_your_configuration_and_completing_installation.adoc[Reviewing your configuration and completing installation]
+ ** xref:post_installation_guidelines.adoc[Post-installation guidelines]
+* xref:automating_installation.adoc[Automating the installation]
+ ** xref:automating_installation_and_configuration_of_storagegrid_host_service.adoc[Automating the installation and configuration of the StorageGRID host service]
+ ** xref:automating_configuration_of_storagegrid.adoc[Automating the configuration of StorageGRID]
+* xref:overview_of_installation_rest_api.adoc[Overview of the installation REST API]
+* xref:where_to_go_next.adoc[Where to go next]
+* xref:troubleshooting_installation_issues.adoc[Troubleshooting installation issues]
+* xref:example_etc_network_interfaces.adoc[Example /etc/network/interfaces]
+* xref:copyright_and_trademark.adoc[Copyright, trademark, and machine translation]
+ ** xref:copyright.adoc[Copyright]
+ ** xref:trademark.adoc[Trademark]
+ ** xref:machine_translation_disclaimer.adoc[Machine translation]
