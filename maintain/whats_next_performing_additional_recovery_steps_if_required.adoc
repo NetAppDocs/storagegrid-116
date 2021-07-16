@@ -1,7 +1,7 @@
 ---
 permalink: maintain/whats_next_performing_additional_recovery_steps_if_required.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Depending on the specific actions you took to get the StorageGRID nodes running on the replacement host, you might need to perform additional recovery steps for each node.'
 ---
 = What's next: Performing additional recovery steps, if required
@@ -17,45 +17,39 @@ Node recovery is complete if you did not need to take any corrective actions whi
 
 During node replacement, you may have needed to take one of these corrective actions:
 
-* You had to use the --force flag to import the node.
-* For any <PURPOSE>, the value of the BLOCK_DEVICE_<PURPOSE> configuration file variable refers to a block device that does not contain the same data it did before the host failure.
+* You had to use the `--force` flag to import the node.
+* For any `<PURPOSE>`, the value of the `BLOCK_DEVICE_<PURPOSE>` configuration file variable refers to a block device that does not contain the same data it did before the host failure.
 * You issued `storagegrid node force-recovery node-name` for the node.
 * You added a new block device.
 
 If you took *any* of these corrective actions, you must perform additional recovery steps.
 
+[cols="1a,1a" options="header"]
 |===
 | Type of recovery| Next step
-a|
-Primary Admin Node
-a|
-xref:configuring_replacement_primary_admin_node.adoc[Configuring the replacement primary Admin Node]
-a|
-Non-primary Admin Node
-a|
-xref:selecting_start_recovery_to_configure_non_primary_admin_node.adoc[Selecting Start Recovery to configure a non-primary Admin Node]
-a|
-Gateway Node
-a|
-xref:selecting_start_recovery_to_configure_gateway_node.adoc[Selecting Start Recovery to configure a Gateway Node]
-a|
-Archive Node
-a|
-link:selecting_start_recovery_to_configure_archive_node.md#[Selecting Start Recovery to configure an Archive Node]
-a|
-Storage Node (software-based):
+|Primary Admin Node
+|xref:configuring_replacement_primary_admin_node.adoc[Configuring the replacement primary Admin Node]
+
+|Non-primary Admin Node
+|xref:selecting_start_recovery_to_configure_non_primary_admin_node.adoc[Selecting Start Recovery to configure a non-primary Admin Node]
+
+|Gateway Node
+|xref:selecting_start_recovery_to_configure_gateway_node.adoc[Selecting Start Recovery to configure a Gateway Node]
+
+|Archive Node
+|link:selecting_start_recovery_to_configure_archive_node.md#[Selecting Start Recovery to configure an Archive Node]
+
+|Storage Node (software-based):
 
 * If you had to use the --force flag to import the node, or you issued `storagegrid node force-recovery node-name`
-* If you had to do a full node reinstall, or you needed to restore /var/local
+* If you had to do a full node reinstall, or you needed to restore `/var/local`
 
-a|
-xref:selecting_start_recovery_to_configure_storage_node.adoc[Selecting Start Recovery to configure a Storage Node]
-a|
-Storage Node (software-based):
+|xref:selecting_start_recovery_to_configure_storage_node.adoc[Selecting Start Recovery to configure a Storage Node]
+
+|Storage Node (software-based):
 
 * If you added a new block device.
-* If, for any <PURPOSE>, the value of the BLOCK_DEVICE_<PURPOSE> configuration file variable refers to a block device that does not contain the same data it did before the host failure.
+* If, for any `<PURPOSE>`, the value of the `BLOCK_DEVICE_<PURPOSE>` configuration file variable refers to a block device that does not contain the same data it did before the host failure.
 
-a|
-link:recovering_from_storage_volume_failure_where_system_drive_is_intact.md#[Recovering from storage volume failure where the system drive is intact]
+|link:recovering_from_storage_volume_failure_where_system_drive_is_intact.md#[Recovering from storage volume failure where the system drive is intact]
 |===

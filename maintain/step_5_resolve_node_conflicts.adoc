@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_5_resolve_node_conflicts.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 5 \(Resolve Node Conflicts\) of the Decommission Site wizard, you can determine if any nodes in your StorageGRID system are disconnected or if any nodes at the selected site belong to a high availability \(HA\) group. After any node conflicts are resolved, you start the decommission procedure from this page.'
 ---
 = Step 5: Resolve Node Conflicts (and start decommission)
@@ -35,6 +35,8 @@ NOTE: If you need to perform another maintenance procedure during a connected si
 
  ** If you need to recover any node after starting the site decommission procedure, you must contact support.
 
+.Steps
+
 . Review the disconnected nodes section of Step 5 (Resolve Node Conflicts) to determine if any nodes in your StorageGRID system have a Connection State of Unknown (image:../media/icon_alarm_blue_unknown.png[Icon Alarm Blue Unknown]) or Administratively Down (image:../media/icon_alarm_gray_administratively_down.png[Icon Alarm Gray Administratively Down]).
 +
 image::../media/decommission_site_step_5_disconnected_nodes.png[Decommission Site Step 5 Resolve Node Conflicts]
@@ -50,8 +52,9 @@ This table lists any nodes at the selected site that belong to a high availabili
 image::../media/decommission_site_step_5_ha_groups.png[Decommission Site Step 5 HA Groups]
 
 . If any nodes are listed, do either of the following:
- ** Edit each affected HA group to remove the node interface.
- ** Remove an HA group that only includes nodes from this site.
++
+** Edit each affected HA group to remove the node interface.
+** Remove an HA group that only includes nodes from this site.
 See the instructions for administering StorageGRID.
 
 +
@@ -78,7 +81,7 @@ When the new grid configuration has been generated, Step 6 (Monitor Decommission
 +
 NOTE: The *Previous* button remains disabled until the decommission is complete.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 

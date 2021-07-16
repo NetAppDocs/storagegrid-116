@@ -1,7 +1,7 @@
 ---
 permalink: audit/object_ingest_transactions.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can identify client ingest transactions in the audit log by locating API-specific \(S3 or Swift\) audit messages.'
 ---
 = Object ingest transactions
@@ -15,6 +15,7 @@ Not all audit messages generated during an ingest transaction are listed in the 
 
 == S3 ingest audit messages
 
+[options="header"]
 |===
 | Code| Name| Description| Trace| See
 a|
@@ -36,11 +37,12 @@ The ILM policy has been satisfied for this object.
 a|
 CBID
 a|
-link:orlm_object_rules_met.md#[ORLM: Object Rules Met]
+xref:orlm_object_rules_met.adoc[ORLM: Object Rules Met]
 |===
 
 == Swift ingest audit messages
 
+[options="header"]
 |===
 | Code| Name| Description| Trace| See
 a|
@@ -62,5 +64,5 @@ The ILM policy has been satisfied for this object.
 a|
 CBID
 a|
-link:orlm_object_rules_met.md#[ORLM: Object Rules Met]
+xref:orlm_object_rules_met.adoc[ORLM: Object Rules Met]
 |===

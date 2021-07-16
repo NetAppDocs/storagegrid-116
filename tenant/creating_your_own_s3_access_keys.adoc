@@ -1,7 +1,7 @@
 ---
 permalink: tenant/creating_your_own_s3_access_keys.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are using an S3 tenant and you have the appropriate permission, you can create your own S3 access keys. You must have an access key to access your buckets and objects in the S3 tenant account.'
 ---
 = Creating your own S3 access keys
@@ -11,8 +11,12 @@ summary: 'If you are using an S3 tenant and you have the appropriate permission,
 [.lead]
 If you are using an S3 tenant and you have the appropriate permission, you can create your own S3 access keys. You must have an access key to access your buckets and objects in the S3 tenant account.
 
+.What you'll need
+
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must have the Manage Your Own S3 Credentials permission.
+
+.About this task
 
 You can create one or more S3 access keys that allow you to create and manage buckets for your tenant account. After you create a new access key, update the application with your new access key ID and secret access key. For security, do not create more keys than you need, and delete the keys you are not using. If you have only one key and it is about to expire, create a new key before the old one expires, and then delete the old one.
 
@@ -23,6 +27,7 @@ Each key can have a specific expiration time or no expiration. Follow these guid
 
 IMPORTANT: The S3 buckets and objects belonging to your account can be accessed using the access key ID and secret access key displayed for your account in the Tenant Manager. For this reason, protect access keys as you would a password. Rotate access keys on a regular basis, remove any unused keys from your account, and never share them with other users.
 
+.Steps
 . Select *STORAGE (S3)* > *My access keys*.
 +
 The My access keys page appears and lists any existing access keys.
@@ -46,6 +51,6 @@ image::../media/tenant_s3_access_key_save_keys.png[screenshot of Save Keys dialo
 +
 The new key is listed on the My access keys page. Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]

@@ -1,7 +1,7 @@
 ---
 permalink: sg100-1000/setting_ip_address_for_bmc_management_port_sg1000.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before you can access the BMC interface, you must configure the IP address for the BMC management port on the services appliance.'
 ---
 = Setting the IP address for the BMC management port
@@ -10,6 +10,8 @@ summary: 'Before you can access the BMC interface, you must configure the IP add
 
 [.lead]
 Before you can access the BMC interface, you must configure the IP address for the BMC management port on the services appliance.
+
+.What you'll need
 
 * The management client is using a supported web browser.
 * You are using any management client that can connect to a StorageGRID network.
@@ -23,11 +25,16 @@ image::../media/sg100_bmc_management_port.png[SG100 BMC Management Port]
 +
 image::../media/sg1000_bmc_management_port.png[SG1000 BMC Management Port]
 
+.About this task
+
 IMPORTANT: For support purposes, the BMC management port allows low-level hardware access. You should only connect this port to a secure, trusted, internal management network. If no such network is available, leave the BMC port unconnected or blocked, unless a BMC connection is requested by technical support.
 
-. From the client, enter the URL for the StorageGRID Appliance Installer: `+https://services_appliance_IP:8443+`
+.Steps
+
+. From the client, enter the URL for the StorageGRID Appliance Installer: +
+`*https://_services_appliance_IP_:8443*`
 +
-For `services_appliance_IP`, use the IP address for the appliance on any StorageGRID network.
+For `_services_appliance_IP_`, use the IP address for the appliance on any StorageGRID network.
 +
 The StorageGRID Appliance Installer Home page appears.
 

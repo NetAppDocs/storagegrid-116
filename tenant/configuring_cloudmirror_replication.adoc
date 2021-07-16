@@ -11,10 +11,14 @@ summary: 'The CloudMirror replication service is one of the three StorageGRID pl
 [.lead]
 The CloudMirror replication service is one of the three StorageGRID platform services. You can use CloudMirror replication to automatically replicate objects to an external S3 bucket.
 
+.What you'll need
+
 * Platform services must be enabled for your tenant account by a StorageGRID administrator.
 * You must have already created a bucket to act as the replication source.
 * The endpoint that you intend to use as a destination for CloudMirror replication must already exist, and you must have its URN.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission, which allows you to manage the settings for all S3 buckets in your tenant account. These permissions override the permission settings in group or bucket policies when configuring the bucket using the Tenant Manager.
+
+.About this task
 
 CloudMirror replication copies objects from a source bucket to a destination bucket that is specified in an endpoint. To enable CloudMirror replication for a bucket, you must create and apply valid bucket replication configuration XML. The replication configuration XML must use the URN of an S3 bucket endpoint for each destination.
 
@@ -25,6 +29,8 @@ For general information on bucket replication and how to configure it, see the A
 If you enable CloudMirror replication on a bucket that contains objects, new objects added to the bucket are replicated, but the existing objects in the bucket are not. You must update existing objects to trigger replication.
 
 If you specify a storage class in the replication configuration XML, StorageGRID uses that class when performing operations against the destination S3 endpoint. The destination endpoint must also support the specified storage class. Be sure to follow any recommendations provided by the destination system vendor.
+
+.Steps
 
 . Enable replication for your source bucket:
 +
@@ -75,7 +81,7 @@ In the example shown earlier, objects that match the prefix "`2020`" are replica
 +
 For small objects, replication happens quickly.
 
-*Related information*
+.Related information
 
 xref:understanding_cloudmirror_replication_service.adoc[Understanding the CloudMirror replication service]
 

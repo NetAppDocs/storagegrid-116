@@ -1,7 +1,7 @@
 ---
 permalink: network/general_networking_requirements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'All StorageGRID deployments must be able to support the following connections.'
 ---
 = General networking requirements
@@ -41,7 +41,7 @@ Admin Nodes and Gateway Nodes that you plan to add to high availability groups m
 
 Do not use network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. As required, however, you can use NAT between external clients and grid nodes, such as to provide a public IP address for a Gateway Node. Using NAT to bridge a public network segment is supported only when you employ a tunneling application that is transparent to all nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-primer/home.html[Grid primer]
 

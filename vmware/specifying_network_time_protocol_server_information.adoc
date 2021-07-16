@@ -11,6 +11,8 @@ summary: 'You must specify the Network Time Protocol \(NTP\) configuration infor
 [.lead]
 You must specify the Network Time Protocol (NTP) configuration information for the StorageGRID system, so that operations performed on separate servers can be kept synchronized.
 
+.About this task
+
 You must specify IPv4 addresses for the NTP servers.
 
 You must specify external NTP servers. The specified NTP servers must use the NTP protocol.
@@ -26,6 +28,8 @@ The external NTP servers are used by the nodes to which you previously assigned 
 IMPORTANT: Make sure that at least two nodes at each site can access at least four external NTP sources. If only one node at a site can reach the NTP sources, timing issues will occur if that node goes down. In addition, designating two nodes per site as primary NTP sources ensures accurate timing if a site is isolated from the rest of the grid.
 
 Perform additional checks for VMware, such as ensuring that the hypervisor uses the same NTP source as the virtual machine, and using VMTools to disable the time sync between the hypervisor and StorageGRID virtual machines.
+
+.Steps
 
 . Specify the IPv4 addresses for at least four NTP servers in the *Server 1* to *Server 4* text boxes.
 . If necessary, select the plus sign next to the last entry to add additional server entries.

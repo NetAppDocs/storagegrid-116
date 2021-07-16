@@ -1,7 +1,7 @@
 ---
 permalink: tenant/configuring_event_notifications.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The notifications service is one of the three StorageGRID platform services. You can enable notifications for a bucket to send information about specified events to a destination service that supports the AWS Simple Notification Service™ \(SNS\).'
 ---
 = Configuring event notifications
@@ -11,10 +11,14 @@ summary: 'The notifications service is one of the three StorageGRID platform ser
 [.lead]
 The notifications service is one of the three StorageGRID platform services. You can enable notifications for a bucket to send information about specified events to a destination service that supports the AWS Simple Notification Service™ (SNS).
 
+.What you'll need
+
 * Platform services must be enabled for your tenant account by a StorageGRID administrator.
 * You must have already created a bucket to act as the source of notifications.
 * The endpoint that you intend to use as a destination for event notifications must already exist, and you must have its URN.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission, which allows you to manage the settings for all S3 buckets in your tenant account. These permissions override the permission settings in group or bucket policies when configuring the bucket using the Tenant Manager.
+
+.About this task
 
 After you configure event notifications, whenever a specified event occurs for an object in the source bucket, a notification is generated and sent to the Simple Notification Service (SNS) topic used as the destination endpoint. To enable notifications for a bucket, you must create and apply valid notification configuration XML. The notification configuration XML must use the URN of an event notifications endpoint for each destination.
 
@@ -22,9 +26,11 @@ For general information on event notifications and how to configure them, see Am
 
 If you enable event notifications for a bucket that contains objects, notifications are sent only for actions that are performed after the notification configuration is saved.
 
+.Steps
+
 . Enable notifications for your source bucket:
- ** Use a text editor to create the notification configuration XML required to enable event notifications, as specified in the S3 notification API.
- ** When configuring the XML, use the URN of an event notifications endpoint as the destination topic.
+ * Use a text editor to create the notification configuration XML required to enable event notifications, as specified in the S3 notification API.
+ * When configuring the XML, use the URN of an event notifications endpoint as the destination topic.
 
 +
 ----
@@ -108,7 +114,7 @@ For example, if your destination topic is hosted on the AWS Simple Notification 
 +
 If the notification is received at the destination topic, you have successfully configured your source bucket for StorageGRID notifications.
 
-*Related information*
+.Related information
 
 xref:understanding_notifications_for_buckets.adoc[Understanding notifications for buckets]
 

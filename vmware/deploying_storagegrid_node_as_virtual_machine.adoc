@@ -1,7 +1,7 @@
 ---
 permalink: vmware/deploying_storagegrid_node_as_virtual_machine.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You use VMware vSphere Web Client to deploy each grid node as a virtual machine. During deployment, each grid node is created and connected to one or more StorageGRID networks. Optionally, you can remap node ports or increase CPU or memory settings for the node before powering it on.'
 ---
 = Deploying a StorageGRID node as a virtual machine
@@ -11,59 +11,60 @@ summary: 'You use VMware vSphere Web Client to deploy each grid node as a virtua
 [.lead]
 You use VMware vSphere Web Client to deploy each grid node as a virtual machine. During deployment, each grid node is created and connected to one or more StorageGRID networks. Optionally, you can remap node ports or increase CPU or memory settings for the node before powering it on.
 
+.What you'll need
+
 * You have reviewed the planning and preparation topics, and you understand the requirements for software, CPU and RAM, and storage and performance.
 +
 xref:planning_and_preparation.adoc[Planning and preparation]
 
 * You are familiar with VMware vSphere Hypervisor and have experience deploying virtual machines in this environment.
 +
-NOTE: The open-vm-tools package, an open-source implementation similar to VMware Tools, is included with the StorageGRID virtual machine. You do not need to install VMware Tools manually.
+NOTE: The `open-vm-tools` package, an open-source implementation similar to VMware Tools, is included with the StorageGRID virtual machine. You do not need to install VMware Tools manually.
 
 * You have downloaded and extracted the correct version of the StorageGRID installation archive for VMware.
 +
 IMPORTANT: If you are deploying the new node as part of an expansion or recovery operation, you must use the version of StorageGRID that is currently running on the grid.
 
-* You have the StorageGRID Virtual Machine Disk (.vmdk) file:
-+
-NetApp-SG-version-SHA.vmdk
+* You have the StorageGRID Virtual Machine Disk (`.vmdk`) file:
 
-* You have the .ovf and .mf files for each type of grid node you are deploying:
+[source]
+[subs="specialcharacters,quotes"]
+----
+NetApp-_SG-version_-SHA.vmdk
+----
+
+* You have the `.ovf` and `.mf` files for each type of grid node you are deploying:
 +
+[cols="1a,1a" options="header"]
 |===
 | Filename| Description
-a|
-    vsphere-primary-admin.ovf
-+
+m|vsphere-primary-admin.ovf
+
 vsphere-primary-admin.mf
-a|
-The template file and manifest file for the primary Admin Node.
-a|
-    vsphere-non-primary-admin.ovf
-+
+|The template file and manifest file for the primary Admin Node.
+
+m|vsphere-non-primary-admin.ovf
+
 vsphere-non-primary-admin.mf
-a|
-The template file and manifest file for a non-primary Admin Node.
-a|
-    vsphere-archive.ovf
-+
+|The template file and manifest file for a non-primary Admin Node.
+
+m|vsphere-archive.ovf
+
 vsphere-archive.mf
-a|
-The template file and manifest file for an Archive Node.
-a|
-    vsphere-gateway.ovf
-+
+|The template file and manifest file for an Archive Node.
+
+m|vsphere-gateway.ovf
+
 vsphere-gateway.mf
-a|
-The template file and manifest file for a Gateway Node.
-a|
-    vsphere-storage.ovf
-+
+|The template file and manifest file for a Gateway Node.
+
+m|vsphere-storage.ovf
+
 vsphere-storage.mf
-a|
-The template file and manifest file for a Storage Node.
+|The template file and manifest file for a Storage Node.
 |===
 
-* The .vdmk, .ovf, and .mf files are all in the same directory.
+* The `.vdmk`, `.ovf`, and `.mf` files are all in the same directory.
 * You have a plan to minimize failure domains. For example, you should not deploy all Gateway Nodes on a single virtual machine server.
 +
 IMPORTANT: In a production deployment, do not run more than one Storage Node on a single virtual machine server. Using a dedicated virtual machine host for each Storage Node provides an isolated failure domain.
@@ -74,6 +75,8 @@ IMPORTANT: In a production deployment, do not run more than one Storage Node on 
 * If you are deploying a StorageGRID node as a virtual machine with storage assigned from a NetApp AFF system, you have confirmed that the volume does not have a FabricPool tiering policy enabled. For example, if a StorageGRID node is running as an virtual machine on a VMWare host, ensure the volume backing the datastore for the node does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
 +
 IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
+
+.About this task
 
 Follow these instructions to initially deploy VMware nodes, add a new VMware node in an expansion, or replace a VMware node as part of a recovery operation. Except as noted in the steps, the node deployment procedure is the same for all node types, including Admin Nodes, Storage Nodes, Gateway Nodes, and Archive Nodes.
 
@@ -89,17 +92,30 @@ If you are performing an expansion or recovery operation:
 
 If you need to remap any of the node's ports, do not power on the new node until the port remap configuration is complete.
 
+.Steps
+
 . Using VCenter, deploy an OVF template.
 +
 If you specify a URL, point to a folder containing the following files. Otherwise, select each of these files from a local directory.
++
 
- ** NetApp-SG-version-SHA.vmdk
- ** vsphere-node.ovf
- ** vsphere-node.mf
+[source]
+[subs="specialcharacters,quotes"]
+----
+NetApp-_SG-version_-SHA.vmdk
+vsphere-_node_.ovf
+vsphere-_node_.mf
+----
++
 For example, if this is the first node you are deploying, use these files to deploy the primary Admin Node for your StorageGRID system:
- ** NetApp-SG-version-SHA.vmdk
- ** vsphere-primary-admin.ovf
- ** vsphere-primary-admin.mf
++
+[source]
+[subs="specialcharacters,quotes"]
+----
+NetApp-_SG-version_-SHA.vmdk
+sphere-primary-admin.ovf
+sphere-primary-admin.mf
+----
 
 . Provide a name for the virtual machine.
 +
@@ -112,7 +128,7 @@ NOTE: Depending on your version of vCenter, the order of the steps will vary for
 
 . Select storage for the virtual machine.
 +
-NOTE: If you are deploying a node as part of recovery operation, perform the instructions in step <<STEP_RECOVERY_STORAGE,#STEP_RECOVERY_STORAGE>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
+NOTE: If you are deploying a node as part of recovery operation, perform the instructions in the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
 +
 When deploying a Storage Node, use 3 or more storage volumes, with each storage volume being 4 TB or larger. You must assign at least 4 TB to volume 0.
 +
@@ -151,7 +167,7 @@ If you omit the primary Admin Node IP address, the IP address will be automatica
   *** If you select DHCP, the *Client network IP*, *Client network mask*, and *Client network gateway* are automatically assigned.
 . Review the virtual machine configuration and make any changes necessary.
 . When you are ready to complete, select *Finish* to start the upload of the virtual machine.
-. If you deployed this node as part of recovery operation and this is not a full-node recovery, perform these steps after deployment is complete:
+.[[#step_recovery_storage]] If you deployed this node as part of recovery operation and this is not a full-node recovery, perform these steps after deployment is complete:
  .. Right-click the virtual machine, and select *Edit Settings*.
  .. Select each default virtual hard disk that has been designated for storage, and select *Remove*.
  .. Depending on your data recovery circumstances, add new virtual disks according to your storage requirements, reattach any virtual hard disks preserved from the previously removed failed grid node, or both.
@@ -228,5 +244,7 @@ Set the *Memory Reservation* to the same size as the *Memory* allocated to the v
 
  .. Select *OK*.
 . Power on the virtual machine.
+
+.After you finish
 
 If you deployed this node as part of an expansion or recovery procedure, return to those instructions to complete the procedure.

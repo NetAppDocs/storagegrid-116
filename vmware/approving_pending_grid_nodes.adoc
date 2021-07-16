@@ -1,7 +1,7 @@
 ---
 permalink: vmware/approving_pending_grid_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must approve each grid node before it can join the StorageGRID system.'
 ---
 = Approving pending grid nodes
@@ -11,7 +11,11 @@ summary: 'You must approve each grid node before it can join the StorageGRID sys
 [.lead]
 You must approve each grid node before it can join the StorageGRID system.
 
+.What you'll need
+
 All virtual and StorageGRID appliance grid nodes must have been deployed.
+
+.Steps
 
 . Review the Pending Nodes list, and confirm that it shows all of the grid nodes you deployed.
 +
@@ -42,13 +46,17 @@ IMPORTANT: Make sure that at least two nodes at each site can access at least fo
 . In Grid Network, modify settings for the following properties as necessary:
  ** *IPv4 Address (CIDR)*: The CIDR network address for the Grid Network interface (eth0 inside the container). For example: 192.168.1.234/21
  ** *Gateway*: The Grid Network gateway. For example: 192.168.0.1
-*Note:* The gateway is required if there are multiple grid subnets.
++
+NOTE: The gateway is required if there are multiple grid subnets.
 
 +
 NOTE: If you selected DHCP for the Grid Network configuration and you change the value here, the new value will be configured as a static address on the node. You must make sure the resulting IP address is not within a DHCP address pool.
+
++
 . If you want to configure the Admin Network for the grid node, add or update the settings in the Admin Network section as necessary.
 +
 Enter the destination subnets of the routes out of this interface in the *Subnets (CIDR)* text box. If there are multiple Admin subnets, the Admin gateway is required.
+
 +
 NOTE: If you selected DHCP for the Admin Network configuration and you change the value here, the new value will be configured as a static address on the node. You must make sure the resulting IP address is not within a DHCP address pool.
 +

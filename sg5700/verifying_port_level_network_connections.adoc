@@ -1,7 +1,7 @@
 ---
 permalink: sg5700/verifying_port_level_network_connections.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To ensure that access between the StorageGRID Appliance Installer and other nodes is not obstructed by firewalls, confirm that the StorageGRID Appliance Installer can connect to a specific TCP port or set of ports at the specified IP address or range of addresses.'
 ---
 = Verifying port-level network connections
@@ -11,11 +11,15 @@ summary: 'To ensure that access between the StorageGRID Appliance Installer and 
 [.lead]
 To ensure that access between the StorageGRID Appliance Installer and other nodes is not obstructed by firewalls, confirm that the StorageGRID Appliance Installer can connect to a specific TCP port or set of ports at the specified IP address or range of addresses.
 
+.About this task
+
 Using the list of ports provided in the StorageGRID Appliance Installer, you can test the connectivity between the appliance and the other nodes in your Grid Network.
 
 Additionally, you can test connectivity on the Admin and Client Networks and on UDP ports, such as those used for external NFS or DNS servers. For a list of these ports, see the port reference in the StorageGRID networking guidelines.
 
 NOTE: The Grid Network ports listed in the port connectivity table are valid only for StorageGRID version 11.5.0. To verify which ports are correct for each node type, you should always consult the networking guidelines for your version of StorageGRID.
+
+.Steps
 
 . From the StorageGRID Appliance Installer, click *Configure Networking* > *Port Connectivity Test (nmap)*.
 +
@@ -57,6 +61,6 @@ NOTE: Ports with "`closed`" are also listed.
 +
 image::../media/nmap_test_red_banner.png[NMAP test red banner]
 
-*Related information*
+.Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines^]

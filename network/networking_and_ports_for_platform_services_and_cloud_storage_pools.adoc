@@ -1,7 +1,7 @@
 ---
 permalink: network/networking_and_ports_for_platform_services_and_cloud_storage_pools.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you plan to use StorageGRID platform services or Cloud Storage Pools, you must configure grid networking and firewalls to ensure that the destination endpoints can be reached. Platform services include external services that provide search integration, event notification, and CloudMirror replication.'
 ---
 = Networking and ports for platform services and Cloud Storage Pools
@@ -20,8 +20,8 @@ Cloud Storage Pools also require access from Storage Nodes to the endpoints prov
 
 By default, platform services and Cloud Storage Pool communications use the following ports:
 
-* *80*: For endpoint URIs that begin with http
-* *443*: For endpoint URIs that begin with https
+* *80*: For endpoint URIs that begin with `http`
+* *443*: For endpoint URIs that begin with `https`
 
 A different port can be specified when the endpoint is created or edited.
 
@@ -29,7 +29,7 @@ If you use a non-transparent proxy server, you must also configure proxy setting
 
 For more information about untrusted Client Networks, see the instructions for administering StorageGRID. For more information about platform services, see the instructions for using tenant accounts. For more information about Cloud Storage Pools, see the instructions for managing objects with information lifecycle management.
 
-*Related information*
+.Related information
 
 xref:network_port_reference.adoc[Network port reference]
 

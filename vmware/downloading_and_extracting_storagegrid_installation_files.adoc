@@ -1,7 +1,7 @@
 ---
 permalink: vmware/downloading_and_extracting_storagegrid_installation_files.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must download the StorageGRID installation archives and extract the files..'
 ---
 = Downloading and extracting the StorageGRID installation files
@@ -10,6 +10,8 @@ summary: 'You must download the StorageGRID installation archives and extract th
 
 [.lead]
 You must download the StorageGRID installation archives and extract the files..
+
+.Steps
 
 . Go to the NetApp Downloads page for StorageGRID.
 +
@@ -24,97 +26,82 @@ You must apply any required hotfixes after you install the StorageGRID release. 
 . Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
 . In the *Install StorageGRID* column, select the appropriate software.
 +
-Download the .tgz or .zip archive file for your platform.
+Download the `.tgz` or `.zip` archive file for your platform.
 
- ** StorageGRID-Webscale-version-VMware-uniqueID.zip
- ** StorageGRID-Webscale-version-VMware-uniqueID.tgz
-*Note:* Use the .zip file if you are running Windows on the service laptop.
+ ** `StorageGRID-Webscale-version-VMware-uniqueID.zip`
+ ** `StorageGRID-Webscale-version-VMware-uniqueID.tgz`
 
+NOTE: Use the `.zip` file if you are running Windows on the service laptop.
+
+[start=7]
 . Save and extract the archive file.
 . Choose the files you need from the following list.
 +
 The files you need depend on your planned grid topology and how you will deploy your StorageGRID system.
-+
+
 NOTE: The paths listed in the table are relative to the top-level directory installed by the extracted installation archive.
-+
+
+[cols="1a,1a" options="header"]
 |===
 | Path and file name| Description
-a|
-./vsphere/README
-a|
-A text file that describes all of the files contained in the StorageGRID download file.
-a|
-./vsphere/NLF000000.txt
-a|
-A free license that does not provide any support entitlement for the product.
-a|
-./vsphere/NetApp-SG-version-SHA.vmdk
-a|
-The virtual machine disk file that is used as a template for creating grid node virtual machines.
-a|
-    ./vsphere/vsphere-primary-admin.ovf
-+
+m|./vsphere/README
+|A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./vsphere/NLF000000.txt
+|A free license that does not provide any support entitlement for the product.
+
+m|./vsphere/NetApp-SG-version-SHA.vmdk
+|The virtual machine disk file that is used as a template for creating grid node virtual machines.
+
+m|./vsphere/vsphere-primary-admin.ovf
+
 ./vsphere/vsphere-primary-admin.mf
-a|
-The Open Virtualization Format template file (.ovf) and manifest file (.mf) for deploying the primary Admin Node.
-a|
-    ./vsphere/vsphere-non-primary-admin.ovf
-+
+|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
+
+m|./vsphere/vsphere-non-primary-admin.ovf
+
 ./vsphere/vsphere-non-primary-admin.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying non-primary Admin Nodes.
-a|
-    ./vsphere/vsphere-archive.ovf
-+
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
+
+m|./vsphere/vsphere-archive.ovf
+
 ./vsphere/vsphere-archive.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying Archive Nodes.
-a|
-    ./vsphere/vsphere-gateway.ovf
-+
+
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
+
+m|./vsphere/vsphere-gateway.ovf
+
 ./vsphere/vsphere-gateway.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying Gateway Nodes.
-a|
-    ./vsphere/vsphere-storage.ovf
-+
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
+
+m|./vsphere/vsphere-storage.ovf
+
 ./vsphere/vsphere-storage.mf
-a|
-The template file (.ovf) and manifest file (.mf) for deploying virtual machine-based Storage Nodes.
-a|
-*Deployment scripting tool*
-a|
-*Description*
-a|
-./vsphere/deploy-vsphere-ovftool.sh
-a|
-A Bash shell script used to automate the deployment of virtual grid nodes.
-a|
-./vsphere/deploy-vsphere-ovftool-sample.ini
-a|
-A sample configuration file for use with the deploy-vsphere-ovftool.sh script.
-a|
-./vsphere/configure-storagegrid.py
-a|
-A Python script used to automate the configuration of a StorageGRID system.
-a|
-./vsphere/configure-sga.py
-a|
-A Python script used to automate the configuration of StorageGRID appliances.
-a|
-./vsphere/storagegrid-ssoauth.py
-a|
-An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-a|
-./vsphere/configure-storagegrid.sample.json
-a|
-A sample configuration file for use with the configure-storagegrid.py script.
-a|
-./vsphere/configure-storagegrid.blank.json
-a|
-A blank configuration file for use with the configure-storagegrid.py script.
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
+
+h|Deployment scripting tool h|Description
+m|./vsphere/deploy-vsphere-ovftool.sh
+|A Bash shell script used to automate the deployment of virtual grid nodes.
+
+m|./vsphere/deploy-vsphere-ovftool-sample.ini
+|A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
+
+m|./vsphere/configure-storagegrid.py
+|A Python script used to automate the configuration of a StorageGRID system.
+
+m|./vsphere/configure-sga.py
+|A Python script used to automate the configuration of StorageGRID appliances.
+
+m|./vsphere/storagegrid-ssoauth.py
+|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
+
+m|./vsphere/configure-storagegrid.sample.json
+|A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|./vsphere/configure-storagegrid.blank.json
+|A blank configuration file for use with the `configure-storagegrid.py` script.
 |===
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]

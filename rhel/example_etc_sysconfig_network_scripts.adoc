@@ -1,7 +1,7 @@
 ---
 permalink: rhel/example_etc_sysconfig_network_scripts.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can use the example files to aggregate four Linux physical interfaces into a single LACP bond and then establish three VLAN interfaces subtending the bond for use as StorageGRID Grid, Admin, and Client network interfaces.'
 ---
 = Example /etc/sysconfig/network-scripts
@@ -15,7 +15,7 @@ You can use the example files to aggregate four Linux physical interfaces into a
 
 Note that the switches at the other ends of the links must also treat the four ports as a single LACP trunk or port channel, and must pass at least the three referenced VLANs with tags.
 
-*/etc/sysconfig/network-scripts/ifcfg-ens160*
+`*/etc/sysconfig/network-scripts/ifcfg-ens160*`
 
 ----
 TYPE=Ethernet
@@ -27,7 +27,7 @@ MASTER=bond0
 SLAVE=yes
 ----
 
-*/etc/sysconfig/network-scripts/ifcfg-ens192*
+`*/etc/sysconfig/network-scripts/ifcfg-ens192*`
 
 ----
 TYPE=Ethernet
@@ -39,7 +39,7 @@ MASTER=bond0
 SLAVE=yes
 ----
 
-*/etc/sysconfig/network-scripts/ifcfg-ens224*
+`*/etc/sysconfig/network-scripts/ifcfg-ens224*`
 
 ----
 TYPE=Ethernet
@@ -51,7 +51,7 @@ MASTER=bond0
 SLAVE=yes
 ----
 
-*/etc/sysconfig/network-scripts/ifcfg-ens256*
+`*/etc/sysconfig/network-scripts/ifcfg-ens256*`
 
 ----
 TYPE=Ethernet
@@ -65,7 +65,7 @@ SLAVE=yes
 
 == Bond interface
 
-*/etc/sysconfig/network-scripts/ifcfg-bond0*
+`*/etc/sysconfig/network-scripts/ifcfg-bond0*`
 
 ----
 DEVICE=bond0
@@ -78,7 +78,7 @@ BONDING_OPTS=mode=802.3ad
 
 == VLAN interfaces
 
-*/etc/sysconfig/network-scripts/ifcfg-bond0.1001*
+`*/etc/sysconfig/network-scripts/ifcfg-bond0.1001*`
 
 ----
 VLAN=yes
@@ -92,7 +92,7 @@ UUID=296435de-8282-413b-8d33-c4dd40fca24a
 ONBOOT=yes
 ----
 
-*/etc/sysconfig/network-scripts/ifcfg-bond0.1002*
+`*/etc/sysconfig/network-scripts/ifcfg-bond0.1002*`
 
 ----
 VLAN=yes
@@ -106,7 +106,7 @@ UUID=dbaaec72-0690-491c-973a-57b7dd00c581
 ONBOOT=yes
 ----
 
-*/etc/sysconfig/network-scripts/ifcfg-bond0.1003*
+`*/etc/sysconfig/network-scripts/ifcfg-bond0.1003*`
 
 ----
 VLAN=yes

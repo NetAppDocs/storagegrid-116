@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_4_remove_ilm_references.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 4 \(Remove ILM References\) of the Decommission Site wizard, you can remove the proposed policy if one exists and delete or edit any unused ILM rules that still refer to the site.'
 ---
 = Step 4: Remove ILM References
@@ -11,10 +11,14 @@ summary: 'From Step 4 \(Remove ILM References\) of the Decommission Site wizard,
 [.lead]
 From Step 4 (Remove ILM References) of the Decommission Site wizard, you can remove the proposed policy if one exists and delete or edit any unused ILM rules that still refer to the site.
 
+.About this task
+
 You are prevented from starting the site decommission procedure in these cases:
 
 * A proposed ILM policy exists. If you have a proposed policy, you must delete it.
 * Any ILM rule refers to the site, even if that rule is not used in any ILM policy. You must delete or edit all rules that refer to the site.
+
+.Steps
 
 . If a proposed policy is listed, remove it.
 +
@@ -29,7 +33,7 @@ image::../media/decommission_site_step_4_ilm_rules.png[Decommission Site Step 4 
 +
 Any ILM rules that are listed still refer to the site but are not used in any policy. In the example:
 
- ** The stock *Make 2 Copies* rule uses the system-default A**ll Storage Nodes** storage pool, which uses the All Sites site.
+ ** The stock *Make 2 Copies* rule uses the system-default *All Storage Nodes* storage pool, which uses the All Sites site.
  ** The unused *3 copies for S3 tenant* rule refers to the *Raleigh* storage pool.
  ** The unused *2 copy 2 sites for smaller objects* rule refers to the *Raleigh* storage pool.
  ** The unused *EC larger objects* rules uses the Raleigh site in the *All 3 Sites* Erasure Coding profile.

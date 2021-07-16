@@ -4,9 +4,11 @@ sidebar: sidebar
 keywords:
 summary: 'The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.'
 ---
-
 = Verifying object integrity
+:icons: font
+:imagesdir: ../media/
 
+[.lead]
 The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.
 
 There are two verification processes: background verification and foreground verification. They work together to ensure data integrity. Background verification runs automatically, and continuously checks the correctness of object data. Foreground verification can be triggered by a user, to more quickly verify the existence (although not the correctness) of objects.
@@ -19,15 +21,15 @@ Background verification checks the integrity of replicated objects and erasure-c
 
 * *Replicated objects*: If the background verification process finds a replicated object that is corrupt, the corrupt copy is removed from its location and quarantined elsewhere on the Storage Node. Then, a new uncorrupted copy is generated and placed to satisfy the active ILM policy. The new copy might not be placed on the Storage Node that was used for the original copy.
 +
-NOTE: Corrupt object data is quarantined rather than deleted from the system, so that it can still be accessed. For more information on accessing quarantined object data, contact technical support.
+*Note*: Corrupt object data is quarantined rather than deleted from the system, so that it can still be accessed. For more information on accessing quarantined object data, contact technical support.
 
 * *Erasure-coded objects*: If the background verification process detects that a fragment of an erasure-coded object is corrupt, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node, using the remaining data and parity fragments. If the corrupted fragment cannot be rebuilt, the Corrupt Copies Detected (ECOR) attribute is incremented by one, and an attempt is made to retrieve another copy of the object. If retrieval is successful, an ILM evaluation is performed to create a replacement copy of the erasure-coded object.
-
++
 The background verification process checks objects on Storage Nodes only. It does not check objects on Archive Nodes or in a Cloud Storage Pool. Objects must be older than four days to qualify for background verification.
 
 Background verification runs at a continuous rate that is designed not to interfere with ordinary system activities. Background verification cannot be stopped. However you can increase the background verification rate to more quickly verify the contents of a Storage Node if you suspect a problem.
 
-==== Alerts and alarms (legacy) related to background verification
+=== Alerts and alarms (legacy) related to background verification
 
 If the system detects a corrupt object that it cannot correct automatically (because the corruption prevents the object from being identified), the *Unidentified corrupt object detected* alert is triggered.
 
@@ -58,7 +60,7 @@ Use the High verification rate only when you suspect that a hardware or software
 +
 image::../media/background_verification_rate.png[setting Verification Rate]
 +
-NOTE: Setting the Verification Rate to High triggers the VPRI (Verification Rate) legacy alarm at the Notice level.
+*Note*: Setting the Verification Rate to High triggers the VPRI (Verification Rate) legacy alarm at the Notice level.
 
 . Click *Apply Changes*.
 . Monitor the results of background verification for replicated objects.
@@ -86,7 +88,7 @@ If background verification finds corrupt fragments of erasure-coded object data,
  .. Click *Apply Changes*.
 . If you are confident that quarantined objects are not required, you can delete them.
 +
-NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
+*Note*: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
  .. Select *Support* > *Tools* > *Grid Topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
@@ -123,7 +125,6 @@ If these grid tasks are running, wait for them to complete or release their lock
  ** Recovery of a Storage Node with a failed system drive
 Foreground verification does not provide useful information while recovery procedures are in progress.
 
-
 .About this task
 Foreground verification checks for both missing replicated object data and missing erasure-coded object data:
 
@@ -155,7 +156,7 @@ An LDR Foreground Verification grid task is generated and runs until it complete
  .. Select *_Storage Node_* > *LDR* > *Verification*.
  .. On the Overview tab under *Verification Results*, note the value of *Missing Objects Detected*.
 +
-NOTE: The same value is reported as *Lost Objects* on the Nodes page. Go to *Nodes* > *_Storage Node_*, and select the *Objects* tab.
+*Note*: The same value is reported as *Lost Objects* on the Nodes page. Go to *Nodes* > *_Storage Node_*, and select the *Objects* tab.
 +
 If the number of *Missing Objects Detected* is large (if there are a hundreds of missing objects), there is likely an issue with the Storage Node's storage. Contact technical support.
 
@@ -170,11 +171,11 @@ If foreground verification does not detect a significant number of missing repli
  .. Select *Support* > *Tools* > *Grid Topology*. Then select *site* > *_Admin Node_* > *CMN* > *Grid Task* > *Overview* > *Main*.
  .. Verify that the foreground verification grid task is progressing without errors.
 +
-NOTE: A notice-level alarm is triggered on grid task status (SCAS) if the foreground verification grid task pauses.
+*Note*: A notice-level alarm is triggered on grid task status (SCAS) if the foreground verification grid task pauses.
 
  .. If the grid task pauses with a `critical storage error`, recover the affected volume and then run foreground verification on the remaining volumes to check for additional errors.
 +
-IMPORTANT: If the foreground verification grid task pauses with the message `Encountered a critical storage error in volume _volID_`, you must perform the procedure for recovering a failed storage volume. See the recovery and maintenance instructions.
+*Attention*: If the foreground verification grid task pauses with the message `Encountered a critical storage error in volume _volID_`, you must perform the procedure for recovering a failed storage volume. See the recovery and maintenance instructions.
 
 .After you finish
 

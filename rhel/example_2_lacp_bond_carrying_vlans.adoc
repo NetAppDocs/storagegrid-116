@@ -1,14 +1,15 @@
 ---
 permalink: rhel/example_2_lacp_bond_carrying_vlans.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Example 2 assumes you are familiar with bonding network interfaces and with creating VLAN interfaces on the Linux distribution you are using.'
 ---
 = Example 2: LACP bond carrying VLANs
 :icons: font
 :imagesdir: ../media/
 
-[.lead]
+.About this task
+
 Example 2 assumes you are familiar with bonding network interfaces and with creating VLAN interfaces on the Linux distribution you are using.
 
 Example 2 describes a generic, flexible, VLAN-based scheme that facilitates the sharing of all available network bandwidth across all nodes on a single host. This example is particularly applicable to bare metal hosts.
@@ -19,16 +20,18 @@ If you require separate VLANs and subnets for node networks on the same host, yo
 
 image::../media/rhel_install_vlan_diag_2.gif[This image is explained by the surrounding text.]
 
+.Steps
+
 . Aggregate all physical network interfaces that will be used for StorageGRID network connectivity into a single LACP bond.
 +
 Use the same name for the bond on every host, for example, bond0.
 
-. Create VLAN interfaces that use this bond as their associated "`physical device,`" using the standard VLAN interface naming convention <physdev-name>.<VLAN ID>.
+. Create VLAN interfaces that use this bond as their associated "`physical device,`" using the standard VLAN interface naming convention `physdev-name.VLAN ID`.
 +
 Note that steps 1 and 2 require appropriate configuration on the edge switches terminating the other ends of the network links. The edge switch ports must also be aggregated into a LACP port channel, configured as a trunk, and allowed to pass all required VLANs.
 +
 Sample interface configuration files for this per-host networking configuration scheme are provided.
 
-*Related information*
+.Related information
 
 xref:example_etc_sysconfig_network_scripts.adoc[Example /etc/sysconfig/network-scripts]

@@ -1,7 +1,7 @@
 ---
 permalink: sg5600/setting_ip_address_for_e2700_controller.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Management port 1 on the E2700 controller connects the appliance to the management network for SANtricity Storage Manager. You must set a static IP address for the E2700 controller to ensure that you do not lose your management connection to the hardware and the controller firmware in the StorageGRID appliance.'
 ---
 = Setting the IP address for the E2700 controller
@@ -11,13 +11,20 @@ summary: 'Management port 1 on the E2700 controller connects the appliance to th
 [.lead]
 Management port 1 on the E2700 controller connects the appliance to the management network for SANtricity Storage Manager. You must set a static IP address for the E2700 controller to ensure that you do not lose your management connection to the hardware and the controller firmware in the StorageGRID appliance.
 
+.What you'll need
+
 You are using a supported web browser.
+
+.About this task
 
 DHCP-assigned addresses could change at any time. Assign a static IP address to the controller to ensure consistent accessibility.
 
-. From the client, enter the URL for the StorageGRID Appliance Installer: `+https://E5600SG_Controller_IP:8443+`
+.Steps
+
+. From the client, enter the URL for the StorageGRID Appliance Installer: +
+`*https://_E5600SG_Controller_IP_:8443*`
 +
-For `E5600SG_Controller_IP`, use the IP address for the appliance on any StorageGRID network.
+For `_E5600SG_Controller_IP_`, use the IP address for the appliance on any StorageGRID network.
 +
 The StorageGRID Appliance Installer Home page appears.
 
@@ -48,8 +55,9 @@ image::../media/storage_controller_ipv4_and_def_gateway.gif[Storage Controller N
 +
 It might take a few minutes for your changes to be applied.
 +
-When you connect to SANtricity Storage Manager, you will use the new static IP address as the URL: `+https://E2700_Controller_IP+`.
+When you connect to SANtricity Storage Manager, you will use the new static IP address as the URL: +
+`*https://_E2700_Controller_IP_*`
 
-*Related information*
+.Related information
 
-http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61197[NetApp Documentation: SANtricity Storage Manager]
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61197[NetApp Documentation: SANtricity Storage Manager^]

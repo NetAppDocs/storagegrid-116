@@ -16,7 +16,7 @@ It might be possible to find and restore objects that have triggered a Lost Obje
 
 .What you'll need
 * You must have the UUID of any lost object, as identified in "`Investigating lost objects.`"
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
 
 .About this task
 You can follow this procedure to look for replicated copies of the lost object elsewhere in the grid. In most cases, the lost object will not be found. However, in some cases, you might be able to find and restore a lost replicated object if you take prompt action.
@@ -27,9 +27,9 @@ IMPORTANT: Contact technical support for assistance with this procedure.
 . From an Admin Node, search the audit logs for possible object locations:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Change to the directory where the audit logs are located: `cd /var/local/audit/export/`
  .. Use grep to extract the audit messages associated with the potentially lost object and send them to an output file. Enter: `grep uuid-valueaudit_file_name > output_file_name`
@@ -74,9 +74,9 @@ There are two ways to use the node ID to find the Storage Node:
 . Determine if the object exists on the Storage Node indicated in the audit message:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Determine if the file path for the object exists.
 +
@@ -181,9 +181,9 @@ ade 12448208: /proc/OBRP > ObjectByUUID 926026C4-00A4-449B-AC72-BCCA72DD1311
 . From an Admin Node, search the audit logs for the ORLM audit message for this object to confirm that information lifecycle management (ILM) has placed copies as required.
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
-  ... Enter the password listed in the Passwords.txt file.
+  ... Enter the password listed in the `Passwords.txt` file.
 When you are logged in as root, the prompt changes from `$` to `#`.
  .. Change to the directory where the audit logs are located: `cd /var/local/audit/export/`
  .. Use grep to extract the audit messages associated with the object to an output file. Enter: `grep uuid-valueaudit_file_name > output_file_name`

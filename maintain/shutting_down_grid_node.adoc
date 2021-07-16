@@ -1,7 +1,7 @@
 ---
 permalink: maintain/shutting_down_grid_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can shut down a grid node from the node’s command shell.'
 ---
 = Shutting down a grid node
@@ -11,7 +11,11 @@ summary: 'You can shut down a grid node from the node’s command shell.'
 [.lead]
 You can shut down a grid node from the node's command shell.
 
-* You must have the Passwords.txt file.
+.What you'll need
+
+* You must have the `Passwords.txt` file.
+
+.About this task
 
 Before performing this procedure, review these considerations:
 
@@ -25,11 +29,13 @@ Before performing this procedure, review these considerations:
  ** If an ILM rule specifies an ingest behavior of Dual commit or the rule specifies Balanced and it is not possible to immediately create all required copies, StorageGRID immediately commits any newly ingested objects to two Storage Nodes on the same site and evaluates ILM later. If you want to shut down two or more Storage Nodes on a given site, you might not be able to access these objects for the duration of the shutdown.
  ** To ensure you can access all objects when a Storage Node is shut down, stop ingesting objects at a site for approximately one hour before shutting down the node.
 
+ .Steps
+
 . Log in to the grid node:
  .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
@@ -43,6 +49,6 @@ After being shut down you can power off the grid node.
 
 xref:powering_down_host.adoc[Powering down a host]
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

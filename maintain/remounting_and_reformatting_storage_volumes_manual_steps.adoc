@@ -1,7 +1,7 @@
 ---
 permalink: maintain/remounting_and_reformatting_storage_volumes_manual_steps.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must manually run two scripts to remount preserved storage volumes and to reformat any failed storage volumes. The first script remounts volumes that are properly formatted as StorageGRID storage volumes. The second script reformats any unmounted volumes, rebuilds Cassandra, if needed, and starts services.'
 ---
 = Remounting and reformatting storage volumes ("`Manual Steps`")
@@ -10,6 +10,8 @@ summary: 'You must manually run two scripts to remount preserved storage volumes
 
 [.lead]
 You must manually run two scripts to remount preserved storage volumes and to reformat any failed storage volumes. The first script remounts volumes that are properly formatted as StorageGRID storage volumes. The second script reformats any unmounted volumes, rebuilds Cassandra, if needed, and starts services.
+
+.What you'll need
 
 * You have already replaced the hardware for any failed storage volumes that you know require replacement.
 +
@@ -21,9 +23,9 @@ Running the `sn-remount-volumes` script might help you identify additional faile
 +
 link:reviewing_warnings_for_system_drive_recovery.md#[Reviewing warnings for Storage Node system drive recovery]
 +
-CAUTION:
-+
-Contact technical support if more than one Storage Node is offline or if a Storage Node in this grid has been rebuilt in the last 15 days. Do not run the `sn-recovery-postinstall.sh` script. Rebuilding Cassandra on two or more Storage Nodes within 15 days of each other might result in data loss.
+CAUTION: Contact technical support if more than one Storage Node is offline or if a Storage Node in this grid has been rebuilt in the last 15 days. Do not run the `sn-recovery-postinstall.sh` script. Rebuilding Cassandra on two or more Storage Nodes within 15 days of each other might result in data loss.
+
+.About this task
 
 To complete this procedure, you perform these high-level tasks:
 
@@ -36,7 +38,7 @@ To complete this procedure, you perform these high-level tasks:
 * Review the script output and resolve any issues.
 * Run the `sn-recovery-postinstall.sh` script. When this script runs, it does the following.
 +
-IMPORTANT: Do not reboot a Storage Node during recovery before running `sn-recovery-postinstall.sh` (step 4) to reformat the failed storage volumes and restore object metadata. Rebooting the Storage Node before `sn-recovery-postinstall.sh` completes causes errors for services that attempt to start and causes StorageGRID appliance nodes to exit maintenance mode.
+IMPORTANT: Do not reboot a Storage Node during recovery before running `sn-recovery-postinstall.sh` (see the step for <<post_install_script_step,post-install script>>) to reformat the failed storage volumes and restore object metadata. Rebooting the Storage Node before `sn-recovery-postinstall.sh` completes causes errors for services that attempt to start and causes StorageGRID appliance nodes to exit maintenance mode.
 
  ** Reformats any storage volumes that the `sn-remount-volumes` script could not mount or that were found to be improperly formatted.
 +
@@ -45,11 +47,13 @@ NOTE: If a storage volume is reformatted, any data on that volume is lost. You m
  ** Rebuilds the Cassandra database on the node, if needed.
  ** Starts the services on the Storage Node.
 
+.Steps
+
 . Log in to the recovered Storage Node:
  .. Enter the following command: `ssh admin@grid_node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
@@ -63,8 +67,9 @@ This script might take hours to run on storage volumes that contain data.
 
  .. As the script runs, review the output and answer any prompts.
 +
-NOTE: As required, you can use the tail -f command to monitor the contents of the script's log file (/var/local/log/sn-remount-volumes.log) . The log file contains more detailed information than the command line output.
+NOTE: As required, you can use the tail -f command to monitor the contents of the script's log file (`/var/local/log/sn-remount-volumes.log`) . The log file contains more detailed information than the command line output.
 +
+
 ----
 root@SG:~ # sn-remount-volumes
 The configured LDR noid is 12632740
@@ -131,12 +136,12 @@ Error: This volume does not belong to this node. Fix the attached volume and re-
 +
 In the example output, one storage volume was remounted successfully and three storage volumes had errors.
 
-  *** /dev/sdb passed the XFS file system consistency check and had a valid volume structure, so it was remounted successfully. Data on devices that are remounted by the script is preserved.
-  *** /dev/sdc failed the XFS file system consistency check because the storage volume was new or corrupt.
-  *** /dev/sdd could not be mounted because the disk was uninitialized or the disk's superblock was corrupted. When the script cannot mount a storage volume, it asks if you want to run the file system consistency check.
+  *** `/dev/sdb` passed the XFS file system consistency check and had a valid volume structure, so it was remounted successfully. Data on devices that are remounted by the script is preserved.
+  *** `/dev/sdc` failed the XFS file system consistency check because the storage volume was new or corrupt.
+  *** `/dev/sdd` could not be mounted because the disk was uninitialized or the disk's superblock was corrupted. When the script cannot mount a storage volume, it asks if you want to run the file system consistency check.
    **** If the storage volume is attached to a new disk, answer *N* to the prompt. You do not need check the file system on a new disk.
-   **** If the storage volume is attached to an existing disk, answer *Y* to the prompt. You can use the results of the file system check to determine the source of the corruption. The results are saved in the /var/local/log/sn-remount-volumes.log log file.
-  *** /dev/sde passed the XFS file system consistency check and had a valid volume structure; however, the LDR node ID in the volID file did not match the ID for this Storage Node (the "`configured LDR noid`" displayed at the top). This message indicates that this volume belongs to another Storage Node.
+   **** If the storage volume is attached to an existing disk, answer *Y* to the prompt. You can use the results of the file system check to determine the source of the corruption. The results are saved in the `/var/local/log/sn-remount-volumes.log` log file.
+  *** `/dev/sde` passed the XFS file system consistency check and had a valid volume structure; however, the LDR node ID in the volID file did not match the ID for this Storage Node (the `configured LDR noid` displayed at the top). This message indicates that this volume belongs to another Storage Node.
 
 . Review the script output and resolve any issues.
 +
@@ -145,15 +150,13 @@ IMPORTANT: If a storage volume failed the XFS file system consistency check or c
  .. Check to make sure that the results include an entry for all of the volumes you expected. If any volumes are not listed, rerun the script.
  .. Review the messages for all mounted devices. Make sure there are no errors indicating that a storage volume does not belong to this Storage Node.
 +
-In the example, the output for /dev/sde includes the following error message:
+In the example, the output for `/dev/sde` includes the following error message:
 +
 ----
 Error: This volume does not belong to this node. Fix the attached volume and re-run this script.
 ----
 +
-CAUTION:
-+
-If a storage volume is reported as belonging to another Storage Node, contact technical support. If you run the `sn-recovery-postinstall.sh` script, the storage volume will be reformatted, which might cause data loss.
+CAUTION: If a storage volume is reported as belonging to another Storage Node, contact technical support. If you run the `sn-recovery-postinstall.sh` script, the storage volume will be reformatted, which might cause data loss.
 
  .. If any storage devices could not be mounted, make a note of the device name, and repair or replace the device.
 +
@@ -165,17 +168,16 @@ You will use the device name to look up the volume ID, which is required input w
 
 +
 IMPORTANT: If a storage volume cannot be mounted or is improperly formatted, and you continue to the next step, the volume and any data on the volume will be deleted. If you had two copies of object data, you will have only a single copy until you complete the next procedure (restoring object data).
+
 +
-CAUTION:
-+
-Do not run the `sn-recovery-postinstall.sh` script if you believe that the data remaining on a failed storage volume cannot be rebuilt from elsewhere in the grid (for example, if your ILM policy uses a rule that makes only one copy or if volumes have failed on multiple nodes). Instead, contact technical support to determine how to recover your data.
+CAUTION: Do not run the `sn-recovery-postinstall.sh` script if you believe that the data remaining on a failed storage volume cannot be rebuilt from elsewhere in the grid (for example, if your ILM policy uses a rule that makes only one copy or if volumes have failed on multiple nodes). Instead, contact technical support to determine how to recover your data.
 
 . Run the `sn-recovery-postinstall.sh` script: `sn-recovery-postinstall.sh`
 +
 This script reformats any storage volumes that could not be mounted or that were found to be improperly formatted; rebuilds the Cassandra database on the node, if needed; and starts the services on the Storage Node.
 +
 Be aware of the following:
-
++
  ** The script might take hours to run.
  ** In general, you should leave the SSH session alone while the script is running.
  ** Do not press *Ctrl+C* while the SSH session is active.
@@ -187,15 +189,17 @@ NOTE: The RSM service is present on Storage Nodes that include the ADC service.
 +
 NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repairs. Repairs occur automatically as soon as the related or required services have started. You might notice script output that mentions "`reaper`" or "`Cassandra repair.`" If you see an error message indicating the repair has failed, run the command indicated in the error message.
 
++
+[[#post_install_script_step]]
 . As the `sn-recovery-postinstall.sh` script runs, monitor the Recovery page in the Grid Manager.
 +
-The Progress bar and the Stage column on the Recovery page provide a high-level status of the sn-recovery-postinstall.sh script.
+The Progress bar and the Stage column on the Recovery page provide a high-level status of the `sn-recovery-postinstall.sh` script.
 +
 image::../media/recovering_cassandra.png[screenshot showing recovery progress in Grid Management Interface]
 
-After the `sn-recovery-postinstall.sh` script has started services on the node, you can restore object data to any storage volumes that were formatted by the script, as described in the next procedure.
+After the `sn-recovery-postinstall.sh` script has started services on the node, you can restore object data to any storage volumes that were formatted by the script, as described in that procedure.
 
-*Related information*
+.Related information
 
 xref:reviewing_warnings_for_system_drive_recovery.adoc[Reviewing warnings for Storage Node system drive recovery]
 

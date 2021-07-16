@@ -1,7 +1,7 @@
 ---
 permalink: maintain/appliance_node_cloning_procedure.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The cloning process might take several days to transfer data between the source node \(appliance being replaced\) and the target \(new\) appliance.'
 ---
 = Appliance node cloning procedure
@@ -11,25 +11,35 @@ summary: 'The cloning process might take several days to transfer data between t
 [.lead]
 The cloning process might take several days to transfer data between the source node (appliance being replaced) and the target (new) appliance.
 
+.What you'll need
+
 * You have installed the compatible target appliance into a cabinet or rack, connected all cables, and applied power.
 * You have verified that the StorageGRID Appliance Installer version on the replacement appliance matches the software version of your StorageGRID system, upgrading the StorageGRID Appliance Installer firmware, if necessary.
 * You have configured the target appliance, including configuring StorageGRID connections, SANtricity System Manager (storage appliances only), and the BMC interface.
  ** When configuring StorageGRID connections, use the temporary IP addresses.
  ** When configuring network links, use the final link configuration.
-*Note:* Leave the StorageGRID Appliance Installer open after you complete initial target appliance configuration. You will return to the target appliance's installer page after you start the node cloning process.
+
+NOTE: Leave the StorageGRID Appliance Installer open after you complete initial target appliance configuration. You will return to the target appliance's installer page after you start the node cloning process.
+
 * You have optionally enabled node encryption for the target appliance.
 * You have optionally set the RAID mode for the target appliance (storage appliances only).
 * xref:considerations_and_requirements_for_appliance_node_cloning.adoc[Considerations and requirements for appliance node cloning]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
++
+http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
 
 You should clone only one appliance node at a time to maintain StorageGRID network performance and data availability.
 
+.Steps
+
 . Place the source node you are cloning into maintenance mode.
 +
-link:placing_appliance_into_maintenance_mode.md#[Placing an appliance into maintenance mode]
+xref:placing_appliance_into_maintenance_mode.adoc[Placing an appliance into maintenance mode]
 
 . From the StorageGRID Appliance Installer on the source node, in the Installation section of the Home page, select *Enable Cloning*.
 +

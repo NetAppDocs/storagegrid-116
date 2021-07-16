@@ -1,7 +1,7 @@
 ---
 permalink: tenant/tenant_management_api_versioning.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The Tenant Management API uses versioning to support non-disruptive upgrades.'
 ---
 = Tenant Management API versioning
@@ -13,10 +13,13 @@ The Tenant Management API uses versioning to support non-disruptive upgrades.
 
 For example, this Request URL specifies version 3 of the API.
 
+----
 https://hostname_or_ip_address/api/v3/authorize
+----
 
 The major version of the Tenant Management API is bumped when changes are made that are *_not compatible_* with older versions. The minor version of the Tenant Management API is bumped when changes are made that *_are compatible_* with older versions. Compatible changes include the addition of new endpoints or new properties. The following example illustrates how the API version is bumped based on the type of changes made.
 
+[cols="2a,1a,1a" options="header"]
 |===
 | Type of change to API| Old version| New version
 a|
@@ -58,8 +61,10 @@ GET https://{{IP-Address}}/api/versions
 
 == Specifying an API version for a request
 
-You can specify the API version using a path parameter (/api/v3) or a header (Api-Version: 3). If you provide both values, the header value overrides the path value.
+You can specify the API version using a path parameter (`/api/v3`) or a header (`Api-Version: 3`). If you provide both values, the header value overrides the path value.
 
+----
 curl https://[IP-Address]/api/v3/grid/accounts
 
 curl -H "Api-Version: 3" https://[IP-Address]/api/grid/accounts
+----
