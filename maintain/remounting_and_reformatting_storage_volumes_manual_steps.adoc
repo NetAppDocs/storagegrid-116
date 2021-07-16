@@ -50,7 +50,7 @@ NOTE: If a storage volume is reformatted, any data on that volume is lost. You m
 .Steps
 
 . Log in to the recovered Storage Node:
- .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -67,7 +67,7 @@ This script might take hours to run on storage volumes that contain data.
 
  .. As the script runs, review the output and answer any prompts.
 +
-NOTE: As required, you can use the tail -f command to monitor the contents of the script's log file (`/var/local/log/sn-remount-volumes.log`) . The log file contains more detailed information than the command line output.
+NOTE: As required, you can use the `tail -f` command to monitor the contents of the script's log file (`/var/local/log/sn-remount-volumes.log`) . The log file contains more detailed information than the command line output.
 +
 
 ----
