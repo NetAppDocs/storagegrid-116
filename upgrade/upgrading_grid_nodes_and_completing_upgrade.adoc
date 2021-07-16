@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/upgrading_grid_nodes_and_completing_upgrade.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After the primary Admin Node has been upgraded, you must upgrade all other grid nodes in your StorageGRID system. You can customize the upgrade sequence by selecting to upgrade individual grid nodes, groups of grid nodes, or all grid nodes.'
 ---
 = Upgrading grid nodes and completing the upgrade
@@ -11,10 +11,11 @@ summary: 'After the primary Admin Node has been upgraded, you must upgrade all o
 [.lead]
 After the primary Admin Node has been upgraded, you must upgrade all other grid nodes in your StorageGRID system. You can customize the upgrade sequence by selecting to upgrade individual grid nodes, groups of grid nodes, or all grid nodes.
 
+.Steps
 . Review the Upgrade Progress section on the Software Upgrade page, which provides information about each major upgrade task.
- .. Start Upgrade Service is the first upgrade task. During this task, the software file is distributed to the grid nodes, and the upgrade service is started.
- .. When the Start Upgrade Service task is complete, the Upgrade Grid Nodes task starts.
- .. While the Upgrade Grid Nodes task is in progress, the Grid Node Status table appears and shows the upgrade stage for each grid node in your system.
+ .. *Start Upgrade Service* is the first upgrade task. During this task, the software file is distributed to the grid nodes, and the upgrade service is started.
+ .. When the *Start Upgrade Service* task is complete, the *Upgrade Grid Nodes* task starts.
+ .. While the *Upgrade Grid Nodes* task is in progress, the Grid Node Status table appears and shows the upgrade stage for each grid node in your system.
 . After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, download a new copy of the Recovery Package.
 +
 IMPORTANT: You must download a new copy of the Recovery Package file after you upgrade the software version on the primary Admin Node. The Recovery Package file allows you to restore the system if a failure occurs.
@@ -45,7 +46,7 @@ IMPORTANT: When the upgrade starts on a grid node, the services on that node are
 +
 As shown in the example, when the Stage reaches *Stopping services*, the *Remove* button is hidden and you can no longer remove the node.
 +
-image::../media/software_upgrade_two_nodes_queued.gif[screeen shot showing Stage is Stopping services]
+image::../media/software_upgrade_two_nodes_queued.gif[screen shot showing Stage is Stopping services]
 
 . Wait for each node to proceed through the upgrade stages, which include Queued, Stopping services, Stopping container, Cleaning up Docker images, Upgrading base OS packages, Rebooting, and Starting services.
 +
@@ -90,17 +91,17 @@ image::../media/software_upgrade_done.png[Software Upgrade Done]
 +
 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID]
 +
-In the StorageGRID 11.5.x.y version number:
+In the StorageGRID 11.5._x.y_ version number:
 
- ** The major release has an x value of 0 (11.5.0).
- ** A minor release, if available, has an x value other than 0 (for example, 11.5.1).
- ** A hotfix, if available, has a y value (for example, 11.5.0.1).
+ ** The major release has an _x_ value of 0 (11.5.0).
+ ** A minor release, if available, has an _x_ value other than 0 (for example, 11.5.1).
+ ** A hotfix, if available, has a _y_ value (for example, 11.5.0.1).
 
 . If available, download and apply the latest hotfix for your StorageGRID version.
 +
 See the recovery and maintenance instructions for information about applying hotfixes.
 
-*Related information*
+.Related information
 
 xref:downloading_recovery_package.adoc[Downloading the Recovery Package]
 

@@ -1,7 +1,7 @@
 ---
 permalink: admin/determining_ilm_policy_for_migrated_data.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The StorageGRID system’s ILM policy determines how many copies are made, the locations to which copies are stored, and for how long these copies are retained. An ILM policy consists of a set of ILM rules that describe how to filter objects and manage object data over time.'
 ---
 = Determining the ILM policy for migrated data
@@ -19,10 +19,8 @@ If you can reliably distinguish between the types of data using one of the metad
 
 Before beginning data migration, ensure that you understand the StorageGRID system's ILM policy and how it will apply to migrated data, and that you have made and tested any changes to the ILM policy.
 
-CAUTION:
+CAUTION: An ILM policy that has been incorrectly specified can cause unrecoverable data loss. Carefully review all changes you make to an ILM policy before activating it to make sure the policy will work as intended.
 
-An ILM policy that has been incorrectly specified can cause unrecoverable data loss. Carefully review all changes you make to an ILM policy before activating it to make sure the policy will work as intended.
-
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]

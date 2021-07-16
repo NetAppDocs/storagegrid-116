@@ -1,7 +1,7 @@
 ---
 permalink: admin/guidelines_for_storagegrid_networks.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'StorageGRID supports up to three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements.'
 ---
 = Guidelines for StorageGRID networks
@@ -32,6 +32,7 @@ Optional. The Client Network is an open network typically used to provide access
 * A single gateway, per network, per grid node is supported, and it must be on the same subnet as the node. You can implement more complex routing in the gateway, if required.
 * On each node, each network maps to a specific network interface.
 +
+[cols="1a,1a" options="header"]
 |===
 | Network| Interface name
 a|
@@ -53,7 +54,7 @@ eth2
 * The Client Network does not become operational until the grid node has joined the grid
 * The Admin Network can be configured during grid node deployment to allow access to the installation user interface before the grid is fully installed.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 

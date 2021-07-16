@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/changes_to_grid_management_api.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'StorageGRID 11.5 uses version 3 of the Grid Management API. Version 3 deprecates version 2; however, version 1 and version 2 are still supported.'
 ---
 = Changes to the Grid Management API
@@ -15,21 +15,22 @@ IMPORTANT: You can continue to use version 1 and version 2 of the management API
 
 == New client-certificates section
 
-The new section, /grid/client-certificates, allows you to configure client certificates to provide secure, authenticated access to the StorageGRID Prometheus database. For example, you can monitor StorageGRID externally using Grafana.
+The new section, `/grid/client-certificates`, allows you to configure client certificates to provide secure, authenticated access to the StorageGRID Prometheus database. For example, you can monitor StorageGRID externally using Grafana.
 
 == Legacy compliance endpoints moved to new s3-object-lock section
 
-With the introduction of StorageGRID S3 Object Lock, the APIs used to manage the legacy compliance settings for the grid were moved to a new section of the Swagger user interface. The *s3-object-lock* section includes the two /grid/compliance-global API endpoints, which now control the global S3 Object Lock setting. The endpoint URIs remain unchanged for compatibility with existing applications.
+With the introduction of StorageGRID S3 Object Lock, the APIs used to manage the legacy compliance settings for the grid were moved to a new section of the Swagger user interface. The *s3-object-lock* section includes the two `/grid/compliance-global` API endpoints, which now control the global S3 Object Lock setting. The endpoint URIs remain unchanged for compatibility with existing applications.
 
 == Swift-admin-password Accounts endpoint removed
 
 The following Accounts API endpoint, which was deprecated in StorageGRID 10.4, has now been removed:
 
+----
 https://<IP-Address>/api/v1/grid/accounts/<AccountID>/swift-admin-password
-
+----
 == New grid-passwords section
 
-The *grid-passwords* section enables operations for grid password management. The section includes two /grid/change-provisioning-passphrase API endpoints. The endpoints allow users to change the StorageGRID provisioning passphrase and retrieve the status of the passphrase change.
+The *grid-passwords* section enables operations for grid password management. The section includes two `/grid/change-provisioning-passphrase` API endpoints. The endpoints allow users to change the StorageGRID provisioning passphrase and retrieve the status of the passphrase change.
 
 == storageAdmin permission added to Groups API
 
@@ -47,6 +48,6 @@ A new `/grid/node-health` endpoint was added. This API returns the current statu
 
 The alert rule ID "ApplianceStorageShelvesPowerSupplyDegraded" has been renamed to "ApplianceStorageShelvesDegraded" to better reflect the alert's actual behavior.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]

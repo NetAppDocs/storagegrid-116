@@ -1,7 +1,7 @@
 ---
 permalink: admin/generating_self_signed_certificate_for_management_interface.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can use a script to generate a self-signed server certificate for management API clients that require strict hostname validation.'
 ---
 = Generating a self-signed server certificate for the management interface
@@ -11,25 +11,36 @@ summary: 'You can use a script to generate a self-signed server certificate for 
 [.lead]
 You can use a script to generate a self-signed server certificate for management API clients that require strict hostname validation.
 
+.What you'll need
+
 * You must have specific access permissions.
-* You must have the Passwords.txt file.
+* You must have the `Passwords.txt` file.
+
+.About this task
 
 In production environments, you should use a certificate that is signed by a known Certificate Authority (CA). Certificates signed by a CA can be rotated non-disruptively. They are also more secure because they provide better protection against man-in-the-middle attacks.
+
+.Steps
 
 . Obtain the fully qualified domain name (FQDN) of each Admin Node.
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
-. Configure StorageGRID with a new self-signed certificate. `$ sudo make-certificate --domains wildcard-admin-node-fqdn --type management`
- ** For `--domains`, use wildcards to represent the fully qualified domain names of all Admin Nodes. For example, `*.ui.storagegrid.example.com` uses the `*` wildcard to represent `admin1.ui.storagegrid.example.com` and `admin2.ui.storagegrid.example.com`.
+
+
+. Configure StorageGRID with a new self-signed certificate.
++
+`$ sudo make-certificate --domains _wildcard-admin-node-fqdn_ --type management`
+
+ ** For `--domains`, use wildcards to represent the fully qualified domain names of all Admin Nodes. For example, `*.ui.storagegrid.example.com` uses the * wildcard to represent `admin1.ui.storagegrid.example.com` and `admin2.ui.storagegrid.example.com`.
  ** Set `--type` to `management` to configure the certificate used by Grid Manager and Tenant Manager.
  ** By default, generated certificates are valid for one year (365 days) and must be recreated before they expire. You can use the `--days` argument to override the default validity period.
 +
-NOTE: A certificate's validity period begins when make-certificate is run. You must ensure the management API client is synchronized to the same time source as StorageGRID; otherwise, the client might reject the certificate.
+NOTE: A certificate's validity period begins when `make-certificate` is run. You must ensure the management API client is synchronized to the same time source as StorageGRID; otherwise, the client might reject the certificate.
 
 
  $ sudo make-certificate --domains *.ui.storagegrid.example.com --type management --days 365

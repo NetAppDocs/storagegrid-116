@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing_untrusted_client_networks.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you are using a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured endpoints.'
 ---
 = Managing untrusted Client Networks
@@ -11,9 +11,9 @@ summary: 'If you are using a Client Network, you can help secure StorageGRID fro
 [.lead]
 If you are using a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured endpoints.
 
-By default, the Client Network on each grid node is trusted. That is, by default, StorageGRID trusts inbound connections to each grid node on all available external ports (see the information about external communications in the networking instructions).
+By default, the Client Network on each grid node is _trusted_. That is, by default, StorageGRID trusts inbound connections to each grid node on all available external ports (see the information about external communications in the networking instructions).
 
-You can reduce the threat of hostile attacks on your StorageGRID system by specifying that the Client Network on each node be untrusted. If a node's Client Network is untrusted, the node only accepts inbound connections on ports explicitly configured as load balancer endpoints.
+You can reduce the threat of hostile attacks on your StorageGRID system by specifying that the Client Network on each node be _untrusted_. If a node's Client Network is untrusted, the node only accepts inbound connections on ports explicitly configured as load balancer endpoints.
 
 == Example 1: Gateway Node only accepts HTTPS S3 requests
 
@@ -32,8 +32,8 @@ Suppose you want to enable outbound S3 platform service traffic from a Storage N
 
 After you save your configuration, the Storage Node no longer accepts any incoming traffic on the Client Network, but it continues to allow outbound requests to Amazon Web Services.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-network/home.html[StorageGRID networking guidelines]
 
-link:configuring_load_balancer_endpoints.md#[Creating load balancer endpoints]
+xref:configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints]

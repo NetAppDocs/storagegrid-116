@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating_ilm_policy.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you create an ILM policy, you start by selecting and arranging the ILM rules. Then, you verify the behavior of your proposed policy by simulating it against previously ingested objects. When you are satisfied that the proposed policy is functioning as intended, you can activate it to create the active policy.'
 ---
 = Creating an ILM policy
@@ -11,9 +11,7 @@ summary: 'When you create an ILM policy, you start by selecting and arranging th
 [.lead]
 When you create an ILM policy, you start by selecting and arranging the ILM rules. Then, you verify the behavior of your proposed policy by simulating it against previously ingested objects. When you are satisfied that the proposed policy is functioning as intended, you can activate it to create the active policy.
 
-CAUTION:
-
-An ILM policy that has been incorrectly configured can result in unrecoverable data loss. Before activating an ILM policy, carefully review the ILM policy and its ILM rules, and then simulate the ILM policy. Always confirm that the ILM policy will work as intended.
+CAUTION: An ILM policy that has been incorrectly configured can result in unrecoverable data loss. Before activating an ILM policy, carefully review the ILM policy and its ILM rules, and then simulate the ILM policy. Always confirm that the ILM policy will work as intended.
 
 == Considerations for creating an ILM policy
 
@@ -24,8 +22,8 @@ An ILM policy that has been incorrectly configured can result in unrecoverable d
 * The last rule in every ILM policy is the default ILM rule, which cannot use any filters. If an object has not been matched by another rule, the default rule controls where that object is placed and for how long it is retained.
 * Before activating a new policy, review any changes that the policy is making to the placement of existing objects. Changing an existing object's location might result in temporary resource issues when the new placements are evaluated and implemented.
 
-*Related information*
+.Related information
 
 xref:what_ilm_policy_is.adoc[What an ILM policy is]
 
-link:example_6_changing_ilm_policy.md#[Example 6: Changing an ILM policy]
+xref:example_6_changing_ilm_policy.adoc[Example 6: Changing an ILM policy]

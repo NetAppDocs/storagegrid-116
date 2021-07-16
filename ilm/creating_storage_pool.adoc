@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating_storage_pool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You create storage pools to determine where the StorageGRID system stores object data and the type of storage used. Each storage pool includes one or more sites and one or more storage grades.'
 ---
 = Creating a storage pool
@@ -11,20 +11,26 @@ summary: 'You create storage pools to determine where the StorageGRID system sto
 [.lead]
 You create storage pools to determine where the StorageGRID system stores object data and the type of storage used. Each storage pool includes one or more sites and one or more storage grades.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * You must have reviewed the guidelines for creating storage pools.
+
+.About this task
 
 Storage pools determine where object data is stored. The number of storage pools you need depends on the number of sites in your grid and on the types of copies you want: replicated or erasure-coded.
 
 * For replication and single-site erasure coding, create a storage pool for each site. For example, if you want to store replicated object copies at three sites, create three storage pools.
 * For erasure coding at three or more sites, create one storage pool that includes an entry for each site. For example, if you want to erasure code objects across three sites, create one storage pool. Select the plus icon image:../media/icon_plus_sign_black_on_white.gif[insert icon] to add an entry for each site.
 +
-IMPORTANT: Do not include the default All Sites site in a storage pool that will be used in an Erasure Coding profile. Instead, add a separate entry to the storage pool for each site that will store erasure coded data. See step <<STEP_ADD_SP_ENTRIES,#STEP_ADD_SP_ENTRIES>> for an example.
+IMPORTANT: Do not include the default All Sites site in a storage pool that will be used in an Erasure Coding profile. Instead, add a separate entry to the storage pool for each site that will store erasure coded data. See <<entries,this step>> for an example.
 
 * If you have more than one storage grade, do not create a storage pool that includes different storage grades at a single site.
-
++
 xref:guidelines_for_creating_storage_pools.adoc[Guidelines for creating storage pools]
+
+.Steps
 
 . Select *ILM* > *Storage Pools*.
 +
@@ -54,13 +60,16 @@ When you select a site, the number of Storage Nodes and Archive Nodes in the tab
 +
 The default All Storage Nodes storage grade includes all Storage Nodes at the selected site. The default Archive Nodes storage grade includes all Archive Nodes at the selected site. If you created additional storage grades for the Storage Nodes in your grid, they are listed in the drop-down.
 
-. If you want to use the storage pool in a multi-site Erasure Coding profile, select image:../media/icon_plus_sign_black_on_white.gif[insert icon] to add an entry for each site to the storage pool.
+. [[entries]]If you want to use the storage pool in a multi-site Erasure Coding profile, select image:../media/icon_plus_sign_black_on_white.gif[insert icon] to add an entry for each site to the storage pool.
 +
 image::../media/storage_pools_all_3_sites_for_ec.png[Storage Pools All 3 Sites for EC]
 +
-NOTE: You are prevented from creating duplicate entries or from creating a storage pool that includes both the *Archive Nodes* storage grade and any storage grade that contains Storage Nodes.
-+
+[NOTE]
+====
+You are prevented from creating duplicate entries or from creating a storage pool that includes both the *Archive Nodes* storage grade and any storage grade that contains Storage Nodes.
+
 You are warned if you add more than one entry for a site but with different storage grades.
+====
 +
 To remove an entry, select image:../media/icon_nms_delete_new.gif[delete icon].
 
@@ -68,6 +77,6 @@ To remove an entry, select image:../media/icon_nms_delete_new.gif[delete icon].
 +
 The new storage pool is added to the list.
 
-*Related information*
+.Related information
 
 xref:guidelines_for_creating_storage_pools.adoc[Guidelines for creating storage pools]

@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.'
 ---
 = Configuring a custom server certificate for the Grid Manager and the Tenant Manager
@@ -11,26 +11,30 @@ summary: 'You can replace the default StorageGRID server certificate with a sing
 [.lead]
 You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.
 
+.About this task
 By default, every Admin Node is issued a certificate signed by the grid CA. These CA signed certificates can be replaced by a single common custom server certificate and corresponding private key.
 
 Because a single custom server certificate is used for all Admin Nodes, you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the Grid Manager and Tenant Manager. Define the custom certificate such that it matches all Admin Nodes in the grid.
 
 You need to complete configuration on the server, and depending on the root Certificate Authority (CA) you are using, users might also need to install the root CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *primary Admin Node* > *CMN* > *Resources*.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
 
-NOTE:
-
+[NOTE]
+====
 If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
 
 * Your custom management interface server certificate expires.
 * You revert from a custom management interface server certificate to the default server certificate.
+====
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Server Certificates*.
 . In the Management Interface Server Certificate section, click *Install Custom Certificate*.
 . Upload the required server certificate files:
- ** *Server Certificate*: The custom server certificate file (.crt).
- ** *Server Certificate Private Key*: The custom server certificate private key file (.key).
+ ** *Server Certificate*: The custom server certificate file (`.crt`).
+ ** *Server Certificate Private Key*: The custom server certificate private key file (`.key`).
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 

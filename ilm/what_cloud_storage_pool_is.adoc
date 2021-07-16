@@ -1,7 +1,7 @@
 ---
 permalink: ilm/what_cloud_storage_pool_is.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'A Cloud Storage Pool lets you use ILM to move object data outside of your StorageGRID system. For example, you might want to move infrequently accessed objects to lower-cost cloud storage, such as Amazon S3 Glacier, S3 Glacier Deep Archive, or the Archive access tier in Microsoft Azure Blob storage. Or, you might want to maintain a cloud backup of StorageGRID objects to enhance disaster recovery.'
 ---
 = What a Cloud Storage Pool is
@@ -15,6 +15,7 @@ From an ILM perspective, a Cloud Storage Pool is similar to a storage pool. To s
 
 The following table compares storage pools to Cloud Storage Pools and shows the high-level similarities and differences.
 
+[cols="1a,2a,2a" options="header"]
 |===
 |  | Storage pool| Cloud Storage Pool
 a|
@@ -55,7 +56,7 @@ If the Cloud Storage Pool is an Amazon S3 bucket:
 
 If the Cloud Storage Pool is an Azure Blob storage container, StorageGRID transitions the object to the Archive tier.
 
-NOTE: In general, do not configure Azure Blob Storage lifecycle management for the container used for a Cloud Storage Pool. POST Object restore operations on objects in the Cloud Storage Pool can be affected by the configured lifecycle.
+*Note:* In general, do not configure Azure Blob Storage lifecycle management for the container used for a Cloud Storage Pool. POST Object restore operations on objects in the Cloud Storage Pool can be affected by the configured lifecycle.
 
 a|
 What controls object placement?
@@ -84,7 +85,7 @@ Multiple.
 a|
 One copy in the Cloud Storage Pool and, optionally, one or more copies in StorageGRID.
 
-NOTE: You cannot store an object in more than one Cloud Storage Pool at any given time.
+*Note:* You cannot store an object in more than one Cloud Storage Pool at any given time.
 
 a|
 What are the advantages?

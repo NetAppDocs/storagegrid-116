@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/performing_upgrade.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The Software Upgrade page guides you through the process of uploading the required file and upgrading all of the grid nodes in your StorageGRID system.'
 ---
 = Performing the upgrade
@@ -10,6 +10,8 @@ summary: 'The Software Upgrade page guides you through the process of uploading 
 
 [.lead]
 The Software Upgrade page guides you through the process of uploading the required file and upgrading all of the grid nodes in your StorageGRID system.
+
+.What you'll need
 
 You are aware of the following:
 
@@ -22,7 +24,13 @@ You are aware of the following:
 * When all grid nodes have been upgraded, new features are enabled and you can resume operations; however, you must wait to perform a decommission or expansion procedure until the background *Upgrade Database* task and the *Final Upgrade Steps* task have completed.
 * You must complete the upgrade on the same hypervisor platform you started with.
 
-*Related information*
+.Steps
+. xref:linux_installing_rpm_or_deb_package_on_all_hosts.adoc[Linux: Installing the RPM or DEB package on all hosts]
+. xref:starting_upgrade.adoc[Starting the upgrade]
+. xref:upgrading_grid_nodes_and_completing_upgrade.adoc[Upgrading grid nodes and completing the upgrade]
+. xref:increasing_metadata_reserved_space_setting.adoc[Increasing the Metadata Reserved Space setting]
+
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 

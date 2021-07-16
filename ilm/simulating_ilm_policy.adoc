@@ -1,7 +1,7 @@
 ---
 permalink: ilm/simulating_ilm_policy.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You should simulate a proposed policy on test objects before activating the policy and applying it to your production data. The simulation window provides a standalone environment that is safe for testing policies before they are activated and applied to data in the production environment.'
 ---
 = Simulating an ILM policy
@@ -11,9 +11,13 @@ summary: 'You should simulate a proposed policy on test objects before activatin
 [.lead]
 You should simulate a proposed policy on test objects before activating the policy and applying it to your production data. The simulation window provides a standalone environment that is safe for testing policies before they are activated and applied to data in the production environment.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 * You must know the S3 bucket/object-key or the Swift container/object-name for each object you want to test, and you must have already ingested those objects.
+
+.About this task
 
 You must carefully select the objects you want the proposed policy to test. To simulate a policy thoroughly, you should test at least one object for each filter in each rule.
 
@@ -27,10 +31,13 @@ When simulating a policy, the following considerations apply:
 * Simulation returns the name of the matched rule. To determine which storage pool or Erasure Coding profile is in effect, you can view the Retention Diagram by clicking the rule name or the more details icon image:../media/icon_nms_more_details.gif[more details icon].
 * If S3 Versioning is enabled, the policy is only simulated against the current version of the object.
 
+.Steps
+
 . Select and arrange the rules, and save the proposed policy.
 +
 The policy in this example has three rules:
 +
+[cols="1a,1a,1a,1a" options="header"]
 |===
 | Rule Name| Filter| Type of Copies| Retention
 a|
@@ -69,12 +76,15 @@ The Simulation ILM Policy dialog box appears.
 
 . In the *Object* field, enter the S3 bucket/object-key or the Swift container/object-name for a test object, and click *Simulate*.
 +
-NOTE: A message appears if you specify an object that has not been ingested.
-+
-image::../media/object_not_available_for_simulation.gif[Message if you specify missing object]
+[NOTE]
+====
+A message appears if you specify an object that has not been ingested.
 
-. Under Simulation Results, confirm that each object was matched by the correct rule.
+image::../media/object_not_available_for_simulation.gif[Message if you specify missing object]
+====
+
+. Under *Simulation Results*, confirm that each object was matched by the correct rule.
 +
-In the example, the Havok.png and Warpath.jpg objects were correctly matched by the X-men rule. The Fullsteam.png object, which does not include series=x-men user metadata, was not matched by the X-men rule but was correctly matched by the PNGs rule. The default rule was not used because all three objects were matched by other rules.
+In the example, the `Havok.png` and `Warpath.jpg` objects were correctly matched by the X-men rule. The `Fullsteam.png` object, which does not include `series=x-men` user metadata, was not matched by the X-men rule but was correctly matched by the PNGs rule. The default rule was not used because all three objects were matched by other rules.
 +
 image::../media/ilm_policy_simulation_results.gif[Simulation results]

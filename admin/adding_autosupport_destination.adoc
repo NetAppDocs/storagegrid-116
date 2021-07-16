@@ -1,7 +1,7 @@
 ---
 permalink: admin/adding_autosupport_destination.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you enable AutoSupport, heath and status messages are sent to NetApp support. You can specify one additional destinations for all AutoSupport messages.'
 ---
 = Adding an additional AutoSupport destination
@@ -11,14 +11,20 @@ summary: 'When you enable AutoSupport, heath and status messages are sent to Net
 [.lead]
 When you enable AutoSupport, heath and status messages are sent to NetApp support. You can specify one additional destinations for all AutoSupport messages.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access or Other Grid Configuration permission.
+
+.About this task
 
 To verify or change the protocol used to send AutoSupport messages, see the instructions for specifying an AutoSupport protocol.
 
 NOTE: You cannot use the SMTP protocol to send AutoSupport messages to an additional destination.
 
 xref:specifying_protocol_for_autosupport_messages.adoc[Specifying the protocol for AutoSupport messages]
+
+.Steps
 
 . Select *Support* > *Tools* > *AutoSupport*.
 +
@@ -36,7 +42,7 @@ NOTE: You can enter only one additional destination.
 
 . Enter the port used to connect to an additional AutoSupport destination server (default is port 80 for HTTP or port 443 for HTTPS).
 . To send your AutoSupport messages with certificate validation, select *Use custom CA bundle* in the *Certificate Validation* drop-down. Then, do one of the following:
- ** Use an editing tool to copy and paste all the contents of each of the PEM-encoded CA certificate files into the *CA bundle* field, concatenated in certificate chain order. You must include ----BEGIN CERTIFICATE---- and ----END CERTIFICATE---- in your selection.
+ ** Use an editing tool to copy and paste all the contents of each of the PEM-encoded CA certificate files into the *CA bundle* field, concatenated in certificate chain order. You must include `----BEGIN CERTIFICATE----` and `----END CERTIFICATE----` in your selection.
 +
 image::../media/autosupport_certificate.png[AutoSupport certificate]
 

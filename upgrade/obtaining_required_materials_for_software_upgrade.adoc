@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/obtaining_required_materials_for_software_upgrade.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before you begin the software upgrade, you must obtain all required materials so you can complete the upgrade successfully.'
 ---
 = Obtaining the required materials for a software upgrade
@@ -11,6 +11,7 @@ summary: 'Before you begin the software upgrade, you must obtain all required ma
 [.lead]
 Before you begin the software upgrade, you must obtain all required materials so you can complete the upgrade successfully.
 
+[cols="1a,3a" options="header"]
 |===
 | Item| Notes
 a|
@@ -18,9 +19,9 @@ StorageGRID upgrade files
 a|
 You must download the required files to your service laptop:
 
-* *All platforms*: .upgrade file
-* *Any node on Red Hat Enterprise Linux or CentOS*: .upgrade file and RPM file (.zip or .tgz)
-* *Any node on Ubuntu or Debian*: .upgrade file and DEB file (.zip or .tgz)
+* *All platforms*: `.upgrade` file
+* *Any node on Red Hat Enterprise Linux or CentOS*: `.upgrade` file and RPM file (`.zip` or `.tgz`)
+* *Any node on Ubuntu or Debian*: `.upgrade` file and DEB file (`.zip` or `.tgz`)
 
 a|
 Service laptop
@@ -35,27 +36,27 @@ Supported web browser
 a|
 You must confirm that the web browser on the service laptop is supported for use with StorageGRID 11.5.
 
-See "`Web browser requirements.`"
+xref:web_browser_requirements.adoc[Web browser requirements]
 
-NOTE: Browser support has changed for StorageGRID 11.5. Confirm you are using a supported version.
+*Note:* Browser support has changed for StorageGRID 11.5. Confirm you are using a supported version.
 
 a|
-Recovery Package (.zip) file
+Recovery Package (`.zip`) file
 a|
 Before upgrading, you should download the most recent Recovery Package file in case any problems occur during the upgrade.
 
 After you upgrade the primary Admin Node, you must download a new copy of the Recovery Package file and save it in a safe location. The updated Recovery Package file allows you to restore the system if a failure occurs.
 
-See "`Downloading the Recovery Package`" for instructions.
+xref:downloading_recovery_package.adoc[Downloading the Recovery Package]
 
 a|
-Passwords.txt file
+`Passwords.txt` file
 a|
-This file is included in the SAID package, which is part of the Recovery Package .zip file. You must obtain the latest version of the Recovery Package.
+This file is included in the SAID package, which is part of the Recovery Package `.zip` file. You must obtain the latest version of the Recovery Package.
 a|
 Provisioning passphrase
 a|
-The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not listed in the Passwords.txt file.
+The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not listed in the `Passwords.txt` file.
 a|
 Related documentation
 a|
@@ -66,7 +67,7 @@ a|
 * Other StorageGRID documentation, as required.
 
 |===
-*Related information*
+.Related information
 
 xref:web_browser_requirements.adoc[Web browser requirements]
 

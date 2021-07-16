@@ -1,7 +1,7 @@
 ---
 permalink: admin/monitoring_data_migration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Data migration must be monitored and adjusted as necessary to ensure data is placed according to the ILM policy within the required timeframe.'
 ---
 = Monitoring data migration
@@ -15,6 +15,7 @@ This table lists the attributes you must monitor during data migration, and the 
 
 If you use traffic classification policies with rate limits to throttle ingest, you can monitor the observed rate in conjunction with the statistics described in the following table and reduce the limits if necessary.
 
+[cols="1a,2a" options="header"]
 |===
 | Monitor| Description
 a|
@@ -23,7 +24,7 @@ Number of objects waiting for ILM evaluation
 a|
 
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *deployment* > *Overview* > *Main*.
+. Select *_deployment_* > *Overview* > *Main*.
 . In the ILM Activity section, monitor the number of objects shown for the following attributes:
  ** *Awaiting - All (XQUZ)*: The total number of objects awaiting ILM evaluation.
  ** *Awaiting - Client (XCQZ)*: The total number of objects awaiting ILM evaluation from client operations (for example, ingest).

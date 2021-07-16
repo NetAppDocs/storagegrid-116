@@ -1,7 +1,7 @@
 ---
 permalink: ilm/example_5_ilm_rules_and_policy_for_strict_ingest_behavior.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Example 5: ILM rules and policy for Strict ingest behavior
@@ -13,11 +13,9 @@ You can use a location filter and the Strict ingest behavior in a rule to preven
 
 In this example, a Paris-based tenant does not want to store some objects outside of the EU because of regulatory concerns. Other objects, including all objects from other tenant accounts, can be stored at either the Paris data center or the US data center.
 
-CAUTION:
+CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
-The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
-
-*Related information*
+.Related information
 
 xref:how_objects_are_ingested.adoc[How objects are ingested]
 
@@ -25,11 +23,11 @@ xref:step_3_of_3_define_ingest_behavior.adoc[Step 3 of 3: Define ingest behavior
 
 == ILM rule 1 for example 5: Strict ingest to guarantee Paris data center
 
-[.lead]
 This example ILM rule uses the Strict ingest behavior to guarantee that objects saved by a Paris-based tenant to S3 buckets with the region set to eu-west-3 region (Paris) are never stored at the US data center.
 
 This rule applies to objects that belong to the Paris tenant and that have the S3 bucket region set to eu-west-3 (Paris).
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -65,11 +63,11 @@ image:../media/ilm_rule_1_example_5_strict_ingest.png[ILM Rule 1 Example 5 Stric
 
 == ILM rule 2 for example 5: Balanced ingest for other objects
 
-[.lead]
 This example ILM rule uses the Balanced ingest behavior to provide optimum ILM efficiency for any objects not matched by the first rule. Two copies of all objects matched by this rule will be stored--one at the US data center and one at the Paris data center. If the rule cannot be satisfied immediately, interim copies are stored at any available location.
 
 This rule applies to objects that belong to any tenant and any region.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -105,7 +103,6 @@ image:../media/ilm_rule_2_example_5_two_copies_2_data_centers.png[ILM Rule 2 for
 
 == ILM policy for example 5: Combining ingest behaviors
 
-[.lead]
 The example ILM policy includes two rules that have different ingest behaviors.
 
 An ILM policy that uses two different ingest behaviors might include ILM rules such as the following:

@@ -1,7 +1,7 @@
 ---
 permalink: fabricpool/configuring_storagegrid_for_fabricpool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If you use NetApp ONTAP software, you can use NetApp FabricPool to tier inactive, or cold, data to a NetApp StorageGRID object storage system.'
 ---
 = Configuring StorageGRID for FabricPool
@@ -11,24 +11,24 @@ summary: 'If you use NetApp ONTAP software, you can use NetApp FabricPool to tie
 [.lead]
 If you use NetApp ONTAP software, you can use NetApp FabricPool to tier inactive, or cold, data to a NetApp StorageGRID object storage system.
 
-== Deciding whether to use this guide
+Use these instructions to:
 
-This document provides an overview of configuring a StorageGRID object storage system for use with FabricPool. It explains how to find the information you will provide to ONTAP when you attach StorageGRID as a FabricPool cloud tier. It also describes the best practices for configuring the StorageGRID information lifecycle management (ILM) policy, a StorageGRID traffic classification policy, and other StorageGRID options for a FabricPool workload.
+* Get an overview of configuring a StorageGRID object storage system for use with FabricPool.
+* Learn how to obtain the information you provide to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
+* Learn the best practices for configuring the StorageGRID information lifecycle management (ILM) policy, a StorageGRID traffic classification policy, and other StorageGRID options for a FabricPool workload.
 
 image::../media/fabricpool_storagegrid_workflow.png[FabricPool StorageGRID Workflow]
+.What you'll need
+Before using these instructions:
 
-This document assumes the following:
+* Decide which FabricPool volume tiering policy you will use to tier inactive ONTAP data to StorageGRID.
+* Plan and install a StorageGRID system to meet your storage capacity and performance needs.
+* Become familiar with StorageGRID system software, including the Grid Manager and the Tenant Manager.
 
-* You are familiar with using ONTAP.
-* You know which FabricPool volume tiering policy you will use to tier inactive ONTAP data to StorageGRID.
-* You have already planned and installed a StorageGRID system to meet your storage capacity and performance needs.
-* You have a basic familiarity with StorageGRID system software, including the Grid Manager and the Tenant Manager.
+.Related information
 
-For more information, refer to the following:
-
-* https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices for ONTAP 9.8]
-* https://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center]
-* https://docs.netapp.com/sgws-115/index.jsp[StorageGRID 11.5 Documentation Center]
+* https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices for ONTAP 9.8^]
+* https://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center^]
 
 == What FabricPool is
 

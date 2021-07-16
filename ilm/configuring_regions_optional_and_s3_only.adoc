@@ -1,7 +1,7 @@
 ---
 permalink: ilm/configuring_regions_optional_and_s3_only.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'ILM rules can filter objects based on the regions where S3 buckets are created, allowing you to store objects from different regions in different storage locations. If you want to use an S3 bucket region as a filter in a rule, you must first create the regions that can be used by the buckets in your system.'
 ---
 = Configuring regions (optional and S3 only)
@@ -11,8 +11,11 @@ summary: 'ILM rules can filter objects based on the regions where S3 buckets are
 [.lead]
 ILM rules can filter objects based on the regions where S3 buckets are created, allowing you to store objects from different regions in different storage locations. If you want to use an S3 bucket region as a filter in a rule, you must first create the regions that can be used by the buckets in your system.
 
+.What you'll need
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
+
+.About this task
 
 When creating an S3 bucket, you can specify that the bucket be created in a specific region. Specifying a region allows the bucket to be geographically close to its users, which can help optimize latency, minimize costs, and address regulatory requirements.
 
@@ -29,6 +32,8 @@ NOTE: EU is not considered to be an alias for eu-west-1. If you want to use the 
 * You cannot delete or modify a region if it is currently used within the active ILM policy or the proposed ILM policy.
 * If the region used as the advanced filter in an ILM rule is invalid, it is still possible to add that rule to the proposed policy. However, an error occurs if you attempt to save or activate the proposed policy. (An invalid region can result if you use a region as an advanced filter in an ILM rule but you later delete that region, or if you use the Grid Management API to create a rule and specify a region that you have not defined.)
 * If you delete a region after using it to create an S3 bucket, you will need to re-add the region if you ever want to use the Location Constraint advanced filter to find objects in that bucket.
+
+.Steps
 
 . Select *ILM* > *Regions*.
 +
@@ -51,6 +56,6 @@ image::../media/ilm_regions_error_message.gif[Message if region can't be deleted
 +
 You can now select these regions from the *Location Constraint* list on the Advanced Filtering page of the Create ILM rule wizard.
 
-*Related information*
+.Related information
 
 xref:using_advanced_filters_in_ilm_rules.adoc[Using advanced filters in ILM rules]
