@@ -1,7 +1,7 @@
 ---
 permalink: maintain/rebooting_grid_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can reboot a grid node from the Grid Manager or from the node’s command shell.'
 ---
 = Rebooting a grid node
@@ -11,6 +11,8 @@ summary: 'You can reboot a grid node from the Grid Manager or from the node’s 
 [.lead]
 You can reboot a grid node from the Grid Manager or from the node's command shell.
 
+.About this task
+
 When you reboot a grid node, the node shuts down and restarts. All services are restarted automatically.
 
 If you plan to reboot Storage Nodes, note the following:
@@ -18,6 +20,11 @@ If you plan to reboot Storage Nodes, note the following:
 * If an ILM rule specifies an ingest behavior of Dual commit or the rule specifies Balanced and it is not possible to immediately create all required copies, StorageGRID immediately commits any newly ingested objects to two Storage Nodes on the same site and evaluates ILM later. If you want to reboot two or more Storage Nodes on a given site, you might not be able to access these objects for the duration of the reboot.
 * To ensure you can access all objects while a Storage Node is rebooting, stop ingesting objects at a site for approximately one hour before rebooting the node.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+
+.Choices
+
+* xref:rebooting_grid_node_from_grid_manager.adoc[Rebooting a grid node from the Grid Manager]
+* xref:rebooting_grid_node_from_command_shell.adoc[Rebooting a grid node from the command shell]

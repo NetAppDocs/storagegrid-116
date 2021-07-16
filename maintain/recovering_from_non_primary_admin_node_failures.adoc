@@ -1,7 +1,7 @@
 ---
 permalink: maintain/recovering_from_non_primary_admin_node_failures.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must complete the following tasks to recover from a non-primary Admin Node failure. One Admin Node hosts the Configuration Management Node \(CMN\) service and is known as the primary Admin Node. Although you can have multiple Admin Nodes, each StorageGRID system includes only one primary Admin Node. All other Admin Nodes are non-primary Admin Nodes.'
 ---
 = Recovering from non-primary Admin Node failures
@@ -11,6 +11,16 @@ summary: 'You must complete the following tasks to recover from a non-primary Ad
 [.lead]
 You must complete the following tasks to recover from a non-primary Admin Node failure. One Admin Node hosts the Configuration Management Node (CMN) service and is known as the primary Admin Node. Although you can have multiple Admin Nodes, each StorageGRID system includes only one primary Admin Node. All other Admin Nodes are non-primary Admin Nodes.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+
+.Steps
+
+* xref:copying_audit_logs_from_failed_non_primary_admin_node.adoc[Copying audit logs from the failed non-primary Admin Node]
+* xref:replacing_non_primary_admin_node.adoc[Replacing a non-primary Admin Node]
+* xref:selecting_start_recovery_to_configure_non_primary_admin_node.adoc[Selecting Start Recovery to configure a non-primary Admin Node]
+* xref:restoring_audit_log_on_recovered_non_primary_admin_node.adoc[Restoring the audit log on the recovered non-primary Admin Node]
+* xref:resetting_preferred_sender_on_recovered_non_primary_admin_node.adoc[Resetting the preferred sender on the recovered non-primary Admin Node]
+* xref:restoring_admin_node_database_non_primary_admin_node.adoc[Restoring the Admin Node database when recovering a non-primary Admin Node]
+* xref:restoring_prometheus_metrics_non_primary_admin_node.adoc[Restoring Prometheus metrics when recovering a non-primary Admin Node]
