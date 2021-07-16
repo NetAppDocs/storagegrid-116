@@ -1,7 +1,7 @@
 ---
 permalink: maintain/modifying_dns_configuration_for_single_grid_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Rather than configure the Domain Name System \(DNS\) globally for the entire deployment, you can run a script to configure DNS differently for each grid node.'
 ---
 = Modifying the DNS configuration for a single grid node
@@ -15,14 +15,15 @@ In general, you should use the *Maintenance* > *Network* > *DNS Servers* option 
 
 . Log in to the primary Admin Node:
  .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
- .. Enter the password listed in the Passwords.txt file.
+ .. Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
 
  .. Add the SSH private key to the SSH agent. Enter: `ssh-add`
  .. Enter the SSH Access Password listed in the `Passwords.txt` file.
+[#log_in_to_node]
 . Log in to the node you want to update with a custom DNS configuration: `ssh node_IP_address`
 . Run the DNS setup script: `setup_resolv.rb.`
 +
@@ -63,10 +64,11 @@ Enter command [add search <domain>|remove search <domain>|add nameserver <ip>]
               [remove nameserver <ip>|remove nameserver all|save|abort|help]
 ----
 
-. Add the IPv4 address of a server that provides domain name service for your network: `add nameserver IP_address`
+. Add the IPv4 address of a server that provides domain name service for your network: `add <nameserver IP_address>`
 . Repeat the `add nameserver` command to add name servers.
 . Follow instructions as prompted for other commands.
 . Save your changes and exit the application: `save`
+[#close_cmd_shell]
 . Close the command shell on the server: `exit`
-. Repeat steps <<STEP2,#STEP2>> through <<STEP_00BE2CF27ECD4BB393988C20F2F5A5BA,#STEP_00BE2CF27ECD4BB393988C20F2F5A5BA>> for each grid node.
+. For each grid node, repeat the steps from <<log_in_to_node,logging into the node>> through <<close_cmd_shell,closing the command shell>>.
 . When you no longer require passwordless access to other servers, remove the private key from the SSH agent. Enter: `ssh-add -D`

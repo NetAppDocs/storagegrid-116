@@ -1,7 +1,7 @@
 ---
 permalink: rhel/example_1_1_to_1_mapping_to_physical_or_virtual_nics.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Example 1 describes a simple physical interface mapping that requires little or no host-side configuration.'
 ---
 = Example 1: 1-to-1 mapping to physical or virtual NICs
@@ -13,7 +13,7 @@ Example 1 describes a simple physical interface mapping that requires little or 
 
 image::../media/rhel_install_vlan_diag_1.gif[This image is explained by the surrounding text.]
 
-The Linux operating system creates the ensXYZ interfaces automatically during installation or boot, or when the interfaces are hot-added. No configuration is required other than ensuring that the interfaces are set to come up automatically after boot. You do have to determine which ensXYZ corresponds to which StorageGRID network (Grid, Admin, or Client) so you can provide the correct mappings later in the configuration process.
+The Linux operating system creates the `ensXYZ` interfaces automatically during installation or boot, or when the interfaces are hot-added. No configuration is required other than ensuring that the interfaces are set to come up automatically after boot. You do have to determine which `ensXYZ` corresponds to which StorageGRID network (Grid, Admin, or Client) so you can provide the correct mappings later in the configuration process.
 
 Note that the figure show multiple StorageGRID nodes; however, you would normally use this configuration for single-node VMs.
 

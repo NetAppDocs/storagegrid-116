@@ -1,7 +1,7 @@
 ---
 permalink: tenant/creating_platform_services_endpoint.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must create at least one endpoint of the correct type before you can enable a platform service.'
 ---
 = Creating a platform services endpoint
@@ -10,6 +10,8 @@ summary: 'You must create at least one endpoint of the correct type before you c
 
 [.lead]
 You must create at least one endpoint of the correct type before you can enable a platform service.
+
+.What you'll need
 
 * You must be signed in to the Tenant Manager using a supported browser.
 * Platform services must be enabled for your tenant account by a StorageGRID administrator.
@@ -32,6 +34,8 @@ xref:specifying_urn_for_platform_services_endpoint.adoc[Specifying the URN for a
   *** Basic HTTP: Username and password
  ** Security certificate (if using a custom CA certificate)
 
+.Steps
+
 . Select *STORAGE (S3)* > *Platform services endpoints*.
 +
 The Platform services endpoints page appears.
@@ -49,27 +53,31 @@ The type of platform service that the endpoint supports is shown beside the endp
 . In the *URI* field, specify the Unique Resource Identifier (URI) of the endpoint.
 +
 Use one of the following formats:
-
- ** `+https://host:port+`
- ** `+http://host:port+`
++
+----
+https://host:port
+http://host:port
+----
++
 If you do not specify a port, port 443 is used for HTTPS URIs and port 80 is used for HTTP URIs.
-
 +
 For example, the URI for a bucket hosted on StorageGRID might be:
 +
 ----
-`https://s3.example.com:10443`
+https://s3.example.com:10443
 ----
 +
 In this example, `s3.example.com` represents the DNS entry for the virtual IP (VIP) of the StorageGRID high availability (HA) group, and `10443` represents the port defined in the load balancer endpoint.
 +
 NOTE: Whenever possible, you should connect to a HA group of load-balancing nodes to avoid a single point of failure.
+
 +
 Similarly, the URI for a bucket hosted on AWS might be:
 +
 ----
-`https://s3-aws-region.amazonaws.com`
+https://s3-aws-region.amazonaws.com
 ----
+
 +
 NOTE: If the endpoint is used for the CloudMirror replication service, do not include the bucket name in the URI. You include the bucket name in the *URN* field.
 
@@ -84,30 +92,24 @@ image::../media/endpoint_create_authentication_type.png[Create Endpoint - Authen
 +
 The credentials that you supply must have write permissions for the destination resource.
 +
+[cols="1a,2a,2a" options="header"]
 |===
 | Authentication type| Description| Credentials
-a|
-Anonymous
-a|
-Provides anonymous access to the destination. Only works for endpoints that have security disabled.
-a|
-No authentication.
-a|
-Access Key
-a|
-Uses AWS-style credentials to authenticate connections with the destination.
-a|
-Access key ID
-a|
-Secret access key
-a|
-Basic HTTP
-a|
-Uses a username and password to authenticate connections to the destination.
-a|
-Username
-a|
-Password
+|Anonymous
+|Provides anonymous access to the destination. Only works for endpoints that have security disabled.
+|No authentication.
+
+|Access Key
+|Uses AWS-style credentials to authenticate connections with the destination.
+|
+* Access key ID
+* Secret access key
+
+|Basic HTTP
+|Uses a username and password to authenticate connections to the destination.
+|
+* Username
+* Password
 |===
 
 . Select *Continue*.
@@ -115,31 +117,28 @@ Password
 +
 image::../media/endpoint_create_verify_server.png[Create Endpoint - Validate Cert]
 +
+[cols="1a,2a" options="header"]
 |===
 | Type of certificate verification| Description
-a|
-Use custom CA certificate
-a|
-Use a custom security certificate.     If you select this setting, copy and paste the custom security certificate in the *CA Certificate* text box.
-a|
-Use operating system CA certificate
-a|
-Use the default CA certificate installed on the operating system to secure connections.
-a|
-Do not verify certificate
-a|
-The certificate used for the TLS connection is not verified. This option is not secure.
+a|Use custom CA certificate
+a|Use a custom security certificate. If you select this setting, copy and paste the custom security certificate in the *CA Certificate* text box.
+
+a|Use operating system CA certificate
+a|Use the default CA certificate installed on the operating system to secure connections.
+
+a|Do not verify certificate
+a|The certificate used for the TLS connection is not verified. This option is not secure.
 |===
 
 . Select *Test and create endpoint*.
- ** A success message appears if the endpoint can be reached using the specified credentials. The connection to the endpoint is validated from one node at each site.
- ** An error message appears if endpoint validation fails. If you need to modify the endpoint to correct the error, select *Return to endpoint details* and update the information. Then, select *Test and create endpoint*.
+* A success message appears if the endpoint can be reached using the specified credentials. The connection to the endpoint is validated from one node at each site.
+* An error message appears if endpoint validation fails. If you need to modify the endpoint to correct the error, select *Return to endpoint details* and update the information. Then, select *Test and create endpoint*.
 +
 NOTE: Endpoint creation fails if platform services are not enabled for your tenant account. Contact your StorageGRID administrator.
 
 After you have configured an endpoint, you can use its URN to configure a platform service.
 
-*Related information*
+.Related information
 
 xref:specifying_urn_for_platform_services_endpoint.adoc[Specifying the URN for a platform services endpoint]
 

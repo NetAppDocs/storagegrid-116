@@ -2,7 +2,7 @@
 permalink: tenant/managing_local_users.html
 sidebar: sidebar
 keywords: users,local users,managing local users
-summary: ''
+summary: 'You can create local users and assign them to local groups to determine which features these users can access. The Tenant Manager includes one predefined local user, named "`root.`" Although you can add and remove local users, you cannot remove the root user.'
 ---
 = Managing local users
 :icons: font
@@ -11,7 +11,7 @@ summary: ''
 [.lead]
 You can create local users and assign them to local groups to determine which features these users can access. The Tenant Manager includes one predefined local user, named "`root.`" Although you can add and remove local users, you cannot remove the root user.
 
-== Before you begin
+.What you'll need
 
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must belong to a read-write user group that has the Root Access permission.
@@ -26,13 +26,13 @@ image::../media/tenant_users_list.png[Tenant users list]
 
 == Creating local users
 
-[.lead]
 You can create local users and assign them to one or more local groups to control their access permissions.
 
 S3 users who do not belong to any groups do not have management permissions or S3 group policies applied to them. These users might have S3 bucket access granted through a bucket policy.
 
 Swift users who do not belong to any groups do not have management permissions or Swift container access.
 
+.Steps
 . Select *Create user*.
 . Complete the following fields.
  ** *Full name*: The full name for this user, for example, the first name and last name of a person or the name of an application.
@@ -51,15 +51,11 @@ Users who do not belong to any groups will have no management permissions. Permi
 +
 Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
-
-xref:tenant_management_permissions.adoc[Tenant management permissions]
-
 == Editing user details
 
-[.lead]
 When you edit the details for a user, you can change the user's full name and password, add the user to different groups, and prevent the user from accessing the tenant.
 
+.Steps
 . In the Users list, select the name of the user whose details you want to view or edit.
 +
 Alternatively, you can select the check box for the user, and then select *Actions* > *View user details*.
@@ -76,15 +72,11 @@ You cannot change the username.
 +
 Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
-
-xref:tenant_management_permissions.adoc[Tenant management permissions]
-
 == Duplicating local users
 
-[.lead]
 You can duplicate a local user to create a new user more quickly.
 
+.Steps
 . In the Users list, select the user you want to duplicate.
 . Select *Duplicate user*.
 . Modify the following fields for the new user.
@@ -106,17 +98,17 @@ Changes might take up to 15 minutes to take effect because of caching.
 
 == Deleting local users
 
-[.lead]
 You can permanently delete local users who no longer need to access the StorageGRID tenant account.
 
 Using the Tenant Manager, you can delete local users, but not federated users. You must use the federated identity source to delete federated users.
 
+.Steps
 . In the Users list, select the check box for the local user you want to delete.
 . Select *Actions* > *Delete user*.
 . In the confirmation dialog box, select *Delete user* to confirm you want to delete the user from the system.
 +
 Changes might take up to 15 minutes to take effect because of caching.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]

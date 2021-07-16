@@ -1,7 +1,7 @@
 ---
 permalink: tenant/tenant_management_permissions.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before you create a tenant group, consider which permissions you want to assign to that group. Tenant management permissions determine which tasks users can perform using the Tenant Manager or the Tenant Management API. A user can belong to one or more groups. Permissions are cumulative if a user belongs to multiple groups.'
 ---
 = Tenant management permissions
@@ -22,6 +22,7 @@ NOTE: If a user belongs to multiple groups and any group is set to Read-only, th
 
 You can assign the following permissions to a group. Note that S3 tenants and Swift tenants have different group permissions. Changes might take up to 15 minutes to take effect because of caching.
 
+[cols="1a,3a" options="header"]
 |===
 | Permission| Description
 a|
@@ -30,7 +31,7 @@ Root Access
 a|
 Provides full access to the Tenant Manager and the Tenant Management API.
 
-NOTE: Swift users must have Root Access permission to sign in to the tenant account.
+*Note:* Swift users must have Root Access permission to sign in to the tenant account.
 
 a|
 Administrator
@@ -38,7 +39,7 @@ Administrator
 a|
 Swift tenants only. Provides full access to the Swift containers and objects for this tenant account
 
-NOTE: Swift users must have the Swift Administrator permission to perform any operations with the Swift REST API.
+*Note:* Swift users must have the Swift Administrator permission to perform any operations with the Swift REST API.
 
 a|
 Manage Your Own S3 Credentials
@@ -56,8 +57,8 @@ a|
 Users who do not have this permission do not see the *Buckets* menu option.
 
 * Swift tenants: Allows Swift users to control the consistency level for Swift containers using the Tenant Management API.
-+
-NOTE: You can only assign the Manage All Buckets permission to Swift groups from the Tenant Management API. You cannot assign this permission to Swift groups using the Tenant Manager.
+
+*Note:* You can only assign the Manage All Buckets permission to Swift groups from the Tenant Management API. You cannot assign this permission to Swift groups using the Tenant Manager.
 
 a|
 Manage Endpoints
@@ -68,7 +69,7 @@ S3 tenants only. Allows users to use the Tenant Manager or the Tenant Management
 Users who do not have this permission do not see the *Platform services endpoints* menu option.
 
 |===
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 

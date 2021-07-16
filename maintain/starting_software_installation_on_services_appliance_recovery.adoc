@@ -1,7 +1,7 @@
 ---
 permalink: maintain/starting_software_installation_on_services_appliance_recovery.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'To install a Gateway Node or Admin Node on an SG100 or SG1000 services appliance, you use the StorageGRID Appliance Installer, which is included on the appliance.'
 ---
 = Starting software installation on a services appliance
@@ -10,6 +10,8 @@ summary: 'To install a Gateway Node or Admin Node on an SG100 or SG1000 services
 
 [.lead]
 To install a Gateway Node or Admin Node on an SG100 or SG1000 services appliance, you use the StorageGRID Appliance Installer, which is included on the appliance.
+
+.What you'll need
 
 * The appliance must be installed in a rack, connected to your networks, and powered on.
 * Network links and IP addresses must be configured for the appliance using the StorageGRID Appliance Installer.
@@ -24,6 +26,8 @@ For instructions for completing these prerequisite tasks, see the installation a
 +
 NOTE: A recent version of StorageGRID software is preloaded onto the services appliance during manufacturing. If the preloaded version of software matches the version being used in your StorageGRID deployment, you do not need the installation files.
 
+.About this task
+
 To install StorageGRID software on an SG100 or SG1000 services appliance:
 
 * For a primary Admin Node, you specify the name of the node and then upload the appropriate software packages (if required).
@@ -31,6 +35,8 @@ To install StorageGRID software on an SG100 or SG1000 services appliance:
 * You start the installation and wait as volumes are configured and the software is installed.
 * Partway through the process, the installation pauses. To resume the installation, you must sign into the Grid Manager and configure the pending node as a replacement for the failed node.
 * After you have configured the node, the appliance installation process completes, and the appliance is rebooted.
+
+.Steps
 
 . Open a browser and enter one of the IP addresses for the SG100 or SG1000 services appliance.
 +
@@ -45,7 +51,7 @@ image::../media/services_appliance_installer_gateway_node.png[Appliance Installe
  .. In the *Node Name* field, enter the same name that was used for the node you are recovering, and click *Save*.
  .. In the Installation section, check the software version listed under Current state
 +
-If the version of software that is ready to install is correct, skip ahead to step <<STEP_695A8129BE704D9C9C31E9D101B9E171,#STEP_695A8129BE704D9C9C31E9D101B9E171>>.
+If the version of software that is ready to install is correct, skip ahead to the <<installation_section_step,Installation step>>.
 
  .. If you need to upload a different version of software, under the *Advanced* menu, select *Upload StorageGRID Software*.
 +
@@ -68,26 +74,22 @@ The StorageGRID Appliance Installer can discover this IP address automatically, 
  .. If this IP address is not shown or you need to change it, specify the address:
 
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
-a|
-Manual IP entry
-a|
- .. Unselect the *Enable Admin Node discovery* check box.
+|Manual IP entry
+|.. Unselect the *Enable Admin Node discovery* check box.
  .. Enter the IP address manually.
  .. Click *Save*.
  .. Wait while the connection state for the new IP address becomes "`ready.`"
 
-a|
-Automatic discovery of all connected primary Admin Nodes
-a|
- .. Select the *Enable Admin Node discovery* check box.
+|Automatic discovery of all connected primary Admin Nodes
+|.. Select the *Enable Admin Node discovery* check box.
  .. From the list of discovered IP addresses, select the primary Admin Node for the grid where this services appliance will be deployed.
  .. Click *Save*.
  .. Wait while the connection state for the new IP address becomes "`ready.`"
-
-+
 |===
+[#installation_section_step]
 . In the Installation section, confirm that the current state is Ready to start installation of node name and that the *Start Installation* button is enabled.
 +
 If the *Start Installation* button is not enabled, you might need to change the network configuration or port settings. For instructions, see the installation and maintenance instructions for your appliance.
@@ -98,6 +100,6 @@ The Current state changes to "`Installation is in progress,`" and the Monitor In
 +
 NOTE: If you need to access the Monitor Installation page manually, click *Monitor Installation* from the menu bar.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]

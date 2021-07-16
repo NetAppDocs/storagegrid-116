@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding_tenant_management_api.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can perform system management tasks using the Tenant Management REST API instead of the Tenant Manager user interface. For example, you might want to use the API to automate operations or to create multiple entities, such as users, more quickly.'
 ---
 = Understanding the Tenant Management API
@@ -14,6 +14,8 @@ You can perform system management tasks using the Tenant Management REST API ins
 The Tenant Management API uses the Swagger open source API platform. Swagger provides an intuitive user interface that allows developers and non-developers to interact with the API. The Swagger user interface provides complete details and documentation for each API operation.
 
 To access the Swagger documentation for the Tenant Management API:
+
+.Steps
 
 . Sign in to the Tenant Manager.
 . Select *Help* > *API Documentation* from the Tenant Manager header.
@@ -34,6 +36,7 @@ NOTE: If single sign-on (SSO) is enabled for the StorageGRID system, you must pe
 * *config* -- Operations related to the product release and versions of the Tenant Management API. You can list the product release version and the major versions of the API supported by that release.
 * *containers* -- Operations on S3 buckets or Swift containers, as follows:
 +
+[cols="1a,3a" options="header"]
 |===
 | Protocol| Permission allows
 a|
@@ -73,8 +76,7 @@ image::../media/tenant_api_swagger_example.gif[example showing GET groups operat
 
 IMPORTANT: Any API operations you perform using the API Docs webpage are live operations. Be careful not to create, update, or delete configuration data or other data by mistake.
 
-*Steps*
-
+.Steps
 . Click the HTTP action to see the request details.
 . Determine if the request requires additional parameters, such as a group or user ID. Then, obtain these values. You might need to issue a different API request first to get the information you need.
 . Determine if you need to modify the example request body. If so, you can click *Model* to learn the requirements for each field.
@@ -83,7 +85,7 @@ IMPORTANT: Any API operations you perform using the API Docs webpage are live op
 . Click *Execute*.
 . Review the response code to determine if the request was successful.
 
-*Related information*
+.Related information
 
 xref:protecting_against_cross_site_request_forgery_csrf.adoc[Protecting against Cross-Site Request Forgery (CSRF)]
 

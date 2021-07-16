@@ -11,6 +11,8 @@ summary: 'From Step 2 \(View Details\) of the Decommission Site wizard, you can 
 [.lead]
 From Step 2 (View Details) of the Decommission Site wizard, you can review which nodes are included at the site, see how much space has been used on each Storage Node, and assess how much free space is available at the other sites in your grid.
 
+.What you'll need
+
 Before decommissioning a site, you must review how much object data exists at the site.
 
 * If you are performing a connected site decommission, you must understand how much object data currently exists at the site before updating ILM. Based on site capacities and your data protection needs, you can create new ILM rules to move data to other sites or to delete object data from the site.
@@ -18,6 +20,8 @@ Before decommissioning a site, you must review how much object data exists at th
 * If you are performing a disconnected site decommission, you must understand how much object data will become permanently inaccessible when you remove the site.
 
 IMPORTANT: If you are performing a disconnected site decommission, ILM cannot move or delete object data. Any data that remains at the site will be lost. However, if your ILM policy was designed to protect against the loss of a single site, copies of your object data still exist on the remaining sites.
+
+.Steps
 
 . From Step 2 (View Details), review any warnings related to the site you selected to remove.
 +
@@ -60,6 +64,6 @@ NOTE: A warning appears if the *Used Space* for the site you want to remove is g
 +
 Step 3 (Revise ILM Policy) appears.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]

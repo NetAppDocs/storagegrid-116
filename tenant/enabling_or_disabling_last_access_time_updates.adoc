@@ -1,7 +1,7 @@
 ---
 permalink: tenant/enabling_or_disabling_last_access_time_updates.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When grid administrators create the information lifecycle management \(ILM\) rules for a StorageGRID system, they can optionally specify that an object’s last access time be used to determine whether to move that object to a different storage location. If you are using an S3 tenant, you can take advantage of such rules by enabling last access time updates for the objects in an S3 bucket.'
 ---
 = Enabling or disabling last access time updates
@@ -12,6 +12,8 @@ summary: 'When grid administrators create the information lifecycle management \
 When grid administrators create the information lifecycle management (ILM) rules for a StorageGRID system, they can optionally specify that an object's last access time be used to determine whether to move that object to a different storage location. If you are using an S3 tenant, you can take advantage of such rules by enabling last access time updates for the objects in an S3 bucket.
 
 These instructions only apply to StorageGRID systems that include at least one ILM rule that uses the *Last Access Time* option in its placement instructions. You can ignore these instructions if your StorageGRID system does not include such a rule.
+
+.What you'll need
 
 * You must be signed in to the Tenant Manager using a supported browser.
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
@@ -36,63 +38,54 @@ A performance impact occurs with last access time updates because StorageGRID mu
 
 The table summarizes the behavior applied to all objects in the bucket when last access time is disabled or enabled.
 
+[cols="1a,1a,1a,1a,1a"]
 |===
-| Type of request| Behavior if last access time is disabled (default)| Behavior if last access time is enabled
-| Last access time updated?| Object added to ILM evaluation queue?| Last access time updated?| Object added to ILM evaluation queue?
-a|
-Request to retrieve an object, its access control list, or its metadata
-a|
-No
-a|
-No
-a|
-Yes
-a|
-Yes
-a|
-Request to update an object's metadata
-a|
-Yes
-a|
-Yes
-a|
-Yes
-a|
-Yes
-a|
-Request to copy an object from one bucket to another
-a|
+.2+h|Type of request
+2+h|Behavior if last access time is disabled (default)
+2+h|Behavior if last access time is enabled
 
+h|Last access time updated?
+h|Object added to ILM evaluation queue?
+h|Last access time updated?
+h|Object added to ILM evaluation queue?
+
+|Request to retrieve an object, its access control list, or its metadata
+|No
+|No
+|Yes
+|Yes
+
+|Request to update an object's metadata
+|Yes
+|Yes
+|Yes
+|Yes
+
+|Request to copy an object from one bucket to another
+|
 * No, for the source copy
 * Yes, for the destination copy
 
-a|
-
+|
 * No, for the source copy
 * Yes, for the destination copy
 
-a|
-
+|
 * Yes, for the source copy
 * Yes, for the destination copy
 
-a|
-
+|
 * Yes, for the source copy
 * Yes, for the destination copy
 
-a|
-Request to complete a multipart upload
-a|
-Yes, for the assembled object
-a|
-Yes, for the assembled object
-a|
-Yes, for the assembled object
-a|
-Yes, for the assembled object
+|Request to complete a multipart upload
+|Yes, for the assembled object
+|Yes, for the assembled object
+|Yes, for the assembled object
+|Yes, for the assembled object
 |===
 
+.Steps
 . Select *STORAGE (S3)* > *Buckets*.
 . Select the bucket name from the list.
 +
@@ -105,7 +98,7 @@ image::../media/buckets_last_update_time_dialog_box.png[screenshot showing dialo
 
 . Select *Save changes*.
 
-*Related information*
+.Related information
 
 xref:tenant_management_permissions.adoc[Tenant management permissions]
 

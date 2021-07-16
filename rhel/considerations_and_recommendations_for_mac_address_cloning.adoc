@@ -1,7 +1,7 @@
 ---
 permalink: rhel/considerations_and_recommendations_for_mac_address_cloning.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'MAC address cloning causes the Docker container to use the MAC address of the host, and the host to use the MAC address of either an address you specify or a randomly generated one. You should use MAC address cloning to avoid the use of promiscuous mode network configurations.'
 ---
 = Considerations and recommendations for MAC address cloning
@@ -52,4 +52,4 @@ Example of MAC cloning enabled with a host having MAC address of 11:22:33:44:55:
 * `ADMIN_NETWORK_MAC = b2:9c:02:c2:27:10`
 * `ADMIN_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC = true`
 
-Result: the host MAC for ens256 is b2:9c:02:c2:27:10 and the Admin Network MAC is 11:22:33:44:55:66
+*Result*: the host MAC for ens256 is b2:9c:02:c2:27:10 and the Admin Network MAC is 11:22:33:44:55:66

@@ -1,7 +1,7 @@
 ---
 permalink: tenant/configuration_xml_for_search_configuration.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The search integration service is configured using a set of rules contained within <MetadataNotificationConfiguration\> and </MetadataNotificationConfiguration\> tags. Each rule specifies the objects that the rule applies to, and the destination where StorageGRID should send those objects’ metadata.'
 ---
 = Configuration XML for search integration
@@ -35,73 +35,54 @@ Destinations must be specified using the URN of a StorageGRID endpoint that has 
 
 The table describes the elements in the metadata notification configuration XML.
 
+[cols="2a,3a,1a" options="header"]
 |===
 | Name| Description| Required
-a|
-MetadataNotificationConfiguration
-a|
-Container tag for rules used to specify the objects and destination for metadata notifications.
+|MetadataNotificationConfiguration
+|Container tag for rules used to specify the objects and destination for metadata notifications.
 
 Contains one or more Rule elements.
+|Yes
 
-a|
-Yes
-a|
-Rule
-a|
-Container tag for a rule that identifies the objects whose metadata should be added to a specified index.
+|Rule
+|Container tag for a rule that identifies the objects whose metadata should be added to a specified index.
 
 Rules with overlapping prefixes are rejected.
 
 Included in the MetadataNotificationConfiguration element.
+|Yes
 
-a|
-Yes
-a|
-ID
-a|
-Unique identifier for the rule.
+|ID
+|Unique identifier for the rule.
 
 Included in the Rule element.
+|No
 
-a|
-No
-a|
-Status
-a|
-Status can be 'Enabled' or 'Disabled'. No action is taken for rules that are disabled.
+|Status
+|Status can be 'Enabled' or 'Disabled'. No action is taken for rules that are disabled.
 
 Included in the Rule element.
+|Yes
 
-a|
-Yes
-a|
-Prefix
-a|
-Objects that match the prefix are affected by the rule, and their metadata is sent to the specified destination.
+|Prefix
+|Objects that match the prefix are affected by the rule, and their metadata is sent to the specified destination.
 
 To match all objects, specify an empty prefix.
 
 Included in the Rule element.
+|Yes
 
-a|
-Yes
-a|
-Destination
-a|
-Container tag for the destination of a rule.
+|Destination
+|Container tag for the destination of a rule.
 
 Included in the Rule element.
+|Yes
 
-a|
-Yes
-a|
-Urn
-a|
-URN of the destination where object metadata is sent. Must be the URN of a StorageGRID endpoint with the following properties:
+|Urn
+|URN of the destination where object metadata is sent. Must be the URN of a StorageGRID endpoint with the following properties:
 
 * `es` must be the third element.
-* The URN must end with the index and type where the metadata is stored, in the form domain-name/myindex/mytype.
+* The URN must end with the index and type where the metadata is stored, in the form `domain-name/myindex/mytype`.
 
 Endpoints are configured using the Tenant Manager or Tenant Management API. They take the following form:
 
@@ -160,7 +141,7 @@ In this example, object metadata for objects that match the prefix `/images` is 
 </MetadataNotificationConfiguration>
 ----
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 

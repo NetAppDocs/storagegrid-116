@@ -1,7 +1,7 @@
 ---
 permalink: rhel/configuring_docker_storage_volume.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before installing Docker, you might need to format the Docker storage volume and mount it on /var/lib/docker.'
 ---
 = Configuring the Docker storage volume
@@ -9,9 +9,13 @@ summary: 'Before installing Docker, you might need to format the Docker storage 
 :imagesdir: ../media/
 
 [.lead]
-Before installing Docker, you might need to format the Docker storage volume and mount it on /var/lib/docker.
+Before installing Docker, you might need to format the Docker storage volume and mount it on `/var/lib/docker`.
 
-You can skip these steps if you plan to use local storage for the Docker storage volume and have sufficient space available on the host partition containing /var/lib.
+.About this task
+
+You can skip these steps if you plan to use local storage for the Docker storage volume and have sufficient space available on the host partition containing `/var/lib`.
+
+.Steps
 
 . Create a file system on the Docker storage volume:
 +

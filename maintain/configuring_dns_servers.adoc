@@ -11,6 +11,8 @@ summary: 'You can add, remove, and update domain name system \(DNS\) servers, so
 [.lead]
 You can add, remove, and update domain name system (DNS) servers, so that you can use fully qualified domain name (FQDN) hostnames rather than IP addresses.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Maintenance or Root Access permission.
 * You must have the IP addresses of the DNS servers to configure.
@@ -22,6 +24,8 @@ IMPORTANT: Provide between two to six IP addresses for DNS servers. In general, 
 xref:modifying_dns_configuration_for_single_grid_node.adoc[Modifying the DNS configuration for a single grid node]
 
 If the DNS server information is omitted or incorrectly configured, a DNST alarm is triggered on each grid node's SSM service. The alarm clears when DNS is configured correctly and the new server information has reached all grid nodes.
+
+.Steps
 
 . Select *Maintenance* > *Network* > *DNS Servers*.
 . In the Servers section, add update, or remove DNS server entries, as necessary.

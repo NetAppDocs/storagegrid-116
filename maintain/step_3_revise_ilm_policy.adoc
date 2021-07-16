@@ -1,7 +1,7 @@
 ---
 permalink: maintain/step_3_revise_ilm_policy.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'From Step 3 \(Revise ILM Policy\) of the Decommission Site wizard, you can determine if the site is referred to by the active ILM policy.'
 ---
 = Step 3: Revise ILM Policy
@@ -11,9 +11,13 @@ summary: 'From Step 3 \(Revise ILM Policy\) of the Decommission Site wizard, you
 [.lead]
 From Step 3 (Revise ILM Policy) of the Decommission Site wizard, you can determine if the site is referred to by the active ILM policy.
 
+.What you'll need
+
 You have a good understanding of how ILM works and you are familiar with creating storage pools, Erasure Coding profiles, ILM rules, and simulating and activating an ILM policy.
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+
+.About this task
 
 StorageGRID cannot decommission a site if that site is referred to by any ILM rule in the active ILM policy.
 
@@ -30,6 +34,8 @@ IMPORTANT: Never create a single-copy ILM rule to accommodate the removal of a s
 If you are performing a _connected site decommission_, you must consider how StorageGRID should manage the object data currently at the site you want to remove. Depending on your data protection requirements, the new rules can move existing object data to different sites or they can delete any extra object copies that are no longer needed.
 
 Contact technical support if you need assistance designing the new policy.
+
+.Steps
 
 . From Step 3 (Revise ILM Policy), determine if any ILM rules in the active ILM policy refer to the site you selected to remove.
 +
@@ -71,7 +77,7 @@ NOTE: For details, see the instructions for managing objects with information li
  .. Select the active policy, and select *Clone*.
  .. Specify a policy name and a reason for change.
  .. Select rules for the cloned policy.
-  *** Unselect all rules listed for *Step 3 (Revise ILM Policy)* of the Decommission Site page.
+  *** Unselect all rules listed for Step 3 (Revise ILM Policy) of the Decommission Site page.
   *** Select a default rule that does not refer to the site.
 +
 NOTE: Do not select the *Make 2 Copies* rule because that rule uses the *All Storage Nodes* storage pool, which is not allowed.
@@ -89,13 +95,9 @@ IMPORTANT: You must confirm that the ILM rules are in the correct order. When th
 
 . Ingest test objects, and simulate the proposed policy to ensure that the correct rules are applied.
 +
-CAUTION:
+CAUTION: Errors in an ILM policy can cause unrecoverable data loss. Carefully review and simulate the policy before activating it to confirm that it will work as intended.
 +
-Errors in an ILM policy can cause unrecoverable data loss. Carefully review and simulate the policy before activating it to confirm that it will work as intended.
-+
-CAUTION:
-+
-When you activate a new ILM policy, StorageGRID uses it to manage all objects, including existing objects and newly ingested objects. Before activating a new ILM policy, review any changes to the placement of existing replicated and erasure-coded objects. Changing an existing object's location might result in temporary resource issues when the new placements are evaluated and implemented.
+CAUTION: When you activate a new ILM policy, StorageGRID uses it to manage all objects, including existing objects and newly ingested objects. Before activating a new ILM policy, review any changes to the placement of existing replicated and erasure-coded objects. Changing an existing object's location might result in temporary resource issues when the new placements are evaluated and implemented.
 
 . Activate the new policy.
 +
