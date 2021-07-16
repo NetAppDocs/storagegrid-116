@@ -22,14 +22,14 @@ Server Manager monitors services and restarts any that have stopped unexpectedly
 .Steps
 
 . Log in to the grid node:
- .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
 
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
-. Confirm the error state of the service: `service servicename status`
+. Confirm the error state of the service: `service _servicename_ status`
 +
 For example:
 +
@@ -37,15 +37,15 @@ For example:
 service ldr status
 ----
 +
-If the service is in an error state, the following message is returned: servicename in error state. For example:
+If the service is in an error state, the following message is returned: `_servicename_ in error state`. For example:
 +
 ----
 ldr in error state
 ----
 +
-NOTE: If the service status is disabled, see the instructions for removing a DoNotStart file for a service.
+NOTE: If the service status is `disabled`, see the instructions for removing a DoNotStart file for a service.
 
-. Attempt to remove the error state by restarting the service: `service servicename restart`
+. Attempt to remove the error state by restarting the service: `service _servicename_ restart`
 +
 If the service fails to restart, contact technical support.
 

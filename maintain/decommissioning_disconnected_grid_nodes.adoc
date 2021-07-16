@@ -122,8 +122,8 @@ NOTE: High-risk objects are objects that are at risk of being completely lost. T
   *** *Scan Period -- Estimated (XSCM)*: Use this attribute to estimate when a policy change will be applied to previously ingested objects. If the *Repairs Attempted* attribute does not increase for a period longer than the current scan period, it is probable that replicated repairs are done. Note that the scan period can change. The *Scan Period -- Estimated (XSCM)* attribute applies to the entire grid and is the maximum of all node scan periods. You can query the *Scan Period -- Estimated* attribute history for the grid to determine an appropriate time frame.
 
  .. Use the following commands to track or restart repairs:
-  *** Use the repair-data show-ec-repair-status command to track repairs of erasure coded data.
-  *** Use the repair-data start-ec-node-repair command with the --repair-id option to restart a failed repair.
+  *** Use the `repair-data show-ec-repair-status` command to track repairs of erasure coded data.
+  *** Use the `repair-data start-ec-node-repair` command with the `--repair-id` option to restart a failed repair.
 See the instructions for checking data repair jobs.
 . Continue to track the status of EC data repairs until all repair jobs have completed successfully.
 +

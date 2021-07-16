@@ -1,7 +1,7 @@
 ---
 permalink: maintain/recovering_from_archive_node_failures.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Recovering from Archive Node failures
@@ -13,6 +13,8 @@ You must complete a sequence of tasks in exact order to recover from an Archive 
 
 image::../media/overview_archive_node_recovery.gif[Overview flowchart of Archive Node recovery]
 
+.About this task
+
 Archive Node recovery is affected by the following issues:
 
 * If the ILM policy is configured to replicate a single copy.
@@ -22,3 +24,9 @@ In a StorageGRID system that is configured to make a single copy of objects, an 
 * If an Archive Node failure occurs during Storage Node recovery.
 +
 If the Archive Node fails while processing bulk retrievals as part of a Storage Node recovery, you must repeat the procedure to recover copies of object data to the Storage Node from the beginning to ensure that all object data retrieved from the Archive Node is restored to the Storage Node.
+
+.Steps
+
+* xref:replacing_archive_node.adoc[Replacing an Archive Node]
+* xref:selecting_start_recovery_to_configure_archive_node.adoc[Selecting Start Recovery to configure an Archive Node]
+* xref:resetting_archive_node_connection_to_cloud.adoc[Resetting Archive Node connection to the cloud]

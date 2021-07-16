@@ -41,17 +41,15 @@ If some or all of the grid nodes that should be configured on the host are not l
 . To import grid nodes that have a `/var/local` volume:
  .. Run the following command for each node you want to import:``sudo storagegrid node import node-var-local-volume-path``
 +
-The storagegrid node import command succeeds only if the target node was shut down cleanly on the host on which it last ran. If that is not the case, you will observe an error similar to the following:
+The `storagegrid node import` command succeeds only if the target node was shut down cleanly on the host on which it last ran. If that is not the case, you will observe an error similar to the following:
 +
-----
-This node (node-name) appears to be owned by another host (UUID host-uuid).
-
-Use the --force flag if you are sure import is safe.
-----
+`This node (_node-name_) appears to be owned by another host (UUID host-uuid).`
++
+`Use the --force flag if you are sure import is safe.`
 
  .. If you see the error about the node being owned by another host, run the command again with the `--force` flag to complete the import:``sudo storagegrid --force node import node-var-local-volume-path``
 +
-NOTE: Any nodes imported with the --force flag will require additional recovery steps before they can rejoin the grid, as described in "`Performing additional recovery steps, if required.`"
+NOTE: Any nodes imported with the `--force` flag will require additional recovery steps before they can rejoin the grid, as described in "`Performing additional recovery steps, if required.`"
 
 . For grid nodes that do not have a `/var/local` volume, recreate the node's configuration file to restore it to the host.
 +
@@ -67,7 +65,7 @@ IMPORTANT: If you use any new block devices (devices that the StorageGRID node d
 
 . Validate the node configuration file for each grid node whose name was shown in the storagegrid node list output:
 +
-`sudo storagegrid node validate node-name`
+`sudo storagegrid node validate _node-name_`
 +
 You must address any errors or warnings before starting the StorageGRID host service. The following sections give more detail on errors that might have special significance during recovery.
 

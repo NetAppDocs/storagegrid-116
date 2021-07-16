@@ -24,7 +24,7 @@ After replacing a Storage Node, you must select Start Recovery in the Grid Manag
 
 If the Storage Node is installed as a container on a Linux host, you must perform this step only if one of these is true:
 
-* You had to use the --force flag to import the node, or you issued `storagegrid node force-recovery node-name`
+* You had to use the `--force` flag to import the node, or you issued `storagegrid node force-recovery _node-name_`
 * You had to do a full node reinstall, or you needed to restore /var/local.
 
 .Steps
@@ -48,7 +48,7 @@ image::../media/recovery_reset_warning.gif[screenshot showing the reset recovery
 If you want to retry the recovery after resetting the procedure, you must restore the node to a pre-installed state, as follows:
 
  ** *VMware*: Delete the deployed virtual grid node. Then, when you are ready to restart the recovery, redeploy the node.
- ** *Linux*: Restart the node by running this command on the Linux host: `storagegrid node force-recovery node-name`
+ ** *Linux*: Restart the node by running this command on the Linux host: `storagegrid node force-recovery _node-name_`
 
 . When the Storage Node reaches the stage "`Waiting for Manual Steps`" stage, go to the next task in the recovery procedure to remount and reformat storage volumes.
 +

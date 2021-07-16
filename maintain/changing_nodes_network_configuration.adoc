@@ -41,7 +41,7 @@ NOTE: Any changes you make to the network using the Change IP tool are propagate
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -92,9 +92,9 @@ Your changes are held until cleared or applied.
 image::../media/change_ip_tool_edit_ip_mask_sample_output.png[screenshot described by surrounding text]
 
  ** *6*: Shows edits in output that displays the full configuration. Changes are highlighted in green (additions) or red (deletions).
-
 +
-*Note:* Certain command line interfaces might show additions and deletions using strikethrough formatting. Proper display depends on your terminal client supporting the necessary VT100 escape sequences.
+NOTE: Certain command line interfaces might show additions and deletions using strikethrough formatting. Proper display depends on your terminal client supporting the necessary VT100 escape sequences.
+
 . Select option *7* to validate all changes.
 +
 This validation ensures that the rules for the Grid, Admin, and Client Networks, such as not using overlapping subnets, are not violated.

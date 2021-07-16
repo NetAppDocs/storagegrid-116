@@ -22,7 +22,7 @@ NOTE: If you are making changes to the Grid Network Subnet List only, use the Gr
 .Steps
 
 . Log in to the primary Admin Node:
- .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
@@ -62,7 +62,9 @@ image::../media/change_ip_tool_gnsl_sample_input.gif[screenshot described by sur
 image::../media/change_ip_tool_gnsl_sample_output.gif[screenshot described by surrounding text]
 
  ** Select option *6* to show edits in output that displays the full configuration. Changes are highlighted in green (additions) or red (deletions).
-*Note:* Certain command line interfaces might show additions and deletions using strikethrough formatting.
++
+NOTE: Certain command line interfaces might show additions and deletions using strikethrough formatting.
+
 . Select option *7* to validate all staged changes.
 +
 This validation ensures that the rules for the Grid, Admin, and Client Networks are followed, such as using overlapping subnets.
