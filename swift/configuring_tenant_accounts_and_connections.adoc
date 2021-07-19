@@ -13,7 +13,6 @@ Configuring StorageGRID to accept connections from client applications requires 
 
 == Creating and configuring Swift tenant accounts
 
-[.lead]
 A Swift tenant account is required before Swift API clients can store and retrieve objects on StorageGRID. Each tenant account has its own account ID, groups and users, and containers and objects.
 
 Swift tenant accounts are created by a StorageGRID grid administrator using the Grid Manager or the Grid Management API.
@@ -42,7 +41,6 @@ xref:supported_swift_api_endpoints.adoc[Supported Swift API endpoints]
 
 == How client connections can be configured
 
-[.lead]
 A grid administrator makes configuration choices that affect how Swift clients connect to StorageGRID to store and retrieve data. The specific information you need to make a connection depends upon the configuration that was chosen.
 
 Client applications can store or retrieve objects by connecting to any of the following:
@@ -72,7 +70,6 @@ For more information about each option, see the instructions for administering S
 
 === Summary: IP addresses and ports for client connections
 
-[.lead]
 Client applications connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability (HA) groups are configured, client applications can connect using the virtual IP address of the HA group.
 
 ==== Information required to make client connections
@@ -104,8 +101,8 @@ Virtual IP address of an HA group
 a|
 Default Swift ports:
 
-* HTTPS:8083
-* HTTP:8085
+* HTTPS: 8083
+* HTTP: 8085
 
 a|
 Admin Node
@@ -142,8 +139,8 @@ IP address of the Gateway Node
 a|
 Default Swift ports:
 
-* HTTPS:8083
-* HTTP:8085
+* HTTPS: 8083
+* HTTP: 8085
 
 a|
 Storage Node
@@ -155,7 +152,7 @@ a|
 Default Swift ports:
 
 * HTTPS: 18083
-* HTTP:18085
+* HTTP: 18085
 
 |===
 
@@ -173,7 +170,6 @@ It is possible to configure a DNS name for the IP address that clients use to co
 
 === Deciding to use HTTPS or HTTP connections
 
-[.lead]
 When client connections are made using a Load Balancer endpoint, connections must be made using the protocol (HTTP or HTTPS) that was specified for that endpoint. To use HTTP for client connections to Storage Nodes or to the CLB service on Gateway Nodes, you must enable its use.
 
 By default, when client applications connect to Storage Nodes or the CLB service on Gateway Nodes, they must use encrypted HTTPS for all connections. Optionally, you can enable less-secure HTTP connections by selecting the *Enable HTTP Connection* grid option in the Grid Manager. For example, a client application might use HTTP when testing the connection to a Storage Node in a non-production environment.
@@ -190,7 +186,6 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 
 == Testing your connection in the Swift API configuration
 
-[.lead]
 You can use the Swift CLI to test your connection to the StorageGRID system and to verify that you can read and write objects to the system.
 
 .What you'll need
