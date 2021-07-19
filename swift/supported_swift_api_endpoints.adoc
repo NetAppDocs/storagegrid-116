@@ -15,7 +15,7 @@ StorageGRID supports the following Swift API endpoints: the info URL, the auth U
 
 You can determine the capabilities and limitations of the StorageGRID Swift implementation by issuing a GET request to the Swift base URL with the /info path.
 
-`https://FQDN | Node IP:Swift Port/info/`
+`\https://_FQDN_ | _Node IP:Swift Port_/info/`
 
 In the request:
 
@@ -26,7 +26,7 @@ In the request:
 For example, the following info URL would request information from a Storage Node with the IP address of 10.99.106.103 and using port 18083.
 
 
-`https://10.99.106.103:18083/info/
+`\https://10.99.106.103:18083/info/`
 
 
 The response includes the capabilities of the Swift implementation as a JSON dictionary. A client tool can parse the JSON response to determine the capabilities of the implementation and use them as constraints for subsequent storage operations.
@@ -37,38 +37,33 @@ The StorageGRID implementation of Swift allows unauthenticated access to the inf
 
 A client can use the Swift auth URL to authenticate as a tenant account user.
 
-https://FQDN | Node IP:Swift Port_/auth/v1.0/
+`https://_FQDN_ | _Node IP:Swift Port_/auth/v1.0/`
 
 You must provide the tenant account ID, user name, and password as parameters in the `X-Auth-User` and `X-Auth-Key` request headers, as follows:
 
-----
-X-Auth-User: Tenant_Account_ID:Username
-----
+`X-Auth-User: _Tenant_Account_ID:Username_`
 
-----
-X-Auth-Key: Password
-----
+`X-Auth-Key: _Password_`
 
 In the request headers:
 
-* `Tenant_Account_ID` is the account ID assigned by StorageGRID when the Swift tenant was created. This is the same tenant account ID used on the Tenant Manager sign-in page.
+* `_Tenant_Account_ID_` is the account ID assigned by StorageGRID when the Swift tenant was created. This is the same tenant account ID used on the Tenant Manager sign-in page.
 * `_Username_` is the name of a tenant user that has been created in the Tenant Manager. This user must belong to a group that has the Swift Administrator permission. The tenant's root user cannot be configured to use the Swift REST API.
 +
 If Identity Federation is enabled for the tenant account, provide the username and password of the federated user from the LDAP server. Alternatively, provide the LDAP user's domain name. For example:
 +
-----
-X-Auth-User: Tenant_Account_ID:Username@Domain_Name
-----
 
-* `Password` is the password for the tenant user. User passwords are created and managed in the Tenant Manager.
+`X-Auth-User: _Tenant_Account_ID:Username@Domain_Name_`
+
+* `_Password_` is the password for the tenant user. User passwords are created and managed in the Tenant Manager.
 
 The response to a successful authentication request returns a storage URL and an auth token, as follows:
 
-----
-X-Storage-Url: https://FQDN | Node_IP:Swift_Port/v1/Tenant_Account_ID
-X-Auth-Token: token
-X-Storage-Token: token
-----
+`X-Storage-Url: https://_FQDN_ | _Node_IP:Swift_Port_/v1/_Tenant_Account_ID_`
+
+`X-Auth-Token: _token_`
+
+`X-Storage-Token: _token_`
 
 By default, the token is valid for 24 hours from generation time.
 
@@ -78,11 +73,11 @@ Tokens are generated for a specific tenant account. A valid token for one accoun
 
 A client application can issue Swift REST API calls to perform supported account, container, and object operations against a Gateway Node or Storage Node. Storage requests are addressed to the storage URL returned in the authentication response. The request must also include the X-Auth-Token header and value returned from the auth request.
 
-----
-https://FQDN | IP:Swift_Port/v1/Tenant_Account_ID
-[/container][/object]
-X-Auth-Token: token
-----
+`\https://FQDN | _IP:Swift_Port_/v1/_Tenant_Account_ID_`
+
+`[_/container_][_/object_]`
+
+`X-Auth-Token: _token_`
 
 Some storage response headers that contain usage statistics might not reflect accurate numbers for recently modified objects. It might take a few minutes for accurate numbers to appear in these headers.
 
