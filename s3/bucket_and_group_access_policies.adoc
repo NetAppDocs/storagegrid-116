@@ -1,7 +1,7 @@
 ---
 permalink: s3/bucket_and_group_access_policies.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Bucket and group access policies
@@ -75,7 +75,7 @@ In the Action element, you can use the wildcard character (*) to specify all ope
 s3:*Object
 ----
 
-In the Resource element, you can use the wildcard characters (*) and (?). While the asterisk (*) matches 0 or more characters, the question mark (?) matches any single character.
+In the Resource element, you can use the wildcard characters (\*) and (?). While the asterisk (\*) matches 0 or more characters, the question mark (?) matches any single character.
 
 In the Principal element, wildcard characters are not supported except to set anonymous access, which grants permission to everyone. For example, you set the wildcard (*) as the Principal value.
 
@@ -134,18 +134,18 @@ In policy statements, the ARN is used in Principal and Resource elements.
 * Use this syntax to specify the S3 resource ARN:
 +
 ----
-arn:aws:s3:::bucket-name
-arn:aws:s3:::bucket-name/object_key
+arn:aws:s3:::_bucket-name_
+arn:aws:s3:::_bucket-name/object_key_
 ----
 
 * Use this syntax to specify the identity resource ARN (users and groups):
 +
 ----
-arn:aws:iam::account_id:root
-arn:aws:iam::account_id:user/user_name
-arn:aws:iam::account_id:group/group_name
-arn:aws:iam::account_id:federated-user/user_name
-arn:aws:iam::account_id:federated-group/group_name
+arn:aws:iam::_account_id:root_
+arn:aws:iam::_account_id:user/user_name_
+arn:aws:iam::_account_id:group/group_name_
+arn:aws:iam::_account_id:federated-user/user_name_
+arn:aws:iam::_account_id:federated-group/group_name_
 ----
 
 Other considerations:
@@ -191,8 +191,8 @@ Use the Principal element to identity the user, group, or tenant account that is
 * Account-based identities must be specified using an ID or an ARN:
 +
 ----
-"Principal": { "AWS": "account_id"}
-"Principal": { "AWS": "identity_arn" }
+"Principal": { "AWS": "_account_id_"}
+"Principal": { "AWS": "_identity_arn_" }
 ----
 
 * This example uses the tenant account ID 27233906934684427525, which includes the account root and all users in the account:
@@ -252,13 +252,13 @@ s3:CreateBucket
 a|
 PUT Bucket
 a|
- 
+
 a|
 s3:DeleteBucket
 a|
 DELETE Bucket
 a|
- 
+
 a|
 s3:DeleteBucketMetadataNotification
 a|
@@ -270,7 +270,7 @@ s3:DeleteBucketPolicy
 a|
 DELETE Bucket policy
 a|
- 
+
 a|
 s3:DeleteReplicationConfiguration
 a|
@@ -282,7 +282,7 @@ s3:GetBucketAcl
 a|
 GET Bucket ACL
 a|
- 
+
 a|
 s3:GetBucketCompliance
 a|
@@ -300,13 +300,13 @@ s3:GetBucketCORS
 a|
 GET Bucket cors
 a|
- 
+
 a|
 s3:GetEncryptionConfiguration
 a|
 GET Bucket encryption
 a|
- 
+
 a|
 s3:GetBucketLastAccessTime
 a|
@@ -318,7 +318,7 @@ s3:GetBucketLocation
 a|
 GET Bucket location
 a|
- 
+
 a|
 s3:GetBucketMetadataNotification
 a|
@@ -330,43 +330,43 @@ s3:GetBucketNotification
 a|
 GET Bucket notification
 a|
- 
+
 a|
 s3:GetBucketObjectLockConfiguration
 a|
 GET Object Lock Configuration
 a|
- 
+
 a|
 s3:GetBucketPolicy
 a|
 GET Bucket policy
 a|
- 
+
 a|
 s3:GetBucketTagging
 a|
 GET Bucket tagging
 a|
- 
+
 a|
 s3:GetBucketVersioning
 a|
 GET Bucket versioning
 a|
- 
+
 a|
 s3:GetLifecycleConfiguration
 a|
 GET Bucket lifecycle
 a|
- 
+
 a|
 s3:GetReplicationConfiguration
 a|
 GET Bucket replication
 a|
- 
+
 a|
 s3:ListAllMyBuckets
 a|
@@ -385,7 +385,7 @@ a|
 * POST Object restore
 
 a|
- 
+
 a|
 s3:ListBucketMultipartUploads
 a|
@@ -394,13 +394,13 @@ a|
 * POST Object restore
 
 a|
- 
+
 a|
 s3:ListBucketVersions
 a|
 GET Bucket versions
 a|
- 
+
 a|
 s3:PutBucketCompliance
 a|
@@ -421,7 +421,7 @@ a|
 * PUT Bucket cors
 
 a|
- 
+
 a|
 s3:PutEncryptionConfiguration
 a|
@@ -430,7 +430,7 @@ a|
 * PUT Bucket encryption
 
 a|
- 
+
 a|
 s3:PutBucketLastAccessTime
 a|
@@ -448,19 +448,19 @@ s3:PutBucketNotification
 a|
 PUT Bucket notification
 a|
- 
+
 a|
 s3:PutBucketObjectLockConfiguration
 a|
 PUT Bucket with the `x-amz-bucket-object-lock-enabled: true` request header (also requires the s3:CreateBucket permission)
 a|
- 
+
 a|
 s3:PutBucketPolicy
 a|
 PUT Bucket policy
 a|
- 
+
 a|
 s3:PutBucketTagging
 a|
@@ -469,13 +469,13 @@ a|
 * PUT Bucket tagging
 
 a|
- 
+
 a|
 s3:PutBucketVersioning
 a|
 PUT Bucket versioning
 a|
- 
+
 a|
 s3:PutLifecycleConfiguration
 a|
@@ -484,7 +484,7 @@ a|
 * PUT Bucket lifecycle
 
 a|
- 
+
 a|
 s3:PutReplicationConfiguration
 a|
@@ -510,7 +510,7 @@ a|
 * POST Object restore
 
 a|
- 
+
 a|
 s3:DeleteObject
 a|
@@ -520,25 +520,25 @@ a|
 * POST Object restore
 
 a|
- 
+
 a|
 s3:DeleteObjectTagging
 a|
 DELETE Object Tagging
 a|
- 
+
 a|
 s3:DeleteObjectVersionTagging
 a|
 DELETE Object Tagging (a specific version of the object)
 a|
- 
+
 a|
 s3:DeleteObjectVersion
 a|
 DELETE Object (a specific version of the object)
 a|
- 
+
 a|
 s3:GetObject
 a|
@@ -548,49 +548,49 @@ a|
 * POST Object restore
 
 a|
- 
+
 a|
 s3:GetObjectAcl
 a|
 GET Object ACL
 a|
- 
+
 a|
 s3:GetObjectLegalHold
 a|
 GET Object legal hold
 a|
- 
+
 a|
 s3:GetObjectRetention
 a|
 GET Object retention
 a|
- 
+
 a|
 s3:GetObjectTagging
 a|
 GET Object Tagging
 a|
- 
+
 a|
 s3:GetObjectVersionTagging
 a|
 GET Object Tagging (a specific version of the object)
 a|
- 
+
 a|
 s3:GetObjectVersion
 a|
 GET Object (a specific version of the object)
 a|
- 
+
 a|
 s3:ListMultipartUploadParts
 a|
 List Parts, POST Object restore
 a|
- 
+
 a|
 s3:PutObject
 a|
@@ -604,31 +604,31 @@ a|
 * Upload Part - Copy
 
 a|
- 
+
 a|
 s3:PutObjectLegalHold
 a|
 PUT Object legal hold
 a|
- 
+
 a|
 s3:PutObjectRetention
 a|
 PUT Object retention
 a|
- 
+
 a|
 s3:PutObjectTagging
 a|
 PUT Object Tagging
 a|
- 
+
 a|
 s3:PutObjectVersionTagging
 a|
 PUT Object Tagging (a specific version of the object)
 a|
- 
+
 a|
 s3:PutOverwriteObject
 a|
@@ -646,7 +646,7 @@ s3:RestoreObject
 a|
 POST Object restore
 a|
- 
+
 |===
 
 == Using the PutOverwriteObject permission
@@ -680,8 +680,8 @@ Conditions use key-value pairs for evaluation. A Condition element can contain m
 
 ----
 Condition: {
-     condition_type: {
-          condition_key: condition_values
+     _condition_type_: {
+          _condition_key_: _condition_values_
 ----
 
 In the following example, the IpAddress condition uses the SourceIp condition key.
@@ -804,9 +804,17 @@ s3:delimiter
 a|
 Will compare to the delimiter parameter specified in a GET Bucket or GET Bucket Object versions request.
 a|
+S3:ListBucket and
+
+S3:ListBucketVersions permissions
+a|
 s3:max-keys
 a|
 Will compare to the max-keys parameter specified in a GET Bucket or GET Bucket Object versions request.
+a|
+S3:ListBucket and
+
+S3:ListBucketVersions permissions
 a|
 s3:prefix
 a|
@@ -821,7 +829,7 @@ You can use variables in policies to populate policy information when it is avai
 In this example, the variable `${aws:username}` is part of the Resource element:
 
 ----
-"Resource": "arn:aws:s3:::bucket-name/home/${aws:username}/*"
+"Resource": "arn:aws:s3:::_bucket-name/home_/${aws:username}/*"
 ----
 
 In this example, the variable `${aws:username}` is part of the condition value in the condition block:
@@ -1017,7 +1025,7 @@ Bucket policies specify the access permissions for the bucket that the policy is
 A bucket policy can be configured using the AWS CLI as per the following command:
 
 ----
-> aws s3api put-bucket-policy --bucket examplebucket --policy file://policy.json
+> aws s3api put-bucket-policy --bucket examplebucket --policy _file://policy.json_
 ----
 
 ==== Example: Allow everyone read-only access to a bucket

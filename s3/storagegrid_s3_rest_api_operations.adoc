@@ -1,7 +1,7 @@
 ---
 permalink: s3/storagegrid_s3_rest_api_operations.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = StorageGRID S3 REST API operations
@@ -24,9 +24,9 @@ You must have the s3:GetBucketConsistency permission, or be account root, to com
 
 ----
 GET /bucket?x-ntap-sg-consistency HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 === Response
@@ -51,7 +51,9 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 read-after-new-write
 a|
-(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees. *Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
 a|
 available (eventual consistency for HEAD operations)
@@ -109,7 +111,9 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 read-after-new-write
 a|
-(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees. *Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
 a|
 available (eventual consistency for HEAD operations)
@@ -122,9 +126,9 @@ Behaves the same as the "`read-after-new-write`" consistency level, but only pro
 
 ----
 PUT /bucket?x-ntap-sg-consistency=strong-global HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 .Related information
@@ -142,9 +146,9 @@ You must have the s3:GetBucketLastAccessTime permission, or be account root, to 
 
 ----
 GET /bucket?x-ntap-sg-lastaccesstime HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 === Response example
@@ -187,17 +191,17 @@ This example enables last access time for a bucket.
 
 ----
 PUT /bucket?x-ntap-sg-lastaccesstime=enabled HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 This example disables last access time for a bucket.
 
 ----
 PUT /bucket?x-ntap-sg-lastaccesstime=disabled HTTP/1.1
-Date: date
-Authorization: authorization string
+Date: _date_
+Authorization: _authorization string_
 Host: host
 ----
 
@@ -218,9 +222,9 @@ This example shows disabling the search integration service for a bucket.
 
 ----
 DELETE /test1?x-ntap-sg-metadata-notification HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 == GET Bucket metadata notification configuration request
@@ -236,9 +240,9 @@ This request retrieves the metadata notification configuration for the bucket na
 
 ----
 GET /bucket?x-ntap-sg-metadata-notification HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 === Response
@@ -252,7 +256,7 @@ The response body includes the metadata notification configuration for the bucke
         <Status>rule-status</Status>
         <Prefix>key-prefix</Prefix>
         <Destination>
-           <Urn>arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype</Urn>
+           <Urn>arn:aws:es:_region:account-ID_:domain/_mydomain/myindex/mytype_</Urn>
         </Destination>
     </Rule>
     <Rule>
@@ -336,8 +340,8 @@ URN of the destination where object metadata is sent. Must be the URN of a Stora
 
 Endpoints are configured using the Tenant Manager or Tenant Management API. They take the following form:
 
-* `arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype`
-* `urn:mysite:es:::mydomain/myindex/mytype`
+* `arn:aws:es:_region:account-ID_:domain/_mydomain/myindex/mytype_`
+* `urn:mysite:es:::_mydomain/myindex/mytype_`
 
 The endpoint must be configured before the configuration XML is submitted, or configuration will fail with a 404 error.
 
@@ -349,7 +353,7 @@ Yes
 
 === Response example
 
-The XML included between the `<MetadataNotificationConfiguration>``</MetadataNotificationConfiguration>` tags shows how integration with a search integration endpoint is configured for the bucket. In this example, object metadata is being sent to an Elasticsearch index named `current` and type named `2017` that is hosted in an AWS domain named `records`.
+The XML included between the  `<MetadataNotificationConfiguration></MetadataNotificationConfiguration>` tags shows how integration with a search integration endpoint is configured for the bucket. In this example, object metadata is being sent to an Elasticsearch index named `current` and type named `2017` that is hosted in an AWS domain named `records`.
 
 ----
 HTTP/1.1 200 OK
@@ -501,9 +505,9 @@ This example shows enabling search integration for a bucket. In this example, ob
 
 ----
 PUT /test1?x-ntap-sg-metadata-notification HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 
 <MetadataNotificationConfiguration>
     <Rule>
@@ -521,9 +525,9 @@ In this example, object metadata for objects that match the prefix `/images` is 
 
 ----
 PUT /graphics?x-ntap-sg-metadata-notification HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 
 <MetadataNotificationConfiguration>
     <Rule>
@@ -591,13 +595,19 @@ bucket
 a|
 Name of the bucket
 a|
+Bucket and object information
+a|
 key
 a|
 Object key name
 a|
+Bucket and object information
+a|
 versionID
 a|
 Object version, for objects in versioned buckets
+a|
+Bucket and object information
 a|
 region
 a|
@@ -609,21 +619,23 @@ size
 a|
 Object size (in bytes) as visible to an HTTP client
 a|
+System metadata
+a|
 md5
 a|
 Object hash
 a|
 User metadata
 a|
-metadatakey:value
-
+metadata
+`_key:value_`
 a|
 All user metadata for the object, as key-value pairs
 a|
 Tags
 a|
-tags key:value
-
+tags
+`_key:value_`
 a|
 All object tags defined for the object, as key-value pairs
 |===
@@ -644,9 +656,9 @@ You must have the s3:ListAllMyBuckets permission, or be account root, to complet
 
 ----
 GET /?x-ntap-sg-usage HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 === Response example
@@ -754,9 +766,9 @@ This example request allows you to determine the compliance settings for the buc
 
 ----
 GET /mybucket/?x-ntap-sg-compliance HTTP/1.1
-Date: date
-Authorization: authorization string
-Host: host
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
 ----
 
 ==== Response example
@@ -765,11 +777,11 @@ In the response XML, `<SGCompliance>` lists the compliance settings in effect fo
 
 ----
 HTTP/1.1 200 OK
-Date: date
-Connection: connection
+Date: _date_
+Connection: _connection_
 Server: StorageGRID/11.1.0
-x-amz-request-id: request ID
-Content-Length: length
+x-amz-request-id: _request ID_
+Content-Length: _length_
 Content-Type: application/xml
 
 <SGCompliance>
@@ -835,9 +847,9 @@ This example request modifies the compliance settings for the bucket named `mybu
 
 ----
 PUT /mybucket/?x-ntap-sg-compliance HTTP/1.1
-Date: date
-Authorization: authorization name
-Host: host
+Date: _date_
+Authorization: _authorization name_
+Host: _host_
 Content-Length: 152
 
 <SGCompliance>
@@ -853,7 +865,9 @@ Content-Length: 152
 a|
 RetentionPeriodMinutes
 a|
-The length of the retention period for objects added to this bucket, in minutes. The retention period starts when the object is ingested into the grid. *Attention:* When specifying a new value for RetentionPeriodMinutes, you must specify a value that is equal to or greater than the bucket's current retention period. After the bucket's retention period is set, you cannot decrease that value; you can only increase it.
+The length of the retention period for objects added to this bucket, in minutes. The retention period starts when the object is ingested into the grid.
+
+*Attention:* When specifying a new value for RetentionPeriodMinutes, you must specify a value that is equal to or greater than the bucket's current retention period. After the bucket's retention period is set, you cannot decrease that value; you can only increase it.
 
 a|
 LegalHold
