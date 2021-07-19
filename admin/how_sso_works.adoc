@@ -13,8 +13,9 @@ Before enabling single sign-on (SSO), review how the StorageGRID sign-in and sig
 
 == Signing in when SSO is enabled
 
-[.lead]
 When SSO is enabled and you sign in to StorageGRID, you are redirected to your organization's SSO page to validate your credentials.
+
+.Steps
 
 . Enter the fully qualified domain name or IP address of any StorageGRID Admin Node in a web browser.
 +
@@ -29,7 +30,7 @@ image::../media/sso_sign_in_first_time.gif[Signing in with SSO enabled first acc
 image::../media/sign_in_sso.gif[StorageGRID Sign In page if SSO is enabled]
 
 +
-NOTE: The StorageGRID Sign in page is not shown when you enter the complete URL for a tenant account (that is, a fully qualified domain name or IP address followed by /?accountId=20-digit-account-id). Instead, you are immediately redirected to your organization's SSO sign-in page. Go to step link:how_sso_works.md#STEP_DE77F987631F432F949A50143988EEAF[how_sso_works.md#STEP_DE77F987631F432F949A50143988EEAF].
+NOTE: The StorageGRID Sign in page is not shown when you enter the complete URL for a tenant account (that is, a fully qualified domain name or IP address followed by `/?accountId=_20-digit-account-id_`). Instead, you are immediately redirected to your organization's SSO sign-in page, where you can <<signin_sso,sign in with your SSO credentials>>.
 
 . Indicate whether you want to access the Grid Manager or the Tenant Manager:
  ** To access the Grid Manager, leave the**Account ID** field blank, enter *0* as the account ID, or select *Grid Manager* if it appears in the list of recent accounts.
@@ -40,7 +41,7 @@ StorageGRID redirects you to your organization's SSO sign-in page. For example:
 +
 image::../media/sso_organization_page.gif[example organization sign in page for SSO]
 
-. Sign in with your SSO credentials.
+. [[signin_sso]]Sign in with your SSO credentials.
 +
 If your SSO credentials are correct:
 
@@ -54,14 +55,17 @@ You do not need to reenter your SSO credentials.
 
 == Signing out when SSO is enabled
 
-[.lead]
+
 When SSO is enabled for StorageGRID, what happens when you sign out depends on what you are signed in to and where you are signing out from.
+
+.Steps
 
 . Locate the *Sign Out* link in the top-right corner of the user interface.
 . Click *Sign Out*.
 +
 The StorageGRID Sign in page appears. The *Recent Accounts* drop-down is updated to include *Grid Manager* or the name of the tenant, so you can access these user interfaces more quickly in the future.
 +
+[cols="1a,1a,1a" options="header"]
 |===
 | If you are signed in to...| And you sign out from...| You are signed out of...
 a|
@@ -76,7 +80,7 @@ a|
 Tenant Manager on any Admin Node
 a|
 Tenant Manager on all Admin Nodes
-a|
+.2+a|
 Both Grid Manager and Tenant Manager
 a|
 Grid Manager
@@ -87,4 +91,5 @@ Tenant Manager
 a|
 The Tenant Manager only. You must also sign out of the Grid Manager to sign out of SSO.
 |===
-*Note:* The table summarizes what happens when you sign out if you are using a single browser session. If you are signed in to StorageGRID across multiple browser sessions, you must sign out of all browser sessions separately.
+
+NOTE: The table summarizes what happens when you sign out if you are using a single browser session. If you are signed in to StorageGRID across multiple browser sessions, you must sign out of all browser sessions separately.

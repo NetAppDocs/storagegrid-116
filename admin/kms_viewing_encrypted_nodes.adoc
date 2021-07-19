@@ -1,7 +1,7 @@
 ---
 permalink: admin/kms_viewing_encrypted_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can view information about the appliance nodes in your StorageGRID system that have the Node Encryption setting enabled.'
 ---
 = Viewing encrypted nodes
@@ -10,6 +10,8 @@ summary: 'You can view information about the appliance nodes in your StorageGRID
 
 [.lead]
 You can view information about the appliance nodes in your StorageGRID system that have the *Node Encryption* setting enabled.
+
+.Steps
 
 . Select *Configuration* > *System Settings* > *Key Management Server*.
 +
@@ -27,6 +29,7 @@ image::../media/kms_encrypted_nodes_table.png[KMS Encrypted Nodes Table]
 
 . Review the information in the table for each appliance node.
 +
+[cols="1a,2a" options="header"]
 |===
 | Column| Description
 a|
@@ -44,18 +47,24 @@ The name of the StorageGRID site where the node is installed.
 a|
 KMS Display Name
 a|
-The descriptive name of the KMS used for the node.     If no KMS is listed, select the Configuration Details tab to add a KMS.
-+
+The descriptive name of the KMS used for the node.
+
+If no KMS is listed, select the Configuration Details tab to add a KMS.
+
 xref:kms_adding.adoc[Adding a key management server (KMS)]
 a|
 Key UID
 a|
-The unique ID of the encryption key used to encrypt and decrypt data on the appliance node. To view an entire key UID, hover your cursor over the cell.    A dash (--) indicates the key UID is unknown, possibly because of a connection issue between the appliance node and the KMS.
+The unique ID of the encryption key used to encrypt and decrypt data on the appliance node. To view an entire key UID, hover your cursor over the cell.
+
+A dash (--) indicates the key UID is unknown, possibly because of a connection issue between the appliance node and the KMS.
 a|
 Status
 a|
-The status of the connection between the KMS and the appliance node. If the node is connected, the timestamp updates every 30 minutes. It can take several minutes for the connection status to update after the KMS configuration changes.    *Note:* You must refresh your web browser to see the new values.
-+
+The status of the connection between the KMS and the appliance node. If the node is connected, the timestamp updates every 30 minutes. It can take several minutes for the connection status to update after the KMS configuration changes.
+
+*Note:* You must refresh your web browser to see the new values.
+
 |===
 
 . If the Status column indicates a KMS issue, address the issue immediately.
@@ -75,6 +84,6 @@ See the recommended actions for these alerts in the instructions for monitoring 
 +
 IMPORTANT: You must address any issues immediately to ensure that your data is fully protected.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]

@@ -1,7 +1,7 @@
 ---
 permalink: admin/how_ha_groups_are_used.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might want to use high availability \(HA\) groups for several reasons.'
 ---
 = How HA groups are used
@@ -20,6 +20,7 @@ An HA group can provide high availability only if all nodes included in the grou
 * *Admin Nodes*: Include the Load Balancer service and enable access to the Grid Manager or the Tenant Manager.
 * *Gateway Nodes*: Include the Load Balancer service and the CLB service (deprecated).
 
+[cols="1a,1a" options="header"]
 |===
 | Purpose of HA group| Add nodes of this type to the HA group
 a|
@@ -29,7 +30,7 @@ a|
 * Primary Admin Node (*preferred Master*)
 * Non-primary Admin Nodes
 
-NOTE: The primary Admin Node must be the preferred Master. Some maintenance procedures can only be performed from the primary Admin Node.
+*Note:* The primary Admin Node must be the preferred Master. Some maintenance procedures can only be performed from the primary Admin Node.
 
 a|
 Access to Tenant Manager only
@@ -45,7 +46,9 @@ a|
 * Gateway Nodes
 
 a|
-S3 or Swift client access -- CLB service**Note:** The CLB service is deprecated.
+S3 or Swift client access -- CLB service
+
+*Note:* The CLB service is deprecated.
 
 a|
 

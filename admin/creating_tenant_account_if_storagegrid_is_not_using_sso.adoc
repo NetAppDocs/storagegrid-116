@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating_tenant_account_if_storagegrid_is_not_using_sso.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If StorageGRID is not using single sign-on \(SSO\), you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant’s local root user.'
 ---
 = Creating a tenant account if StorageGRID is not using SSO
@@ -11,9 +11,13 @@ summary: 'When you create a tenant account, you specify a name, a client protoco
 [.lead]
 When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If StorageGRID is not using single sign-on (SSO), you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
 
-If the tenant account will use the identity source that was configured for the Grid Manager, and you want to grant Root Access permission for the tenant account to a federated group, you must have imported that federated group into the Grid Manager. You do not need to assign any Grid Manager permissions to this admin group. See the instructions for creating admin groups.
+.About this task
 
-link:managing_admin_groups.md#[Creating admin groups]
+If the tenant account will use the identity source that was configured for the Grid Manager, and you want to grant Root Access permission for the tenant account to a federated group, you must have imported that federated group into the Grid Manager. You do not need to assign any Grid Manager permissions to this admin group. See the instructions for managing admin groups.
+
+xref:managing_admin_groups.adoc[Managing admin groups]
+
+.Steps
 
 . In the *Display Name* text box, enter a display name for this tenant account.
 +
@@ -50,34 +54,35 @@ NOTE: If you have adequate permissions, the existing federated groups from the G
 +
 The tenant account is created.
 
-. Optionally, access the new tenant. Otherwise, go to step <<STEP_SIGN_IN_LATER,#STEP_SIGN_IN_LATER>>.
+. Optionally, access the new tenant. Otherwise, go to the step for  <<STEP_SIGN_IN_LATER,accessing the tenant later>>.
 +
+[cols="1a,2a" options="header"]
 |===
 | If you are...| Do this...
 a|
-*Accessing the Grid Manager on a restricted port*
+Accessing the Grid Manager on a restricted port
 a|
-Click *Restricted* to learn more about accessing this tenant account.    The URL for the Tenant Manager has this format:
-+
-----
-https://FQDN_or_Admin_Node_IP:port/?accountId=20-digit-account-id/
-----
+Click *Restricted* to learn more about accessing this tenant account.
 
- ** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
- ** port is the tenant-only port
- ** 20-digit-account-id is the tenant's unique account ID
+The URL for the Tenant Manager has this format:
+
+`https://_FQDN_or_Admin_Node_IP:port_/?accountId=_20-digit-account-id_/`
+
+ ** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+ ** `_port_` is the tenant-only port
+ ** `_20-digit-account-id_` is the tenant's unique account ID
 
 a|
-*Accessing the Grid Manager on port 443 but you did not set a password for the local root user*
+Accessing the Grid Manager on port 443 but you did not set a password for the local root user
 a|
 Click *Sign In*, and enter the credentials for a user in the Root Access federated group.
 a|
-*Accessing the Grid Manager on port 443 and you set a password for the local root user*
+Accessing the Grid Manager on port 443 and you set a password for the local root user
 a|
-Go to step <<STEP_SIGN_IN_AS_ROOT,#STEP_SIGN_IN_AS_ROOT>>.
+Go to the next step to <<STEP_SIGN_IN_AS_ROOT,sign in as root>>.
 |===
 
-. Sign in to the tenant:
+. [[STEP_SIGN_IN_AS_ROOT]]Sign in to the tenant as root:
  .. From the Configure Tenant Account dialog box, click the *Sign in as root* button.
 +
 image::../media/configure_tenant_account.gif[Screenshot of Step 2 - Configure Tenant Account]
@@ -91,43 +96,43 @@ image::../media/step_2_sign_in_as_root.gif[Sign in as root]
 Each link opens the corresponding page in the Tenant Manager. To complete the page, see the instructions for using tenant accounts.
 
  .. Click *Finish*.
-. To access the tenant later:
+
+. [[STEP_SIGN_IN_LATER]]To access the tenant later:
 +
+[cols="1a,2a" options="header"]
 |===
 | If you are using...| Do one of these...
 a|
-*Port 443*
+Port 443
 a|
 
  ** From the Grid Manager, select *Tenants*, and click *Sign in* to the right of the tenant name.
  ** Enter the tenant's URL in a web browser:
 +
-----
-https://FQDN_or_Admin_Node_IP/?accountId=20-digit-account-id/
-----
+`https://_FQDN_or_Admin_Node_IP_/?accountId=_20-digit-account-id_/`
++
 
-  *** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
-  *** 20-digit-account-id is the tenant's unique account ID
+  *** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+  *** `_20-digit-account-id_` is the tenant's unique account ID
 
 a|
-*A restricted port*
+A restricted port
 a|
 
  ** From the Grid Manager, select *Tenants*, and click *Restricted*.
  ** Enter the tenant's URL in a web browser:
 +
-----
-https://FQDN_or_Admin_Node_IP:port/?accountId=20-digit-account-id
-----
+`https://_FQDN_or_Admin_Node_IP:port_/?accountId=_20-digit-account-id_`
++
 
-  *** `FQDN_or_Admin_Node_IP` is a fully qualified domain name or the IP address of an Admin Node
-  *** port is the tenant-only restricted port
-  *** 20-digit-account-id is the tenant's unique account ID
+  *** `_FQDN_or_Admin_Node_IP_` is a fully qualified domain name or the IP address of an Admin Node
+  *** `_port_` is the tenant-only restricted port
+  *** `_20-digit-account-id_` is the tenant's unique account ID
 
 +
 |===
 
-*Related information*
+.Related information
 
 xref:controlling_access_through_firewalls.adoc[Controlling access through firewalls]
 

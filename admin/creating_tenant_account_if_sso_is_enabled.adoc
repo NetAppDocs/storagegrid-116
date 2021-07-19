@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating_tenant_account_if_sso_is_enabled.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on \(SSO\) is enabled for StorageGRID, you also specify which federated group has Root Access permission to configure the tenant account.'
 ---
 = Creating a tenant account if SSO is enabled
@@ -10,6 +10,8 @@ summary: 'When you create a tenant account, you specify a name, a client protoco
 
 [.lead]
 When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on (SSO) is enabled for StorageGRID, you also specify which federated group has Root Access permission to configure the tenant account.
+
+.Steps
 
 . In the *Display Name* text box, enter a display name for this tenant account.
 +
@@ -40,11 +42,11 @@ NOTE: If you have adequate permissions, the existing federated groups from the G
 +
 The tenant account is created. The Tenant Accounts page appears, and it includes a row for the new tenant.
 
-. If you are a user in the Root Access group, optionally click the *Sign in* link for the new tenant to immediately access the Tenant Manager, where you can configure the tenant. Otherwise, provide the URL for the *Sign in* link to the tenant account's administrator. (The URL for a tenant is the fully qualified domain name or IP address of any Admin Node, followed by /?accountId=20-digit-account-id.)
+. If you are a user in the Root Access group, optionally click the *Sign in* link for the new tenant to immediately access the Tenant Manager, where you can configure the tenant. Otherwise, provide the URL for the *Sign in* link to the tenant account's administrator. (The URL for a tenant is the fully qualified domain name or IP address of any Admin Node, followed by `/?accountId=_20-digit-account-id_`.)
 +
 NOTE: An access denied message is displayed if you click *Sign in*, but you do not belong to the Root Access group for the tenant account.
 
-*Related information*
+.Related information
 
 xref:configuring_sso.adoc[Configuring single sign-on]
 

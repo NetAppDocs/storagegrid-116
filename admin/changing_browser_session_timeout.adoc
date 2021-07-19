@@ -1,7 +1,7 @@
 ---
 permalink: admin/changing_browser_session_timeout.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can control whether Grid Manager and Tenant Manager users are signed out if they are inactive for more than a certain amount of time.'
 ---
 = Changing the browser session timeout
@@ -11,8 +11,12 @@ summary: 'You can control whether Grid Manager and Tenant Manager users are sign
 [.lead]
 You can control whether Grid Manager and Tenant Manager users are signed out if they are inactive for more than a certain amount of time.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
+
+.About this task
 
 The GUI Inactivity Timeout defaults to 900 seconds (15 minutes). If a user's browser session is not active for this amount of time, the session times out.
 
@@ -20,11 +24,15 @@ As required, you can increase or decrease the timeout period by setting the GUI 
 
 If single sign-on (SSO) is enabled and a user's browser session times out, the system behaves as if the user clicked *Sign Out* manually. The user must reenter their SSO credentials to access StorageGRID again.
 
-NOTE: User session timeout can also be controlled by the following:
+[NOTE]
+====
+User session timeout can also be controlled by the following:
 
 * A separate, non-configurable StorageGRID timer, which is included for system security. By default, each user's authentication token expires 16 hours after the user signs in. When a user's authentication expires, that user is automatically signed out, even if the value for the GUI Inactivity Timeout has not been reached. To renew the token, the user must sign back in.
 * Timeout settings for the identity provider, assuming SSO is enabled for StorageGRID.
+====
 
+.Steps
 . Select *Configuration* > *System Settings* > *Display Options*.
 . For *GUI Inactivity Timeout*, enter a timeout period of 60 seconds or more.
 +
@@ -36,8 +44,8 @@ image::../media/configuration_display_options.gif[Display Options page]
 +
 The new setting does not affect currently signed in users. Users must sign in again or refresh their browsers for the new timeout setting to take effect.
 
-*Related information*
+.Related information
 
-link:how_sso_works.md#[Signing out when SSO is enabled]
+xref:how_sso_works.adoc[How single sign-on works]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]

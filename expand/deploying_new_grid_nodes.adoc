@@ -1,7 +1,7 @@
 ---
 permalink: expand/deploying_new_grid_nodes.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Deploying new grid nodes
@@ -15,8 +15,9 @@ When you expand the grid, the nodes you add do not have to match the existing no
 
 == VMware: Deploying grid nodes
 
-[.lead]
 You must deploy a virtual machine in VMware vSphere for each VMware node you want to add in the expansion.
+
+.Steps
 
 . Deploy the new grid node as a virtual machine and connect it to one or more StorageGRID networks.
 +
@@ -30,8 +31,9 @@ xref:performing_expansion.adoc[Performing the expansion]
 
 == Linux: Deploying grid nodes
 
-[.lead]
 You can deploy grid nodes on new Linux hosts or on existing Linux hosts. If you need additional Linux hosts to support the CPU, RAM, and storage requirements of the StorageGRID nodes you want to add to your grid, you prepare them in the same way you prepared the hosts when you first installed them. Then, you deploy the expansion nodes in the same way you deployed grid nodes during installation.
+
+.What you'll need
 
 * You have the instructions for installing StorageGRID for your version of Linux, and you have reviewed the hardware and storage requirements.
 * If you plan to deploy new grid nodes on existing hosts, you have confirmed the existing hosts have enough CPU, RAM, and storage capacity for the additional nodes.
@@ -43,11 +45,15 @@ IMPORTANT: In a production deployment, do not run more than one Storage Node on 
 +
 IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
 
+.Steps
+
 . If you are adding new hosts, access the installation instructions for deploying StorageGRID nodes.
 . To deploy the new hosts, follow the instructions for preparing the hosts.
 . To create node configuration files and to validate the StorageGRID configuration, follow the instructions for deploying grid nodes.
 . If you are adding nodes to a new Linux host, start the StorageGRID host service.
 . If you are adding nodes to an existing Linux host, start the new nodes using the storagegrid host service CLI:``sudo storagegrid node start [<node name\>]``
+
+.After you finish
 
 After deploying all new grid nodes, you can perform the expansion.
 
@@ -61,8 +67,9 @@ xref:performing_expansion.adoc[Performing the expansion]
 
 == Appliances: Deploying Storage, Gateway, or non-primary Admin Nodes
 
-[.lead]
 To install the StorageGRID software on an appliance node, you use the StorageGRID Appliance Installer, which is included on the appliance. In an expansion, each storage appliance functions as a single Storage Node, and each services appliance functions as a single Gateway Node or non-primary Admin Node. Any appliance can connect to the Grid Network, the Admin Network, and the Client Network.
+
+.What you'll need
 
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * You have used the StorageGRID Appliance Installer to complete all of the "`configuring the hardware`" steps in the appliance installation and maintenance instructions.
@@ -71,15 +78,17 @@ Configuring appliance hardware includes the required steps for configuring Stora
 
 * All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
 * The StorageGRID Appliance Installer version on the replacement appliance matches the software version of your StorageGRID system. (If the versions do not match, you must upgrade the StorageGRID Appliance Installer firmware.)
-
++
 For instructions, see the appliance installation and maintenance instructions.
-
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
-* http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
++
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg1000/home.html[SG100 and SG1000 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-app-install/home.html[SG5600 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg5700/home.html[SG5700 appliance installation and maintenance]
+** http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sga-install-sg6000/home.html[SG6000 appliance installation and maintenance]
 * You have a service laptop with a supported web browser.
 * You know one of the IP addresses assigned to the appliance's compute controller. You can use the IP address for any attached StorageGRID network.
+
+.About this task
 
 The process of installing StorageGRID on an appliance node has the following phases:
 
@@ -88,20 +97,24 @@ The process of installing StorageGRID on an appliance node has the following pha
 +
 Partway through appliance installation tasks, the installation pauses. To resume the installation, you sign into the Grid Manager, approve all grid nodes, and complete the StorageGRID installation process.
 +
-NOTE: If you need to deploy multiple appliance nodes at one time, you can automate the installation process by using the configure-sga.py Appliance Installation Script.
+NOTE: If you need to deploy multiple appliance nodes at one time, you can automate the installation process by using the `configure-sga.py` Appliance Installation Script.
+
+.Steps
 
 . Open a browser, and enter one of the IP addresses for the appliance's compute controller.
 +
-`+https://Controller_IP:8443+`
+`https://_Controller_IP_:8443`
 +
 The StorageGRID Appliance Installer Home page appears.
 
-. In the Primary Admin Node connection section, determine whether you need to specify the IP address for the primary Admin Node.
+. In the *Primary Admin Node* connection section, determine whether you need to specify the IP address for the primary Admin Node.
 +
 If you have previously installed other nodes in this data center, the StorageGRID Appliance Installer can discover this IP address automatically, assuming the primary Admin Node, or at least one other grid node with ADMIN_IP configured, is present on the same subnet.
 
 . If this IP address is not shown or you need to change it, specify the address:
 +
+[cols="1a,2a" options="header"]
+
 |===
 | Option| Description
 a|
@@ -130,7 +143,7 @@ a|
 +
 The node name is assigned to this appliance node in the StorageGRID system. It is shown on the Nodes page (Overview tab) in the Grid Manager. If required, you can change the name when you approve the node.
 
-. In the Installation section, confirm that the current state is "`Ready to start installation of node name into grid with primary Admin Node admin_ip`" and that the *Start Installation* button is enabled.
+. In the *Installation* section, confirm that the current state is "`Ready to start installation of _node name_ into grid with primary Admin Node _admin_ip_`" and that the *Start Installation* button is enabled.
 +
 If the *Start Installation* button is not enabled, you might need to change the network configuration or port settings. For instructions, see the installation and maintenance instructions for your appliance.
 
@@ -155,14 +168,15 @@ The blue status bar indicates which task is currently in progress. Green status 
 NOTE: The installer ensures that tasks completed in a previous install are not re-run. If you are re-running an installation, any tasks that do not need to be re-run are shown with a green status bar and a status of "`Skipped.`"
 
 . Review the progress of first two installation stages.
- ** *1. Configure appliance*
++
+*1. Configure appliance*
 +
 During this stage, one of the following processes occurs:
-
-  *** For a storage appliance, the installer connects to the storage controller, clears any existing configuration, communicates with SANtricity software to configure volumes, and configures host settings.
-  *** For a services appliance, the installer clears any existing configuration from the drives in the compute controller, and configures host settings.
-
- ** *2. Install OS*
++
+  * For a storage appliance, the installer connects to the storage controller, clears any existing configuration, communicates with SANtricity software to configure volumes, and configures host settings.
+  * For a services appliance, the installer clears any existing configuration from the drives in the compute controller, and configures host settings.
++
+*2. Install OS*
 +
 During this stage, the installer copies the base operating system image for StorageGRID to the appliance.
 . Continue monitoring the installation progress until a message appears in the console window, prompting you to use the Grid Manager to approve the node.

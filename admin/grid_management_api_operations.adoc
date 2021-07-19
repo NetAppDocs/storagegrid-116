@@ -1,7 +1,7 @@
 ---
 permalink: admin/grid_management_api_operations.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The Grid Management API organizes the available API operations into the following sections.'
 ---
 = Grid Management API operations
@@ -21,7 +21,7 @@ The Grid Management API organizes the available API operations into the followin
 * *audit* -- Operations to list and update the audit configuration.
 * *auth* -- Operations to perform user session authentication.
 +
-The Grid Management API supports the Bearer Token Authentication Scheme. To sign in, you provide a username and password in the JSON body of the authentication request (that is, `POST /api/v3/authorize`). If the user is successfully authenticated, a security token is returned. This token must be provided in the header of subsequent API requests ("Authorization: Bearer token").
+The Grid Management API supports the Bearer Token Authentication Scheme. To sign in, you provide a username and password in the JSON body of the authentication request (that is, `POST /api/v3/authorize`). If the user is successfully authenticated, a security token is returned. This token must be provided in the header of subsequent API requests ("Authorization: Bearer _token_").
 +
 NOTE: If single sign-on is enabled for the StorageGRID system, you must perform different steps to authenticate. See "`Authenticating in to the API if single sign-on is enabled.`"
 +

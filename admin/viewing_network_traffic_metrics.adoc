@@ -1,7 +1,7 @@
 ---
 permalink: admin/viewing_network_traffic_metrics.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can monitor network traffic by viewing the graphs that are available from the Traffic Classification Policies page.'
 ---
 = Viewing network traffic metrics
@@ -11,12 +11,18 @@ summary: 'You can monitor network traffic by viewing the graphs that are availab
 [.lead]
 You can monitor network traffic by viewing the graphs that are available from the Traffic Classification Policies page.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission.
+
+.About this task
 
 For any existing traffic classification policy, you can view metrics for the Load Balancer service to determine if the policy is successfully limiting traffic across the network. The data in the graphs can help you determine if you need adjust the policy.
 
 Even if no limits are set for a traffic classification policy, metrics are collected and the graphs provide useful information for understanding traffic trends.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Traffic Classification*.
 +
@@ -55,14 +61,14 @@ image::../media/traffic_classification_policy_heatmap_closeup.png[Traffic Bar Gr
 +
 The graphs for the selected policy appear.
 
-. Alternatively, access the graphs from the Support menu.
+. Alternatively, access the graphs from the *Support* menu.
  .. Select *Support* > *Tools* > *Metrics*.
- .. In the Grafana section of the page, select Traffic Classification Policy.
+ .. In the *Grafana* section of the page, select *Traffic Classification Policy*.
  .. Select the policy from the pull-down on the upper left of the page.
 +
 Traffic classification policies are identified by their ID. Policy IDs are listed on the Traffic Classification Policies page.
 . Analyze the graphs to determine how often the policy is limiting traffic and whether you need to adjust the policy.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]

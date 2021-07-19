@@ -1,7 +1,7 @@
 ---
 permalink: ilm/example_3_ilm_rules_and_policy_for_better_protection_for_image_files.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Example 3: ILM rules and policy for better protection for image files
@@ -11,15 +11,14 @@ summary: ''
 [.lead]
 You can use the following example rules and policy to ensure that images larger than 200 KB are erasure coded and that three copies are made of smaller images.
 
-CAUTION:
-
-The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
+CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
 == ILM rule 1 for example 3: Use EC for image files larger than 200 KB
 
-[.lead]
+
 This example ILM rule uses advanced filtering to erasure code all image files larger than 200 KB.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -51,9 +50,9 @@ image::../media/policy_2_rule_1_ec_objects_placements.png[ILM rule 1 for example
 
 == ILM rule 2 for example 3: Replicate 3 copies for all remaining image files
 
-[.lead]
 This example ILM rule uses advanced filtering to specify that image files be replicated.
 
+[cols="1a,2a" options="header"]
 |===
 | Rule definition| Example value
 a|
@@ -81,7 +80,6 @@ image::../media/policy_3_rule_2_copies_for_images_placements.png[ILM rule 2 for 
 
 == ILM policy for example 3: Better protection for image files
 
-[.lead]
 In this example, the ILM policy uses three ILM rules to create a policy that erasure codes image files larger than 200 KB (0.2 MB), creates replicated copies for image files 200 KB or smaller, and makes two replicated copies for any non-image files.
 
 This example ILM policy includes rules that perform the following:

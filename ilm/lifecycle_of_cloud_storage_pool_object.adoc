@@ -1,7 +1,7 @@
 ---
 permalink: ilm/lifecycle_of_cloud_storage_pool_object.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Lifecycle of a Cloud Storage Pool object
@@ -11,15 +11,14 @@ summary: ''
 [.lead]
 Before implementing Cloud Storage Pools, review the lifecycle of objects that are stored in each type of Cloud Storage Pool.
 
-*Related information*
+.Related information
 
-link:lifecycle_of_cloud_storage_pool_object.md#[S3: Lifecycle of a Cloud Storage Pool object]
+<<S3: Lifecycle of a Cloud Storage Pool object>>
 
-link:lifecycle_of_cloud_storage_pool_object.md#[Azure: Lifecycle of a Cloud Storage Pool object]
+<<Azure: Lifecycle of a Cloud Storage Pool object>>]
 
 == S3: Lifecycle of a Cloud Storage Pool object
 
-[.lead]
 The figure shows the lifecycle stages of an object that is stored in an S3 Cloud Storage Pool.
 
 NOTE: In the figure and explanations, "`Glacier`" refers to both the Glacier storage class and the Glacier Deep Archive storage class, with one exception: the Glacier Deep Archive storage class does not support the Expedited restore tier. Only Bulk or Standard retrieval is supported.
@@ -51,13 +50,13 @@ NOTE: If one or more copies of the object also exist on Storage Nodes within Sto
 +
 Once an object has been restored, the client application can issue a GET Object request to retrieve the restored object.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-s3/home.html[Implementing S3 client applications]
 
 == Azure: Lifecycle of a Cloud Storage Pool object
 
-[.lead]
+
 The figure shows the lifecycle stages of an object that is stored in an Azure Cloud Storage Pool.
 
 image::../media/cloud_storage_pool_object_life_cycle_azure.png[Lifecycle of an Azure Cloud Storage Pool object]

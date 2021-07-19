@@ -1,7 +1,7 @@
 ---
 permalink: admin/sending_eseries_autosupport_messages_through_storagegrid.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can send E-Series SANtricity System Manager AutoSupport messages to technical support through a StorageGRID Admin Node rather than the storage appliance’s management port.'
 ---
 = Sending E-Series AutoSupport messages through StorageGRID
@@ -11,10 +11,13 @@ summary: 'You can send E-Series SANtricity System Manager AutoSupport messages t
 [.lead]
 You can send E-Series SANtricity System Manager AutoSupport messages to technical support through a StorageGRID Admin Node rather than the storage appliance's management port.
 
+.What you'll need
 * You are signed into the Grid Manager using a supported web browser.
 * You have the Storage Appliance Administrator permission or Root Access permission.
 
 NOTE: You must have SANtricity firmware 8.70 or higher to access SANtricity System Manager using the Grid Manager.
+
+.About this task
 
 E-Series AutoSupport messages contain details of the storage hardware and are more specific than other AutoSupport messages sent by the StorageGRID system.
 
@@ -24,11 +27,15 @@ If you want to configure the Admin proxy server in Grid Manager, see the instruc
 
 xref:configuring_admin_proxy_settings.adoc[Configuring Admin proxy settings]
 
-NOTE: This procedure is only for configuring a StorageGRID proxy server for E-Series AutoSupport messages. For additional details on E-Series AutoSupport configuration information, see the E-Series documentation center.
+[NOTE]
+====
+This procedure is only for configuring a StorageGRID proxy server for E-Series AutoSupport messages. For additional details on E-Series AutoSupport configuration information, see the E-Series documentation center.
 
-http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Center]
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Center^]
+====
 
-. In the Grid Manager, selectNodes.
+.Steps
+. In the Grid Manager, select *Nodes*.
 . From the list of nodes on the left, select the storage appliance node you want to configure.
 . Select *SANtricity System Manager*.
 +
@@ -38,7 +45,9 @@ image::../media/autosupport_santricity_home_page.png[AutoSupport SANtricity home
 
 . Select *Support* > *Support center* > *AutoSupport*.
 +
-The AutoSupport operations page appears.image:../media/autosupport_santricity_operations.png[AutoSupport SANtricity AutoSupport operations]
+The AutoSupport operations page appears.
++
+image:../media/autosupport_santricity_operations.png[AutoSupport SANtricity AutoSupport operations]
 
 . Select *Configure AutoSupport Delivery Method*.
 +
@@ -46,20 +55,20 @@ The Configure AutoSupport Delivery Method page appears.
 +
 image::../media/autosupport_configure_delivery_santricity.png[AutoSupport configure AutoSupport delivery method SANtricity]
 
-. Select HTTPS for the delivery method.
+. Select *HTTPS* for the delivery method.
 +
 NOTE: The certificate that enables the HTTPS protocol is pre-installed.
 
-. Select via Proxy server.
-. Enter tunnel-host for the Host address.
+. Select *via Proxy server*.
+. Enter `tunnel-host` for the *Host address*.
 +
-tunnel-host is the special address to use an Admin Node to send E-Series AutoSupport messages.
+`tunnel-host` is the special address to use an Admin Node to send E-Series AutoSupport messages.
 
-. Enter 10225 for the Port number.
+. Enter `10225` for the *Port number*.
 +
-10225 is the port number on the StorageGRID proxy server that receives AutoSupport messages from the E-Series controller in the appliance.
+`10225` is the port number on the StorageGRID proxy server that receives AutoSupport messages from the E-Series controller in the appliance.
 
-. Select Test Configuration to test the routing and configuration of your AutoSupport proxy server.
+. Select *Test Configuration* to test the routing and configuration of your AutoSupport proxy server.
 +
 If correct, a message in a green banner appears: "`Your AutoSupport configuration has been verified.`"
 +

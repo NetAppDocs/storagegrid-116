@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/checking_systems_condition_before_upgrading_software.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before upgrading a StorageGRID system, you must verify the system is ready to accommodate the upgrade. You must ensure that the system is running normally and that all grid nodes are operational.'
 ---
 = Checking the system's condition before upgrading software
@@ -11,6 +11,7 @@ summary: 'Before upgrading a StorageGRID system, you must verify the system is r
 [.lead]
 Before upgrading a StorageGRID system, you must verify the system is ready to accommodate the upgrade. You must ensure that the system is running normally and that all grid nodes are operational.
 
+.Steps
 . Sign in to the Grid Manager using a supported browser.
 . Check for and resolve any active alerts.
 +
@@ -18,7 +19,7 @@ For information about specific alerts, see the monitoring and troubleshooting in
 
 . Confirm that no conflicting grid tasks are active or pending.
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *site* > *primary Admin Node* > *CMN* > *Grid Tasks* > *Configuration*.
+ .. Select *_site_* > *_primary Admin Node_* > *CMN* > *Grid Tasks* > *Configuration*.
 +
 Information lifecycle management evaluation (ILME) tasks are the only grid tasks that can run concurrently with the software upgrade.
 
@@ -29,7 +30,7 @@ NOTE: Contact technical support if a task does not finish or release its lock.
 +
 IMPORTANT: If you have opened any custom firewall ports, you are notified during the upgrade precheck. You must contact technical support before proceeding with the upgrade.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]
 

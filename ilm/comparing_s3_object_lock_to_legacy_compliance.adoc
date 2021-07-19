@@ -1,7 +1,7 @@
 ---
 permalink: ilm/comparing_s3_object_lock_to_legacy_compliance.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Comparing S3 Object Lock to legacy Compliance
@@ -19,10 +19,11 @@ If you previously enabled the global Compliance setting, the new global S3 Objec
 * Placing a legal hold on an existing bucket that has legacy Compliance enabled.
 * Lifting a legal hold.
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5^]
 
 If you used the legacy Compliance feature in a previous version of StorageGRID, refer to the following table to learn how it compares to the S3 Object Lock feature in StorageGRID.
 
+[cols="1a,1a,1a" options="header"]
 |===
 |  | S3 Object Lock (new)| Compliance (legacy)
 a|
@@ -30,7 +31,9 @@ How is the feature enabled globally?
 a|
 From the Grid Manager, select *Configuration* > *System Settings* > *S3 Object Lock*.
 a|
-No longer supported.*Note:* If you previously enabled the global Compliance setting,the global S3 Object Lock setting will be enabled automatically when you upgrade to StorageGRID 11.5.
+No longer supported.
+
+*Note:* If you previously enabled the global Compliance setting,the global S3 Object Lock setting will be enabled automatically when you upgrade to StorageGRID 11.5.
 
 a|
 How is the feature enabled for a bucket?

@@ -11,14 +11,20 @@ summary: 'For S3 clients that perform strict hostname validation and do not supp
 [.lead]
 For S3 clients that perform strict hostname validation and do not support disabling strict hostname validation, such as ONTAP clients using FabricPool, you can generate or upload a server certificate when you configure the load balancer endpoint.
 
+.What you'll need
+
 * You must have specific access permissions.
 * You must be signed in to the Grid Manager using a supported browser.
+
+.About this task
 
 When you create a load balancer endpoint, you can generate a self-signed server certificate or upload a certificate that is signed by a known Certificate Authority (CA). In production environments, you should use a certificate that is signed by a known CA. Certificates signed by a CA can be rotated non-disruptively. They are also more secure because they provide better protection against man-in-the-middle attacks.
 
 The following steps provide general guidelines for S3 clients that use FabricPool. For more detailed information and procedures, see the instructions for configuring StorageGRID for FabricPool.
 
 NOTE: The separate Connection Load Balancer (CLB) service on Gateway Nodes is deprecated and no longer recommended for use with FabricPool.
+
+.Steps
 
 . Optionally, configure a high availability (HA) group for FabricPool to use.
 . Create an S3 load balancer endpoint for FabricPool to use.
@@ -31,6 +37,6 @@ Specify the load balancer endpoint port and the fully qualified domain name used
 +
 NOTE: If an intermediate CA issued the StorageGRID certificate, you must provide the intermediate CA certificate. If the StorageGRID certificate was issued directly by the Root CA, you must provide the Root CA certificate.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-fabric/home.html[Configuring StorageGRID for FabricPool]

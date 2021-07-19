@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring_connections_to_tsm_middleware.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Before the Archive Node can communicate with Tivoli Storage Manager \(TSM\) middleware, you must configure a number of settings.'
 ---
 = Configuring connections to TSM middleware
@@ -11,19 +11,25 @@ summary: 'Before the Archive Node can communicate with Tivoli Storage Manager \(
 [.lead]
 Before the Archive Node can communicate with Tivoli Storage Manager (TSM) middleware, you must configure a number of settings.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have specific access permissions.
 
+.About this task
+
 Until these settings are configured, the ARC service remains in a Major alarm state as it is unable to communicate with the Tivoli Storage Manager.
 
+.Steps
+
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *Archive Node* > *ARC* > *Target*.
+. Select *_Archive Node_* > *ARC* > *Target*.
 . Select *Configuration* > *Main*.
 +
 image::../media/configuring_tsm_middleware.gif[Target TSM Account]
 
-. From the Target Type drop-down list, select *Tivoli Storage Manager (TSM)*.
-. For the Tivoli Storage Manager State, select *Offline* to prevent retrievals from the TSM middleware server.
+. From the *Target Type* drop-down list, select *Tivoli Storage Manager (TSM)*.
+. For the *Tivoli Storage Manager State*, select *Offline* to prevent retrievals from the TSM middleware server.
 +
 By default, the Tivoli Storage Manager State is set to Online, which means that the Archive Node is able to retrieve object data from the TSM middleware server.
 
