@@ -109,7 +109,7 @@ Client applications can issue `OPTIONS /` requests to the S3 port on a Storage N
 |===
 .Related information
 
-link:storagegrid_s3_rest_api_operations.md#[GET Storage Usage request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Storage Usage request]
 
 == Operations on buckets
 
@@ -120,7 +120,7 @@ Bucket name restrictions follow the AWS US Standard region restrictions, but you
 
 https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html[Amazon Web Services (AWS) Documentation: Bucket Restrictions and Limitations]
 
-link:configuring_tenant_accounts_and_connections.md#[Endpoint domain names for S3 request]
+xref:configuring_tenant_accounts_and_connections.adoc[Endpoint domain names for S3 request]
 
 The GET Bucket (List Objects) and GET Bucket versions operations support StorageGRID consistency controls.
 
@@ -217,7 +217,7 @@ This implementation uses the `versioning` subresource to return the versioning s
 a|
 GET Object Lock Configuration
 a|
-This operation determines if S3 Object Lock is enabled for a bucket. link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+This operation determines if S3 Object Lock is enabled for a bucket. xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 a|
 HEAD Bucket
@@ -243,7 +243,7 @@ This operation creates a new bucket. By creating the bucket, you become the buck
 +
 You must enable S3 Object Lock when you create the bucket. You cannot add or disable S3 Object Lock after a bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
 +
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 a|
 PUT Bucket cors
@@ -355,11 +355,11 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html[Amazon Web Services (AWS
 
 xref:consistency_controls.adoc[Consistency controls]
 
-link:storagegrid_s3_rest_api_operations.md#[GET Bucket last access time request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket last access time request]
 
-link:bucket_and_group_access_policies.md#[Bucket and group access policies]
+xref:bucket_and_group_access_policies.adoc[Bucket and group access policies]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -521,7 +521,7 @@ The success response includes the object's metadata and indicates that the objec
 
 .Related information
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
@@ -540,61 +540,61 @@ GET Bucket consistency
 a|
 Returns the consistency level being applied to a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[GET Bucket consistency request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket consistency request]
 a|
 PUT Bucket consistency
 a|
 Sets the consistency level applied to a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[PUT Bucket consistency request]
+xref:storagegrid_s3_rest_api_operations.adoc[PUT Bucket consistency request]
 a|
 GET Bucket last access time
 a|
 Returns whether last access time updates are enabled or disabled for a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[GET Bucket last access time request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket last access time request]
 a|
 PUT Bucket last access time
 a|
 Allows you to enable or disable last access time updates for a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[PUT Bucket last access time request]
+xref:storagegrid_s3_rest_api_operations.adoc[PUT Bucket last access time request]
 a|
 DELETE Bucket metadata notification configuration
 a|
 Deletes the metadata notification configuration XML associated with a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[DELETE Bucket metadata notification configuration request]
+xref:storagegrid_s3_rest_api_operations.adoc[DELETE Bucket metadata notification configuration request]
 a|
 GET Bucket metadata notification configuration
 a|
 Returns the metadata notification configuration XML associated with a particular bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[GET Bucket metadata notification configuration request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket metadata notification configuration request]
 a|
 PUT Bucket metadata notification configuration
 a|
 Configures the metadata notification service for a bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[PUT Bucket metadata notification configuration request]
+xref:storagegrid_s3_rest_api_operations.adoc[PUT Bucket metadata notification configuration request]
 a|
 PUT Bucket modifications for compliance
 a|
 Deprecated and not supported: You can no longer create new buckets with Compliance enabled.
 a|
-link:storagegrid_s3_rest_api_operations.md#[Deprecated: PUT Bucket request modifications for compliance]
+xref:storagegrid_s3_rest_api_operations.adoc[Deprecated: PUT Bucket request modifications for compliance]
 a|
 GET Bucket compliance
 a|
 Deprecated but supported: Returns the compliance settings currently in effect for an existing legacy Compliant bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[Deprecated: GET Bucket compliance request]
+xref:storagegrid_s3_rest_api_operations.adoc[Deprecated: GET Bucket compliance request]
 a|
 PUT Bucket compliance
 a|
 Deprecated but supported: Allows you to modify the compliance settings for an existing legacy Compliant bucket.
 a|
-link:storagegrid_s3_rest_api_operations.md#[Deprecated: PUT Bucket compliance request]
+xref:storagegrid_s3_rest_api_operations.adoc[Deprecated: PUT Bucket compliance request]
 |===
 .Related information
 
@@ -656,7 +656,7 @@ If the `versionId` query parameter is not specified in the request, the operatio
 a|
 GET Object
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[GET Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[GET Object]
 
 a|
 GET Object ACL
@@ -666,11 +666,11 @@ If the necessary access credentials are provided for the account, the operation 
 a|
 GET Object legal hold
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 a|
 GET Object retention
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 a|
 GET Object tagging
 a|
@@ -683,31 +683,31 @@ If the `versionId` query parameter is not specified in the request, the operatio
 a|
 HEAD Object
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[HEAD Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
 a|
 POST Object restore
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[POST Object restore]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
 a|
 PUT Object
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
 a|
 PUT Object - Copy
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object - Copy]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object - Copy]
 
 a|
 PUT Object legal hold
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 a|
 PUT Object retention
 a|
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 a|
 PUT Object tagging
 a|
@@ -753,7 +753,7 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[U
 
 * Create the bucket using a PUT Bucket request with the x-amz-bucket-object-lock_enabled request header.
 +
-link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
 You cannot add or disable S3 Object Lock after the bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
 
@@ -763,7 +763,7 @@ A bucket with S3 Object Lock enabled can contain a combination of objects with a
 
 To determine if S3 Object Lock is enabled, use the GET Object Lock Configuration request.
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
 ==== Creating an object with S3 Object Lock settings
 
@@ -809,11 +809,11 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing o
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object - Copy]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object - Copy]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Initiate Multipart Upload]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Initiate Multipart Upload]
 
 xref:object_versioning.adoc[Object versioning]
 
@@ -896,19 +896,19 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 .Related information
 
-link:s3_rest_api_supported_operations_and_limitations.md#[GET Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[GET Object]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[HEAD Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object - Copy]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object - Copy]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Initiate Multipart Upload]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Initiate Multipart Upload]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Upload Part]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Upload Part - Copy]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part - Copy]
 
 https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html[Amazon S3 Developer Guide: Protecting Data Using Server-Side Encryption with Customer-Provided Encryption Keys (SSE-C)]
 
@@ -1010,13 +1010,13 @@ In these cases:
 
 .Related information
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[HEAD Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[POST Object restore]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -1130,11 +1130,11 @@ If a `versionId` subresource is not specified, the operation fetches the most re
 
 .Related information
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[POST Object restore]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -1201,7 +1201,7 @@ a|
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[HEAD Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
@@ -1284,13 +1284,13 @@ NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Referen
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-server-side-encryption`
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
-link:s3_rest_api_supported_operations_and_limitations.md#SSE[s3_rest_api_supported_operations_and_limitations.md#SSE]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
 
 ==== Unsupported request headers
 
@@ -1351,13 +1351,13 @@ If versioning is suspended, the object version is stored with a null `versionId`
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-link:configuring_tenant_accounts_and_connections.md#[How client connections can be configured]
+xref:configuring_tenant_accounts_and_connections.adoc[How client connections can be configured]
 
 === PUT Object - Copy
 
@@ -1405,7 +1405,7 @@ You can specify `REPLACE` to overwrite the existing tags when copying the object
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`
  ** `x-amz-copy-source​-server-side-encryption-customer-key`
@@ -1414,7 +1414,7 @@ link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
-link:s3_rest_api_supported_operations_and_limitations.md#SSE[Request headers for server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Request headers for server-side encryption]
 
 ==== Unsupported request headers
 
@@ -1480,11 +1480,11 @@ If the source bucket is versioned, you can use the `x-amz-copy-source` header to
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
 == Operations for multipart uploads
 
@@ -1511,23 +1511,23 @@ The following conditions and notes apply to all multipart upload operations:
 a|
 List Multipart Uploads
 a|
-See link:s3_rest_api_supported_operations_and_limitations.md#[List Multipart Uploads]
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[List Multipart Uploads]
 a|
 Initiate Multipart Upload
 a|
-See link:s3_rest_api_supported_operations_and_limitations.md#[Initiate Multipart Upload]
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Initiate Multipart Upload]
 a|
 Upload Part
 a|
-See link:s3_rest_api_supported_operations_and_limitations.md#[Upload Part]
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part]
 a|
 Upload Part - Copy
 a|
-See link:s3_rest_api_supported_operations_and_limitations.md#[Upload Part - Copy]
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part - Copy]
 a|
 Complete Multipart Upload
 a|
-See link:s3_rest_api_supported_operations_and_limitations.md#[Complete Multipart Upload]
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Complete Multipart Upload]
 a|
 Abort Multipart Upload
 a|
@@ -1543,7 +1543,7 @@ Implemented with all Amazon S3 REST API behavior
 
 xref:consistency_controls.adoc[Consistency controls]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
 === List Multipart Uploads
 
@@ -1619,13 +1619,13 @@ NOTE: Adding `creation-time` as user-defined metadata is not allowed if you are 
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
-link:s3_rest_api_supported_operations_and_limitations.md#[Using S3 Object Lock]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-server-side-encryption`
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
-link:s3_rest_api_supported_operations_and_limitations.md#SSE[s3_rest_api_supported_operations_and_limitations.md#SSE]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
 
 NOTE: For information on how StorageGRID handles UTF-8 characters, see the documentation for PUT Object.
 
@@ -1656,9 +1656,9 @@ Multipart upload consists of separate operations for initiating the upload, list
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-link:s3_rest_api_supported_operations_and_limitations.md#[PUT Object]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
 === Upload Part
 
@@ -1688,7 +1688,7 @@ Multipart upload consists of separate operations for initiating the upload, list
 
 .Related information
 
-link:s3_rest_api_supported_operations_and_limitations.md#[Using server-side encryption]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
 === Upload Part - Copy
 

@@ -92,7 +92,7 @@ ls '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6'
 NOTE: Always enclose the object file path in single quotes in commands to escape any special characters.
 
   *** If the object path is not found, the object is lost and cannot be restored using this procedure. Contact technical support.
-  *** If the object path is found, continue with step link:troubleshooting_storagegrid_system.md#STEP_RESTORE[troubleshooting_storagegrid_system.md#STEP_RESTORE]. You can attempt to restore the found object back to StorageGRID.
+  *** If the object path is found, continue with step xref:troubleshooting_storagegrid_system.adocSTEP_RESTORE[troubleshooting_storagegrid_system.adocSTEP_RESTORE]. You can attempt to restore the found object back to StorageGRID.
 . If the object path was found, attempt to restore the object to StorageGRID:
  .. From the same Storage Node, change the ownership of the object file so that it can be managed by StorageGRID. Enter: `chown ldr-user:bycast 'file_path_of_object'`
  .. Telnet to localhost 1402 to access the LDR console. Enter: `telnet 0 1402`
@@ -120,7 +120,7 @@ First packet of file was valid. Extracted key: 38186FE53E3C49A5
 Renamed '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6' to '/var/local/rangedb/1/p/17/11/00rH0%DkRt78Ila#3udu'
 ----
 +
-Continue with step link:troubleshooting_storagegrid_system.md#STEP_VERIFY[troubleshooting_storagegrid_system.md#STEP_VERIFY].
+Continue with step xref:troubleshooting_storagegrid_system.adocSTEP_VERIFY[troubleshooting_storagegrid_system.adocSTEP_VERIFY].
 . If the object was successfully restored to StorageGRID, verify that new locations were created.
  .. Enter: `cd /proc/OBRP`
  .. Enter: `ObjectByUUID UUID_value`
@@ -220,10 +220,10 @@ If present, the value of CLDI in LOCS is the node ID and the volume ID where an 
 
 .Related information
 
-link:troubleshooting_storagegrid_system.md#[Investigating lost objects]
+xref:troubleshooting_storagegrid_system.adoc[Investigating lost objects]
 
-link:troubleshooting_storagegrid_system.md#[Confirming object data locations]
+xref:troubleshooting_storagegrid_system.adoc[Confirming object data locations]
 
-link:troubleshooting_storagegrid_system.md#[Resetting lost and missing object counts]
+xref:troubleshooting_storagegrid_system.adoc[Resetting lost and missing object counts]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-audit/home.html[Understanding audit messages]
