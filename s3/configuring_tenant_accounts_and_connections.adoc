@@ -100,6 +100,7 @@ a|
 HA group
 a|
 CLB
+
 **Note:** The CLB service is deprecated.
 
 a|
@@ -134,10 +135,12 @@ a|
 Gateway Node
 a|
 CLB
+
 **Note:** The CLB service is deprecated.
 
 a|
 IP address of the Gateway Node
+
 **Note:** By default, HTTP ports for CLB and LDR are not enabled.
 
 a|
@@ -200,12 +203,13 @@ xref:benefits_of_active_idle_and_concurrent_http_connections.adoc[Benefits of ac
 [.lead]
 Before you can use S3 domain names for client requests, a StorageGRID administrator must configure the system to accept connections that use S3 domain names in S3 path-style and S3 virtual hosted-style requests.
 
+.About this task
 To enable you to use S3 virtual hosted style-requests, a grid administrator must perform the following tasks:
 
 * Use the Grid Manager to add the S3 endpoint domain names to the StorageGRID system.
 * Ensure that the certificate the client uses for HTTPS connections to StorageGRID is signed for all domain names that the client requires.
 +
-For example, if the endpoint is s3.company.com, the grid administrator must ensure that the certificate used for HTTPS connections includes the s3.company.com endpoint and the endpoint's wildcard Subject Alternative Name (SAN): *.s3.company.com.
+For example, if the endpoint is `s3.company.com`, the grid administrator must ensure that the certificate used for HTTPS connections includes the `s3.company.com` endpoint and the endpoint's wildcard Subject Alternative Name (SAN): ``*.s3.company.com`.
 
 * Configure the DNS server used by the client to include DNS records that match the endpoint domain names, including any required wildcard records.
 
@@ -219,13 +223,13 @@ NOTE: The CLB service is deprecated.
 
 See the instructions for administering StorageGRID for more information.
 
-After these steps have been completed, you can use virtual hosted-style requests (for example, bucket.s3.company.com).
+After these steps have been completed, you can use virtual hosted-style requests (for example, `bucket.s3.company.com`).
 
 .Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
-link:configuring_security_for_rest_api.md#[Configuring security for the REST API]
+xref:configuring_security_for_rest_api.adoc[Configuring security for the REST API]
 
 == Testing your S3 REST API configuration
 

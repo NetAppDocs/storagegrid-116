@@ -50,12 +50,12 @@ The name for this StorageGRID appliance shown in SANtricity software.
 a|
 Storage Controller A Management IP
 a|
-IP address for management port 1 on storage controller A.        You use this IP to access SANtricity software to troubleshoot storage issues.
+IP address for management port 1 on storage controller A. You use this IP to access SANtricity software to troubleshoot storage issues.
 a|
 Storage Controller B Management IP
 a|
-IP address for management port 1 on storage controller B.        You use this IP to access SANtricity software to troubleshoot storage issues.
-+
+IP address for management port 1 on storage controller B. You use this IP to access SANtricity software to troubleshoot storage issues.
+
 Some appliance models do not have a storage controller B.
 a|
 Storage Controller WWID
@@ -86,7 +86,7 @@ The status of storage controller A.
 a|
 Storage Controller B
 a|
-The status of storage controller B.        Some appliance models do not have a storage controller B.
+The status of storage controller B. Some appliance models do not have a storage controller B.
 a|
 Storage Controller Power Supply A
 a|
@@ -118,8 +118,8 @@ The status of all power supplies for the appliance.
 a|
 Compute Controller BMC IP
 a|
-The IP address of the baseboard management controller (BMC) port in the compute controller.        You use this IP to connect to the BMC interface to monitor and diagnose the appliance hardware.
-+
+The IP address of the baseboard management controller (BMC) port in the compute controller. You use this IP to connect to the BMC interface to monitor and diagnose the appliance hardware.
+
 This field is not displayed for appliance models that do not contain a BMC.
 a|
 Compute Controller Serial Number
@@ -138,6 +138,8 @@ Compute Controller Chassis Temperature
 a|
 The temperature status of the compute controller.
 |===
+
+[options="header"]
 |===
 | Column in the Storage Shelves table| Description
 a|
@@ -152,6 +154,7 @@ The numeric identifier for the storage shelf.
   *** 99: Storage controller shelf
   *** 0: First expansion shelf
   *** 1: Second expansion shelf
+
 *Note:* Expansion shelves apply to the SG6060 only.
 
 a|
@@ -200,13 +203,16 @@ a|
 The configuration status of the storage shelf.
 |===
 
+[start=3]
  .. Confirm that all statuses are "`Nominal.`"
 +
 If a status is not "`Nominal,`" review any current alerts. You can also use SANtricity System Manager to learn more about some of these hardware values. See the instructions for installing and maintaining your appliance.
+
+[start=4]
 . Select *Network* to view information for each network.
-+
+
 The Network Traffic graph provides a summary of overall network traffic.
-+
+
 image::../media/nodes_page_network_traffic_graph.gif[Nodes Page Network Traffic Graph]
 
  .. Review the Network Interfaces section.
@@ -277,6 +283,7 @@ The Receive and Transmit tables show how many bytes and packets have been receiv
 +
 image::../media/nodes_page_network_communication.gif[Nodes Page Network Comm]
 
+[start=5]
 . Select *Storage* to view graphs that show the percentages of storage used over time for object data and object metadata, as well as information about disk devices, volumes, and object stores.
 +
 image::../media/nodes_page_storage_used_object_data.png[Storage Used - Object Data]

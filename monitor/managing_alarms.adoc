@@ -36,13 +36,13 @@ Global Custom alarms monitor the status of all services of a given type in the S
 
 .Related information
 
-link:managing_alarms.md#[Viewing Default alarms (legacy system)]
+xref:managing_alarms.adoc[Viewing Default alarms (legacy system)]
 
-link:managing_alarms.md#[Disabling a Default alarm (legacy system)]
+xref:managing_alarms.adoc[Disabling a Default alarm (legacy system)]
 
-link:managing_alarms.md#[Creating Global Custom alarms (legacy system)]
+xref:managing_alarms.adoc[Creating Global Custom alarms (legacy system)]
 
-link:managing_alarms.md#[Disabling Global Custom alarms (legacy system)]
+xref:managing_alarms.adoc[Disabling Global Custom alarms (legacy system)]
 
 == Alarm triggering logic (legacy system)
 
@@ -105,7 +105,7 @@ For the following example, an attribute has a Global Custom alarm and a Default 
 
 [options="header"]
 |===
-| Global Custom alarm threshold (enabled)| Default alarm threshold (enabled)
+| | Global Custom alarm threshold (enabled)| Default alarm threshold (enabled)
 a|
 Notice
 a|
@@ -204,7 +204,7 @@ The Current Alarms page appears.
 image::../media/current_alarms_page.png[Current Alarms Page]
 . Click the service name in the table.
 +
-The Alarms tab for the selected service appears (*Support* > *Tools* > *Grid Topology* > *Grid Node* > *Service* > *Alarms*).
+The Alarms tab for the selected service appears (*Support* > *Tools* > *Grid Topology* > *_Grid Node_* > *_Service_* > *Alarms*).
 +
 image::../media/alarms_acknowledging.png[Alarms Acknowledging]
 
@@ -266,7 +266,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
   *** Enter a custom range, and click *Custom Query*.
 . Follow these steps to find out how often alarms have been triggered for a particular attribute.
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *grid node* > *service or component* > *Alarms* > *History*.
+ .. Select *_grid node_* > *_service or component_* > *Alarms* > *History*.
  .. Select the attribute from the list.
  .. Do one of the following:
   *** Click one of the time periods.
@@ -353,7 +353,7 @@ The entry can be a single number, a range of numbers specified with a colon (1:3
 a|
 Additional Recipients
 a|
-A supplementary list of email addresses to be notified when the alarm is triggered. This is in addition to the mailing list configured on the *Alarms* > *Email Setup* page. Lists are comma delineated. 
+A supplementary list of email addresses to be notified when the alarm is triggered. This is in addition to the mailing list configured on the *Alarms* > *Email Setup* page. Lists are comma delineated.
 
 *Note:* Mailing lists require SMTP server setup in order to operate. Before adding mailing lists, confirm that SMTP is configured.
 Notifications for Custom alarms can override notifications from Global Custom or Default alarms.
@@ -375,7 +375,7 @@ image:../media/icon_nms_copy.gif[copy icon] Copy a row
 
 .Related information
 
-link:managing_alarms.md#[Configuring email server settings for alarms (legacy system)]
+xref:managing_alarms.adoc[Configuring email server settings for alarms (legacy system)]
 
 == Disabling alarms (legacy system)
 
@@ -469,7 +469,7 @@ The alarm is cleared.
 
 .Related information
 
-link:managing_alarms.md#[Disabling alarms (legacy system)]
+xref:managing_alarms.adoc[Disabling alarms (legacy system)]
 
 == Configuring notifications for alarms (legacy system)
 
@@ -509,7 +509,7 @@ A mailing list receives all notifications related to changes in the selected sta
 
 .Related information
 
-link:managing_alarms.md#[Configuring email notifications for alarms (legacy system)]
+xref:managing_alarms.adoc[Configuring email notifications for alarms (legacy system)]
 
 === Configuring email server settings for alarms (legacy system)
 
@@ -558,7 +558,7 @@ a|
 Username and password of the SMTP mail server. If Authentication is set to On, a username and password to access the SMTP mail server must be provided.
 |===
 
-. Under From Address, enter a valid email address that the SMTP server will recognize as the sending email address. This is the official email address from which the email message is sent.
+. Under *From Address*, enter a valid email address that the SMTP server will recognize as the sending email address. This is the official email address from which the email message is sent.
 . Optionally, send a test email to confirm that your SMTP mail server settings are correct.
  .. In the *Test E-mail* > *To* box, add one or more addresses that you can access.
 +
@@ -590,7 +590,8 @@ Different mailing lists might require different contact information. Templates d
 .Steps
 . Select *Support* > *Alarms (legacy)* > *Legacy Email Setup*.
 . From the Email menu, select *Templates*.
-. Click *Edit*image:../media/icon_nms_edit.gif[edit icon] (or *Insert*image:../media/icon_nms_insert.gif[insert icon] if this is not the first template).
+. Click *Edit*
+image:../media/icon_nms_edit.gif[edit icon] (or *Insert* image:../media/icon_nms_insert.gif[insert icon] if this is not the first template).
 +
 image::../media/edit_email_templates.gif[Email Template page]
 
@@ -649,11 +650,15 @@ image::../media/email_lists_page.gif[Email Lists page]
 a|
 Group Name
 a|
-Unique name used to identify the mailing list. Mailing list names cannot be duplicated.     *Note:* If you change the name of a mailing list, the change is not propagated to the other locations that use the mailing list name. You must manually update all configured notifications to use the new mailing list name.
+Unique name used to identify the mailing list. Mailing list names cannot be duplicated.
+
+*Note:* If you change the name of a mailing list, the change is not propagated to the other locations that use the mailing list name. You must manually update all configured notifications to use the new mailing list name.
 a|
 Recipients
 a|
-Single email address, a previously configured mailing list, or a comma-delineated list of email addresses and mailing lists to which notifications will be sent.    *Note:* If an email address belongs to multiple mailing lists, only one email notification is sent when a notification triggering event occurs.
+Single email address, a previously configured mailing list, or a comma-delineated list of email addresses and mailing lists to which notifications will be sent.
+
+*Note:* If an email address belongs to multiple mailing lists, only one email notification is sent when a notification triggering event occurs.
 a|
 Template
 a|
@@ -666,7 +671,7 @@ A new mailing list is created.
 
 .Related information
 
-link:managing_alarms.md#[Creating alarm email templates (legacy system)]
+xref:managing_alarms.adoc[Creating alarm email templates (legacy system)]
 
 === Configuring email notifications for alarms (legacy system)
 
@@ -695,9 +700,9 @@ Notifications will be sent to the mailing list when alarms with the selected ala
 
 .Related information
 
-link:managing_alarms.md#[Creating mailing lists for alarm notifications (legacy system)]
+xref:managing_alarms.adoc[Creating mailing lists for alarm notifications (legacy system)]
 
-link:managing_alarms.md#[Types of alarm notifications (legacy system)]
+xref:managing_alarms.adoc[Types of alarm notifications (legacy system)]
 
 === Suppressing alarm notifications for a mailing list (legacy system)
 

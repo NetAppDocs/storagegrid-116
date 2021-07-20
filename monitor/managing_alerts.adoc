@@ -240,7 +240,6 @@ a|
 Recommended Actions
 a|
 Optionally, the recommended actions to take when this alert is triggered.     Enter recommended actions as plain text (no formatting codes). Recommended actions for alert rules can be between 0 and 1,024 characters.
-+
 |===
 
 . In the Conditions section, enter or update the Prometheus expression for one or more of the alert severity levels.
@@ -375,7 +374,7 @@ NOTE: Trap and inform notifications are also sent when certain alarms (legacy sy
 
 xref:using_snmp_monitoring.adoc[Using SNMP monitoring]
 
-link:managing_alerts.md#[Silencing alert notifications]
+xref:managing_alerts.adoc[Silencing alert notifications]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 
@@ -435,7 +434,7 @@ image:../media/alerts_email_smtp_server.png[Alerts Email SMTP Server]
 . In the Email Addresses section, enter email addresses for the sender and for each recipient.
  .. For the *Sender Email Address*, specify a valid email address to use as the From address for alert notifications.
 +
-For example: `_storagegrid-alerts@example.com_`
+For example: `storagegrid-alerts@example.com`
 
  .. In the Recipients section, enter an email address for each email list or person who should receive an email when an alert occurs.
 +
@@ -502,7 +501,7 @@ The email settings are saved.
 
 .Related information
 
-link:managing_alerts.md#[Troubleshooting alert email notifications]
+xref:managing_alerts.adoc[Troubleshooting alert email notifications]
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
 
@@ -541,7 +540,7 @@ The hostname of the Admin Node that sent the notification.
 |===
 .Related information
 
-link:managing_alerts.md#[Silencing alert notifications]
+xref:managing_alerts.adoc[Silencing alert notifications]
 
 === How StorageGRID groups alerts in email notifications
 
@@ -662,7 +661,8 @@ image::../media/alerts_create_silence.png[Alerts > Create Silence]
 a|
 Alert Rule
 a|
-The name of the alert rule you want to silence. You can select any default or custom alert rule, even if the alert rule is disabled.    
+The name of the alert rule you want to silence. You can select any default or custom alert rule, even if the alert rule is disabled.
+
 *Note:* Select *All rules* if you want to silence all alert rules using the criteria specified in this dialog box.
 a|
 Description
@@ -671,7 +671,8 @@ Optionally, a description of the silence. For example, describe the purpose of t
 a|
 Duration
 a|
-How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years).   
+How long you want this silence to remain in effect, in minutes, hours, or days. A silence can be in effect from 5 minutes to 1,825 days (5 years).
+
 *Note:* You should not silence an alert rule for an extended amount of time. If an alert rule is silenced, you might not detect an underlying problem until it prevents a critical operation from completing. However, you might need to use an extended silence if an alert is triggered by a specific, intentional configuration, such as might be the case for the *Services appliance link down* alerts and the *Storage appliance link down* alerts.
 a|
 Severity
@@ -681,6 +682,7 @@ a|
 Nodes
 a|
 Which node or nodes you want this silence to apply to. You can suppress an alert rule or all rules on the entire grid, a single site, or a single node. If you select the entire grid, the silence applies to all sites and all nodes. If you select a site, the silence applies only to the nodes at that site.
+
 *Note:* You cannot select more than one node or more than one site for each silence. You must create additional silences if you want to suppress the same alert rule on more than one node or more than one site at one time.
 |===
 
@@ -710,8 +712,6 @@ a|
  .. Click *OK* to confirm you want to remove this silence.
 +
 *Note*: Notifications will now be sent when this alert is triggered (unless suppressed by another silence). If this alert is currently triggered, it might take few minutes for email or SNMP notifications to be sent and for the Alerts page to update.
-
-+
 |===
 
 .Related information
