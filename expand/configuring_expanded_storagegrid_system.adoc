@@ -32,7 +32,7 @@ Review the storage pools used in your ILM rules to ensure the new storage will b
 *Note:* By default, a new Storage Node is assigned to the All Storage Nodes storage grade and added to storage pools that use that grade for the site. If you want a new node to use a custom storage grade, you must assign it to the custom grade manually (*ILM* > *Storage Grades*).
 
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 a|
 Verify that the Storage Node is ingesting objects.
 a|
@@ -51,7 +51,7 @@ xref:rebalancing_erasure_coded_data_after_adding_storage_nodes.adoc[Rebalancing 
 a|
 If High Availability Groups are used for client connections, add the Gateway Nodes to an HA group. Select *Configuration* > *Network Settings* > *High Availability Groups* to review the list of existing HA groups and to add the new nodes.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 |===
 
 . If you added an Admin Node, complete the following configuration tasks.
@@ -62,11 +62,11 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 a|
 If single sign-on is enabled for your StorageGRID system, you must create a relying party trust in Active Directory Federation Services (AD FS) for the new Admin Node. You cannot sign in to the node until you create this relying party trust.
 a|
-Instructions for configuring single sign-on:    http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+Instructions for configuring single sign-on:    xref:../admin/index.adoc[Administer StorageGRID]
 a|
 If you plan to use the Load Balancer service on Admin Nodes, you might need to add the Admin Nodes to High Availability groups. Select *Configuration* > *Network Settings* > *High Availability Groups* to review the list of existing HA groups and to add the new nodes.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 a|
 Optionally, copy the Admin Node database from the primary Admin Node to the expansion Admin Node if you want to keep the attribute and audit information consistent on each Admin Node.
 a|
@@ -84,11 +84,11 @@ Optionally, configure access to the system for auditing purposes through an NFS 
 
 *Note:* Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 a|
 Optionally, change the preferred sender for notifications.    You can make the expansion Admin Node the preferred sender. Otherwise, an existing Admin Node configured as the preferred sender continues to send notifications, including AutoSupport messages, SNMP notifications, alert emails, and alarm emails (legacy system).
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 |===
 
 . If you added an Archive Node, complete the following configuration tasks.
@@ -99,15 +99,15 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 a|
 Configure the Archive Node's connection to the targeted external archival storage system.    When you complete the expansion, Archive Nodes are in an alarm state until you configure connection information through the *ARC* > *Target* component.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 a|
 Update the ILM policy to archive object data through the new Archive Node.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 a|
 Configure custom alarms for the attributes that are used to monitor the speed and efficiency of object data retrieval from Archive Nodes.
 a|
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 |===
 
 . To check if expansion nodes were added with an untrusted Client Network or to change whether a node's Client Network is untrusted or trusted, go to *Configuration* > *Network Settings* > *Untrusted Client Network*.
@@ -130,7 +130,7 @@ For more information, see the recovery and maintenance instructions.
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:verifying_storage_node_is_active.adoc[Verifying that the Storage Node is active]
 
@@ -140,6 +140,6 @@ xref:copying_prometheus_metrics.adoc[Copying Prometheus metrics]
 
 xref:copying_audit_logs.adoc[Copying audit logs]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-upgrade/home.html[Upgrading StorageGRID]
+xref:../upgrade/index.adoc[Upgrade software]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-maint/home.html[Recovery and maintenance]
+xref:../maintain/index.adoc[Maintain & recover]

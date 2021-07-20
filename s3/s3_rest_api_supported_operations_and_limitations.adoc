@@ -363,9 +363,9 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+xref:../tenant/index.adoc[Use a tenant account]
 
 === Creating an S3 lifecycle configuration
 
@@ -523,7 +523,7 @@ The success response includes the object's metadata and indicates that the objec
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 == Custom operations on buckets
 
@@ -749,7 +749,7 @@ If the global S3 Object Lock setting is enabled for your StorageGRID system, you
 
 * Create the bucket using the Tenant Manager.
 +
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+xref:../tenant/index.adoc[Use a tenant account]
 
 * Create the bucket using a PUT Bucket request with the x-amz-bucket-object-lock_enabled request header.
 +
@@ -805,9 +805,9 @@ If the new legal-hold value is ON, the object is placed under a legal hold. If t
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-tenant-admin/home.html[Using tenant accounts]
+xref:../tenant/index.adoc[Use a tenant account]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
@@ -1012,7 +1012,7 @@ In these cases:
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
@@ -1132,7 +1132,7 @@ If a `versionId` subresource is not specified, the operation fetches the most re
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
@@ -1199,7 +1199,7 @@ a|
 |===
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
@@ -1349,7 +1349,7 @@ If versioning is suspended, the object version is stored with a null `versionId`
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
@@ -1478,7 +1478,7 @@ If the source bucket is versioned, you can use the `x-amz-copy-source` header to
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
@@ -1654,7 +1654,7 @@ Multipart upload consists of separate operations for initiating the upload, list
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
@@ -1777,7 +1777,7 @@ A tenant can trigger the failed replication or notification by updating the obje
 
 .Related information
 
-http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
+xref:../ilm/index.adoc[Manage objects with ILM]
 
 == Error responses
 
