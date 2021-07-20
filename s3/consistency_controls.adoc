@@ -1,7 +1,7 @@
 ---
 permalink: s3/consistency_controls.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Consistency controls provide a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.'
 ---
 = Consistency controls
@@ -40,6 +40,7 @@ a|
 read-after-new-write
 a|
 (Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
 *Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
 a|
@@ -65,9 +66,9 @@ To set the consistency control for an individual API operation, consistency cont
 
 ----
 GET /bucket/object HTTP/1.1
-Date: date
-Authorization: authorization name
-Host: host
+Date: _date_
+Authorization: _authorization name_
+Host: _host_
 Consistency-Control: strong-site
 ----
 
@@ -108,7 +109,7 @@ When a client stores an object to the grid, StorageGRID makes both object copies
 
 The object is fully protected against loss at the time of the ingest successful message. For example, if the local site is lost shortly after ingest, copies of both the object data and the object metadata still exist at the remote site. The object is fully retrievable.
 
-If you instead used the same ILM rule and the "`strong-site`" consistency level, the client might receive a success message after object data is replicated to the remote site but before object metadata is distributed there. In this case, the level of protection of object metadata does not match the level of protection for object data. If the local site is lost shortly after ingest, object metadata is lost. The object cannot be retrieved.
+If you instead used the same ILM rule and the "`strong-site`" consistency level, the client might receive a success message after object data is replicated to the remote sitqe but before object metadata is distributed there. In this case, the level of protection of object metadata does not match the level of protection for object data. If the local site is lost shortly after ingest, object metadata is lost. The object cannot be retrieved.
 
 The inter-relationship between consistency levels and ILM rules can be complex. Contact NetApp if you require assistance.
 
@@ -116,6 +117,6 @@ The inter-relationship between consistency levels and ILM rules can be complex. 
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 
-link:storagegrid_s3_rest_api_operations.md#[GET Bucket consistency request]
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket consistency request]
 
-link:storagegrid_s3_rest_api_operations.md#[PUT Bucket consistency request]
+xref:storagegrid_s3_rest_api_operations.adoc[PUT Bucket consistency request]

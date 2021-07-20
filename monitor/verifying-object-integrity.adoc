@@ -20,8 +20,8 @@ The background verification process automatically and continuously checks Storag
 Background verification checks the integrity of replicated objects and erasure-coded objects, as follows:
 
 * *Replicated objects*: If the background verification process finds a replicated object that is corrupt, the corrupt copy is removed from its location and quarantined elsewhere on the Storage Node. Then, a new uncorrupted copy is generated and placed to satisfy the active ILM policy. The new copy might not be placed on the Storage Node that was used for the original copy.
-+
-*Note*: Corrupt object data is quarantined rather than deleted from the system, so that it can still be accessed. For more information on accessing quarantined object data, contact technical support.
+
+NOTE: Corrupt object data is quarantined rather than deleted from the system, so that it can still be accessed. For more information on accessing quarantined object data, contact technical support.
 
 * *Erasure-coded objects*: If the background verification process detects that a fragment of an erasure-coded object is corrupt, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node, using the remaining data and parity fragments. If the corrupted fragment cannot be rebuilt, the Corrupt Copies Detected (ECOR) attribute is incremented by one, and an attempt is made to retrieve another copy of the object. If retrieval is successful, an ILM evaluation is performed to create a replacement copy of the erasure-coded object.
 +
@@ -59,8 +59,8 @@ Use the High verification rate only when you suspect that a hardware or software
 . Under Background Verification, select *Verification Rate* > *High* or *Verification Rate* > *Adaptive*.
 +
 image::../media/background_verification_rate.png[setting Verification Rate]
-+
-*Note*: Setting the Verification Rate to High triggers the VPRI (Verification Rate) legacy alarm at the Notice level.
+
+NOTE: Setting the Verification Rate to High triggers the VPRI (Verification Rate) legacy alarm at the Notice level.
 
 . Click *Apply Changes*.
 . Monitor the results of background verification for replicated objects.
@@ -87,8 +87,8 @@ If background verification finds corrupt fragments of erasure-coded object data,
  .. Select *Reset Corrupt Object Count*.
  .. Click *Apply Changes*.
 . If you are confident that quarantined objects are not required, you can delete them.
-+
-*Note*: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
+
+NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
  .. Select *Support* > *Tools* > *Grid Topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
