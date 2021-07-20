@@ -141,7 +141,7 @@ You will need the CBID of each object stored on the volume and the node ID of th
 IMPORTANT: Use the ADE Console with caution. If the console is used improperly, it is possible to interrupt system operations and corrupt data. Enter commands carefully, and only use the commands documented in this procedure.
 
  .. If you are not already logged in to the Archive Node, log in as follows:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
@@ -160,9 +160,9 @@ You must enter a separate command for each lost object copy: entering a range of
 +
 In most cases, the StorageGRID system immediately begins to make additional copies of object data to ensure that the system's ILM policy is followed.
 +
-However, if the ILM rule for the object specified that only one copy be made and that copy has now been lost, the object cannot be recovered. In this case running the Object_Lost command purges the lost object's metadata from the StorageGRID system.
+However, if the ILM rule for the object specified that only one copy be made and that copy has now been lost, the object cannot be recovered. In this case running the `Object_Lost` command purges the lost object's metadata from the StorageGRID system.
 +
-When the Object_Lost command completes successfully, the following message is returned:
+When the `Object_Lost` command completes successfully, the following message is returned:
 +
 ----
 CLOC_LOST_ANS returned result ‘SUCS’

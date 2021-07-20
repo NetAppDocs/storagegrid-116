@@ -1,7 +1,7 @@
 ---
 permalink: admin/storage_node_configuration_settings.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Each Storage Node uses a number of configuration settings and counters. You might need to view the current settings or reset counters to clear alarms \(legacy system\).'
 ---
 = Storage Node configuration settings
@@ -16,7 +16,7 @@ IMPORTANT: Except when specifically instructed in documentation, you should cons
 To access a Storage Node's configuration settings and counters:
 
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *site* > *Storage Node*.
+. Select *_site_* > *_Storage Node_*.
 . Expand the Storage Node and select the service or component.
 . Select the *Configuration* tab.
 
@@ -24,6 +24,7 @@ The following tables summarize Storage Node configuration settings.
 
 == LDR
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -49,6 +50,7 @@ a|
 
 == LDR > Data Store
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -61,6 +63,7 @@ Reset the counter for the number of lost objects on this service.
 
 == LDR > Storage
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -88,6 +91,7 @@ The time limit in seconds within which a health check test must complete in orde
 
 == LDR > Verification
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -127,6 +131,7 @@ If a Lost Objects alarm is triggered, technical support might want to access the
 
 == LDR > Erasure Coding
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -169,6 +174,7 @@ Reset the counter for missing fragments of erasure-coded object data on the Stor
 
 == LDR > Replication
 
+[cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
 a|
@@ -202,6 +208,6 @@ Select to disable outbound replication (including content requests for HTTP retr
 When outbound replication is disabled, objects can be copied to this Storage Node, but objects cannot be retrieved from the Storage Node to be copied to other locations in the StorageGRID system. The LDR service is write-only.
 
 |===
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-troubleshooting/home.html[Monitoring and troubleshooting StorageGRID]

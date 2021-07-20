@@ -1,7 +1,7 @@
 ---
 permalink: expand/adding_storage_capacity_for_erasure_coded_objects.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If your ILM policy includes a rule that makes erasure-coded copies, you must plan where to add new storage and when to add new storage. The amount of storage you add and the timing of the addition can affect the grid’s usable storage capacity.'
 ---
 = Adding storage capacity for erasure-coded objects
@@ -36,9 +36,12 @@ The following examples can help you understand the impact of the erasure-coding 
 
 Similar considerations affect the calculations for an ILM policy that stores both replicated and erasure-coded data and the calculations for a grid that has been previously expanded.
 
-IMPORTANT: The examples in this section represent the best practices for adding storage capacity to a StorageGRID system. If you are unable to add the recommended number of nodes, you might need to run the EC rebalance procedure to allow additional erasure-coded objects to be stored.
+[IMPORTANT]
+====
+The examples in this section represent the best practices for adding storage capacity to a StorageGRID system. If you are unable to add the recommended number of nodes, you might need to run the EC rebalance procedure to allow additional erasure-coded objects to be stored.
 
 xref:considerations_for_rebalancing_erasure_coded_data.adoc[Considerations for rebalancing erasure-coded data]
+====
 
 == Example 1: Expanding a one-site grid that uses 2+1 erasure coding
 

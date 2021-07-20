@@ -29,10 +29,10 @@ Before performing this procedure, review these considerations:
  ** If an ILM rule specifies an ingest behavior of Dual commit or the rule specifies Balanced and it is not possible to immediately create all required copies, StorageGRID immediately commits any newly ingested objects to two Storage Nodes on the same site and evaluates ILM later. If you want to shut down two or more Storage Nodes on a given site, you might not be able to access these objects for the duration of the shutdown.
  ** To ensure you can access all objects when a Storage Node is shut down, stop ingesting objects at a site for approximately one hour before shutting down the node.
 
- .Steps
+.Steps
 
 . Log in to the grid node:
- .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.

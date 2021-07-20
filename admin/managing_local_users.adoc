@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing_local_users.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = Managing local users
@@ -20,10 +20,12 @@ NOTE: If single sign-on (SSO) has been enabled, local users cannot sign in to St
 
 == Creating a local user
 
-[.lead]
 If you have created local admin groups, you can create one or more local users and assign each user to one or more groups. The group's permissions control which Grid Manager features the user can access.
 
+.About this task
 You can only create local users, and you can only assign these users to local admin groups. Federated users and federated groups are managed using the external identity source.
+
+.Steps
 
 . Select *Configuration* > *Access Control* > *Admin Users*.
 . Click *Create*.
@@ -34,16 +36,18 @@ The list of group names is generated from the Groups table.
 
 . Click *Save*.
 
-*Related information*
+.Related information
 
-link:managing_admin_groups.md#[Creating admin groups]
+xref:managing_admin_groups.adoc[Managing admin groups]
 
 == Modifying a local user's account
 
-[.lead]
 You can modify a local admin user's account to update the user's display name or group membership. You can also temporarily prevent a user from accessing the system.
 
+.About this task
 You can edit local users only. Federated user details are automatically synchronized with the external identity source.
+
+.Steps
 
 . Select *Configuration* > *Access Control* > *Admin Users*.
 . Select the user you want to edit.
@@ -59,8 +63,9 @@ The new settings are applied the next time the user signs out and then signs bac
 
 == Deleting a local user's account
 
-[.lead]
 You can delete accounts for local users that no longer require access to the Grid Manager.
+
+.Steps
 
 . Select *Configuration* > *Access Control* > *Admin Users*.
 . Select the local user you want to delete.
@@ -74,11 +79,12 @@ If your system includes more than 20 items, you can specify how many rows are sh
 
 == Changing a local user's password
 
-[.lead]
 Local users can change their own passwords using the *Change Password* option in the Grid Manager banner. In addition, users who have access to the Admin Users page can change passwords for other local users.
 
+.About this task
 You can change passwords for local users only. Federated users must change their own passwords in the external identity source.
 
+.Steps
 . Select *Configuration* > *Access Control* > *Admin Users*.
 . From the Users page, select the user.
 +

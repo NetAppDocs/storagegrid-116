@@ -1,7 +1,7 @@
 ---
 permalink: admin/what_storage_node_is.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: ''
 ---
 = What a Storage Node is
@@ -15,7 +15,6 @@ A Storage Node includes the services and processes required to store, move, veri
 
 == What the ADC service is
 
-[.lead]
 The Administrative Domain Controller (ADC) service authenticates grid nodes and their connections with each other. The ADC service is hosted on each of the first three Storage Nodes at a site.
 
 The ADC service maintains topology information including the location and availability of services. When a grid node requires information from another grid node or an action to be performed by another grid node, it contacts an ADC service to find the best grid node to process its request. In addition, the ADC service retains a copy of the StorageGRID deployment's configuration bundles, allowing any grid node to retrieve current configuration information.You can view ADC information for a Storage Node on the Grid Topology page (*Support* > *Grid Topology*).
@@ -28,7 +27,6 @@ The connection of each grid node lets the ADC service gather topology informatio
 
 == What the DDS service is
 
-[.lead]
 Hosted by a Storage Node, the Distributed Data Store (DDS) service interfaces with the Cassandra database to perform background tasks on the object metadata stored in the StorageGRID system.
 
 === Object counts
@@ -57,7 +55,6 @@ StorageGRID guarantees read-after-write consistency for newly created objects. A
 
 == What the LDR service is
 
-[.lead]
 Hosted by each Storage Node, the Local Distribution Router (LDR) service handles content transport for the StorageGRID system. Content transport encompasses many tasks including data storage, routing, and request handling. The LDR service does the majority of the StorageGRID system's hard work by handling data transfer loads and data traffic functions.
 
 The LDR service handles the following tasks:

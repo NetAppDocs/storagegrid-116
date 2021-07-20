@@ -1,7 +1,7 @@
 ---
 permalink: ilm/step_2_of_3_define_placements.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Step 2 \(Define Placements\) of the Create ILM Rule wizard allows you to define the placement instructions that determine how long objects are stored, the type of copies \(replicated or erasure coded\), the storage location, and the number of copies.'
 ---
 = Step 2 of 3: Define placements
@@ -11,6 +11,8 @@ summary: 'Step 2 \(Define Placements\) of the Create ILM Rule wizard allows you 
 [.lead]
 Step 2 (Define Placements) of the Create ILM Rule wizard allows you to define the placement instructions that determine how long objects are stored, the type of copies (replicated or erasure coded), the storage location, and the number of copies.
 
+.About this task
+
 An ILM rule can include one or more placement instructions. Each placement instruction applies to a single period of time. When you use more than one instruction, the time periods must be contiguous, and at least one instruction must start on day 0. The instructions can continue either forever, or until you no longer require any object copies.
 
 Each placement instruction can have multiple lines if you want to create different types of copies or use different locations during that time period.
@@ -19,8 +21,11 @@ This example ILM rule creates two replicated copies for the first year. Each cop
 
 image::../media/ilm_create_ilm_rule_wizard_2.png[Create ILM Rule Wizard Page 2]
 
+.Steps
+
 . For *Reference Time*, select the type of time to use when calculating the start time for a placement instruction.
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
 a|
@@ -30,23 +35,27 @@ The time when the object was ingested.
 a|
 Last Access Time
 a|
-The time when the object was last retrieved (read or viewed).    *Note:* To use this option, updates to Last Access Time must be enabled for the S3 bucket or Swift container.
-+
+The time when the object was last retrieved (read or viewed).
+
+*Note:* To use this option, updates to Last Access Time must be enabled for the S3 bucket or Swift container.
+
 xref:using_last_access_time_in_ilm_rules.adoc[Using Last Access Time in ILM rules]
 a|
 Noncurrent Time
 a|
-The time an object version became noncurrent because a new version was ingested and replaced it as the current version.    *Note:* Noncurrent Time applies only to S3 objects in versioning-enabled buckets.
-+
+The time an object version became noncurrent because a new version was ingested and replaced it as the current version.
+
+*Note:* Noncurrent Time applies only to S3 objects in versioning-enabled buckets.
+
 You can use this option to reduce the storage impact of versioned objects by filtering for noncurrent object versions. See "`Example 4: ILM rules and policy for S3 versioned objects.`"
 a|
 User Defined Creation Time
 a|
 A time specified in user-defined metadata.
 |===
-*Note:* If you want to create a compliant rule, you must select *Ingest Time*.
+NOTE: If you want to create a compliant rule, you must select *Ingest Time*.
 
-. In the Placements section, select a starting time and a duration for the first time period.
+. In the *Placements* section, select a starting time and a duration for the first time period.
 +
 For example, you might want to specify where to store objects for the first year ("`day 0 for 365 days`"). At least one instruction must start at day 0.
 
@@ -69,16 +78,19 @@ image::../media/ilm_rule_with_multiple_storage_pools.png[Placement instructions 
 
  .. Select the number of copies you want to make.
 +
-IMPORTANT: A warning appears if you change the number of copies to 1. An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists during a time period, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
-+
+[IMPORTANT]
+====
+A warning appears if you change the number of copies to 1. An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists during a time period, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
 image::../media/ilm_create_ilm_rule_warning_for_1_copy.png[Create ILM Rule Page 2 Warning for 1 Copy]
-+
+
 To avoid these risks, do one or more of the following:
 
   *** Increase the number of copies for the time period.
   *** Click the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
   *** Select *erasure coded* for Type, instead of *replicated*.
 You can safely ignore this warning if this rule already creates multiple copies for all time periods.
+====
 
  .. If you specified only one storage pool, ignore the *Temporary location* field.
 +
@@ -133,6 +145,7 @@ NOTE: Objects are automatically deleted at the end of the final time period unle
 +
 Each line in the diagram shows where and when object copies will be placed. The type of copy is represented by one of the following icons:
 +
+[cols="1a,2a"]
 |===
     a|
 image:../media/icon_nms_replicated.gif[Icon for replicated copies]
@@ -155,11 +168,11 @@ image::../media/ilm_rule_retention_diagram.png[ILM Rule Retention Diagram]
 +
 Step 3 (Define Ingest Behavior) appears.
 
-*Related information*
+.Related information
 
 xref:what_ilm_placement_instructions_are.adoc[What ILM rule placement instructions are]
 
-link:example_4_ilm_rules_and_policy_for_s3_versioned_objects.md#[Example 4: ILM rules and policy for S3 versioned objects]
+xref:example_4_ilm_rules_and_policy_for_s3_versioned_objects.adoc[Example 4: ILM rules and policy for S3 versioned objects]
 
 xref:why_you_should_not_use_single_copy_replication.adoc[Why you should not use single-copy replication]
 

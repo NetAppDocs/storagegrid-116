@@ -22,9 +22,9 @@ NOTE: StorageGRID manages the certificates used for load balancer endpoints sepa
 
 When using custom server certificates, follow these guidelines:
 
-* Certificates should have a `_subjectAltName_` that matches DNS entries for StorageGRID. For details, see section 4.2.1.6, "`Subject Alternative Name,`" in https://tools.ietf.org/html/rfc5280#section-4.2.1.6[RFC 5280: PKIX Certificate and CRL Profile.]
+* Certificates should have a `_subjectAltName_` that matches DNS entries for StorageGRID. For details, see section 4.2.1.6, "`Subject Alternative Name,`" in https://tools.ietf.org/html/rfc5280#section-4.2.1.6[RFC 5280: PKIX Certificate and CRL Profile^].
 * When possible, avoid the use of wildcard certificates. An exception to this guideline is the certificate for an S3 virtual hosted style endpoint, which requires the use of a wildcard if bucket names are not known in advance.
-* When you must use wildcards in certificates, you should take additional steps to reduce the risks. Use a wildcard pattern such as _*.s3.example.com_, and do not use the _s3.example.com_ suffix for other applications. This pattern also works with path-style S3 access, such as _dc1-s1.s3.example.com/mybucket_.
+* When you must use wildcards in certificates, you should take additional steps to reduce the risks. Use a wildcard pattern such as `*.s3.example.com`, and do not use the `s3.example.com` suffix for other applications. This pattern also works with path-style S3 access, such as `dc1-s1.s3.example.com/mybucket`.
 * Set the certificate expiration times to be short (for example, 2 months), and use the Grid Management API to automate certificate rotation. This especially important for wildcard certificates.
 
 In addition, clients should use strict hostname checking when communicating with StorageGRID.

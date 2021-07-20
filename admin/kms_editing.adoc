@@ -1,7 +1,7 @@
 ---
 permalink: admin/kms_editing.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might need to edit the configuration of a key management server, for example, if a certificate is about to expire.'
 ---
 = Editing a key management server (KMS)
@@ -10,6 +10,8 @@ summary: 'You might need to edit the configuration of a key management server, f
 
 [.lead]
 You might need to edit the configuration of a key management server, for example, if a certificate is about to expire.
+
+.What you'll need
 
 * You must have reviewed the considerations and requirements for using key management.
 +
@@ -22,6 +24,8 @@ xref:kms_considerations_for_changing_for_site.adoc[Considerations for changing t
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
 
+.Steps
+
 . Select *Configuration* > *System Settings* > *Key Management Server*.
 +
 The Key Management Server page appears and shows all key management servers that have been configured.
@@ -29,8 +33,10 @@ The Key Management Server page appears and shows all key management servers that
 image::../media/kms_configuration_details_table.png[KMS Configuration Details KMS Table]
 
 . Select the KMS you want to edit, and select *Edit*.
-. Optionally, update the details in Step 1 (Enter KMS Details) of the Edit a Key Management Server wizard.
+. Optionally, update the details in *Step 1 (Enter KMS Details)* of the Edit a Key Management Server wizard.
 +
+
+[cols="1a,2a" options="header"]
 |===
 | Field| Description
 a|
@@ -40,17 +46,23 @@ A descriptive name to help you identify this KMS. Must be between 1 and 64 chara
 a|
 Key Name
 a|
-The exact key alias for the StorageGRID client in the KMS. Must be between 1 and 255 characters.     You only need to edit the key name in rare cases. For example, you must edit the key name if the alias is renamed in the KMS or if all versions of the previous key have been copied to the version history of the new alias.
-+
-CAUTION:
-+
+The exact key alias for the StorageGRID client in the KMS. Must be between 1 and 255 characters.
+
+You only need to edit the key name in rare cases. For example, you must edit the key name if the alias is renamed in the KMS or if all versions of the previous key have been copied to the version history of the new alias.
+
+[CAUTION]
+====
 Never attempt to rotate a key by changing the key name (alias) for the KMS. Instead, rotate the key by updating the key version in the KMS software. StorageGRID requires all previously used key versions (as well as any future ones) to be accessible from the KMS with the same key alias. If you change the key alias for a configured KMS, StorageGRID might not be able to decrypt your data.
-+
+
 xref:kms_considerations_and_requirements.adoc[Considerations and requirements for using a key management server]
+====
+
 a|
 Manages keys for
 a|
-If you are editing a site-specific KMS and you do not already have a default KMS, optionally select *Sites not managed by another KMS (default KMS)*. This selection converts a site-specific KMS to the default KMS, which will apply to all sites that do not have a dedicated KMS and to any sites added in an expansion.    *Note:* If you are editing a site-specific KMS, you cannot select another site. If you are editing the default KMS, you cannot select a specific site.
+If you are editing a site-specific KMS and you do not already have a default KMS, optionally select *Sites not managed by another KMS (default KMS)*. This selection converts a site-specific KMS to the default KMS, which will apply to all sites that do not have a dedicated KMS and to any sites added in an expansion.
+
+*Note:* If you are editing a site-specific KMS, you cannot select another site. If you are editing the default KMS, you cannot select a specific site.
 a|
 Port
 a|
@@ -58,8 +70,10 @@ The port the KMS server uses for Key Management Interoperability Protocol (KMIP)
 a|
 Hostname
 a|
-The fully qualified domain name or IP address for the KMS.    *Note:* The SAN field of the server certificate must include the FQDN or IP address you enter here. Otherwise, StorageGRID will not be able to connect to the KMS or to all servers in a KMS cluster.
-+
+The fully qualified domain name or IP address for the KMS.
+
+*Note:* The SAN field of the server certificate must include the FQDN or IP address you enter here. Otherwise, StorageGRID will not be able to connect to the KMS or to all servers in a KMS cluster.
+
 |===
 
 . If you are configuring a KMS cluster, select the plus sign image:../media/icon_plus_sign_black_on_white_old.png[Icon Plus Sign] to add a hostname for each server in the cluster.

@@ -11,14 +11,20 @@ summary: 'You can create one or more high availability \(HA\) groups to provide 
 [.lead]
 You can create one or more high availability (HA) groups to provide highly available access to the services on Admin Nodes or Gateway Nodes.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission.
+
+.About this task
 
 An interface must meet the following conditions to be included in an HA group:
 
 * The interface must be for a Gateway Node or an Admin Node.
 * The interface must belong to the Grid Network (eth0) or the Client Network (eth2).
 * The interface must be configured with fixed or static IP addressing, not with DHCP.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *High Availability Groups*.
 +
@@ -81,7 +87,7 @@ IPv4 addresses must be within the IPv4 subnet shared by all of the member interf
 +
 The HA Group is created, and you can now use the configured virtual IP addresses.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-install-rhel/home.html[Red Hat Enterprise Linux or CentOS installation]
 

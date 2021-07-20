@@ -11,6 +11,7 @@ summary: 'If an S3 tenant account needs to comply with regulatory requirements w
 [.lead]
 If an S3 tenant account needs to comply with regulatory requirements when saving object data, you must enable S3 Object Lock for your entire StorageGRID system. Enabling the global S3 Object Lock setting allows any S3 tenant user to create and manage buckets and objects with S3 Object Lock.
 
+.What you'll need
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have reviewed the S3 Object Lock workflow, and you must understand the considerations.
@@ -20,11 +21,18 @@ xref:creating_default_ilm_rule.adoc[Creating a default ILM rule]
 +
 xref:creating_ilm_policy.adoc[Creating an ILM policy]
 
+.About this task
+
 A grid administrator must enable the global S3 Object Lock setting to allow tenant users to create new buckets that have S3 Object Lock enabled. After this setting is enabled, it cannot be disabled.
 
-NOTE: If you enabled the global Compliance setting using a previous version of StorageGRID, the new S3 Object Lock setting is automatically enabled when you upgrade to StorageGRID version 11.5. You can continue to use StorageGRID to manage the settings of existing compliant buckets; however, you can no longer create new compliant buckets.
+[NOTE]
+====
+If you enabled the global Compliance setting using a previous version of StorageGRID, the new S3 Object Lock setting is automatically enabled when you upgrade to StorageGRID version 11.5. You can continue to use StorageGRID to manage the settings of existing compliant buckets; however, you can no longer create new compliant buckets.
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5^]
+====
+
+.Steps
 
 . Select *Configuration* > *System Settings* > *S3 Object Lock*.
 +
@@ -52,11 +60,12 @@ When you select *OK*:
 +
 image::../media/s3_object_lock_global_setting_error.gif[S3 Object Lock Global SettingError]
 
+.After you finish
+
 After you enable the global S3 Object Lock setting, you might want to create a new ILM policy. After the setting is enabled, the ILM policy can optionally include both a compliant default rule and a non-compliant default rule. For example, you might want to use a non-compliant rule that does not have filters for objects in buckets that do not have S3 Object Lock enabled.
 
+.Related information
 xref:creating_ilm_policy_after_s3_object_lock_is_enabled.adoc[Creating an ILM policy after S3 Object Lock is enabled]
-
-*Related information*
 
 xref:creating_ilm_rule.adoc[Creating an ILM rule]
 

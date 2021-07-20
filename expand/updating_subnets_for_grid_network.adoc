@@ -1,22 +1,30 @@
 ---
 permalink: expand/updating_subnets_for_grid_network.html
 sidebar: sidebar
-keywords: 
-summary: 'StorageGRID maintains a list of the network subnets used to communicate between grid nodes on the Grid Network \(eth0\). These entries include the subnets used for the Grid Network by each site in your StorageGRID system as well as any subnets used for NTP, DNS, LDAP, or other external servers accessed through the Grid Network gateway. When you add grid nodes or a new site in an expansion, you might need to update or add subnets to the Grid Network.'
+keywords:
+summary: 'When you add grid nodes or a new site in an expansion, you might need to update or add subnets to the Grid Network.'
 ---
 = Updating subnets for the Grid Network
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID maintains a list of the network subnets used to communicate between grid nodes on the Grid Network (eth0). These entries include the subnets used for the Grid Network by each site in your StorageGRID system as well as any subnets used for NTP, DNS, LDAP, or other external servers accessed through the Grid Network gateway. When you add grid nodes or a new site in an expansion, you might need to update or add subnets to the Grid Network.
+When you add grid nodes or a new site in an expansion, you might need to update or add subnets to the Grid Network.
+
+StorageGRID maintains a list of the network subnets used to communicate between grid nodes on the Grid Network (eth0). These entries include the subnets used for the Grid Network by each site in your StorageGRID system as well as any subnets used for NTP, DNS, LDAP, or other external servers accessed through the Grid Network gateway.
+
+.What you'll need
 
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Maintenance or Root Access permission.
 * You must have the provisioning passphrase.
 * You must have the network addresses, in CIDR notation, of the subnets you want to configure.
 
+.About this task
+
 If you are performing an expansion activity that includes adding a new subnet, you must add the new Grid subnet before you start the expansion procedure.
+
+.Steps
 
 . Select *Maintenance* > *Network* > *Grid Network*.
 +

@@ -1,7 +1,7 @@
 ---
 permalink: expand/configuring_expanded_storagegrid_system.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'After completing an expansion, you must perform additional integration and configuration steps.'
 ---
 = Configuring your expanded StorageGRID system
@@ -11,10 +11,16 @@ summary: 'After completing an expansion, you must perform additional integration
 [.lead]
 After completing an expansion, you must perform additional integration and configuration steps.
 
+.About this task
+
 You must complete the configuration tasks listed below for the grid nodes you are adding in your expansion. Some tasks might be optional, depending on the options selected when installing and administering your system, and how you want to configure the grid nodes added during the expansion.
+
+.Steps
 
 . If you added a Storage Node, complete the following configuration tasks.
 +
+[cols="2a,1a" options="header"]
+
 |===
 | Storage Node configuration tasks| For information
 a|
@@ -23,7 +29,7 @@ Review the storage pools used in your ILM rules to ensure the new storage will b
  ** If you added a site, create a storage pool for the site and update ILM rules to use the new storage pool.
  ** If you added a Storage Node to an existing site, confirm that the new node uses the correct storage grade.
 +
-NOTE: By default, a new Storage Node is assigned to the All Storage Nodes storage grade and added to storage pools that use that grade for the site. If you want a new node to use a custom storage grade, you must assign it to the custom grade manually (*ILM* > *Storage Grades*).
+*Note:* By default, a new Storage Node is assigned to the All Storage Nodes storage grade and added to storage pools that use that grade for the site. If you want a new node to use a custom storage grade, you must assign it to the custom grade manually (*ILM* > *Storage Grades*).
 
 a|
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
@@ -39,6 +45,7 @@ xref:rebalancing_erasure_coded_data_after_adding_storage_nodes.adoc[Rebalancing 
 
 . If you added a Gateway Node, complete the following configuration tasks.
 +
+[cols="2a,1a" options="header"]
 |===
 | Gateway Node configuration tasks| For information
 a|
@@ -49,6 +56,7 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 
 . If you added an Admin Node, complete the following configuration tasks.
 +
+[cols="2a,1a" options="header"]
 |===
 | Admin Node configuration tasks| For information
 a|
@@ -72,7 +80,9 @@ Optionally, copy the existing audit logs from the primary Admin Node to the expa
 a|
 xref:copying_audit_logs.adoc[Copying audit logs]
 a|
-Optionally, configure access to the system for auditing purposes through an NFS or a CIFS file share.    *Note:* Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+Optionally, configure access to the system for auditing purposes through an NFS or a CIFS file share.
+
+*Note:* Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
 a|
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administering StorageGRID]
 a|
@@ -83,6 +93,7 @@ http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-admin/home.html[Administ
 
 . If you added an Archive Node, complete the following configuration tasks.
 +
+[cols="2a,1a" options="header"]
 |===
 | Archive Node configuration tasks| For information
 a|
@@ -117,7 +128,7 @@ IMPORTANT: Make sure that at least two nodes at each site can access at least fo
 +
 For more information, see the recovery and maintenance instructions.
 
-*Related information*
+.Related information
 
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-ilm/home.html[Managing objects with information lifecycle management]
 

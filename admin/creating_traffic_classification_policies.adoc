@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating_traffic_classification_policies.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You create traffic classification policies if you want to monitor, and optionally limit, network traffic by bucket, tenant, IP subnet, or load balancer endpoint. Optionally, you can set limits for a policy based on bandwidth, the number of concurrent requests, or the request rate.'
 ---
 = Creating traffic classification policies
@@ -11,10 +11,14 @@ summary: 'You create traffic classification policies if you want to monitor, and
 [.lead]
 You create traffic classification policies if you want to monitor, and optionally limit, network traffic by bucket, tenant, IP subnet, or load balancer endpoint. Optionally, you can set limits for a policy based on bandwidth, the number of concurrent requests, or the request rate.
 
+.What you'll need
+
 * You must be signed in to the Grid Manager using a supported browser.
 * You must have the Root Access permission.
 * You must have created any load balancer endpoints you want to match.
 * You must have created any tenants you want to match.
+
+.Steps
 
 . Select *Configuration* > *Network Settings* > *Traffic Classification*.
 +
@@ -40,7 +44,7 @@ For example, describe what this traffic classification policy applies to and wha
 +
 Matching rules control which entities will be affected by this traffic classification policy. For example, select Tenant if you want this policy to apply to the network traffic for a specific tenant. Or select Endpoint if you want this policy to apply to the network traffic on a specific load balancer endpoint.
 
- .. Click *Create* in the Matching Rules section.
+ .. Click *Create* in the *Matching Rules* section.
 +
 The Create Matching Rule dialog box appears.
 +
@@ -76,7 +80,7 @@ NOTE: Traffic that matches any rule is handled by the policy.
 +
 NOTE: Even if you do not create limits, StorageGRID collects metrics so that you can monitor network traffic that matches the policy.
 
- .. Click *Create* in the Limits section.
+ .. Click *Create* in the *Limits* section.
 +
 The Create Limit dialog box appears.
 +
@@ -94,18 +98,21 @@ In the following list, *In* refers to traffic from S3 or Swift clients to the St
   *** Per-Request Bandwidth Out
   *** Read Request Rate
   *** Write Requests Rate
-*Note:* You can create policies to limit aggregate bandwidth or to limit per-request bandwidth. However, StorageGRID cannot limit both types of bandwidth at the same time. Aggregate bandwidth limits might impose an additional minor performance impact on non-limited traffic.
-
++
+[NOTE]
+====
+You can create policies to limit aggregate bandwidth or to limit per-request bandwidth. However, StorageGRID cannot limit both types of bandwidth at the same time. Aggregate bandwidth limits might impose an additional minor performance impact on non-limited traffic.
+====
 +
 For bandwidth limits, StorageGRID applies the policy that best matches the type of limit set. For example, if you have a policy that limits traffic in only one direction, then traffic in the opposite direction will be unlimited, even if there is traffic that matches additional policies that have bandwidth limits. StorageGRID implements "`best`" matches for bandwidth limits in the following order:
-
-  *** Exact IP address (/32 mask)
-  *** Exact bucket name
-  *** Bucket regex
-  *** Tenant
-  *** Endpoint
-  *** Non-exact CIDR matches (not /32)
-  *** Inverse matches
++
+  **** Exact IP address (/32 mask)
+  **** Exact bucket name
+  **** Bucket regex
+  **** Tenant
+  **** Endpoint
+  **** Non-exact CIDR matches (not /32)
+  **** Inverse matches
 
  .. In the *Value* field, enter a numerical value for the type of limit you chose.
 +
@@ -131,7 +138,7 @@ image::../media/traffic_classification_policies_main_screen_w_examples.png[Traff
 +
 S3 and Swift client traffic is now handled according to the traffic classification policies. You can view traffic charts and verify that the polices are enforcing the traffic limits you expect.
 
-*Related information*
+.Related information
 
 xref:managing_load_balancing.adoc[Managing load balancing]
 

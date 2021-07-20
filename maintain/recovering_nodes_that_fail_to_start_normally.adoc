@@ -13,13 +13,11 @@ If a StorageGRID node does not rejoin the grid normally and does not show up as 
 
 To force the node into recovery mode:
 
-----
-sudo storagegrid node force-recovery <node-name>
-----
+`sudo storagegrid node force-recovery _node-name_`
 
 TIP: Before issuing this command, confirm that the node's network configuration is correct; it may have failed to rejoin the grid due to incorrect network interface mappings or an incorrect Grid Network IP address or gateway.
 
-IMPORTANT: After issuing the `storagegrid node force-recovery node-name` command, you must perform additional recovery steps for `<node-name>`.
+IMPORTANT: After issuing the `storagegrid node force-recovery _node-name_` command, you must perform additional recovery steps for _node-name_.
 
 .Related information
 

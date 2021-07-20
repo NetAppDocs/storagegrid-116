@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/linux_installing_rpm_or_deb_package_on_all_hosts.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'If any StorageGRID nodes are deployed on Linux hosts, you must install an additional RPM or DEB package on each of these hosts before you start the upgrade.'
 ---
 = Linux: Installing the RPM or DEB package on all hosts
@@ -11,28 +11,31 @@ summary: 'If any StorageGRID nodes are deployed on Linux hosts, you must install
 [.lead]
 If any StorageGRID nodes are deployed on Linux hosts, you must install an additional RPM or DEB package on each of these hosts before you start the upgrade.
 
-You must have downloaded one of the following .tgz or .zip files from the NetApp Downloads page for StorageGRID.
+.What you'll need
+You must have downloaded one of the following `.tgz` or `.zip` files from the NetApp Downloads page for StorageGRID.
 
-NOTE: Use the .zip file if you are running Windows on the service laptop.
+NOTE: Use the `.zip` file if you are running Windows on the service laptop.
 
+[cols="1a,2a" options="header"]
 |===
 | Linux platform| Additional file (choose one)
 a|
 Red Hat Enterprise Linux or CentOS
 a|
 
-* StorageGRID-Webscale-version-RPM-uniqueID.zip
-* StorageGRID-Webscale-version-RPM-uniqueID.tgz
+* `StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip`
+* `StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz`
 
 a|
 Ubuntu or Debian
 a|
 
-* StorageGRID-Webscale-version-DEB-uniqueID.zip
-* StorageGRID-Webscale-version-DEB-uniqueID.tgz
+* `StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip`
+* `StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz`
 
 |===
 
+.Steps
 . Extract the RPM or DEB packages from the installation file.
 . Install the RPM or DEB packages on all Linux hosts.
 +

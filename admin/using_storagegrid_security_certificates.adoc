@@ -33,6 +33,7 @@ NOTE: StorageGRID also includes operating system CA certificates that are the sa
 
 Variants of the server and client certificate types are implemented in several ways. You should have all the certificates needed for your specific StorageGRID configuration ready before you configure the system.
 
+[cols="1a,1a,1a,1a,1a" options="header"]
 |===
 | Certificate| Certificate type| Description| Navigation location| Details
 a|
@@ -59,7 +60,7 @@ Authenticates the connection between StorageGRID and an external Active Director
 a|
 *Configuration* > *Access Control* > *Identity Federation*
 a|
-xref:using_identity_federation.adoc[Configuring identity federation]
+xref:using_identity_federation.adoc[Using identity federation]
 a|
 Single sign-on (SSO) certificate
 a|
@@ -101,13 +102,14 @@ Server
 a|
 Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes or Admin Nodes. You upload or generate a load balancer certificate when you configure a load balancer endpoint.Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
 
-NOTE: The load balancer certificate is the most used certificate during normal StorageGRID operation.
+*Note:* The load balancer certificate is the most used certificate during normal StorageGRID operation.
 
 a|
 *Configuration* > *Network Settings* > *Load Balancer Endpoints*
 a|
 
 * xref:configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints]
+
 * Creating a load balancer endpoint for FabricPool
 +
 http://docs.netapp.com/sgws-115/topic/com.netapp.doc.sg-fabric/home.html[Configuring StorageGRID for FabricPool]

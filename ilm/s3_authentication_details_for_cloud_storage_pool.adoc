@@ -1,7 +1,7 @@
 ---
 permalink: ilm/s3_authentication_details_for_cloud_storage_pool.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'When you create a Cloud Storage Pool for S3, you must select the type of authentication that is required for the Cloud Storage Pool endpoint. You can specify Anonymous or enter an Access Key ID and Secret Access Key.'
 ---
 = S3: Specifying authentication details for a Cloud Storage Pool
@@ -11,13 +11,15 @@ summary: 'When you create a Cloud Storage Pool for S3, you must select the type 
 [.lead]
 When you create a Cloud Storage Pool for S3, you must select the type of authentication that is required for the Cloud Storage Pool endpoint. You can specify Anonymous or enter an Access Key ID and Secret Access Key.
 
+.What you'll need
 * You must have entered the basic information for the Cloud Storage Pool and specified *Amazon S3* as the provider type.
 +
 image::../media/cloud_storage_pool_create_s3.png[Cloud Storage Pool Create S3]
 
 * If you are using access key authentication, you must know the Access Key ID and Secret Access Key for the external S3 bucket.
 
-. In the Service Endpoint section, provide the following information:
+.Steps
+. In the *Service Endpoint* section, provide the following information:
  .. Select which protocol to use when connecting to the Cloud Storage Pool.
 +
 The default protocol is HTTPS.
@@ -26,17 +28,16 @@ The default protocol is HTTPS.
 +
 For example:
 +
-----
-s3-aws-region.amazonaws.com
-----
+`s3-_aws-region_.amazonaws.com`
 +
 NOTE: Do not include the bucket name in this field. You include the bucket name in the *Bucket or Container* field.
 
  .. Optionally, specify the port that should be used when connecting to the Cloud Storage Pool.
 +
 Leave this field blank to use the default port: port 443 for HTTPS or port 80 for HTTP.
-. In the Authentication section, select the type of authentication that is required for the Cloud Storage Pool endpoint.
+. In the *Authentication* section, select the type of authentication that is required for the Cloud Storage Pool endpoint.
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
 a|
@@ -50,11 +51,12 @@ Everyone has access to the Cloud Storage Pool bucket. An Access Key ID and Secre
 a|
 CAP (C2S Access Portal)
 a|
-Used for C2S S3 only. Go to link:c2s_s3_authentication_details_for_cloud_storage_pool.md#[C2S S3: Specifying authentication details for a Cloud Storage Pool].
+Used for C2S S3 only. Go to xref:c2s_s3_authentication_details_for_cloud_storage_pool.adoc[C2S S3: Specifying authentication details for a Cloud Storage Pool].
 |===
 
 . If you selected Access Key, enter the following information:
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
 a|
@@ -69,6 +71,7 @@ The associated Secret Access Key.
 
 . In the Server Verification section, select which method should be used to validate the certificate for TLS connections to the Cloud Storage Pool:
 +
+[cols="1a,2a" options="header"]
 |===
 | Option| Description
 a|
@@ -86,18 +89,18 @@ The certificate used for the TLS connection is not verified.
 |===
 
 . Click *Save*.
-+
+
 When you save a Cloud Storage Pool, StorageGRID does the following:
 
  ** Validates that the bucket and the service endpoint exist and that they can be reached using the credentials that you specified.
- ** Writes a marker file to the bucket to identify the bucket as a Cloud Storage Pool. Never remove this file, which is named x-ntap-sgws-cloud-pool-uuid.
+ ** Writes a marker file to the bucket to identify the bucket as a Cloud Storage Pool. Never remove this file, which is named `x-ntap-sgws-cloud-pool-uuid`.
+
 If Cloud Storage Pool validation fails, you receive an error message that explains why validation failed. For example, an error might be reported if there is a certificate error or if the bucket you specified does not already exist.
 
-+
 image::../media/cloud_storage_pool_create_error.gif[Cloud Storage Pool Create Error]
-+
+
 See the instructions for troubleshooting Cloud Storage Pools, resolve the issue, and then try saving the Cloud Storage Pool again.
 
-*Related information*
+.Related information
 
 xref:troubleshooting_cloud_storage_pools.adoc[Troubleshooting Cloud Storage Pools]

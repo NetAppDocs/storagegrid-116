@@ -1,7 +1,7 @@
 ---
 permalink: maintain/restoring_prometheus_metrics_primary_admin_node.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'Optionally, you can retain the historical metrics maintained by Prometheus on a primary Admin Node that has failed. The Prometheus metrics can only be restored if your StorageGRID system includes another Admin Node.'
 ---
 = Restoring Prometheus metrics when recovering a primary Admin Node
@@ -23,14 +23,14 @@ If you restored a primary Admin Node and your StorageGRID system has another Adm
 NOTE: Copying the Prometheus database might take an hour or more. Some Grid Manager features will be unavailable while services are stopped on the source Admin Node.
 
 . Log in to the source Admin Node:
- .. Enter the following command: `ssh admin@grid_node_IP`
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
  .. Enter the password listed in the `Passwords.txt` file.
  .. Enter the following command to switch to root: `su -`
  .. Enter the password listed in the `Passwords.txt` file.
 . From the source Admin Node, stop the Prometheus service: `service prometheus stop`
 . Complete the following steps on the recovered Admin Node:
  .. Log in to the recovered Admin Node:
-  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
