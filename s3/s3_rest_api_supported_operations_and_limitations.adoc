@@ -209,7 +209,7 @@ This operation returns the replication configuration attached to the bucket.
 a|
 GET Bucket tagging
 a|
-This operation uses the tagging subresource to return all tags for a bucket.
+This operation uses the _tagging_ subresource to return all tags for a bucket.
 a|
 GET Bucket versioning
 a|
@@ -322,7 +322,7 @@ This operation configures StorageGRID CloudMirror replication for the bucket usi
 * You can specify a different destination bucket in each rule of the replication configuration XML. A source bucket can replicate to more than one destination bucket.
 * Destination buckets must be specified as the URN of StorageGRID endpoints as specified in the Tenant Manager or the Tenant Management API.
 +
-The endpoint must exist for replication configuration to succeed. If the endpoint does not exist, the request fails as a `400 Bad Request`. The error message states: `Unable to save the replication policy. The specified endpoint URN does not exist: URN.`
+The endpoint must exist for replication configuration to succeed. If the endpoint does not exist, the request fails as a `400 Bad Request`. The error message states: `Unable to save the replication policy. The specified endpoint URN does not exist: _URN_.`
 
 * You do not need to specify a `Role` in the configuration XML. This value is not used by StorageGRID and will be ignored if submitted.
 * If you omit the storage class from the configuration XML, StorageGRID uses the `STANDARD` storage class by default.

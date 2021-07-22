@@ -132,18 +132,18 @@ In policy statements, the ARN is used in Principal and Resource elements.
 * Use this syntax to specify the S3 resource ARN:
 +
 ----
-arn:aws:s3:::_bucket-name_
-arn:aws:s3:::_bucket-name/object_key_
+arn:aws:s3:::bucket-name
+arn:aws:s3:::bucket-name/object_key
 ----
 
 * Use this syntax to specify the identity resource ARN (users and groups):
 +
 ----
-arn:aws:iam::_account_id:root_
-arn:aws:iam::_account_id:user/user_name_
-arn:aws:iam::_account_id:group/group_name_
-arn:aws:iam::_account_id:federated-user/user_name_
-arn:aws:iam::_account_id:federated-group/group_name_
+arn:aws:iam::account_id:root
+arn:aws:iam::account_id:user/user_name
+arn:aws:iam::account_id:group/group_name
+arn:aws:iam::account_id:federated-user/user_name
+arn:aws:iam::account_id:federated-group/group_name
 ----
 
 Other considerations:
@@ -189,8 +189,8 @@ Use the Principal element to identity the user, group, or tenant account that is
 * Account-based identities must be specified using an ID or an ARN:
 +
 ----
-"Principal": { "AWS": "_account_id_"}
-"Principal": { "AWS": "_identity_arn_" }
+"Principal": { "AWS": "account_id"}
+"Principal": { "AWS": "identity_arn" }
 ----
 
 * This example uses the tenant account ID 27233906934684427525, which includes the account root and all users in the account:
