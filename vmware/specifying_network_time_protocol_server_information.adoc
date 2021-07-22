@@ -1,7 +1,7 @@
 ---
 permalink: vmware/specifying_network_time_protocol_server_information.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You must specify the Network Time Protocol \(NTP\) configuration information for the StorageGRID system, so that operations performed on separate servers can be kept synchronized.'
 ---
 = Specifying Network Time Protocol server information
@@ -21,7 +21,7 @@ You must specify four NTP server references of Stratum 3 or better to prevent is
 
 NOTE: When specifying the external NTP source for a production-level StorageGRID installation, do not use the Windows Time (W32Time) service on a version of Windows earlier than Windows Server 2016. The time service on earlier versions of Windows is not sufficiently accurate and is not supported by Microsoft for use in high-accuracy environments, such as StorageGRID.
 
-https://support.microsoft.com/en-us/help/939322/support-boundary-to-configure-the-windows-time-service-for-high-accura[Support boundary to configure the Windows Time service for high-accuracy environments]
+https://support.microsoft.com/en-us/help/939322/support-boundary-to-configure-the-windows-time-service-for-high-accura[Support boundary to configure the Windows Time service for high-accuracy environments^]
 
 The external NTP servers are used by the nodes to which you previously assigned Primary NTP roles.
 
