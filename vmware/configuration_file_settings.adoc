@@ -150,13 +150,13 @@ CLIENT_NETWORK_GATEWAY = 10.4.0.1
 CLIENT_NETWORK_MTU = 8192
 ----
 
-* *PORT_REMAP*: Remaps any port used by a node for internal grid node communications or external communications. Remapping ports is necessary if enterprise networking policies restrict one or more ports used by StorageGRID. See xref:../network/internal_grid_node_communications.adoc[Internal grid node communications] or xref:../network/external_communications[External communications] for the list of ports used by StorageGRID.
+* *PORT_REMAP*: Remaps any port used by a node for internal grid node communications or external communications. Remapping ports is necessary if enterprise networking policies restrict one or more ports used by StorageGRID. For the list of ports used by StorageGRID, see internal grid node communications and external communications in the section, xref:../network/index.adoc[Networking guidelines].
 +
 IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
 +
 NOTE: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
 
-The format used is: `<network type>/<protocol>/<default port used by grid node>/<new port>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+The format used is: `_network type_/_protocol/_default port used by grid node_/_new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
 
 For example:
 
@@ -170,7 +170,7 @@ If used alone, this example setting symmetrically maps both inbound and outbound
 +
 IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
 
-The format used is: `<network type>/<protocol>/<new inbound port>/<default inbound port used by grid node>`, where network type is grid, admin, or client, and protocol is tcp or udp.
+The format used is: `_network type_/_protocol/_default port used by grid node_/_new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
 
 For example:
 
@@ -189,7 +189,7 @@ Each node is in its own section of the configuration file. Each node requires th
 * *GRID_NETWORK_IP*: The IP address for the node on the Grid Network.
 * *ADMIN_NETWORK_IP*: The IP address for the node on the Admin Network. Required only if the node is attached to the Admin Network and ADMIN_NETWORK_CONFIG is set to STATIC.
 * *CLIENT_NETWORK_IP*: The IP address for the node on the Client Network. Required only if the node is attached to the Client Network and CLIENT_NETWORK_CONFIG for this node is set to STATIC.
-* *ADMIN_IP*: The IP address for the primary Admin node on the Grid Network. Use the value that you specify as the GRID_NETWORK_IP for the primary Admin Node. If you omit this parameter, the node attempts to discover the primary Admin Node IP using mDNS. See "`How grid nodes discover the primary Admin Node`" for more information.
+* *ADMIN_IP*: The IP address for the primary Admin node on the Grid Network. Use the value that you specify as the GRID_NETWORK_IP for the primary Admin Node. If you omit this parameter, the node attempts to discover the primary Admin Node IP using mDNS. For more information, see xref:how_grid_nodes_discover_primary_admin_node.adoc[How grid nodes discover the primary Admin Node].
 +
 NOTE: The ADMIN_IP parameter is ignored for the primary Admin Node.
 
@@ -354,4 +354,4 @@ NOTE: For Admin nodes, INSTANCES must always equal 2.
 
 xref:how_grid_nodes_discover_primary_admin_node.adoc[How grid nodes discover the primary Admin Node]
 
-xref:../network/index.adoc[Network guidelines]
+xref:../network/index.adoc[Networking guidelines]
