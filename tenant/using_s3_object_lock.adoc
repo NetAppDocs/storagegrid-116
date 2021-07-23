@@ -1,7 +1,7 @@
 ---
 permalink: tenant/using_s3_object_lock.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You can use the S3 Object Lock feature in StorageGRID if your objects must comply with regulatory requirements for retention.'
 ---
 = Using S3 Object Lock
@@ -26,9 +26,7 @@ If a bucket has S3 Object Lock enabled, the S3 client application can optionally
 * *Retain-until-date*: If an object version's retain-until-date is in the future, the object can be retrieved, but it cannot be modified or deleted. As required, an object's retain-until-date can be increased, but this date cannot be decreased.
 * *Legal hold*: Applying a legal hold to an object version immediately locks that object. For example, you might need to put a legal hold on an object that is related to an investigation or legal dispute. A legal hold has no expiration date, but remains in place until it is explicitly removed. Legal holds are independent of the retain-until-date.
 
-For details on these settings, go to the instructions for implementing S3 client applications and search for "`using S3 object lock.`"
-
-xref:../s3/index.adoc[Use S3]
+For details on these settings, go to "`using S3 object lock`" in xref:../s3/s3_rest_api_supported_operations_and_limitations.adoc[S3 REST API supported operations and limitations].
 
 == Managing legacy Compliant buckets
 
