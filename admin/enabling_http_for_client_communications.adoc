@@ -22,9 +22,8 @@ Complete this task only if S3 and Swift clients need to make HTTP connections di
 
 You do not need to complete this task for clients that only use HTTPS connections or for clients that connect to the Load Balancer service (because you can configure each Load Balancer endpoint to use either HTTP or HTTPS). See the information on configuring load balancer endpoints for more information.
 
-See the following to learn the which ports S3 and Swift clients use when connecting to Storage Nodes or to the deprecated CLB service using HTTP or HTTPS:
+See xref:summary_ip_addresses_and_ports_for_client_connections.adoc[Summary: IP addresses and ports for client connections] to learn which ports S3 and Swift clients use when connecting to Storage Nodes or to the deprecated CLB service using HTTP or HTTPS
 
-xref:summary_ip_addresses_and_ports_for_client_connections.adoc[Summary: IP addresses and ports for client connections]
 
 IMPORTANT: Be careful when enabling HTTP for a production grid because requests will be sent unencrypted.
 
@@ -39,7 +38,7 @@ image::../media/http_enabled.png[Enable HTTP Connection]
 
 .Related information
 
-adoc:configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints]
+xref:configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints]
 
 xref:../s3/index.adoc[Use S3]
 

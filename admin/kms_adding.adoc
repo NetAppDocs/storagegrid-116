@@ -1,7 +1,7 @@
 ---
 permalink: admin/kms_adding.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You use the StorageGRID Key Management Server wizard to add each KMS or KMS cluster.'
 ---
 = Adding a key management server (KMS)
@@ -13,13 +13,9 @@ You use the StorageGRID Key Management Server wizard to add each KMS or KMS clus
 
 .What you'll need
 
-* You must have reviewed the considerations and requirements for using key management.
-+
-xref:kms_considerations_and_requirements.adoc[Considerations and requirements for using a key management server]
+* You must have reviewed the xref:kms_considerations_and_requirements.adoc[considerations and requirements for using a key management server].
 
-* You must have configured StorageGRID as a client in the KMS, and you must have the required information for each KMS or KMS cluster.
-+
-xref:kms_configuring_storagegrid_as_client.adoc[Configuring StorageGRID as a client in the KMS]
+* You must have xref:kms_configuring_storagegrid_as_client.adoc[configured StorageGRID as a client in the KMS], and you must have the required information for each KMS or KMS cluster
 
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a supported browser.
@@ -29,3 +25,9 @@ xref:kms_configuring_storagegrid_as_client.adoc[Configuring StorageGRID as a cli
 If possible, configure any site-specific key management servers before configuring a default KMS that applies to all sites not managed by another KMS. If you create the default KMS first, all node-encrypted appliances in the grid will be encrypted by the default KMS. If you want to create a site-specific KMS later, you must first copy the current version of the encryption key from the default KMS to the new KMS.
 
 xref:kms_considerations_for_changing_for_site.adoc[Considerations for changing the KMS for a site]
+
+.Steps
+
+. xref:kms_adding_enter_kms_details.adoc[Step 1: Enter KMS Details]
+. xref:kms_adding_upload_server_certificate.adoc[Step 2: Upload Server Certificate]
+. xref:kms_adding_upload_client_certificates.adoc[Step 3: Upload Client Certificates]

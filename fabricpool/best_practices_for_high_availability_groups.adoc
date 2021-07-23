@@ -1,7 +1,7 @@
 ---
 permalink: fabricpool/best_practices_for_high_availability_groups.html
 sidebar: sidebar
-keywords:
+keywords: fabricPool, high availability group, HA group, active-active, active-backup, cloud tier, best practices
 summary: 'Before attaching StorageGRID as a FabricPool cloud tier, you use the StorageGRID Grid Manager to configure a high availability \(HA\) group.'
 ---
 = Best practices for high availability groups
@@ -30,6 +30,4 @@ The best practices for creating a StorageGRID HA group for FabricPool depend on 
 * If you plan to use FabricPool with primary workload data, you must create a HA group that includes at least two load-balancing nodes to prevent data retrieval interruption.
 * If you plan to use the FabricPool snapshot-only volume tiering policy or non-primary local performance tiers (for example, disaster recovery locations or NetApp SnapMirror® destinations), you can configure an HA group with only one node.
 
-These instructions describe setting up an HA group for Active-Backup HA (one node is active and one node is backup). However, you might prefer to use DNS Round Robin or Active-Active HA. To learn the benefits of these other HA configurations:
-
-xref:../admin/index.adoc[Administer StorageGRID] > Configuration options for HA groups
+These instructions describe setting up an HA group for Active-Backup HA (one node is active and one node is backup). However, you might prefer to use DNS Round Robin or Active-Active HA. To learn the benefits of these other HA configurations, see xref:../admin/configuration_options_for_ha_groups.adoc[Configuration options for HA groups].

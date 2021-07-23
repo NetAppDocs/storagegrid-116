@@ -46,9 +46,13 @@ NOTE: Configuration settings are unavailable until you select a Target Type.
 Most of the fields on this page are self-explanatory. The following describes fields for which you might need guidance.
 
  ** *Region*: Only available if *Use AWS* is selected. The region you select must match the bucket's region.
- ** *Endpoint* and *Use AWS*: For Amazon Web Services (AWS), select *Use AWS*. *Endpoint* is then automatically populated with an endpoint URL based on the Bucket Name and Region attributes. For example, https://bucket.region.amazonaws.com
+ ** *Endpoint* and *Use AWS*: For Amazon Web Services (AWS), select *Use AWS*. *Endpoint* is then automatically populated with an endpoint URL based on the Bucket Name and Region attributes. For example:
 +
-For a non-AWS target, enter the URL of the system hosting the bucket, including the port number. For example, https://system.com:1080
+`\https://bucket.region.amazonaws.com`
++
+For a non-AWS target, enter the URL of the system hosting the bucket, including the port number. For example:
++
+`\https://system.com:1080`
 
  ** *End Point Authentication*: Enabled by default. If the network to the external archival storage system is trusted, you can unselect the check box to disable endpoint SSL certificate and hostname verification for the targeted external archival storage system. If another instance of a StorageGRID system is the target archival storage device and the system is configured with publicly signed certificates, you can keep the check box selected.
  ** *Storage Class*: Select *Standard (Default)* for regular storage. Select *Reduced Redundancy* only for objects that can be easily recreated. *Reduced Redundancy* provides lower cost storage with less reliability. If the targeted archival storage system is another instance of the StorageGRID system, *Storage Class* controls how many interim copies of the object are made at ingest on the target system, if dual commit is used when objects are ingested there.
