@@ -95,6 +95,7 @@ The SSM Services Main page also indicates that Cassandra is not running.
 +
 image::../media/cassandra_not_running.gif[Overview: SSM: Services page]
 
+[#restart_Cassandra_from_the_Storage_Node, start=3]
 . Try restarting Cassandra from the Storage Node:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
@@ -121,6 +122,7 @@ The following chart example shows that Cassandra has been down for at least 17 d
 
 image::../media/cassandra_not_running_chart.png[Overview: SSM: Services page]
 
+[start=6]
 . To review the servermanager.log file on the Storage Node:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
@@ -139,8 +141,8 @@ If Cassandra has been down for longer than 15 days, the following message is dis
 started because it has been offline for longer than
 its 15 day grace period - rebuild cassandra
 ----
-
- .. Make sure the timestamp of this message is the time when you attempted restarting Cassandra as instructed in step xref:troubleshooting_storagegrid_system.adocSTEP_6A4A25E2BE2649DAB476DB900C8B864F[3].
+[start=3]
+ .. Make sure the timestamp of this message is the time when you attempted restarting Cassandra as instructed in step <<restart_Cassandra_from_the_Storage_Node,Restart Cassandra from the Storage Node>>.
 +
 There can be more than one entry for Cassandra; you must locate the most recent entry.
 
