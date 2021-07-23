@@ -1,7 +1,7 @@
 ---
 permalink: monitor/commonly_used_prometheus_metrics.html
 sidebar: sidebar
-keywords: 
+keywords: prometheus, Prometheus metrics, metrics
 summary: 'The Prometheus service on Admin Nodes collects time series metrics from the services on all nodes. While Prometheus collects more than a thousand metrics, a relatively small number are required to monitor the most critical StorageGRID operations.'
 ---
 = Commonly used Prometheus metrics
@@ -73,7 +73,9 @@ The total number of S3 and Swift data objects known by this Storage Node. Count 
 a|
 storagegrid_content_objects_lost
 a|
-The total number of objects this service detects as missing from the StorageGRID system. Action should be taken to determine the cause of the loss and if recovery is possible.xref:troubleshooting_storagegrid_system.adoc[Troubleshooting lost and missing object data]
+The total number of objects this service detects as missing from the StorageGRID system. Action should be taken to determine the cause of the loss and if recovery is possible. 
+
+xref:troubleshooting_storagegrid_system.adoc[Troubleshooting lost and missing object data]
 
 a|
 storagegrid_http_sessions_incoming_attempted
@@ -114,8 +116,9 @@ The rate at which objects owned by this node are scanned and queued for ILM.
 a|
 storagegrid_ilm_scan_period_estimated_minutes
 a|
-The estimated time to complete a full ILM scan on this node.*Note:* A full scan does not guarantee that ILM has been applied to all objects owned by this node.
+The estimated time to complete a full ILM scan on this node.
 
+*Note:* A full scan does not guarantee that ILM has been applied to all objects owned by this node.
 a|
 storagegrid_load_balancer_endpoint_cert_expiry_time
 a|

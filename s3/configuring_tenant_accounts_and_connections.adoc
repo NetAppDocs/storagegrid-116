@@ -167,11 +167,11 @@ Default S3 ports:
 
 To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* `https://_VIP-of-HA-group:LB-endpoint-port_`
+* \https://VIP-of-HA-group:LB-endpoint-port
 
 For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
 
-* `https://192.0.2.5:10443`
+* \https://192.0.2.5:10443
 
 It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
 
@@ -209,7 +209,7 @@ To enable you to use S3 virtual hosted style-requests, a grid administrator must
 * Use the Grid Manager to add the S3 endpoint domain names to the StorageGRID system.
 * Ensure that the certificate the client uses for HTTPS connections to StorageGRID is signed for all domain names that the client requires.
 +
-For example, if the endpoint is `s3.company.com`, the grid administrator must ensure that the certificate used for HTTPS connections includes the `s3.company.com` endpoint and the endpoint's wildcard Subject Alternative Name (SAN): ``*.s3.company.com`.
+For example, if the endpoint is `s3.company.com`, the grid administrator must ensure that the certificate used for HTTPS connections includes the `s3.company.com` endpoint and the endpoint's wildcard Subject Alternative Name (SAN): `*.s3.company.com`.
 
 * Configure the DNS server used by the client to include DNS records that match the endpoint domain names, including any required wildcard records.
 

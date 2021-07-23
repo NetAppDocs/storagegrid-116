@@ -13,6 +13,15 @@ The StorageGRID system implements the Simple Storage Service API (API Version 20
 
 The StorageGRID system supports both virtual hosted-style requests and path-style requests.
 
+* xref:s3_rest_api_supported_operations_and_limitations.adocdate_handling[Date handling]
+* xref:s3_rest_api_supported_operations_and_limitations.adoccommon_request_headers[Common request headers]
+* xref:s3_rest_api_supported_operations_and_limitations.adoccommon_response_headers[Common response headers]
+* xref:s3_rest_api_supported_operations_and_limitations.adocauthenticating_requests[Authenticating requests]
+* xref:s3_rest_api_supported_operations_and_limitations.adocoperations_on_service[Operations on the service]
+* xref:s3_rest_api_supported_operations_and_limitations.adocoperations_on_buckets[Operations on buckets]
+* xref:s3_rest_api_supported_operations_and_limitations.adoccustom_operations_on_buckets[Custom operations on buckets]
+* xref:s3_rest_api_supported_operations_and_limitations.adocoperations_on_objects[Operations on objects]
+
 .Related information
 
 http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]
@@ -209,7 +218,7 @@ This operation returns the replication configuration attached to the bucket.
 a|
 GET Bucket tagging
 a|
-This operation uses the tagging subresource to return all tags for a bucket.
+This operation uses the _tagging_ subresource to return all tags for a bucket.
 a|
 GET Bucket versioning
 a|
@@ -322,7 +331,7 @@ This operation configures StorageGRID CloudMirror replication for the bucket usi
 * You can specify a different destination bucket in each rule of the replication configuration XML. A source bucket can replicate to more than one destination bucket.
 * Destination buckets must be specified as the URN of StorageGRID endpoints as specified in the Tenant Manager or the Tenant Management API.
 +
-The endpoint must exist for replication configuration to succeed. If the endpoint does not exist, the request fails as a `400 Bad Request`. The error message states: `Unable to save the replication policy. The specified endpoint URN does not exist: URN.`
+The endpoint must exist for replication configuration to succeed. If the endpoint does not exist, the request fails as a `400 Bad Request`. The error message states: `Unable to save the replication policy. The specified endpoint URN does not exist: _URN_.`
 
 * You do not need to specify a `Role` in the configuration XML. This value is not used by StorageGRID and will be ignored if submitted.
 * If you omit the storage class from the configuration XML, StorageGRID uses the `STANDARD` storage class by default.
@@ -489,12 +498,14 @@ aws s3api --endpoint-url <StorageGRID endpoint> put-object
 --bucket testbucket --key obj2test2 --body bktjson.json
 ----
 
-The success response indicates that the object will expire in 100 days (01 Oct 2020) and that it matched Rule 2 of the lifecycle configuration .
+The success response indicates that the object will expire in 100 days (01 Oct 2020) and that it matched Rule 2 of the lifecycle configuration.
 
+[source]
+[subs="specialcharacters,quotes"]
 ----
 {
-      "Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:49 GMT\\", rule-id=\\"rule2\\"",**
-      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""
+      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:49 GMT\\", rule-id=\\"rule2\\"",**
+      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""*
 }
 ----
 
@@ -507,10 +518,12 @@ aws s3api --endpoint-url <StorageGRID endpoint> head-object
 
 The success response includes the object's metadata and indicates that the object will expire in 100 days and that it matched Rule 2.
 
+[source]
+[subs="specialcharacters,quotes"]
 ----
 {
       "AcceptRanges": "bytes",
-      "Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:48 GMT\\", rule-id=\\"rule2\\"",**
+      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:48 GMT\\", rule-id=\\"rule2\\"",***
       "LastModified": "2020-06-23T09:07:48+00:00",
       "ContentLength": 921,
       "ETag": "\"9762f8a803bc34f5340579d4446076f7\""
@@ -937,7 +950,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 ==== UTF-8 characters in user metadata
 
-StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. GET requests for an object with escaped UTF-8 characters in user-defined metadata do not return the x-amz-missing-meta header if the key name or value includes unprintable characters.
+StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. GET requests for an object with escaped UTF-8 characters in user-defined metadata do not return the `x-amz-missing-meta` header if the key name or value includes unprintable characters.
 
 ==== Unsupported request header
 
@@ -1037,7 +1050,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 
 ==== UTF-8 characters in user metadata
 
-StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. HEAD requests for an object with escaped UTF-8 characters in user-defined metadata do not return the x-amz-missing-meta header if the key name or value includes unprintable characters.
+StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. HEAD requests for an object with escaped UTF-8 characters in user-defined metadata do not return the `x-amz-missing-meta` header if the key name or value includes unprintable characters.
 
 ==== Unsupported request header
 
@@ -1265,6 +1278,9 @@ Chunked transfer encoding is supported if `aws-chunked` payload signing is also 
 +
 When specifying the name-value pair for user-defined metadata, use this general format:
 +
+
+[source]
+[subs="specialcharacters,quotes"]
 ----
 x-amz-meta-_name_: _value_
 ----
@@ -1284,12 +1300,14 @@ NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Referen
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-server-side-encryption`
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
 
 ==== Unsupported request headers
@@ -1405,6 +1423,7 @@ You can specify `REPLACE` to overwrite the existing tags when copying the object
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`
@@ -1414,6 +1433,7 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Request headers for server-side encryption]
 
 ==== Unsupported request headers
@@ -1619,12 +1639,14 @@ NOTE: Adding `creation-time` as user-defined metadata is not allowed if you are 
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 * SSE request headers:
  ** `x-amz-server-side-encryption`
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
+
 xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
 
 NOTE: For information on how StorageGRID handles UTF-8 characters, see the documentation for PUT Object.

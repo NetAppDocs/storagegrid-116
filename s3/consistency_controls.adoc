@@ -64,9 +64,11 @@ Unless you require consistency guarantees similar to Amazon S3, you can prevent 
 
 To set the consistency control for an individual API operation, consistency controls must be supported for the operation, and you must specify the consistency control in the request header. This example sets the consistency control to "`strong-site`" for a GET Object operation.
 
+[source]
+[subs="specialcharacters,quotes"]
 ----
 GET /bucket/object HTTP/1.1
-Date: _date_
+Date: date
 Authorization: _authorization name_
 Host: _host_
 Consistency-Control: strong-site
