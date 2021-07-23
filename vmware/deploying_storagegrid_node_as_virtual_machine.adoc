@@ -1,7 +1,7 @@
 ---
 permalink: vmware/deploying_storagegrid_node_as_virtual_machine.html
 sidebar: sidebar
-keywords:
+keywords: storagegrid, deploying grid nodes, deploy grid nodes, vsphere, vsphere web client
 summary: 'You use VMware vSphere Web Client to deploy each grid node as a virtual machine. During deployment, each grid node is created and connected to one or more StorageGRID networks. Optionally, you can remap node ports or increase CPU or memory settings for the node before powering it on.'
 ---
 = Deploying a StorageGRID node as a virtual machine
@@ -167,7 +167,7 @@ If you omit the primary Admin Node IP address, the IP address will be automatica
   *** If you select DHCP, the *Client network IP*, *Client network mask*, and *Client network gateway* are automatically assigned.
 . Review the virtual machine configuration and make any changes necessary.
 . When you are ready to complete, select *Finish* to start the upload of the virtual machine.
-.[#step_recovery_storage] If you deployed this node as part of recovery operation and this is not a full-node recovery, perform these steps after deployment is complete:
+. [#step_recovery_storage]If you deployed this node as part of recovery operation and this is not a full-node recovery, perform these steps after deployment is complete:
  .. Right-click the virtual machine, and select *Edit Settings*.
  .. Select each default virtual hard disk that has been designated for storage, and select *Remove*.
  .. Depending on your data recovery circumstances, add new virtual disks according to your storage requirements, reattach any virtual hard disks preserved from the previously removed failed grid node, or both.
@@ -180,7 +180,7 @@ Note the following important guidelines:
 +
 You might need to remap a port if your enterprise networking policies restrict access to one or more ports that are used by StorageGRID. See the networking guidelines for the ports used by StorageGRID.
 +
-xref:../network/index.adoc[Network guidelines]
+xref:../network/index.adoc[Networking guidelines]
 +
 IMPORTANT: Do not remap the ports used in load balancer endpoints.
 

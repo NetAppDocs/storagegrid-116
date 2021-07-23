@@ -1,7 +1,7 @@
 ---
 permalink: monitor/updating_snmp_agent.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You might want to disable SNMP notifications, update community strings, or add or remove agent addresses, USM users, and trap destinations.'
 ---
 = Updating the SNMP agent
@@ -61,16 +61,17 @@ Use this tab to define the USM users who are authorized to query the MIB or to r
 +
 The username for an existing USM user cannot be changed. If you need to change a username, you must remove the user and create a new one.
 +
-NOTE: If you add or remove a user's authoritative engine ID and that user is currently selected for a destination, you must edit or remove the destination, as described in step <<SNMP_TRAP_DESTINATION,#SNMP_TRAP_DESTINATION>>. Otherwise, a validation error occurs when you save the SNMP agent configuration.
+NOTE: If you add or remove a user's authoritative engine ID and that user is currently selected for a destination, you must edit or remove the destination, as described in step <<SNMP_TRAP_DESTINATION,SNMP trap destination>>. Otherwise, a validation error occurs when you save the SNMP agent configuration.
 
  .. To remove a USM user, select the radio button for the user, and click *Remove*. Then, click *OK* to confirm that you want to remove this user.
 +
-NOTE: If the user you removed is currently selected for a trap destination, you must edit or remove the destination, as described in step <<SNMP_TRAP_DESTINATION,#SNMP_TRAP_DESTINATION>>. Otherwise, a validation error occurs when you save the SNMP agent configuration.
+NOTE: If the user you removed is currently selected for a trap destination, you must edit or remove the destination, as described in step <<SNMP_TRAP_DESTINATION,SNMP trap destination>>. Otherwise, a validation error occurs when you save the SNMP agent configuration.
 +
 image::../media/snmp_usm_user_remove_error.png[SNMP USM User Remove Error]
 
  .. To commit your changes, click *Save* at the bottom of the SNMP Agent page.
 
+[#SNMP_TRAP_DESTINATION, start=9]
 . If you want to update trap destinations, select the Trap Destinations tab in the Other Configurations section.
 +
 image::../media/snmp_other_config_trap_dest_table.png[SNMP Other Configurations Trap Dest Table]
