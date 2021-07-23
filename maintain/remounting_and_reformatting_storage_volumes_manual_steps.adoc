@@ -1,7 +1,7 @@
 ---
 permalink: maintain/remounting_and_reformatting_storage_volumes_manual_steps.html
 sidebar: sidebar
-keywords:
+keywords: storagegrid, recover, appliance storage volume, appliance volume, remount manually, reformat manually
 summary: 'You must manually run two scripts to remount preserved storage volumes and to reformat any failed storage volumes. The first script remounts volumes that are properly formatted as StorageGRID storage volumes. The second script reformats any unmounted volumes, rebuilds Cassandra, if needed, and starts services.'
 ---
 = Remounting and reformatting storage volumes ("`Manual Steps`")
@@ -21,7 +21,7 @@ Running the `sn-remount-volumes` script might help you identify additional faile
 * You have checked that an expansion is not in progress. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Expansion*.)
 * You have reviewed the warnings for Storage Node system drive recovery.
 +
-link:reviewing_warnings_for_system_drive_recovery.md#[Reviewing warnings for Storage Node system drive recovery]
+link:reviewing_warnings_for_system_drive_recovery.adoc[Reviewing warnings for Storage Node system drive recovery]
 +
 CAUTION: Contact technical support if more than one Storage Node is offline or if a Storage Node in this grid has been rebuilt in the last 15 days. Do not run the `sn-recovery-postinstall.sh` script. Rebuilding Cassandra on two or more Storage Nodes within 15 days of each other might result in data loss.
 
