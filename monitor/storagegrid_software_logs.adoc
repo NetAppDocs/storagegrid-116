@@ -20,17 +20,22 @@ a|
 `/var/local/log/bycast.log`
 a|
 The file `bycast.log` is the primary StorageGRID troubleshooting file. The file `bycast-err.log` contains a subset of `bycast.log` (messages with severity ERROR and CRITICAL). CRITICAL messages are also displayed in the system. Select *Support* > *Tools* > *Grid Topology*. Then select *_Site_* > *_Node_* > *SSM* > *Events*.
-
 a|
 All nodes
 a|
 `/var/local/log/bycast-err.log`
 a|
+The file `bycast.log` is the primary StorageGRID troubleshooting file. The file `bycast-err.log` contains a subset of `bycast.log` (messages with severity ERROR and CRITICAL). CRITICAL messages are also displayed in the system. Select *Support* > *Tools* > *Grid Topology*. Then select *_Site_* > *_Node_* > *SSM* > *Events*.
+a|
+All nodes
+a|
 `/var/local/core/`
 a|
 Contains any core dump files created if the program terminates abnormally. Possible causes include assertion failures, violations, or thread timeouts.
-*Note:* The file /var/local/core/kexec_cmd usually exists on appliance nodes and does not indicate an error.
 
+*Note:* The file ``/var/local/core/kexec_cmd` usually exists on appliance nodes and does not indicate an error.
+a|
+All nodes
 |===
 
 == Server Manager logs
