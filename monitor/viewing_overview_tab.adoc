@@ -31,12 +31,14 @@ NOTE: A node might appear as Unknown during managed shutdown operations. You can
 
  ** *Not connected - Administratively down* image:../media/icon_alarm_gray_administratively_down.png[gray questionmark icon]: The node is not connected to the grid for an expected reason. For example, the node, or services on the node, has been gracefully shut down, the node is rebooting, or the software is being upgraded. One or more alerts might also be active.
  ** *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark]: The node is connected to the grid.
-* *Software Version*: The version of StorageGRID that is installed on the node.
-* *HA Groups*: For Admin Node and Gateway Nodes only. Shown if a network interface on the node is included in a high availability group and whether that interface is the Master or the Backup.
-+
-image::../media/ha_group_master_interface.png[HA Group Master Interface]
+* *Storage used*
 
-* *IP Addresses*: The node's IP addresses. Click *Show more* to view the node's IPv4 and IPv6 addresses and interface mappings:
+** *Object data*: The percentage of the total usable space for object data that has been used for the Storage Node, site, or grid.
+** *Object metadata*: The percentage of the total allowed space for object metadata that has been used for the Storage Node, site, or grid.
+
+* *Software Version*: The version of StorageGRID that is installed on the node.
+* *HA Groups*: For Admin Node and Gateway Nodes only. Shown if a network interface on the node is included in a high availability group and whether that interface is Primary or Secondary.
+* *IP Addresses*: The node's IP addresses. Click *Show additional IP addresses* to view the node's IPv4 and IPv6 addresses and interface mappings:
  ** eth0: Grid Network
  ** eth1: Admin Network
  ** eth2: Client Network
