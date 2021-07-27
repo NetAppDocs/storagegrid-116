@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: bucket, buckets, operations on buckets
 summary: 'This section describes how the StorageGRID system implements S3 REST API operations for objects.'
 ---
-== Operations on objects
+= Operations on objects
 :icons: font
 :imagesdir: ../media/
 
@@ -140,7 +140,7 @@ xref:consistency_controls.adoc[Consistency controls]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-=== Using S3 Object Lock
+== Using S3 Object Lock
 
 [.lead]
 If the global S3 Object Lock setting is enabled for your StorageGRID system, you can create buckets with S3 Object Lock enabled and then specify retain-until-date and legal hold settings for each object version you add to that bucket.
@@ -149,7 +149,7 @@ S3 Object Lock allows you to specify object-level settings to prevent objects fr
 
 The StorageGRID S3 Object Lock feature provides a single retention mode that is equivalent to the Amazon S3 compliance mode. By default, a protected object version cannot be overwritten or deleted by any user. The StorageGRID S3 Object Lock feature does not support a governance mode, and it does not allow users with special permissions to bypass retention settings or to delete protected objects.
 
-==== Enabling S3 Object Lock for a bucket
+=== Enabling S3 Object Lock for a bucket
 
 If the global S3 Object Lock setting is enabled for your StorageGRID system, you can optionally enable S3 Object Lock when you create each bucket. You can use either of these methods:
 
@@ -165,13 +165,13 @@ You cannot add or disable S3 Object Lock after the bucket is created. S3 Object 
 
 A bucket with S3 Object Lock enabled can contain a combination of objects with and without S3 Object Lock settings. StorageGRID does not support default retention for the objects in S3 Object Lock buckets, so the PUT Object Lock Configuration bucket operation is not supported.
 
-==== Determining if S3 Object Lock is enabled for a bucket
+=== Determining if S3 Object Lock is enabled for a bucket
 
 To determine if S3 Object Lock is enabled, use the GET Object Lock Configuration request.
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
 
-==== Creating an object with S3 Object Lock settings
+=== Creating an object with S3 Object Lock settings
 
 To specify S3 Object Lock settings when adding an object version to a bucket that has S3 Object Lock enabled, issue a PUT Object, PUT Object - Copy, or Initiate Multipart Upload request. Use the following request headers.
 
@@ -196,7 +196,7 @@ If you use any of these request headers, be aware of these restrictions:
 * A subsequent GET or HEAD Object version response will include the headers `x-amz-object-lock-mode`, `x-amz-object-lock-retain-until-date`, and `x-amz-object-lock-legal-hold`, if configured and if the request sender has the correct `s3:Get*` permissions.
 * A subsequent DELETE Object version or DELETE Objects versions request will fail if it is before the retain-until-date or if a legal hold is on.
 
-==== Updating S3 Object Lock settings
+=== Updating S3 Object Lock settings
 
 If you need to update the legal hold or retention settings for an existing object version, you can perform the following object subresource operations:
 
@@ -225,7 +225,7 @@ xref:object_versioning.adoc[Object versioning]
 
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html[Amazon Simple Storage Service User Guide: Using S3 Object Lock]
 
-=== Using server-side encryption
+== Using server-side encryption
 
 [.lead]
 Server-side encryption allows you to protect your object data at rest. StorageGRID encrypts the data as it writes the object and decrypts the data when you access the object.
@@ -241,7 +241,7 @@ IMPORTANT: The encryption keys you provide are never stored. If you lose an encr
 +
 NOTE: If an object is encrypted with SSE or SSE-C, any bucket-level or grid-level encryption settings are ignored.
 
-==== Using SSE
+=== Using SSE
 
 To encrypt an object with a unique key managed by StorageGRID, you use the following request header:
 
@@ -253,7 +253,7 @@ The SSE request header is supported by the following object operations:
 * PUT Object - Copy
 * Initiate Multipart Upload
 
-==== Using SSE-C
+=== Using SSE-C
 
 To encrypt an object with a unique key that you manage, you use three request headers:
 
@@ -283,7 +283,7 @@ The SSE-C request headers are supported by the following object operations:
 * Upload Part
 * Upload Part - Copy
 
-==== Considerations for using server-side encryption with customer-provided keys (SSE-C)
+=== Considerations for using server-side encryption with customer-provided keys (SSE-C)
 
 Before using SSE-C, be aware of the following considerations:
 
@@ -318,12 +318,12 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part - Copy]
 
 https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html[Amazon S3 Developer Guide: Protecting Data Using Server-Side Encryption with Customer-Provided Encryption Keys (SSE-C)]
 
-=== GET Object
+== GET Object
 
 [.lead]
 You can use the S3 GET Object request to retrieve an object from an S3 bucket.
 
-==== partNumber request parameter is not supported
+=== partNumber request parameter is not supported
 
 The `partNumber` request parameter is not supported for GET Object requests. You cannot perform a GET request to retrieve a specific part of a multipart object. A 501 Not Implemented error is returned with the following message:
 
@@ -331,7 +331,7 @@ The `partNumber` request parameter is not supported for GET Object requests. You
 GET Object by partNumber is not implemented
 ----
 
-==== Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
+=== Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
 Use all three of these headers if the object is encrypted with a unique key that you provided.
 
@@ -341,21 +341,21 @@ Use all three of these headers if the object is encrypted with a unique key that
 
 IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
-==== UTF-8 characters in user metadata
+=== UTF-8 characters in user metadata
 
 StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. GET requests for an object with escaped UTF-8 characters in user-defined metadata do not return the `x-amz-missing-meta` header if the key name or value includes unprintable characters.
 
-==== Unsupported request header
+=== Unsupported request header
 
 The following request header is not supported and returns `XNotImplemented`:
 
 * `x-amz-website-redirect-location`
 
-==== Versioning
+=== Versioning
 
 If a `versionId` subresource is not specified, the operation fetches the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`Not Found`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
-==== Behavior of GET Object for Cloud Storage Pool objects
+=== Behavior of GET Object for Cloud Storage Pool objects
 
 If an object has been stored in a Cloud Storage Pool (see the instructions for managing objects with information lifecycle management), the behavior of a GET Object request depends on the state of the object. See "`HEAD Object`" for more details.
 
@@ -405,7 +405,7 @@ A copy of the object is retrieved.
 
 |===
 
-==== Multipart or segmented objects in a Cloud Storage Pool
+=== Multipart or segmented objects in a Cloud Storage Pool
 
 If you uploaded a multipart object or if StorageGRID split a large object into segments, StorageGRID determines whether the object is available in the Cloud Storage Pool by sampling a subset of the object's parts or segments. In some cases, a GET Object request might incorrectly return `200 OK` when some parts of the object have already been transitioned to a non-retrievable state or when some parts of the object have not yet been restored.
 
@@ -426,12 +426,12 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-=== HEAD Object
+== HEAD Object
 
 [.lead]
 You can use the S3 HEAD Object request to retrieve metadata from an object without returning the object itself. If the object is stored in a Cloud Storage Pool, you can use HEAD Object to determine the object's transition state.
 
-==== Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
+=== Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
 Use all three of these headers if the object is encrypted with a unique key that you provided.
 
@@ -441,17 +441,17 @@ Use all three of these headers if the object is encrypted with a unique key that
 
 IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
-==== UTF-8 characters in user metadata
+=== UTF-8 characters in user metadata
 
 StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. HEAD requests for an object with escaped UTF-8 characters in user-defined metadata do not return the `x-amz-missing-meta` header if the key name or value includes unprintable characters.
 
-==== Unsupported request header
+=== Unsupported request header
 
 The following request header is not supported and returns `XNotImplemented`:
 
 * `x-amz-website-redirect-location`
 
-==== Response headers for Cloud Storage Pool objects
+=== Response headers for Cloud Storage Pool objects
 
 If the object is stored in a Cloud Storage Pool (see the instructions for managing objects with information lifecycle management), the following response headers are returned:
 
@@ -526,11 +526,11 @@ The `expiry-date` indicates when the object in the Cloud Storage Pool will be re
 
 |===
 
-==== Multipart or segmented objects in a Cloud Storage Pool
+=== Multipart or segmented objects in a Cloud Storage Pool
 
 If you uploaded a multipart object or if StorageGRID split a large object into segments, StorageGRID determines whether the object is available in the Cloud Storage Pool by sampling a subset of the object's parts or segments. In some cases, a HEAD Object request might incorrectly return `x-amz-restore: ongoing-request="false"` when some parts of the object have already been transitioned to a non-retrievable state or when some parts of the object have not yet been restored.
 
-==== Versioning
+=== Versioning
 
 If a `versionId` subresource is not specified, the operation fetches the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`Not Found`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
@@ -544,20 +544,20 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[POST Object restore]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-=== POST Object restore
+== POST Object restore
 
 [.lead]
 You can use the S3 POST Object restore request to restore an object that is stored in a Cloud Storage Pool.
 
-==== Supported request type
+=== Supported request type
 
 StorageGRID only supports POST Object restore requests to restore an object. It does not support the `SELECT` type of restoration. Select requests return `XNotImplemented`.
 
-==== Versioning
+=== Versioning
 
 Optionally, specify `versionId` to restore a specific version of an object in a versioned bucket. If you do not specify `versionId`, the most recent version of the object is restored
 
-==== Behavior of POST Object restore on Cloud Storage Pool objects
+=== Behavior of POST Object restore on Cloud Storage Pool objects
 
 If an object has been stored in a Cloud Storage Pool (see the instructions for managing objects with information lifecycle management), a POST Object restore request has the following behavior, based on the state of the object. See "`HEAD Object`" for more details.
 
@@ -611,24 +611,24 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[HEAD Object]
 
 xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
 
-=== PUT Object
+== PUT Object
 
 [.lead]
 You can use the S3 PUT Object request to add an object to a bucket.
 
-==== Resolving conflicts
+=== Resolving conflicts
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
-==== Object size
+=== Object size
 
 StorageGRID supports objects up to 5 TB in size.
 
-==== User metadata size
+=== User metadata size
 
 Amazon S3 limits the size of user-defined metadata within each PUT request header to 2 KB. StorageGRID limits user metadata to 24 KiB. The size of user-defined metadata is measured by taking the sum of the number of bytes in the UTF-8 encoding of each key and value.
 
-==== UTF-8 characters in user metadata
+=== UTF-8 characters in user metadata
 
 If a request includes (unescaped) UTF-8 values in the key name or value of user-defined metadata, StorageGRID behavior is undefined.
 
@@ -637,15 +637,15 @@ StorageGRID does not parse or interpret escaped UTF-8 characters included in the
 * PUT, PUT Object-Copy, GET, and HEAD requests succeed if user-defined metadata includes escaped UTF-8 characters.
 * StorageGRID does not return the `x-amz-missing-meta` header if the interpreted value of the key name or value includes unprintable characters.
 
-==== Object tag limits
+=== Object tag limits
 
 You can add tags to new objects when you upload them, or you can add them to existing objects. Both StorageGRID and Amazon S3 support up to 10 tags for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 Unicode characters in length and tag values can be up to 256 Unicode characters in length. Key and values are case sensitive.
 
-==== Object ownership
+=== Object ownership
 
 In StorageGRID, all objects are owned by the bucket owner account, including objects created by a non-owner account or an anonymous user.
 
-==== Supported request headers
+=== Supported request headers
 
 The following request headers are supported:
 
@@ -703,14 +703,14 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
 
-==== Unsupported request headers
+=== Unsupported request headers
 
 The following request headers are not supported:
 
 * The `x-amz-acl` request header is not supported.
 * The `x-amz-website-redirect-location` request header is not supported and returns `XNotImplemented`.
 
-==== Storage class options
+=== Storage class options
 
 The `x-amz-storage-class` request header is supported. The value submitted for `x-amz-storage-class` affects how StorageGRID protects object data during ingest and not how many persistent copies of the object are stored in the StorageGRID system (which is determined by ILM).
 
@@ -737,7 +737,7 @@ Specifying `REDUCED_REDUNDANCY` only affects how many copies are created when an
 
 *Note*: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
 
-==== Request headers for server-side encryption
+=== Request headers for server-side encryption
 
 You can use the following request headers to encrypt an object with server-side encryption. The SSE and SSE-C options are mutually exclusive.
 
@@ -752,7 +752,7 @@ You can use the following request headers to encrypt an object with server-side 
 
 *Note*: If an object is encrypted with SSE or SSE-C, any bucket-level or grid-level encryption settings are ignored.
 
-==== Versioning
+=== Versioning
 
 If versioning is enabled for a bucket, a unique `versionId` is automatically generated for the version of the object being stored. This `versionId` is also returned in the response using the `x-amz-version-id` response header.
 
@@ -770,20 +770,20 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side enc
 
 xref:configuring_tenant_accounts_and_connections.adoc[How client connections can be configured]
 
-=== PUT Object - Copy
+== PUT Object - Copy
 
 [.lead]
 You can use the S3 PUT Object - Copy request to create a copy of an object that is already stored in S3. A PUT Object - Copy operation is the same as performing a GET and then a PUT.
 
-==== Resolving conflicts
+=== Resolving conflicts
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
-==== Object size
+=== Object size
 
 StorageGRID supports objects up to 5 TB in size.
 
-==== UTF-8 characters in user metadata
+=== UTF-8 characters in user metadata
 
 If a request includes (unescaped) UTF-8 values in the key name or value of user-defined metadata, StorageGRID behavior is undefined.
 
@@ -792,7 +792,7 @@ StorageGRID does not parse or interpret escaped UTF-8 characters included in the
 * Requests succeed if user-defined metadata includes escaped UTF-8 characters.
 * StorageGRID does not return the `x-amz-missing-meta` header if the interpreted value of the key name or value includes unprintable characters.
 
-==== Supported request headers
+=== Supported request headers
 
 The following request headers are supported:
 
@@ -829,7 +829,7 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Request headers for server-side encryption]
 
-==== Unsupported request headers
+=== Unsupported request headers
 
 The following request headers are not supported:
 
@@ -840,7 +840,7 @@ The following request headers are not supported:
 * `Expires`
 * `x-amz-website-redirect-location`
 
-==== Storage class options
+=== Storage class options
 
 The `x-amz-storage-class` request header is supported, and affects how many object copies StorageGRID creates if the matching ILM rule specifies an Ingest Behavior of Dual commit or Balanced.
 
@@ -854,7 +854,7 @@ Specifies a single-commit ingest operation when the ILM rule uses the Dual commi
 +
 NOTE: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
 
-==== Using x-amz-copy-source in PUT Object - Copy
+=== Using x-amz-copy-source in PUT Object - Copy
 
 If the source bucket and key, specified in the `x-amz-copy-source` header, are different from the destination bucket and key, a copy of the source object data is written to the destination.
 
@@ -865,7 +865,7 @@ If the source and destination match, and the `x-amz-metadata-directive` header i
 +
 This means that if the ILM rule uses the Strict option for ingest behavior, no action is taken if the required object placements cannot be made (for example, because a newly required location is unavailable). The updated object retains its current placement until the required placement is possible.
 
-==== Request headers for server-side encryption
+=== Request headers for server-side encryption
 
 If you use server-side encryption, the request headers you provide depend on whether the source object is encrypted and on whether you plan to encrypt the target object.
 
@@ -885,7 +885,7 @@ If you use server-side encryption, the request headers you provide depend on whe
 
 *Note:* The `server-side-encryption` value of the object cannot be updated. Instead, make a copy with a new `server-side-encryption` value using `x-amz-metadata-directive`: `REPLACE`.
 
-==== Versioning
+=== Versioning
 
 If the source bucket is versioned, you can use the `x-amz-copy-source` header to copy the latest version of an object. To copy a specific version of an object, you must explicitly specify the version to copy using the `versionId` subresource. If the destination bucket is versioned, the generated version is returned in the `x-amz-version-id` response header. If versioning is suspended for the target bucket, then `x-amz-version-id` returns a "`null`" value.
 

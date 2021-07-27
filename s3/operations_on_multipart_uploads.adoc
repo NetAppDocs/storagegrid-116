@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: operations, multipart uploads, uploads, rest API
 summary: 'This section describes how StorageGRID supports operations for multipart uploads.'
 ---
-== Operations for multipart uploads
+= Operations for multipart uploads
 :icons: font
 :imagesdir: ../media/
 
@@ -65,7 +65,7 @@ xref:consistency_controls.adoc[Consistency controls]
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-=== List Multipart Uploads
+== List Multipart Uploads
 
 [.lead]
 The List Multipart Uploads operation lists in-progress multipart uploads for a bucket.
@@ -80,11 +80,11 @@ The following request parameters are supported:
 
 The `delimiter` request parameter is not supported.
 
-==== Versioning
+=== Versioning
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. When the Complete Multipart Upload operation is performed, that is the point when objects are created (and versioned if applicable).
 
-=== Initiate Multipart Upload
+== Initiate Multipart Upload
 
 [.lead]
 The Initiate Multipart Upload operation initiates a multipart upload for an object, and returns an upload ID.
@@ -151,7 +151,7 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported
 
 NOTE: For information on how StorageGRID handles UTF-8 characters, see the documentation for PUT Object.
 
-==== Request headers for server-side encryption
+=== Request headers for server-side encryption
 
 You can use the following request headers to encrypt a multipart object with server-side encryption. The SSE and SSE-C options are mutually exclusive.
 
@@ -164,13 +164,13 @@ You can use the following request headers to encrypt a multipart object with ser
 
 *Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
-==== Unsupported request headers
+=== Unsupported request headers
 
 The following request header is not supported and returns `XNotImplemented`
 
 * `x-amz-website-redirect-location`
 
-==== Versioning
+=== Versioning
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
@@ -182,19 +182,19 @@ xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side enc
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[PUT Object]
 
-=== Upload Part
+== Upload Part
 
 [.lead]
 The Upload Part operation uploads a part in a multipart upload for an object.
 
-==== Supported request headers
+=== Supported request headers
 
 The following request headers are supported:
 
 * `Content-Length`
 * `Content-MD5`
 
-==== Request headers for server-side encryption
+=== Request headers for server-side encryption
 
 If you specified SSE-C encryption for the Initiate Multipart Upload request, you must also include the following request headers in each Upload Part request:
 
@@ -204,7 +204,7 @@ If you specified SSE-C encryption for the Initiate Multipart Upload request, you
 
 IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
-==== Versioning
+=== Versioning
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
@@ -212,7 +212,7 @@ Multipart upload consists of separate operations for initiating the upload, list
 
 xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
 
-=== Upload Part - Copy
+== Upload Part - Copy
 
 [.lead]
 The Upload Part - Copy operation uploads a part of an object by copying data from an existing object as the data source.
@@ -228,7 +228,7 @@ The following request headers are supported:
 * `x-amz-copy-source-if-unmodified-since`
 * `x-amz-copy-source-if-modified-since`
 
-==== Request headers for server-side encryption
+=== Request headers for server-side encryption
 
 If you specified SSE-C encryption for the Initiate Multipart Upload request, you must also include the following request headers in each Upload Part - Copy request:
 
@@ -244,24 +244,24 @@ If the source object is encrypted using a customer-provided key (SSE-C), you mus
 
 IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
 
-==== Versioning
+=== Versioning
 
 Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
 
-=== Complete Multipart Upload
+== Complete Multipart Upload
 
 [.lead]
 The Complete Multipart Upload operation completes a multipart upload of an object by assembling the previously uploaded parts.
 
-==== Resolving conflicts
+=== Resolving conflicts
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
-==== Object size
+=== Object size
 
 StorageGRID supports objects up to 5 TB in size.
 
-==== Request headers
+=== Request headers
 
 The `x-amz-storage-class` request header is supported, and affects how many object copies StorageGRID creates if the matching ILM rule specifies an Ingest Behavior of Dual commit or Balanced.
 
@@ -289,7 +289,7 @@ If versioning is suspended, the object version is stored with a null `versionId`
 
 NOTE: When versioning is enabled for a bucket, completing a multipart upload always creates a new version, even if there are concurrent multipart uploads completed on the same object key. When versioning is not enabled for a bucket, it is possible to initiate a multipart upload and then have another multipart upload initiate and complete first on the same object key. On non-versioned buckets, the multipart upload that completes last takes precedence.
 
-==== Failed replication, notification, or metadata notification
+=== Failed replication, notification, or metadata notification
 
 If the bucket where the multipart upload occurs is configured for a platform service, multipart upload succeeds even if the associated replication or notification action fails.
 
