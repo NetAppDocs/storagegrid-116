@@ -1,0 +1,92 @@
+---
+permalink: s3/using_s3_object_lock.html
+sidebar: sidebar
+keywords: using S3 object lock, object lock, S3 object
+summary: 'If the global S3 Object Lock setting is enabled for your StorageGRID system, you can create buckets with S3 Object Lock enabled and then specify retain-until-date and legal hold settings for each object version you add to that bucket.'
+---
+= Using S3 Object Lock
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If the global S3 Object Lock setting is enabled for your StorageGRID system, you can create buckets with S3 Object Lock enabled and then specify retain-until-date and legal hold settings for each object version you add to that bucket.
+
+S3 Object Lock allows you to specify object-level settings to prevent objects from being deleted or overwritten for a fixed amount of time or indefinitely.
+
+The StorageGRID S3 Object Lock feature provides a single retention mode that is equivalent to the Amazon S3 compliance mode. By default, a protected object version cannot be overwritten or deleted by any user. The StorageGRID S3 Object Lock feature does not support a governance mode, and it does not allow users with special permissions to bypass retention settings or to delete protected objects.
+
+== Enabling S3 Object Lock for a bucket
+
+If the global S3 Object Lock setting is enabled for your StorageGRID system, you can optionally enable S3 Object Lock when you create each bucket. You can use either of these methods:
+
+* Create the bucket using the Tenant Manager.
++
+xref:../tenant/index.adoc[Use a tenant account]
+
+* Create the bucket using a PUT Bucket request with the x-amz-bucket-object-lock_enabled request header.
++
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+
+You cannot add or disable S3 Object Lock after the bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
+
+A bucket with S3 Object Lock enabled can contain a combination of objects with and without S3 Object Lock settings. StorageGRID does not support default retention for the objects in S3 Object Lock buckets, so the PUT Object Lock Configuration bucket operation is not supported.
+
+== Determining if S3 Object Lock is enabled for a bucket
+
+To determine if S3 Object Lock is enabled, use the GET Object Lock Configuration request.
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+
+== Creating an object with S3 Object Lock settings
+
+To specify S3 Object Lock settings when adding an object version to a bucket that has S3 Object Lock enabled, issue a PUT Object, PUT Object - Copy, or Initiate Multipart Upload request. Use the following request headers.
+
+NOTE: You must enable S3 Object Lock when you create a bucket. You cannot add or disable S3 Object Lock after a bucket is created.
+
+* `x-amz-object-lock-mode`, which must be COMPLIANCE (case sensitive).
++
+NOTE: If you specify `x-amz-object-lock-mode`, you must also specify `x-amz-object-lock-retain-until-date`.
+
+* `x-amz-object-lock-retain-until-date`
+ ** The retain-until-date value must be in the format `2020-08-10T21:46:00Z`. Fractional seconds are allowed, but only 3 decimal digits are preserved (milliseconds precision). Other ISO 8601 formats are not allowed.
+ ** The retain-until-date must be in the future.
+* `x-amz-object-lock-legal-hold`
++
+If legal hold is ON (case-sensitive), the object is placed under a legal hold. If legal hold is OFF, no legal hold is placed. Any other value results in a 400 Bad Request (InvalidArgument) error.
+
+If you use any of these request headers, be aware of these restrictions:
+
+* The `Content-MD5` request header is required if any `x-amz-object-lock-*` request header is present in the PUT Object request. `Content-MD5` is not required for PUT Object - Copy or Initiate Multipart Upload.
+* If the bucket does not have S3 Object Lock enabled and a `x-amz-object-lock-*` request header is present, a 400 Bad Request (InvalidRequest) error is returned.
+* The PUT Object request supports the use of `x-amz-storage-class: REDUCED_REDUNDANCY` to match AWS behavior. However, when an object is ingested into a bucket with S3 Object Lock enabled, StorageGRID will always perform a dual-commit ingest.
+* A subsequent GET or HEAD Object version response will include the headers `x-amz-object-lock-mode`, `x-amz-object-lock-retain-until-date`, and `x-amz-object-lock-legal-hold`, if configured and if the request sender has the correct `s3:Get*` permissions.
+* A subsequent DELETE Object version or DELETE Objects versions request will fail if it is before the retain-until-date or if a legal hold is on.
+
+== Updating S3 Object Lock settings
+
+If you need to update the legal hold or retention settings for an existing object version, you can perform the following object subresource operations:
+
+* `PUT Object legal-hold`
++
+If the new legal-hold value is ON, the object is placed under a legal hold. If the legal-hold value is OFF, the legal hold is lifted.
+
+* `PUT Object retention`
+ ** The mode value must be COMPLIANCE (case sensitive).
+ ** The retain-until-date value must be in the format `2020-08-10T21:46:00Z`. Fractional seconds are allowed, but only 3 decimal digits are preserved (milliseconds precision). Other ISO 8601 formats are not allowed.
+ ** If an object version has an existing retain-until-date, you can only increase it. The new value must be in the future.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:put_object.adoc[PUT Object]
+
+xref:put_object_copy.adoc[PUT Object - Copy]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Initiate Multipart Upload]
+
+xref:object_versioning.adoc[Object versioning]
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html[Amazon Simple Storage Service User Guide: Using S3 Object Lock]
