@@ -1,0 +1,105 @@
+---
+permalink: s3/initiate_multipart_upload.html
+sidebar: sidebar
+keywords: initiate multipart upload, uploads
+summary: 'The Initiate Multipart Upload operation initiates a multipart upload for an object, and returns an upload ID.'
+---
+= Initiate Multipart Upload
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Initiate Multipart Upload operation initiates a multipart upload for an object, and returns an upload ID.
+
+The `x-amz-storage-class` request header is supported. The value submitted for `x-amz-storage-class` affects how StorageGRID protects object data during ingest and not how many persistent copies of the object are stored in the StorageGRID system (which is determined by ILM).
+
+If the ILM rule matching an ingested object uses the Strict option for Ingest Behavior, the `x-amz-storage-class` header has no effect.
+
+The following values can be used for `x-amz-storage-class`:
+
+* `STANDARD` (Default)
+ ** *Dual commit*: If the ILM rule specifies the Dual commit option for Ingest Behavior, as soon as an object is ingested a second copy of that object is created and distributed to a different Storage Node (dual commit). When the ILM is evaluated,StorageGRID determines if these initial interim copies satisfy the placement instructions in the rule. If they do not, new object copies might need to be made in different locations and the initial interim copies might need to be deleted.
+ ** *Balanced*: If the ILM rule specifies the Balanced option and StorageGRID cannot immediately make all copies specified in the rule, StorageGRID makes two interim copies on different Storage Nodes.
++
+If StorageGRID can immediately create all object copies specified in the ILM rule (synchronous placement), the `x-amz-storage-class` header has no effect.
+* `REDUCED_REDUNDANCY`
+ ** *Dual commit*: If the ILM rule specifies the Dual commit option for Ingest Behavior, StorageGRID creates a single interim copy as the object is ingested (single commit).
+ ** *Balanced*: If the ILM rule specifies the Balanced option, StorageGRID makes a single interim copy only if the system cannot immediately make all copies specified in the rule. If StorageGRID can perform synchronous placement, this header has no effect.
+The `REDUCED_REDUNDANCY` option is best used when the ILM rule that matches the object creates a single replicated copy. In this case using `REDUCED_REDUNDANCY` eliminates the unnecessary creation and deletion of an extra object copy for every ingest operation.
+
++
+Using the `REDUCED_REDUNDANCY` option is not recommended in other circumstances. `REDUCED_REDUNDANCY` increases the risk of object data loss during ingest. For example, you might lose data if the single copy is initially stored on a Storage Node that fails before ILM evaluation can occur.
+
+*Attention*: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
+Specifying `REDUCED_REDUNDANCY` only affects how many copies are created when an object is first ingested. It does not affect how many copies of the object are made when the object is evaluated by the active ILM policy, and does not result in data being stored at lower levels of redundancy in the StorageGRID system.
+
+*Note*: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
+
+The following request headers are supported:
+
+* `Content-Type`
+* `x-amz-meta-`, followed by a name-value pair containing user-defined metadata
++
+When specifying the name-value pair for user-defined metadata, use this general format:
++
+----
+x-amz-meta-_name_: `value`
+----
++
+If you want to use the *User Defined Creation Time* option as the Reference Time for an ILM rule, you must use `creation-time` as the name of the metadata that records when the object was created. For example:
++
+----
+x-amz-meta-creation-time: 1443399726
+----
++
+The value for `creation-time` is evaluated as seconds since January 1, 1970.
+
+NOTE: Adding `creation-time` as user-defined metadata is not allowed if you are adding an object to a bucket that has legacy Compliance enabled. An error will be returned.
+
+* S3 Object Lock request headers:
+ ** `x-amz-object-lock-mode`
+ ** `x-amz-object-lock-retain-until-date`
+ ** `x-amz-object-lock-legal-hold`
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+* SSE request headers:
+ ** `x-amz-server-side-encryption`
+ ** `x-amz-server-side-encryption-customer-key-MD5`
+ ** `x-amz-server-side-encryption-customer-key`
+ ** `x-amz-server-side-encryption-customer-algorithm`
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
+
+NOTE: For information on how StorageGRID handles UTF-8 characters, see the documentation for PUT Object.
+
+== Request headers for server-side encryption
+
+You can use the following request headers to encrypt a multipart object with server-side encryption. The SSE and SSE-C options are mutually exclusive.
+
+* *SSE*: Use the following header in the Initiate Multipart Upload request if you want to encrypt the object with a unique key managed by StorageGRID. Do not specify this header in any of the Upload Part requests.
+ ** `x-amz-server-side-encryption`
+* *SSE-C*: Use all three of these headers in the Initiate Multipart Upload request (and in each subsequent Upload Part request) if you want to encrypt the object with a unique key that you provide and manage.
+ ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
+ ** `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the new object.
+ ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key.
+
+*Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+
+== Unsupported request headers
+
+The following request header is not supported and returns `XNotImplemented`
+
+* `x-amz-website-redirect-location`
+
+== Versioning
+
+Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
+
+xref:put_object.adoc[PUT Object]

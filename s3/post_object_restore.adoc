@@ -1,0 +1,74 @@
+---
+permalink: s3/post_object_restore.html
+sidebar: sidebar
+keywords: post, post object restore, object
+summary: 'You can use the S3 POST Object restore request to restore an object that is stored in a Cloud Storage Pool.'
+---
+= POST Object restore
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the S3 POST Object restore request to restore an object that is stored in a Cloud Storage Pool.
+
+== Supported request type
+
+StorageGRID only supports POST Object restore requests to restore an object. It does not support the `SELECT` type of restoration. Select requests return `XNotImplemented`.
+
+== Versioning
+
+Optionally, specify `versionId` to restore a specific version of an object in a versioned bucket. If you do not specify `versionId`, the most recent version of the object is restored
+
+== Behavior of POST Object restore on Cloud Storage Pool objects
+
+If an object has been stored in a Cloud Storage Pool (see the instructions for managing objects with information lifecycle management), a POST Object restore request has the following behavior, based on the state of the object. See "`HEAD Object`" for more details.
+
+NOTE: If an object is stored in a Cloud Storage Pool and one or more copies of the object also exist on the grid, there is no need to restore the object by issuing a POST Object restore request. Instead, the local copy can be retrieved directly, using a GET Object request.
+
+[options="header"]
+|===
+| State of object| Behavior of POST Object restore
+a|
+Object ingested into StorageGRID but not yet evaluated by ILM, or object is not in a Cloud Storage Pool
+
+a|
+`403 Forbidden`, `InvalidObjectState`
+a|
+Object in Cloud Storage Pool but not yet transitioned to a non-retrievable state
+
+a|
+`200 OK` No changes are made.
+
+*Note*: Before an object has been transitioned to a non-retrievable state, you cannot change its `expiry-date`.
+
+a|
+Object transitioned to a non-retrievable state
+
+a|
+`202 Accepted` Restores a retrievable copy of the object to the Cloud Storage Pool for the number of days specified in the request body. At the end of this period, the object is returned to a non-retrievable state.
+
+Optionally, use the `Tier` request element to determine how long the restore job will take to finish (`Expedited`, `Standard`, or `Bulk`). If you do not specify `Tier`, the `Standard` tier is used.
+
+*Attention*: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
+
+a|
+Object in process of being restored from a non-retrievable state
+
+a|
+`409 Conflict`, `RestoreAlreadyInProgress`
+a|
+Object fully restored to the Cloud Storage Pool
+
+a|
+`200 OK`
+
+*Note:* If an object has been restored to a retrievable state, you can change its `expiry-date` by reissuing the POST Object restore request with a new value for `Days`. The restoration date is updated relative to the time of the request.
+
+|===
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:head_object.adoc[HEAD Object]
+
+xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]

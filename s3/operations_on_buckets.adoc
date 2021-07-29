@@ -1,0 +1,425 @@
+---
+permalink: s3/operations_on_buckets.html
+sidebar: sidebar
+keywords: bucket, buckets, operations on buckets
+summary: 'The StorageGRID system supports a maximum of 1,000 buckets for each S3 tenant account.'
+---
+= Operations on buckets
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system supports a maximum of 1,000 buckets for each S3 tenant account.
+
+Bucket name restrictions follow the AWS US Standard region restrictions, but you should further restrict them to DNS naming conventions in order to support S3 virtual hosted-style requests.
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html[Amazon Web Services (AWS) Documentation: Bucket Restrictions and Limitations]
+
+xref:configuring_tenant_accounts_and_connections.adoc[Endpoint domain names for S3 request]
+
+The GET Bucket (List Objects) and GET Bucket versions operations support StorageGRID consistency controls.
+
+You can check whether updates to last access time are enabled or disabled for individual buckets.
+
+The following table describes how StorageGRID implements S3 REST API bucket operations. To perform any of these operations, the necessary access credentials must be provided for the account.
+
+[options="header"]
+|===
+| Operation| Implementation
+a|
+DELETE Bucket
+a|
+Implemented with all Amazon S3 REST API behavior.
+a|
+DELETE Bucket cors
+a|
+This operation deletes the CORS configuration for the bucket.
+a|
+DELETE Bucket encryption
+a|
+This operation deletes the default encryption from the bucket. Existing encrypted objects remain encrypted, but any new objects added to the bucket are not encrypted.
+a|
+DELETE Bucket lifecycle
+a|
+This operation deletes the lifecycle configuration from the bucket.
+a|
+DELETE Bucket policy
+a|
+This operation deletes the policy attached to the bucket.
+a|
+DELETE Bucket replication
+a|
+This operation deletes the replication configuration attached to the bucket.
+a|
+DELETE Bucket tagging
+a|
+This operation uses the `tagging` subresource to remove all tags from a bucket.
+a|
+GET Bucket (List Objects), version 1 and version 2
+a|
+This operation returns some or all (up to 1,000) of the objects in a bucket. The Storage Class for objects can have either of two values, even if the object was ingested with the `REDUCED_REDUNDANCY` storage class option:
+
+* `STANDARD`, which indicates the object is stored in a storage pool consisting of Storage Nodes.
+* `GLACIER`, which indicates that the object has been moved to the external bucket specified by the Cloud Storage Pool.
+
+If the bucket contains large numbers of deleted keys that have the same prefix, the response might include some `CommonPrefixes` that do not contain keys.
+
+a|
+GET Bucket acl
+a|
+This operation returns a positive response and the ID, DisplayName, and Permission of the bucket owner, indicating that the owner has full access to the bucket.
+a|
+GET Bucket cors
+a|
+This operation returns the `cors` configuration for the bucket.
+a|
+GET Bucket encryption
+a|
+This operation returns the default encryption configuration for the bucket.
+a|
+GET Bucket lifecycle
+a|
+This operation returns the lifecycle configuration for the bucket.
+a|
+GET Bucket location
+a|
+This operation returns the region that was set using the `LocationConstraint` element in the PUT Bucket request. If the bucket's region is `us-east-1`, an empty string is returned for the region.
+a|
+GET Bucket notification
+a|
+This operation returns the notification configuration attached to the bucket.
+a|
+GET Bucket Object versions
+a|
+With READ access on a bucket, this operation with the `versions` subresource lists metadata of all of the versions of objects in the bucket.
+
+a|
+GET Bucket policy
+a|
+This operation returns the policy attached to the bucket.
+a|
+GET Bucket replication
+a|
+This operation returns the replication configuration attached to the bucket.
+a|
+GET Bucket tagging
+a|
+This operation uses the _tagging_ subresource to return all tags for a bucket.
+a|
+GET Bucket versioning
+a|
+This implementation uses the `versioning` subresource to return the versioning state of a bucket. The versioning state returned indicates if the bucket is "`Unversioned`" or if the bucket is version "`Enabled`" or "`Suspended.`"
+a|
+GET Object Lock Configuration
+a|
+This operation determines if S3 Object Lock is enabled for a bucket. xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+
+a|
+HEAD Bucket
+a|
+This operation determines if a bucket exists and you have permission to access it.
+a|
+PUT Bucket
+a|
+This operation creates a new bucket. By creating the bucket, you become the bucket owner.
+
+* Bucket names must comply with the following rules:
+ ** Must be unique across each StorageGRID system (not just unique within the tenant account).
+ ** Must be DNS compliant.
+ ** Must contain at least 3 and no more than 63 characters.
+ ** Can be a series of one or more labels, with adjacent labels separated by a period. Each label must start and end with a lowercase letter or a number and can only use lowercase letters, numbers, and hyphens.
+ ** Must not look like a text-formatted IP address.
+ ** Should not use periods in virtual hosted style requests. Periods will cause problems with server wildcard certificate verification.
+* By default, buckets are created in the `us-east-1` region; however, you can use the ``LocationConstraint``request element in the request body to specify a different region. When using the `LocationConstraint` element, you must specify the exact name of a region that has been defined using the Grid Manager or the Grid Management API. Contact your system administrator if you do not know the region name you should use.
+
+*Note*: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
+
+* You can include the `x-amz-bucket-object-lock-enabled` request header to create a bucket with S3 Object Lock enabled.
++
+You must enable S3 Object Lock when you create the bucket. You cannot add or disable S3 Object Lock after a bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
++
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+
+a|
+PUT Bucket cors
+a|
+This operation sets the CORS configuration for a bucket so that the bucket can service cross-origin requests. Cross-origin resource sharing (CORS) is a security mechanism that allows client web applications in one domain to access resources in a different domain. For example, suppose you use an S3 bucket named `images` to store graphics. By setting the CORS configuration for the `images` bucket, you can allow the images in that bucket to be displayed on the website `+http://www.example.com+`.
+
+a|
+PUT Bucket encryption
+a|
+This operation sets the default encryption state of an existing bucket. When bucket-level encryption is enabled, any new objects added to the bucket are encrypted.StorageGRID supports server-side encryption with StorageGRID-managed keys. When specifying the server-side encryption configuration rule, set the `SSEAlgorithm` parameter to `AES256`, and do not use the `KMSMasterKeyID` parameter.
+
+Bucket default encryption configuration is ignored if the object upload request already specifies encryption (that is, if the request includes the `x-amz-server-side-encryption-*` request header).
+
+a|
+PUT Bucket lifecycle
+a|
+This operation creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. StorageGRID supports up to 1,000 lifecycle rules in a lifecycle configuration. Each rule can include the following XML elements:
+
+* Expiration (Days, Date)
+* NoncurrentVersionExpiration (NoncurrentDays)
+* Filter (Prefix, Tag)
+* Status
+* ID
+
+StorageGRID does not support these actions:
+
+* AbortIncompleteMultipartUpload
+* ExpiredObjectDeleteMarker
+* Transition
+
+To understand how the Expiration action in a bucket lifecycle interacts with ILM placement instructions, see "`How ILM operates throughout an object's life`" in the instructions for managing objects with information lifecycle management.
+
+*Note*: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
+
+a|
+PUT Bucket notification
+a|
+This operation configures notifications for the bucket using the notification configuration XML included in the request body. You should be aware of the following implementation details:
+
+* StorageGRID supports Simple Notification Service (SNS) topics as destinations. Simple Queue Service (SQS) or Amazon Lambda endpoints are not supported.
+* The destination for notifications must be specified as the URN of an StorageGRID endpoint. Endpoints can be created using the Tenant Manager or the Tenant Management API.
++
+The endpoint must exist for notification configuration to succeed. If the endpoint does not exist, a `400 Bad Request` error is returned with the code `InvalidArgument`.
+
+* You cannot configure a notification for the following event types. These event types are *not* supported.
+ ** `s3:ReducedRedundancyLostObject`
+ ** `s3:ObjectRestore:Completed`
+* Event notifications sent from StorageGRID use the standard JSON format except that they do not include some keys and use specific values for others, as shown in the following listing:
+* *eventSource*
++
+`sgws:s3`
+
+* *awsRegion*
++
+not included
+
+* *x-amz-id-2*
++
+not included
+
+* *arn*
++
+`urn:sgws:s3:::bucket_name`
+
+a|
+PUT Bucket policy
+a|
+This operation sets the policy attached to the bucket.
+a|
+PUT Bucket replication
+a|
+This operation configures StorageGRID CloudMirror replication for the bucket using the replication configuration XML provided in the request body. For CloudMirror replication, you should be aware of the following implementation details:
+
+* StorageGRID only supports V1 of the replication configuration. This means that StorageGRID does not support the use of the `Filter` element for rules, and follows V1 conventions for deletion of object versions. See the Amazon documentation on replication configuration for details.
+* Bucket replication can be configured on versioned or unversioned buckets.
+* You can specify a different destination bucket in each rule of the replication configuration XML. A source bucket can replicate to more than one destination bucket.
+* Destination buckets must be specified as the URN of StorageGRID endpoints as specified in the Tenant Manager or the Tenant Management API.
++
+The endpoint must exist for replication configuration to succeed. If the endpoint does not exist, the request fails as a `400 Bad Request`. The error message states: `Unable to save the replication policy. The specified endpoint URN does not exist: _URN_.`
+
+* You do not need to specify a `Role` in the configuration XML. This value is not used by StorageGRID and will be ignored if submitted.
+* If you omit the storage class from the configuration XML, StorageGRID uses the `STANDARD` storage class by default.
+* If you delete an object from the source bucket or you delete the source bucket itself, the cross-region replication behavior is as follows:
+ ** If you delete the object or bucket before it has been replicated, the object/bucket is not replicated and you are not notified.
+ ** If you delete the object or bucket after it has been replicated, StorageGRID follows standard Amazon S3 delete behavior for V1 of cross-region replication.
+
+a|
+PUT Bucket tagging
+a|
+This operation uses the `tagging` subresource to add or update a set of tags for a bucket. When adding bucket tags, be aware of the following limitations:
+
+* Both StorageGRID and Amazon S3 support up to 50 tags for each bucket.
+* Tags associated with a bucket must have unique tag keys. A tag key can be up to 128 Unicode characters in length.
+* Tag values can be up to 256 Unicode characters in length.
+* Key and values are case sensitive.
+
+a|
+PUT Bucket versioning
+a|
+This implementation uses the `versioning` subresource to set the versioning state of an existing bucket. You can set the versioning state with one of the following values:
+
+* Enabled: Enables versioning for the objects in the bucket. All objects added to the bucket receive a unique version ID.
+* Suspended: Disables versioning for the objects in the bucket. All objects added to the bucket receive the version ID `null`.
+
+|===
+.Related information
+
+http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html[Amazon Web Services (AWS) Documentation: Cross-Region Replication]
+
+xref:consistency_controls.adoc[Consistency controls]
+
+xref:storagegrid_s3_rest_api_operations.adoc[GET Bucket last access time request]
+
+xref:bucket_and_group_access_policies.adoc[Bucket and group access policies]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+
+xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+== Creating an S3 lifecycle configuration
+
+[.lead]
+You can create an S3 lifecycle configuration to control when specific objects are deleted from the StorageGRID system.
+
+The simple example in this section illustrates how an S3 lifecycle configuration can control when certain objects are deleted (expired) from specific S3 buckets. The example in this section is for illustration purposes only. For complete details on creating S3 lifecycle configurations, see the section on object lifecycle management in the _Amazon Simple Storage Service Developer Guide_. Note that StorageGRID only supports Expiration actions; it does not support Transition actions.
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html[Amazon Simple Storage Service Developer Guide: Object lifecycle management]
+
+=== What a lifecycle configuration is
+
+A lifecycle configuration is a set of rules that are applied to the objects in specific S3 buckets. Each rule specifies which objects are affected and when those objects will expire (on a specific date or after some number of days).
+
+StorageGRID supports up to 1,000 lifecycle rules in a lifecycle configuration. Each rule can include the following XML elements:
+
+* Expiration: Delete an object when a specified date is reached or when a specified number of days is reached, starting from when the object was ingested.
+* NoncurrentVersionExpiration: Delete an object when a specified number of days is reached, starting from when the object became noncurrent.
+* Filter (Prefix, Tag)
+* Status
+* ID
+
+If you apply a lifecycle configuration to a bucket, the lifecycle settings for the bucket always override StorageGRID ILM settings. StorageGRID uses the Expiration settings for the bucket, not ILM, to determine whether to delete or retain specific objects.
+
+As a result, an object might be removed from the grid even though the placement instructions in an ILM rule still apply to the object. Or, an object might be retained on the grid even after any ILM placement instructions for the object have lapsed. For details, see "`How ILM operates throughout an object's life`" in the instructions for managing objects with information lifecycle management.
+
+NOTE: Bucket lifecycle configuration can be used with buckets that have S3 Object Lock enabled, but bucket lifecycle configuration is not supported for legacy Compliant buckets.
+
+StorageGRID supports the use of the following bucket operations to manage lifecycle configurations:
+
+* DELETE Bucket lifecycle
+* GET Bucket lifecycle
+* PUT Bucket lifecycle
+
+=== Creating the lifecycle configuration
+
+As the first step in creating a lifecycle configuration, you create a JSON file that includes one or more rules. For example, this JSON file includes three rules, as follows:
+
+. Rule 1 applies only to objects that match the prefix `category1`/ and that have a `key2` value of `tag2`. The `Expiration` parameter specifies that objects matching the filter will expire at midnight on 22 August 2020.
+. Rule 2 applies only to objects that match the prefix `category2`/. The `Expiration` parameter specifies that objects matching the filter will expire 100 days after they are ingested.
++
+IMPORTANT: Rules that specify a number of days are relative to when the object was ingested. If the current date exceeds the ingest date plus the number of days, some objects might be removed from the bucket as soon as the lifecycle configuration is applied.
+
+. Rule 3 applies only to objects that match the prefix `category3`/. The `Expiration` parameter specifies that any noncurrent versions of matching objects will expire 50 days after they become noncurrent.
+
+----
+{
+	"Rules": [
+        {
+		    "ID": "rule1",
+			"Filter": {
+                "And": {
+                    "Prefix": "category1/",
+                    "Tags": [
+                        {
+                            "Key": "key2",
+							"Value": "tag2"
+                        }
+                    ]
+                }
+            },
+			"Expiration": {
+                "Date": "2020-08-22T00:00:00Z"
+            },
+            "Status": "Enabled"
+        },
+		{
+            "ID": "rule2",
+			"Filter": {
+                "Prefix": "category2/"
+            },
+			"Expiration": {
+                "Days": 100
+            },
+            "Status": "Enabled"
+        },
+		{
+            "ID": "rule3",
+			"Filter": {
+                "Prefix": "category3/"
+            },
+			"NoncurrentVersionExpiration": {
+                "NoncurrentDays": 50
+            },
+            "Status": "Enabled"
+        }
+    ]
+}
+----
+
+=== Applying a lifecycle configuration to a bucket
+
+After you have created the lifecycle configuration file, you apply it to a bucket by issuing a PUT Bucket lifecycle request.
+
+This request applies the lifecycle configuration in the example file to objects in a bucket named testbucket:
+
+----
+aws s3api --endpoint-url <StorageGRID endpoint> put-bucket-lifecycle-configuration
+--bucket testbucket --lifecycle-configuration file://bktjson.json
+----
+
+To validate that a lifecycle configuration was successfully applied to the bucket, issue a GET Bucket lifecycle request. For example:
+
+----
+aws s3api --endpoint-url <StorageGRID endpoint> get-bucket-lifecycle-configuration
+ --bucket testbucket
+----
+
+A successful response lists the lifecycle configuration you just applied.
+
+=== Validating that bucket lifecycle expiration applies to an object
+
+You can determine if an expiration rule in the lifecycle configuration applies to a specific object when issuing a PUT Object, HEAD Object, or GET Object request. If a rule applies, the response includes an `Expiration` parameter that indicates when the object expires and which expiration rule was matched.
+
+NOTE: Because bucket lifecycle overrides ILM, the `expiry-date` shown is the actual date the object will be deleted. For details, see "`How object retention is determined`" in the instructions for performing StorageGRID administration.
+
+For example, this PUT Object request was issued on 22 Jun 2020 and places an object in the testbucket bucket.
+
+----
+aws s3api --endpoint-url <StorageGRID endpoint> put-object
+--bucket testbucket --key obj2test2 --body bktjson.json
+----
+
+The success response indicates that the object will expire in 100 days (01 Oct 2020) and that it matched Rule 2 of the lifecycle configuration.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+{
+      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:49 GMT\\", rule-id=\\"rule2\\"",**
+      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""*
+}
+----
+
+For example, this HEAD Object request was used to get metadata for the same object in the testbucket bucket.
+
+----
+aws s3api --endpoint-url <StorageGRID endpoint> head-object
+--bucket testbucket --key obj2test2
+----
+
+The success response includes the object's metadata and indicates that the object will expire in 100 days and that it matched Rule 2.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+{
+      "AcceptRanges": "bytes",
+      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:48 GMT\\", rule-id=\\"rule2\\"",***
+      "LastModified": "2020-06-23T09:07:48+00:00",
+      "ContentLength": 921,
+      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""
+      "ContentType": "binary/octet-stream",
+      "Metadata": {}
+}
+----
+
+.Related information
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+
+xref:../ilm/index.adoc[Manage objects with ILM]
