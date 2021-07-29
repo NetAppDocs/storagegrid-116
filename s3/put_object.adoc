@@ -1,0 +1,166 @@
+---
+permalink: s3/put_object.html
+sidebar: sidebar
+keywords: object, add object, put, put object request
+summary: 'You can use the S3 PUT Object request to add an object to a bucket.'
+---
+= PUT Object
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the S3 PUT Object request to add an object to a bucket.
+
+== Resolving conflicts
+
+Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
+
+== Object size
+
+StorageGRID supports objects up to 5 TB in size.
+
+== User metadata size
+
+Amazon S3 limits the size of user-defined metadata within each PUT request header to 2 KB. StorageGRID limits user metadata to 24 KiB. The size of user-defined metadata is measured by taking the sum of the number of bytes in the UTF-8 encoding of each key and value.
+
+== UTF-8 characters in user metadata
+
+If a request includes (unescaped) UTF-8 values in the key name or value of user-defined metadata, StorageGRID behavior is undefined.
+
+StorageGRID does not parse or interpret escaped UTF-8 characters included in the key name or value of user-defined metadata. Escaped UTF-8 characters are treated as ASCII characters:
+
+* PUT, PUT Object-Copy, GET, and HEAD requests succeed if user-defined metadata includes escaped UTF-8 characters.
+* StorageGRID does not return the `x-amz-missing-meta` header if the interpreted value of the key name or value includes unprintable characters.
+
+== Object tag limits
+
+You can add tags to new objects when you upload them, or you can add them to existing objects. Both StorageGRID and Amazon S3 support up to 10 tags for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 Unicode characters in length and tag values can be up to 256 Unicode characters in length. Key and values are case sensitive.
+
+== Object ownership
+
+In StorageGRID, all objects are owned by the bucket owner account, including objects created by a non-owner account or an anonymous user.
+
+== Supported request headers
+
+The following request headers are supported:
+
+* `Cache-Control`
+* `Content-Disposition`
+* `Content-Encoding`
++
+When you specify `aws-chunked` for ``Content-Encoding``StorageGRID does not verify the following items:
+
+ ** StorageGRID does not verify the `chunk-signature` against the chunk data.
+ ** StorageGRID does not verify the value that you provide for `x-amz-decoded-content-length` against the object.
+
+* `Content-Language`
+* `Content-Length`
+* `Content-MD5`
+* `Content-Type`
+* `Expires`
+* `Transfer-Encoding`
++
+Chunked transfer encoding is supported if `aws-chunked` payload signing is also used.
+
+* `x-amz-meta-`, followed by a name-value pair containing user-defined metadata.
++
+When specifying the name-value pair for user-defined metadata, use this general format:
++
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+x-amz-meta-_name_: _value_
+----
++
+If you want to use the *User Defined Creation Time* option as the Reference Time for an ILM rule, you must use `creation-time` as the name of the metadata that records when the object was created. For example:
++
+----
+x-amz-meta-creation-time: 1443399726
+----
++
+The value for `creation-time` is evaluated as seconds since January 1, 1970.
++
+NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Reference Time and the Balanced or Strict options for Ingest Behavior. An error is returned when the ILM rule is created.
+
+* `x-amz-tagging`
+* S3 Object Lock request headers
+ ** `x-amz-object-lock-mode`
+ ** `x-amz-object-lock-retain-until-date`
+ ** `x-amz-object-lock-legal-hold`
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+* SSE request headers:
+ ** `x-amz-server-side-encryption`
+ ** `x-amz-server-side-encryption-customer-key-MD5`
+ ** `x-amz-server-side-encryption-customer-key`
+ ** `x-amz-server-side-encryption-customer-algorithm`
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[s3_rest_api_supported_operations_and_limitations]
+
+== Unsupported request headers
+
+The following request headers are not supported:
+
+* The `x-amz-acl` request header is not supported.
+* The `x-amz-website-redirect-location` request header is not supported and returns `XNotImplemented`.
+
+== Storage class options
+
+The `x-amz-storage-class` request header is supported. The value submitted for `x-amz-storage-class` affects how StorageGRID protects object data during ingest and not how many persistent copies of the object are stored in the StorageGRID system (which is determined by ILM).
+
+If the ILM rule matching an ingested object uses the Strict option for Ingest Behavior, the `x-amz-storage-class` header has no effect.
+
+The following values can be used for `x-amz-storage-class`:
+
+* `STANDARD` (Default)
+ ** *Dual commit*: If the ILM rule specifies the Dual commit option for Ingest Behavior, as soon as an object is ingested a second copy of that object is created and distributed to a different Storage Node (dual commit). When the ILM is evaluated,StorageGRID determines if these initial interim copies satisfy the placement instructions in the rule. If they do not, new object copies might need to be made in different locations and the initial interim copies might need to be deleted.
+ ** *Balanced*: If the ILM rule specifies the Balanced option and StorageGRID cannot immediately make all copies specified in the rule, StorageGRID makes two interim copies on different Storage Nodes.
++
+If StorageGRID can immediately create all object copies specified in the ILM rule (synchronous placement), the `x-amz-storage-class` header has no effect.
+* `REDUCED_REDUNDANCY`
+ ** *Dual commit*: If the ILM rule specifies the Dual commit option for Ingest Behavior, StorageGRID creates a single interim copy as the object is ingested (single commit).
+ ** *Balanced*: If the ILM rule specifies the Balanced option, StorageGRID makes a single interim copy only if the system cannot immediately make all copies specified in the rule. If StorageGRID can perform synchronous placement, this header has no effect.
+The `REDUCED_REDUNDANCY` option is best used when the ILM rule that matches the object creates a single replicated copy. In this case using `REDUCED_REDUNDANCY` eliminates the unnecessary creation and deletion of an extra object copy for every ingest operation.
+
++
+Using the `REDUCED_REDUNDANCY` option is not recommended in other circumstances. `REDUCED_REDUNDANCY` increases the risk of object data loss during ingest. For example, you might lose data if the single copy is initially stored on a Storage Node that fails before ILM evaluation can occur.
+
+*Attention*: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
+Specifying `REDUCED_REDUNDANCY` only affects how many copies are created when an object is first ingested. It does not affect how many copies of the object are made when the object is evaluated by the active ILM policy, and does not result in data being stored at lower levels of redundancy in the StorageGRID system.
+
+*Note*: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
+
+== Request headers for server-side encryption
+
+You can use the following request headers to encrypt an object with server-side encryption. The SSE and SSE-C options are mutually exclusive.
+
+* *SSE*: Use the following header if you want to encrypt the object with a unique key managed by StorageGRID.
+ ** `x-amz-server-side-encryption`
+* *SSE-C*: Use all three of these headers if you want to encrypt the object with a unique key that you provide and manage.
+ ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
+ ** `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the new object.
+ ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key.
+
+*Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+
+*Note*: If an object is encrypted with SSE or SSE-C, any bucket-level or grid-level encryption settings are ignored.
+
+== Versioning
+
+If versioning is enabled for a bucket, a unique `versionId` is automatically generated for the version of the object being stored. This `versionId` is also returned in the response using the `x-amz-version-id` response header.
+
+If versioning is suspended, the object version is stored with a null `versionId` and if a null version already exists it will be overwritten.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+
+xref:s3_operations_tracked_in_audit_logs.adoc[S3 operations tracked in the audit logs]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
+
+xref:configuring_tenant_accounts_and_connections.adoc[How client connections can be configured]
