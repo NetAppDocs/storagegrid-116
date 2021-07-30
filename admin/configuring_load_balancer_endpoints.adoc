@@ -1,65 +1,86 @@
 ---
 permalink: admin/configuring_load_balancer_endpoints.html
 sidebar: sidebar
-keywords:
-summary: ''
+keywords: load balancer endpoint, port, network protocol, client connection, Admin Node, Gateway Node, S3, Swift
+summary: 'You define load balancer endpoints to determine the ports and network protocols S3 and Swift clients can use when connecting to the StorageGRID load balancer on Gateway and Admin Nodes.'
 ---
-= Configuring load balancer endpoints
+= Configure load balancer endpoints
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can create, edit, and remove load balancer endpoints.
-
-== Creating load balancer endpoints
-
-[.lead]
-Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS), and a service type (S3 or Swift). If you create an HTTPS endpoint, you must upload or generate a server certificate.
+You define load balancer endpoints to determine the ports and network protocols S3 and Swift clients can use when connecting to the StorageGRID load balancer service on Gateway and Admin Nodes.
 
 .What you'll need
 
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a supported browser.
-* If you have previously remapped ports you intend to use for the Load Balancer service, you must have removed the remaps.
+* You have the Root Access permission.
+* You are signed in to the Grid Manager using a supported browser.
+* If you have previously remapped the port you intend to use for the load balancer endpoint, you have removed the port remap.
 +
-IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in the recovery and maintenance instructions for removing port remaps.
+IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in the xref:../maintain/index.adoc[Maintain & recover instructions] for removing port remaps.
 +
 NOTE: The CLB service is deprecated.
 
+
+== Create a load balancer endpoint
+
+Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS), and a service type (S3 or Swift). If you create an HTTPS endpoint, you must upload or generate a server certificate.
+
+.About this task
+
+Before creating a load balancer endpoint, create any  xref:managing_high_availability_groups.adoc[high availability (HA) groups] you plan to use. Then, create the endpoint and provide clients with the port number, the virtual IP of the HA group (or the IP address of a Gateway or Admin Node), and any required certificate details.
+
+
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
-+
-The Load Balancer Endpoints page appears.
-+
-image::../media/load_balancer_endpoints.png[load balancer endpoints]
+. Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
 
-. Select *Add endpoint*.
-+
-The Create Endpoint dialog box appears.
-+
-image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
+. Select *Create*.
 
-. Enter a display name for the endpoint, which will appear in the list on the Load Balancer Endpoints page.
-. Enter a port number, or leave the pre-filled port number as is.
+. Enter details about the endpoint.
 +
-If you enter port number 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.
-+
-NOTE: Ports used by other grid services are not permitted. See the networking guidelines for a list of ports used for internal and external communications.
+[cols="1a,1a" options="header"]
+|===
+| Field| Description
 
-. Select *HTTP* or *HTTPS* to specify the network protocol for this endpoint.
-. Select an endpoint binding mode.
+|Name
+|A descriptive name to help you identify this endpoint. Must be between 1 and 64 characters.
+
+|Port
+|The port that S3 and Swift clients will use to connect to the load balancer service on Admin Nodes and Gateway Nodes.
+
+You can accept the suggested port number or enter any external port that is not used by another grid service.
+
+If you enter *80* or *443*, the endpoint is configured only on Gateway Nodes. These ports are reserved on Admin Nodes.
+
+*Note:* Ports used by other grid services are not permitted. See the xref:../network/index.adoc[Network guidelines] for a list of ports used for internal and external communications.
+
+|Client type
+|The type of client application that will use this endpoint. Must be S3 or Swift.
+
+|Network protocol
+|The network protocol that clients will use when connecting to this endpoint.
+
+* Select *HTTPS* for secure, TLS encrypted communication. Then, attach the security certificate before saving the endpoint.
+* Select *HTTP* for less secure, unencrypted communication. Use HTTP only for a non-production grid.
+
+|===
+
+. Select *Continue*.
+
+. Select a binding mode for the endpoint.
++
+The binding mode controls how the endpoint is accessed. You can use a non-global binding mode if you plan to monitor or limit the use of this endpoint with a traffic classification policy.
+
  ** *Global* (default): The endpoint is accessible on all Gateway Nodes and Admin Nodes on the specified port number.
 +
-image::../media/load_balancer_endpoint_global_binding_mode.png[Endpoint Global Binding Mode]
-
- ** *HA Group VIPs*: The endpoint is accessible only through the virtual IP addresses defined for the selected HA groups. Endpoints defined in this mode can reuse the same port number, as long as the HA groups defined by those endpoints do not overlap with each other.
+ ** *Virtual IPs of HA Group*: The endpoint is accessible only through the virtual IP addresses defined for the selected HA groups. Endpoints defined in this mode can reuse the same port number, as long as the HA groups defined by those endpoints do not overlap with each other.
 +
 Select the HA groups with the virtual IP addresses where you want the endpoint to appear.
 +
 image::../media/load_balancer_endpoint_ha_group_vips_binding_mode.png[Endpoint HA Group VIPs Binding Mode]
 
- ** *Node Interfaces*: The endpoint is accessible only on the designated nodes and network interfaces. Endpoints defined in this mode can reuse the same port number as long as those interfaces do not overlap with each other.
+ ** *Node interfaces*: The endpoint is accessible only on the designated nodes and network interfaces. Endpoints defined in this mode can reuse the same port number as long as those interfaces do not overlap with each other.
 +
 Select the node interfaces where you want the endpoint to appear.
 +
@@ -74,11 +95,18 @@ image::../media/load_balancer_endpoint_client_options.png[Load Balancer Client]
 
 . If you selected *HTTP*, select *Save*.
 +
-The unsecured endpoint is created. The table on the Load Balancer Endpoints page lists the endpoint's display name, port number, protocol, and endpoint ID.
+The unsecured endpoint is created. The table on the Load balancer endpoints page lists the endpoint's display name, port number, protocol, and endpoint ID.
 
-. If you selected *HTTPS* and you want to upload a certificate, select *Upload Certificate*.
+. If you selected *HTTPS*, select *Continue*.
 +
 image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
+
+. Select the type of security certificate you will attach to the endpoint.
+** *Use StorageGRID S3 and Swift Certificate*
+
+** *Upload certificate*
+
+** *Generate certificate*
 
  .. Browse for the server certificate and the certificate private key.
 +
@@ -115,31 +143,16 @@ The certificate metadata and the PEM-encoded certificate data for the endpoint a
 +
 The endpoint is created. The table on the Load Balancer Endpoints page lists the endpoint's display name, port number, protocol, and endpoint ID.
 
-.Related information
-
-xref:../maintain/index.adoc[Maintain & recover]
-
-xref:../network/index.adoc[Network guidelines]
-
-xref:managing_high_availability_groups.adoc[Managing high availability groups]
-
-xref:managing_untrusted_client_networks.adoc[Managing untrusted Client Networks]
 
 == Editing load balancer endpoints
 
-
 For an unsecured (HTTP) endpoint, you can change the endpoint service type between S3 and Swift. For a secured (HTTPS) endpoint, you can edit the endpoint service type and view or change the security certificate.
-
-.What you'll need
-
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a supported browser.
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select *CONFIGURATION* > *Network settings* > *Load balancer endpoints*.
 +
-The Load Balancer Endpoints page appears. The existing endpoints are listed in the table.
+The Load balancer endpoints page appears. The existing endpoints are listed in the table.
 +
 Endpoints with certificates that will expire soon are identified in the table.
 +
@@ -169,39 +182,30 @@ For a secured (HTTPS) endpoint, you can:
 Select a tab to display detailed information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
 
 +
-NOTE: To change the protocol for an existing endpoint, for example from HTTP to HTTPS, you must create a new endpoint. Follow the instructions for creating load balancer endpoints, and select the desired protocol.
+NOTE: To change the protocol for an existing endpoint, for example from HTTP to HTTPS, you must create a new endpoint. Follow the instructions for <<creating load balancer endpoints>>, and select the desired protocol.
 
-. Click *Save*.
+. Select *Save*.
 
-.Related information
-
-<<Creating load balancer endpoints>>
 
 == Removing load balancer endpoints
 
-
 If you no longer need a load balancer endpoint, you can remove it.
-
-.What you'll need
-
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a supported browser.
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select *CONFIGURATION* > *Network settings* > *Load balancer endpoints*.
 +
 The Load Balancer Endpoints page appears. The existing endpoints are listed in the table.
 +
 image::../media/load_balancer_endpoint_edit_or_remove.png[Edit Endpoint]
 
 . Select the radio button to the left of the endpoint you want to remove.
-. Click *Remove endpoint*.
+. Select *Remove endpoint*.
 +
 A confirmation dialog box appears.
 +
 image::../media/load_balancer_endpoint_confirm_removal.png[Confirm Endpoint Removal]
 
-. Click *OK*.
+. Select *OK*.
 +
 The endpoint is removed.
