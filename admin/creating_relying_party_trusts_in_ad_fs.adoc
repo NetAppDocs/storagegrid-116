@@ -11,11 +11,6 @@ summary: 'You must use Active Directory Federation Services (AD FS) to create a 
 [.lead]
 You must use Active Directory Federation Services (AD FS) to create a relying party trust for each Admin Node in your system. You can create relying party trusts using PowerShell commands, by importing SAML metadata from StorageGRID, or by entering the data manually.
 
-== Creating a relying party trust using Windows PowerShell
-
-
-You can use Windows PowerShell to quickly create one or more relying party trusts.
-
 .What you'll need
 
 * You have configured SSO in StorageGRID, and you know the fully qualified domain name (or the IP address) and the relying party identifier for each Admin Node in your system.
@@ -24,10 +19,19 @@ NOTE: You must create a relying party trust for each Admin Node in your StorageG
 
 * You have experience creating relying party trusts in AD FS, or you have access to the Microsoft AD FS documentation.
 * You are using the AD FS Management snap-in, and you belong to the Administrators group.
+* If you are creating the relying party trust manually, you have the custom certificate that was uploaded for the StorageGRID management interface, or you know how to log in to an Admin Node from the command shell.
+
 
 .About this task
 
-These instructions apply to AD FS 4.0, which is included with Windows Server 2016. If you are using AD FS 3.0, which is included with Windows 2012 R2, you will notice slight differences in the procedure. See the Microsoft AD FS documentation if you have questions.
+These instructions apply to AD FS 4.0, which is included with Windows Server 2016. If you are using a different version of AD FS, you will notice slight differences in the procedure. See the Microsoft AD FS documentation if you have questions.
+
+
+== Creating a relying party trust using Windows PowerShell
+
+
+You can use Windows PowerShell to quickly create one or more relying party trusts.
+
 
 .Steps
 
@@ -79,18 +83,6 @@ If the metadata is missing, confirm that the Federation metadata address is corr
 
 You can import the values for each relying party trust by accessing the SAML metadata for each Admin Node.
 
-.What you'll need
-
-* You have configured SSO in StorageGRID, and you know the fully qualified domain name (or the IP address) and the relying party identifier for each Admin Node in your system.
-+
-NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
-
-* You have experience creating relying party trusts in AD FS, or you have access to the Microsoft AD FS documentation.
-* You are using the AD FS Management snap-in, and you belong to the Administrators group.
-
-.About this task
-
-These instructions apply to AD FS 4.0, which is included with Windows Server 2016. If you are using AD FS 3.0, which is included with Windows 2012 R2, you will notice slight differences in the procedure. See the Microsoft AD FS documentation if you have questions.
 
 .Steps
 
@@ -133,19 +125,6 @@ If the metadata is missing, confirm that the Federation metadata address is corr
 
 If you choose not to import the data for the relying part trusts, you can enter the values manually.
 
-.What you'll need
-
-* You have configured SSO in StorageGRID, and you know the fully qualified domain name (or the IP address) and the relying party identifier for each Admin Node in your system.
-+
-NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
-
-* You have the custom certificate that was uploaded for the StorageGRID management interface, or you know how to log in to an Admin Node from the command shell.
-* You have experience creating relying party trusts in AD FS, or you have access to the Microsoft AD FS documentation.
-* You are using the AD FS Management snap-in, and you belong to the Administrators group.
-
-.About this task
-
-These instructions apply to AD FS 4.0, which is included with Windows Server 2016. If you are using AD FS 3.0, which is included with Windows 2012 R2, you will notice slight differences in the procedure. See the Microsoft AD FS documentation if you have questions.
 
 .Steps
 
