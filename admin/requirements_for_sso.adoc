@@ -11,7 +11,6 @@ summary: 'Before enabling single sign-on \(SSO\) for a StorageGRID system, revie
 [.lead]
 Before enabling single sign-on (SSO) for a StorageGRID system, review the requirements in this section.
 
-IMPORTANT: Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
 
 == Identity provider requirements
 
@@ -34,12 +33,14 @@ StorageGRID uses a Management Interface Server Certificate on each Admin Node to
 
 If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts.
 
+xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
+
 NOTE: Using an Admin Node's default server certificate in the AD FS relying party trust is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust in AD FS with the new certificate.
 
 You can access an Admin Node's server certificate by logging in to the command shell of the node and going to the `/var/local/mgmt-api` directory. A custom server certificate is named `custom-server.crt`. The node's default server certificate is named `server.crt`.
 
-.Related information
+== Port requirements
+
+Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
 
 xref:controlling_access_through_firewalls.adoc[Controlling access through firewalls]
-
-xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
