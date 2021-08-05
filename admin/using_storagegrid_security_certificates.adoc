@@ -45,14 +45,14 @@ image::security_certificates.png["Certificates page"]
 
 Select a tab on the certificate page for information about a certificate category and to access the certificate settings.
 
-* *<<global_tab,Global>>*: secures StorageGRID access from web browsers and external API clients.
-* *<<gridca_tab,Grid CA>>*: secures internal StorageGRID traffic.
-* *<<client_tab,Client>>*: secures connections between external clients and the StorageGRID Prometheus database.
-* *<<loadbalancerendpoint_tab,Load balancer endpoints>>*: secures connections between S3 and Swift clients and the StorageGRID Load Balancer.
-* *<<tenants_tab,Tenants>>*: secures connections to identity federation servers or from platform service endpoints to S3 storage resources.
-* *<<other_tab,Other>>*: secures StorageGRID connections requiring specific certificates.
+* *<<certtabs/global_tab,Global>>*: secures StorageGRID access from web browsers and external API clients.
+* *<<certtabs/gridca_tab,Grid CA>>*: secures internal StorageGRID traffic.
+* *<<certtabs/client_tab,Client>>*: secures connections between external clients and the StorageGRID Prometheus database.
+* *<<certtabs/loadbalancerendpoint_tab,Load balancer endpoints>>*: secures connections between S3 and Swift clients and the StorageGRID Load Balancer.
+* *<<certtabs/tenants_tab,Tenants>>*: secures connections to identity federation servers or from platform service endpoints to S3 storage resources.
+* *<<certtabs/other_tab,Other>>*: secures StorageGRID connections requiring specific certificates.
 
-[role="tabbed-block"]
+[#certtabs, role="tabbed-block"]
 ====
 
 [#global_tab]
