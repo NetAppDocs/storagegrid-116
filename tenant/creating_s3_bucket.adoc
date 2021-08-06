@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, tenant, S3 bucket, S3 Object Lock, create s3 bucket, creating s3 bucket
 summary: 'You can use the Tenant Manager to create S3 buckets for object data. When you create a bucket, you must specify the bucket’s name and region. If the global S3 Object Lock setting is enabled for the StorageGRID system, you can optionally enable S3 Object Lock for the bucket.'
 ---
-= Creating an S3 bucket
+= Create an S3 bucket
 :icons: font
 :imagesdir: ../media/
 
@@ -22,18 +22,12 @@ xref:using_s3_object_lock.adoc[Using S3 Object Lock]
 .Steps
 . Select *STORAGE (S3)* > *Buckets*.
 +
-The Buckets page appears and lists any buckets that have already been created.
-+
-image::../media/buckets_page.png[Buckets Page]
+// image::../media/buckets_page.png[Buckets Page]
 
 . Select *Create bucket*.
 +
-The Create bucket wizard appears.
-+
 image::../media/bucket_create_compliance_disabled.png[Bucket Create Compliance Disabled]
 +
-NOTE: If the global S3 Object Lock setting is enabled, Create bucket includes a second step for managing S3 Object Lock for the bucket.
-
 . Enter a unique name for the bucket.
 +
 IMPORTANT: You cannot change the bucket name after creating the bucket.
@@ -56,19 +50,25 @@ Your StorageGRID administrator manages the available regions. A bucket's region 
 +
 IMPORTANT: You cannot change the region after creating the bucket.
 
-. Select *Create bucket* or *Continue*.
- ** If the global S3 Object Lock setting is not enabled, select *Create bucket*. The bucket is created and added to the table on the Buckets page.
- ** If the global S3 Object Lock setting is enabled, select *Continue*. Step 2, Manage S3 Object Lock, appears.
+. Select *Continue*.
+
+. Optionally, enable object versioning for the bucket.
 +
-image::../media/bucket_create_s3_object_lock_enabled.png[Bucket Create S3 Object Lock Enabled]
-. Optionally, select the check box to enable S3 Object Lock for this bucket.
+Enable object versioning if you want to store every version of each object in this bucket. You can then retrieve a previous object version to recover from an error.
+
+. If the S3 Object Lock section appears, optionally enable S3 Object Lock for the bucket.
++
+IMPORTANT: You cannot enable or disable S3 Object Lock after creating the bucket.
+
++
+// image::../media/bucket_create_s3_object_lock_enabled.png[Bucket Create S3 Object Lock Enabled]
++
+The S3 Object Lock section appears only if the global S3 Object Lock setting is enabled.
 +
 S3 Object Lock must be enabled for the bucket before an S3 client application can specify retain-until-date and legal hold settings for the objects added to the bucket.
 +
-IMPORTANT: You cannot enable or disable S3 Object Lock after creating the bucket.
+If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically.
 +
-NOTE: If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically.
-
 . Select *Create bucket*.
 +
 The bucket is created and added to the table on the Buckets page.

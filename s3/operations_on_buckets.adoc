@@ -104,11 +104,15 @@ This operation returns the replication configuration attached to the bucket.
 a|
 GET Bucket tagging
 a|
-This operation uses the _tagging_ subresource to return all tags for a bucket.
+This operation uses the `tagging` subresource to return all tags for a bucket.
 a|
 GET Bucket versioning
 a|
-This implementation uses the `versioning` subresource to return the versioning state of a bucket. The versioning state returned indicates if the bucket is "`Unversioned`" or if the bucket is version "`Enabled`" or "`Suspended.`"
+This implementation uses the `versioning` subresource to return the versioning state of a bucket.
+
+* Disabled: Versioning has never been enabled
+* Enabled: Versioning is enabled
+* Suspended: Versioning was previously enabled and is suspended
 a|
 GET Object Lock Configuration
 a|
