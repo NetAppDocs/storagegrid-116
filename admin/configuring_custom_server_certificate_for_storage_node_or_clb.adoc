@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service \(deprecated\) on Gateway Node. The replacement custom server certificate is specific to your organization.'
 ---
-= Configuring a custom server certificate for connections to the Storage Node or the CLB service
+= Configure a custom server certificate for connections to the Storage Node or the CLB service
 :icons: font
 :imagesdir: ../media/
 
@@ -27,16 +27,17 @@ NOTE: The *Expiration of load balancer endpoint certificate* alert is triggered 
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the S3 and Swift API certificate section, click *Install Custom Certificate*.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *S3 and Swift API certificate*.
+. Select *Install Custom Certificate*.
 . Upload the required server certificate files:
- ** *Server Certificate*: The custom server certificate file (`.crt`).
- ** *Server Certificate Private Key*: The custom server certificate private key file (`.key`).
+ ** *Server certificate*: The custom server certificate file (`.crt`).
+ ** *Server certificate private key*: The custom server certificate private key file (`.key`).
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
- ** *CA Bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
-. Click *Save*.
+ ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+. Select *Save*.
 +
 The custom server certificate is used for all subsequent new API client connections.
 +

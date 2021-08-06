@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.'
 ---
-= Configuring a custom server certificate for the Grid Manager and the Tenant Manager
+= Configure a custom server certificate for the Grid Manager and the Tenant Manager
 :icons: font
 :imagesdir: ../media/
 
@@ -30,16 +30,17 @@ If you are accessing the Grid Manager or Tenant Manager using a domain name inst
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the Management interface certificate section, click *Install Custom Certificate*.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *Management interface certificate*.
+. Select *Use custom certificate*.
 . Upload the required server certificate files:
- ** *Server Certificate*: The custom server certificate file (`.crt`).
- ** *Server Certificate Private Key*: The custom server certificate private key file (`.key`).
+ ** *Server certificate*: The custom server certificate file (`.crt`).
+ ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
- ** *CA Bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
-. Click *Save*.
+ ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+. Select *Save*.
 +
 The custom server certificates are used for all subsequent new client connections.
 +
