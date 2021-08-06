@@ -13,7 +13,7 @@ The following table lists all default StorageGRID alerts. As required, you can c
 
 See information about the commonly used Prometheus metrics to learn about the metrics used in some of these alerts.
 
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Alert name| Description and recommended actions
 a|
@@ -102,17 +102,23 @@ A persistent cache backup device has failed.
 a|
 Appliance cache backup device insufficient capacity
 a|
-There is insufficient cache backup device capacity.Contact technical support.
+There is insufficient cache backup device capacity.
+
+Contact technical support.
 
 a|
 Appliance cache backup device write-protected
 a|
-A cache backup device is write-protected.Contact technical support.
+A cache backup device is write-protected.
+
+Contact technical support.
 
 a|
 Appliance cache memory size mismatch
 a|
-The two controllers in the appliance have different cache sizes.Contact technical support.
+The two controllers in the appliance have different cache sizes.
+
+Contact technical support.
 
 a|
 Appliance compute controller chassis temperature too high
@@ -173,7 +179,9 @@ Power supply A in the compute controller has a problem.This alert might indicate
 a|
 Appliance compute controller power supply B has a problem
 a|
-Power supply B in the compute controller has a problem.This alert might indicate that the power supply has failed or that it has a problem providing power.
+Power supply B in the compute controller has a problem.
+
+This alert might indicate that the power supply has failed or that it has a problem providing power.
 
 . Check the hardware components for errors, and follow the recommended actions:
  ** If you have an SG100, SG1000, or SG6000, use the BMC.
@@ -198,20 +206,21 @@ Appliance Fibre Channel fault detected
 a|
 There is a problem with the Fibre Channel connection between the storage and compute controllers in the appliance.
 
-. Check the hardware components for errors (*Nodes* > *_appliance node_* > *Hardware*). If the status of any of the components is not "`Nominal`", take these actions:
+. Check the hardware components for errors (*Nodes* > *_appliance node_* > *Hardware*). If the status of any of the components is not "`Nominal,`" take these actions:
  .. Verify that the Fibre Channel cables between controllers are completely connected.
  .. Ensure that the Fibre Channel cables are free of excessive bends.
  .. Confirm that the SFP+ modules are properly seated.
-
++
 *Note:* If this problem persists, the StorageGRID system might take the problematic connection offline automatically.
-
-[start=2]
++
 . If necessary, replace components. See the installation and maintenance instructions for your appliance.
 
 a|
 Appliance Fibre Channel HBA port failure
 a|
-A Fibre Channel HBA port is failing or has failed.Contact technical support.
+A Fibre Channel HBA port is failing or has failed.
+
+Contact technical support.
 
 a|
 Appliance flash cache drives non-optimal
@@ -359,7 +368,9 @@ A temperature sensor has been removed. Contact technical support.
 a|
 Cassandra auto-compactor error
 a|
-The Cassandra auto-compactor has experienced an error.The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this condition persists, certain workloads will experience unexpectedly high metadata consumption.
+The Cassandra auto-compactor has experienced an error.
+
+The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this condition persists, certain workloads will experience unexpectedly high metadata consumption.
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
@@ -367,7 +378,9 @@ The Cassandra auto-compactor has experienced an error.The Cassandra auto-compact
 a|
 Cassandra auto-compactor metrics out of date
 a|
-The metrics that describe the Cassandra auto-compactor are out of date. The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this alert persists, certain workloads will experience unexpectedly high metadata consumption.
+The metrics that describe the Cassandra auto-compactor are out of date.
+
+The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this alert persists, certain workloads will experience unexpectedly high metadata consumption.
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
@@ -375,26 +388,27 @@ The metrics that describe the Cassandra auto-compactor are out of date. The Cass
 a|
 Cassandra communication error
 a|
-The nodes that run the Cassandra service are having trouble communicating with each other.This alert indicates that something is interfering with node-to-node communications. There might be a network issue or the Cassandra service might be down on one or more Storage Nodes.
+The nodes that run the Cassandra service are having trouble communicating with each other.
+
+This alert indicates that something is interfering with node-to-node communications. There might be a network issue or the Cassandra service might be down on one or more Storage Nodes.
 
 . Determine if there is another alert affecting one or more Storage Nodes. This alert might be resolved when you resolve the other alert.
 . Check for a network issue that might be affecting one or more Storage Nodes.
 . Select *Support* > *Tools* > *Grid Topology*.
-. For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is"` Running.`"
-. If Cassandra is not running, follow the steps for starting or restarting a service in the recovery and maintenance instructions.
+. For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is "Running."
+. If Cassandra is not running, follow the steps for starting or restarting a service in the xref:../maintain/index.adoc[recovery and maintenance instructions].
 . If all instances of the Cassandra service are now running and the alert is not resolved, contact technical support.
-
-xref:../maintain/index.adoc[Maintain & recover]
 
 a|
 Cassandra compactions overloaded
 a|
-The Cassandra compaction process is overloaded.If the compaction process is overloaded, read performance might be degraded and RAM might be used up. The Cassandra service might also become unresponsive or crash.
+The Cassandra compaction process is overloaded.
 
-. Restart the Cassandra service by following the steps for restarting a service in the recovery and maintenance instructions.
+If the compaction process is overloaded, read performance might be degraded and RAM might be used up. The Cassandra service might also become unresponsive or crash.
+
+. Restart the Cassandra service by following the steps for restarting a service in the xref:../maintain/index.adoc[recovery and maintenance instructions].
 . If this alert persists, contact technical support.
 
-xref:../maintain/index.adoc[Maintain & recover]
 
 a|
 Cassandra repair metrics out of date
@@ -407,7 +421,9 @@ The metrics that describe Cassandra repair jobs are out of date. If this conditi
 a|
 Cassandra repair progress slow
 a|
-The progress of Cassandra database repairs is slow.When database repairs are slow, Cassandra data consistency operations are impeded. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
+The progress of Cassandra database repairs is slow.
+
+When database repairs are slow, Cassandra data consistency operations are impeded. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
 
 . Confirm that all Storage Nodes are online and there are no networking-related alerts.
 . Monitor this alert for up to 2 days to see if the issue resolves on its own.
@@ -416,14 +432,15 @@ The progress of Cassandra database repairs is slow.When database repairs are slo
 a|
 Cassandra repair service not available
 a|
-The Cassandra repair service is not available.The Cassandra repair service exists on all Storage Nodes and provides critical repair functions for the Cassandra database. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
+The Cassandra repair service is not available.
+
+The Cassandra repair service exists on all Storage Nodes and provides critical repair functions for the Cassandra database. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
 
 . Select *Support* > *Tools* > *Grid Topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra Reaper service is "Running."
-. If Cassandra Reaper is not running, follow the steps for starting or restarting a service in the recovery and maintenance instructions.
+. If Cassandra Reaper is not running, follow the steps for starting or restarting a service in the xref:../maintain/index.adoc[recovery and maintenance instructions].
 . If all instances of the Cassandra Reaper service are now running and the alert is not resolved, contact technical support.
 
-xref:../maintain/index.adoc[Maintain & recover]
 
 a|
 Cloud Storage Pool connectivity error
@@ -432,58 +449,84 @@ The health check for Cloud Storage Pools detected one or more new errors.
 
 . Go to the Cloud Storage Pools section of the Storage Pools page.
 . Look at the Last Error column to determine which Cloud Storage Pool has an error.
-. See the instructions for managing objects with information lifecycle management.
-
-xref:../ilm/index.adoc[Manage objects with ILM]
+. See the instructions for xref:../ilm/index.adoc[managing objects with information lifecycle management].
 
 a|
 DHCP lease expired
 a|
-The DHCP lease on a network interface has expired.If the DHCP lease has expired, follow the recommended actions:
+The DHCP lease on a network interface has expired. If the DHCP lease has expired, follow the recommended actions:
 
 . Ensure there is connectivity between this node and the DHCP server on the affected interface.
 . Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
-. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
-
-xref:../maintain/index.adoc[Maintain & recover]
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 
 a|
 DHCP lease expiring soon
 a|
-The DHCP lease on a network interface is expiring soon.To prevent the DHCP lease from expiring, follow the recommended actions:
+The DHCP lease on a network interface is expiring soon.
+
+To prevent the DHCP lease from expiring, follow the recommended actions:
 
 . Ensure there is connectivity between this node and the DHCP server on the affected interface.
 . Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
-. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 
-xref:../maintain/index.adoc[Maintain & recover]
 
 a|
 DHCP server unavailable
 a|
-The DHCP server is unavailable.The StorageGRID node is unable to contact your DHCP server. The DHCP lease for the node's IP address cannot be validated.
+The DHCP server is unavailable.
+
+The StorageGRID node is unable to contact your DHCP server. The DHCP lease for the node's IP address cannot be validated.
 
 . Ensure there is connectivity between this node and the DHCP server on the affected interface.
 . Ensure there are IP addresses available to assign in the affected subnet on the DHCP server.
-. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the recovery and maintenance instructions.
+. Ensure there is a permanent reservation for the IP address configured in the DHCP server. Or, use the StorageGRID Change IP tool to assign a static IP address outside of the DHCP address pool. See the the xref:../maintain/index.adoc[recovery and maintenance instructions].
 
-xref:../maintain/index.adoc[Maintain & recover]
 
-a|
-Disk I/O is very slow
-a|
-Very slow disk I/O might be impacting StorageGRID performance.
+|Disk I/O is very slow
+|Very slow disk I/O might be impacting StorageGRID performance.
 
 . If the issue is related to a storage appliance node, use SANtricity System Manager to check for faulty drives, drives with predicted faults, or in-progress drive repairs. Also check the status of the Fibre Channel or SAS links between the appliance compute and storage controllers to see if any links are down or showing excessive error rates.
 . Examine the storage system that hosts this node's volumes to determine, and correct, the root cause of the slow I/O.
 . If this alert persists, contact technical support.
 
-NOTE: Affected nodes might disable services and reboot themselves to avoid impacting overall grid performance. When the underlying condition is cleared and these nodes detect normal I/O performance, they will return to full service automatically.
+*Note:* Affected nodes might disable services and reboot themselves to avoid impacting overall grid performance. When the underlying condition is cleared and these nodes detect normal I/O performance, they will return to full service automatically.
 
-a|
-Email notification failure
-a|
-The email notification for an alert could not be sent.This alert is triggered when an alert email notification fails or a test email (sent from the *Alerts* > *Email Setup* page) cannot be delivered.
+|EC rebalance failure
+|The job to rebalance erasure-coded data among Storage Nodes has failed or has been paused by the user.
+
+. Ensure that all Storage Nodes at the site being rebalanced are online and available.
+. Ensure that there are no volume failures at the site being rebalanced. If there are, terminate the EC rebalance job so that you can run a repair job.
++
+`'rebalance-data terminate --job-id <ID>'`
+
+. Ensure that there are no service failures on the site being rebalanced. If a service is not running, follow the steps for starting  or restarting a service in the recovery and maintenance instructions.
+
+. After resolving any issues, restart the job by running the following command on the primary Admin Node:
++
+`'rebalance-data start --job-id <ID>'`
+
+. If you are unable to resolve the problem, contact technical support.
+
+|EC repair failure
+|A repair job for erasure-coded data has failed or has been stopped.
+
+. Ensure that there are sufficient available Storage Nodes or volumes to take the place of the failed Storage Node or volume.
+
+. Ensure that there are sufficient available Storage Nodes to satisfy the active ILM policy.
+. Ensure there are no network connectivity issues.
+. After resolving any issues, restart the job by running the following command on the primary Admin Node:
++
+`'repair-data start-ec-node-repair --repair-id <ID>'`
++
+. If you are unable to resolve the problem, contact technical support.
+
+
+|Email notification failure
+|The email notification for an alert could not be sent.
+
+This alert is triggered when an alert email notification fails or a test email (sent from the *Alerts* > *Email Setup* page) cannot be delivered.
 
 . Sign in to Grid Manager from the Admin Node listed in the *Site/Node* column of the alert.
 . Go to the *Alerts* > *Email Setup* page, check the settings, and change them if required.
@@ -515,9 +558,7 @@ One or more load balancer endpoint certificates are about to expire.
 . Select *Edit endpoint* to upload or generate a new certificate.
 . Repeat these steps for each endpoint that has an expired certificate or one that will expire soon.
 
-For more information about managing load balancer endpoints, see the instructions for administering StorageGRID.
-
-xref:../admin/index.adoc[Administer StorageGRID]
+For more information about managing load balancer endpoints, see the xref:../admin/index.adoc[instructions for administering StorageGRID].
 
 a|
 Expiration of server certificate for Management Interface
@@ -542,14 +583,18 @@ xref:../admin/index.adoc[Administer StorageGRID]
 a|
 Grid Network MTU mismatch
 a|
-The maximum transmission unit (MTU) setting for the Grid Network interface (eth0) differs significantly across nodes in the grid.The differences in MTU settings could indicate that some, but not all, eth0 networks are configured for jumbo frames. An MTU size mismatch of greater than 1000 might cause network performance problems.
+The maximum transmission unit (MTU) setting for the Grid Network interface (eth0) differs significantly across nodes in the grid.
+
+The differences in MTU settings could indicate that some, but not all, eth0 networks are configured for jumbo frames. An MTU size mismatch of greater than 1000 might cause network performance problems.
 
 xref:troubleshooting_storagegrid_system.adoc[Troubleshooting the Grid Network MTU mismatch alert]
 
 a|
 High Java heap use
 a|
-A high percentage of Java heap space is being used.If the Java heap becomes full, metadata services can become unavailable and client requests can fail.
+A high percentage of Java heap space is being used.
+
+If the Java heap becomes full, metadata services can become unavailable and client requests can fail.
 
 . Review the ILM activity on the Dashboard. This alert might resolve on its own when the ILM workload decreases.
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
@@ -558,7 +603,9 @@ A high percentage of Java heap space is being used.If the Java heap becomes full
 a|
 High latency for metadata queries
 a|
-The average time for Cassandra metadata queries is too long.An increase in query latency can be caused by a hardware change, such as replacing a disk, or a workload change, such as a sudden increase in ingests.
+The average time for Cassandra metadata queries is too long.
+
+An increase in query latency can be caused by a hardware change, such as replacing a disk, or a workload change, such as a sudden increase in ingests.
 
 . Determine if there were any hardware or workload changes around the time the query latency increased.
 . If you are unable to resolve the problem, contact technical support.
@@ -569,33 +616,43 @@ a|
 Unable to synchronize federated groups and users from the identity source.
 
 . Confirm that the configured LDAP server is online and available.
-. Review the settings on the Identity Federation page. Confirm that all values are current. See "`Configuring a federated identity source`" in the instructions for administering StorageGRID.
+. Review the settings on the Identity Federation page. Confirm that all values are current. See "`Configuring a federated identity source`" in the xref:../admin/index.adoc[instructions for administering StorageGRID].
 . Click *Test Connection* to validate the settings for the LDAP server.
 . If you cannot resolve the issue, contact technical support.
 
-xref:../admin/index.adoc[Administer StorageGRID]
+|Identity federation synchronization failure for a tenant
+|Unable to synchronize federated groups and users from the identity source configured by a tenant.
 
-a|
-ILM placement unachievable
-a|
-A placement instruction in an ILM rule cannot be achieved for certain objects.This alert indicates that a node required by a placement instruction is unavailable or that an ILM rule is misconfigured. For example, a rule might specify more replicated copies than there are Storage Nodes.
+. Sign in to the Tenant Manager.
+. Confirm that the LDAP server configured by the tenant is online and available.
+. Review the settings on the Identity Federation page. Confirm that all values are current. See xref:../tenant/configuring_federated_identity_source.adoc[Configuring a federated identity source].
+. Click *Test Connection* to validate the settings for the LDAP server.
+. If you cannot resolve the issue, contact technical support.
+
+
+|ILM placement unachievable
+|A placement instruction in an ILM rule cannot be achieved for certain objects.
+
+This alert indicates that a node required by a placement instruction is unavailable or that an ILM rule is misconfigured. For example, a rule might specify more replicated copies than there are Storage Nodes.
 
 . Ensure that all nodes are online.
-. If all nodes are online, review the placement instructions in all ILM rules that are used the active ILM policy. Confirm that there are valid instructions for all objects. See the instructions for managing objects with information lifecycle management.
+. If all nodes are online, review the placement instructions in all ILM rules that are used the active ILM policy. Confirm that there are valid instructions for all objects. See the xref:../ilm/index.adoc[instructions for managing objects with information lifecycle management].
+
 . As required, update rule settings and activate a new policy.
 +
-NOTE: It might take up to 1 day for the alert to clear.
+*Note:* It might take up to 1 day for the alert to clear.
 
 . If the problem persists, contact technical support.
 
-NOTE: This alert might appear during an upgrade and could persist for 1 day after the upgrade is completed successfully. When this alert is triggered by an upgrade, it will clear on its own.
+*Note:* This alert might appear during an upgrade and could persist for 1 day after the upgrade is completed successfully. When this alert is triggered by an upgrade, it will clear on its own.
 
-xref:../ilm/index.adoc[Manage objects with ILM]
 
 a|
 ILM scan period too long
 a|
-The time required to scan, evaluate objects, and apply ILM is too long.If the estimated time to complete a full ILM scan of all objects is too long (see *Scan Period - Estimated* on the Dashboard), the active ILM policy might not be applied to newly ingested objects. Changes to the ILM policy might not be applied to existing objects.
+The time required to scan, evaluate objects, and apply ILM is too long.
+
+If the estimated time to complete a full ILM scan of all objects is too long (see *Scan Period - Estimated* on the Dashboard), the active ILM policy might not be applied to newly ingested objects. Changes to the ILM policy might not be applied to existing objects.
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Confirm that all Storage Nodes are online.
@@ -609,7 +666,9 @@ xref:../admin/index.adoc[Administer StorageGRID]
 a|
 ILM scan rate low
 a|
-The ILM scan rate is set to less than 100 objects/second.This alert indicates that someone has changed the ILM scan rate for your system to less than 100 objects/second (default: 400 objects/second). The active ILM policy might not be applied to newly ingested objects. Subsequent changes to the ILM policy will not be applied to existing objects.
+The ILM scan rate is set to less than 100 objects/second.
+
+This alert indicates that someone has changed the ILM scan rate for your system to less than 100 objects/second (default: 400 objects/second). The active ILM policy might not be applied to newly ingested objects. Subsequent changes to the ILM policy will not be applied to existing objects.
 
 . Determine if a temporary change was made to the ILM scan rate as part of an ongoing support investigation.
 . Contact technical support.
@@ -730,7 +789,9 @@ The space available for audit logs is low.
 a|
 Low available node memory
 a|
-The amount of RAM available on a node is low.Low available RAM could indicate a change in the workload or a memory leak with one or more nodes.
+The amount of RAM available on a node is low.
+
+Low available RAM could indicate a change in the workload or a memory leak with one or more nodes.
 
 . Monitor this alert to see if the issue resolves on its own.
 . If the available memory falls below the major alert threshold, contact technical support.
@@ -750,7 +811,9 @@ xref:../expand/index.adoc[Expand your grid]
 a|
 Low installed node memory
 a|
-The amount of installed memory on a node is low.Increase the amount of RAM available to the virtual machine or Linux host. Check the threshold value for the major alert to determine the default minimum requirement for a StorageGRID node. See the installation instructions for your platform:
+The amount of installed memory on a node is low.
+
+Increase the amount of RAM available to the virtual machine or Linux host. Check the threshold value for the major alert to determine the default minimum requirement for a StorageGRID node. See the installation instructions for your platform:
 
 * xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 * xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
@@ -759,7 +822,9 @@ The amount of installed memory on a node is low.Increase the amount of RAM avail
 a|
 Low metadata storage
 a|
-The space available for storing object metadata is low.*Critical alert*
+The space available for storing object metadata is low.
+
+*Critical alert*
 
 . Stop ingesting objects.
 . Immediately add Storage Nodes in an expansion procedure.
@@ -790,7 +855,9 @@ The space available for the metrics database is low.
 a|
 Low object data storage
 a|
-The space available for storing object data is low.Perform an expansion procedure. You can add storage volumes (LUNs) to existing Storage Nodes, or you can add new Storage Nodes.
+The space available for storing object data is low.
+
+Perform an expansion procedure. You can add storage volumes (LUNs) to existing Storage Nodes, or you can add new Storage Nodes.
 
 xref:troubleshooting_storagegrid_system.adoc[Troubleshooting the Low object data storage alert]
 
@@ -807,7 +874,7 @@ The space available for the root disk is low.
 a|
 Low system data capacity
 a|
-The space available for StorageGRID system data on the /var/local file system is low.
+The space available for StorageGRID system data on the `/var/local` file system is low.
 
 . Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
 . Contact technical support if the available space continues to decrease.
@@ -815,14 +882,18 @@ The space available for StorageGRID system data on the /var/local file system is
 a|
 Node network connectivity error
 a|
-Errors have occurred while transferring data between nodes.Network connectivity errors might clear without manual intervention. Contact technical support if the errors do not clear.
+Errors have occurred while transferring data between nodes.
+
+Network connectivity errors might clear without manual intervention. Contact technical support if the errors do not clear.
 
 xref:troubleshooting_storagegrid_system.adoc[Troubleshooting the Network Receive Error (NRER) alarm]
 
 a|
 Node network reception frame error
 a|
-A high percentage of the network frames received by a node had errors.This alert might indicate a hardware issue, such as a bad cable or a failed transceiver on either end of the Ethernet connection.
+A high percentage of the network frames received by a node had errors.
+
+This alert might indicate a hardware issue, such as a bad cable or a failed transceiver on either end of the Ethernet connection.
 
 . If you are using an appliance, try replacing each SFP+ or SFP28 transceiver and cable, one at a time, to see if the alert clears.
 . If this alert persists, contact technical support.
@@ -855,7 +926,9 @@ Contact technical support.
 a|
 Objects lost
 a|
-One or more objects have been lost from the grid.This alert might indicate that data has been permanently lost and is not retrievable.
+One or more objects have been lost from the grid.
+
+This alert might indicate that data has been permanently lost and is not retrievable.
 
 . Investigate this alert immediately. You might need to take action to prevent further data loss. You also might be able to restore a lost object if you take prompt action.
 +
@@ -869,11 +942,11 @@ xref:troubleshooting_storagegrid_system.adoc[Troubleshooting lost and missing ob
 a|
 Platform services unavailable
 a|
-Too few Storage Nodes with the RSM service are running or available at a site.Make sure that the majority of the Storage Nodes that have the RSM service at the affected site are running and in a non-error state.
+Too few Storage Nodes with the RSM service are running or available at a site.
 
-See "`Troubleshooting platform services`" in the instructions for administering StorageGRID.
+Make sure that the majority of the Storage Nodes that have the RSM service at the affected site are running and in a non-error state.
 
-xref:../admin/index.adoc[Administer StorageGRID]
+See "`Troubleshooting platform services`" in the xref:../admin/index.adoc[instructions for administering StorageGRID].
 
 a|
 Services appliance link down on Admin Network port 1
@@ -914,7 +987,9 @@ Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
 a|
 Services appliance storage connectivity degraded
 a|
-One of the two SSDs in a services appliance has failed or is out of synchronization with the other.Appliance functionality is not impacted, but you should address the issue immediately. If both drives fail, the appliance will no longer function.
+One of the two SSDs in a services appliance has failed or is out of synchronization with the other.
+
+Appliance functionality is not impacted, but you should address the issue immediately. If both drives fail, the appliance will no longer function.
 
 . From the Grid Manager, select *Nodes* > ***_services appliance_, and then select the **Hardware* tab.
 . Review the message in the *Storage RAID Mode* field.
@@ -976,14 +1051,16 @@ There is a problem with one or more connections between the compute controller a
 . If a port's lights are off, confirm the cable is properly connected. As needed, replace the cable.
 . Wait up to five minutes.
 +
-NOTE: If a second cable needs to be replaced, do not unplug it for at least 5 minutes. Otherwise, the root volume might become read-only, which requires a hardware restart.
+*Note:* If a second cable needs to be replaced, do not unplug it for at least 5 minutes. Otherwise, the root volume might become read-only, which requires a hardware restart.
 
 . From the Grid Manager, select *Nodes*. Then, select the Hardware tab of the node that had the problem. Verify that the alert condition has resolved.
 
 a|
 Storage device inaccessible
 a|
-A storage device cannot be accessed.This alert indicates that a volume cannot be mounted or accessed because of a problem with an underlying storage device.
+A storage device cannot be accessed.
+
+This alert indicates that a volume cannot be mounted or accessed because of a problem with an underlying storage device.
 
 . Check the status of all storage devices used for the node:
  ** If the node is installed on a virtual machine or Linux host, follow the instructions for your operating system to run hardware diagnostics or perform a filesystem check.
@@ -1002,7 +1079,7 @@ Tenant quota usage high
 a|
 A high percentage of tenant quota space is being used. If a tenant exceeds its quota, new ingests are rejected.
 
-NOTE: This alert rule is disabled by default because it might generate a lot of notifications.
+*Note:* This alert rule is disabled by default because it might generate a lot of notifications.
 
 . From the Grid Manager, select *Tenants*.
 . Sort the table by *Quota Utilization*.
@@ -1014,20 +1091,21 @@ NOTE: This alert rule is disabled by default because it might generate a lot of 
 a|
 Unable to communicate with node
 a|
-One or more services are unresponsive, or the node cannot be reached.This alert indicates that a node is disconnected for an unknown reason. For example, a service on the node might be stopped, or the node might have lost its network connection because of a power failure or unexpected outage.
+One or more services are unresponsive, or the node cannot be reached.
+
+This alert indicates that a node is disconnected for an unknown reason. For example, a service on the node might be stopped, or the node might have lost its network connection because of a power failure or unexpected outage.
 
 Monitor this alert to see if the issue resolves on its own. If the issue persists:
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
-. Confirm that all of the services on this node are running. If a service is stopped, try starting it. See the recovery and maintenance instructions.
+. Confirm that all of the services on this node are running. If a service is stopped, try starting it. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 . Ensure that the host for the node is powered on. If it is not, start the host.
 +
-NOTE: If more than one host is powered off, see the recovery and maintenance instructions.
+*Note:* If more than one host is powered off, see the xref:../maintain/index.adoc[recovery and maintenance instructions].
 
 . Determine if there is a network connectivity issue between this node and the Admin Node.
 . If you cannot resolve the alert, contact technical support.
 
-xref:../maintain/index.adoc[Maintain & recover]
 
 a|
 Unexpected node reboot
