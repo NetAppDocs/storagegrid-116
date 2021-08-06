@@ -17,7 +17,7 @@ By default, every Storage Node is issued a X.509 server certificate signed by th
 
 A single custom server certificate is used for all Storage Nodes, so you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the storage endpoint. Define the custom certificate such that it matches all Storage Nodes in the grid.
 
-After completing configuration on the server, users might also need to install the root CA certificate in the S3 or Swift API client they will use to access the system, depending on the root Certificate Authority (CA) you are using.
+After completing configuration on the server, users might also need to install the Grid CA certificate in the S3 or Swift API client they will use to access the system, depending on the root Certificate Authority (CA) you are using.
 
 NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Storage API Endpoints* alert and the legacy Storage API Service Endpoints Certificate Expiry (SCEP) alarm are both triggered when the root server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
 
@@ -28,7 +28,7 @@ NOTE: The *Expiration of load balancer endpoint certificate* alert is triggered 
 .Steps
 
 . Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the Object Storage API Service Endpoints Server Certificate section, click *Install Custom Certificate*.
+. In the S3 and Swift API certificate section, click *Install Custom Certificate*.
 . Upload the required server certificate files:
  ** *Server Certificate*: The custom server certificate file (`.crt`).
  ** *Server Certificate Private Key*: The custom server certificate private key file (`.key`).
