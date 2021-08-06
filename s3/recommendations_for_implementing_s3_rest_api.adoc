@@ -1,7 +1,7 @@
 ---
 permalink: s3/recommendations_for_implementing_s3_rest_api.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'You should follow these recommendations when implementing the S3 REST API for use with StorageGRID.'
 ---
 = Recommendations for implementing the S3 REST API
@@ -25,7 +25,7 @@ For buckets that are created in StorageGRID 11.4 or later, restricting object ke
 
 For buckets that were created in releases earlier than StorageGRID 11.4, continue to follow these recommendations for object key names:
 
-* You should not use random values as the first four characters of object keys. This is in contrast to the former AWS recommendation for key prefixes. Instead, you should use non-random, non-unique prefixes, such as image.
+* You should not use random values as the first four characters of object keys. This is in contrast to the former AWS recommendation for key prefixes. Instead, you should use non-random, non-unique prefixes, such as `image`.
 * If you do follow the former AWS recommendation to use random and unique characters in key prefixes, you should prefix the object keys with a directory name. That is, use this format:
 +
 ----
