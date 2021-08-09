@@ -23,7 +23,7 @@ You can check whether updates to last access time are enabled or disabled for in
 
 The following table describes how StorageGRID implements S3 REST API bucket operations. To perform any of these operations, the necessary access credentials must be provided for the account.
 
-[options="header"]
+[cols="1a,3a" options="header"]
 |===
 | Operation| Implementation
 a|
@@ -116,7 +116,9 @@ This implementation uses the `versioning` subresource to return the versioning s
 a|
 GET Object Lock Configuration
 a|
-This operation determines if S3 Object Lock is enabled for a bucket. xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+This operation determines if S3 Object Lock is enabled for a bucket.
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 a|
 HEAD Bucket
