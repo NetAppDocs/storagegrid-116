@@ -167,11 +167,11 @@ Default S3 ports:
 
 To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
 
-* \https://VIP-of-HA-group:LB-endpoint-port
+* `https://_VIP-of-HA-group_:_LB-endpoint-port_`
 
 For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
 
-* \https://192.0.2.5:10443
+* `https://192.0.2.5:10443`
 
 It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
 
@@ -242,7 +242,7 @@ You can use the Amazon Web Services Command Line Interface (AWS CLI) to test you
 
 .Steps
 . Configure the Amazon Web Services settings to use the account you created in the StorageGRID system:
- .. Enter configuration mode:``aws configure``
+ .. Enter configuration mode: `aws configure`
  .. Enter the AWS Access Key ID for the account you created.
  .. Enter the AWS Secret Access key for the account you created.
  .. Enter the default region to use, for example, us-east-1.
@@ -254,7 +254,10 @@ aws s3api --endpoint-url https://10.96.101.17:10443
 --no-verify-ssl create-bucket --bucket testbucket
 ----
 +
-If the bucket is created successfully, the location of the bucket is returned, as seen in the following example: "Location": "/testbucket"
+If the bucket is created successfully, the location of the bucket is returned, as seen in the following example:
+----
+"Location": "/testbucket"
+----
 
 . Upload an object.
 +

@@ -1,0 +1,72 @@
+---
+permalink: s3/operations_for_multipart_uploads.html
+sidebar: sidebar
+keywords: operations, multipart uploads, uploads, rest API
+summary: 'This section describes how StorageGRID supports operations for multipart uploads.'
+---
+= Operations for multipart uploads
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This section describes how StorageGRID supports operations for multipart uploads.
+
+* xref:list_multipart_uploads.adoc[List multipart uploads]
+* xref:initiate_multipart_upload.adoc[Initiate Multipart Upload]
+* xref:upload_part.adoc[Upload Part]
+* xref:upload_part_copy.adoc[Upload Part - Copy]
+* xref:complete_multipart_upload.adoc[Complete Multipart Upload]
+
+The following conditions and notes apply to all multipart upload operations:
+
+* You should not exceed 1,000 concurrent multipart uploads to a single bucket because the results of List Multipart Uploads queries for that bucket might return incomplete results.
+* StorageGRID enforces AWS size limits for multipart parts. S3 clients must follow these guidelines:
+ ** Each part in a multipart upload must be between 5 MiB (5,242,880 bytes) and 5 GiB (5,368,709,120 bytes).
+ ** The last part can be smaller than 5 MiB (5,242,880 bytes).
+ ** In general, part sizes should be as large as possible. For example, use part sizes of 5 GiB for a 100 GiB object. Since each part is considered a unique object, using large part sizes reduces StorageGRID metadata overhead.
+ ** For objects smaller than 5 GiB, consider using non-multipart upload instead.
+* ILM is evaluated for each part of a multipart object as it is ingested and for the object as a whole when the multipart upload completes, if the ILM rule uses the Strict or Balanced ingest behavior. You should be aware of how this affects object and part placement:
+ ** If ILM changes while an S3 multipart upload is in progress, when the multipart upload completes some parts of the object might not meet current ILM requirements. Any part that is not placed correctly is queued for ILM re-evaluation, and is moved to the correct location later.
+ ** When evaluating ILM for a part, StorageGRID filters on the size of the part, not the size of the object. This means that parts of an object can be stored in locations that do not meet ILM requirements for the object as a whole. For example, if a rule specifies that all objects 10 GB or larger are stored at DC1 while all smaller objects are stored at DC2, at ingest each 1 GB part of a 10-part multipart upload is stored at DC2. When ILM is evaluated for the object as a whole, all parts of the object are moved to DC1.
+* All of the multipart upload operations support StorageGRID consistency controls.
+* As required, you can use server-side encryption with multipart uploads. To use SSE (server-side encryption with StorageGRID-managed keys), you include the `x-amz-server-side-encryption` request header in the Initiate Multipart Upload request only. To use SSE-C (server-side encryption with customer-provided keys), you specify the same three encryption key request headers in the Initiate Multipart Upload request and in each subsequent Upload Part request.
+
+[options="header"]
+|===
+| Operation| Implementation
+a|
+List Multipart Uploads
+a|
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[List Multipart Uploads]
+a|
+Initiate Multipart Upload
+a|
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Initiate Multipart Upload]
+a|
+Upload Part
+a|
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part]
+a|
+Upload Part - Copy
+a|
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Upload Part - Copy]
+a|
+Complete Multipart Upload
+a|
+See xref:s3_rest_api_supported_operations_and_limitations.adoc[Complete Multipart Upload]
+a|
+Abort Multipart Upload
+a|
+Implemented with all Amazon S3 REST API behavior
+
+a|
+List Parts
+a|
+Implemented with all Amazon S3 REST API behavior
+
+|===
+.Related information
+
+xref:consistency_controls.adoc[Consistency controls]
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]

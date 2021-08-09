@@ -212,7 +212,7 @@ This example disables last access time for a bucket.
 PUT /bucket?x-ntap-sg-lastaccesstime=disabled HTTP/1.1
 Date: _date_
 Authorization: _authorization string_
-Host: host
+Host: _host_
 ----
 
 .Related information
@@ -350,7 +350,7 @@ a|
 URN of the destination where object metadata is sent. Must be the URN of a StorageGRID endpoint with the following properties:
 
 * `es` must be the third element.
-* The URN must end with the index and type where the metadata is stored, in the form domain-name/myindex/mytype.
+* The URN must end with the index and type where the metadata is stored, in the form `domain-name/myindex/mytype`.
 
 Endpoints are configured using the Tenant Manager or Tenant Management API. They take the following form:
 
@@ -409,7 +409,7 @@ Objects can be filtered on the prefix of the object name. For example, you could
 
 Configurations that have overlapping prefixes are not valid, and are rejected when they are submitted. For example, a configuration that included one rule for for objects with the prefix `test` and a second rule for objects with the prefix `test2` would not be allowed.
 
-Destinations must be specified using the URN of a StorageGRID endpoint. The endpoint must exist when the metadata notification configuration is submitted, or the request fails as a `400 Bad Request`. The error message states: Unable to save the metadata notification (search) policy. The specified endpoint URN does not exist: URN.
+Destinations must be specified using the URN of a StorageGRID endpoint. The endpoint must exist when the metadata notification configuration is submitted, or the request fails as a `400 Bad Request`. The error message states: `Unable to save the metadata notification (search) policy. The specified endpoint URN does not exist: _URN_.`
 
 ----
 <MetadataNotificationConfiguration>

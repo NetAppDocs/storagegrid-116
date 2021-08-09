@@ -240,6 +240,11 @@ In a policy, the Action element is used to allow/deny permissions to a resource.
 
 The tables lists the permissions that apply to buckets and the permissions that apply to objects.
 
+NOTE: Amazon S3 now uses the s3:PutReplicationConfiguration permission for both the PUT and DELETE Bucket replication actions. StorageGRID uses separate permissions for each action, which matches the original Amazon S3
+specification.
+
+NOTE: A DELETE is performed when a PUT is used to overwrite an existing value.
+
 === Permissions that apply to buckets
 
 [options="header"]
@@ -784,7 +789,9 @@ IP operators
 a|
 aws:SourceIp
 a|
-Will compare to the IP address from which the request was sent. Can be used for bucket or object operations. *Note:* If the S3 request was sent through the Load Balancer service on Admin Nodes and Gateways Nodes, this will compare to the IP address upstream of the Load Balancer service.
+Will compare to the IP address from which the request was sent. Can be used for bucket or object operations.
+
+*Note:* If the S3 request was sent through the Load Balancer service on Admin Nodes and Gateways Nodes, this will compare to the IP address upstream of the Load Balancer service.
 
 *Note*: If a third-party, non-transparent load balancer is used, this will compare to the IP address of that load balancer. Any `X-Forwarded-For` header will be ignored since its validity cannot be ascertained.
 
@@ -981,13 +988,9 @@ To ensure that overwrites are always denied, you can:
  ** Add a DeleteObject DENY operation to the S3 policy.
  ** Add a PUT Object ALLOW operation to the S3 policy.
 
-IMPORTANT:
+IMPORTANT: Setting DeleteObject to DENY in an S3 policy does not prevent ILM from deleting objects when a rule such as "`zero copies after 30 days`" exists.
 
-Setting DeleteObject to DENY in an S3 policy does not prevent ILM from deleting objects when a rule such as "`zero copies after 30 days`" exists.
-
-IMPORTANT:
-
-Even when all of these rules and policies are applied, they do not guard against concurrent writes (see Situation A). They do guard against sequential completed overwrites (see Situation B).
+IMPORTANT: Even when all of these rules and policies are applied, they do not guard against concurrent writes (see Situation A). They do guard against sequential completed overwrites (see Situation B).
 
 *Situation A*: Concurrent writes (not guarded against)
 

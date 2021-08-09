@@ -1,0 +1,37 @@
+---
+permalink: s3/upload_part.html
+sidebar: sidebar
+keywords:
+summary: 'The Upload Part operation uploads a part in a multipart upload for an object.'
+---
+= Upload Part
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Upload Part operation uploads a part in a multipart upload for an object.
+
+== Supported request headers
+
+The following request headers are supported:
+
+* `Content-Length`
+* `Content-MD5`
+
+== Request headers for server-side encryption
+
+If you specified SSE-C encryption for the Initiate Multipart Upload request, you must also include the following request headers in each Upload Part request:
+
+* `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
+* `x-amz-server-side-encryption-customer-key`: Specify the same encryption key that you provided in the Initiate Multipart Upload request.
+* `x-amz-server-side-encryption-customer-key-MD5`: Specify the same MD5 digest that you provided in the Initiate Multipart Upload request.
+
+IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+
+== Versioning
+
+Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. Objects are created (and versioned if applicable) when the Complete Multipart Upload operation is performed.
+
+.Related information
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using server-side encryption]
