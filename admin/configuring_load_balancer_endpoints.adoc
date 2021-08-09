@@ -16,7 +16,6 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 * You are signed in to the Grid Manager using a supported browser.
 * You have the Root Access permission.
 * If you previously remapped a port you intend to use for the load balancer endpoint, you have xref:../maintain/removing_port_remaps.adoc[removed the port remap].
-
 +
 IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to ports used by the deprecated CLB service, not the Load Balancer service.
 
@@ -34,7 +33,6 @@ The certificate can use wildcards to represent the fully qualified domain names 
 == Create a load balancer endpoint
 
 Each load balancer endpoint specifies a port, a client type (S3 or Swift), and a network protocol (HTTP or HTTPS).
-
 
 === Access the wizard
 
@@ -108,6 +106,7 @@ If you use the same port for more than one endpoint, an endpoint using *Virtual 
 . If you selected *Virtual IPs of HA groups*, select the HA groups.
 +
 image::../media/load_balancer_endpoint_ha_group_vips_binding_mode.png[Endpoint HA Group VIPs Binding Mode]
+
 +
 . If you selected *Node interfaces*, select one or more node interfaces for each Admin Node or Gateway Node that you want to associate with this endpoint.
 +
@@ -160,6 +159,7 @@ Select *Add another domain* to add any other domain names.
 |IP address
 |An IP address for the generated certificate.
 
+
 Select *Add another IP address* to add any other IP addresses.
 
 If you are using high availability (HA) groups, add the domain names and IP addresses of the HA virtual IPs.
@@ -185,9 +185,6 @@ Provide S3 and Swift clients with the information needed to connect to the endpo
 * IP address, which might be the VIP of an HA group or the IP address of a Gateway or Admin Node
 * Any required certificate details
 
-
-
-
 == Edit load balancer endpoints
 
 
@@ -199,12 +196,12 @@ For an unsecured (HTTP) endpoint, you can change the endpoint service type betwe
 . Select the radio button for the endpoint you want to edit.
 . Click *Actions > Edit*.
 . Make the desired changes to the endpoint.
+
 +
 For an unsecured (HTTP) endpoint, you can:
 +
  * Change the endpoint service type between S3 and Swift.
  * Change the endpoint binding mode.
-
 +
 For a secured (HTTPS) endpoint, you can:
 
@@ -213,12 +210,10 @@ For a secured (HTTPS) endpoint, you can:
  * View the security certificate.
  * Upload or generate a new security certificate when the current certificate is expired or about to expire.
 * Display information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
-
 +
 NOTE: To change the protocol for an existing endpoint, for example from HTTP to HTTPS, you must create a new endpoint. Follow the instructions for creating load balancer endpoints, and select the desired protocol.
 
 . Select *Save*.
-
 
 == Remove load balancer endpoints
 
