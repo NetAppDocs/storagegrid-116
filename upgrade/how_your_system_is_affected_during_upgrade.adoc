@@ -24,21 +24,21 @@ To allow for continued availability, you must ensure that objects are stored red
 
 == Appliance firmware is upgraded
 
-During the StorageGRID 11.5 upgrade:
+During the StorageGRID 11.6 upgrade:
 
-* All StorageGRID appliance nodes are automatically upgraded to StorageGRID Appliance Installer firmware version 3.5.
-* SG6060 and SGF6024 appliances are automatically upgraded to BIOS firmware version 3B03.EX and BMC firmware version BMC 3.90.07.
-* SG100 and SG1000 appliances are automatically upgraded to BIOS firmware version 3B08.EC and BMC firmware version 4.64.07.
+* All StorageGRID appliance nodes are automatically upgraded to StorageGRID Appliance Installer firmware version ??.
+* SG6060 and SGF6024 appliances are automatically upgraded to BIOS firmware version 3B03.EX and BMC firmware version BMC ??.
+* SG100 and SG1000 appliances are automatically upgraded to BIOS firmware version 3B08.EC and BMC firmware version ??.
 
 == Alerts might be triggered
 
-Alerts might be triggered when services start and stop and when the StorageGRID system is operating as a mixed-version environment (some grid nodes running an earlier version, while others have been upgraded to a later version). For example, you might see the *Unable to communicate with node* alert when services are stopped, or you might see the *Cassandra communication error* alert when some nodes have been upgraded to StorageGRID 11.5 but other nodes are still running StorageGRID 11.4.
+Alerts might be triggered when services start and stop and when the StorageGRID system is operating as a mixed-version environment (some grid nodes running an earlier version, while others have been upgraded to a later version). For example, you might see the *Unable to communicate with node* alert when services are stopped, or you might see the *Cassandra communication error* alert when some nodes have been upgraded to StorageGRID 11.6 but other nodes are still running StorageGRID 11.5.
 
 In general, these alerts will clear when the upgrade completes.
 
 After the upgrade completes, you can review any upgrade-related alerts by selecting *Recently resolved alerts* from the Grid Manager Dashboard.
 
-NOTE: During the upgrade to StorageGRID 11.5, the *ILM placement unachievable* alert might be triggered when Storage Nodes are stopped. This alert might persist for 1 day after the upgrade is completed successfully.
+NOTE: During the upgrade to StorageGRID 11.6, the *ILM placement unachievable* alert might be triggered when Storage Nodes are stopped. This alert might persist for 1 day after the upgrade is completed successfully.
 
 == Many SNMP notifications are generated
 
