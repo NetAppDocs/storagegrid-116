@@ -1,7 +1,7 @@
 ---
 permalink: admin/how_load_balancing_works_load_balancer_service.html
 sidebar: sidebar
-keywords: 
+keywords:
 summary: 'The Load Balancer service distributes incoming network connections from client applications to Storage Nodes. To enable load balancing, you must configure load balancer endpoints using the Grid Manager.'
 ---
 = How load balancing works - Load Balancer service
@@ -13,10 +13,10 @@ The Load Balancer service distributes incoming network connections from client a
 
 You can configure load balancer endpoints only for Admin Nodes or Gateway Nodes, since these node types contain the Load Balancer service. You cannot configure endpoints for Storage Nodes or Archive Nodes.
 
-Each load balancer endpoint specifies a port, a protocol (HTTP or HTTPS), a service type (S3 or Swift), and a binding mode. HTTPS endpoints require a server certificate. Binding modes allow you to restrict the accessibility of endpoint ports to:
+Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS), a client type (S3 or Swift), and a binding mode. HTTPS endpoints require a server certificate. Binding modes allow you to restrict the accessibility of endpoint ports to:
 
-* Specific high availability (HA) virtual IP addresses (VIPs)
-* Specific network interfaces of specific nodes
+* The virtual IP addresses (VIPs) of specific high availability (HA) groups
+* Specific network interfaces of specific Admin and Gateway Nodes
 
 == Port considerations
 

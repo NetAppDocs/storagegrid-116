@@ -136,8 +136,7 @@ This operation creates a new bucket. By creating the bucket, you become the buck
  ** Can be a series of one or more labels, with adjacent labels separated by a period. Each label must start and end with a lowercase letter or a number and can only use lowercase letters, numbers, and hyphens.
  ** Must not look like a text-formatted IP address.
  ** Should not use periods in virtual hosted style requests. Periods will cause problems with server wildcard certificate verification.
-* By default, buckets are created in the `us-east-1` region; however, you can use the ``LocationConstraint``request element in the request body to specify a different region. When using the `LocationConstraint` element, you must specify the exact name of a region that has been defined using the Grid Manager or the Grid Management API. Contact your system administrator if you do not know the region name you should use.
-
+* By default, buckets are created in the `us-east-1` region; however, you can use the `LocationConstraint` request element in the request body to specify a different region. When using the `LocationConstraint` element, you must specify the exact name of a region that has been defined using the Grid Manager or the Grid Management API. Contact your system administrator if you do not know the region name you should use.
 *Note*: An error will occur if your PUT Bucket request uses a region that has not been defined in StorageGRID.
 
 * You can include the `x-amz-bucket-object-lock-enabled` request header to create a bucket with S3 Object Lock enabled.
@@ -361,7 +360,7 @@ IMPORTANT: Rules that specify a number of days are relative to when the object w
 
 After you have created the lifecycle configuration file, you apply it to a bucket by issuing a PUT Bucket lifecycle request.
 
-This request applies the lifecycle configuration in the example file to objects in a bucket named testbucket:
+This request applies the lifecycle configuration in the example file to objects in a bucket named `testbucket`:bucket
 
 ----
 aws s3api --endpoint-url <StorageGRID endpoint> put-bucket-lifecycle-configuration
@@ -383,7 +382,7 @@ You can determine if an expiration rule in the lifecycle configuration applies t
 
 NOTE: Because bucket lifecycle overrides ILM, the `expiry-date` shown is the actual date the object will be deleted. For details, see "`How object retention is determined`" in the instructions for performing StorageGRID administration.
 
-For example, this PUT Object request was issued on 22 Jun 2020 and places an object in the testbucket bucket.
+For example, this PUT Object request was issued on 22 Jun 2020 and places an object in the `testbucket` bucket.
 
 ----
 aws s3api --endpoint-url <StorageGRID endpoint> put-object
@@ -396,8 +395,8 @@ The success response indicates that the object will expire in 100 days (01 Oct 2
 [subs="specialcharacters,quotes"]
 ----
 {
-      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:49 GMT\\", rule-id=\\"rule2\\"",**
-      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""*
+      *"Expiration": "expiry-date=\"Thu, 01 Oct 2020 09:07:49 GMT\", rule-id=\"rule2\"",
+      "ETag": "\"9762f8a803bc34f5340579d4446076f7\""
 }
 ----
 
@@ -415,7 +414,7 @@ The success response includes the object's metadata and indicates that the objec
 ----
 {
       "AcceptRanges": "bytes",
-      *"Expiration": "expiry-date=\\"Thu, 01 Oct 2020 09:07:48 GMT\\", rule-id=\\"rule2\\"",***
+      *"Expiration": "expiry-date=\"Thu, 01 Oct 2020 09:07:48 GMT\", rule-id=\"rule2\"",
       "LastModified": "2020-06-23T09:07:48+00:00",
       "ContentLength": 921,
       "ETag": "\"9762f8a803bc34f5340579d4446076f7\""
