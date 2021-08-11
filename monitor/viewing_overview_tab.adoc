@@ -22,7 +22,7 @@ image::../media/nodes_page_overview_tab.png[Nodes Page Overview Tab]
 The overview information for a node includes the following:
 
 * *Name*: The hostname assigned to the node and displayed in the Grid Manager.
-* *Type*: The type of node -- Admin Node, Storage Node, Gateway Node, or Archive Node.
+* *Type*: The type of node -- Admin Node, primary Admin Node, Storage Node, Gateway Node, or Archive Node.
 * *ID*: The unique identifier for the node, which is also referred to as the UUID.
 * *Connection state*: One of three states. The icon for the most severe state is shown.
  ** *Unknown* image:../media/icon_alarm_blue_unknown.png[blue question mark icon]: The node is not connected to the grid for an unknown reason. For example, the network connection between nodes has been lost or the power is down. The *Unable to communicate with node* alert might also be triggered. Other alerts might be active as well. This situation requires immediate attention.
@@ -31,10 +31,10 @@ NOTE: A node might appear as Unknown during managed shutdown operations. You can
 
  ** *Administratively down* image:../media/icon_alarm_gray_administratively_down.png[gray questionmark icon]: The node is not connected to the grid for an expected reason. For example, the node, or services on the node, has been gracefully shut down, the node is rebooting, or the software is being upgraded. One or more alerts might also be active.
  ** *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark]: The node is connected to the grid.
-* *Storage used*
+* *Storage used*: For Storage Nodes only.
 
-** *Object data*: For Storage Nodes only. The percentage of the total usable space for object data that has been used for the Storage Node.
-** *Object metadata*: The percentage of the total allowed space for object metadata that has been used for the Storage Node, site, or grid.
+** *Object data*: The percentage of the total usable space for object data that has been used for the Storage Node.
+** *Object metadata*: The percentage of the total allowed space for object metadata that has been used for the Storage Node.
 
 * *Software version*: The version of StorageGRID that is installed on the node.
 * *HA groups*: For Admin Node and Gateway Nodes only. Shown if a network interface on the node is included in a high availability group and whether that interface is the Primary interface.
