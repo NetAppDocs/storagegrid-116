@@ -13,9 +13,9 @@ You can use the Tenant Manager to create S3 buckets for object data. When you cr
 
 .What you'll need
 
-* You must be signed in to the Tenant Manager using a supported browser.
-* You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
-* If you plan to create a bucket with S3 Object Lock, the global S3 Object Lock setting must have been enabled for the StorageGRID system and you must have reviewed the requirements for S3 Object Lock buckets and objects.
+* You are signed in to the Tenant Manager using a supported browser.
+* You belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
+* If you plan to create a bucket with S3 Object Lock, you have enabled the global S3 Object Lock setting for the StorageGRID system, and you have reviewed the requirements for S3 Object Lock buckets and objects.
 +
 xref:using_s3_object_lock.adoc[Using S3 Object Lock]
 
@@ -37,8 +37,7 @@ Bucket names must comply with these rules:
  ** Must be unique across each StorageGRID system (not just unique within the tenant account).
  ** Must be DNS compliant.
  ** Must contain at least 3 and no more than 63 characters.
- ** Can be a series of one or more labels, with adjacent labels separated by a period. Each label must start and end with a lowercase letter or a number and can only use lowercase letters, numbers, and hyphens.
- ** Must not look like a text-formatted IP address.
+ ** Each label must start and end with a lowercase letter or a number and can only use lowercase letters, numbers, and hyphens.
  ** Should not use periods in virtual hosted style requests. Periods will cause problems with server wildcard certificate verification.
 
 +

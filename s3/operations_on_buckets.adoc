@@ -110,7 +110,7 @@ GET Bucket versioning
 a|
 This implementation uses the `versioning` subresource to return the versioning state of a bucket.
 
-* Disabled: Versioning has never been enabled
+* _blank_: Versioning has never been enabled (bucket is "`Unversioned`")
 * Enabled: Versioning is enabled
 * Suspended: Versioning was previously enabled and is suspended
 a|
@@ -425,6 +425,6 @@ The success response includes the object's metadata and indicates that the objec
 
 .Related information
 
-xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[S3 REST API supported operations and limitations]
 
 xref:../ilm/index.adoc[Manage objects with ILM]
