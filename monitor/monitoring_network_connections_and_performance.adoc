@@ -12,7 +12,7 @@ summary: 'Grid nodes must be able to communicate with one another to permit the 
 Grid nodes must be able to communicate with one another to permit the grid to operate. The integrity of the network between nodes and sites, and the network bandwidth between sites, are critical to efficient operations.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a supported browser.
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
 * You must have specific access permissions.
 
 Network connectivity and bandwidth are especially important if your information lifecycle management (ILM) policy copies replicated objects between sites or stores erasure-coded objects using a scheme that provides site-loss protection. If the network between sites is not available, network latency is too high, or network bandwidth is insufficient, some ILM rules might not be able to place objects where expected. This can lead to ingest failures (when the Strict ingest option is selected for ILM rules), or simply to poor ingest performance and ILM backlogs.
