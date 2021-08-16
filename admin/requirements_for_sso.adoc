@@ -11,14 +11,15 @@ summary: 'Before enabling single sign-on \(SSO\) for a StorageGRID system, revie
 [.lead]
 Before enabling single sign-on (SSO) for a StorageGRID system, review the requirements in this section.
 
-IMPORTANT: Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
 
 == Identity provider requirements
 
 The identity provider (IdP) for SSO must meet the following requirements:
 
-* Either of the following versions of Active Directory Federation Service (AD FS):
- ** AD FS 4.0, included with Windows Server 2016
+* Any of the following versions of Active Directory Federation Service (AD FS):
+ ** Windows Server 2022 AD FS
+ ** Windows Server 2019 AD FS
+ ** Windows Server 2016 AD FS
 +
 NOTE: Windows Server 2016 should be using the https://support.microsoft.com/en-us/help/3201845/cumulative-update-for-windows-10-version-1607-and-windows-server-2016[KB3201845 update^], or higher.
 
@@ -32,12 +33,14 @@ StorageGRID uses a management interface certificate on each Admin Node to secure
 
 If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts.
 
+xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
+
 NOTE: Using an Admin Node's default server certificate in the AD FS relying party trust is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust in AD FS with the new certificate.
 
 You can access an Admin Node's server certificate by logging in to the command shell of the node and going to the `/var/local/mgmt-api` directory. A custom server certificate is named `custom-server.crt`. The node's default server certificate is named `server.crt`.
 
-.Related information
+== Port requirements
+
+Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
 
 xref:controlling_access_through_firewalls.adoc[Controlling access through firewalls]
-
-xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
