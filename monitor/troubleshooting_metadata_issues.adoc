@@ -19,7 +19,7 @@ There are several tasks you can perform to help determine the source of metadata
 If the *Low metadata storage* alert is triggered, you must add new Storage Nodes.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a supported browser.
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
 
 .About this task
 StorageGRID reserves a certain amount of space on volume 0 of each Storage Node for object metadata. This space is known as the actual reserved space, and it is subdivided into the space allowed for object metadata (the allowed metadata space) and the space required for essential database operations, such as compaction and repair. The allowed metadata space governs overall object capacity.
@@ -70,7 +70,7 @@ xref:../expand/index.adoc[Expand your grid]
 The Services: Status - Cassandra (SVST) alarm indicates that you might need to rebuild the Cassandra database for a Storage Node. Cassandra is used as the metadata store for StorageGRID.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a supported browser.
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
 * You must have specific access permissions.
 * You must have the `Passwords.txt` file.
 
