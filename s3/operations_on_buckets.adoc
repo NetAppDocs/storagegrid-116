@@ -23,7 +23,7 @@ You can check whether updates to last access time are enabled or disabled for in
 
 The following table describes how StorageGRID implements S3 REST API bucket operations. To perform any of these operations, the necessary access credentials must be provided for the account.
 
-[options="header"]
+[cols="1a,3a" options="header"]
 |===
 | Operation| Implementation
 a|
@@ -108,11 +108,17 @@ This operation uses the `tagging` subresource to return all tags for a bucket.
 a|
 GET Bucket versioning
 a|
-This implementation uses the `versioning` subresource to return the versioning state of a bucket. The versioning state returned indicates if the bucket is "`Unversioned`" or if the bucket is version "`Enabled`" or "`Suspended.`"
+This implementation uses the `versioning` subresource to return the versioning state of a bucket.
+
+* _blank_: Versioning has never been enabled (bucket is "`Unversioned`")
+* Enabled: Versioning is enabled
+* Suspended: Versioning was previously enabled and is suspended
 a|
 GET Object Lock Configuration
 a|
-This operation determines if S3 Object Lock is enabled for a bucket. xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
+This operation determines if S3 Object Lock is enabled for a bucket.
+
+xref:s3_rest_api_supported_operations_and_limitations.adoc[Using S3 Object Lock]
 
 a|
 HEAD Bucket
@@ -419,6 +425,6 @@ The success response includes the object's metadata and indicates that the objec
 
 .Related information
 
-xref:s3_rest_api_supported_operations_and_limitations.adoc[Operations on buckets]
+xref:s3_rest_api_supported_operations_and_limitations.adoc[S3 REST API supported operations and limitations]
 
 xref:../ilm/index.adoc[Manage objects with ILM]
