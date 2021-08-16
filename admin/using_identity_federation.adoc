@@ -16,9 +16,16 @@ Using identity federation makes setting up groups and users faster, and it allow
 You can configure identity federation if you want admin groups and users to be managed in another system such as Active Directory, Azure Active Directory (Azure AD), OpenLDAP, or Oracle Directory Server.
 
 .What you'll need
+<<<<<<< HEAD
 * You are signed in to the Grid Manager using a supported browser.
 * You have specific access permissions.
 * You are using Active Directory, Azure AD, OpenLDAP, or Oracle Directory Server as the identity provider.
+=======
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
+* You must have specific access permissions.
+* If you plan to enable single sign-on (SSO), you must use Active Directory as the federated identity source and AD FS as the identity provider. See "`Requirements for using single sign-on.`"
+* You must be using Active Directory, OpenLDAP, or Oracle Directory Server as the identity provider.
+>>>>>>> main
 +
 NOTE: If you want to use an LDAP v3 service that is not listed, contact technical support.
 * If you plan to use OpenLDAP, you must configure the OpenLDAP server. See <<Guidelines for configuring an OpenLDAP server>>.
@@ -138,6 +145,14 @@ http://www.openldap.org/doc/admin24/index.html[OpenLDAP documentation: Version 2
 
 The StorageGRID system periodically synchronizes federated groups and users from the identity source. You can force synchronization to start if you want to enable or restrict user permissions as quickly as possible.
 
+<<<<<<< HEAD
+=======
+.What you'll need
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
+* You must have specific access permissions.
+* The identity source must be enabled.
+
+>>>>>>> main
 .Steps
 
 . Select *Configuration* > *Access control* > *Identity federation*.
@@ -156,6 +171,14 @@ NOTE: The *Identity federation synchronization failure* alert is triggered if th
 
 You can temporarily or permanently disable identity federation for groups and users. When identity federation is disabled, there is no communication between StorageGRID and the identity source. However, any settings you have configured are retained, allowing you to easily reenable identity federation in the future.
 
+<<<<<<< HEAD
+=======
+.What you'll need
+
+* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
+* You must have specific access permissions.
+
+>>>>>>> main
 .About this task
 
 Before you disable identity federation, you should be aware of the following:
