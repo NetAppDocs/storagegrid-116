@@ -41,17 +41,17 @@ NOTE: The *Group unique name* values must be unique within the *Group Base DN* t
 +
 NOTE: The *User unique name* values must be unique within the *User Base DN* they belong to.
 
-** *Bind username format*: The default username pattern StorageGRID should use if the pattern cannot be determined automatically.
+** *Bind username format* (optional): The default username pattern StorageGRID should use if the pattern cannot be determined automatically.
 +
 Providing *Bind username format* is recommended because it can allow users to sign in if StorageGRID is unable to bind with the service account.
 +
 Enter one of these patterns:
 +
-*** *UserPrincipalName pattern (Active Directory and Azure)*: `[USERID]@_example_.com`
-*** *Down-level logon name pattern (Active Directory and Azure)*: `_example_\[USERID]`
-*** *Distinguished name pattern*: `CN=[USERID],CN=Users,DC=_example_,DC=com`
+*** *UserPrincipalName pattern (Active Directory and Azure)*: `[USERNAME]@_example_.com`
+*** *Down-level logon name pattern (Active Directory and Azure)*: `_example_\[USERNAME]`
+*** *Distinguished name pattern*: `CN=[USERNAME],CN=Users,DC=_example_,DC=com`
 +
-Include *[USERID]* exactly as written.
+Include *[USERNAME]* exactly as written.
 
 . In the Transport Layer Security (TLS) section, select a security setting.
 
