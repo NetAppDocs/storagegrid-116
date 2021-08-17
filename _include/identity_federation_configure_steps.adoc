@@ -1,5 +1,6 @@
 //These are the shared steps for configuring identity federation in the tenant manager and the grid manager//
 
+. Select *Enable identity federation*.
 . In the LDAP service type section, select the type of LDAP service you want to configure.
 +
 image::../media/ldap_service_type.png[Identity Federation page showing LDAP service type options]
@@ -87,63 +88,3 @@ image::../media/identity_federation_test_connection.png[Identity federation prom
 * A "`Test connection successful`" message appears if the connection settings are valid. Select *Save* to save the configuration.
 +
 * An error message appears if the connection settings, bind username format, or test username and password are invalid. Resolve any issues and test the connection again.
-
-
-== Force synchronization with the identity source
-
-The StorageGRID system periodically synchronizes federated groups and users from the identity source. You can force synchronization to start if you want to enable or restrict user permissions as quickly as possible.
-
-.Steps
-
-. Select *Configuration* > *Access control* > *Identity federation*.
-+
-The *Sync server* button is at the top of the Identity Federation page.
-+
-image::../media/identity_federation_synchronize.png[screen shot of Configuration > Identity Federation > Synchronize button]
-
-. Select *Sync server*.
-+
-The synchronization process might take some time depending on your environment.
-+
-NOTE: The *Identity federation synchronization failure* alert is triggered if there is an issue synchronizing federated groups and users from the identity source.
-
-== Disable identity federation
-
-You can temporarily or permanently disable identity federation for groups and users. When identity federation is disabled, there is no communication between StorageGRID and the identity source. However, any settings you have configured are retained, allowing you to easily reenable identity federation in the future.
-
-.About this task
-
-Before you disable identity federation, you should be aware of the following:
-
-* Federated users will be unable to sign in.
-* Federated users who are currently signed in will retain access to the StorageGRID system until their session expires, but they will be unable to sign in after their session expires.
-* Synchronization between the StorageGRID system and the identity source will not occur, and alerts or alarms will not be raised for accounts that have not been synchronized.
-* The *Enable identity federation* check box is disabled if single sign-on (SSO) is set to *Enabled* or *Sandbox Mode*. The SSO Status on the Single Sign-on page must be *Disabled* before you can disable identity federation. See xref:disabling_single_sign_on.adoc[Disabling single sign-on].
-
-.Steps
-
-. Select *Configuration* > *Access control* > *Identity federation*.
-. Uncheck the *Enable identity federation* check box.
-
-
-== Guidelines for configuring an OpenLDAP server
-
-If you want to use an OpenLDAP server for identity federation, you must configure specific settings on the OpenLDAP server.
-
-==== Memberof and refint overlays
-
-The memberof and refint overlays should be enabled. For more information, see the instructions for reverse group membership maintenance in the Administrator's Guide for OpenLDAP.
-
-==== Indexing
-
-You must configure the following OpenLDAP attributes with the specified index keywords:
-
-* `olcDbIndex: objectClass eq`
-* `olcDbIndex: uid eq,pres,sub`
-* `olcDbIndex: cn eq,pres,sub`
-* `olcDbIndex: entryUUID eq`
-
-In addition, ensure the fields mentioned in the help for Username are indexed for optimal performance.
-
-See the information about reverse group membership maintenance in the
-http://www.openldap.org/doc/admin24/index.html[OpenLDAP documentation: Version 2.4 Administrator's Guide^]

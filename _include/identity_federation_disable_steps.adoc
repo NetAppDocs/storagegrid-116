@@ -1,0 +1,18 @@
+//These are the shared steps for identity federation disable in the tenant manager and the grid manager//
+
+
+You can temporarily or permanently disable identity federation for groups and users. When identity federation is disabled, there is no communication between StorageGRID and the identity source. However, any settings you have configured are retained, allowing you to easily reenable identity federation in the future.
+
+.About this task
+
+Before you disable identity federation, you should be aware of the following:
+
+* Federated users will be unable to sign in.
+* Federated users who are currently signed in will retain access to the StorageGRID system until their session expires, but they will be unable to sign in after their session expires.
+* Synchronization between the StorageGRID system and the identity source will not occur, and alerts or alarms will not be raised for accounts that have not been synchronized.
+* The *Enable identity federation* check box is disabled if single sign-on (SSO) is set to *Enabled* or *Sandbox Mode*. The SSO Status on the Single Sign-on page must be *Disabled* before you can disable identity federation. See xref:../admin/disabling_single_sign_on.adoc[Disabling single sign-on].
+
+.Steps
+
+. Go to the Identity federation page.
+. Uncheck the *Enable identity federation* check box.
