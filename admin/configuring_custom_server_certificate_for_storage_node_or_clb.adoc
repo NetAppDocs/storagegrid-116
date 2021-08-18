@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service \(deprecated\) on Gateway Node. The replacement custom server certificate is specific to your organization.'
 ---
-= Configure a custom server certificate for connections to the Storage Node or the CLB service
+= Configure a custom S3 and Swift API certificate
 :icons: font
 :imagesdir: ../media/
 
@@ -29,15 +29,8 @@ NOTE: The *Expiration of load balancer endpoint certificate* alert is triggered 
 
 . Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
 . Select *S3 and Swift API certificate*.
-. Select *Install Custom Certificate*.
-. Upload the required server certificate files:
- ** *Server certificate*: The custom server certificate file (`.crt`).
- ** *Server certificate private key*: The custom server certificate private key file (`.key`).
-+
-NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
-
- ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
-. Select *Save*.
+. Select *Use custom certificate*.
+. Follow the steps to <<Upload a custom S3 and Swift API certificate,upload>> or <<Generate a custom S3 and Swift API certificate,generate>> a custom S3 and Swift API certificate.
 +
 The custom server certificate is used for all subsequent new API client connections.
 +
@@ -47,10 +40,55 @@ NOTE: After uploading a new certificate, allow up to one day for any related cer
 
 . Refresh the page to ensure the web browser is updated.
 
+. After you add a custom S3 and Swift API certificate the S3 and Swift API certificate page displays detailed certificate information for the custom S3 and Swift API certificate that is in use.
+
+* *Download certificate* to save the certificate file.
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+== Upload a custom S3 and Swift API certificate
+
+. Select *Upload certificate*.
+
+. Upload the required server certificate files:
+ ** *Server certificate*: The custom server certificate file (`.crt`).
+ ** *Certificate private key*: The custom server certificate private key file (`.key`).
++
+NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
+
+ ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+
+. Click the certificate details to display detailed certificate information for each custom S3 and Swift API certificate that was uploaded. If there are multiple CA bundles, each certificate displays on its own tab.
++
+* *Download certificate* to save the certificate file.
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+. Select *Save*.
+
+== Generate a custom S3 and Swift API certificate
+
+. Select *Generate certificate*.
+
+. Specify the certificate information:
+ ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
+ ** *IP*: One or more IP addresses to include in the certificate.
+ ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
+ ** *Days valid*: Number of days after creation that the certificate expires.
+
+ . Select *Generate*. +
+ You cannot generate the certificate until the minimum required certificate information is specified.
+
+ . Click the certificate details to display detailed certificate information for the custom S3 and Swift API certificate that was generated.
+
+ * *Download certificate* to save the certificate file.
+ * *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+ . Select *Save*.
+
+
 .Related information
 
 xref:../s3/index.adoc[Use S3]
 
 xref:../swift/index.adoc[Use Swift]
 
-xref:configuring_s3_api_endpoint_domain_names.adoc[Configuring S3 API endpoint domain names]
+xref:configuring_s3_api_endpoint_domain_names.adoc[Configure S3 API endpoint domain names]

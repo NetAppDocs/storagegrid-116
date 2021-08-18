@@ -4,17 +4,17 @@ sidebar: sidebar
 keywords:
 summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.'
 ---
-= Configure a custom server certificate for the Grid Manager and the Tenant Manager
+= Configure a custom management interface certificate
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.
+You can replace the default StorageGRID server certificate with a single custom management interface certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.
 
 .About this task
-By default, every Admin Node is issued a certificate signed by the grid CA. These CA signed certificates can be replaced by a single common custom server certificate and corresponding private key.
+By default, every Admin Node is issued a certificate signed by the grid CA. These CA signed certificates can be replaced by a single common custom management interface certificate and corresponding private key.
 
-Because a single custom server certificate is used for all Admin Nodes, you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the Grid Manager and Tenant Manager. Define the custom certificate such that it matches all Admin Nodes in the grid.
+Because a single custom management interface certificate is used for all Admin Nodes, you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the Grid Manager and Tenant Manager. Define the custom certificate such that it matches all Admin Nodes in the grid.
 
 You need to complete configuration on the server, and depending on the root Certificate Authority (CA) you are using, users might also need to install the Grid CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
@@ -25,7 +25,7 @@ NOTE: To ensure that operations are not disrupted by a failed server certificate
 If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
 
 * Your custom management interface certificate expires.
-* You revert from a custom management interface certificate to the default server certificate.
+* You xref:restoring_default_server_certificates_for_grid_manager_tenant_manager.adoc[revert from a custom management interface certificate to the default server certificate].
 ====
 
 .Steps
@@ -33,6 +33,24 @@ If you are accessing the Grid Manager or Tenant Manager using a domain name inst
 . Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
 . Select *Management interface certificate*.
 . Select *Use custom certificate*.
+. Follow the steps to <<Upload a custom management interface certificate,upload>> or <<Generate a custom management interface certificate,generate>> a custom management interface certificate.
++
+The custom management interface certificate is used for all subsequent new client connections.
+
+. Refresh the page to ensure the web browser is updated.
++
+NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.+
+
+. After you add a custom management interface certificate the management interface certificate page displays detailed certificate information for the custom management interface certificates that are in use.
+
+* *Download certificate* to save the certificate file.
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+
+== Upload a custom management interface certificate
+
+. Select *Upload certificate*.
+
 . Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (`.crt`).
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
@@ -40,12 +58,30 @@ If you are accessing the Grid Manager or Tenant Manager using a domain name inst
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
  ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
-. Select *Save*.
-+
-The custom server certificates are used for all subsequent new client connections.
-+
-Select a tab to display detailed information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
-+
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
 
-. Refresh the page to ensure the web browser is updated.
+. Click the certificate details to display detailed certificate information for each custom management interface certificate that was uploaded. If there are multiple CA bundles, each certificate displays on its own tab.
++
+* *Download certificate* to save the certificate file.
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+. Select *Save*.
+
+== Generate a custom management interface certificate
+
+. Select *Generate certificate*.
+
+. Specify the certificate information:
+ ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
+ ** *IP*: One or more IP addresses to include in the certificate.
+ ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
+ ** *Days valid*: Number of days after creation that the certificate expires.
+
+. Select *Generate*. +
+You cannot generate the certificate until the minimum required certificate information is specified.
+
+. Click the certificate details to display detailed certificate information for the custom management interface certificate that was generated.
+
+* *Download certificate* to save the certificate file.
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+. Select *Save*.

@@ -13,15 +13,16 @@ Security certificates are small data files used to create secure, trusted connec
 
 StorageGRID uses two types of security certificates:
 
-* *Server certificates* are required when you use HTTPS connections. Server certificates are used to establish secure connections between clients and servers, authenticating the identity of a server to its clients and providing a secure communication path for data. The server and the client each have a copy of the certificate.
-* *Client certificates* authenticate a client or user identity to the server, providing more secure authentication than passwords alone. Client certificates do not encrypt data.
+* xref:configuring_server_certificates.adoc[*Server certificates*] are required when you use HTTPS connections. Server certificates are used to establish secure connections between clients and servers, authenticating the identity of a server to its clients and providing a secure communication path for data. The server and the client each have a copy of the certificate.
+* xref:configuring_administrator_client_certificates.adoc[*Client certificates*] authenticate a client or user identity to the server, providing more secure authentication than passwords alone. Client certificates do not encrypt data.
 
 When a client connects to the server using HTTPS, the server responds with the server certificate, which contains a public key. The client verifies this certificate by comparing the server signature to the signature on its copy of the certificate. If the signatures match, the client starts a session with the server using the same public key.
 
 StorageGRID functions as the server for some connections (such as the load balancer endpoint) or as the client for other connections (such as the CloudMirror replication service).
 
 [#gridca_details]
-An external certificate authority (CA) can issue custom certificates that are fully compliant with your organization's information security policies. StorageGRID also includes a built-in certificate authority (CA) that generates an internal Grid CA certificate during system installation. The Grid CA certificate is used, by default, to secure internal StorageGRID traffic. Although you can use the Grid CA certificate for a non-production environment, the best practice for a production environment is to use custom certificates signed by an external certificate authority. Unsecured connections with no certificate are also supported but are not recommended.
+*Default Grid CA certificate*
+StorageGRID also includes a built-in certificate authority (CA) that generates an internal Grid CA certificate during system installation. The Grid CA certificate is used, by default, to secure internal StorageGRID traffic. An external certificate authority (CA) can issue custom certificates that are fully compliant with your organization's information security policies. Although you can use the Grid CA certificate for a non-production environment, the best practice for a production environment is to use custom certificates signed by an external certificate authority. Unsecured connections with no certificate are also supported but are not recommended.
 
 * Custom CA certificates do not remove the internal certificates; however, the custom certificates should be the ones specified for verifying server connections.
 * All custom certificates must meet the xref:../harden/index.adoc[system hardening guidelines] for server certificates.
@@ -62,16 +63,20 @@ The global certificates secure StorageGRID access from web browsers and external
 * <<Management interface certificate>>: secures client web-browser connections from management interfaces.
 * <<S3 and Swift API certificate>>: secures client API connections.
 
-Replace the default StorageGRID-generated certificates for  xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Grid Manager and Tenant Manager], the xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[S3 or Swift API], and xref:configuring_custom_server_certificate_for_storage_node_or_clb.adoc[Storage Node or CLB service connections] with custom certificates signed by an external certificate authority for greater grid security. The default StorageGRID-generated certificates can also be xref:copying_storagegrid_system_ca_certificate.adoc[copied] or restored for   xref:restoring_default_server_certificates_for_grid_manager_tenant_manager.adoc[Grid Manager and Tenant Manager] and xref:restoring_default_server_certificates_for_s3_swift_api_endpoints.adoc[S3 and Swift REST API endpoints].
+Information about the global certificates that are installed includes:
 
-
-Global certificate information includes:
-
-* Name: Certificate name with link to managing the certificate.
-* Description
-* Type: Signed by Grid CCA, Custom, or Unsigned. +
+* *Name*: Certificate name with link to managing the certificate.
+* *Description*
+* *Type*: Custom or default. +
 You should always use a custom certificate for improved grid security.
-* Expiration date
+* *Expiration date*
+
+For improved grid security, replace the default certificates with custom certificates signed by an external certificate authority:
+
+* xref:configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc[Replace the default StorageGRID-generated management interface certificate] used for Grid Manager and Tenant Manager connections.
+* xref:configuring_custom_server_certificate_for_storage_node_or_clb.adoc[Replace the S3 and Swift API certificate] used for Storage Node or CLB service (deprecated) connections.
+
+You can also restore the default xref:restoring_default_server_certificates_for_grid_manager_tenant_manager.adoc[management interface certificate] and xref:restoring_default_server_certificates_for_s3_swift_api_endpoints.adoc[S3 and Swift API certificate].
 
 --
 
@@ -81,7 +86,7 @@ The <<gridca_details,Grid CA certificate>>, generated by the StorageGRID certifi
 
 Certificate information includes the certificate expiration date and certificate contents.
 
-You can copy or download the certificate, but cannot change it.
+You can xref:copying_storagegrid_system_ca_certificate.adoc[copy or download the Grid CA certificate], but cannot change it.
 
 You can xref:generating_self_signed_certificate_for_management_interface.adoc[generate a new self-signed server certificate for the management interface] from within StorageGRID
 

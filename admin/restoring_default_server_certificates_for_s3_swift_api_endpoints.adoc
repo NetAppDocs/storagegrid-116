@@ -2,14 +2,14 @@
 permalink: admin/restoring_default_server_certificates_for_s3_swift_api_endpoints.html
 sidebar: sidebar
 keywords:
-summary: 'You can revert to using the default server certificates for the S3 and Swift REST API endpoints.'
+summary: 'You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections to a Storage Node or to the CLB service (deprecated) on a Gateway Node.'
 ---
-= Restore the default server certificates for the S3 and Swift REST API endpoints
+= Restore the default S3 and Swift API certificate
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can revert to using the default server certificates for the S3 and Swift REST API endpoints.
+You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections to a Storage Node or to the CLB service (deprecated) on a Gateway Node.
 
 .Steps
 
@@ -17,6 +17,6 @@ You can revert to using the default server certificates for the S3 and Swift RES
 . Select *S3 and Swift API certificate*.
 . Select *Use default certificate*.
 +
-When you restore the default server certificates for the object storage API endpoints, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default server certificates are used for all subsequent new API client connections.
+When you restore the default S3 and Swift API certificate for the object storage API endpoints, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate is used for all subsequent new API client connections to a Storage Node or to the CLB service (deprecated) on a Gateway Node.
 
 . Refresh the page to ensure the web browser is updated.
