@@ -22,6 +22,7 @@ StorageGRID functions as the server for some connections (such as the load balan
 
 [#gridca_details]
 *Default Grid CA certificate*
+
 StorageGRID also includes a built-in certificate authority (CA) that generates an internal Grid CA certificate during system installation. The Grid CA certificate is used, by default, to secure internal StorageGRID traffic. An external certificate authority (CA) can issue custom certificates that are fully compliant with your organization's information security policies. Although you can use the Grid CA certificate for a non-production environment, the best practice for a production environment is to use custom certificates signed by an external certificate authority. Unsecured connections with no certificate are also supported but are not recommended.
 
 * Custom CA certificates do not remove the internal certificates; however, the custom certificates should be the ones specified for verifying server connections.
@@ -41,7 +42,7 @@ You can access information about all StorageGRID certificates in a single locati
 // Update image
 image::security_certificates.png["Certificates page"]
 
-. Select a tab on the certificate page for information about a certificate category and to access the certificate settings.
+. Select a tab on the certificate page for information about each certificate category and to access the certificate settings.
 +
 * *Global*: secures StorageGRID access from web browsers and external API clients.
 * *Grid CA*: secures internal StorageGRID traffic.

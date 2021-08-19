@@ -28,33 +28,16 @@ If you are accessing the Grid Manager or Tenant Manager using a domain name inst
 * You xref:restoring_default_server_certificates_for_grid_manager_tenant_manager.adoc[revert from a custom management interface certificate to the default server certificate].
 ====
 
+You can <<Upload a custom management interface certificate,upload>> or <<Generate a custom management interface certificate,generate>> a custom management interface certificate.
+
+== Upload a custom management interface certificate
+
 .Steps
 
 . Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
 . Select *Management interface certificate*.
 . Select *Use custom certificate*.
-. Follow the steps to <<Upload a custom management interface certificate,upload>> or <<Generate a custom management interface certificate,generate>> a custom management interface certificate.
-+
-The custom management interface certificate is used for all subsequent new client connections.
-
-. Refresh the page to ensure the web browser is updated.
-+
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.+
-
-. After you add a custom management interface certificate the management interface certificate page displays detailed certificate information for the custom management interface certificates that are in use.
-
-* *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
-
-
-== Upload a custom management interface certificate
-
 . Select *Upload certificate*.
-
 . Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (`.crt`).
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
@@ -72,12 +55,30 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Save*.
+. Select *Save*. +
+The custom management interface certificate is used for all subsequent new client connections.
+
+. Refresh the page to ensure the web browser is updated.
++
+NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+
+. After you add a custom management interface certificate the management interface certificate page displays detailed certificate information for the certificates that are in use.
+
+* *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
 == Generate a custom management interface certificate
 
-. Select *Generate certificate*.
+.Steps
 
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *Management interface certificate*.
+. Select *Use custom certificate*.
+. Select *Generate certificate*.
 . Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
  ** *IP*: One or more IP addresses to include in the certificate.
@@ -96,4 +97,18 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Save*.
+. Select *Save*. +
+The custom management interface certificate is used for all subsequent new client connections.
+
+. Refresh the page to ensure the web browser is updated.
++
+NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+
+. After you add a custom management interface certificate the management interface certificate page displays detailed certificate information for the certificates that are in use.
+
+* *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
