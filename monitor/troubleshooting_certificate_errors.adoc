@@ -19,16 +19,16 @@ Certificate errors can cause problems when you try to connect to StorageGRID usi
 
 If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
 
-* Your custom management interface server certificate expires.
-* You revert from a custom management interface server certificate to the default server certificate.
+* Your custom management interface certificate expires.
+* You revert from a custom management interface certificate to the default server certificate.
 
-The following example shows a certificate error when the custom management interface server certificate expired:
+The following example shows a certificate error when the custom management interface certificate expired:
 
 image::../media/certificate_error.png[Example certificate error]
 
 To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert is triggered when the server certificate is about to expire.
 
-When you are using client certificates for external Prometheus integration, certificate errors can be caused by the StorageGRID management interface server certificate or by client certificates. The *Expiration of certificates configured on Client Certificates page* alert is triggered when a client certificate is about to expire.
+When you are using client certificates for external Prometheus integration, certificate errors can be caused by the StorageGRID management interface certificate or by client certificates. The *Expiration of certificates configured on Client Certificates page* alert is triggered when a client certificate is about to expire.
 
 .Steps
 . If you received an alert notification about an expired certificate, access the certificate details:
