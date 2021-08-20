@@ -50,7 +50,7 @@ NOTE: If you are unable to log in to the grid node, the system disk might not be
 The output should be `Connection refused`
 
  .. In the Grid Manager, select *Support* > *Tools* > *Grid Topology*.
- .. Select _site_ > *Storage Node* > *SSM* > *Services*. Verify that the Cassandra service displays `Not Running`.
+ .. Select *_Site_* > *Storage Node* > *SSM* > *Services*. Verify that the Cassandra service displays `Not Running`.
  .. Select *Storage Node* > *SSM* > *Resources*. Verify that there is no error status in the Volumes section.
  .. Issue this command: `grep -i Cassandra /var/local/log/servermanager.log`
 +
@@ -67,7 +67,7 @@ NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repair
 
 . After the rebuild completes, perform the following checks:
  .. In the Grid Manager, select *Support* > *Tools* > *Grid Topology*.
- .. Select _site_ > *recovered Storage Node* > *SSM* > *Services*.
+ .. Select *_Site_* > *recovered Storage Node* > *SSM* > *Services*.
  .. Confirm that all services are running.
  .. Select *DDS* > *Data Store*.
  .. Confirm that the *Data Store Status* is "`Up`" and the *Data Store State* is "`Normal.`"
