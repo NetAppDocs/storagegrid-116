@@ -15,8 +15,8 @@ For many organizations, the self-signed digital certificate for StorageGRID web 
 
 Specifically, you should use custom server certificates instead of these default certificates:
 
-* *Management Interface Server Certificate*: Used to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API.
-* *Object Storage API Service Endpoints Server Certificate*: Used to secure access to Storage Nodes and Gateway Nodes, which S3 and Swift client applications use to upload and download object data.
+* *Management interface certificate*: Used to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API.
+* *S3 and Swift API certificate*: Used to secure access to Storage Nodes and Gateway Nodes, which S3 and Swift client applications use to upload and download object data.
 
 NOTE: StorageGRID manages the certificates used for load balancer endpoints separately. To configure load balancer certificates, see the steps for configuring load balancer endpoints in the instructions for administering StorageGRID.
 
