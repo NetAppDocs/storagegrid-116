@@ -541,12 +541,11 @@ Expiration of certificates configured on Client Certificates page
 a|
 One or more certificates configured on the Client Certificates page are about to expire.
 
-. Select *Configuration* > *Access Control* > *Client Certificates*.
+. In the Grid Manager, select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 . Select a certificate that will expire soon.
-. Select *Edit* to upload or generate a new certificate.
+. Select *Edit* to xref:../admin/configuring_administrator_client_certificates.adoc[upload or generate a new certificate].
 . Repeat these steps for each certificate that will expire soon.
 
-xref:../admin/index.adoc[Administer StorageGRID]
 
 a|
 Expiration of load balancer endpoint certificate
@@ -561,24 +560,23 @@ One or more load balancer endpoint certificates are about to expire.
 For more information about managing load balancer endpoints, see the xref:../admin/index.adoc[instructions for administering StorageGRID].
 
 a|
-Expiration of server certificate for Management Interface
+Expiration of server certificate for management interface
 a|
 The server certificate used for the management interface is about to expire.
 
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the Management Interface Server Certificate section, upload a new certificate.
-
-xref:../admin/index.adoc[Administer StorageGRID]
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *Management interface certificate*.
+. xref:../admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.adoc#upload-a-custom-management-interface-certificate[Upload a new management interface certificate.]
 
 a|
 Expiration of server certificate for Storage API Endpoints
 a|
 The server certificate used for accessing storage API endpoints is about to expire.
 
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the Object Storage API Service Endpoints Server Certificate section, upload a new certificate.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *S3 and Swift API certificate*.
+. xref:../admin/configuring_custom_server_certificate_for_storage_node_or_clb.adoc#upload-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
 
-xref:../admin/index.adoc[Administer StorageGRID]
 
 a|
 Grid Network MTU mismatch
