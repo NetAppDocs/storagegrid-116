@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: network settings, configure, configuring, configuration, domain name, virtual hosted-style requests
 summary: 'You can configure various network settings from the Grid Manager to fine tune the operation of your StorageGRID system.'
 ---
-= Configuring network settings
+= Configure network settings
 :icons: font
 :imagesdir: ../media/
 
@@ -51,8 +51,8 @@ image::../media/proxy_settings_menu_storage.png[Proxy Settings Menu - Storage]
 
 You can upload two types of server certificates:
 
-* Management Interface Server Certificate, which is the certificate used for accessing the management interface.
-* Object Storage API Service Endpoints Server Certificate, which secures the S3 and Swift endpoints for connections directly to Storage Nodes or when using the CLB service on a Gateway Node.
+* Management interface certificate, which is the certificate used for accessing the management interface.
+* S3 and Swift API certificate, which secures the S3 and Swift endpoints for connections directly to Storage Nodes or when using the CLB service on a Gateway Node.
 +
 NOTE: The CLB service is deprecated.
 
@@ -70,6 +70,6 @@ For example, you might want a Gateway Node to refuse all inbound traffic on the 
 
 .Related information
 
-xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:managing_tenants_and_client_connections.adoc[Managing tenants and client connections]
+* xref:managing_tenants_and_client_connections.adoc[Manage tenants and client connections]

@@ -53,7 +53,7 @@ Use the High verification rate only when you suspect that a hardware or software
 
 .Steps
 . Select *Support* > *Tools* > *Grid Topology*.
-. Select *_Storage Node_ > LDR > Verification*.
+. Select *_Storage Node_* > *LDR* > *Verification*.
 . Select *Configuration* > *Main*.
 . Go to *LDR* > *Verification* > *Configuration* > *Main*.
 . Under Background Verification, select *Verification Rate* > *High* or *Verification Rate* > *Adaptive*.
@@ -79,12 +79,12 @@ If background verification finds corrupt replicated object data, the *Corrupt Ob
 If background verification finds corrupt fragments of erasure-coded object data, the Corrupt Fragments Detected attribute is incremented. StorageGRID recovers by rebuilding the corrupt fragment in place on the same Storage Node.
 
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *_Storage Node_ > LDR > Erasure Coding*.
+ .. Select *_Storage Node_* > *LDR* > *Erasure Coding*.
  .. In the Verification Results table, monitor the Corrupt Fragments Detected (ECCD) attribute.
 
 . After corrupt objects have been automatically restored by the StorageGRID system, reset the count of corrupt objects.
  .. Select *Support* > *Tools* > *Grid Topology*.
- .. Select *_Storage Node_ > LDR > Verification > Configuration*.
+ .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Reset Corrupt Object Count*.
  .. Click *Apply Changes*.
 . If you are confident that quarantined objects are not required, you can delete them.

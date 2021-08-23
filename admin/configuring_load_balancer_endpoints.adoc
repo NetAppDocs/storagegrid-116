@@ -26,10 +26,9 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 
 ** To generate a certificate, you need all domain names and IP addresses the S3 or Swift clients will use to access the endpoint. You must also know the subject (Distinguished Name).
 
+** If you want to use the StorageGRID S3 and Swift certificate, you have already replaced the default certificate with a custom certificate signed by an external certificate authority.
 +
 The certificate can use wildcards to represent the fully qualified domain names of all Admin Nodes and Gateway Nodes running the Load Balancer service. For example, `*.storagegrid._example_.com` uses the * wildcard to represent `adm1.storagegrid._example_.com` and `gn1.storagegrid._example_.com`. See xref:configuring_s3_api_endpoint_domain_names.adoc[Configuring S3 API endpoint domain names] for more information.
-
-
 
 == Create a load balancer endpoint
 
@@ -126,16 +125,17 @@ The certificate secures the connections between S3 and Swift clients and the Loa
 |===
 | Option| Description
 
-|Use StorageGRID S3 and Swift certificate
-|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). If you use this global certificate for a load balancer endpoint, you should replace the default certificate with a custom certificate signed by an external certificate authority.
-
-//See ...tbd... for instructions.//
-
 |Upload certificate
 |You can upload a custom certificate for this endpoint.
 
 |Generate certificate
 |You can generate a custom certificate for this endpoint.
+
+|Use StorageGRID S3 and Swift certificate
+|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). If you use this global certificate for a load balancer endpoint, you  must replace the default certificate with a custom certificate signed by an external certificate authority.
+
+//See ...tbd... for instructions.//
+
 
 |===
 +
@@ -193,9 +193,9 @@ For an unsecured (HTTP) endpoint, you can change the endpoint service type betwe
 
 .Steps
 
-. Select *CONFIGURATION > Network > Load balancer endpoints*.
+. Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
 . Select the radio button for the endpoint you want to edit.
-. Click *Actions > Edit*.
+. Click *Actions* > *Edit*.
 . Make the desired changes to the endpoint.
 
 +
