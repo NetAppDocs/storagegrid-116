@@ -2,13 +2,15 @@
 permalink: admin/what_ha_group_is.html
 sidebar: sidebar
 keywords:
-summary: 'High availability groups use virtual IP addresses \(VIPs\) to provide active-backup access to Gateway Node or Admin Node services.'
+summary: 'High availability \(HA\) groups can be used to provide highly available data connections for S3 and Swift clients. HA groups can also be used to provide highly available connections to the Grid Manager and the Tenant Manager.'
 ---
 = What an HA group is
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
+High availability (HA) groups can be used to provide highly available data connections for S3 and Swift clients. HA groups can also be used to provide highly available connections to the Grid Manager and the Tenant Manager.
+
 High availability groups use virtual IP addresses (VIPs) to provide active-backup access to Gateway Node or Admin Node services.
 
 An HA group consists of one or more network interfaces on Admin Nodes and Gateway Nodes. When creating an HA group, you select network interfaces belonging to the Grid Network (eth0) or the Client Network (eth2). All interfaces in an HA group must be within the same network subnet.
@@ -19,7 +21,7 @@ The active interface in an HA group is designated as the Master. All other inter
 
 image::../media/ha_group_master_interface.png[HA Group Master Interface]
 
-When creating an HA group, you specify one interface to be the preferred Master. The preferred Master is the active interface unless a failure occurs that causes the VIP addresses to be reassigned to a Backup interface. When the failure is resolved, the VIP addresses are automatically moved back to the preferred Master.
+When creating an HA group, you specify one interface to be the primary interface. The primary is the active interface unless a failure occurs that causes the VIP addresses to be reassigned to another interface. When the failure is resolved, the VIP addresses are automatically moved back to the primary interface.
 
 Failover can be triggered for any of these reasons:
 
