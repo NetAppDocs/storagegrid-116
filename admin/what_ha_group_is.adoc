@@ -1,7 +1,7 @@
 ---
 permalink: admin/what_ha_group_is.html
 sidebar: sidebar
-keywords:
+keywords: what a high availability group is, high availability for storagegrid client connections
 summary: 'High availability \(HA\) groups can be used to provide highly available data connections for S3 and Swift clients. HA groups can also be used to provide highly available connections to the Grid Manager and the Tenant Manager.'
 ---
 = What an HA group is
@@ -13,15 +13,16 @@ High availability (HA) groups can be used to provide highly available data conne
 
 High availability groups use virtual IP addresses (VIPs) to provide active-backup access to Gateway Node or Admin Node services.
 
-An HA group consists of one or more network interfaces on Admin Nodes and Gateway Nodes. When creating an HA group, you select network interfaces belonging to the Grid Network (eth0) or the Client Network (eth2). All interfaces in an HA group must be within the same network subnet.
+An HA group consists of one or more network interfaces on Admin Nodes and Gateway Nodes. When creating an HA group, you select network interfaces belonging to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network. All interfaces in an HA group must be within the same network subnet.
 
+== Primary and failover interfaces
 An HA group maintains one or more virtual IP addresses that are added to the active interface in the group. If the active interface becomes unavailable, the virtual IP addresses are moved to another interface. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
 
-The active interface in an HA group is designated as the Master. All other interfaces are designated as Backup. To view these designations, select *Nodes* > *_node_* > *Overview*.
+When creating an HA group, you specify one interface to be the primary interface. The primary interface is the active interface unless a failure occurs. When the failure is resolved, the VIP addresses are automatically moved back to the primary interface.
+
+The active interface in an HA group is designated as the primary. All other interfaces are designated as Backup. To view these designations, select *NODES* > *_node_* > *Overview*.
 
 image::../media/ha_group_master_interface.png[HA Group Master Interface]
-
-When creating an HA group, you specify one interface to be the primary interface. The primary is the active interface unless a failure occurs that causes the VIP addresses to be reassigned to another interface. When the failure is resolved, the VIP addresses are automatically moved back to the primary interface.
 
 Failover can be triggered for any of these reasons:
 
@@ -33,4 +34,4 @@ Failover can be triggered for any of these reasons:
 
 NOTE: Failover might not be triggered by network failures external to the node that hosts the active interface. Similarly, failover is not triggered by the failure of the CLB service (deprecated) or services for the Grid Manager or the Tenant Manager.
 
-If the HA group includes interfaces from more than two nodes, the active interface might move to any other node's interface during failover.
+If the HA group includes interfaces from more than two nodes and the active interface fails, the VIPs move to the first failover interface. If that interface fails, the VIPs move to the next failover interface in the failover order, and so on.
