@@ -18,18 +18,18 @@ Each HA group provides access to the shared services on the selected nodes.
 * HA groups that include only Admin Nodes provide highly available connections to the Grid Manager and the Tenant Manager.
 
 
-== How do I create an HA group?
-To create an HA group:
-
+== How do you create an HA group?
 . You select a network interface for one or more Admin Nodes or Gateway Nodes. The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network. All interfaces in an HA group must be within the same network subnet.
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
 
-. You assign one or more virtual IP (VIP) addresses to the group. Clients applications can use any of these VIPs to connect to StorageGRID.
+. You assign one or more virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
 
 . You specify one interface to be the primary interface. The primary interface is the active interface unless a failure occurs.
 
 . You determine the failover order for any backup interfaces.
+
+For instructions: xref:creating_high_availability_group.adoc[Creating a high availability group]
 
 == What is the active interface?
 
@@ -46,7 +46,7 @@ If the HA group includes more than one interface and the active interface fails,
 Failover can be triggered for any of these reasons:
 
 * The node on which the interface is configured goes down.
-* The node on which the interface is configured loses connectivity to all other nodes for at least 2 minutes
+* The node on which the interface is configured loses connectivity to all other nodes for at least 2 minutes.
 * The active interface goes down.
 * The Load Balancer service stops.
 * The High Availability service stops.
