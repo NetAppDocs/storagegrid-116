@@ -49,7 +49,6 @@ An interface does not appear in the list if its IP address is assigned by DHCP.
 
 * You must select at least one interface.
 * You can select only one interface for a node.
-* All interfaces must be in the same subnet or in subnets with a common prefix.
 +
 IP addresses will be restricted to the smallest subnet (the one with the largest prefix).
 
@@ -79,13 +78,13 @@ NOTE: If the HA group provides access to the Grid Manager, you must select an in
 
 == Enter IP addresses
 
-. Enter gateway CIDR.
+. Enter the gateway CIDR.
 
 . Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses.
 +
 You must provide at least one IPv4 address. Optionally, you can specify additional IPv4 and IPv6 addresses.
 +
-IPv4 addresses must be within the IPv4 subnet shared by all of the member interfaces.
+If you specified the gateway CIDR, all virtual IPs must be in the same subnet as the gateway.
 +
 image::../media/ha_group_select_virtual_ips.png[HA Groups enter VIPs]
 
