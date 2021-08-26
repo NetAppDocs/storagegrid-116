@@ -21,7 +21,6 @@ You can create one or more high availability (HA) groups to provide highly avail
 An interface must meet the following conditions to be included in an HA group:
 
 * The interface must be for a Gateway Node or an Admin Node.
-* The interface must belong to the Grid Network (eth0) or the Client Network (eth2).
 * The interface must be configured with fixed or static IP addressing, not with DHCP.
 
 == Access the wizard
@@ -32,7 +31,7 @@ An interface must meet the following conditions to be included in an HA group:
 
 == Enter details
 
-. Type a name for the HA group.
+. Provide a unique name for the HA group.
 
 . Optionally, enter a description for the HA group.
 
@@ -40,9 +39,7 @@ An interface must meet the following conditions to be included in an HA group:
 
 == Add interfaces
 
-. Select one or more interfaces to add to this HA group.
-+
-
+. Select one or more interfaces to add to this HA group. Use the column headers to sort the rows or enter a search term to locate interfaces more quickly.
 +
 image::../media/ha_group_add_interfaces.png[HA Groups Add Interfaces]
 +
@@ -50,18 +47,19 @@ An interface does not appear in the list if its IP address is assigned by DHCP.
 +
 .Guidelines for selecting interfaces
 
- * You must select at least one interface.
- * You can select only one interface for a node.
- * If you select more than one interface, all of the interfaces must be on either the Grid Network (eth0) or on the Client Network (eth2).
- ** All interfaces must be in the same subnet or in subnets with a common prefix.
+* You must select at least one interface.
+* You can select only one interface for a node.
+* All interfaces must be in the same subnet or in subnets with a common prefix.
 +
 IP addresses will be restricted to the smallest subnet (the one with the largest prefix).
 
- * If you select interfaces on different types of nodes, and a failover occurs, only the services common to the selected nodes will be available on the virtual IPs.
-  ** Select two or more Admin Nodes for HA protection of the Grid Manager or the Tenant Manager.
-  ** Select two or more Admin Nodes, Gateway Nodes, or both for HA protection of the Load Balancer service.
-  ** Select two or more Gateway Nodes for HA protection of the (deprecated) CLB service.
+* Select interfaces on two or more Admin Nodes, Gateway Nodes, or both for HA protection of the Load Balancer service.
 
+* Select interfaces on two or more Admin Nodes for HA protection of the Grid Manager or the Tenant Manager.
+
+* Select interfaces on two or more Gateway Nodes for HA protection of the (deprecated) CLB service.
+
+* If you select interfaces on different types of nodes, an information note appears. Only the services common to the selected nodes will be available on the virtual IPs.
 +
 image::../media/ha_groups_different_node_types.png[HA Groups Different Node Types]
 
@@ -69,11 +67,9 @@ image::../media/ha_groups_different_node_types.png[HA Groups Different Node Type
 
 == Determine the failover order
 
-
-
-. Drag and drop the rows or select the arrows to determine the failover order of the interfaces you selected.
+. Drag and drop the rows to determine the active interface and the failover order of the other interfaces you selected.
 +
-image::../media/ha_group_select_virtual_ips.png[HA Groups Select Virtual IPs]
+image::../media/ha_group_determine_failover.png[HA Groups Determine failover order]
 +
 The first interface in the list is the active interface. If a failure occurs, the VIP addresses are reassigned the next interface in the list.
 +
@@ -85,11 +81,13 @@ NOTE: If the HA group provides access to the Grid Manager, you must select an in
 
 . Enter gateway CIDR.
 
-. Enter virtual IP addresses for the HA group. Select *Add another IP address* to add up to 10 IP addresses.
+. Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses.
 +
 You must provide at least one IPv4 address. Optionally, you can specify additional IPv4 and IPv6 addresses.
 +
 IPv4 addresses must be within the IPv4 subnet shared by all of the member interfaces.
++
+image::../media/ha_group_select_virtual_ips.png[HA Groups enter VIPs]
 
 . Select *Create HA group*.
 +
@@ -97,10 +95,4 @@ The HA Group is created, and you can now use the configured virtual IP addresses
 
 .Related information
 
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../vmware/index.adoc[Install VMware]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-xref:managing_load_balancing.adoc[Managing load balancing]
+* xref:managing_load_balancing.adoc[Managing load balancing]
