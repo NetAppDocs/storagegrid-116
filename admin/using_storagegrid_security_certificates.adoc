@@ -117,9 +117,11 @@ You can also xref:../fabricpool/creating_load_balancer_endpoint_for_fabricpool.a
 
 .Tenants
 --
-Tenants use <<Identity federation certificate,identity federation server certificates>> or <<Platform services endpoint certificate,platform service endpoint certificates>> to secure their connections with StorageGRID.
+Tenants can use <<Identity federation certificate,identity federation server certificates>> or <<Platform services endpoint certificate,platform service endpoint certificates>> to secure their connections with StorageGRID.
 
-Tenant information indicates which certificate it uses to secure its StorageGRID connections. Selecting a tenant name opens a browser tab where you can view and edit the tenant certificate details for xref:using_identity_federation.adoc[identity federation certificates] and xref:../tenant/editing_platform_services_endpoint.adoc[service endpoint certificates].
+Tenant information indicates which certificate it uses to secure its StorageGRID connections. Selecting a tenant name opens a browser tab where you can view and edit the tenant certificate details for:
+* xref:using_identity_federation.adoc[Identity federation certificates] that secures the connection between StorageGRID and the server used for identity federation (groups and users).
+* xref:../tenant/editing_platform_services_endpoint.adoc[Platform service endpoint certificates] that secures the connection between a StorageGRID platform service endpoint and an S3 storage resource.
 
 You can also xref:../tenant/tenant/creating_platform_services_endpoint.adoc[specify a platform service endpoint certificate during endpoint creation].
 
