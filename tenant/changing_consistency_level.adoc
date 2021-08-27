@@ -28,8 +28,9 @@ NOTE: When you change a bucket's consistency level, only those objects that are 
 The bucket details page appears.
 
 . Select *Bucket options* > *Consistency level*.
-+
-image::../media/bucket_change_consistency_level.png[Bucket Change Consistency Level]
+// +
+// Suggest removing screenshot, else update screenshot. 
+// image::../media/bucket_change_consistency_level.png[Bucket Change Consistency Level]
 
 . Select a consistency level for operations performed on the objects in this bucket.
 +
@@ -53,11 +54,11 @@ Read-after-new-write (Default)
 a|
 Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Matches Amazon S3 consistency guarantees.
 
-*Note:* If your application attempts HEAD operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
+*Note:* If your application attempts HEAD or GET operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
 a|
-Available (eventual consistency for HEAD operations)
+Available (eventual consistency for HEAD or GET operations)
 a|
-Behaves the same as the *Read-after-new-write* consistency level, but only provides eventual consistency for HEAD operations. Offers higher availability for HEAD operations than *Read-after-new-write* if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD operations only.
+Behaves the same as the *Read-after-new-write* consistency level, but provides eventual consistency for HEAD and GET operations. Offers higher availability for HEAD and GET operations than *Read-after-new-write* if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations only.
 |===
 
 . Select *Save changes*.
