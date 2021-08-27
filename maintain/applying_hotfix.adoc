@@ -13,22 +13,24 @@ The hotfix is first applied automatically to the primary Admin Node. Then, you m
 
 .What you'll need
 
-* You have reviewed all of the considerations and completed all of the steps in "`Hotfix planning and preparation.`"
-* You must have the provisioning passphrase.
-* You must have Root Access or the Maintenance permission.
+* You have reviewed the considerations and completed the steps in xref:hotfix_planning_and_preparation.adoc[Hotfix planning and preparation].
+* You have the provisioning passphrase.
+* You have Root Access or the Maintenance permission.
+
+.About this task
 * You can delay applying a hotfix to a node, but the hotfix process is not complete until you apply the hotfix to all nodes.
 * You cannot perform a StorageGRID software upgrade or a SANtricity OS upgrade until you have completed the hotfix process.
 
 .Steps
 
 . Sign in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
-. Select *Maintenance* > *System* > *Software Update*.
+. Select *MAINTENANCE* > *System* > *Software Update*.
 +
 The Software Update page appears.
 +
 image::../media/software_update_landing.png[Software Update Landing Page]
 
-. Select *StorageGRID Hotfix*.
+. Select *Apply hotfix*.
 +
 The StorageGRID Hotfix page appears.
 +
@@ -45,13 +47,10 @@ image::../media/hotfix_choose_file.png[Hotfix Choose File]
 The file is uploaded. When the upload is finished, the file name is shown in the Details field.
 +
 NOTE: Do not change the file name since it is part of the verification process.
-+
-image::../media/hotfix_file_validated.png[Hotfix File Validated]
+
 . Enter the provisioning passphrase in the text box.
 +
 The *Start* button becomes enabled.
-+
-image::../media/hotfix_start_enabled.png[Hotfix Start Enabled]
 
 . Select *Start*.
 +
@@ -109,7 +108,7 @@ The procedure is not complete until the hotfix is successfully applied to all no
 
 .Related information
 
-xref:hotfix_planning_and_preparation.adoc[Hotfix planning and preparation]
+
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
