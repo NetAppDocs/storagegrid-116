@@ -19,29 +19,29 @@ Each HA group provides access to the shared services on the selected nodes.
 
 
 == How do you create an HA group?
-. You select a network interface for one or more Admin Nodes or Gateway Nodes. The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network. All interfaces in an HA group must be within the same network subnet.
+. You select a network interface for one or more Admin Nodes or Gateway Nodes. The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network.
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
 
 . You assign one or more virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
 
-. You specify one interface to be the primary interface. The primary interface is the active interface unless a failure occurs.
+. You specify one interface to be the Primary interface. The Primary interface is the active interface unless a failure occurs.
 
-. You determine the failover order for any backup interfaces.
+. You determine the failover order for any Backup interfaces.
 
-For instructions: xref:creating_high_availability_group.adoc[Creating a high availability group]
+For instructions: xref:configure_high_availability_group.adoc[Configure high availability groups]
 
 == What is the active interface?
 
 During normal operation, all of the group's VIP addresses are added to the active interface. When clients connect to any of the VIP addresses, they use the active interface.
 
-The active interface in an HA group is designated as the primary. All other interfaces are designated as Backup. To view these designations, select *NODES* > *_node_* > *Overview*.
+The active interface in an HA group is designated as Primary. All other interfaces are designated as Backup. To view these designations, select *NODES* > *_node_* > *Overview*.
 
-image::../media/ha_group_master_interface.png[HA Group Master Interface]
+image::../media/ha_group_primary_interface.png[HA Group Primary Interface]
 
 == What happens when the active interface fails?
 
-If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first backup interface in the failover order. If that interface fails, the VIP addresses move to the next failover interface, and so on.
+If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
 
 Failover can be triggered for any of these reasons:
 
