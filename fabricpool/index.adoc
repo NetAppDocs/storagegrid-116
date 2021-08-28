@@ -4,12 +4,14 @@ sidebar: sidebar
 keywords: how to configure storagegrid for fabricpool, using fabricpool with storagegrid,
 summary: 'If you use NetApp ONTAP software, you can use NetApp FabricPool to tier inactive, or cold, data to a NetApp StorageGRID object storage system.'
 ---
-= Configure StorageGRID for FabricPool
+=  Overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 If you use NetApp ONTAP software, you can use NetApp FabricPool to tier inactive, or cold, data to a NetApp StorageGRID object storage system.
+
+== About these instructions
 
 Use these instructions to:
 
@@ -19,7 +21,7 @@ Use these instructions to:
 
 image::../media/fabricpool_storagegrid_workflow.png[FabricPool StorageGRID Workflow]
 
-.What you'll need
+== Before you start
 * Decide which FabricPool volume tiering policy you will use to tier inactive ONTAP data to StorageGRID.
 * Plan and install a StorageGRID system to meet your storage capacity and performance needs.
 * Become familiar with StorageGRID system software, including the Grid Manager and the Tenant Manager.
@@ -29,18 +31,19 @@ You can learn more here:
 ** https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices for ONTAP 9.8^]
 ** https://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center^]
 
+
+
 == What FabricPool is
 
 FabricPool is an ONTAP hybrid storage solution that uses a high-performance flash aggregate as the performance tier and an object store as the cloud tier. Data in a FabricPool is stored in a tier based on whether it is frequently accessed or not. Using a FabricPool helps you reduce storage cost without compromising performance, efficiency, or protection.
 
 No architectural changes are required, and you can continue managing your database and application environment from the central ONTAP storage system.
 
-== What object storage is
+== What StorageGRID is
 
-Object storage is a storage architecture that manages data as objects, as opposed to other storage architectures such as file or block storage. Objects are kept inside a single container (such as a bucket) and are not nested as files inside a directory inside other directories. Although object storage generally provides lower performance than file or block storage, it is significantly more scalable. StorageGRID buckets can hold petabytes of data.
+StorageGRID is a storage architecture that manages data as objects, as opposed to other storage architectures such as file or block storage. Objects are kept inside a single container (such as a bucket) and are not nested as files inside a directory inside other directories. Although object storage generally provides lower performance than file or block storage, it is significantly more scalable. StorageGRID buckets can hold petabytes of data.
 
-== Using StorageGRID as a FabricPool cloud tier
-
+== Using StorageGRID as a FabricPool cloud tier 
 FabricPool can tier ONTAP data to a number of object store providers, including StorageGRID. Unlike public clouds that might set a maximum number of supported input/output operations per second (IOPS) at the bucket or container level, StorageGRID performance scales with the number of nodes in a system. Using StorageGRID as a FabricPool cloud tier allows you to keep your cold data in your own private cloud for highest performance and complete control over your data.
 
 In addition, a FabricPool license is not required when you use StorageGRID as the cloud tier.
