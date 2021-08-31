@@ -17,8 +17,6 @@ All StorageGRID nodes generate audit messages to track system activity and event
 
 * You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
 * You must have Maintenance or Root Access permissions.?? xxxxxxxxxx
-* DNS ????xxxxxxxxxxxxxxxx
-xxxxxxxxxxxIs auditing turned on by default? Can it be turned off?
 
 .About this task
 
@@ -89,34 +87,29 @@ If you want to use an external syslog server, see <<Access-the-syslog-server-con
 +
 //image::../media/grid_password_change_ssh_password.png[Grid passwords]//
 
-. Select *Make a change*.
 
-== Enter provisioning password
-. Enter your provisioning passphrase.
+
+==== Enter Syslog info
+. xxxxxxxxxxxxxxxxxxxxxxxxase.
 +
-image::../media/ssh-provisioning-passphrase.png[Enter provisioning passphrase]
+//image::../media/ssh-provisioning-xxxxpassphrase.png[xxxxxxxxxxxxxxxxx]//
 
 [start=2]
-. Select *Continue*.
+. Select *Continue*xxxxxxxxxxxxxxxx.
 
-== Download the current recovery package
-. Select *Download recovery package*.
+==== Manage Syslog content
+. Select *Dxxxxxxxxxx*.
 +
-You can use the old passwords in the current recovery package if the password change process fails for any node.
+xxxxxxxxxxxxxxxxxxxxxxx.
 +
-image::../media/ssh-download-current-recovery-package.png[Download current recovery package]
-
-[start=2]
-. Copy the downloaded Recovery Package file (.zip) to two safe, secure, and separate locations.
-
-+
-*Attention*: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
+//image::../media/ssh-download-current-recovery-package.png[Download current recovery package]//
 
 [start=3]
 . Select *Continue*.
-
-. go to xxxxxxx.
-
+==== Manage Syslog content
+. Select *Continue*.
+==== Send test messages
+Send test messages. Skip and Finish. Finish. 
 
 . [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit messages from the listed options.
 +
@@ -125,18 +118,16 @@ image::../media/ssh-download-current-recovery-package.png[Download current recov
 | Option| Description
 
 |Admin Node
-|Thxxxxxxxxxty.
-
-//See ...tbd... for instructions.//
+|Audit messages are sent to the auidit log on the Admin Node.
 
 |External syslog server
-|xxxxxxxxxxxxx. This option is enabled only after you have configured the external syslog server.
+|Audit messages are sent to an external syslog server. This option is enabled only after you have configured the external syslog server.
 
 |Admin Node and external syslog server.
-|Audit messages are sent to both xxxx and xxxxx.
+|Audit messages are sent to both the audit log on the Admin Node and the external syslog server.
 
 |None
-|No audit messages are sent. xxxxxxxxxxxxxxx.
+|No audit messages are sent. //xxxxxx//
 
 |===
 
