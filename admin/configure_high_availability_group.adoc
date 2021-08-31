@@ -145,9 +145,7 @@ NOTE: If the HA group provides access to the Grid Manager, you must select an in
 
 You can remove one or more high availability (HA) groups.
 
-If you remove an HA group, any S3 or Swift clients that are configured to use one of the group's virtual IP addresses will not be able to connect to StorageGRID. 
-
-To prevent client disruptions, you should update all affected S3 or Swift client applications before you remove an HA group. Update each client to connect using another IP address, for example, the virtual IP address of a different HA group or the IP address that was configured for an interface during installation or using DHCP.
+To prevent client disruptions, update any affected S3 or Swift client applications before you remove an HA group. Update each client to connect using another IP address, for example, the virtual IP address of a different HA group or the IP address that was configured for an interface during installation or using DHCP.
 
 .Steps
 
