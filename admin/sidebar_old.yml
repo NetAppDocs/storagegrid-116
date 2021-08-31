@@ -1,8 +1,9 @@
 section: admin
 title: Administer StorageGRID
+url: "/admin/index.html"
 entries:
   - title: Administering a StorageGRID system
-    url: "/admin/index.html"
+    url: "/admin/administering_storagegrid_system.html"
     entries:
     - title: Web browser requirements
       url: "/admin/web_browser_requirements.html"
@@ -14,8 +15,6 @@ entries:
       url: "/admin/changing_your_password.html"
     - title: Changing the provisioning passphrase
       url: "/admin/changing_provisioning_passphrase.html"
-    - title: Changing the SSH password
-      url: "/admin/change_ssh_password.html"
     - title: Changing the browser session timeout
       url: "/admin/changing_browser_session_timeout.html"
     - title: Viewing StorageGRID license information
@@ -35,33 +34,13 @@ entries:
         url: "/admin/protecting_against_cross_site_request_forgery_csrf.html"
       - title: Using the API if single sign-on is enabled
         url: "/admin/using_api_if_sso_is_enabled.html"
-  - title: Controlling access to StorageGRID
+    - title: Using StorageGRID security certificates
+      url: "/admin/using_storagegrid_security_certificates.html"
+  - title: Controlling administrator access to StorageGRID
     url: "/admin/controlling_administrator_access_to_storagegrid.html"
     entries:
     - title: Controlling access through firewalls
       url: "/admin/controlling_access_through_firewalls.html"
-    - title: Use security certificates
-      url: "/admin/using_storagegrid_security_certificates.html"
-      entries:
-      - title: Configure server certificates
-        url: "/admin/configuring_server_certificates.html"
-        entries:
-        - title: Configure a custom management interface certificate
-          url: "/admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.html"
-        - title: Restore the default management interface certificate
-          url: "/admin/restoring_default_server_certificates_for_grid_manager_tenant_manager.html"
-        - title: Configure a custom S3 and Swift API certificate
-          url: "/admin/configuring_custom_server_certificate_for_storage_node_or_clb.html"
-        - title: Restoring the default S3 and Swift API certificate
-          url: "/admin/restoring_default_server_certificates_for_s3_swift_api_endpoints.html"
-        - title: Copy or download the Grid CA certificate
-          url: "/admin/copying_storagegrid_system_ca_certificate.html"
-        - title: Configuring StorageGRID certificates for FabricPool
-          url: "/admin/configuring_storagegrid_certificates_for_fabricpool.html"
-        - title: Generating a self-signed server certificate for the management interface
-          url: "/admin/generating_self_signed_certificate_for_management_interface.html"
-      - title: Configuring client certificates
-        url: "/admin/configuring_administrator_client_certificates.html"
     - title: Using identity federation
       url: "/admin/using_identity_federation.html"
     - title: Managing admin groups
@@ -93,6 +72,8 @@ entries:
         - title: Temporarily disabling and reenabling single sign-on for one Admin
             Node
           url: "/admin/temporarily_disabling_and_reenabling_sso_for_admin_node.html"
+    - title: Configuring administrator client certificates
+      url: "/admin/configuring_administrator_client_certificates.html"
   - title: Configuring key management servers
     url: "/admin/kms_configuring.html"
     entries:
@@ -155,6 +136,20 @@ entries:
     entries:
     - title: 'Summary: IP addresses and ports for client connections'
       url: "/admin/summary_ip_addresses_and_ports_for_client_connections.html"
+    - title: Managing load balancing
+      url: "/admin/managing_load_balancing.html"
+      entries:
+      - title: How load balancing works - Load Balancer service
+        url: "/admin/how_load_balancing_works_load_balancer_service.html"
+      - title: Configuring load balancer endpoints
+        url: "/admin/configuring_load_balancer_endpoints.html"
+      - title: How load balancing works - CLB service
+        url: "/admin/how_load_balancing_works_clb_service.html"
+    - title: Managing untrusted Client Networks
+      url: "/admin/managing_untrusted_client_networks.html"
+      entries:
+      - title: Specifying a node&#8217;s Client Network is untrusted
+        url: "/admin/specifying_node_client_network_is_untrusted.html"
     - title: Managing high availability groups
       url: "/admin/managing_high_availability_groups.html"
       entries:
@@ -170,20 +165,6 @@ entries:
         url: "/admin/editing_high_availability_group.html"
       - title: Removing a high availability group
         url: "/admin/removing_high_availability_group.html"
-    - title: Managing load balancing
-      url: "/admin/managing_load_balancing.html"
-      entries:
-      - title: How load balancing works - Load Balancer service
-        url: "/admin/how_load_balancing_works_load_balancer_service.html"
-      - title: Configuring load balancer endpoints
-        url: "/admin/configuring_load_balancer_endpoints.html"
-      - title: How load balancing works - CLB service
-        url: "/admin/how_load_balancing_works_clb_service.html"
-    - title: Managing untrusted Client Networks
-      url: "/admin/managing_untrusted_client_networks.html"
-      entries:
-      - title: Specifying a node&#8217;s Client Network is untrusted
-        url: "/admin/specifying_node_client_network_is_untrusted.html"
     - title: Configuring S3 API endpoint domain names
       url: "/admin/configuring_s3_api_endpoint_domain_names.html"
     - title: Enabling HTTP for client communications
@@ -201,6 +182,27 @@ entries:
       url: "/admin/supported_ciphers_for_outgoing_tls_connections.html"
     - title: Changing network transfer encryption
       url: "/admin/changing_network_transfer_encryption.html"
+    - title: Configuring server certificates
+      url: "/admin/configuring_server_certificates.html"
+      entries:
+      - title: Configuring a custom server certificate for the Grid Manager and the
+          Tenant Manager
+        url: "/admin/configuring_custom_server_certificate_for_grid_manager_tenant_manager.html"
+      - title: Restoring the default server certificates for the Grid Manager and
+          the Tenant Manager
+        url: "/admin/restoring_default_server_certificates_for_grid_manager_tenant_manager.html"
+      - title: Configuring a custom server certificate for connections to the Storage
+          Node or the CLB service
+        url: "/admin/configuring_custom_server_certificate_for_storage_node_or_clb.html"
+      - title: Restoring the default server certificates for the S3 and Swift REST
+          API endpoints
+        url: "/admin/restoring_default_server_certificates_for_s3_swift_api_endpoints.html"
+      - title: Copying the StorageGRID system&#8217;s CA certificate
+        url: "/admin/copying_storagegrid_system_ca_certificate.html"
+      - title: Configuring StorageGRID certificates for FabricPool
+        url: "/admin/configuring_storagegrid_certificates_for_fabricpool.html"
+      - title: Generating a self-signed server certificate for the management interface
+        url: "/admin/generating_self_signed_certificate_for_management_interface.html"
     - title: Configuring Storage proxy settings
       url: "/admin/configuring_storage_proxy_settings.html"
     - title: Configuring Admin proxy settings
