@@ -10,7 +10,3 @@ summary: 'Some features were removed or deprecated in StorageGRID 11.6. You must
 
 [.lead]
 Some features were removed or deprecated in StorageGRID 11.6. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
-
-== Available consistency control now includes GET operations
-
-The Available consistency control behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The Available consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
