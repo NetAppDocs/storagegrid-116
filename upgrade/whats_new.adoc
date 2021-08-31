@@ -32,9 +32,12 @@ The following new alerts were added for StorageGRID 11.6:
 
 == Kevin's what's new changes
 
+=== Available consistency control now includes GET operations
+
+The Available consistency control behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The Available consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
 
 .Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../s3/index.adoc[Use S3]
 
 == Lisa's what's new changes
 
