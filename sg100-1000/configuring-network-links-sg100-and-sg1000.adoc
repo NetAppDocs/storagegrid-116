@@ -1,0 +1,198 @@
+---
+permalink: sg100-1000/configuring-network-links-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, links, network links, configure, setup, set up, grid network connections, grid network connection, link speed, bond mode
+summary: 'You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.'
+---
+= Configuring network links (SG100 and SG1000)
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can configure network links for the ports used to connect the appliance to the Grid Network, the Client Network, and the Admin Network. You can set the link speed as well as the port and network bond modes.
+
+.What you'll need
+
+* You have obtained the additional equipment required for your cable type and link speed.
+* You have connected the network ports to switches that support your chosen speed.
+
+If you plan to use Aggregate port bond mode, LACP network bond mode, or VLAN tagging:
+
+* You have connected the network ports on the appliance to switches that can support VLAN and LACP.
+* If multiple switches are participating in the LACP bond, the switches support multi-chassis link aggregation groups (MLAG), or equivalent.
+* You understand how to configure the switches to use VLAN, LACP, and MLAG or equivalent.
+* You know the unique VLAN tag to use for each network. This VLAN tag will be added to each network packet to ensure that network traffic is routed to the correct network.
+
+.About this task
+
+The figures show how the four network ports are bonded in fixed port bond mode (default configuration).
+
+*SG100 fixed port bond mode* image:../media/sg100_fixed_port_draft.png[SG100 Fixed Port Bond Mode]
+
+*SG1000 fixed port bond mode*
+
+image::../media/sg1000_fixed_port.png[SG1000 Fixed Port Bond Mode]
+
+[options="header"]
+|===
+| Callout| Which ports are bonded
+a|
+C
+a|
+Ports 1 and 3 are bonded together for the Client Network, if this network is used.
+a|
+G
+a|
+Ports 2 and 4 are bonded together for the Grid Network.
+|===
+This figure shows how the four network ports are bonded in aggregate port bond mode.
+
+*SG100 aggregate port bond mode*
+
+image::../media/sg100_aggregate_ports.png[Aggregate Port Bond Mode SG100]
+
+*SG1000 aggregate port bond mode*
+
+image::../media/sg1000_aggregate_ports.png[Aggregate Port Bond Mode SG1000]
+
+[options="header"]
+|===
+| Callout| Which ports are bonded
+a|
+1
+a|
+All four ports are grouped in a single LACP bond, allowing all ports to be used for Grid Network and Client Network traffic.
+|===
+The table summarizes the options for configuring the four network ports. The default settings are shown in bold. You only need to configure the settings on the Link Configuration page if you want to use a non-default setting.
+
+NOTE: The LACP transmit hash policy defaults to layer2+3 mode. If necessary, you can use the Grid Management API to change it to layer3+4 mode.
+
+* *Fixed (default) port bond mode*
++
+[options="header"]
+|===
+| Network bond mode| Client Network disabled (default)| Client Network enabled
+a|
+*Active-Backup (default)*
+a|
+
+ ** Ports 2 and 4 use an active-backup bond for the Grid Network.
+ ** Ports 1 and 3 are not used.
+ ** A VLAN tag is optional.
+
+a|
+
+ ** Ports 2 and 4 use an active-backup bond for the Grid Network.
+ ** Ports 1 and 3 use an active-backup bond for the Client Network.
+ ** VLAN tags can be specified for both networks for the convenience of the network administrator.
+
+a|
+LACP (802.3ad)
+a|
+
+ ** Ports 2 and 4 use an LACP bond for the Grid Network.
+ ** Ports 1 and 3 are not used.
+ ** A VLAN tag is optional.
+
+a|
+
+ ** Ports 2 and 4 use an LACP bond for the Grid Network.
+ ** Ports 1 and 3 use an LACP bond for the Client Network.
+ ** VLAN tags can be specified for both networks for the convenience of the network administrator.
+
+|===
+
+* *Aggregate port bond mode*
++
+[options="header"]
+|===
+| Network bond mode| Client Network disabled (default)| Client Network enabled
+a|
+LACP (802.3ad) only
+a|
+
+ ** Ports 1-4 use a single LACP bond for the Grid Network.
+ ** A single VLAN tag identifies Grid Network packets.
+
+a|
+
+ ** Ports 1-4 use a single LACP bond for the Grid Network and the Client Network.
+ ** Two VLAN tags allow Grid Network packets to be segregated from Client Network packets.
+
+|===
+
+For additional details, see the article about GbE port connections for the services appliance.
+
+This figure shows how the two 1-GbE management ports on the SG100 are bonded in Active-Backup network bond mode for the Admin Network.
+
+These figures shows how the two 1-GbE management ports on the appliance are bonded in Active-Backup network bond mode for the Admin Network.
+
+*SG100 Admin Network ports bonded*
+
+image::../media/sg100_bonded_management_ports.png[Admin Network Ports Bonded SG100]
+
+*SG1000 Admin Network ports bonded*
+
+image::../media/sg1000_bonded_management_ports.png[Admin Network Ports Bonded SG1000]
+
+.Steps
+
+. From the menu bar of the StorageGRID Appliance Installer, click *Configure Networking* > *Link Configuration*.
++
+The Network Link Configuration page displays a diagram of your appliance with the network and management ports numbered.
++
+*SG100 ports*
++
+image:../media/sg100_configuring_network_ports.png[SG100 rear connectors]
++
+*SG1000 ports*
++
+image::../media/sg1000_configuring_network_ports.png[SG1000 Ports]
++
+The Link Status table lists the link state and speed of the numbered ports (SG1000 shown).
++
+image::../media/sg1000_configuring_network_link_status.png[SG1000 Link Status]
++
+The first time you access this page:
+
+ ** *Link Speed* is set to *Auto*.
+ ** *Port bond mode* is set to *Fixed*.
+ ** *Network bond mode* is set to *Active-Backup* for the Grid Network.
+ ** The *Admin Network* is enabled, and the network bond mode is set to *Independent*.
+ ** The *Client Network* is disabled.
++
+image:../media/sg1000_network_link_configuration_fixed.png[Network Link Configuration Fixed]
+
+. Select the link speed for the network ports from the *Link speed* drop-down list.
++
+The network switches you are using for the Grid Network and the Client Network must also support and be configured for this speed. You must use the appropriate adapters or transceivers for the configured link speed. Use Auto link speed when possible because this option negotiates both link speed and Forward Error Correction (FEC) mode with the link partner.
+
+. Enable or disable the StorageGRID networks you plan to use.
++
+The Grid Network is required. You cannot disable this network.
+
+ .. If the appliance is not connected to the Admin Network, unselect the *Enable network* check box for the Admin Network.
++
+image::../media/admin_network_disabled.gif[Screenshot showing check box for enabling or disabling the Admin Network]
+
+ .. If the appliance is connected to the Client Network, select the *Enable network* check box for the Client Network.
++
+The Client Network settings for the data NIC ports are now shown.
+
+. Refer to the table, and configure the port bond mode and the network bond mode.
++
+This example shows:
+
+ ** *Aggregate* and *LACP* selected for the Grid and the Client networks. You must specify a unique VLAN tag for each network. You can select values between 0 and 4095.
+ ** *Active-Backup* selected for the Admin Network.
++
+image:../media/sg1000_network_link_configuration_aggregate.png[Network Link Configuration Aggregate]
+
+. When you are satisfied with your selections, click *Save*.
++
+NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: +
+`*https://_services_appliance_IP_:8443*`
+
+.Related information
+
+xref:obtaining-additional-equipment-and-tools-sg100-and-sg1000.adoc[Obtaining additional equipment and tools (SG100 and SG1000)]

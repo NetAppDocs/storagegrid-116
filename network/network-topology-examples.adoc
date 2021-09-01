@@ -1,0 +1,22 @@
+---
+permalink: network/network-topology-examples.html
+sidebar: sidebar
+keywords: storagegrid, network topology
+summary: 'In addition to the required Grid Network, you can choose whether to configure Admin Network and Client Network interfaces when designing the network topology for a single or multi-site deployment.'
+---
+= Network topology examples
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+In addition to the required Grid Network, you can choose whether to configure Admin Network and Client Network interfaces when designing the network topology for a single or multi-site deployment.
+
+Internal ports are only accessible over the Grid Network. External ports are accessible from all network types. This flexibility provides multiple options for designing a StorageGRID deployment and setting up external IP and port filtering in switches and firewalls. For more information about internal and external ports, see the network port reference.
+
+If you specify that a node's Client Network interface is untrusted, configure a load balancer endpoint to accept the inbound traffic. For information about configuring untrusted Client Networks and load balancer endpoints, see the instructions for administering StorageGRID.
+
+.Related information
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:network-port-reference.adoc[Network port reference]

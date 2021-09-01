@@ -1,0 +1,48 @@
+---
+permalink: audit/object-delete-transactions.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, messages, transaction, transactions, Object delete, S3 delete, Swift delete, S3, Swift, SDEL, WDEL 
+summary: 'You can identify object delete transactions in the audit log by locating API-specific \(S3 and Swift\) audit messages.'
+---
+= Object delete transactions
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can identify object delete transactions in the audit log by locating API-specific (S3 and Swift) audit messages.
+
+Not all audit messages generated during a delete transaction are listed in the following tables. Only messages required to trace the delete transaction are included.
+
+== S3 delete audit messages
+
+[options="header"]
+|===
+| Code| Name| Description| Trace| See
+a|
+SDEL
+a|
+S3 Delete
+a|
+Request made to delete the object from a bucket.
+a|
+CBID, S3KY
+a|
+xref:sdel-s3-delete.adoc[SDEL: S3 DELETE]
+|===
+
+== Swift delete audit messages
+
+[options="header"]
+|===
+| Code| Name| Description| Trace| See
+a|
+WDEL
+a|
+Swift Delete
+a|
+Request made to delete the object from a container, or the container.
+a|
+CBID, WOBJ
+a|
+xref:wdel-swift-delete.adoc[WDEL: Swift DELETE]
+|===

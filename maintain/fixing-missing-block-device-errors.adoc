@@ -1,0 +1,44 @@
+---
+permalink: maintain/fixing-missing-block-device-errors.html
+sidebar: sidebar
+keywords: storagegrid, missing block device, block device error
+summary: 'The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the `/etc/storagegrid/nodes/_node-name_.conf` file, a missing block device error displays.'
+---
+= Fixing missing block device errors
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the `/etc/storagegrid/nodes/_node-name_.conf` file, a missing block device error displays.
+
+If you observe an error matching this pattern:
+
+`Checking configuration file /etc/storagegrid/nodes/_node-name_.conf for node _node-name_...`
+`ERROR: _node-name_: BLOCK_DEVICE_PURPOSE = _path-name_`
+`       _node-name_: _path-name_ does not exist`
+
+It means that `/etc/storagegrid/nodes/_node-name_.conf` maps the block device used by _node-name_ for PURPOSE to the given path-name in the Linux file system, but there is not a valid block device special file, or softlink to a block device special file, at that location.
+
+Verify that you completed the steps in "`Deploying new Linux hosts.`" Use the same persistent device names for all block devices as were used on the original host.
+
+If you are unable to restore or recreate the missing block device special file, you can allocate a new block device of the appropriate size and storage category and edit the node configuration file to change the value of BLOCK_DEVICE_PURPOSE to point to the new block device special file.
+
+Determine the appropriate size and storage category from the tables in the "`Storage requirements`" section of the installation instructions for your Linux operating system. Review the recommendations in "`Configuring host storage`" before proceeding with the block device replacement.
+
+IMPORTANT: If you must provide a new block storage device for any of the configuration file variables starting with `BLOCK_DEVICE_` because the original block device was lost with the failed host, ensure the new block device is unformatted before attempting further recovery procedures. The new block device will be unformatted if you are using shared storage and have created a new volume. If you are unsure, run the following command against any new block storage device special files.
+
+CAUTION:
+
+Run the following command only for new block storage devices. Do not run this command if you believe the block storage still contains valid data for the node being recovered, as any data on the device will be lost.
+
+----
+sudo dd if=/dev/zero of=/dev/mapper/my-block-device-name bs=1G count=1
+----
+
+.Related information
+
+xref:deploying-new-linux-hosts.adoc[Deploying new Linux hosts]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

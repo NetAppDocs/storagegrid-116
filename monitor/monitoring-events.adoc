@@ -1,0 +1,42 @@
+---
+permalink: monitor/monitoring-events.html
+sidebar: sidebar
+keywords: monitor, monitoring events, events, storageGRID events
+summary: 'You can monitor events that are detected by a grid node, including custom events that you have created to track events that are logged to the syslog server. The Last Event message shown in the Grid Manager provides more information about the most recent event.'
+---
+= Monitoring events
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can monitor events that are detected by a grid node, including custom events that you have created to track events that are logged to the syslog server. The Last Event message shown in the Grid Manager provides more information about the most recent event.
+
+Event messages are also listed in the `/var/local/log/bycast-err.log` log file.
+
+The SMTT (Total events) alarm can be repeatedly triggered by issues such as network problems, power outages or upgrades. This section has information on investigating events so that you can better understand why these alarms have occurred. If an event occurred because of a known issue, it is safe to reset the event counters.
+
+== Reviewing events from the Nodes page
+
+The Nodes page lists the system events for each grid node.
+
+. Select *Nodes*.
+. Select *_grid node_* > *Events*.
+. At the top of the page, determine if an event is shown for *Last Event*, which describes the last event detected by the grid node.
++
+The event is relayed verbatim from the grid node and includes any log messages with a severity level of ERROR or CRITICAL.
+
+. Review the table to see if the Count for any event or error is not zero.
+. After resolving issues, click *Reset event counts* to return the counts to zero.
+
+== Reviewing events from the Grid Topology page
+
+The Grid Topology page also lists the system events for each grid node.
+
+. Select *Support* > *Tools* > *Grid Topology*.
+. Select *_site_* > *_grid node_* > *SSM* > *Events* > *Overview* > *Main*.
+
+.Related information
+
+xref:resetting-event-counts.adoc[Resetting event counts]
+
+xref:logs-files-reference.adoc[Log files reference]

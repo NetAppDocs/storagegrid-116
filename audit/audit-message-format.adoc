@@ -1,0 +1,57 @@
+---
+permalink: audit/audit-message-format.html
+sidebar: sidebar
+keywords: storagegrid, audit, message formats, message format 
+summary: 'Audit messages exchanged within the StorageGRID system include standard information common to all messages and specific content describing the event or activity being reported.'
+---
+= Audit message format
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Audit messages exchanged within the StorageGRID system include standard information common to all messages and specific content describing the event or activity being reported.
+
+If the summary information provided by the `audit-explain` and `audit-sum` tools is insufficient, refer to this section to understand the general format of all audit messages.
+
+The following is an example audit message as it might appear in the audit log file:
+
+----
+2014-07-17T03:50:47.484627
+[AUDT:[RSLT(FC32):VRGN][AVER(UI32):10][ATIM(UI64):1405569047484627][ATYP(FC32):SYSU][ANID(UI32):11627225][AMID(FC32):ARNI][ATID(UI64):9445736326500603516]]
+----
+
+Each audit message contains a string of attribute elements. The entire string is enclosed in brackets (`[ ]`), and each attribute element in the string has the following characteristics:
+
+* Enclosed in brackets `[ ]`
+* Introduced by the string `AUDT`, which indicates an audit message
+* Without delimiters (no commas or spaces) before or after
+* Terminated by a line feed character `\n`
+
+Each element includes an attribute code, a data type, and a value that are reported in this format:
+
+----
+[ATTR(type):value][ATTR(type):value]...
+[ATTR(type):value]\n
+----
+
+The number of attribute elements in the message depends on the event type of the message. The attribute elements are not listed in any particular order.
+
+The following list describes the attribute elements:
+
+* `ATTR` is a four-character code for the attribute being reported. There are some attributes that are common to all audit messages and others that are event-specific.
+* `type` is a four-character identifier of the programming data type of the value, such as UI64, FC32, and so on. The type is enclosed in parentheses `( )`.
+* `value` is the content of the attribute, typically a numeric or text value. Values always follow a colon (`:`). Values of data type CSTR are surrounded by double quotes `" "`.
+
+.Related information
+
+xref:using-audit-explain-tool.adoc[Using the audit-explain tool]
+
+xref:using-audit-sum-tool.adoc[Using the audit-sum tool]
+
+xref:audit-messages-main.adoc[Audit messages]
+
+xref:common-elements-in-audit-messages.adoc[Common elements in audit messages]
+
+xref:data-types.adoc[Data types]
+
+xref:audit-message-examples.adoc[Audit message examples]

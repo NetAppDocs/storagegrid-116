@@ -1,0 +1,30 @@
+---
+permalink: ubuntu/installing-linux.html
+sidebar: sidebar
+keywords:
+summary: 'You must install Ubuntu or Debian on all grid hosts. Use the NetApp Interoperability Matrix Tool to get a list of supported versions.'
+---
+= Installing Linux
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must install Ubuntu or Debian on all grid hosts. Use the NetApp Interoperability Matrix Tool to get a list of supported versions.
+
+.Steps
+
+. Install Ubuntu or Debian on all physical or virtual grid hosts according to the distributor's instructions or your standard procedure.
++
+NOTE: Do not install any graphical desktop environments. When installing Ubuntu, you must select *standard system utilities*. Selecting *OpenSSH server* is recommended to enable ssh access to your Ubuntu hosts. All other options can remain unselected.
+
+. Ensure that all hosts have access to Ubuntu or Debian package repositories.
+. If swap is enabled:
+ .. Run the following command: `$ sudo swapoff --all`
+ .. Remove all swap entries from `/etc/fstab` to persist the settings.
+
++
+IMPORTANT: Failing to disable swap entirely can severely lower performance.
+
+.Related information
+
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]

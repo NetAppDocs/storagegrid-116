@@ -1,0 +1,232 @@
+---
+permalink: s3/error-responses.html
+sidebar: sidebar
+keywords: error, error responses
+summary: 'The StorageGRID system supports all standard S3 REST API error responses that apply. In addition, the StorageGRID implementation adds several custom responses.'
+---
+= Error responses
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system supports all standard S3 REST API error responses that apply. In addition, the StorageGRID implementation adds several custom responses.
+
+== Supported S3 API error codes
+
+[options="header"]
+|===
+| Name| HTTP status
+a|
+AccessDenied
+a|
+403 Forbidden
+a|
+BadDigest
+a|
+400 Bad Request
+a|
+BucketAlreadyExists
+a|
+409 Conflict
+a|
+BucketNotEmpty
+a|
+409 Conflict
+a|
+IncompleteBody
+a|
+400 Bad Request
+a|
+InternalError
+a|
+500 Internal Server Error
+a|
+InvalidAccessKeyId
+a|
+403 Forbidden
+a|
+InvalidArgument
+a|
+400 Bad Request
+a|
+InvalidBucketName
+a|
+400 Bad Request
+a|
+InvalidBucketState
+a|
+409 Conflict
+a|
+InvalidDigest
+a|
+400 Bad Request
+a|
+InvalidEncryptionAlgorithmError
+a|
+400 Bad Request
+a|
+InvalidPart
+a|
+400 Bad Request
+a|
+InvalidPartOrder
+a|
+400 Bad Request
+a|
+InvalidRange
+a|
+416 Requested Range Not Satisfiable
+a|
+InvalidRequest
+a|
+400 Bad Request
+a|
+InvalidStorageClass
+a|
+400 Bad Request
+a|
+InvalidTag
+a|
+400 Bad Request
+a|
+InvalidURI
+a|
+400 Bad Request
+a|
+KeyTooLong
+a|
+400 Bad Request
+a|
+MalformedXML
+a|
+400 Bad Request
+a|
+MetadataTooLarge
+a|
+400 Bad Request
+a|
+MethodNotAllowed
+a|
+405 Method Not Allowed
+a|
+MissingContentLength
+a|
+411 Length Required
+a|
+MissingRequestBodyError
+a|
+400 Bad Request
+a|
+MissingSecurityHeader
+a|
+400 Bad Request
+a|
+NoSuchBucket
+a|
+404 Not Found
+a|
+NoSuchKey
+a|
+404 Not Found
+a|
+NoSuchUpload
+a|
+404 Not Found
+a|
+NotImplemented
+a|
+501 Not Implemented
+a|
+NoSuchBucketPolicy
+a|
+404 Not Found
+a|
+ObjectLockConfigurationNotFoundError
+a|
+404 Not Found
+a|
+PreconditionFailed
+a|
+412 Precondition Failed
+a|
+RequestTimeTooSkewed
+a|
+403 Forbidden
+a|
+ServiceUnavailable
+a|
+503 Service Unavailable
+a|
+SignatureDoesNotMatch
+a|
+403 Forbidden
+a|
+TooManyBuckets
+a|
+400 Bad Request
+a|
+UserKeyMustBeSpecified
+a|
+400 Bad Request
+|===
+
+== StorageGRID custom error codes
+
+[options="header"]
+|===
+| Name| Description| HTTP status
+a|
+XBucketLifecycleNotAllowed
+a|
+Bucket lifecycle configuration is not allowed in a legacy Compliant bucket
+a|
+400 Bad Request
+a|
+XBucketPolicyParseException
+a|
+Failed to parse received bucket policy JSON.
+a|
+400 Bad Request
+a|
+XComplianceConflict
+a|
+Operation denied because of legacy Compliance settings.
+a|
+403 Forbidden
+a|
+XComplianceReducedRedundancyForbidden
+a|
+Reduced redundancy is not allowed in legacy Compliant bucket
+a|
+400 Bad Request
+a|
+XMaxBucketPolicyLengthExceeded
+a|
+Your policy exceeds the maximum allowed bucket policy length.
+a|
+400 Bad Request
+a|
+XMissingInternalRequestHeader
+a|
+Missing a header of an internal request.
+a|
+400 Bad Request
+a|
+XNoSuchBucketCompliance
+a|
+The specified bucket does not have legacy Compliance enabled.
+a|
+404 Not Found
+a|
+XNotAcceptable
+a|
+The request contains one or more accept headers that could not be satisfied.
+a|
+406 Not Acceptable
+a|
+XNotImplemented
+a|
+The request you provided implies functionality that is not implemented.
+a|
+501 Not Implemented
+|===

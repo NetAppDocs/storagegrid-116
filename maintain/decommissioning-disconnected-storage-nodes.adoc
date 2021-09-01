@@ -1,0 +1,29 @@
+---
+permalink: maintain/decommissioning-disconnected-storage-nodes.html
+sidebar: sidebar
+keywords: storagegrid, connected nodes, decommission node, storage node, disconnected storage node
+summary: 'You must understand what can happen if you decommission a Storage Node while it is disconnected \(health is Unknown or Administratively Down\).'
+---
+= Decommissioning disconnected Storage Nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must understand what can happen if you decommission a Storage Node while it is disconnected (health is Unknown or Administratively Down).
+
+When you decommission a Storage Node that is disconnected from the grid, StorageGRID uses data from other Storage Nodes to reconstruct the object data and metadata that was on the disconnected node. It does this by automatically starting data repair jobs at the end of the decommissioning process.
+
+Before decommissioning a disconnected Storage Node, be aware of the following:
+
+* You should never decommission a disconnected node unless you are sure it cannot be brought online or recovered.
++
+IMPORTANT: Do not perform this procedure if you believe it might be possible to recover object data from the node. Instead, contact technical support to determine if node recovery is possible.
+
+* If a disconnected Storage Node contains the only copy of an object, that object will be lost when you decommission the node. The data repair jobs can only reconstruct and recover objects if at least one replicated copy or enough erasure-coded fragments exist on Storage Nodes that are currently connected.
+* When you decommission a disconnected Storage Node, the decommission procedure completes relatively quickly. However, the data repair jobs can take days or weeks to run and are not monitored by the decommission procedure. You must manually monitor these jobs and restart them as needed. See the instructions on monitoring data repair.
++
+xref:checking-data-repair-jobs.adoc[Checking data repair jobs]
+
+* If you decommission more than one disconnected Storage Node at a time, data loss might occur. The system might not be able to reconstruct data if too few copies of object data, metadata, or erasure-coded fragments remain available.
++
+IMPORTANT: If you have more than one disconnected Storage Node that you cannot recover, contact technical support to determine the best course of action.

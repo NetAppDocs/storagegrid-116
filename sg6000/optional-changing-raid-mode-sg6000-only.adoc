@@ -1,0 +1,45 @@
+---
+permalink: sg6000/optional-changing-raid-mode-sg6000-only.html
+sidebar: sidebar
+keywords: storagegrid, sg6000, storage node, storage appliance, raid, raid mode, change, changing, modify, DDP, ddp16, raid6
+summary: 'You can change to a different RAID mode on the appliance to accommodate your storage and recovery requirements. You can only change the mode before deploying the appliance Storage Node.'
+---
+= Optional: Changing the RAID mode (SG6000 only)
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can change to a different RAID mode on the appliance to accommodate your storage and recovery requirements. You can only change the mode before deploying the appliance Storage Node.
+
+.What you'll need
+
+* You are using any client that can connect to StorageGRID.
+* The client has a  xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+.About this task
+
+Before deploying the appliance as a Storage Node, you can choose one of the following volume configuration options:
+
+* *DDP*: This mode uses two parity drives for every eight data drives. This is the default and recommended mode for all appliances. When compared to RAID6, DDP delivers better system performance, reduced rebuild times after drive failures, and ease of management. DDP also provides drawer loss protection in 60-drive appliances.
+* *DDP16*: This mode uses two parity drives for every 16 data drives, which results in higher storage efficiency compared to DDP. When compared to RAID6, DDP16 delivers better system performance, reduced rebuild times after drive failures, ease of management, and comparable storage efficiency. To use DDP16 mode, your configuration must contain at least 20 drives. DDP16 does not provide drawer loss protection.
+* *RAID6*: This mode uses two parity drives for every 16 or more data drives. To use RAID 6 mode, your configuration must contain at least 20 drives. Although RAID6 can increase storage efficiency of the appliance when compared to DDP, it is not recommended for most StorageGRID environments.
+
+IMPORTANT: If any volumes have already been configured or if StorageGRID was previously installed, changing the RAID mode causes the volumes to be removed and replaced. Any data on those volumes will be lost.
+
+.Steps
+
+. Open a browser, and enter one of the IP addresses for the appliance's compute controller.
++
+`*https://_Controller_IP_:8443*`
++
+`_Controller_IP_` is the IP address of the compute controller (not the storage controller) on any of the three StorageGRID networks.
++
+The StorageGRID Appliance Installer Home page appears.
+
+. Select *Advanced* > *RAID Mode*.
+. On the *Configure RAID Mode* page, select the desired RAID mode from the Mode drop-down list.
+. Click *Save*.
+
+.Related information
+
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site^]

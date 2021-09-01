@@ -1,0 +1,113 @@
+---
+permalink: maintain/changing-ip-addresses-and-mtu-values-for-all-nodes-in-grid.html
+sidebar: sidebar
+keywords: storagegrid, node ip address, change node ip, change node ip address, changing node ip, changing node ip address
+summary: 'If you need to change the Grid Network IP address for all nodes in the grid, you must follow this special procedure. You cannot do a grid-wide Grid Network IP change using the procedure to change individual nodes.'
+---
+= Changing IP addresses for all nodes in the grid
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you need to change the Grid Network IP address for all nodes in the grid, you must follow this special procedure. You cannot do a grid-wide Grid Network IP change using the procedure to change individual nodes.
+
+.What you'll need
+
+* You must have the `Passwords.txt` file.
+
+To ensure that the grid starts up successfully, you must make all the changes at once.
+
+NOTE: This procedure applies to the Grid Network only. You cannot use this procedure to change IP addresses on the Admin or Client Networks.
+
+If you want to change the IP addresses and MTU for the nodes at one site only, follow the instructions for changing a node's network configuration.
+
+.Steps
+
+. Plan ahead for changes that you need to make outside of the Change IP tool, such as changes to DNS or NTP, and changes to the single sign-on (SSO) configuration, if used.
++
+IMPORTANT: If the existing NTP servers will not be accessible to the grid on the new IP addresses, add the new NTP servers before you perform the change-ip procedure.
++
+IMPORTANT: If the existing DNS servers will not be accessible to the grid on the new IP addresses, add the new DNS servers before you perform the change-ip procedure.
++
+IMPORTANT: If SSO is enabled for your StorageGRID system and any relying party trusts were configured using Admin Node IP addresses (instead of fully qualified domain names, as recommended), be prepared to update or reconfigure these relying party trusts in Active Directory Federation Services (AD FS) immediately after you change IP addresses. See the instructions for administering StorageGRID.
++
+IMPORTANT: If necessary, add the new subnet for the new IP addresses.
+
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Start the Change IP tool by entering the following command: `change-ip`
+. Enter the provisioning passphrase at the prompt.
++
+The main menu appears. By default, the `Selected nodes` field is set to `all`.
++
+image::../media/change_ip_tool_main_menu.png[screenshot showing welcome screen of change IP tool]
+
+. On the main menu, select *2* to edit IP/subnet mask, gateway, and MTU information for all the nodes.
+ .. Select *1* to make changes to the Grid Network.
++
+After you make your selection, the prompt shows the node names, Grid Network name, data type (IP/mask, Gateway, or MTU), and current values.
++
+Editing the IP address, prefix length, gateway, or MTU of a DHCP-configured interface will change the interface to static. A warning is displayed before each interface configured by DHCP.
++
+Interfaces configured as `fixed` cannot be edited.
+
+ .. To set a new value, enter it in the format shown for the current value.
+ .. After editing all nodes you want to change, enter *q* to return to the main menu.
++
+Your changes are held until cleared or applied.
+. Review your changes by selecting one of the following options:
+ ** *5*: Shows edits in output that is isolated to show only the changed item. Changes are highlighted in green (additions) or red (deletions), as shown in the example output:
++
+image::../media/change_ip_tool_edit_ip_mask_sample_output.png[screenshot described by surrounding text]
+
+ ** *6*: Shows edits in output that displays the full configuration. Changes are highlighted in green (additions) or red (deletions).
++
+NOTE: Certain command line interfaces might show additions and deletions using strikethrough formatting. Proper display depends on your terminal client supporting the necessary VT100 escape sequences.
+
+[start=7]
+. Select option *7* to validate all changes.
++
+This validation ensures that the rules for the Grid Network, such as not using overlapping subnets, are not violated.
++
+In this example, validation returned errors.
++
+image::../media/change_ip_tool_validate_sample_error_messages.gif[screenshot described by surrounding text]
++
+In this example, validation passed.
++
+image::../media/change_ip_tool_validate_sample_passed_messages.gif[screenshot described by surrounding text]
+
+. Once validation passes, select *10* to apply the new network configuration.
+. Select *stage* to apply the changes the next time the nodes are restarted.
++
+IMPORTANT: You must select *stage*. Do not perform a rolling restart, either manually or by selecting *apply* instead of *stage*; the grid will not start up successfully.
+
+. After your changes are complete, select *0* to exit the Change IP tool.
+. Shut down all nodes simultaneously.
++
+IMPORTANT: The entire grid must be shut down at once, so that all nodes are down at the same time.
+
+. Make the physical or virtual networking changes that are required.
+. Verify that all grid nodes are down.
+. Power on all nodes.
+. Once the grid starts up successfully:
+ .. If you added new NTP servers, delete the old NTP server values.
+ .. If you added new DNS servers, delete the old DNS server values.
+. Download the new Recovery Package from the Grid Manager.
+ .. Select *Maintenance* > *System* > *Recovery Package*.
+ .. Enter the provisioning passphrase.
+
+.Related information
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:changing-nodes-network-configuration.adoc[Changing a node's network configuration]
+
+xref:adding-to-or-changing-subnet-lists-on-grid-network.adoc[Adding to or changing subnet lists on the Grid Network]
+
+xref:shutting-down-grid-node.adoc[Shutting down a grid node]

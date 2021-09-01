@@ -1,0 +1,144 @@
+---
+permalink: sg5700/automating-installation-configuration-appliance-nodes-configure-sga-py-script.html
+sidebar: sidebar
+keywords: storagegrid, sg5700, storage node, storage appliance, automate, automating, automation, automatic, install, installation, configuration, configure, configure-sga.py script, configure-sga.py
+summary: 'You can use the configure-sga.py script to automate many of the installation and configuration tasks for StorageGRID appliance nodes, including installing and configuring a primary Admin Node. This script can be useful if you have a large number of appliances to configure. You can also use the script to generate a JSON file that contains appliance configuration information.'
+---
+= Automating installation and configuration of appliance nodes using the configure-sga.py script
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the `configure-sga.py` script to automate many of the installation and configuration tasks for StorageGRID appliance nodes, including installing and configuring a primary Admin Node. This script can be useful if you have a large number of appliances to configure. You can also use the script to generate a JSON file that contains appliance configuration information.
+
+.About this task
+
+* The appliance has been installed in a rack, connected to your networks, and powered on.
+* Network links and IP addresses have been configured for the primary Admin Node using the StorageGRID Appliance Installer.
+* If you are installing the primary Admin Node, you know its IP address.
+* If you are installing and configuring other nodes, the primary Admin Node has been deployed, and you know its IP address.
+* For all nodes other than the primary Admin Node, all Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
+* You have downloaded the `configure-sga.py` file. The file is included in the installation archive, or you can access it by clicking *Help* > *Appliance Installation Script* in the StorageGRID Appliance Installer.
+
+NOTE: This procedure is for advanced users with some experience using command-line interfaces. Alternatively, you can also use the StorageGRID Appliance Installer to automate the configuration. +
+xref:automating-appliance-configuration-using-storagegrid-appliance-installer.adoc[Automating appliance configuration using the StorageGRID Appliance Installer]
+
+.Steps
+
+. Log in to the Linux machine you are using to run the Python script.
+. For general help with the script syntax and to see a list of the available parameters, enter the following:
++
+----
+configure-sga.py --help
+----
++
+The `configure-sga.py` script uses five subcommands:
+
+ ** `advanced` for advanced StorageGRID appliance interactions, including BMC configuration and creating a JSON file containing the current configuration of the appliance
+ ** `configure` for configuring the RAID mode, node name, and networking parameters
+ ** `install` for starting a StorageGRID installation
+ ** `monitor` for monitoring a StorageGRID installation
+ ** `reboot` for rebooting the appliance
+
++
+If you enter a subcommand (advanced, configure, install, monitor, or reboot) argument followed by the `--help` option you will get a different help text providing more detail on the options available within that subcommand: +
+`configure-sga.py _subcommand_ --help`
+
+. To confirm the current configuration of the appliance node, enter the following where `_SGA-install-ip_` is any one of the IP addresses for the appliance node: +
+`configure-sga.py configure _SGA-INSTALL-IP_`
++
+The results show current IP information for the appliance, including the IP address of the primary Admin Node and information about the Admin, Grid, and Client Networks.
++
+----
+Connecting to +https://10.224.2.30:8443+ (Checking version and connectivity.)
+2021/02/25 16:25:11: Performing GET on /api/versions... Received 200
+2021/02/25 16:25:11: Performing GET on /api/v2/system-info... Received 200
+2021/02/25 16:25:11: Performing GET on /api/v2/admin-connection... Received 200
+2021/02/25 16:25:11: Performing GET on /api/v2/link-config... Received 200
+2021/02/25 16:25:11: Performing GET on /api/v2/networks... Received 200
+2021/02/25 16:25:11: Performing GET on /api/v2/system-config... Received 200
+
+  StorageGRID Appliance
+    Name:        LAB-SGA-2-30
+    Node type:   storage
+
+  StorageGRID primary Admin Node
+    IP:        172.16.1.170
+    State:     unknown
+    Message:   Initializing...
+    Version:   Unknown
+
+  Network Link Configuration
+    Link Status
+          Link      State      Speed (Gbps)
+          ----      -----      -----
+          1         Up         10
+          2         Up         10
+          3         Up         10
+          4         Up         10
+          5         Up         1
+          6         Down       N/A
+
+    Link Settings
+        Port bond mode:      FIXED
+        Link speed:          10GBE
+
+        Grid Network:        ENABLED
+            Bonding mode:    active-backup
+            VLAN:            novlan
+            MAC Addresses:   00:a0:98:59:8e:8a  00:a0:98:59:8e:82
+
+        Admin Network:       ENABLED
+            Bonding mode:    no-bond
+            MAC Addresses:   00:80:e5:29:70:f4
+
+        Client Network:      ENABLED
+            Bonding mode:    active-backup
+            VLAN:            novlan
+            MAC Addresses:   00:a0:98:59:8e:89  00:a0:98:59:8e:81
+
+  Grid Network
+    CIDR:      172.16.2.30/21 (Static)
+    MAC:       00:A0:98:59:8E:8A
+    Gateway:   172.16.0.1
+    Subnets:   172.17.0.0/21
+               172.18.0.0/21
+               192.168.0.0/21
+    MTU:       1500
+
+  Admin Network
+    CIDR:      10.224.2.30/21 (Static)
+    MAC:       00:80:E5:29:70:F4
+    Gateway:   10.224.0.1
+    Subnets:   10.0.0.0/8
+               172.19.0.0/16
+               172.21.0.0/16
+    MTU:       1500
+
+  Client Network
+    CIDR:      47.47.2.30/21 (Static)
+    MAC:       00:A0:98:59:8E:89
+    Gateway:   47.47.0.1
+    MTU:       2000
+
+##############################################################
+#####   If you are satisfied with this configuration,    #####
+##### execute the script with the "install" sub-command. #####
+##############################################################
+----
+
+. If you need to change any of the values in the current configuration, use the `configure` subcommand to update them. For example, if you want to change the IP address that the appliance uses for connection to the primary Admin Node to `172.16.2.99`, enter the following: +
+`configure-sga.py configure --admin-ip 172.16.2.99 _SGA-INSTALL-IP_`
+
+. If you want to back up the appliance configuration to a JSON file, use the `advanced` and `backup-file` subcommands. For example, if you want to back up the configuration of an appliance with IP address `_SGA-INSTALL-IP_` to a file named `appliance-SG1000.json`, enter the following: +
+`configure-sga.py advanced --backup-file appliance-SG1000.json _SGA-INSTALL-IP_`
++
+The JSON file containing the configuration information is written to the same directory you executed the script from.
++
+IMPORTANT: Check that the top-level node name in the generated JSON file matches the appliance name. Do not make any changes to this file unless you are an experienced user and have a thorough understanding of StorageGRID APIs.
+
+. When you are satisfied with the appliance configuration, use the `install` and `monitor` subcommands to install the appliance: +
+`configure-sga.py install --monitor _SGA-INSTALL-IP_`
+
+. If you want to reboot the appliance, enter the following: +
+`configure-sga.py reboot _SGA-INSTALL-IP_`

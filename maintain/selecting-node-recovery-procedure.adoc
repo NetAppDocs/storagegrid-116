@@ -1,0 +1,39 @@
+---
+permalink: maintain/selecting-node-recovery-procedure.html
+sidebar: sidebar
+keywords: storagegrid, recover, procedure
+summary: 'You must select the correct recovery procedure for the type of node that has failed.'
+---
+= Selecting a node recovery procedure
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must select the correct recovery procedure for the type of node that has failed.
+
+[cols="1a,2a" options="header"]
+|===
+| Grid node| Recovery procedure
+|More than one Storage Node
+|Contact technical support. If more than one Storage Node has failed, technical support must assist with recovery to prevent database inconsistencies that could lead to data loss. A site recovery procedure might be required.
+
+xref:how-site-recovery-is-performed-by-technical-support.adoc[How site recovery is performed by technical support]
+
+|A single Storage Node
+|The Storage Node recovery procedure depends on the type and duration of the failure.
+
+xref:recovering-from-storage-node-failures.adoc[Recovering from Storage Node failures]
+
+|Admin Node
+|The Admin Node procedure depends on whether you need to recover the primary Admin Node or a non-primary Admin Node.
+
+xref:recovering-from-admin-node-failures.adoc[Recovering from Admin Node failures]
+
+|Gateway Node
+|xref:recovering-from-gateway-node-failures.adoc[Recovering from Gateway Node failures].
+
+|Archive Node
+|xref:recovering-from-archive-node-failures.adoc[Recovering from Archive Node failures].
+|===
+
+NOTE: If a server that is hosting more than one grid node fails, you can recover the nodes in any order. However, if the failed server is hosting the primary Admin Node, you must recover that node first. Recovering the primary Admin Node first prevents other node recoveries from halting as they wait to contact the primary Admin Node.

@@ -1,0 +1,31 @@
+---
+permalink: maintain/fixing-mssing-network-interface-errors.html
+sidebar: sidebar
+keywords: storagegrid, network interface, network interface error
+summary: 'If the host network is not configured correctly or a name is misspelled, an error occurs when StorageGRID checks the mapping specified in the /etc/storagegrid/nodes/<node-name\>.conf file.'
+---
+= Fixing missing network interface errors
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If the host network is not configured correctly or a name is misspelled, an error occurs when StorageGRID checks the mapping specified in the `/etc/storagegrid/nodes/_node-name_.conf` file.
+
+You might see an error or warning matching this pattern:
+
+`Checking configuration file `/etc/storagegrid/nodes/_node-name_.conf` for node _node-name_...`
+`ERROR: _node-name_: GRID_NETWORK_TARGET = _host-interface-name_`
+`       _node-name_: Interface '_host-interface-name_' does not exist`
+
+
+The error could be reported for the Grid Network, the Admin Network, or the Client Network. This error means that the `/etc/storagegrid/nodes/_node-name_.conf` file maps the indicated StorageGRID network to the host interface named `_host-interface-name_`, but there is no interface with that name on the current host.
+
+If you receive this error, verify that you completed the steps in "`Deploying new Linux hosts.`" Use the same names for all host interfaces as were used on the original host.
+
+If you are unable to name the host interfaces to match the node configuration file, you can edit the node configuration file and change the value of the GRID_NETWORK_TARGET, the ADMIN_NETWORK_TARGET, or the CLIENT_NETWORK_TARGET to match an existing host interface.
+
+Make sure the host interface provides access to the appropriate physical network port or VLAN, and that the interface does not directly reference a bond or bridge device. You must either configure a VLAN (or other virtual interface) on top of the bond device on the host, or use a bridge and virtual Ethernet (veth) pair.
+
+.Related information
+
+xref:deploying-new-linux-hosts.adoc[Deploying new Linux hosts]

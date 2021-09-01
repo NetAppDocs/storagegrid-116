@@ -1,0 +1,236 @@
+---
+permalink: monitor/searching-for-and-restoring-potentially-lost-objects.html
+sidebar: sidebar
+keywords:
+summary: 'It might be possible to find and restore objects that have triggered a Lost Objects (LOST) alarm and a *Object lost* alert and that you have identified as potentially lost.'
+---
+
+= Searching for and restoring potentially lost objects
+:experimental:
+:icons: font
+:imagesdir: ../media/
+
+
+[.lead]
+It might be possible to find and restore objects that have triggered a Lost Objects (LOST) alarm and a *Object lost* alert and that you have identified as potentially lost.
+
+.What you'll need
+* You must have the UUID of any lost object, as identified in "`Investigating lost objects.`"
+* You must have the `Passwords.txt` file.
+
+.About this task
+You can follow this procedure to look for replicated copies of the lost object elsewhere in the grid. In most cases, the lost object will not be found. However, in some cases, you might be able to find and restore a lost replicated object if you take prompt action.
+
+IMPORTANT: Contact technical support for assistance with this procedure.
+
+.Steps
+. From an Admin Node, search the audit logs for possible object locations:
+ .. Log in to the grid node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
+When you are logged in as root, the prompt changes from `$` to `#`.
+ .. Change to the directory where the audit logs are located: `cd /var/local/audit/export/`
+ .. Use grep to extract the audit messages associated with the potentially lost object and send them to an output file. Enter: `grep uuid-valueaudit_file_name > output_file_name`
++
+For example:
++
+----
+Admin: # grep 926026C4-00A4-449B-AC72-BCCA72DD1311 audit.log > messages_about_lost_object.txt
+----
+
+ .. Use grep to extract the Location Lost (LLST) audit messages from this output file. Enter: `grep LLST output_file_name`
++
+For example:
++
+----
+Admin: # grep LLST messages_about_lost_objects.txt
+----
++
+An LLST audit message looks like this sample message.
++
+----
+[AUDT:\[NOID\(UI32\):12448208\][CBIL(UI64):0x38186FE53E3C49A5]
+[UUID(CSTR):"926026C4-00A4-449B-AC72-BCCA72DD1311"][LTYP(FC32):CLDI]
+[PCLD\(CSTR\):"/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%\#3tN6"\]
+[TSRC(FC32):SYST][RSLT(FC32):NONE][AVER(UI32):10][ATIM(UI64):
+1581535134379225][ATYP(FC32):LLST][ANID(UI32):12448208][AMID(FC32):CLSM]
+[ATID(UI64):7086871083190743409]]
+----
+
+ .. Find the PCLD field and the NOID field in the LLST message.
++
+If present, the value of PCLD is the complete path on disk to the missing replicated object copy. The value of NOID is the node id of the LDR where a copy of the object might be found.
++
+If you find an object location, you might be able to restore the object.
+
+ .. Find the Storage Node for this LDR node ID.
++
+There are two ways to use the node ID to find the Storage Node:
+
+  *** In the Grid Manager, select *Support* > *Tools* > *Grid Topology*. Then select *_Data Center_* > *_Storage Node_* > *LDR*. The LDR node ID is in the Node Information table. Review the information for each Storage Node until you find the one that hosts this LDR.
+  *** Download and unzip the Recovery Package for the grid. There is a _\docs_ directory in the SAID package. If you open the index.html file, the Servers Summary shows all node IDs for all grid nodes.
+
+. Determine if the object exists on the Storage Node indicated in the audit message:
+ .. Log in to the grid node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
+
+When you are logged in as root, the prompt changes from `$` to `#`.
+
+[start=2]
+ .. Determine if the file path for the object exists.
+
+For the file path of the object, use the value of PCLD from the LLST audit message.
+
+For example, enter:
+
+----
+ls '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6'
+----
+
+*Note*: Always enclose the object file path in single quotes in commands to escape any special characters.
+
+  *** If the object path is not found, the object is lost and cannot be restored using this procedure. Contact technical support.
+  *** If the object path is found, continue with step <<restore_the_object_to_StorageGRID,Restore the object to StorageGRID>>. You can attempt to restore the found object back to StorageGRID.
+
+[#restore_the_object_to_StorageGRID, start=3]
+. If the object path was found, attempt to restore the object to StorageGRID:
+ .. From the same Storage Node, change the ownership of the object file so that it can be managed by StorageGRID. Enter: `chown ldr-user:bycast 'file_path_of_object'`
+ .. Telnet to localhost 1402 to access the LDR console. Enter: `telnet 0 1402`
+ .. Enter: `cd /proc/STOR`
+ .. Enter: `Object_Found 'file_path_of_object'`
++
+For example, enter:
++
+----
+Object_Found '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6'
+----
++
+Issuing the `Object\_Found` command notifies the grid of the object's location. It also triggers the active ILM policy, which makes additional copies as specified in the policy.
+
++
+*Note*: If the Storage Node where you found the object is offline, you can copy the object to any Storage Node that is online. Place the object in any /var/local/rangedb directory of the online Storage Node. Then, issue the `Object\_Found` command using that file path to the object.
+ ** If the object cannot be restored, the `Object\_Found` command fails. Contact technical support.
+ ** If the object was successfully restored to StorageGRID, a success message appears. For example:
++
+----
+ade 12448208: /proc/STOR > Object_Found '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6'
+
+ade 12448208: /proc/STOR > Object found succeeded.
+First packet of file was valid. Extracted key: 38186FE53E3C49A5
+Renamed '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6' to '/var/local/rangedb/1/p/17/11/00rH0%DkRt78Ila#3udu'
+----
++
+Continue with step <<verify_that_new_locations_were_created,Verify that new locations were created>>
+
+[#verify_that_new_locations_were_created, start=4]
+. If the object was successfully restored to StorageGRID, verify that new locations were created.
+ .. Enter: `cd /proc/OBRP`
+ .. Enter: `ObjectByUUID UUID_value`
+
+The following example shows that there are two locations for the object with UUID 926026C4-00A4-449B-AC72-BCCA72DD1311.
+
+----
+ade 12448208: /proc/OBRP > ObjectByUUID 926026C4-00A4-449B-AC72-BCCA72DD1311
+
+{
+    "TYPE(Object Type)": "Data object",
+    "CHND(Content handle)": "926026C4-00A4-449B-AC72-BCCA72DD1311",
+    "NAME": "cats",
+    "CBID": "0x38186FE53E3C49A5",
+    "PHND(Parent handle, UUID)": "221CABD0-4D9D-11EA-89C3-ACBB00BB82DD",
+    "PPTH(Parent path)": "source",
+    "META": {
+        "BASE(Protocol metadata)": {
+            "PAWS(S3 protocol version)": "2",
+            "ACCT(S3 account ID)": "44084621669730638018",
+            "*ctp(HTTP content MIME type)": "binary/octet-stream"
+        },
+        "BYCB(System metadata)": {
+            "CSIZ(Plaintext object size)": "5242880",
+            "SHSH(Supplementary Plaintext hash)": "MD5D 0xBAC2A2617C1DFF7E959A76731E6EAF5E",
+            "BSIZ(Content block size)": "5252084",
+            "CVER(Content block version)": "196612",
+            "CTME(Object store begin timestamp)": "2020-02-12T19:16:10.983000",
+            "MTME(Object store modified timestamp)": "2020-02-12T19:16:10.983000",
+            "ITME": "1581534970983000"
+        },
+        "CMSM": {
+            "LATM(Object last access time)": "2020-02-12T19:16:10.983000"
+        },
+        "AWS3": {
+            "LOCC": "us-east-1"
+        }
+    },
+    "CLCO\(Locations\)": \[
+        \{
+            "Location Type": "CLDI\(Location online\)",
+            "NOID\(Node ID\)": "12448208",
+            "VOLI\(Volume ID\)": "3222345473",
+            "Object File Path": "/var/local/rangedb/1/p/17/11/00rH0%DkRt78Ila\#3udu",
+            "LTIM\(Location timestamp\)": "2020-02-12T19:36:17.880569"
+        \},
+        \{
+            "Location Type": "CLDI\(Location online\)",
+            "NOID\(Node ID\)": "12288733",
+            "VOLI\(Volume ID\)": "3222345984",
+            "Object File Path": "/var/local/rangedb/0/p/19/11/00rH0%DkRt78Rrb\#3s;L",
+            "LTIM\(Location timestamp\)": "2020-02-12T19:36:17.934425"
+        }
+    ]
+}
+----
+
+ .. Sign out of the LDR console. Enter: `exit`
+. From an Admin Node, search the audit logs for the ORLM audit message for this object to confirm that information lifecycle management (ILM) has placed copies as required.
+ .. Log in to the grid node:
+  ... Enter the following command: `ssh admin@grid_node_IP`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
+When you are logged in as root, the prompt changes from `$` to `#`.
+ .. Change to the directory where the audit logs are located: `cd /var/local/audit/export/`
+ .. Use grep to extract the audit messages associated with the object to an output file. Enter: `grep uuid-valueaudit_file_name > output_file_name`
++
+For example:
++
+----
+Admin: # grep 926026C4-00A4-449B-AC72-BCCA72DD1311 audit.log > messages_about_restored_object.txt
+----
+
+ .. Use grep to extract the Object Rules Met (ORLM) audit messages from this output file. Enter: `grep ORLM output_file_name`
++
+For example:
++
+----
+Admin: # grep ORLM messages_about_restored_object.txt
+----
++
+An ORLM audit message looks like this sample message.
++
+----
+[AUDT:[CBID(UI64):0x38186FE53E3C49A5][RULE(CSTR):"Make 2 Copies"]
+[STAT(FC32):DONE][CSIZ(UI64):0][UUID(CSTR):"926026C4-00A4-449B-AC72-BCCA72DD1311"]
+[LOCS(CSTR):"**CLDI 12828634 2148730112**, CLDI 12745543 2147552014"]
+[RSLT(FC32):SUCS][AVER(UI32):10][ATYP(FC32):ORLM][ATIM(UI64):1563398230669]
+[ATID(UI64):15494889725796157557][ANID(UI32):13100453][AMID(FC32):BCMS]]
+----
+
+ .. Find the LOCS field in the audit message.
++
+If present, the value of CLDI in LOCS is the node ID and the volume ID where an object copy has been created. This message shows that the ILM has been applied and that two object copies have been created in two locations in the grid.
+. Reset the count of lost objects in the Grid Manager.
+
+.Related information
+
+xref:troubleshooting-storagegrid-system.adoc[Investigating lost objects]
+
+xref:troubleshooting-storagegrid-system.adoc[Confirming object data locations]
+
+xref:troubleshooting-storagegrid-system.adoc[Resetting lost and missing object counts]
+
+xref:../audit/index.adoc[Review audit logs]

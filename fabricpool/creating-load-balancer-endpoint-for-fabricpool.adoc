@@ -1,0 +1,77 @@
+---
+permalink: fabricpool/creating-load-balancer-endpoint-for-fabricpool.html
+sidebar: sidebar
+keywords: fabricPool, load balancer, endpoint, load balancing, create, creating, certificate
+summary: 'When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.'
+---
+= Create a load balancer endpoint for FabricPool
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.
+
+.What you'll need
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root Access permission.
+* You have the following files:
+ ** Server Certificate: The custom server certificate file.
+ ** Server Certificate Private Key: The custom server certificate private key file.
+ ** CA Bundle: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+
+.About this task
+For details about this task, see xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
+
+.Steps
+. Select *CONFIGURATION* > *Network* > *Load Balancer Endpoints*.
++
+image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
+
+. Select *Add endpoint*.
+. Enter the following information.
++
+[cols="1a,2a" options="header"]
+|===
+| Field| Description
+a|
+Name
+a|
+A descriptive name for the endpoint
+a|
+Port
+a|
+The StorageGRID port you want to use for load balancing. This field defaults to 10433, but you can enter any unused external port. If you enter 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.
+
+*Note:* Ports used by other grid services are not permitted. See the list of ports used for internal and external communications:
+
+xref:../network/network-port-reference.adoc[Network port reference]
+
+You must provide this same port number to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
+a|
+Client type
+a|
+Select *S3*.
+a|
+Protocol
+a|
+Must be *HTTPS*.
+a|
+Endpoint Binding Mode
+a|
+Use the *Global* setting (recommended) or restrict the accessibility of this endpoint to one of the following:
+
+ ** Specific high availability (HA) virtual IP addresses (VIPs). Use this selection only if you require much higher levels of isolation of workloads.
+ ** Specific network interfaces of specific nodes.
+
++
+|===
+
+. Select *Save*.
++
+The Edit Endpoint dialog box appears.
+
+. Select *Upload Certificate* (recommended) and then browse to your server certificate, certificate private key, and CA bundle.
++
+image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
+
+. Select *Save*.

@@ -1,0 +1,23 @@
+---
+permalink: network/subnet-requirements.html
+sidebar: sidebar
+keywords: 
+summary: 'Follow these requirements and guidelines for network subnets.'
+---
+= Subnet requirements
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Follow these requirements and guidelines for network subnets.
+
+IMPORTANT: Each network must be connected to its own subnet that does not overlap with any other network on the node.
+
+The following restrictions are enforced by the Grid Manager during deployment. They are provided here to assist in pre-deployment network planning.
+
+* The subnet mask for any network IP address cannot be 255.255.255.254 or 255.255.255.255 (/31 or /32 in CIDR notation).
+* The subnet defined by a network interface IP address and subnet mask (CIDR) cannot overlap the subnet of any other interface configured on the same node.
+* The Grid Network subnet for each node must be included in the GNSL.
+* The Admin Network subnet cannot overlap the Grid Network subnet, the Client Network subnet, or any subnet in the GNSL.
+* The subnets in the AESL cannot overlap with any subnets in the GNSL.
+* The Client Network subnet cannot overlap the Grid Network subnet, the Admin Network subnet, any subnet in the GNSL, or any subnet in the AESL.

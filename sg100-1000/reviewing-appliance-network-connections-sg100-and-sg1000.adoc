@@ -1,0 +1,29 @@
+---
+permalink: sg100-1000/reviewing-appliance-network-connections-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, network connections, network connection, network, connection, grid, admin, client, bmc, management
+summary: 'Before installing the StorageGRID appliance, you should understand which networks can be connected to the appliance.'
+---
+= Reviewing appliance network connections
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before installing the StorageGRID appliance, you should understand which networks can be connected to the appliance.
+
+When you deploy a StorageGRID appliance as a node in a StorageGRID system, you can connect it to the following networks:
+
+* *Grid Network for StorageGRID*: The Grid Network is used for all internal StorageGRID traffic. It provides connectivity between all nodes in the grid, across all sites and subnets. The Grid Network is required.
+* *Admin Network for StorageGRID*: The Admin Network is a closed network used for system administration and maintenance. The Admin Network is typically a private network and does not need to be routable between sites. The Admin Network is optional.
+* *Client Network for StorageGRID:* The Client Network is an open network used to provide access to client applications, including S3 and Swift. The Client Network provides client protocol access to the grid, so the Grid Network can be isolated and secured. You can configure the Client Network so that the appliance can be accessed over this network using only the ports you choose to open. The Client Network is optional.
+* *BMC management network for the services appliance:* This network provides access to the baseboard management controller in the SG100 and SG1000, appliances allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
+
+.Related information
+
+xref:gathering-installation-information-sg100-and-sg1000.adoc[Gathering installation information (SG100 and SG1000)]
+
+xref:cabling-appliance-sg100-and-sg1000.adoc[Cabling the appliance SG100 and SG1000)]
+
+xref:../network/index.adoc[Network guidelines]
+
+xref:../primer/index.adoc[Grid primer]

@@ -1,0 +1,104 @@
+---
+permalink: sg5600/reviewing-appliance-network-connections-sg5600.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, network connections, network connection, network, connection, grid, admin, client, management, SANtricity System Manager, SANtricity
+summary: 'Before installing the StorageGRID appliance, you should understand which networks can be connected to the appliance and how the ports on each controller are used.'
+---
+= Reviewing appliance network connections
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before installing the StorageGRID appliance, you should understand which networks can be connected to the appliance and how the ports on each controller are used.
+
+== StorageGRID appliance networks
+
+When you deploy a StorageGRID appliance as a Storage Node, you can connect it to the following networks:
+
+* *Grid Network for StorageGRID*: The Grid Network is used for all internal StorageGRID traffic. It provides connectivity between all nodes in the grid, across all sites and subnets. The Grid Network is required.
+* *Admin Network for StorageGRID*: The Admin Network is a closed network used for system administration and maintenance. The Admin Network is typically a private network and does not need to be routable between sites. The Admin Network is optional.
+* *Client Network forStorageGRID*: The Client Network is an open network used to provide access to client applications, including S3 and Swift. The Client Network provides client protocol access to the grid, so the Grid Network can be isolated and secured. The Client Network is optional.
+* *Management network for SANtricity Storage Manager*: The E2700 controller connects to the management network where SANtricity Storage Manager is installed, allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
+
+NOTE: For detailed information about StorageGRID networks, see the _Grid Primer_.
+
+== StorageGRID appliance connections
+
+When you install a StorageGRID appliance, you must connect the two controllers to each other and to the required networks. The figure shows the two controllers in the SG5660, with the E2700 controller on the top and the E5600SG controller on the bottom. In the SG5612, the E2700 controller is to the left of the E5600SG controller.
+
+image::../media/cabling_diagram.gif[Back view of SG5660 showing connections]
+
+[options="header"]
+|===
+| Item| Port| Type of port| Function
+a|
+1
+a|
+Management port 1 on the E2700 controller
+a|
+1-Gb (RJ-45) Ethernet
+a|
+Connects the E2700 controller to the network where SANtricity Storage Manager is installed.
+a|
+2
+a|
+Management port 2 on the E2700 controller
+a|
+1-Gb (RJ-45) Ethernet
+a|
+Connects the E2700 controller to a service laptop during installation.
+a|
+3
+a|
+Two SAS interconnect ports on each controller, labelled Ch 1 and Ch 2
+a|
+E2700 controller: mini-SAS-HD
+
+E5600SG controller: mini-SAS
+
+a|
+Connect the two controllers to each other.
+a|
+4
+a|
+Management port 1 on the E5600SG controller
+a|
+1-Gb (RJ-45) Ethernet
+a|
+Connects the E5600SG controller to the Admin Network for StorageGRID.
+a|
+5
+a|
+Management port 2 on the E5600SG controller
+a|
+1-Gb (RJ-45) Ethernet
+a|
+
+* Can be bonded with management port 1 if you want a redundant connection to the Admin Network.
+* Can be left unwired and available for temporary local access (IP 169.254.0.1).
+* Can be used to connect the E5600SG controller to a service laptop during installation, if a DHCP-assigned IP address is not available.
+
+a|
+6
+a|
+Four network ports on the E5600SG controller
+a|
+10-GbE (optical)
+a|
+Connect to the Grid Network and the Client Network for StorageGRID. See "`10-GbE port connections for the E5600SG controller.`"
+|===
+.Related information
+
+xref:port-bond-modes-for-e5600sg-controller-ports.adoc[Port bond modes for the E5600SG controller ports]
+
+xref:gathering-installation-information-sg5600.adoc[Gathering installation information (SG5600)]
+
+xref:cabling-appliance-sg5600.adoc[Cabling the appliance (SG5600)]
+
+xref:../network/index.adoc[Network guidelines]
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

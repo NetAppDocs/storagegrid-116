@@ -1,0 +1,82 @@
+---
+permalink: tenant/managing-groups.html
+sidebar: sidebar
+keywords: StorageGRID, groups, tenant management permissions, permissions
+summary: 'You assign permissions to user groups to control which tasks tenant users can perform. You can import federated groups from an identity source, such as Active Directory or OpenLDAP, or you can create local groups.'
+---
+= Managing groups
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You assign permissions to user groups to control which tasks tenant users can perform. You can import federated groups from an identity source, such as Active Directory or OpenLDAP, or you can create local groups.
+
+IMPORTANT: If single sign-on (SSO) is enabled for your StorageGRID system, local users will not be able to sign in to the Tenant Manager, although they can access S3 and Swift resources, based on group permissions.
+
+== Tenant management permissions
+
+Before you create a tenant group, consider which permissions you want to assign to that group. Tenant management permissions determine which tasks users can perform using the Tenant Manager or the Tenant Management API. A user can belong to one or more groups. Permissions are cumulative if a user belongs to multiple groups.
+
+To sign in to the Tenant Manager or to use the Tenant Management API, users must belong to a group that has at least one permission. All users who can sign in can perform the following tasks:
+
+* View the dashboard
+* Change their own password (for local users)
+
+For all permissions, the group's Access mode setting determines whether users can change settings and perform operations or whether they can only view the related settings and features.
+
+NOTE: If a user belongs to multiple groups and any group is set to Read-only, the user will have read-only access to all selected settings and features.
+
+You can assign the following permissions to a group. Note that S3 tenants and Swift tenants have different group permissions. Changes might take up to 15 minutes to take effect because of caching.
+
+[cols="1a,3a" options="header"]
+|===
+| Permission| Description
+a|
+Root Access
+
+a|
+Provides full access to the Tenant Manager and the Tenant Management API.
+
+*Note:* Swift users must have Root Access permission to sign in to the tenant account.
+
+a|
+Administrator
+
+a|
+Swift tenants only. Provides full access to the Swift containers and objects for this tenant account
+
+*Note:* Swift users must have the Swift Administrator permission to perform any operations with the Swift REST API.
+
+a|
+Manage Your Own S3 Credentials
+
+a|
+S3 tenants only. Allows users to create and remove their own S3 access keys. Users who do not have this permission do not see the *STORAGE (S3)* > *My S3 access keys* menu option.
+
+a|
+Manage All Buckets
+
+a|
+
+* S3 tenants: Allows users to use the Tenant Manager and the Tenant Management API to create and delete S3 buckets and to manage the settings for all S3 buckets in the tenant account, regardless of S3 bucket or group policies.
++
+Users who do not have this permission do not see the *Buckets* menu option.
+
+* Swift tenants: Allows Swift users to control the consistency level for Swift containers using the Tenant Management API.
+
+*Note:* You can only assign the Manage All Buckets permission to Swift groups from the Tenant Management API. You cannot assign this permission to Swift groups using the Tenant Manager.
+
+a|
+Manage Endpoints
+
+a|
+S3 tenants only. Allows users to use the Tenant Manager or the Tenant Management API to create or edit endpoints, which are used as the destination for StorageGRID platform services.
+
+Users who do not have this permission do not see the *Platform services endpoints* menu option.
+
+|===
+.Related information
+
+xref:../s3/index.adoc[Use S3]
+
+xref:../swift/index.adoc[Use Swift]

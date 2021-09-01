@@ -1,0 +1,363 @@
+---
+permalink: network/internal-grid-node-communications.html
+sidebar: sidebar
+keywords: storagegrid, network port, internal communications, ports, TCP, UDP, grid communications
+summary: 'The StorageGRID internal firewall only allows incoming connections to specific ports on the Grid Network, with the exception of ports 22, 80, 123, and 443 \(see the information about external communications\). Connections are also accepted on ports defined by load balancer endpoints.'
+---
+= Internal grid node communications
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID internal firewall only allows incoming connections to specific ports on the Grid Network, with the exception of ports 22, 80, 123, and 443 (see the information about external communications). Connections are also accepted on ports defined by load balancer endpoints.
+
+NOTE: NetApp recommends that you enable Internet Control Message Protocol (ICMP) traffic between grid nodes. Allowing ICMP traffic can improve failover performance when a grid node cannot be reached.
+
+In addition to ICMP and the ports listed in the table, StorageGRID uses the Virtual Router Redundancy Protocol (VRRP). VRRP is an internet protocol that uses IP protocol number 112. StorageGRID uses VRRP in unicast mode only. VRRP is required only if high availability (HA) groups are configured.
+
+== Guidelines for Linux-based nodes
+
+If enterprise networking policies restrict access to any of these ports, you can remap ports at deployment time using a deployment configuration parameter. For more information about port remapping and deployment configuration parameters, see the installation instructions for your Linux platform.
+
+== Guidelines for VMware-based nodes
+
+Configure the following ports only if you need to define firewall restrictions that are external to VMware networking.
+
+If enterprise networking policies restrict access to any of these ports, you can remap ports when you deploy nodes using the VMware vSphere Web Client, or by using a configuration file setting when automating grid node deployment. For more information about port remapping and deployment configuration parameters, see the installation instructions for VMware.
+
+== Guidelines for appliance Storage Nodes
+
+If enterprise networking policies restrict access to any of these ports, you can remap ports using the StorageGRID Appliance Installer. For more information about port remapping for appliances, see the installation instructions for your storage appliance.
+
+== StorageGRID internal ports
+
+|===
+| Port| TCP or UDP| From| To| Details
+a|
+22
+a|
+TCP
+a|
+Primary Admin Node
+a|
+All nodes
+a|
+For maintenance procedures, the primary Admin Node must be able to communicate with all other nodes using SSH on port 22. Allowing SSH traffic from other nodes is optional.
+a|
+80
+a|
+TCP
+a|
+Appliances
+a|
+Primary Admin Node
+a|
+Used by StorageGRID appliances to communicate with the primary Admin Node to start the installation.
+a|
+123
+a|
+UDP
+a|
+All nodes
+a|
+All nodes
+a|
+Network time protocol service. Every node synchronizes its time with every other node using NTP.
+a|
+443
+a|
+TCP
+a|
+All nodes
+a|
+Primary Admin Node
+a|
+Used for communicating status to the primary Admin Node during installation and other maintenance procedures.
+a|
+1139
+a|
+TCP
+a|
+Storage Nodes
+a|
+Storage Nodes
+a|
+Internal traffic between Storage Nodes.
+a|
+1501
+a|
+TCP
+a|
+All nodes
+a|
+Storage Nodes with ADC
+a|
+Reporting, auditing, and configuration internal traffic.
+a|
+1502
+a|
+TCP
+a|
+All nodes
+a|
+Storage Nodes
+a|
+S3- and Swift-related internal traffic.
+a|
+1504
+a|
+TCP
+a|
+All nodes
+a|
+Admin Nodes
+a|
+NMS service reporting and configuration internal traffic.
+a|
+1505
+a|
+TCP
+a|
+All nodes
+a|
+Admin Nodes
+a|
+AMS service internal traffic.
+a|
+1506
+a|
+TCP
+a|
+All nodes
+a|
+All nodes
+a|
+Server status internal traffic.
+a|
+1507
+a|
+TCP
+a|
+All nodes
+a|
+Gateway Nodes
+a|
+Load balancer internal traffic.
+a|
+1508
+a|
+TCP
+a|
+All nodes
+a|
+Primary Admin Node
+a|
+Configuration management internal traffic.
+a|
+1509
+a|
+TCP
+a|
+All nodes
+a|
+Archive Nodes
+a|
+Archive Node internal traffic.
+a|
+1511
+a|
+TCP
+a|
+All nodes
+a|
+Storage Nodes
+a|
+Metadata internal traffic.
+a|
+5353
+a|
+UDP
+a|
+All nodes
+a|
+All nodes
+a|
+Optionally used for full-grid IP changes and for primary Admin Node discovery during installation, expansion, and recovery.
+a|
+7001
+a|
+TCP
+a|
+Storage Nodes
+a|
+Storage Nodes
+a|
+Cassandra TLS inter-node cluster communication.
+a|
+7443
+a|
+TCP
+a|
+All Nodes
+a|
+Admin Nodes
+a|
+Internal traffic for maintenance procedures and error reporting.
+a|
+9042
+a|
+TCP
+a|
+Storage Nodes
+a|
+Storage Nodes
+a|
+Cassandra client port.
+a|
+9999
+a|
+TCP
+a|
+All nodes
+a|
+All nodes
+a|
+Internal traffic for multiple services. Includes maintenance procedures, metrics, and networking updates.
+a|
+10226
+a|
+TCP
+a|
+Storage Nodes
+a|
+Primary Admin Node
+a|
+Used by StorageGRID appliances for forwarding AutoSupport messages from E-Series SANtricity System Manager to the primary Admin Node.
+a|
+11139
+a|
+TCP
+a|
+Archive/Storage Nodes
+a|
+Archive/Storage Nodes
+a|
+Internal traffic between Storage Nodes and Archive Nodes.
+a|
+18000
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes with ADC
+a|
+Account service internal traffic.
+a|
+18001
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes with ADC
+a|
+Identity Federation internal traffic.
+a|
+18002
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes
+a|
+Internal API traffic related to object protocols.
+a|
+18003
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes with ADC
+a|
+Platform services internal traffic.
+a|
+18017
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes
+a|
+Data Mover service internal traffic for Cloud Storage Pools.
+a|
+18019
+a|
+TCP
+a|
+Storage Nodes
+a|
+Storage Nodes
+a|
+Chunk service internal traffic for erasure coding.
+a|
+18082
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes
+a|
+S3-related internal traffic.
+a|
+18083
+a|
+TCP
+a|
+All nodes
+a|
+Storage Nodes
+a|
+Swift-related internal traffic.
+a|
+18200
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes
+a|
+Additional statistics about client requests.
+a|
+19000
+a|
+TCP
+a|
+Admin/Storage Nodes
+a|
+Storage Nodes with ADC
+a|
+Keystone service internal traffic.
+|===
+*Related information*
+
+xref:external-communications.adoc[External communications]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+
+xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+xref:../sg5600/index.adoc[SG5600 storage appliances]

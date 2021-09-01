@@ -1,0 +1,30 @@
+---
+permalink: ubuntu/automating-installation-and-configuration-of-storagegrid-host-service.html
+sidebar: sidebar
+keywords:
+summary: 'You can automate the installation of the StorageGRID host service using standard orchestration frameworks such as Ansible, Puppet, Chef, Fabric, or SaltStack.'
+---
+= Automating the installation and configuration of the StorageGRID host service
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can automate the installation of the StorageGRID host service using standard orchestration frameworks such as Ansible, Puppet, Chef, Fabric, or SaltStack.
+
+The StorageGRID host service is packaged in a DEB and is driven by configuration files that can be prepared ahead of time (or programmatically) to enable automated installation. If you already use a standard orchestration framework to install and configure Ubuntu or Debian, adding StorageGRID to your playbooks or recipes should be straightforward.
+
+You can automate these tasks:
+
+. Installing Linux
+. Configuring Linux
+. Configuring host network interfaces to meet StorageGRID requirements
+. Configuring host storage to meet StorageGRID requirements
+. Installing Docker
+. Installing the StorageGRID host service
+. Creating StorageGRID node configuration files in `/etc/storagegrid/nodes`
+. Validating StorageGRID node configuration files
+. Starting the StorageGRID host service
+
+== Example Ansible role and playbook
+
+Example Ansible role and playbook are supplied with the installation archive in the /extras folder. The Ansible playbook shows how the `storagegrid` role prepares the hosts and installs StorageGRID onto the target servers. You can customize the role or playbook as necessary.

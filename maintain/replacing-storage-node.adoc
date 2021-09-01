@@ -1,0 +1,35 @@
+---
+permalink: maintain/replacing-storage-node.html
+sidebar: sidebar
+keywords: storagegrid, recover, replace storage node, replacing storage node
+summary: 'If the system drive has failed, you must first replace the Storage Node.'
+---
+= Replacing the Storage Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If the system drive has failed, you must first replace the Storage Node.
+
+You must select the node replacement procedure for your platform. The steps to replace a node are the same for all types of grid nodes.
+
+NOTE: This procedure applies to software-based Storage Nodes only. You must follow a different procedure to recover an appliance Storage Node.
+
+xref:recovering-storagegrid-appliance-storage-node.adoc[Recovering a StorageGRID appliance Storage Node]
+
+*Linux:* If you are not sure if your system drive has failed, follow the instructions to replace the node to determine which recovery steps are required.
+
+[cols="1a,2a" options="header"]
+|===
+| Platform| Procedure
+|VMware
+|
+xref:all-node-types-replacing-vmware-node.adoc[Replacing a VMware node]
+
+|Linux
+|xref:all-node-types-replacing-linux-node.adoc[Replacing a Linux node]
+
+|OpenStack
+|NetApp-provided virtual machine disk files and scripts for OpenStack are no longer supported for recovery operations. If you need to recover a node running in an OpenStack deployment, download the files for your Linux operating system. Then, follow the procedure for replacing a Linux node.
+
+|===

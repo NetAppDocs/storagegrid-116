@@ -1,0 +1,39 @@
+---
+permalink: maintain/grid-node-procedures.html
+sidebar: sidebar
+keywords: storagegrid, grid node procedure
+summary: 'You might need to perform procedures on a specific grid node. While you can perform a few of these procedures from Grid Manager, most of the procedures require you to access Server Manager from the node’s command line.'
+---
+= Grid node procedures
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You might need to perform procedures on a specific grid node. While you can perform a few of these procedures from Grid Manager, most of the procedures require you to access Server Manager from the node's command line.
+
+Server Manager runs on every grid node to supervise the starting and stopping of services and to ensure that services gracefully join and leave the StorageGRID system. Server Manager also monitors the services on every grid node and will automatically attempt to restart any services that report faults.
+
+IMPORTANT: You should access Server Manager only if technical support has directed you to do so.
+
+NOTE: You must close the current command shell session and log out after you are finished with Server Manager. Enter: `exit`
+
+.Choices
+
+* xref:viewing-server-manager-status-and-version.adoc[Viewing Server Manager status and version]
+* xref:viewing-current-status-of-all-services.adoc[Viewing current status of all services]
+* xref:starting-server-manager-and-all-services.adoc[Starting Server Manager and all services]
+* xref:restarting-server-manager-and-all-services.adoc[Restarting Server Manager and all services]
+* xref:stopping-server-manager-and-all-services.adoc[Stopping Server Manager and all services]
+* xref:viewing-current-status-of-service.adoc[Viewing current status of a service]
+* xref:stopping-service.adoc[Stopping a service]
+* xref:placing-appliance-into-maintenance-mode.adoc[Placing an appliance into maintenance mode]
+* xref:forcing-service-to-terminate.adoc[Forcing a service to terminate]
+* xref:starting-or-restarting-service.adoc[Starting or restarting a service]
+* xref:removing-port-remaps.adoc[Removing port remaps]
+* xref:removing-port-remaps-on-bare-metal-hosts.adoc[Removing port remaps on bare metal hosts]
+* xref:rebooting-grid-node.adoc[Rebooting a grid node]
+* xref:shutting-down-grid-node.adoc[Shutting down a grid node]
+* xref:powering-down-host.adoc[Powering down a host]
+* xref:powering-off-and-on-all-nodes-in-grid.adoc[Powering off and on all nodes in the grid]
+* xref:using-donotstart-file.adoc[Using a DoNotStart file]
+* xref:troubleshooting-server-manager.adoc[Troubleshooting Server Manager]

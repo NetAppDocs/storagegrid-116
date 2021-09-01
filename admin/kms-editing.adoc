@@ -1,0 +1,104 @@
+---
+permalink: admin/kms-editing.html
+sidebar: sidebar
+keywords:
+summary: 'You might need to edit the configuration of a key management server, for example, if a certificate is about to expire.'
+---
+= Editing a key management server (KMS)
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You might need to edit the configuration of a key management server, for example, if a certificate is about to expire.
+
+.What you'll need
+
+* You must have reviewed the xref:kms-considerations-and-requirements.adoc[considerations and requirements for using a key management server].
+
+* If you plan to update the site selected for a KMS, you must have reviewed the xref:kms-considerations-for-changing-for-site.adoc[considerations for changing the KMS for a site].
+
+* You must have the Root Access permission.
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+.Steps
+
+. Select *Configuration* > *System Settings* > *Key Management Server*.
++
+The Key Management Server page appears and shows all key management servers that have been configured.
++
+image::../media/kms_configuration_details_table.png[KMS Configuration Details KMS Table]
+
+. Select the KMS you want to edit, and select *Edit*.
+. Optionally, update the details in *Step 1 (Enter KMS Details)* of the Edit a Key Management Server wizard.
++
+
+[cols="1a,2a" options="header"]
+|===
+| Field| Description
+a|
+KMS Display Name
+a|
+A descriptive name to help you identify this KMS. Must be between 1 and 64 characters.
+a|
+Key Name
+a|
+The exact key alias for the StorageGRID client in the KMS. Must be between 1 and 255 characters.
+
+You only need to edit the key name in rare cases. For example, you must edit the key name if the alias is renamed in the KMS or if all versions of the previous key have been copied to the version history of the new alias.
+
+[CAUTION]
+====
+Never attempt to rotate a key by changing the key name (alias) for the KMS. Instead, rotate the key by updating the key version in the KMS software. StorageGRID requires all previously used key versions (as well as any future ones) to be accessible from the KMS with the same key alias. If you change the key alias for a configured KMS, StorageGRID might not be able to decrypt your data.
+
+xref:kms-considerations-and-requirements.adoc[Considerations and requirements for using a key management server]
+====
+
+a|
+Manages keys for
+a|
+If you are editing a site-specific KMS and you do not already have a default KMS, optionally select *Sites not managed by another KMS (default KMS)*. This selection converts a site-specific KMS to the default KMS, which will apply to all sites that do not have a dedicated KMS and to any sites added in an expansion.
+
+*Note:* If you are editing a site-specific KMS, you cannot select another site. If you are editing the default KMS, you cannot select a specific site.
+a|
+Port
+a|
+The port the KMS server uses for Key Management Interoperability Protocol (KMIP) communications. Defaults to 5696, which is the KMIP standard port.
+a|
+Hostname
+a|
+The fully qualified domain name or IP address for the KMS.
+
+*Note:* The SAN field of the server certificate must include the FQDN or IP address you enter here. Otherwise, StorageGRID will not be able to connect to the KMS or to all servers in a KMS cluster.
+
+|===
+
+. If you are configuring a KMS cluster, select the plus sign image:../media/icon_plus_sign_black_on_white_old.png[Icon Plus Sign] to add a hostname for each server in the cluster.
+. Select *Next*.
++
+Step 2 (Upload Server Certificate) of the Edit a Key Management Server wizard appears.
+
+. If you need to replace the server certificate, select *Browse* and upload the new file.
+. Select *Next*.
++
+Step 3 (Upload Client Certificates) of the Edit a Key Management Server wizard appears.
+
+. If you need to replace the client certificate and the client certificate private key, select *Browse* and upload the new files.
+. Select *Save*.
++
+The connections between the key management server and all node-encrypted appliance nodes at the affected sites are tested. If all node connections are valid and the correct key is found on the KMS, the key management server is added to the table on the Key Management Server page.
+
+. If an error message appears, review the message details, and select *OK*.
++
+For example, you might receive a 422: Unprocessable Entity error if the site you selected for this KMS is already managed by another KMS, or if a connection test failed.
+
+. If you need to save the current configuration before resolving the connection errors, select *Force Save*.
++
+IMPORTANT: Selecting *Force Save* saves the KMS configuration, but it does not test the external connection from each appliance to that KMS. If there is an issue with the configuration, you might not be able to reboot appliance nodes that have node encryption enabled at the affected site. You might lose access to your data until the issues are resolved.
++
+The KMS configuration is saved.
+
+. Review the confirmation warning, and select *OK* if you are sure you want to force save the configuration.
++
+image::../media/kms_force_save_warning.png[KMS Force Save Warning]
++
+The KMS configuration is saved but the connection to the KMS is not tested.

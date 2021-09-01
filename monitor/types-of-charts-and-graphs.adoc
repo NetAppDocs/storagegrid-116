@@ -1,0 +1,58 @@
+---
+permalink: monitor/types-of-charts-and-graphs.html
+sidebar: sidebar
+keywords: chart,graph
+summary: 'Charts and graphs summarize the values of specific StorageGRID metrics and attributes.'
+---
+= Types of charts and graphs
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Charts and graphs summarize the values of specific StorageGRID metrics and attributes.
+
+The Grid Manager Dashboard includes pie (doughnut) charts to summarize available storage for the grid and each site.
+
+image::../media/dashboard_available_storage_panel.png[Dashboard Available Storage Panel]
+
+The Storage usage panel on the Tenant Manager Dashboard displays the following:
+
+* A list of the largest buckets (S3) or containers (Swift) for the tenant
+* A bar chart that represents the relative sizes of the largest buckets or containers
+* The total amount of space used and, if a quota is set, the amount and percentage of space remaining
+
+image::../media/tenant_dashboard_with_buckets.png[Tenant Dashboard]
+
+In addition, graphs that show how StorageGRID metrics and attributes change over time are available from the Nodes page and from the *Support* > *Tools* > *Grid Topology* page.
+
+There are four types of graphs:
+
+* *Grafana charts*: Shown on the Nodes page, Grafana charts are used to plot the values of Prometheus metrics over time. For example, the *Nodes* > *Load Balancer* tab for an Admin Node includes four Grafana charts.
++
+image::../media/nodes_page_load_balancer_tab.png[Nodes Page Load Balancer Tab]
++
+NOTE: Grafana charts are also included on the pre-constructed dashboards available from the *Support* > *Tools* > *Metrics* page.
+
+* *Line graphs*: Available from the Nodes page and from the *Support* > *Tools* > *Grid Topology* page (click the chart icon image:../media/icon_chart_new.gif[Icon Chart (New)] after a data value), line graphs are used to plot the values of StorageGRID attributes that have a unit value (such as NTP Frequency Offset, in ppm). The changes in the value are plotted in regular data intervals (bins) over time.
++
+image::../media/line_graph.gif[Line Graph]
+
+* *Area graphs*: Available from the Nodes page and from the *Support* > *Tools* > *Grid Topology* page (click the chart icon image:../media/icon_chart_new.gif[Icon Chart (New)] after a data value), area graphs are used to plot volumetric attribute quantities, such as object counts or service load values. Area graphs are similar to line graphs, but include a light brown shading below the line. The changes in the value are plotted in regular data intervals (bins) over time.
++
+image::../media/area_graph.gif[Area Graph]
+
+* Some graphs are denoted with a different type of chart icon image:../media/icon_chart_new_for_11_5.png[Chart Icon - New for 11.5] and have a different format:
++
+image::../media/charts_lost_object_detected.png[Charts Lost Object Detected]
+
+* *State graph*: Available from the *Support* > *Tools* > *Grid Topology* page (click the chart icon image:../media/icon_chart_new.gif[Icon Chart (New)] after a data value), state graphs are used to plot attribute values that represent distinct states such as a service state that can be online, standby, or offline. State graphs are similar to line graphs, but the transition is discontinuous; that is, the value jumps from one state value to another.
++
+image::../media/state_graph.gif[State Graph]
+
+.Related information
+
+xref:viewing-nodes-page.adoc[Viewing the Nodes page]
+
+xref:viewing-grid-topology-tree.adoc[Viewing the Grid Topology tree]
+
+xref:reviewing-support-metrics.adoc[Reviewing support metrics]

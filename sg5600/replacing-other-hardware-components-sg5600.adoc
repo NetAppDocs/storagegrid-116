@@ -1,0 +1,74 @@
+---
+permalink: sg5600/replacing-other-hardware-components-sg5600.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, Replacing, replace, hardware, components, remove, removing, removal, install, installing, installation, drive, fan, power supply, battery 
+summary: 'You might need to replace a drive, fan, power supply, or battery in the StorageGRID appliance.'
+---
+= Replacing other hardware components
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You might need to replace a drive, fan, power supply, or battery in the StorageGRID appliance.
+
+.What you'll need
+
+* You have the E-Series hardware replacement procedure.
+* The appliance has been placed maintenance mode if the component replacement procedure requires that you shut down the appliance.
++
+xref:placing-appliance-into-maintenance-mode.adoc[Placing an appliance into maintenance mode]
+
+.About this task
+
+To replace a drive, power-fan canister, fan canister, power canister, battery, or drive drawer, refer to the standard procedures for the E2700 and E5600 storage arrays. Focus on the step-by-step instructions for removing and replacing the hardware itself; many of the SANtricity Storage Manager procedures do not apply to an appliance.
+
+== SG5612 component replacement instructions
+
+[options="header"]
+|===
+| FRU| See
+a|
+Drive
+a|
+Follow the steps in the E-Series instructions for replacing a drive in the E2600, E2700, E5400, E5500, E5600 or 12-drive or 24-drive trays.
+a|
+Power-fan canister
+a|
+Follow the steps in the E-Series instructions for replacing a failed power-fan canister in the E5612 or the E5624 controller-drive tray.
+a|
+Battery in the E2700 controller (requires removing the controller)
+a|
+Follow the steps in xref:replacing-e2700-controller.adoc[Replacing the E2700 controller], but install the new battery in the existing controller.
+a|
+|===
+
+== SG5660 component replacement instructions
+
+[options="header"]
+|===
+| FRU| See
+a|
+Drive
+a|
+Follow the steps in the E-Series instructions for replacing a drive in the E2660, E2760, E5460, E5560, or E5660 trays.
+a|
+Power canister
+a|
+Follow the steps in the E-Series instructions for replacing a failed power canister in the E5660 controller-drive tray.
+a|
+Fan canister
+a|
+Follow the steps in the E-Series instructions for replacing a failed fan canister in the E5660 controller-drive tray.
+a|
+Battery in the E2700 controller (requires removing the controller)
+a|
+Follow the steps in xref:replacing-e2700-controller.adoc[Replacing the E2700 controller], but install the new battery in the existing controller.
+|===
+
+.Related information
+
+https://mysupport.netapp.com/info/web/ECMP11751516.html[NetApp E-Series and EF-Series Hardware Replacement Procedures^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765[NetApp Documentation: E2700 Series^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61893[NetApp Documentation: E5600 Series^]

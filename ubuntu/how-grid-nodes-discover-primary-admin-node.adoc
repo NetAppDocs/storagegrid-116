@@ -1,0 +1,27 @@
+---
+permalink: ubuntu/how-grid-nodes-discover-primary-admin-node.html
+sidebar: sidebar
+keywords:
+summary: 'Grid nodes communicate with the primary Admin Node for configuration and management. Each grid node must know the IP address of the primary Admin Node on the Grid Network.'
+---
+= How grid nodes discover the primary Admin Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Grid nodes communicate with the primary Admin Node for configuration and management. Each grid node must know the IP address of the primary Admin Node on the Grid Network.
+
+To ensure that a grid node can access the primary Admin Node, you can do either of the following when deploying the node:
+
+* You can use the ADMIN_IP parameter to enter the primary Admin Node's IP address manually.
+* You can omit the ADMIN_IP parameter to have the grid node discover the value automatically. Automatic discovery is especially useful when the Grid Network uses DHCP to assign the IP address to the primary Admin Node.
+
+Automatic discovery of the primary Admin Node is accomplished using a multicast Domain Name System (mDNS). When the primary Admin Node first starts up, it publishes its IP address using mDNS. Other nodes on the same subnet can then query for the IP address and acquire it automatically. However, because multicast IP traffic is not normally routable across subnets, nodes on other subnets cannot acquire the primary Admin Node's IP address directly.
+
+[IMPORTANT]
+====
+If you use automatic discovery:
+
+* You must include the ADMIN_IP setting for at least one grid node on any subnets that the primary Admin Node is not directly attached to. This grid node will then publish the primary Admin Node's IP address for other nodes on the subnet to discover with mDNS.
+* Ensure that your network infrastructure supports passing multi-cast IP traffic within a subnet.
+====

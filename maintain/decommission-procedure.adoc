@@ -1,0 +1,28 @@
+---
+permalink: maintain/decommission-procedure.html
+sidebar: sidebar
+keywords: storagegrid, decommission
+summary: 'You can perform a decommission procedure to permanently remove grid nodes or an entire site from the StorageGRID system.'
+---
+= Decommission procedure
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can perform a decommission procedure to permanently remove grid nodes or an entire site from the StorageGRID system.
+
+To remove a grid node or a site, you perform one of the following decommission procedures:
+
+* Perform a *node decommission* to remove one or more nodes, which can be at one or more sites. The nodes you remove can be online and connected to the StorageGRID system, or they can be offline and disconnected.
+* Perform a *connected site decommission* to remove a site in which all nodes are connected to StorageGRID.
+* Perform a *disconnected site decommission* to remove a site in which all nodes are disconnected from StorageGRID.
++
+IMPORTANT: Before performing a disconnected site decommission, you must contact your NetApp account representative. NetApp will review your requirements before enabling all steps in the Decommission Site wizard. You should not attempt a disconnected site decommission if you believe it might be possible to recover the site or to recover object data from the site.
+
+If a site contains a mixture of connected (image:../media/icon_alert_green_checkmark.png[Icon Alert Green Checkmark]) and disconnected nodes (image:../media/icon_alarm_gray_administratively_down.png[Icon Alarm Gray Administratively Down] or image:../media/icon_alarm_blue_unknown.png[Icon Alarm Blue Unknown]), you must bring all offline nodes back online.
+
+.Related information
+
+xref:grid-node-decommissioning.adoc[Grid node decommissioning]
+
+xref:site-decommissioning.adoc[Site decommissioning]

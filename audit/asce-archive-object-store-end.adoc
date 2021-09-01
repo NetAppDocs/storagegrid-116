@@ -1,0 +1,59 @@
+---
+permalink: audit/asce-archive-object-store-end.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, ASCE, Archive Object Store End 
+summary: 'This message indicates that writing a content block to an external archival storage system has ended.'
+---
+= ASCE: Archive Object Store End
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message indicates that writing a content block to an external archival storage system has ended.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block Identifier
+a|
+The identifier of the content block stored on the external archival storage system.
+a|
+VLID
+a|
+Volume Identifier
+a|
+The unique identifier of the archive volume to which the object data is written.
+a|
+VREN
+a|
+Verification Enabled
+a|
+Indicates if verification is performed for content blocks. Currently defined values are:
+
+* VENA: verification is enabled
+* VDSA: verification is disabled
+
+a|
+MCLS
+a|
+Management Class
+a|
+A string identifying the TSM Management Class to which the content block is assigned if applicable.
+a|
+RSLT
+a|
+Result
+a|
+Indicates the result of the archive process. Currently defined values are:
+
+* SUCS: successful (archiving process succeeded)
+* OFFL: failed (archiving is offline)
+* VRFL: failed (object verification failed)
+* ARUN: failed (external archival storage system unavailable)
+* GERR: failed (general error)
+
+|===
+This audit message means that the specified content block has been written to the external archival storage system. If the write fails, the result provides basic troubleshooting information about where the failure occurred. More detailed information about archive failures can be found by examining Archive Node attributes in the StorageGRID system.

@@ -1,0 +1,22 @@
+---
+permalink: ubuntu/automating-installation.html
+sidebar: sidebar
+keywords: storagegrid, ubuntu, debian, automating installation, automate installation
+summary: 'You can automate the installation of the StorageGRID host service, and the configuration of grid nodes.'
+---
+= Automating the installation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can automate the installation of the StorageGRID host service, and the configuration of grid nodes.
+
+.About this task
+
+Automating the deployment might be useful in any of the following cases:
+
+* You already use a standard orchestration framework, such as Ansible, Puppet, or Chef, to deploy and configure physical or virtual hosts.
+* You intend to deploy multiple StorageGRID instances.
+* You are deploying a large, complex StorageGRID instance.
+
+The StorageGRID host service is installed by a package and driven by configuration files that can be created interactively during a manual installation, or prepared ahead of time (or programmatically) to enable automated installation using standard orchestration frameworks. StorageGRID provides optional Python scripts for automating the configuration of StorageGRID appliances, and the whole StorageGRID system (the "`grid`"). You can use these scripts directly, or you can inspect them to learn how to use the StorageGRID Installation REST API in grid deployment and configuration tools you develop yourself.

@@ -1,0 +1,28 @@
+---
+permalink: admin/verifying-nfs-audit-integration.html
+sidebar: sidebar
+keywords:
+summary: 'After you configure an audit share and add an NFS audit client, you can mount the audit client share and verify that the files are available from the audit share.'
+---
+= Verifying NFS audit integration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After you configure an audit share and add an NFS audit client, you can mount the audit client share and verify that the files are available from the audit share.
+
+.Steps
+
+. Verify connectivity (or variant for the client system) using the client-side IP address of the Admin Node hosting the AMS service. Enter: `ping IP_address`
++
+Verify that the server responds, indicating connectivity.
+
+. Mount the audit read-only share using a command appropriate to the client operating system. A sample Linux command is (enter on one line):
++
+`mount -t nfs -o hard,intr _Admin_Node_IP_address_:/var/local/audit/export _myAudit_`
++
+Use the IP address of the Admin Node hosting the AMS service and the predefined share name for the audit system. The mount point can be any name selected by the client (for example, `_myAudit_` in the previous command).
+
+. Verify that the files are available from the audit share. Enter: `ls _myAudit_ /*`
++
+where `_myAudit_` is the mount point of the audit share. There should be at least one log file listed.

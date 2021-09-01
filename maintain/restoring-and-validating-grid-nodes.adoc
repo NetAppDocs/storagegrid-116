@@ -1,0 +1,82 @@
+---
+permalink: maintain/restoring-and-validating-grid-nodes.html
+sidebar: sidebar
+keywords: storagegrid, recover, restore grid node, restore node, validate grid node, validate node
+summary: 'You must restore the grid configuration files for any failed grid nodes, and then validate the grid configuration files and resolve any errors.'
+---
+= Restoring and validating grid nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must restore the grid configuration files for any failed grid nodes, and then validate the grid configuration files and resolve any errors.
+
+.About this task
+
+You can import any grid node that should be present on the host, as long as its `/var/local` volume was not lost as a result of the failure of the previous host. For example, the `/var/local` volume might still exist if you used shared storage for StorageGRID system data volumes, as described in the StorageGRID installation instructions for your Linux operating system. Importing the node restores its node configuration file to the host.
+
+If it is not possible to import missing nodes, you must recreate their grid configuration files.
+
+You must then validate the grid configuration file, and resolve any networking or storage issues that might occur before going on to restart StorageGRID. When you re-create the configuration file for a node, you must use the same name for the replacement node that was used for the node you are recovering.
+
+See the installation instructions for more information on the location of the `/var/local` volume for a node.
+
+.Steps
+
+. At the command line of the recovered host, list all currently configured StorageGRID grid nodes:``sudo storagegrid node list``
++
+If no grid nodes are configured, there will be no output. If some grid nodes are configured, expect output in the following format:
++
+----
+Name               Metadata-Volume
+================================================================
+dc1-adm1           /dev/mapper/sgws-adm1-var-local
+dc1-gw1            /dev/mapper/sgws-gw1-var-local
+dc1-sn1            /dev/mapper/sgws-sn1-var-local
+dc1-arc1           /dev/mapper/sgws-arc1-var-local
+----
++
+If some or all of the grid nodes that should be configured on the host are not listed, you need to restore the missing grid nodes.
+
+. To import grid nodes that have a `/var/local` volume:
+ .. Run the following command for each node you want to import:``sudo storagegrid node import node-var-local-volume-path``
++
+The `storagegrid node import` command succeeds only if the target node was shut down cleanly on the host on which it last ran. If that is not the case, you will observe an error similar to the following:
++
+`This node (_node-name_) appears to be owned by another host (UUID host-uuid).`
++
+`Use the --force flag if you are sure import is safe.`
+
+ .. If you see the error about the node being owned by another host, run the command again with the `--force` flag to complete the import:``sudo storagegrid --force node import node-var-local-volume-path``
++
+NOTE: Any nodes imported with the `--force` flag will require additional recovery steps before they can rejoin the grid, as described in "`Performing additional recovery steps, if required.`"
+
+. For grid nodes that do not have a `/var/local` volume, recreate the node's configuration file to restore it to the host.
++
+Follow the guidelines in "`Creating node configuration files`" in the installation instructions.
++
+IMPORTANT: When you re-create the configuration file for a node, you must use the same name for the replacement node that was used for the node you are recovering. For Linux deployments, ensure that the configuration file name contains the node name. You should use the same network interfaces, block device mappings, and IP addresses when possible. This practice minimizes the amount of data that needs to be copied to the node during recovery, which could make the recovery significantly faster (in some cases, minutes rather than weeks).
++
+IMPORTANT: If you use any new block devices (devices that the StorageGRID node did not use previously) as values for any of the configuration variables that start with `BLOCK_DEVICE_` when you are recreating the configuration file for a node, be sure to follow all of the guidelines in "`Fixing missing block device errors.`"
+
+. Run the following command on the recovered host to list all StorageGRID nodes.
++
+`sudo storagegrid node list`
+
+. Validate the node configuration file for each grid node whose name was shown in the storagegrid node list output:
++
+`sudo storagegrid node validate _node-name_`
++
+You must address any errors or warnings before starting the StorageGRID host service. The following sections give more detail on errors that might have special significance during recovery.
+
+.Related information
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+xref:fixing-mssing-network-interface-errors.adoc[Fixing missing network interface errors]
+
+xref:fixing-missing-block-device-errors.adoc[Fixing missing block device errors]
+
+xref:whats-next-performing-additional-recovery-steps-if-required.adoc[What's next: Performing additional recovery steps, if required]

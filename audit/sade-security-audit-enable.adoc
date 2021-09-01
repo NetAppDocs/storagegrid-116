@@ -1,0 +1,36 @@
+---
+permalink: audit/sade-security-audit-enable.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, SADE, Security Audit Enable
+summary: 'This message indicates that the originating service \(node ID\) has restored audit message logging; audit messages are again being collected and delivered.'
+---
+= SADE: Security Audit Enable
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message indicates that the originating service (node ID) has restored audit message logging; audit messages are again being collected and delivered.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+AETM
+a|
+Enable Method
+a|
+The method used to enable the audit.
+a|
+AEUN
+a|
+User Name
+a|
+The user name that executed the command to enable audit logging.
+a|
+RSLT
+a|
+Result
+a|
+This field has the value NONE. RSLT is a mandatory message field, but is not relevant for this message. NONE is used rather than SUCS so that this message is not filtered.
+|===
+The message implies that logging was previously disabled (SADD), but has now been restored. This is typically only used during bulk ingest to improve system performance. Following the bulk activity, auditing is restored and the capability to disable auditing is then permanently blocked.

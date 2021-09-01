@@ -1,0 +1,48 @@
+---
+permalink: maintain/stopping-service.html
+sidebar: sidebar
+keywords: storagegrid, recover, stop service, service
+summary: 'Some maintenance procedures require you to stop a single service while keeping other services on the grid node running. Only stop individual services when directed to do so by a maintenance procedure.'
+---
+= Stopping a service
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Some maintenance procedures require you to stop a single service while keeping other services on the grid node running. Only stop individual services when directed to do so by a maintenance procedure.
+
+.What you'll need
+
+You must have the `Passwords.txt` file.
+
+.About this task
+
+When you use these steps to "`administratively stop`" a service, Server Manager will not automatically restart the service. You must either start the single service manually or restart Server Manager.
+
+If you need to stop the LDR service on a Storage Node, be aware that it might take a while to stop the service if there are active connections.
+
+.Steps
+
+. Log in to the grid node:
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
+
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Stop an individual service: `service _servicename_ stop`
++
+For example:
++
+----
+service ldr stop
+----
++
+NOTE: Services can take up to 11 minutes to stop.
+
+. Log out of the command shell: `exit`
+
+.Related information
+
+xref:forcing-service-to-terminate.adoc[Forcing a service to terminate]

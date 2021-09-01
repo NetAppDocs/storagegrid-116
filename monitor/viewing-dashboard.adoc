@@ -1,0 +1,115 @@
+---
+permalink: monitor/viewing-dashboard.html
+sidebar: sidebar
+keywords:
+summary: 'When you first sign in to the Grid Manager, you can use the Dashboard to monitor system activities at a glance. The Dashboard includes information about system health, usage metrics, and operational trends and charts.'
+---
+= Viewing the Dashboard
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When you first sign in to the Grid Manager, you can use the Dashboard to monitor system activities at a glance. The Dashboard includes information about system health, usage metrics, and operational trends and charts.
+
+image::../media/grid_manager_dashboard.png[Grid Manager Dashboard]
+
+== Health panel
+
+[options="header"]
+|===
+| Description| View additional details| Learn more
+a|
+Summarizes the system's health. A green checkmark means that there are no current alerts and all grid nodes are connected. Any other icon means that there is at least one current alert or disconnected node.
+
+a|
+You might see one or more of the following links:
+
+* *Grid details*: Appears if any nodes are disconnected (connection state Unknown or Administratively Down). Click the link, or click the blue or gray icon to determine which node or nodes are affected.
+* *Current alerts*: Appears if any alerts are currently active. Click the link, or click *Critical*, *Major*, or *Minor* to see the details on the *Alerts* > *Current* page.
+* *Recently resolved alerts*: Appears if any alerts triggered in the past week are now resolved. Click the link to see the details on the *Alerts* > *Resolved* page.
+* *Legacy alarms*: Appears if any alarms (legacy system) are currently active. Click the link to see the details on the *Support* > *Alarms (Legacy)* > *Current Alarms* page.
+* *License*: Appears if there is an issue with the software license for this StorageGRID system. Click the link to see the details on the *Maintenance* > *System* > *License* page.
+
+a|
+
+* xref:monitoring-node-connection-states.adoc[Monitoring node connection states]
+* xref:viewing-current-alerts.adoc[Viewing current alerts]
+* xref:viewing-resolved-alerts.adoc[Viewing resolved alerts]
+* xref:viewing-legacy-alarms.adoc[Viewing legacy alarms]
+* xref:../admin/index.adoc[Administer StorageGRID]
+
+|===
+
+== Available Storage panel
+
+[options="header"]
+|===
+| Description| View additional details| Learn more
+a|
+Displays the available and used storage capacity in the entire grid, not including archival media.
+
+The Overall chart presents grid-wide totals. If this is a multi-site grid, additional charts appear for each data center site.
+
+You can use this information to compare the used storage with the available storage. If you have a multi-site grid, you can determine which site is consuming more storage.
+
+a|
+
+* To view the capacity, place your cursor over the chart's available and used capacity sections.
+* To view capacity trends over a date range, click the chart icon image:../media/icon_chart_new.gif[Chart Icon] for the overall grid, or for a data center site.
+* To see details, select *Nodes*. Then, view the Storage tab for the entire grid, an entire site, or a single Storage Node.
+
+a|
+
+* xref:viewing-storage-tab.adoc[Viewing the Storage tab]
+* xref:monitoring-storage-capacity.adoc[Monitoring storage capacity]
+
+|===
+
+== Information Lifecycle Management (ILM) panel
+
+[options="header"]
+|===
+| Description| View additional details| Learn more
+a|
+Displays current ILM operations and ILM queues for your system. You can use this information to monitor your system's workload.
+
+* *Awaiting - Client*: The total number of objects awaiting ILM evaluation from client operations (for example, ingest).
+* *Awaiting - Evaluation Rate*: The current rate at which objects are evaluated against the ILM policy in the grid.
+* *Scan Period - Estimated*: The estimated time to complete a full ILM scan of all objects.
+*Note:* A full scan does not guarantee that ILM has been applied to all objects.
+
+a|
+
+* To see details, select *Nodes*. Then, view the ILM tab for the entire grid, an entire site, or a single Storage Node.
+* To see the existing ILM rules, select *ILM* > *Rules*.
+* To see the existing ILM policies, select *ILM* > *Policies*.
+
+a|
+
+* xref:viewing-ilm-tab.adoc[Viewing the ILM tab]
+* xref:../admin/index.adoc[Administer StorageGRID].
+
+|===
+
+== Protocol Operations panel
+
+[options="header"]
+|===
+| Description| View additional details| Learn more
+a|
+Displays the number of protocol-specific operations (S3 and Swift) performed by your system.
+
+You can use this information to monitor your system's workloads and efficiencies. Protocol rates are averaged over the last two minutes.
+
+a|
+
+* To see details, select *Nodes*. Then, view the Objects tab for the entire grid, an entire site, or a single Storage Node.
+* To view trends over a date range, click the chart icon image:../media/icon_chart_new.gif[Chart Icon] to the right of the S3 or Swift protocol rate.
+
+a|
+
+* xref:viewing-objects-tab.adoc[Viewing the Objects tab]
+* xref:../s3/index.adoc[Use S3]
+* xref:../swift/index.adoc[Use Swift]
+
+|===

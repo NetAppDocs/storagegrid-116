@@ -1,0 +1,31 @@
+---
+permalink: monitor/troubleshooting-lost-and-missing-object-data.html
+sidebar: sidebar
+keywords:
+summary: 'Objects can be retrieved for several reasons, including read requests from a client application, background verifications of replicated object data, ILM re-evaluations, and the restoration of object data during the recovery of a Storage Node.'
+---
+
+= Troubleshooting lost and missing object data
+:experimental:
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Objects can be retrieved for several reasons, including read requests from a client application, background verifications of replicated object data, ILM re-evaluations, and the restoration of object data during the recovery of a Storage Node.
+
+The StorageGRID system uses location information in an object's metadata to determine from which location to retrieve the object. If a copy of the object is not found in the expected location, the system attempts to retrieve another copy of the object from elsewhere in the system, assuming that the ILM policy contains a rule to make two or more copies of the object.
+
+If this retrieval is successful, the StorageGRID system replaces the missing copy of the object. Otherwise, the *Objects lost* alert and the legacy LOST (Lost Objects) alarm are triggered, as follows:
+
+* For replicated copies, if another copy cannot be retrieved, the object is considered lost, and the alert and alarm are triggered.
+* For erasure coded copies, if a copy cannot be retrieved from the expected location, the Corrupt Copies Detected (ECOR) attribute is incremented by one before an attempt is made to retrieve a copy from another location. If no other copy is found, the alert and alarm are triggered.
+
+You should investigate all *Objects lost* alerts immediately to determine the root cause of the loss and to determine if the object might still exist in an offline, or otherwise currently unavailable, Storage Node or Archive Node.
+
+In the case where object data without copies is lost, there is no recovery solution. However, you must reset the Lost Object counter to prevent known lost objects from masking any new lost objects.
+
+.Related information
+
+xref:troubleshooting-storagegrid-system.adoc[Investigating lost objects]
+
+xref:troubleshooting-storagegrid-system.adoc[Resetting lost and missing object counts]

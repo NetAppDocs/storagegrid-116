@@ -1,0 +1,39 @@
+---
+permalink: admin/managing-untrusted-client-networks.html
+sidebar: sidebar
+keywords:
+summary: 'If you are using a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured endpoints.'
+---
+= Managing untrusted Client Networks
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you are using a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured endpoints.
+
+By default, the Client Network on each grid node is _trusted_. That is, by default, StorageGRID trusts inbound connections to each grid node on all available external ports (see the information about external communications in the network guidelines).
+
+You can reduce the threat of hostile attacks on your StorageGRID system by specifying that the Client Network on each node be _untrusted_. If a node's Client Network is untrusted, the node only accepts inbound connections on ports explicitly configured as load balancer endpoints.
+
+== Example 1: Gateway Node only accepts HTTPS S3 requests
+
+Suppose you want a Gateway Node to refuse all inbound traffic on the Client Network except for HTTPS S3 requests. You would perform these general steps:
+
+. From the Load Balancer Endpoints page, configure a load balancer endpoint for S3 over HTTPS on port 443.
+. From the Untrusted Client Networks page, specify that the Client Network on the Gateway Node is untrusted.
+
+After you save your configuration, all inbound traffic on the Gateway Node's Client Network is dropped except for HTTPS S3 requests on port 443 and ICMP echo (ping) requests.
+
+== Example 2: Storage Node sends S3 platform services requests
+
+Suppose you want to enable outbound S3 platform service traffic from a Storage Node, but you want to prevent any inbound connections to that Storage Node on the Client Network. You would perform this general step:
+
+* From the Untrusted Client Networks page, indicate that the Client Network on the Storage Node is untrusted.
+
+After you save your configuration, the Storage Node no longer accepts any incoming traffic on the Client Network, but it continues to allow outbound requests to Amazon Web Services.
+
+.Related information
+
+xref:../network/index.adoc[Network guidelines]
+
+xref:configuring-load-balancer-endpoints.adoc[Configuring load balancer endpoints]

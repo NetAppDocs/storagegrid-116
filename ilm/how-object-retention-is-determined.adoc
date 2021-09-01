@@ -1,0 +1,89 @@
+---
+permalink: ilm/how-object-retention-is-determined.html
+sidebar: sidebar
+keywords:
+summary: 'StorageGRID provides options for both grid administrators and individual tenant users to specify how long to store objects. In general, any retention instructions provided by a tenant user take precedence over the retention instructions provided by the grid administrator.'
+---
+= How object retention is determined
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+StorageGRID provides options for both grid administrators and individual tenant users to specify how long to store objects. In general, any retention instructions provided by a tenant user take precedence over the retention instructions provided by the grid administrator.
+
+== How tenant users control object retention
+
+Tenant users have three primary ways to control how long their objects are stored in StorageGRID:
+
+* If the global S3 Object Lock setting is enabled for the grid, S3 tenant users can create buckets with S3 Object Lock enabled and then use the S3 REST API to specify retain-until-date and legal hold settings for each object version added to that bucket.
+ ** An object version that is under a legal hold cannot be deleted by any method.
+ ** Before an object version's retain-until-date is reached, that version cannot be deleted by any method.
+ ** Objects in buckets with S3 Object Lock enabled are retained by ILM "`forever.`" However, after its retain-until-date is reached, an object version can be deleted by a client request or the expiration of the bucket lifecycle.
++
+xref:managing-objects-with-s3-object-lock.adoc[Managing objects with S3 Object Lock]
+* S3 tenant users can add a lifecycle configuration to their buckets that specifies an Expiration action. If a bucket lifecycle exists, StorageGRID stores an object until the date or number of days specified in the Expiration action are met, unless the client deletes the object first.
+* An S3 or Swift client can issue a delete object request. StorageGRID always prioritizes client delete requests over S3 bucket lifecycle or ILM when determining whether to delete or retain an object.
+
+== How grid administrators control object retention
+
+Grid administrators use ILM placement instructions to control how long objects are stored. When objects are matched by an ILM rule, StorageGRID stores those objects until the last time period in the ILM rule has elapsed. Objects are retained indefinitely if "`forever`" is specified for the placement instructions.
+
+Regardless of who controls how long objects are retained, ILM settings control what types of object copies (replicated or erasure coded) are stored and where the copies are located (Storage Nodes, Cloud Storage Pools, or Archive Nodes).
+
+== How S3 bucket lifecycle and ILM interact
+
+The Expiration action in an S3 bucket lifecycle always overrides ILM settings. As a result, an object might be retained on the grid even after any ILM instructions for placing the object have lapsed.
+
+== Examples for object retention
+
+To better understand the interactions between S3 Object Lock, bucket lifecycle settings, client delete requests, and ILM, consider the following examples.
+
+=== Example 1: S3 bucket lifecycle keeps objects longer than ILM
+
+ILM::
+ Store two copies for 1 year (365 days)
+Bucket lifecycle::
+Expire objects in 2 years (730 days)
+Result::
+StorageGRID stores the object for 730 days. StorageGRID uses the bucket lifecycle settings to determine whether to delete or retain an object.
+
+NOTE: If the bucket lifecycle specifies that objects should be kept longer than specified by ILM, StorageGRID continues to use the ILM placement instructions when determining the number and type of copies to store. In this example, two copies of the object will continue to be stored in StorageGRID from days 366 to 730.
+
+=== Example 2: S3 bucket lifecycle expires objects before ILM
+
+ILM::
+Store two copies for 2 years (730 days)
+Bucket lifecycle::
+Expire objects in 1 year (365 days)
+Result::
+StorageGRID deletes both copies of the object after day 365.
+
+=== Example 3: Client delete overrides bucket lifecycle and ILM
+
+ILM::
+Store two copies on Storage Nodes "`forever`"
+Bucket lifecycle::
+Expire objects in 2 years (730 days)
+Client delete request::
+Issued on day 400
+Result::
+StorageGRID deletes both copies of the object on day 400 in response to the client delete request.
+
+=== Example 4: S3 Object Lock overrides client delete request
+
+S3 Object Lock::
+Retain-until-date for an object version is 2026-03-31. A legal hold is not in effect.
+Compliant ILM rule::
+Store two copies on Storage Nodes "`forever.`"
+Client delete request::
+Issued on 2024-03-31.
+Result::
+StorageGRID will not delete the object version because the retain-until-date is still 2 years away.
+
+.Related information
+
+xref:managing-objects-with-s3-object-lock.adoc[Managing objects with S3 Object Lock]
+
+xref:../s3/index.adoc[Use S3]
+
+xref:what-ilm-placement-instructions-are.adoc[What ILM rule placement instructions are]

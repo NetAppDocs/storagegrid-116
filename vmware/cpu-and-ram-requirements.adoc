@@ -1,0 +1,43 @@
+---
+permalink: vmware/cpu-and-ram-requirements.html
+sidebar: sidebar
+keywords: storagegrid, cpu, ram, cpu cores
+summary: 'Before installing StorageGRID software, verify and configure the hardware so that it is ready to support the StorageGRID system.'
+---
+= CPU and RAM requirements
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before installing StorageGRID software, verify and configure the hardware so that it is ready to support the StorageGRID system.
+
+For information about supported servers, see the Interoperability Matrix.
+
+Each StorageGRID node requires the following minimum resources:
+
+* CPU cores: 8 per node
+* RAM: At least 24 GB per node, and 2 to 16 GB less than the total system RAM, depending on the total RAM available and the amount of non-StorageGRID software running on the system
+
+Ensure that the number of StorageGRID nodes you plan to run on each physical or virtual host does not exceed the number of CPU cores or the physical RAM available. If the hosts are not dedicated to running StorageGRID (not recommended), be sure to consider the resource requirements of the other applications.
+
+IMPORTANT: Monitor your CPU and memory usage regularly to ensure that these resources continue to accommodate your workload. For example, doubling the RAM and CPU allocation for virtual Storage Nodes would provide similar resources to those provided for StorageGRID appliance nodes. Additionally, if the amount of metadata per node exceeds 500 GB, consider increasing the RAM per node to 48 GB or more. For information about managing object metadata storage, increasing the Metadata Reserved Space setting, and monitoring CPU and memory usage, see the instructions for administering, monitoring, and upgrading StorageGRID.
+
+If hyperthreading is enabled on the underlying physical hosts, you can provide 8 virtual cores (4 physical cores) per node. If hyperthreading is not enabled on the underlying physical hosts, you must provide 8 physical cores per node.
+
+If you are using virtual machines as hosts and have control over the size and number of VMs, you should use a single VM for each StorageGRID node and size the VM accordingly.
+
+For production deployments, you should not run multiple Storage Nodes on the same physical storage hardware or virtual host. Each Storage Node in a single StorageGRID deployment should be in its own isolated failure domain. You can maximize the durability and availability of object data if you ensure that a single hardware failure can only impact a single Storage Node.
+
+See also the information about storage requirements.
+
+.Related information
+
+https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
+
+xref:storage-and-performance-requirements.adoc[Storage and performance requirements]
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../monitor/index.adoc[Monitor & troubleshoot]
+
+xref:../upgrade/index.adoc[Upgrade software]

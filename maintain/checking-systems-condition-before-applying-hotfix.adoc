@@ -1,0 +1,35 @@
+---
+permalink: maintain/checking-systems-condition-before-applying-hotfix.html
+sidebar: sidebar
+keywords: storagegrid, hotfix
+summary: 'You must verify the system is ready to accommodate the hotfix.'
+---
+= Checking the system's condition before applying a hotfix
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must verify the system is ready to accommodate the hotfix.
+
+. Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+. If possible, ensure that the system is running normally and that all grid nodes are connected to the grid.
++
+Connected nodes have green check marks image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the Nodes page.
+
+. Check for and resolve any current alerts, if possible.
++
+For information about specific alerts, see the instructions for monitoring and troubleshooting StorageGRID.
+
+. Ensure no other maintenance procedures are in progress, such as an upgrade, recovery, expansion, or decommission procedure.
++
+You should wait for any active maintenance procedures to complete before applying a hotfix.
++
+You cannot apply a StorageGRID hotfix when another maintenance procedure is running. For example, you cannot apply a hotfix while a decommission, expansion, or recovery procedure is running.
++
+NOTE: If a node or site decommission procedure is paused, you can safely apply a hotfix. In addition, you might be able to apply a hotfix during the final stages of a StorageGRID upgrade procedure. See the instructions for upgrading StorageGRID software for details.
+
+.Related information
+
+xref:../monitor/index.adoc[Monitor & troubleshoot]
+
+xref:pausing-and-resuming-decommission-process-for-storage-nodes.adoc[Pausing and resuming the decommission process for Storage Nodes]

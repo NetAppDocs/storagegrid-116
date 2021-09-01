@@ -1,0 +1,65 @@
+---
+permalink: tenant/changing-consistency-level.html
+sidebar: sidebar
+keywords: storagegrid, tenant, consistency level, read after new write, read-after-new-write, strong site, strong-site, strong global, strong-global
+summary: 'If you are using an S3 tenant, you can use the Tenant Manager or the Tenant Management API to change the consistency control for operations performed on the objects in S3 buckets.'
+---
+= Change the consistency level
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you are using an S3 tenant, you can use the Tenant Manager or the Tenant Management API to change the consistency control for operations performed on the objects in S3 buckets.
+
+.What you'll need
+* You must be signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
+
+.About this task
+
+Consistency level makes a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites. In general, you should use the *Read-after-new-write* consistency level for your buckets. If the *Read-after-new-write* consistency level does not meet the client application's requirements, you can change the consistency level by setting the bucket consistency level or by using the `Consistency-Control` header. The `Consistency-Control` header overrides the bucket consistency level.
+
+NOTE: When you change a bucket's consistency level, only those objects that are ingested after the change are guaranteed to meet the revised level.
+
+.Steps
+. Select *STORAGE (S3)* > *Buckets*.
+. Select the bucket name from the list.
++
+The bucket details page appears.
+
+. Select *Bucket options* > *Consistency level*.
+
+. Select a consistency level for operations performed on the objects in this bucket.
++
+[cols="1a,3a" options="header"]
+|===
+| Consistency level| Description
+a|
+All
+a|
+All nodes receive the data immediately, or the request will fail.
+a|
+Strong-global
+a|
+Guarantees read-after-write consistency for all client requests across all sites.
+a|
+Strong-site
+a|
+Guarantees read-after-write consistency for all client requests within a site.
+a|
+Read-after-new-write (Default)
+a|
+Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application attempts HEAD or GET operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
+a|
+Available (eventual consistency for HEAD or GET operations)
+a|
+Behaves the same as the *Read-after-new-write* consistency level, but provides eventual consistency for HEAD and GET operations. Offers higher availability for HEAD and GET operations than *Read-after-new-write* if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
+|===
+
+. Select *Save changes*.
+
+.Related information
+
+xref:tenant-management-permissions.adoc[Tenant management permissions]

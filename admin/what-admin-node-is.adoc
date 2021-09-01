@@ -1,0 +1,52 @@
+---
+permalink: admin/what-admin-node-is.html
+sidebar: sidebar
+keywords: 
+summary: 'Admin Nodes provide management services such as system configuration, monitoring, and logging. Each grid must have one primary Admin Node and might have any number of non-primary Admin Nodes for redundancy.'
+---
+= What an Admin Node is
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Admin Nodes provide management services such as system configuration, monitoring, and logging. Each grid must have one primary Admin Node and might have any number of non-primary Admin Nodes for redundancy.
+
+When you sign in to the Grid Manager or the Tenant Manager, you are connecting to an Admin Node. You can connect to any Admin Node, and each Admin Node displays a similar view of the StorageGRID system. However, maintenance procedures must be performed using the primary Admin Node.
+
+Admin Nodes can also be used to load balance S3 and Swift client traffic.
+
+Admin Nodes host the following services:
+
+* AMS service
+* CMN service
+* NMS service
+* Prometheus service
+* Load Balancer and High Availability services (to support S3 and Swift client traffic)
+
+Admin Nodes also support the Management Application Program Interface (mgmt-api) to process requests from the Grid Management API and the Tenant Management API.
+
+== What the AMS service is
+
+The Audit Management System (AMS) service tracks system activity and events.
+
+== What the CMN service is
+
+The Configuration Management Node (CMN) service manages system-wide configurations of connectivity and protocol features needed by all services. In addition, the CMN service is used to run and monitor grid tasks. There is only one CMN service per StorageGRID deployment. The Admin Node that hosts the CMN service is known as the primary Admin Node.
+
+== What the NMS service is
+
+The Network Management System (NMS) service powers the monitoring, reporting, and configuration options that are displayed through the Grid Manager, the StorageGRID system's browser-based interface.
+
+== What the Prometheus service is
+
+The Prometheus service collects time series metrics from the services on all nodes.
+
+.Related information
+
+xref:using-grid-management-api.adoc[Using the Grid Management API]
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:managing-load-balancing.adoc[Managing load balancing]
+
+xref:managing-high-availability-groups.adoc[Managing high availability groups]

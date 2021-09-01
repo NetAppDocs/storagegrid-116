@@ -1,0 +1,14 @@
+---
+permalink: s3/separation-of-http-connection-pools-for-read-and-write-operations.html
+sidebar: sidebar
+keywords: 
+summary: 'You can use separate pools of HTTP connections for read and write operations and control how much of a pool to use for each. Separate pools of HTTP connections enable you to better control transactions and balance loads.'
+---
+= Separation of HTTP connection pools for read and write operations
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use separate pools of HTTP connections for read and write operations and control how much of a pool to use for each. Separate pools of HTTP connections enable you to better control transactions and balance loads.
+
+Client applications can create loads that are retrieve-dominant (read) or store-dominant (write). With separate pools of HTTP connections for read and write transactions, you can adjust how much of each pool to dedicate for read or write transactions.

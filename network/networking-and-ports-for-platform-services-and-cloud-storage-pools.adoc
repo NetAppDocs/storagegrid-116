@@ -1,0 +1,42 @@
+---
+permalink: network/networking-and-ports-for-platform-services-and-cloud-storage-pools.html
+sidebar: sidebar
+keywords:
+summary: 'If you plan to use StorageGRID platform services or Cloud Storage Pools, you must configure grid networking and firewalls to ensure that the destination endpoints can be reached. Platform services include external services that provide search integration, event notification, and CloudMirror replication.'
+---
+= Networking and ports for platform services and Cloud Storage Pools
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you plan to use StorageGRID platform services or Cloud Storage Pools, you must configure grid networking and firewalls to ensure that the destination endpoints can be reached. Platform services include external services that provide search integration, event notification, and CloudMirror replication.
+
+Platform services require access from Storage Nodes that host the StorageGRID ADC service to the external service endpoints. Examples for providing access include:
+
+* On the Storage Nodes with ADC services, configure unique Admin Networks with AESL entries that route to the target endpoints.
+* Rely on the default route provided by a Client Network. In this example, the Untrusted Client Network feature can be used to restrict inbound connections.
+
+Cloud Storage Pools also require access from Storage Nodes to the endpoints provided by the external service used, such as Amazon S3 Glacier or Microsoft Azure Blob storage.
+
+By default, platform services and Cloud Storage Pool communications use the following ports:
+
+* *80*: For endpoint URIs that begin with `http`
+* *443*: For endpoint URIs that begin with `https`
+
+A different port can be specified when the endpoint is created or edited.
+
+If you use a non-transparent proxy server, you must also configure proxy settings to allow messages to be sent to external endpoints, such as an endpoint on the internet. See administering StorageGRID to learn how to configure proxy settings.
+
+For more information about untrusted Client Networks, see the instructions for administering StorageGRID. For more information about platform services, see the instructions for using tenant accounts. For more information about Cloud Storage Pools, see the instructions for managing objects with information lifecycle management.
+
+.Related information
+
+xref:network-port-reference.adoc[Network port reference]
+
+xref:../primer/index.adoc[Grid primer]
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:../ilm/index.adoc[Manage objects with ILM]

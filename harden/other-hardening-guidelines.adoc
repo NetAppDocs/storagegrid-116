@@ -1,0 +1,50 @@
+---
+permalink: harden/other-hardening-guidelines.html
+sidebar: sidebar
+keywords: Hardening guidelines, security
+summary: 'In addition to following the hardening guidelines for StorageGRID networks and nodes, you should follow the hardening guidelines for other areas of the StorageGRID system.'
+---
+= Other hardening guidelines
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+In addition to following the hardening guidelines for StorageGRID networks and nodes, you should follow the hardening guidelines for other areas of the StorageGRID system.
+
+== Logs and audit messages
+
+Always protect StorageGRID logs and audit message output in a secure manner. StorageGRID logs and audit messages provide invaluable information from a support and system availability standpoint. In addition, the information and details contained in StorageGRID logs and audit message output are generally of a sensitive nature.
+
+See the instructions for monitoring and troubleshooting for more information about StorageGRID logs. See the instructions for audit messages for more information about StorageGRID audit messages.
+
+== NetApp AutoSupport
+
+The AutoSupport feature of StorageGRID allows you to proactively monitor the health of your system and automatically send messages and details to NetApp technical support, your organization's internal support team, or a support partner. By default, AutoSupport messages to NetApp technical support are enabled when StorageGRID is configured for the first time.
+
+The AutoSupport feature can be disabled. However, NetApp recommends enabling it because AutoSupport helps speed problem identification and resolution should an issue arise on your StorageGRID system.
+
+AutoSupport supports HTTPS, HTTP, and SMTP for transport protocols. Because of the sensitive nature of AutoSupport messages, NetApp strongly recommends using HTTPS as the default transport protocol for sending AutoSupport messages to NetApp support.
+
+Optionally, you can configure an Admin proxy for more control over AutoSupport communication from Admin Nodes to NetApp technical support. See the steps for creating an Admin proxy in the instructions for administering StorageGRID.
+
+== Cross-Origin Resource Sharing (CORS)
+
+You can configure Cross-Origin Resource Sharing (CORS) for an S3 bucket if you want that bucket and objects in that bucket to be accessible to web applications in other domains. In general, do not enable CORS unless it is required. If CORS is required, restrict it to trusted origins.
+
+See the steps for configuring Cross-Origin Resource Sharing (CORS) in the instructions for using tenant accounts.
+
+== External security devices
+
+A complete hardening solution must address security mechanisms outside of StorageGRID. Using additional infrastructure devices for filtering and limiting access to StorageGRID is an effective way to establish and maintain a stringent security posture. These external security devices include firewalls, intrusion prevention systems (IPSs), and other security devices.
+
+A third-party load balancer is recommended for untrusted client traffic. Third-party load balancing offers more control and additional layers of protection against attack.
+
+.Related information
+
+xref:../monitor/index.adoc[Monitor & troubleshoot]
+
+xref:../audit/index.adoc[Review audit logs]
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:../admin/index.adoc[Administer StorageGRID]

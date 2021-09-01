@@ -1,0 +1,327 @@
+---
+permalink: monitor/storagegrid-software-logs.html
+sidebar: sidebar
+keywords: logs
+summary: 'You can use StorageGRID logs to troubleshoot issues.'
+---
+= StorageGRID software logs
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use StorageGRID logs to troubleshoot issues.
+
+== General StorageGRID logs
+
+[options="header"]
+|===
+| File name| Notes| Found on
+a|
+`/var/local/log/bycast.log`
+a|
+The file `bycast.log` is the primary StorageGRID troubleshooting file. The file `bycast-err.log` contains a subset of `bycast.log` (messages with severity ERROR and CRITICAL). CRITICAL messages are also displayed in the system. Select *Support* > *Tools* > *Grid Topology*. Then select *_Site_* > *_Node_* > *SSM* > *Events*.
+a|
+All nodes
+a|
+`/var/local/log/bycast-err.log`
+a|
+The file `bycast.log` is the primary StorageGRID troubleshooting file. The file `bycast-err.log` contains a subset of `bycast.log` (messages with severity ERROR and CRITICAL). CRITICAL messages are also displayed in the system. Select *Support* > *Tools* > *Grid Topology*. Then select *_Site_* > *_Node_* > *SSM* > *Events*.
+a|
+All nodes
+a|
+`/var/local/core/`
+a|
+Contains any core dump files created if the program terminates abnormally. Possible causes include assertion failures, violations, or thread timeouts.
+
+*Note:* The file ``/var/local/core/kexec_cmd` usually exists on appliance nodes and does not indicate an error.
+a|
+All nodes
+|===
+
+== Server Manager logs
+
+[options="header"]
+|===
+| File name| Notes| Found on
+a|
+`/var/local/log/servermanager.log`
+a|
+Log file for the Server Manager application running on the server.
+a|
+All nodes
+a|
+`/var/local/log/GridstatBackend.errlog`
+a|
+Log file for the Server Manager GUI backend application.
+a|
+All nodes
+a|
+`/var/local/log/gridstat.errlog`
+a|
+Log file for the Server Manager GUI.
+a|
+All nodes
+|===
+
+== Logs for StorageGRID services
+
+[options="header"]
+|===
+| File name| Notes| Found on
+a|
+`/var/local/log/acct.errlog`
+a|
+
+a|
+Storage Nodes running the ADC service
+a|
+`/var/local/log/adc.errlog`
+a|
+Contains the Standard Error (stderr) stream of the corresponding services. There is one log file per service. These files are generally empty unless there are problems with the service.
+a|
+Storage Nodes running the ADC service
+a|
+`/var/local/log/ams.errlog`
+a|
+
+a|
+Admin Nodes
+a|
+`/var/local/log/arc.errlog`
+a|
+
+a|
+Archive Nodes
+a|
+`/var/local/log/cassandra/system.log`
+a|
+Information for the metadata store (Cassandra database) that can be used if problems occur when adding new Storage Nodes, or if the nodetool repair task stalls.
+a|
+Storage Nodes
+a|
+`/var/local/log/cassandra-reaper.log`
+a|
+Information for the Cassandra Reaper service, which performs repairs of the data in the Cassandra database.
+a|
+Storage Nodes
+a|
+`/var/local/log/cassandra-reaper.errlog`
+a|
+Error information for the Cassandra Reaper service.
+a|
+Storage Nodes
+a|
+`/var/local/log/chunk.errlog`
+a|
+
+a|
+Storage Nodes
+a|
+`/var/local/log/clb.errlog`
+a|
+Error information for the CLB service.
+
+*Note:* The CLB service is deprecated.
+
+a|
+Gateway Nodes
+a|
+`/var/local/log/cmn.errlog`
+a|
+
+a|
+Admin Nodes
+a|
+`/var/local/log/cms.errlog`
+a|
+This log file might be present on systems that have been upgraded from an older version of StorageGRID. It contains legacy information.
+a|
+Storage Nodes
+a|
+`/var/local/log/cts.errlog`
+a|
+This log file is only created if the Target Type is *Cloud Tiering - Simple Storage Service (S3).*
+a|
+Archive Nodes
+a|
+`/var/local/log/dds.errlog`
+a|
+
+a|
+Storage Nodes
+a|
+`/var/local/log/dmv.errlog`
+a|
+
+a|
+Storage Nodes
+a|
+`/var/local/log/dynip*`
+a|
+Contains logs related to the dynip service, which monitors the grid for dynamic IP changes and updates local configuration.
+a|
+All nodes
+a|
+`/var/local/log/grafana.log`
+a|
+The log associated with the Grafana service, which is used for metrics visualization in the Grid Manager.
+a|
+Admin Nodes
+a|
+`/var/local/log/hagroups.log`
+a|
+The log associated with high availability groups.
+a|
+Admin Nodes and Gateway Nodes
+a|
+`/var/local/log/hagroups_events.log`
+a|
+Tracks state changes, such as transition from BACKUP to MASTER or FAULT.
+a|
+Admin Nodes and Gateway Nodes
+a|
+`/var/local/log/idnt.errlog`
+a|
+
+a|
+Storage Nodes running the ADC service
+a|
+`/var/local/log/jaeger.log`
+a|
+The log associated with the jaeger service, which is used for trace collection.
+a|
+All nodes
+a|
+`/var/local/log/kstn.errlog`
+a|
+
+a|
+Storage Nodes running the ADC service
+a|
+`/var/local/log/ldr.errlog`
+a|
+
+a|
+Storage Nodes
+a|
+`/var/local/log/miscd/*.log`
+a|
+Contains logs for the MISCd service (Information Service Control Daemon), which provides an interface for querying and managing services on other nodes and for managing environmental configurations on the node such as querying the state of services running on other nodes.
+a|
+All nodes
+a|
+`/var/local/log/nginx/*.log`
+a|
+Contains logs for the nginx service, which acts as an authentication and secure communication mechanism for various grid services (such as Prometheus and Dynip) to be able to talk to services on other nodes over HTTPS APIs.
+a|
+All nodes
+a|
+`/var/local/log/nginx-gw/*.log`
+a|
+Contains logs for the restricted admin ports on Admin Nodes and for the Load Balancer service, which provides load balancing of S3 and Swift traffic from clients to Storage Nodes.
+a|
+Admin Nodes and Gateway Nodes
+a|
+`/var/local/log/persistence*`
+a|
+Contains logs for the Persistence service, which manages files on the root disk that need to persist across a reboot.
+a|
+All nodes
+a|
+`/var/local/log/prometheus.log`
+a|
+For all nodes, contains the node exporter service log and the ade-exporter metrics service log.
+
+​For Admin Nodes, also contains logs for the Prometheus and Alert Manager services.
+
+a|
+All nodes
+a|
+`/var/local/log/raft.log`
+a|
+Contains the output of the library used by the RSM service for the Raft protocol.
+a|
+Storage Nodes with RSM service
+a|
+`/var/local/log/rms.errlog`
+a|
+Contains logs for the Replicated State Machine Service (RSM) service, which is used for S3 platform services.
+a|
+Storage Nodes with RSM service
+a|
+`/var/local/log/ssm.errlog`
+a|
+
+a|
+All nodes
+a|
+`/var/local/log/update-s3vs-domains.log`
+a|
+Contains logs related to processing updates for the S3 virtual hosted domain names configuration.See the instructions for implementing S3 client applications.
+
+a|
+Admin and Gateway Nodes
+a|
+`/var/local/log/update-snmp-firewall.*`
+a|
+Contain logs related to the firewall ports being managed for SNMP.
+a|
+All nodes
+a|
+`/var/local/log/update-sysl.log`
+a|
+Contains logs related to changes made to the system syslog configuration.
+a|
+All nodes
+a|
+`/var/local/log/update-traffic-classes.log`
+a|
+Contains logs related to changes to the traffic classifiers configuration.
+a|
+Admin and Gateway Nodes
+a|
+`/var/local/log/update-utcn.log`
+a|
+Contains logs related to Untrusted Client Network mode on this node.
+a|
+All nodes
+|===
+
+== NMS logs
+
+[options="header"]
+|===
+| File name| Notes| Found on
+a|
+`/var/local/log/nms.log`
+a|
+
+* Captures notifications from the Grid Manager and the Tenant Manager.
+* Captures events related to the operation of the NMS service, for example, alarm processing, email notifications, and configuration changes.
+* Contains XML bundle updates resulting from configuration changes made in the system.
+* Contains error messages related to the attribute downsampling done once a day.
+* Contains Java web server error messages, for example, page generation errors and HTTP Status 500 errors.
+
+a|
+Admin Nodes
+a|
+`/var/local/log/nms.errlog`
+a|
+Contains error messages related to MySQL database upgrades.
+
+Contains the Standard Error (stderr) stream of the corresponding services. There is one log file per service. These files are generally empty unless there are problems with the service.
+
+a|
+Admin Nodes
+a|
+`/var/local/log/nms.requestlog`
+a|
+Contains information about outgoing connections from the Management API to internal StorageGRID services.
+a|
+Admin Nodes
+|===
+.Related information
+
+xref:about-bycast-log.adoc[About the bycast.log]
+
+xref:../s3/index.adoc[Use S3]

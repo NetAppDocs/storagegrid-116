@@ -1,0 +1,66 @@
+---
+permalink: ilm/how-objects-are-deleted.html
+sidebar: sidebar
+keywords:
+summary: 'StorageGRID can delete objects either in direct response to a client request or automatically as a result of the expiration of an S3 bucket lifecycle or the requirements of the ILM policy. Understanding the different ways that objects can be deleted and how StorageGRID handles delete requests can help you manage objects more effectively.'
+---
+= How objects are deleted
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+StorageGRID can delete objects either in direct response to a client request or automatically as a result of the expiration of an S3 bucket lifecycle or the requirements of the ILM policy. Understanding the different ways that objects can be deleted and how StorageGRID handles delete requests can help you manage objects more effectively.
+
+StorageGRID can use one of two methods to delete objects:
+
+* Synchronous deletion: When StorageGRID receives a client delete request, all object copies are removed immediately. The client is informed that deletion was successful after the copies have been removed.
+* Objects are queued for deletion: When StorageGRID receives a delete request, the object is queued for deletion and the client is informed immediately that deletion was successful. Object copies are removed later by background ILM processing.
+
+When deleting objects, StorageGRID uses the method that optimizes delete performance, minimizes potential delete backlogs, and frees space most quickly.
+
+The table summarizes when StorageGRID uses each method.
+
+[cols="1a,2a" options="header"]
+|===
+| Method of performing deletion| When used
+a|
+Objects are queued for deletion
+a|
+When *any* of the following conditions are true:
+
+* Automatic object deletion has been triggered by one of the following events:
+ ** The expiration date or number of days in the lifecycle configuration for an S3 bucket is reached.
+ ** The last time period specified in an ILM rule elapses.
+
++
+*Note:* Objects in a bucket that has S3 Object Lock enabled cannot be deleted if they are under a legal hold or if a retain-until-date has been specified but not yet met.
+
+* An S3 or Swift client requests deletion and one or more of these conditions is true:
+
+ ** Copies cannot be deleted within 30 seconds because, for example, an object location is temporarily unavailable.
+ ** Background deletion queues are idle.
+
+a|
+Objects are removed immediately (synchronous deletion)
+a|
+When an S3 or Swift client makes a delete request and *all* of the following conditions are met:
+
+* All copies can be removed within 30 seconds.
+* Background deletion queues contain objects to process.
+
+|===
+When S3 or Swift clients make delete requests, StorageGRID begins by adding a number of objects to the delete queue. It then switches to performing synchronous deletion. Making sure that the background deletion queue has objects to process allows StorageGRID to process deletes more efficiently, especially for low concurrency clients, while helping to prevent client delete backlogs.
+
+== Understanding the impact of how StorageGRID deletes objects
+
+The way that StorageGRID deletes objects can affect how the system appears to perform:
+
+* When StorageGRID performs synchronous deletion, it can take StorageGRID up to 30 seconds to return a result to the client. This means that deletion can appear to be happening more slowly, even though copies are actually being removed more quickly than they are when StorageGRID queues objects for deletion.
+* If you are closely monitoring delete performance during a bulk delete, you might notice that the deletion rate appears to slow after a certain number of objects have been deleted. This change occurs when StorageGRID shifts from queuing objects for deletion to performing synchronous deletion. The apparent reduction in the deletion rate does not mean that object copies are being removed more slowly. On the contrary, it indicates that on average, space is now being freed more quickly.
+
+If you are deleting large numbers of objects and your priority is to free space quickly, consider using a client request to delete objects rather than deleting them using ILM or other methods. In general, space is freed more quickly when deletion is performed by clients because StorageGRID can use synchronous deletion.
+
+You should be aware that the amount of time required to free space after an object is deleted depends on a number of factors:
+
+* Whether object copies are synchronously removed or are queued for removal later (for client delete requests).
+* Other factors such as the number of objects in the grid or the availability of grid resources when object copies are queued for removal (for both client deletes and other methods).

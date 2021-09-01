@@ -1,0 +1,38 @@
+---
+permalink: maintain/deploying-new-linux-hosts.html
+sidebar: sidebar
+keywords: storagegrid, deploy linux host, new host, new linux host
+summary: 'With a few exceptions, you prepare the new hosts as you did during the initial installation process.'
+---
+= Deploying new Linux hosts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+With a few exceptions, you prepare the new hosts as you did during the initial installation process.
+
+To deploy new or reinstalled physical or virtual Linux hosts, follow the procedure for preparing the hosts in the StorageGRID installation instructions for your Linux operating system.
+
+This procedure includes steps to accomplish the following tasks:
+
+. Install Linux.
+. Configure the host network.
+. Configure host storage.
+. Install Docker.
+. Install the StorageGRID host service.
++
+IMPORTANT: Stop after you complete the "`Install StorageGRID host service`" task in the installation instructions. Do not start the "`Deploying grid nodes`" task.
+
+As you perform these steps, note the following important guidelines:
+
+* Be sure to use the same host interface names you used on the original host.
+* If you use shared storage to support your StorageGRID nodes, or you have moved some or all of the disk drives or SSDs from the failed to the replacement nodes, you must reestablish the same storage mappings that were present on the original host. For example, if you used WWIDs and aliases in `/etc/multipath.conf` as recommended in the installation instructions, be sure to use the same alias/WWID pairs in `/etc/multipath.conf` on the replacement host.
+* If the StorageGRID node uses storage assigned from a NetApp AFF system, confirm that the volume does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
++
+IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
+
+.Related information
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

@@ -1,0 +1,357 @@
+---
+permalink: vmware/configuration-file-settings.html
+sidebar: sidebar
+keywords:
+summary: 'The deploy-vsphere-ovftool.ini configuration file contains the settings that are required to deploy virtual grid nodes.'
+---
+= Configuration file settings
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The `deploy-vsphere-ovftool.ini` configuration file contains the settings that are required to deploy virtual grid nodes.
+
+The configuration file first lists global parameters, and then lists node-specific parameters in sections defined by node name. When the file is used:
+
+* _Global parameters_ are applied to all grid nodes.
+* _Node-specific parameters_ override global parameters.
+
+== Global parameters
+
+Global parameters are applied to all grid nodes, unless they are overridden by settings in individual sections. Place the parameters that apply to multiple nodes in the global parameter section, and then override these settings as necessary in the sections for individual nodes.
+
+* *OVFTOOL_ARGUMENTS*: You can specify OVFTOOL_ARGUMENTS as global settings, or you can apply arguments individually to specific nodes. For example:
++
+[source]
+[subs="specialcharacters,quotes"]
+----
+OVFTOOL_ARGUMENTS = --powerOn --noSSLVerify --diskMode=thin --datastore='_datastore_name_'
+----
++
+You can use the `--powerOffTarget` and `--overwrite` options to shut down and replace existing virtual machines.
++
+IMPORTANT: You should deploy nodes to different datastores and specify OVFTOOL_ARGUMENTS for each node, instead of globally.
+
+* *SOURCE*: The path to the StorageGRID virtual machine template (`.vmdk`) file and the `.ovf` and `.mf` files for individual grid nodes. This defaults to the current directory.
++
+[source]
+[subs="specialcharacters,quotes"]
+----
+SOURCE = /downloads/StorageGRID-Webscale-_version_/vsphere
+----
+
+* *TARGET*: The VMware vSphere virtual infrastructure (vi) URL for the location where StorageGRID will be deployed. For example:
++
+----
+TARGET = vi://vcenter.example.com/vm/sgws
+----
+
+* *GRID_NETWORK_CONFIG*: The method used to acquire IP addresses, either STATIC or DHCP. The default is STATIC. If all or most of the nodes use the same method for acquiring IP addresses, you can specify that method here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+GRID_NETWORK_CONFIG = DHCP
+----
+
+* *GRID_NETWORK_TARGET*: The name of an existing VMware network to use for the Grid Network. If all or most of the nodes use the same network name, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+GRID_NETWORK_TARGET = SG-Admin-Network
+----
+
+* *GRID_NETWORK_MASK*: The network mask for the Grid Network. If all or most of the nodes use the same network mask, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+GRID_NETWORK_MASK = 255.255.255.0
+----
+
+* *GRID_NETWORK_GATEWAY*: The network gateway for the Grid Network. If all or most of the nodes use the same network gateway, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+GRID_NETWORK_GATEWAY = 10.1.0.1
+----
+
+* *GRID_NETWORK_MTU*: Optional. The maximum transmission unit (MTU) on the Grid Network. If specified, the value must be between 1280 and 9216. For example:
++
+----
+GRID_NETWORK_MTU = 8192
+----
++
+If omitted, 1400 is used.
++
+If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value.
++
+IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
++
+IMPORTANT: For the best network performance, all nodes should be configured with similar MTU values on their Grid Network interfaces. The *Grid Network MTU mismatch* alert is triggered if there is a significant difference in MTU settings for the Grid Network on individual nodes. The MTU values do not have to be the same for all network types.
+
+* *ADMIN_NETWORK_CONFIG*: The method used to acquire IP addresses, either DISABLED, STATIC, or DHCP. The default is DISABLED. If all or most of the nodes use the same method for acquiring IP addresses, you can specify that method here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_CONFIG = STATIC
+----
+
+* *ADMIN_NETWORK_TARGET*: The name of an existing VMware network to use for the Admin Network. This setting is required unless the Admin Network is disabled. If all or most of the nodes use the same network name, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_TARGET = SG-Admin-Network
+----
+
+* *ADMIN_NETWORK_MASK*: The network mask for the Admin Network. This setting is required if you are using static IP addressing. If all or most of the nodes use the same network mask, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_MASK = 255.255.255.0
+----
+
+* *ADMIN_NETWORK_GATEWAY*: The network gateway for the Admin Network. This setting is required if you are using static IP addressing and you specify external subnets in the ADMIN_NETWORK_ESL setting. (That is, it is not required if ADMIN_NETWORK_ESL is empty.) If all or most of the nodes use the same network gateway, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_GATEWAY = 10.3.0.1
+----
+
+* *ADMIN_NETWORK_ESL*: The external subnet list (routes) for the Admin Network, specified as a comma-separated list of CIDR route destinations. If all or most of the nodes use the same external subnet list, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_ESL = 172.16.0.0/21,172.17.0.0/21
+----
+
+* *ADMIN_NETWORK_MTU*: Optional. The maximum transmission unit (MTU) on the Admin Network. Do not specify if ADMIN_NETWORK_CONFIG = DHCP. If specified, the value must be between 1280 and 9216. If omitted, 1400 is used. If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value. If all or most of the nodes use the same MTU for the Admin Network, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+ADMIN_NETWORK_MTU = 8192
+----
+
+* *CLIENT_NETWORK_CONFIG*: The method used to acquire IP addresses, either DISABLED, STATIC, or DHCP. The default is DISABLED. If all or most of the nodes use the same method for acquiring IP addresses, you can specify that method here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+CLIENT_NETWORK_CONFIG = STATIC
+----
+
+* *CLIENT_NETWORK_TARGET*: The name of an existing VMware network to use for the Client Network. This setting is required unless the Client Network is disabled. If all or most of the nodes use the same network name, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+CLIENT_NETWORK_TARGET = SG-Client-Network
+----
+
+* *CLIENT_NETWORK_MASK*: The network mask for the Client Network. This setting is required if you are using static IP addressing. If all or most of the nodes use the same network mask, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+CLIENT_NETWORK_MASK = 255.255.255.0
+----
+
+* *CLIENT_NETWORK_GATEWAY*: The network gateway for the Client Network. This setting is required if you are using static IP addressing. If all or most of the nodes use the same network gateway, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+CLIENT_NETWORK_GATEWAY = 10.4.0.1
+----
+
+* *CLIENT_NETWORK_MTU*: Optional. The maximum transmission unit (MTU) on the Client Network. Do not specify if CLIENT_NETWORK_CONFIG = DHCP. If specified, the value must be between 1280 and 9216. If omitted, 1400 is used. If you want to use jumbo frames, set the MTU to a value suitable for jumbo frames, such as 9000. Otherwise, keep the default value. If all or most of the nodes use the same MTU for the Client Network, you can specify it here. You can then override the global setting by specifying different settings for one or more individual nodes. For example:
++
+----
+CLIENT_NETWORK_MTU = 8192
+----
+
+* *PORT_REMAP*: Remaps any port used by a node for internal grid node communications or external communications. Remapping ports is necessary if enterprise networking policies restrict one or more ports used by StorageGRID. For the list of ports used by StorageGRID, see internal grid node communications and external communications in xref:../network/index.adoc[Networking guidelines].
++
+IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
++
+NOTE: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
+
+The format used is: `_network type_/_protocol/_default port used by grid node_/_new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
+
+For example:
+
+----
+PORT_REMAP = client/tcp/18082/443
+----
+
+If used alone, this example setting symmetrically maps both inbound and outbound communications for the grid node from port 18082 to port 443. If used in conjunction with PORT_REMAP_INBOUND, this example setting maps outbound communications from port 18082 to port 443.
+
+* *PORT_REMAP_INBOUND*: Remaps inbound communications for the specified port. If you specify PORT_REMAP_INBOUND but do not specify a value for PORT_REMAP, outbound communications for the port are unchanged.
++
+IMPORTANT: Do not remap the ports you are planning to use to configure load balancer endpoints.
+
+The format used is: `_network type_/_protocol/_default port used by grid node_/_new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
+
+For example:
+
+----
+PORT_REMAP_INBOUND = client/tcp/443/18082
+----
+
+This example takes traffic that is sent to port 443 to pass an internal firewall and directs it to port 18082, where the grid node is listening for S3 requests.
+
+== Node-specific parameters
+
+Each node is in its own section of the configuration file. Each node requires the following settings:
+
+* The section head defines the node name that will be displayed in the Grid Manager. You can override that value by specifying the optional NODE_NAME parameter for the node.
+* *NODE_TYPE*: VM_Admin_Node, VM_Storage_Node, VM_Archive_Node, or VM_API_Gateway_Node
+* *GRID_NETWORK_IP*: The IP address for the node on the Grid Network.
+* *ADMIN_NETWORK_IP*: The IP address for the node on the Admin Network. Required only if the node is attached to the Admin Network and ADMIN_NETWORK_CONFIG is set to STATIC.
+* *CLIENT_NETWORK_IP*: The IP address for the node on the Client Network. Required only if the node is attached to the Client Network and CLIENT_NETWORK_CONFIG for this node is set to STATIC.
+* *ADMIN_IP*: The IP address for the primary Admin node on the Grid Network. Use the value that you specify as the GRID_NETWORK_IP for the primary Admin Node. If you omit this parameter, the node attempts to discover the primary Admin Node IP using mDNS. For more information, see xref:how-grid-nodes-discover-primary-admin-node.adoc[How grid nodes discover the primary Admin Node].
++
+NOTE: The ADMIN_IP parameter is ignored for the primary Admin Node.
+
+* Any parameters that were not set globally. For example, if a node is attached to the Admin Network and you did not specify ADMIN_NETWORK parameters globally, you must specify them for the node.
+
+== Primary Admin Node
+
+The following additional settings are required for the primary Admin Node:
+
+* *NODE_TYPE*: VM_Admin_Node
+* *ADMIN_ROLE*: Primary
+
+This example entry is for a primary Admin Node that is on all three networks:
+
+----
+[DC1-ADM1]
+  ADMIN_ROLE = Primary
+  NODE_TYPE = VM_Admin_Node
+
+  GRID_NETWORK_IP = 10.1.0.2
+  ADMIN_NETWORK_IP = 10.3.0.2
+  CLIENT_NETWORK_IP = 10.4.0.2
+----
+
+The following additional setting is optional for the primary Admin Node:
+
+* *DISK*: By default, Admin Nodes are assigned two additional 200 GB hard disks for audit and database use. You can increase these settings using the DISK parameter. For example:
++
+----
+DISK = INSTANCES=2, CAPACITY=300
+----
+
+NOTE: For Admin nodes, INSTANCES must always equal 2.
+
+== Storage Node
+
+The following additional setting is required for Storage Nodes:
+
+* *NODE_TYPE*: VM_Storage_Node
++
+This example entry is for a Storage Node that is on the Grid and Admin Networks, but not on the Client Network. This node uses the ADMIN_IP setting to specify the primary Admin Node's IP address on the Grid Network.
++
+----
+[DC1-S1]
+  NODE_TYPE = VM_Storage_Node
+
+  GRID_NETWORK_IP = 10.1.0.3
+  ADMIN_NETWORK_IP = 10.3.0.3
+
+  ADMIN_IP = 10.1.0.2
+----
++
+This second example entry is for a Storage Node on a Client Network where the customer's enterprise networking policy states that an S3 client application is only permitted to access the Storage Node using either port 80 or 443. The example configuration file uses PORT_REMAP to enable the Storage Node to send and receive S3 messages on port 443.
++
+----
+[DC2-S1]
+  NODE_TYPE = VM_Storage_Node
+
+  GRID_NETWORK_IP = 10.1.1.3
+  CLIENT_NETWORK_IP = 10.4.1.3
+  PORT_REMAP = client/tcp/18082/443
+
+  ADMIN_IP = 10.1.0.2
+----
++
+The last example creates a symmetric remapping for ssh traffic from port 22 to port 3022, but explicitly sets the values for both inbound and outbound traffic.
++
+----
+[DC1-S3]
+  NODE_TYPE = VM_Storage_Node
+
+  GRID_NETWORK_IP = 10.1.1.3
+
+  PORT_REMAP = grid/tcp/22/3022
+  PORT_REMAP_INBOUND = grid/tcp/3022/22
+
+  ADMIN_IP = 10.1.0.2
+----
+
+The following additional setting is optional for Storage Nodes:
+
+* *DISK*: By default, Storage Nodes are assigned three 4 TB disks for RangeDB use. You can increase these settings with the DISK parameter. For example:
++
+----
+DISK = INSTANCES=16, CAPACITY=4096
+----
+
+== Archive Node
+
+The following additional setting is required for Archive Nodes:
+
+* *NODE_TYPE*: VM_Archive_Node
+
+This example entry is for an Archive Node that is on the Grid and Admin Networks, but not on the Client Network.
+
+----
+[DC1-ARC1]
+  NODE_TYPE = VM_Archive_Node
+
+  GRID_NETWORK_IP = 10.1.0.4
+  ADMIN_NETWORK_IP = 10.3.0.4
+
+  ADMIN_IP = 10.1.0.2
+----
+
+== Gateway Node
+
+The following additional setting is required for Gateway Nodes:
+
+* *NODE_TYPE*: VM_API_Gateway
+
+This example entry is for an example Gateway Node on all three networks. In this example, no Client Network parameters were specified in the global section of the configuration file, so they must be specified for the node:
+
+----
+[DC1-G1]
+  NODE_TYPE = VM_API_Gateway
+
+  GRID_NETWORK_IP = 10.1.0.5
+  ADMIN_NETWORK_IP = 10.3.0.5
+
+  CLIENT_NETWORK_CONFIG = STATIC
+  CLIENT_NETWORK_TARGET = SG-Client-Network
+  CLIENT_NETWORK_MASK = 255.255.255.0
+  CLIENT_NETWORK_GATEWAY = 10.4.0.1
+  CLIENT_NETWORK_IP = 10.4.0.5
+
+  ADMIN_IP = 10.1.0.2
+----
+
+== Non-primary Admin Node
+
+The following additional settings are required for non-primary Admin Nodes:
+
+* *NODE_TYPE*: VM_Admin_Node
+* *ADMIN_ROLE*: Non-Primary
+
+This example entry is for a non-primary Admin Node that is not on the Client Network:
+
+----
+[DC2-ADM1]
+  ADMIN_ROLE = Non-Primary
+  NODE_TYPE = VM_Admin_Node
+
+  GRID_NETWORK_TARGET = SG-Grid-Network
+  GRID_NETWORK_IP = 10.1.0.6
+  ADMIN_NETWORK_IP = 10.3.0.6
+
+  ADMIN_IP = 10.1.0.2
+----
+
+The following additional setting is optional for non-primary Admin Nodes:
+
+* *DISK*: By default, Admin Nodes are assigned two additional 200 GB hard disks for audit and database use. You can increase these settings using the DISK parameter. For example:
++
+----
+DISK = INSTANCES=2, CAPACITY=300
+----
+
+NOTE: For Admin nodes, INSTANCES must always equal 2.
+
+.Related information
+
+xref:how-grid-nodes-discover-primary-admin-node.adoc[How grid nodes discover the primary Admin Node]
+
+xref:../network/index.adoc[Networking guidelines]

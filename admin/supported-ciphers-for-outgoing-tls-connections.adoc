@@ -1,0 +1,41 @@
+---
+permalink: admin/supported-ciphers-for-outgoing-tls-connections.html
+sidebar: sidebar
+keywords: 
+summary: 'The StorageGRID system supports a limited set of cipher suites for Transport Layer Security \(TLS\) connections to the external systems used for identity federation and Cloud Storage Pools.'
+---
+= Supported ciphers for outgoing TLS connections
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system supports a limited set of cipher suites for Transport Layer Security (TLS) connections to the external systems used for identity federation and Cloud Storage Pools.
+
+== Supported versions of TLS
+
+StorageGRID supports TLS 1.2 and TLS 1.3 for connections to external systems used for identity federation and Cloud Storage Pools.
+
+The TLS ciphers that are supported for use with external systems have been selected to ensure compatibility with a range of external systems. The list is larger than the list of ciphers that are supported for use with S3 or Swift client applications.
+
+NOTE: TLS configuration options such as protocol versions, ciphers, key exchange algorithms, and MAC algorithms are not configurable in StorageGRID. Contact your NetApp account representative if you have specific requests about these settings.
+
+== Supported TLS 1.2 cipher suites
+
+The following TLS 1.2 cipher suites are supported:
+
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+* TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+* TLS_RSA_WITH_AES_128_GCM_SHA256
+* TLS_RSA_WITH_AES_256_GCM_SHA384
+
+== Supported TLS 1.3 cipher suites
+
+The following TLS 1.3 cipher suites are supported:
+
+* TLS_AES_256_GCM_SHA384
+* TLS_CHACHA20_POLY1305_SHA256
+* TLS_AES_128_GCM_SHA256

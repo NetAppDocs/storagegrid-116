@@ -1,0 +1,46 @@
+---
+permalink: admin/requirements-for-sso.html
+sidebar: sidebar
+keywords:
+summary: 'Before enabling single sign-on \(SSO\) for a StorageGRID system, review the requirements in this section.'
+---
+= Requirements for using single sign-on
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before enabling single sign-on (SSO) for a StorageGRID system, review the requirements in this section.
+
+
+== Identity provider requirements
+
+The identity provider (IdP) for SSO must meet the following requirements:
+
+* Any of the following versions of Active Directory Federation Service (AD FS):
+ ** Windows Server 2022 AD FS
+ ** Windows Server 2019 AD FS
+ ** Windows Server 2016 AD FS
++
+NOTE: Windows Server 2016 should be using the https://support.microsoft.com/en-us/help/3201845/cumulative-update-for-windows-10-version-1607-and-windows-server-2016[KB3201845 update^], or higher.
+
+ ** AD FS 3.0, included with Windows Server 2012 R2 update, or higher.
+* Transport Layer Security (TLS) 1.2 or 1.3
+* Microsoft .NET Framework, version 3.5.1 or higher
+
+== Server certificate requirements
+
+StorageGRID uses a management interface certificate on each Admin Node to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API. When you configure SSO relying party trusts for StorageGRID in AD FS, you use the server certificate as the signature certificate for StorageGRID requests to AD FS.
+
+If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts.
+
+xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
+
+NOTE: Using an Admin Node's default server certificate in the AD FS relying party trust is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust in AD FS with the new certificate.
+
+You can access an Admin Node's server certificate by logging in to the command shell of the node and going to the `/var/local/mgmt-api` directory. A custom server certificate is named `custom-server.crt`. The node's default server certificate is named `server.crt`.
+
+== Port requirements
+
+Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
+
+xref:controlling-access-through-firewalls.adoc[Controlling access through firewalls]

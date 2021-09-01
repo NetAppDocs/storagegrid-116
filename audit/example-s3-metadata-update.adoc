@@ -1,0 +1,34 @@
+---
+permalink: audit/example-s3-metadata-update.html
+sidebar: sidebar
+keywords: storagegrid, audit, example, S3, Metadata Update
+summary: 'The example shows a successful transaction to update the metadata for an existing S3 object.'
+---
+= Example: S3 metadata update
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The example shows a successful transaction to update the metadata for an existing S3 object.
+
+== SUPD: S3 Metadata Update
+
+The S3 client makes a request (SUPD) to update the specified metadata (`x-amz-meta-*`) for the S3 object (S3KY). In this example, request headers are included in the field HTRH because it has been configured as an audit protocol header (**Configuration** > **Monitoring** > **Audit**).
+
+----
+2017-07-11T21:54:03.157462 [AUDT:[RSLT(FC32):SUCS][TIME(UI64):17631][SAIP(IPAD):"10.96.100.254"]
+[HTRH(CSTR):"{\"accept-encoding\":\"identity\",\"authorization\":\"AWS LIUF17FGJARQHPY2E761:jul/hnZs/uNY+aVvV0lTSYhEGts=\",
+\"content-length\":\"0\",\"date\":\"Tue, 11 Jul 2017 21:54:03 GMT\",\"host\":\"10.96.99.163:18082\",
+\"user-agent\":\"aws-cli/1.9.20 Python/2.7.6 Linux/3.13.0-119-generic botocore/1.3.20\",
+\"x-amz-copy-source\":\"/testbkt1/testobj1\",\"x-amz-metadata-directive\":\"REPLACE\",\"x-amz-meta-city\":\"Vancouver\"}"]
+[S3AI(CSTR):"20956855414285633225"][SACC(CSTR):"acct1"][S3AK(CSTR):"SGKHyyv9ZQqWRbJSQc5vI7mgioJwrdplShE02AUaww=="]
+[SUSR(CSTR):"urn:sgws:identity::20956855414285633225:root"]
+[SBAI(CSTR):"20956855414285633225"][SBAC(CSTR):"acct1"][S3BK(CSTR):"testbkt1"]
+[S3KY(CSTR):"testobj1"][CBID(UI64):0xCB1D5C213434DD48][CSIZ(UI64):10][AVER(UI32):10]
+[ATIM(UI64):1499810043157462][ATYP(FC32):SUPD][ANID(UI32):12258396][AMID(FC32):S3RQ]
+[ATID(UI64):8987436599021955788]]
+----
+
+.Related information
+
+xref:changing-audit-message-levels.adoc[Changing audit message levels]

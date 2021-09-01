@@ -1,0 +1,232 @@
+---
+permalink: ilm/what-erasure-coding-schemes-are.html
+sidebar: sidebar
+keywords:
+summary: 'When you configure the Erasure Coding profile for an ILM rule, you select an available erasure-coding scheme based on how many Storage Nodes and sites make up the storage pool you plan to use. Erasure-coding schemes control how many data fragments and how many parity fragments are created for each object.'
+---
+= What erasure-coding schemes are
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When you configure the Erasure Coding profile for an ILM rule, you select an available erasure-coding scheme based on how many Storage Nodes and sites make up the storage pool you plan to use. Erasure-coding schemes control how many data fragments and how many parity fragments are created for each object.
+
+The StorageGRID system uses the Reed-Solomon erasure-coding algorithm. The algorithm slices an object into k data fragments and computes m parity fragments. The k + m = n fragments are spread across n Storage Nodes to provide data protection. An object can sustain up to m lost or corrupt fragments. k fragments are needed to retrieve or repair an object.
+
+When configuring an Erasure Coding profile, use the following guidelines for storage pools:
+
+* The storage pool must include three or more sites, or exactly one site.
++
+NOTE: You cannot configure an Erasure Coding profile if the storage pool includes two sites.
+
+ ** <<Erasure-coding schemes for storage pools containing three or more sites,Erasure-coding schemes for storage pools containing three or more sites>>
+ ** <<Erasure-coding schemes for one-site storage pools,Erasure-coding schemes for one-site storage pools>>
+
+* Do not use the default storage pool, All Storage Nodes, or a storage pool that includes the default site, All Sites.
+* The storage pool should include at least _k+m_ +1 Storage Nodes.
++
+The minimum number of Storage Nodes required is _k+m_. However, having at least one additional Storage Node can help prevent ingest failures or ILM backlogs if a required Storage Node is temporarily unavailable.
+
+The storage overhead of an erasure-coding scheme is calculated by dividing the number of parity fragments (_m_) by the number of data fragments (_k_). You can use the storage overhead to calculate how much disk space each erasure-coded object requires:
+
+`_disk space_ = _object size_ + (_object size_ * _storage overhead_)`
+
+For example, if you store a 10 MB object using the 4+2 scheme (which has 50% storage overhead), the object consumes 15 MB of grid storage. If you store the same 10 MB object using the 6+2 scheme (which has 33% storage overhead), the object consumes approximately 13.3 MB.
+
+Select the erasure-coding scheme with the lowest total value of _k+m_ that meets your needs. erasure-coding schemes with a lower number of fragments are overall more computationally efficient, as fewer fragments are created and distributed (or retrieved) per object, can show better performance due to the larger fragment size, and can require fewer nodes be added in an expansion when more storage is required. (See the instructions for expanding StorageGRID for information on planning a storage expansion.)
+
+== Erasure-coding schemes for storage pools containing three or more sites
+
+The following table describes the erasure-coding schemes currently supported by StorageGRID for storage pools that include three or more sites. All of these schemes provide site loss protection. One site can be lost, and the object will still be accessible.
+
+For erasure-coding schemes that provide site loss protection, the recommended number of Storage Nodes in the storage pool exceeds _k+m_+1 because each site requires a minimum of three Storage Nodes.
+
+[cols="1a,1a,1a,1a,1a,1a" options="header"]
+|===
+| Erasure-coding scheme (_k+m_)
+
+| Minimum number of deployed sites| Recommended number of Storage Nodes at each site| Total recommended number of Storage Nodes| Site loss protection?| Storage overhead
+a|
+4+2
+a|
+3
+a|
+3
+a|
+9
+a|
+Yes
+a|
+50%
+a|
+6+2
+a|
+4
+a|
+3
+a|
+12
+a|
+Yes
+a|
+33%
+a|
+8+2
+a|
+5
+a|
+3
+a|
+15
+a|
+Yes
+a|
+25%
+a|
+6+3
+a|
+3
+a|
+4
+a|
+12
+a|
+Yes
+a|
+50%
+a|
+9+3
+a|
+4
+a|
+4
+a|
+16
+a|
+Yes
+a|
+33%
+a|
+2+1
+a|
+3
+a|
+3
+a|
+9
+a|
+Yes
+a|
+50%
+a|
+4+1
+a|
+5
+a|
+3
+a|
+15
+a|
+Yes
+a|
+25%
+a|
+6+1
+a|
+7
+a|
+3
+a|
+21
+a|
+Yes
+a|
+17%
+a|
+7+5
+a|
+3
+a|
+5
+a|
+15
+a|
+Yes
+a|
+71%
+a|
+
+|===
+
+NOTE: StorageGRID requires a minimum of three Storage Nodes per site. To use the 7+5 scheme, each site requires a minimum of four Storage Nodes. Using five Storage Nodes per site is recommended.
+
+When selecting an erasure-coding scheme that provides site protection, balance the relative importance of the following factors:
+
+* *Number of fragments*: Performance and expansion flexibility are generally better when the total number of fragments is lower.
+* *Fault tolerance*: Fault tolerance is increased by having more parity segments (that is, when _m_ has a higher value.)
+* *Network traffic*: When recovering from failures, using a scheme with more fragments (that is, a higher total for _k+m_) creates more network traffic.
+* *Storage overhead*: Schemes with higher overhead require more storage space per object.
+
+For example, when deciding between a 4+2 scheme and 6+3 scheme (which both have 50% storage overhead), select the 6+3 scheme if additional fault tolerance is required. Select the 4+2 scheme if network resources are constrained. If all other factors are equal, select 4+2 because it has a lower total number of fragments.
+
+NOTE: If you are unsure of which scheme to use, select 4+2 or 6+3, or contact technical support.
+
+== Erasure-coding schemes for one-site storage pools
+
+A one-site storage pool supports all of the erasure-coding schemes defined for three or more sites, provided that the site has enough Storage Nodes.
+
+The minimum number of Storage Nodes required is _k+m_, but a storage pool with _k+m_+1 Storage Nodes is recommended. For example, the 2+1 erasure-coding scheme requires a storage pool with a minimum of three Storage Nodes, but four Storage Nodes is recommended.
+
+[cols="1a,1a,1a,1a" options="header"]
+|===
+| Erasure-coding scheme (_k+m_)
+| Minimum number of Storage Nodes| Recommended number of Storage Nodes| Storage overhead
+
+a|4+2
+a|6
+a|7
+a|50%
+
+a|6+2
+a|8
+a|9
+a|33%
+
+a|8+2
+a|10
+a|11
+a|25%
+
+a|6+3
+a|9
+a|10
+a|50%
+
+a|9+3
+a|12
+a|13
+a|33%
+
+a|2+1
+a|3
+a|4
+a|50%
+
+a|4+1
+a|5
+a|6
+a|25%
+
+a|6+1
+a|7
+a|8
+a|17%
+
+a|7+5
+a|12
+a|13
+a|71%
+|===
+.Related information
+
+xref:../expand/index.adoc[Expand your grid]

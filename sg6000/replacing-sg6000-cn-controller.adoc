@@ -1,0 +1,72 @@
+---
+permalink: sg6000/replacing-sg6000-cn-controller.html
+sidebar: sidebar
+keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, sg6000-cn, controller, remove, removing, removal, install, installing, installation
+summary: 'You might need to replace the SG6000-CN controller if it is not functioning optimally or if it has failed.'
+---
+= Replacing the SG6000-CN controller
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You might need to replace the SG6000-CN controller if it is not functioning optimally or if it has failed.
+
+.What you'll need
+
+* You have a replacement controller with the same part number as the controller you are replacing.
+* You have labels to identify each cable that is connected to the controller.
+* You have physically located the controller to replace in the data center.
++
+xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
+
+.About this task
+
+The appliance Storage Node will not be accessible when you replace the SG6000-CN controller. If the SG6000-CN controller is functioning sufficiently, you can perform a controlled shutdown at the start of this procedure.
+
+NOTE: If you are replacing the controller before installing StorageGRID software, you might not be able to access the StorageGRID Appliance Installer immediately after completing this procedure. While you can access the StorageGRID Appliance Installer from other hosts on the same subnet as the appliance, you cannot access it from hosts on other subnets. This condition should resolve itself within 15 minutes (when any ARP cache entries for the original controller time out), or you can clear the condition immediately by purging any old ARP cache entries manually from the local router or gateway.
+
+.Steps
+
+. If the SG6000-CN controller is functioning sufficiently to allow for a controlled shutdown, shut down the SG6000-CN controller.
++
+xref:shutting-down-sg6000-cn-controller.adoc[Shutting down the SG6000-CN controller]
++
+The green Cache Active LED on the back of the E2800 controller is on when cached data needs to be written to the drives. You must wait for this LED to turn off.
+
+. Use one of two methods to verify that the power for the SG6000-CN controller is off:
+ ** The power indicator LED on the front of the controller is off.
+ ** The Power Control page of the BMC interface indicates that the controller is off.
+. If the StorageGRID networks attached to the controller use DHCP servers, update DNS/network and IP address settings.
+ .. Locate the MAC address label on the front of the SG6000-CN controller, and determine the MAC address for the Admin Network port.
++
+NOTE: The MAC address label lists the MAC address for the BMC management port. +
+To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
+
+ .. Ask your network administrator to associate the DNS/network and IP address for the controller you removed with the MAC address for the replacement controller.
++
+IMPORTANT: You must ensure that all IP addresses for the original controller have been updated before you apply power to the replacement controller. Otherwise, the controller will obtain new DHCP IP addresses when it boots up and might not be able to reconnect to StorageGRID. This step applies to all StorageGRID networks that are attached to the controller.
++
+NOTE: If the original controller used static IP address, the new controller will automatically adopt the IP addresses of the controller you removed.
+. Remove and replace the SG6000-CN controller:
+ .. Label the cables and then disconnect the cables and any SFP+ or SFP28 transceivers.
++
+IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step on the cables.
+
+ .. Remove the failed controller from the cabinet or rack.
+ .. Install the replacement controller into the cabinet or rack.
+ .. Replace the cables and any SFP+ or SFP28 transceivers.
+ .. Power on the controller and monitor the controller LEDs and boot-up codes.
+. Confirm that the appliance Storage Node appears in the Grid Manager and that no alarms appear.
+. From the Grid Manager, select *Nodes*, and verify that the BMC IP address for the node controller is correct.
++
+If the node controller IP address is not valid or is not in the expected range, reconfigure the IP address as described in the recovery and maintenance instructions.
++
+xref:../maintain/index.adoc[Maintain & recover]
+
+.Related information
+
+xref:sg6000-cn-installing-into-cabinet-or-rack.adoc[SG6000-CN: Installing into a cabinet or rack]
+
+xref:viewing-status-indicators-and-buttons-on-sg6000-cn-controller.adoc[Viewing status indicators and buttons on the SG6000-CN controller]
+
+xref:viewing-boot-up-codes-for-sg6000-cn-controller.adoc[Viewing boot-up codes for the SG6000-CN controller]

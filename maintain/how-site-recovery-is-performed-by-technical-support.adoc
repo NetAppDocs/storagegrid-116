@@ -1,0 +1,55 @@
+---
+permalink: maintain/how-site-recovery-is-performed-by-technical-support.html
+sidebar: sidebar
+keywords: storagegrid, site recovery, technical support, tech support
+summary: 'If an entire StorageGRID site fails or if multiple Storage Nodes fail, you must contact technical support. Technical support will assess your situation, develop a recovery plan, and then recover the failed nodes or site in a way that meets your business objectives, optimizes recovery time, and prevents unnecessary data loss.'
+---
+= How site recovery is performed by technical support
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If an entire StorageGRID site fails or if multiple Storage Nodes fail, you must contact technical support. Technical support will assess your situation, develop a recovery plan, and then recover the failed nodes or site in a way that meets your business objectives, optimizes recovery time, and prevents unnecessary data loss.
+
+CAUTION: Site recovery can only be performed by technical support.
+
+StorageGRID systems are resilient to a wide variety of failures, and you can successfully perform many recovery and maintenance procedures yourself. However, it is difficult to create a simple, generalized site recovery procedure because the detailed steps depend on factors that are specific to your situation. For example:
+
+* *Your business objectives*: After the complete loss of a StorageGRID site, you should evaluate how best to meet your business objectives. For example, do you want to rebuild the lost site in-place? Do you want to replace the lost StorageGRID site in a new location? Every customer's situation is different, and your recovery plan must be designed to address your priorities.
+* *Exact nature of the failure*: Before beginning a site recovery, it is important to establish if any nodes at the failed site are intact or if any Storage Nodes contain recoverable objects. If you rebuild nodes or storage volumes that contain valid data, unnecessary data loss could occur.
+* *Active ILM policy*: The number, type, and location of object copies in your grid is controlled by your active ILM policy. The specifics of your ILM policy can affect the amount of recoverable data, as well as the specific techniques required for recovery.
++
+CAUTION: If a site contains the only copy of an object and the site is lost, the object is lost.
+
+* *Bucket (or container) consistency*: The consistency level applied to a bucket (or container) affects whether StorageGRID fully replicates object metadata to all nodes and sites before telling a client that object ingest was successful. If your consistency level allows for eventual consistency, some object metadata might have been lost in the site failure. This can affect the amount of recoverable data and potentially the details of the recovery procedure.
+* *History of recent changes*: The details of your recovery procedure can be affected by whether any maintenance procedures were in progress at the time of the failure or whether any recent changes were made to your ILM policy. Technical support must assess the recent history of your grid as well as its current situation before beginning a site recovery.
+
+== Overview of site recovery
+
+This is a general overview of the process that technical support uses to recover a failed site.
+
+CAUTION: Site recovery can only be performed by technical support.
+
+image::../media/site_recovery_overview.png[Overview of Site Recovery]
+
+. Contact technical support.
++
+Technical support does a detailed assessment of the failure and works with you to review your business objectives. Based on this information, technical support develops a recovery plan tailored for your situation.
+
+. Technical support recovers the primary Admin Node if it has failed.
+. Technical support recovers all Storage Nodes, following this outline:
+ .. Replace Storage Node hardware or virtual machines as required.
+ .. Restore object metadata to the failed site.
+ .. Restore object data to the recovered Storage Nodes.
++
+CAUTION: Data loss will occur if the recovery procedures for a single failed Storage Node are used.
++
+NOTE: When an entire site has failed, specialized commands are required to successfully restore objects and object metadata.
+
+. Technical support recovers other failed nodes.
++
+After object metadata and data have been recovered, failed Gateway Nodes, non-primary Admin Nodes, or Archive Nodes can be recovered using standard procedures.
+
+.Related information
+
+xref:site-decommissioning.adoc[Site decommissioning]

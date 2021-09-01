@@ -1,0 +1,99 @@
+---
+permalink: admin/adding-user-or-group-to-cifs-audit-share.html
+sidebar: sidebar
+keywords:
+summary: 'You can add a user or group to a CIFS audit share that is integrated with AD authentication.'
+---
+= Adding a user or group to a CIFS audit share
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can add a user or group to a CIFS audit share that is integrated with AD authentication.
+
+.What you'll need
+
+* You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
+* You must have the `Configuration.txt` file (available in the SAID package).
+
+.About this task
+
+The following procedure is for an audit share integrated with AD authentication.
+
+NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+
+.Steps
+
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Confirm that all services have a state of Running or Verified. Enter: `storagegrid-status`
++
+If all services are not Running or Verified, resolve issues before continuing.
+
+. Return to the command line, press *Ctrl*+*C*.
+. Start the CIFS configuration utility: `config_cifs.rb`
++
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+
+. Start adding a user or group: `add-user-to-share`
++
+A numbered list of audit shares that have been configured is displayed.
+
+. When prompted, enter the number for the audit share (audit-export): `_audit_share_number_`
++
+You are asked if you would like to give a user or a group access to this audit share.
+
+. When prompted, add a user or group: `user` or `group`
+. When prompted for the user or group name for this AD audit share, enter the name.
++
+The user or group is added as read-only for the audit share both in the server's operating system and in the CIFS service. The Samba configuration is reloaded to enable the user or group to access the audit client share.
+
+. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+. Repeat these steps for each user or group that has access to the audit share.
+. Optionally, verify your configuration: `validate-config`
++
+The services are checked and displayed. You can safely ignore the following messages:
+
+ ** Can't find include file /etc/samba/includes/cifs-interfaces.inc
+ ** Can't find include file /etc/samba/includes/cifs-filesystem.inc
+ ** Can't find include file /etc/samba/includes/cifs-custom-config.inc
+ ** Can't find include file /etc/samba/includes/cifs-shares.inc
+
+
+ .. When prompted, press *Enter* to display the audit client configuration.
+ .. When prompted, press *Enter*.
+
+. Close the CIFS configuration utility: `exit`
+. Determine if you need to enable additional audit shares, as follows:
+ ** If the StorageGRID deployment is a single site, go to the next step.
+ ** If the StorageGRID deployment includes Admin Nodes at other sites, enable these audit shares as required:
+
+ .. Remotely log in to a site's Admin Node:
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
+ .. Repeat these steps to configure the audit shares for each Admin Node.
+ .. Close the remote secure shell login to the remote Admin Node: `exit`
+. Log out of the command shell: `exit`

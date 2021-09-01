@@ -1,0 +1,114 @@
+---
+permalink: audit/idel-ilm-initiated-delete.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, IDEL, ILM Initiated Delete
+summary: 'This message is generated when ILM starts the process of deleting an object.'
+---
+= IDEL: ILM Initiated Delete
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message is generated when ILM starts the process of deleting an object.
+
+The IDEL message is generated in either of these situations:
+
+* *For objects in compliant S3 buckets*: This message is generated when ILM starts the process of auto-deleting an object because its retention period has expired (assuming the auto-delete setting is enabled and legal hold is off).
+* *For objects in non-compliant S3 buckets or Swift containers*. This message is generated when ILM starts the process of deleting an object because no placement instructions in the active ILM policy currently apply to the object.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block Identifier
+a|
+The CBID of the object.
+a|
+CMPA
+a|
+Compliance: Auto delete
+a|
+For objects in compliant S3 buckets only. 0 (false) or 1 (true), indicating whether a compliant object should be deleted automatically when its retention period ends, unless the bucket is under a legal hold.
+a|
+CMPL
+a|
+Compliance: Legal hold
+a|
+For objects in compliant S3 buckets only. 0 (false) or 1 (true), indicating whether the bucket is currently under a legal hold.
+a|
+CMPR
+a|
+Compliance: Retention period
+a|
+For objects in compliant S3 buckets only. The length of the object's retention period in minutes.
+a|
+CTME
+a|
+Compliance: Ingest time
+a|
+For objects in compliant S3 buckets only. The object's ingest time. You can add the retention period in minutes to this value to determine when the object can be deleted from the bucket.
+a|
+DMRK
+a|
+Delete Marker Version ID
+a|
+The version ID of the delete marker created when deleting an object from a versioned bucket. Operations on buckets do not include this field.
+a|
+CSIZ
+a|
+Content size
+a|
+The size of the object in bytes.
+a|
+LOCS
+a|
+Locations
+a|
+The storage location of object data within the StorageGRID system. The value for LOCS is "" if the object has no locations (for example, it has been deleted).
+
+CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
+
+CLDI: for replicated objects, the LDR node ID and the volume ID of the object's location.
+
+CLNL: ARC node ID of the object's location if the object data is archived.
+
+a|
+PATH
+a|
+S3 Bucket/Key or Swift Container/Object ID
+a|
+The S3 bucket name and S3 key name, or the Swift container name and Swift object identifier.
+a|
+RSLT
+a|
+Result
+a|
+The result of the ILM operation.
+
+SUCS: The ILM operation was successful.
+
+a|
+RULE
+a|
+Rules Label
+a|
+
+* If an object in a compliant S3 bucket is being deleted automatically because its retention period has expired, this field is blank.
+* If the object is being deleted because there are no more placement instructions that currently apply to the object, this field shows the human-readable label of the last ILM rule that applied to the object.
+
+a|
+UUID
+a|
+Universally Unique Identifier
+a|
+The identifier of the object within the StorageGRID system.
+a|
+VSID
+a|
+Version ID
+a|
+The version ID of the specific version of an object that was deleted. Operations on buckets and objects in unversioned buckets do not include this field.
+
+|===

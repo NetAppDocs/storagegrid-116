@@ -1,0 +1,95 @@
+---
+permalink: audit/object-storage-audit-messages.html
+sidebar: sidebar
+keywords: storagegrid, audit, object storage, object management, object retrieval, node transfer, verification, APCT, ARCB, ARCE, ARCT, AREM, ASCE, ASCT, ATCE, AVCC, CBSE, CBRE, SCMT, SREM
+summary: 'You should be familiar with audit messages belonging to the object storage audit category. These are events related to the storage and management of objects within the StorageGRID system. These include object storage and retrievals, grid-node to grid-node transfers, and verifications.'
+---
+= Object storage audit messages
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should be familiar with audit messages belonging to the object storage audit category. These are events related to the storage and management of objects within the StorageGRID system. These include object storage and retrievals, grid-node to grid-node transfers, and verifications.
+
+[options="header"]
+|===
+| Code| Description| See
+a|
+APCT
+a|
+Archive Purge from Cloud-Tier: Archived object data is deleted from an external archival storage system, which connects to the StorageGRID through the S3 API.
+a|
+xref:apct-archive-purge-from-cloud-tier.adoc[APCT: Archive Purge from Cloud-Tier]
+a|
+ARCB
+a|
+Archive Object Retrieve Begin: The ARC service begins the retrieval of object data from the external archival storage system.
+a|
+xref:arcb-archive-object-retrieve-begin.adoc[ARCB: Archive Object Retrieve Begin]
+a|
+ARCE
+a|
+Archive Object Retrieve End: Object data has been retrieved from an external archival storage system, and the ARC service reports the status of the retrieval operation.
+a|
+xref:arce-archive-object-retrieve-end.adoc[ARCE: Archive Object Retrieve End]
+a|
+ARCT
+a|
+Archive Retrieve from Cloud-Tier: Archived object data is retrieved from an external archival storage system, which connects to the StorageGRID through the S3 API.
+a|
+xref:arct-archive-retrieve-from-cloud-tier.adoc[ARCT: Archive Retrieve from Cloud-Tier]
+a|
+AREM
+a|
+Archive Object Remove: A content block was successfully or unsuccessfully deleted from the external archival storage system.
+a|
+xref:arem-archive-object-remove.adoc[AREM: Archive Object Remove]
+a|
+ASCE
+a|
+Archive Object Store End: A content block has been written to the external archival storage system, and the ARC service reports the status of the write operation.
+a|
+xref:asce-archive-object-store-end.adoc[ASCE: Archive Object Store End]
+a|
+ASCT
+a|
+Archive Store Cloud-Tier: Object data is stored to an external archival storage system, which connects to the StorageGRID through the S3 API.
+a|
+xref:asct-archive-store-cloud-tier.adoc[ASCT: Archive Store Cloud-Tier]
+a|
+ATCE
+a|
+Archive Object Store Begin: Writing a content block to an external archival storage has started.
+a|
+xref:atce-archive-object-store-begin.adoc[ATCE: Archive Object Store Begin]
+a|
+AVCC
+a|
+Archive Validate Cloud-Tier Configuration: The account and bucket settings provided were successfully or unsuccessfully validated.
+a|
+xref:avcc-archive-validate-cloud-tier-configuration.adoc[AVCC: Archive Validate Cloud-Tier Configuration]
+a|
+CBSE
+a|
+Object Send End: The source entity completed a grid-node to grid-node data transfer operation.
+a|
+xref:cbse-object-send-end.adoc[CBSE: Object Send End]
+a|
+CBRE
+a|
+Object Receive End: The destination entity completed a grid-node to grid-node data transfer operation.
+a|
+xref:cbre-object-receive-end.adoc[CBRE: Object Receive End]
+a|
+SCMT
+a|
+Object Store Commit: A content block was completely stored and verified, and can now be requested.
+a|
+xref:scmt-object-store-commit.adoc[SCMT: Object Store Commit]
+a|
+SREM
+a|
+Object Store Remove: A content block was deleted from a grid node, and can no longer be requested directly.
+a|
+xref:srem-object-store-remove.adoc[SREM: Object Store Remove]
+|===

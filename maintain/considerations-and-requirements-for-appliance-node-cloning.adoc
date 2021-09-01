@@ -1,0 +1,58 @@
+---
+permalink: maintain/considerations-and-requirements-for-appliance-node-cloning.html
+sidebar: sidebar
+keywords: storagegrid, clone appliance node, cloning appliance node
+summary: 'Before cloning an appliance node, you must understand the considerations and requirements.'
+---
+= Considerations and requirements for appliance node cloning
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before cloning an appliance node, you must understand the considerations and requirements.
+
+== Hardware requirements for the replacement appliance
+
+Ensure that the replacement appliance meets the following criteria:
+
+* The source node (appliance being replaced) and the target (new) appliance must be the same type of appliance:
+ ** You can only clone an Admin Node appliance or a Gateway Node appliance to a new services appliance.
+ ** You can only clone a Storage Node appliance to a new storage appliance.
+* For Admin Node or Gateway Node appliances, the source node appliance and the target appliance do not need to be the same type of appliance; however, changing the appliance type might require replacing the cables or SFP modules.
++
+For example, you can replace a SG1000 node appliance with a SG100 or replace a SG100 appliance with a SG1000 appliance.
+
+* For Storage Node appliances, the source node appliance and the target appliance do not need to be the same type of appliance; however, the target appliance must have the same or greater storage capacity as the source appliance.
++
+For example, you can replace a SG5600 node appliance with a SG5700 or a SG6000 appliance.
+
+Contact your StorageGRID sales representative for help choosing compatible replacement appliances to clone specific appliance nodes in your StorageGRID installation.
+
+== Preparing to clone an appliance node
+
+You must have the following information before you clone an appliance node:
+
+* Obtain a temporary IP address for the Grid Network from your network administrator for use with the target appliance during initial installation. If the source node belongs to an Admin Network or Client Network, obtain temporary IP addresses for these networks.
++
+Temporary IP addresses are normally on the same subnet as the source node appliance being cloned and are not needed after cloning completes. The source and target appliances must both connect to the primary Admin Node of your StorageGRID to establish a cloning connection.
+
+* Determine which network to use for cloning data-transfer traffic that provides the best data-transfer performance without degrading StorageGRID network performance or data availability.
++
+NOTE: Using the 1-GbE Admin Network for clone data transfer results in slower cloning.
+
+* Determine if node encryption using a key management server (KMS) will be used on the target appliance, so that you can enable node encryption during initial target appliance installation before cloning. You can check if node encryption is enabled on the source appliance node as described in appliance installation.
++
+The source node and target appliance can have different node-encryption settings. Data decryption and encryption is performed automatically during data transfer and when the target node restarts and joins the grid.
+
+ ** xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+ ** xref:../sg5600/index.adoc[SG5600 storage appliances]
+ ** xref:../sg5700/index.adoc[SG5700 storage appliances]
+ ** xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+* Determine if the RAID mode on the target appliance should be changed from its default setting, so you can specify this information during initial target appliance installation before cloning. You can view information about the current RAID mode of the source appliance node on the *Nodes* page in Grid Manager. Select the *Storage* tab for the appliance.
++
+The source node and target appliance can have different RAID settings.
+
+* Plan for sufficient time to complete the node cloning process. Several days might be required to transfer data from an operational Storage Node to a target appliance. Schedule cloning at a time that minimizes the impact to your business.
+* You should only clone one appliance node at a time. Cloning can prevent you from performing other StorageGRID maintenance functions at the same time.
+* After you have cloned an appliance node, you can use the source appliance that was returned to a pre-install state as the target to clone another compatible node appliance.

@@ -1,0 +1,82 @@
+---
+permalink: audit/client-write-audit-messages.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, messages, client write, OVWR, SDEL, SPOS, SPUT, SUPD, WDEL, WPUT, S3, swift
+summary: 'Client write audit messages are logged when an S3 or Swift client application makes a request to create or modify an object.'
+---
+= Client write audit messages
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Client write audit messages are logged when an S3 or Swift client application makes a request to create or modify an object.
+
+[options="header"]
+|===
+| Code| Description| Used by| See
+a|
+OVWR
+a|
+Object Overwrite: Logs a transaction to overwrite one object with another object.
+a|
+S3 clients
+
+Swift clients
+
+a|
+xref:ovwr-object-overwrite.adoc[OVWR: Object Overwrite]
+a|
+SDEL
+a|
+S3 DELETE: Logs a successful transaction to delete an object or bucket.
+
+*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
+
+a|
+S3 client
+a|
+xref:sdel-s3-delete.adoc[SDEL: S3 DELETE]
+a|
+SPOS
+a|
+S3 POST: Logs a successful transaction to restore an object from AWS Glacier storage to a Cloud Storage Pool.
+a|
+S3 client
+a|
+xref:spos-s3-post.adoc[SPOS: S3 POST]
+a|
+SPUT
+a|
+S3 PUT: Logs a successful transaction to create a new object or bucket.
+
+*Note:* If the transaction operates on a subresource, the audit message will include the field S3SR.
+
+a|
+S3 client
+a|
+xref:sput-s3-put.adoc[SPUT: S3 PUT]
+a|
+SUPD
+a|
+S3 Metadata Updated: Logs a successful transaction to update the metadata for an existing object or bucket.
+a|
+S3 client
+a|
+xref:supd-s3-metadata-updated.adoc[SUPD: S3 Metadata Updated]
+a|
+WDEL
+a|
+Swift DELETE: Logs a successful transaction to delete an object or container.
+a|
+Swift client
+a|
+xref:wdel-swift-delete.adoc[WDEL: Swift DELETE]
+a|
+WPUT
+a|
+Swift PUT: Logs a successful transaction to create a new object or container.
+a|
+Swift client
+a|
+xref:wput-swift-put.adoc[WPUT: Swift PUT]
+|===

@@ -1,0 +1,19 @@
+---
+permalink: network/grid-network-requirements.html
+sidebar: sidebar
+keywords: 
+summary: 'Follow these requirements and guidelines for the Grid Network.'
+---
+= Grid Network requirements
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Follow these requirements and guidelines for the Grid Network.
+
+* At deployment time, each grid node must be attached to the Grid Network and must be able to communicate with the primary Admin Node using the networking configuration you specify when deploying the node.
+* During normal grid operations, each grid node must be able to communicate with all other grid nodes over the Grid Network.
++
+NOTE: The Grid Network must be directly routable between each node. Network address translation (NAT) between nodes is not supported.
+
+* If the Grid Network consists of multiple subnets, add them to the Grid Network Subnet List (GNSL). Static routes are created on all nodes for each subnet in the GNSL.

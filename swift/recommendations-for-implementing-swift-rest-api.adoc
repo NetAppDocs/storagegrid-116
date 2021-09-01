@@ -1,0 +1,52 @@
+---
+permalink: swift/recommendations-for-implementing-swift-rest-api.html
+sidebar: sidebar
+keywords:
+summary: 'You should follow these recommendations when implementing the Swift REST API for use with StorageGRID.'
+---
+= Recommendations for implementing the Swift REST API
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should follow these recommendations when implementing the Swift REST API for use with StorageGRID.
+
+== Recommendations for HEADs to non-existent objects
+
+If your application routinely checks to see if an object exists at a path where you do not expect the object to actually exist, you should use the "`Available`" consistency control. For example, you should use the "`Available`" consistency control if your application performs a HEAD operation to a location before performing a PUT operation to that location.
+
+Otherwise, if the HEAD operation does not find the object, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable.
+
+You can set the "`Available`" consistency control for each container using the PUT container consistency request.
+
+== Recommendations for object names
+
+You should not use random values as the first four characters of object names. Instead, you should use non-random, non-unique prefixes, such as image.
+
+If you do need to use random and unique characters in object name prefixes, you should prefix the object names with a directory name. That is, use this format:
+
+----
+mycontainer/mydir/f8e3-image3132.jpg
+----
+
+Instead of this format:
+
+----
+mycontainer/f8e3-image3132.jpg
+----
+
+== Recommendations for "`range reads`"
+
+If the *Compress Stored Objects* option is selected (*Configuration* > *System Settings* > *Grid Options*), Swift client applications should avoid performing GET object operations that specify a range of bytes be returned. These "`range read`" operations are inefficient because StorageGRID must effectively uncompress the objects to access the requested bytes. GET Object operations that request a small range of bytes from a very large object are especially inefficient; for example, it is very inefficient to read a 10 MB range from a 50 GB compressed object.
+
+If ranges are read from compressed objects, client requests can time out.
+
+NOTE: If you need to compress objects and your client application must use range reads, increase the read timeout for the application.
+
+.Related information
+
+xref:get-container-consistency-request.adoc[GET container consistency request]
+
+xref:put-container-consistency-request.adoc[PUT container consistency request]
+
+xref:../admin/index.adoc[Administer StorageGRID]
