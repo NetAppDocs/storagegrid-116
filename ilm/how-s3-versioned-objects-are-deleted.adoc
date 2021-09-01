@@ -1,0 +1,28 @@
+---
+permalink: ilm/how-s3-versioned-objects-are-deleted.html
+sidebar: sidebar
+keywords:
+summary: 'When versioning is enabled for an S3 bucket, StorageGRID follows Amazon S3 behavior when responding to delete requests, whether those requests come from an S3 client, the expiration of an S3 bucket lifecycle, or the requirements of the ILM policy.'
+---
+= How S3 versioned objects are deleted
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When versioning is enabled for an S3 bucket, StorageGRID follows Amazon S3 behavior when responding to delete requests, whether those requests come from an S3 client, the expiration of an S3 bucket lifecycle, or the requirements of the ILM policy.
+
+When objects are versioned, object delete requests do not delete the current version of the object and do not free space. Instead, an object delete request simply creates a delete marker as the current version of the object, which makes the previous version of the object "`noncurrent.`"
+
+Even though the object has not been removed, StorageGRID behaves as though the current version of the object is no longer available. Requests to that object return 404 NotFound. However, because noncurrent object data has not been removed, requests that specify a noncurrent version of the object can succeed.
+
+To free space when deleting versioned objects, you must do one of the following:
+
+* *S3 client request*: Specify the object version number in the S3 DELETE Object request (`DELETE /object?versionId=ID`). Keep in mind that this request only removes object copies for the specified version (the other versions are still taking up space).
+* *Bucket lifecycle*: Use the `NoncurrentVersionExpiration` action in the bucket lifecycle configuration. When the number of NoncurrentDays specified is met, StorageGRID permanently removes all copies of noncurrent object versions. These object versions cannot be recovered.
+* *ILM*: Add two ILM rules to your ILM policy. Use *Noncurrent Time* as the Reference Time in the first rule to match the noncurrent versions of the object. Use *Ingest Time* in the second rule to match the current version. The *Noncurrent Time* rule must appear in the policy above the *Ingest Time* rule.
+
+.Related information
+
+xref:../s3/index.adoc[Use S3]
+
+xref:example-4-ilm-rules-and-policy-for-s3-versioned-objects.adoc[Example 4: ILM rules and policy for S3 versioned objects]

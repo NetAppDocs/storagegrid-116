@@ -1,0 +1,34 @@
+---
+permalink: admin/disabling-single-sign-on.html
+sidebar: sidebar
+keywords: 
+summary: 'You can disable single sign-on \(SSO\) if you no longer want to use this functionality. You must disable single sign-on before you can disable identity federation.'
+---
+= Disabling single sign-on
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can disable single sign-on (SSO) if you no longer want to use this functionality. You must disable single sign-on before you can disable identity federation.
+
+.What you'll need
+
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must have specific access permissions.
+
+.Steps
+
+. Select *Configuration* > *Access Control* > *Single Sign-on*.
++
+The Single Sign-on page appears.
+
+. Select the *Disabled* option.
+. Click *Save*.
++
+A warning message appears indicating that local users will now be able to sign in.
++
+image::../media/sso_status_disabled_warning.gif[SSO disabled warning]
+
+. Click *OK*.
++
+The next time you sign in to StorageGRID, the StorageGRID Sign in page appears and you must enter the username and password for a local or federated StorageGRID user.

@@ -1,0 +1,22 @@
+---
+permalink: maintain/considerations-for-decommissioning-admin-or-gateway-nodes.html
+sidebar: sidebar
+keywords: storagegrid, decommission admin node, decommission gateway node
+summary: 'Review the following considerations before decommissioning an Admin Node or a Gateway Node.'
+---
+= Considerations for decommissioning Admin Nodes or a Gateway Nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Review the following considerations before decommissioning an Admin Node or a Gateway Node.
+
+* The decommission procedure requires exclusive access to some system resources, so you must confirm that no other maintenance procedures are running.
+* You cannot decommission the primary Admin Node.
+* You cannot decommission an Admin Node or a Gateway Node if one of its network interfaces is part of a high availability (HA) group. You must first remove the network interfaces from the HA group. See the instructions for administering StorageGRID.
+* As required, you can safely change the ILM policy while decommissioning a Gateway Node or an Admin Node.
+* If you decommission an Admin Node and single sign-on (SSO) is enabled for your StorageGRID system, you must remember to remove the node's relying party trust from Active Directory Federation Services (AD FS).
+
+.Related information
+
+xref:../admin/index.adoc[Administer StorageGRID]

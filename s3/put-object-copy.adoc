@@ -1,0 +1,136 @@
+---
+permalink: s3/put-object-copy.html
+sidebar: sidebar
+keywords: object, add object, put, put object request
+summary: 'You can use the S3 PUT Object - Copy request to create a copy of an object that is already stored in S3. A PUT Object - Copy operation is the same as performing a GET and then a PUT.'
+---
+= PUT Object - Copy
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the S3 PUT Object - Copy request to create a copy of an object that is already stored in S3. A PUT Object - Copy operation is the same as performing a GET and then a PUT.
+
+== Resolving conflicts
+
+Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
+
+== Object size
+
+StorageGRID supports objects up to 5 TB in size.
+
+== UTF-8 characters in user metadata
+
+If a request includes (unescaped) UTF-8 values in the key name or value of user-defined metadata, StorageGRID behavior is undefined.
+
+StorageGRID does not parse or interpret escaped UTF-8 characters included in the key name or value of user-defined metadata. Escaped UTF-8 characters are treated as ASCII characters:
+
+* Requests succeed if user-defined metadata includes escaped UTF-8 characters.
+* StorageGRID does not return the `x-amz-missing-meta` header if the interpreted value of the key name or value includes unprintable characters.
+
+== Supported request headers
+
+The following request headers are supported:
+
+* `Content-Type`
+* `x-amz-copy-source`
+* `x-amz-copy-source-if-match`
+* `x-amz-copy-source-if-none-match`
+* `x-amz-copy-source-if-unmodified-since`
+* `x-amz-copy-source-if-modified-since`
+* `x-amz-meta-`, followed by a name-value pair containing user-defined metadata
+* `x-amz-metadata-directive`: The default value is `COPY`, which enables you to copy the object and associated metadata.
++
+You can specify `REPLACE` to overwrite the existing metadata when copying the object, or to update the object metadata.
+
+* `x-amz-storage-class`
+* `x-amz-tagging-directive`: The default value is `COPY`, which enables you to copy the object and all tags.
++
+You can specify `REPLACE` to overwrite the existing tags when copying the object, or to update the tags.
+
+* S3 Object Lock request headers:
+ ** `x-amz-object-lock-mode`
+ ** `x-amz-object-lock-retain-until-date`
+ ** `x-amz-object-lock-legal-hold`
+
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
+* SSE request headers:
+ ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`
+ ** `x-amz-copy-source​-server-side-encryption-customer-key`
+ ** `x-amz-copy-source​-server-side-encryption-customer-key-MD5`
+ ** `x-amz-server-side-encryption`
+ ** `x-amz-server-side-encryption-customer-key-MD5`
+ ** `x-amz-server-side-encryption-customer-key`
+ ** `x-amz-server-side-encryption-customer-algorithm`
+
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Request headers for server-side encryption]
+
+== Unsupported request headers
+
+The following request headers are not supported:
+
+* `Cache-Control`
+* `Content-Disposition`
+* `Content-Encoding`
+* `Content-Language`
+* `Expires`
+* `x-amz-website-redirect-location`
+
+== Storage class options
+
+The `x-amz-storage-class` request header is supported, and affects how many object copies StorageGRID creates if the matching ILM rule specifies an Ingest Behavior of Dual commit or Balanced.
+
+* `STANDARD`
++
+(Default) Specifies a dual-commit ingest operation when the ILM rule uses the Dual commit option, or when the Balanced option falls back to creating interim copies.
+
+* `REDUCED_REDUNDANCY`
++
+Specifies a single-commit ingest operation when the ILM rule uses the Dual commit option, or when the Balanced option falls back to creating interim copies.
++
+NOTE: If you are ingesting an object into a bucket with S3 Object Lock enabled, the `REDUCED_REDUNDANCY` option is ignored. If you are ingesting an object into a legacy Compliant bucket, the `REDUCED_REDUNDANCY` option returns an error. StorageGRID will always perform a dual-commit ingest to ensure that compliance requirements are satisfied.
+
+== Using x-amz-copy-source in PUT Object - Copy
+
+If the source bucket and key, specified in the `x-amz-copy-source` header, are different from the destination bucket and key, a copy of the source object data is written to the destination.
+
+If the source and destination match, and the `x-amz-metadata-directive` header is specified as `REPLACE`, the object's metadata is updated with the metadata values supplied in the request. In this case, StorageGRID does not re-ingest the object. This has two important consequences:
+
+* You cannot use PUT Object - Copy to encrypt an existing object in place, or to change the encryption of an existing object in place. If you supply the `x-amz-server-side-encryption` header or the `x-amz-server-side-encryption-customer-algorithm` header, StorageGRID rejects the request and returns `XNotImplemented`.
+* The option for Ingest Behavior specified in the matching ILM rule is not used. Any changes to object placement that are triggered by the update are made when ILM is re-evaluated by normal background ILM processes.
++
+This means that if the ILM rule uses the Strict option for ingest behavior, no action is taken if the required object placements cannot be made (for example, because a newly required location is unavailable). The updated object retains its current placement until the required placement is possible.
+
+== Request headers for server-side encryption
+
+If you use server-side encryption, the request headers you provide depend on whether the source object is encrypted and on whether you plan to encrypt the target object.
+
+* If the source object is encrypted using a customer-provided key (SSE-C), you must include the following three headers in the PUT Object - Copy request, so the object can be decrypted and then copied:
+ ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm` Specify `AES256`.
+ ** `x-amz-copy-source​-server-side-encryption-customer-key` Specify the encryption key you provided when you created the source object.
+ ** `x-amz-copy-source​-server-side-encryption-customer-key-MD5`: Specify the MD5 digest you provided when you created the source object.
+* If you want to encrypt the target object (the copy) with a unique key that you provide and manage, include the following three headers:
+ ** `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
+ ** `x-amz-server-side-encryption-customer-key`: Specify a new encryption key for the target object.
+ ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new encryption key.
+
+*Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+
+* If you want to encrypt the target object (the copy) with a unique key managed by StorageGRID (SSE), include this header in the PUT Object - Copy request:
+ ** `x-amz-server-side-encryption`
+
+*Note:* The `server-side-encryption` value of the object cannot be updated. Instead, make a copy with a new `server-side-encryption` value using `x-amz-metadata-directive`: `REPLACE`.
+
+== Versioning
+
+If the source bucket is versioned, you can use the `x-amz-copy-source` header to copy the latest version of an object. To copy a specific version of an object, you must explicitly specify the version to copy using the `versionId` subresource. If the destination bucket is versioned, the generated version is returned in the `x-amz-version-id` response header. If versioning is suspended for the target bucket, then `x-amz-version-id` returns a "`null`" value.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Using server-side encryption]
+
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]
+
+xref:put-object.adoc[PUT Object]

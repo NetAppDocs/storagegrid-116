@@ -1,0 +1,72 @@
+---
+permalink: sg100-1000/network-bond-modes-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, Network bond, Network bonding, Network bond mode, Network-bond mode, fixed, Aggregate 
+summary: 'The networking ports on the services appliance support Fixed port bond mode or Aggregate port bond mode for the Grid Network and Client Network connections.'
+---
+= Network bond modes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The networking ports on the services appliance support Fixed port bond mode or Aggregate port bond mode for the Grid Network and Client Network connections.
+
+== Fixed port bond mode
+
+Fixed port bond mode is the default configuration for the networking ports.
+
+*SG100 fixed port bond mode* image:../media/sg100_fixed_port.png[SG100 Fixed Port Bond Mode]
+
+*SG1000 fixed port bond mode*
+
+image::../media/sg1000_fixed_port.png[SG1000 Fixed Port Bond Mode]
+
+[options="header"]
+|===
+| Callout| Which ports are bonded
+a|
+C
+a|
+Ports 1 and 3 are bonded together for the Client Network, if this network is used.
+a|
+G
+a|
+Ports 2 and 4 are bonded together for the Grid Network.
+|===
+When using Fixed port bond mode, the ports can be bonded using active-backup mode or Link Aggregation Control Protocol mode (LACP 802.3ad).
+
+* In active-backup mode (default), only one port is active at a time. If the active port fails, its backup port automatically provides a failover connection. Port 4 provides a backup path for port 2 (Grid Network), and port 3 provides a backup path for port 1 (Client Network).
+* In LACP mode, each pair of ports forms a logical channel between the services appliance and the network, allowing for higher throughput. If one port fails, the other port continues to provide the channel. Throughput is reduced, but connectivity is not impacted.
+
+NOTE: If you do not need redundant connections, you can use only one port for each network. However, be aware that the *Services appliance link down* alert might be triggered in the Grid Manager after StorageGRID is installed, indicating that a cable is unplugged. You can safely disable this alert rule.
+
+== Aggregate port bond mode
+
+Aggregate port bond mode significantly increases the throughput for each StorageGRID network and provides additional failover paths.
+
+*SG100 aggregate port bond mode*
+
+image::../media/sg100_aggregate_ports.png[SG100 aggregate port bond mode]
+
+*SG1000 aggregate port bond mode*
+
+image::../media/sg1000_aggregate_ports.png[SG1000 Aggregate Port Bond Mode]
+
+[options="header"]
+|===
+| Callout| Which ports are bonded
+a|
+1
+a|
+All connected ports are grouped in a single LACP bond, allowing all ports to be used for Grid Network and Client Network traffic.
+|===
+If you plan to use aggregate port bond mode:
+
+* You must use LACP network bond mode.
+* You must specify a unique VLAN tag for each network. This VLAN tag will be added to each network packet to ensure that network traffic is routed to the correct network.
+* The ports must be connected to switches that can support VLAN and LACP. If multiple switches are participating in the LACP bond, the switches must support multi-chassis link aggregation groups (MLAG), or equivalent.
+* You must understand how to configure the switches to use VLAN, LACP, and MLAG, or equivalent.
+
+If you do not want to use all four ports, you can use one, two, or three ports. Using more than one port maximizes the chance that some network connectivity will remain available if one of the ports fails.
+
+NOTE: If you choose to use fewer than four network ports, be aware that a *Services appliance link down* alert might be triggered in the Grid Manager after the appliance node is installed, indicating that a cable is unplugged. You can safely disable this alert rule for the triggered alert.

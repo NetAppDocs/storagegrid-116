@@ -1,0 +1,71 @@
+---
+permalink: maintain/how-appliance-node-cloning-works.html
+sidebar: sidebar
+keywords: storagegrid, appliance node cloning, appliance node clone
+summary: 'Appliance node cloning lets you easily replace an existing appliance node \(source\) in your grid with a compatible appliance \(target\) that is part of the same logical StorageGRID site. The process transfers all data to the new appliance, placing it in service to replace the old appliance node and leaving the old appliance in a pre-install state.'
+---
+= How appliance node cloning works
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Appliance node cloning lets you easily replace an existing appliance node (source) in your grid with a compatible appliance (target) that is part of the same logical StorageGRID site. The process transfers all data to the new appliance, placing it in service to replace the old appliance node and leaving the old appliance in a pre-install state.
+
+== Why clone an appliance node?
+
+You can clone an appliance node if you need to:
+
+* Replace appliances that are reaching end-of-life.
+* Upgrade existing nodes to take advantage of improved appliance technology.
+* Increase grid storage capacity without changing the number of Storage Nodes in your StorageGRID system.
+* Improve storage efficiency, such as by changing the RAID mode from DDP-8 to DDP-16, or to RAID-6.
+* Efficiently implement node encryption to allow the use of external key management servers (KMS).
+
+== Which StorageGRID network is used?
+
+Cloning transfers data from the source node directly to the target appliance over any of the three StorageGRID networks. The Grid Network is typically used, but you can also use the Admin Network or the Client Network if the source appliance is connected to these networks. Choose the network to use for cloning traffic that provides the best data-transfer performance without degrading StorageGRID network performance or data availability.
+
+When you install the replacement appliance, you must specify temporary IP addresses for StorageGRID connection and data transfer. Since the replacement appliance will be part of the same networks as the appliance node it replaces, you must specify temporary IP addresses for each of these networks on the replacement appliance.
+
+== Target appliance compatibility
+
+Replacement appliances must be the same type as the source node they are replacing and both must be part of the same logical StorageGRID site.
+
+* A replacement services appliance can be different than the Admin Node or Gateway Node it is replacing.
+ ** You can clone an SG100 source node appliance to an SG1000 services target appliance to give the Admin Node or Gateway Node greater capability.
+ ** You can clone an SG1000 source node appliance to an SG100 services target appliance to redeploy the SG1000 for a more demanding application.
++
+For example, if an SG1000 source node appliance is being used as an Admin Node and you want to use it as a dedicated load-balancing node.
+
+ ** Replacing an SG1000 source node appliance with an SG100 services target appliance reduces the maximum speed of the network ports from 100-GbE to 25-GbE.
+ ** The SG100 and SG1000 appliances have different network connectors. Changing the appliance type might require replacing the cables or SFP modules.
+* A replacement storage appliance must have equal or greater capacity than the Storage Node it is replacing.
+ ** If the target storage appliance has the same number of drives as the source node, the drives in the target appliance must have the same capacity (in TB) or larger.
+ ** If the number of standard drives installed in a target storage appliance is less than the number of drives in the source node, due to installation of solid-state drives (SSDs), the overall storage capacity of the standard drives in the target appliance (in TB) must meet or exceed the total functional drive capacity of all drives in the source Storage Node.
++
+For example, when cloning an SG5660 source Storage Node appliance with 60 drives to an SG6060 target appliance with 58 standard drives, larger drives should be installed in the SG6060 target appliance before cloning to maintain storage capacity. (The two drive slots containing SSDs in the target appliance are not included in the total appliance-storage capacity.)
++
+However, if a 60-drive SG5660 source node appliance is configured with SANtricity Dynamic Disk Pools DDP-8, configuring a 58-drive same-size-drive SG6060 target appliance with DDP-16 might make the SG6060 appliance a valid clone target due to its improved storage efficiency.
++
+You can view information about the current RAID mode of the source appliance node on the *Nodes* page in Grid Manager. Select the *Storage* tab for the appliance.
+
+== What information is not cloned?
+
+The following appliance configurations do not transfer to the replacement appliance during cloning. You must configure them during initial set up of the replacement appliance.
+
+* BMC interface
+* Network links
+* Node encryption status
+* SANtricity System Manager (for Storage Nodes)
+* RAID mode (for Storage Nodes)
+
+== What issues prevent cloning?
+
+If any of the following issues are encountered while cloning, the cloning process halts and an error message is generated:
+
+* Wrong network configuration
+* Lack of connectivity between the source and target appliances
+* Source and target appliance incompatibility
+* For Storage Nodes, a replacement appliance of insufficient capacity
+
+You must resolve each issue for cloning to continue.

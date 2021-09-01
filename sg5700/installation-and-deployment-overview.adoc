@@ -1,0 +1,73 @@
+---
+permalink: sg5700/installation-and-deployment-overview.html
+sidebar: sidebar
+keywords: storagegrid, sg5700, storage node, storage appliance, Installation, deployment, Install, deploy, Installing, deploying
+summary: 'You can install one or more StorageGRID appliances when you first deploy StorageGRID, or you can add appliance Storage Nodes later as part of an expansion. You might also need to install an appliance Storage Node as part of a recovery operation.'
+---
+= Installation and deployment overview
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can install one or more StorageGRID appliances when you first deploy StorageGRID, or you can add appliance Storage Nodes later as part of an expansion. You might also need to install an appliance Storage Node as part of a recovery operation.
+
+Adding a StorageGRID storage appliance to a StorageGRID system includes four primary steps:
+
+. Preparing for installation:
+ ** Preparing the installation site
+ ** Unpacking the boxes and checking the contents
+ ** Obtaining additional equipment and tools
+ ** Gathering IP addresses and network information
+ ** Optional: Configuring an external key management server (KMS) if you plan to encrypt all appliance data. See details about external key management in the instructions for administering StorageGRID.
+. Installing the hardware:
+ ** Registering the hardware
+ ** Installing the appliance into a cabinet or rack
+ ** Installing the drives (SG5760 only)
+ ** Cabling the appliance
+ ** Connecting the power cords and applying power
+ ** Viewing boot-up status codes
+. Configuring the hardware:
+ ** Accessing SANtricity System Manager, setting a static IP address for management port 1 on the E2800 controller, and configuring SANtricity System Manager settings
+ ** Accessing StorageGRID Appliance Installer and configuring the link and network IP settings required to connect to StorageGRID networks
+ ** Optional: Enabling node encryption if you plan to use an external KMS to encrypt appliance data.
+ ** Optional: Changing the RAID mode.
+. Deploying the appliance as a Storage Node:
+
+[options="header"]
+|===
+| Task| Instructions
+a|
+Deploying an appliance Storage Node in a new StorageGRID system
+a|
+xref:deploying-appliance-storage-node.adoc[Deploying an appliance Storage Node]
+a|
+Adding an appliance Storage Node to an existing StorageGRID system
+a|
+Instructions for expanding a StorageGRID system
+a|
+Deploying an appliance Storage Node as part of a Storage Node recovery operation
+a|
+Instructions for recovery and maintenance
+|===
+
+.Related information
+
+xref:preparing-for-installation.adoc[Preparing for installation]
+
+xref:installing-hardware.adoc[Installing the hardware]
+
+xref:configuring-hardware-sg5712-60.adoc[Configuring the hardware]
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+
+xref:../expand/index.adoc[Expand your grid]
+
+xref:../maintain/index.adoc[Maintain & recover]
+
+xref:../admin/index.adoc[Administer StorageGRID]

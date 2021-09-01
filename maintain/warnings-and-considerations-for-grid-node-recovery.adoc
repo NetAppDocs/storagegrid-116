@@ -1,0 +1,44 @@
+---
+permalink: maintain/warnings-and-considerations-for-grid-node-recovery.html
+sidebar: sidebar
+keywords: storagegrid, recover, warning
+summary: 'If a grid node fails, you must recover it as soon as possible. You must review all warnings and considerations for node recovery before you begin.'
+---
+= Warnings and considerations for grid node recovery
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If a grid node fails, you must recover it as soon as possible. You must review all warnings and considerations for node recovery before you begin.
+
+IMPORTANT: StorageGRID is a distributed system composed of multiple nodes working with each other. Do not use disk snapshots to restore grid nodes. Instead, refer to the recovery and maintenance procedures for each type of node.
+
+Some of the reasons for recovering a failed grid node as soon as possible include the following:
+
+* A failed grid node can reduce the redundancy of system and object data, leaving you vulnerable to the risk of permanent data loss if another node fails.
+* A failed grid node can impact the efficiency of day‐to‐day operations.
+* A failed grid node can reduce your ability to monitor system operations.
+* A failed grid node can cause a 500 internal server error if strict ILM rules are in place.
+* If a grid node is not recovered promptly, recovery times might increase. For example, queues might develop that need to be cleared before recovery is complete.
+
+Always follow the recovery procedure for the specific type of grid node you are recovering. Recovery procedures vary for primary or non-primary Admin Nodes, Gateway Nodes, Archive Nodes, appliance nodes, and Storage Nodes.
+
+== Preconditions for recovering grid nodes
+
+All of the following conditions are assumed when recovering grid nodes:
+
+* The failed physical or virtual hardware has been replaced and configured.
+* The StorageGRID Appliance Installer version on the replacement appliance matches the software version of your StorageGRID system, as described in hardware installation and maintenance for verifying and upgrading the StorageGRID Appliance Installer version.
+ ** xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+ ** xref:../sg5600/index.adoc[SG5600 storage appliances]
+ ** xref:../sg5700/index.adoc[SG5700 storage appliances]
+ ** xref:../sg6000/index.adoc[SG6000 storage appliances]
+* If you are recovering a grid node other than the primary Admin Node, there is connectivity between the grid node being recovered and the primary Admin Node.
+
+== Order of node recovery if a server hosting more than one grid node fails
+
+If a server that is hosting more than one grid node fails, you can recover the nodes in any order. However, if the failed server is hosting the primary Admin Node, you must recover that node first. Recovering the primary Admin Node first prevents other node recoveries from halting as they wait to contact the primary Admin Node.
+
+== IP addresses for recovered nodes
+
+Do not attempt to recover a node using an IP address that is currently assigned to any other node. When you deploy the new node, use the failed node's current IP address or an unused IP address.

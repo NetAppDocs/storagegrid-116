@@ -1,0 +1,38 @@
+---
+permalink: sg5600/optional-changing-to-raid6-mode-sg5660-only.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, raid, raid mode, change, changing, modify, DDP, raid6 
+summary: 'If you have an SG5660 with 60 drives, you can change the volume configuration from its default and recommended setting, Dynamic Disk Pools \(DDP\), to RAID6. You can only change the mode before deploying the StorageGRID appliance Storage Node.'
+---
+= Optional: Changing to RAID6 mode (SG5660 only)
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you have an SG5660 with 60 drives, you can change the volume configuration from its default and recommended setting, Dynamic Disk Pools (DDP), to RAID6. You can only change the mode before deploying the StorageGRID appliance Storage Node.
+
+.What you'll need
+
+* You have an SG5660. The SG5612 does not support RAID6. If you have an SG5612, you must use DDP mode.
+
+IMPORTANT: If any volumes have already been configured or if StorageGRID was previously installed, changing the RAID mode causes the volumes to be removed and replaced. Any data on those volumes will be lost.
+
+.About this task
+
+Before deploying a StorageGRID appliance Storage Node, you can choose from two volume configuration options:
+
+* *Dynamic Disk Pools (DDP)* -- This is the default and recommended setting. DDP is an enhanced hardware data protection scheme that delivers better system performance, reduced rebuild times after drive failures, and ease of management.
+* *RAID6* -- This is a hardware protection scheme that uses parity stripes on each disk, and allows for two disk failures within the RAID set before any data is lost.
++
+IMPORTANT: Using RAID6 is not recommended for most StorageGRID environments. Although RAID6 can increase storage efficiency to 88% (compared to 80% for DDP), DDP mode provides more efficient recovery from drive failures.
+
+.Steps
+
+. Using the service laptop, open a web browser and access the StorageGRID Appliance Installer: +
+`*https://_E5600SG_Controller_IP_:8443*`
++
+Where `_E5600SG_Controller_IP_` is any of the IP addresses for the E5600SG controller.
+
+. From the menu bar, select *Advanced* > *RAID Mode*.
+. On the *Configure RAID Mode* page, select *RAID6* from the Mode drop-down list.
+. Click *Save*.

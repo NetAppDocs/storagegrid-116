@@ -1,0 +1,81 @@
+---
+permalink: maintain/recovering-failed-storage-volumes-and-rebuilding-cassandra-database.html
+sidebar: sidebar
+keywords: storagegrid, recover, maintenance, maintain, failed storage volumes, failed volumes, cassandra, cassandra rebuild, rebuild cassandra, cassandra database
+summary: 'You must run a script that reformats and remounts storage on failed storage volumes, and rebuilds the Cassandra database on the Storage Node if the system determines that it is necessary.'
+---
+= Recovering failed storage volumes and rebuilding the Cassandra database
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must run a script that reformats and remounts storage on failed storage volumes, and rebuilds the Cassandra database on the Storage Node if the system determines that it is necessary.
+
+* You must have the `Passwords.txt` file.
+* The system drives on the server must be intact.
+* The cause of the failure must have been identified and, if necessary, replacement storage hardware must already have been acquired.
+* The total size of the replacement storage must be the same as the original.
+* You have checked that a Storage Node decommissioning is not in progress, or you have paused the node decommission procedure. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Decommission*.)
+* You have checked that an expansion is not in progress. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Expansion*.)
+* You have reviewed the warnings about storage volume recovery.
++
+link:reviewing_warnings_about_storage_volume_recovery.adoc[Reviewing warnings about storage volume recovery]
+
+. As needed, replace failed physical or virtual storage associated with the failed storage volumes that you identified and unmounted earlier.
++
+After you replace the storage, make sure you rescan or reboot to make sure that it is recognized by the operating system, but do not remount the volumes. The storage is remounted and added to `/etc/fstab` in a later step.
+
+. Log in to the failed Storage Node:
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
+
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Use a text editor (vi or vim) to delete failed volumes from the `/etc/fstab` file and then save the file.
++
+NOTE: Commenting out a failed volume in the `/etc/fstab` file is insufficient. The volume must be deleted from `fstab` as the recovery process verifies that all lines in the `fstab` file match the mounted file systems.
+
+. Reformat any failed storage volumes and rebuild the Cassandra database if it is necessary. Enter: `reformat_storage_block_devices.rb`
+ ** If storage services are running, you will be prompted to stop them. Enter: *y*
+ ** You will be prompted to rebuild the Cassandra database if it is necessary.
+  *** Review the warnings. If none of them apply, rebuild the Cassandra database. Enter: *y*
+  *** If more than one Storage Node is offline or if another Storage Node has been rebuilt in the last 15 days. Enter: *n*
++
+The script will exit without rebuilding Cassandra. Contact technical support.
+ ** For each rangedb drive on the Storage Node, when you are asked: `Reformat the rangedb drive _<name>_ (device _<major number>:<minor number>_)? [y/n]?`, enter one of the following responses:
+  *** *y* to reformat a drive that had errors. This reformats the storage volume and adds the reformatted storage volume to the `/etc/fstab` file.
+  *** *n* if the drive contains no errors, and you do not want to reformat it.
++
+NOTE: Selecting *n* exits the script. Either mount the drive (if you think the data on the drive should be retained and the drive was unmounted in error) or remove the drive. Then, run the `reformat_storage_block_devices.rb` command again.
++
+NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repairs. Repairs occur automatically as soon as the related or required services have started. You might notice script output that mentions "`reaper`" or "`Cassandra repair.`" If you see an error message indicating the repair has failed, run the command indicated in the error message.
++
+In the following example output, the drive `/dev/sdf` must be reformatted, and Cassandra did not need to be rebuilt:
++
+----
+root@DC1-S1:~ # reformat_storage_block_devices.rb
+Storage services must be stopped before running this script.
+Stop storage services [y/N]? **y**
+Shutting down storage services.
+Storage services stopped.
+Formatting devices that are not in use...
+Skipping in use device /dev/sdc
+Skipping in use device /dev/sdd
+Skipping in use device /dev/sde
+Reformat the rangedb drive /dev/sdf (device 8:64)? [Y/n]? **y**
+Successfully formatted /dev/sdf with UUID c817f87f-f989-4a21-8f03-b6f42180063f
+Skipping in use device /dev/sdg
+All devices processed
+Running: /usr/local/ldr/setup_rangedb.sh 12075630
+Cassandra does not need rebuilding.
+Starting services.
+
+Reformatting done.  Now do manual steps to
+restore copies of data.
+----
+
+.Related information
+
+xref:reviewing-warnings-about-storage-volume-recovery.adoc[Reviewing warnings about storage volume recovery]

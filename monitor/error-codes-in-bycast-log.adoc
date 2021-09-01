@@ -1,0 +1,863 @@
+---
+permalink: monitor/error-codes-in-bycast-log.html
+sidebar: sidebar
+keywords: bycast log, error codes
+summary: 'Most of the error messages in `bycast.log` contain error codes.'
+---
+= Error codes in `bycast.log`
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Most of the error messages in `bycast.log` contain error codes.
+
+The following table lists common non-numerical codes in `bycast.log`. The exact meaning of a non-numerical code depends on the context in which it is reported.
+
+[options="header"]
+|===
+| Error code| Meaning
+a|
+SUCS
+a|
+No error
+a|
+GERR
+a|
+Unknown
+a|
+CANC
+a|
+Canceled
+a|
+ABRT
+a|
+Aborted
+a|
+TOUT
+a|
+Timeout
+a|
+INVL
+a|
+Invalid
+a|
+NFND
+a|
+Not found
+a|
+VERS
+a|
+Version
+a|
+CONF
+a|
+Configuration
+a|
+FAIL
+a|
+Failed
+a|
+ICPL
+a|
+Incomplete
+a|
+DONE
+a|
+Done
+a|
+SUNV
+a|
+Service unavailable
+|===
+The following table lists the numerical error codes in `bycast.log`.
+
+[options="header"]
+|===
+| Error number| Error code| Meaning
+a|
+001
+a|
+EPERM
+a|
+Operation not permitted
+a|
+002
+a|
+ENOENT
+a|
+No such file or directory
+a|
+003
+a|
+ESRCH
+a|
+No such process
+a|
+004
+a|
+EINTR
+a|
+Interrupted system call
+a|
+005
+a|
+EIO
+a|
+I/O error
+a|
+006
+a|
+ENXIO
+a|
+No such device or address
+a|
+007
+a|
+E2BIG
+a|
+Argument list too long
+a|
+008
+a|
+ENOEXEC
+a|
+Exec format error
+a|
+009
+a|
+EBADF
+a|
+Bad file number
+a|
+010
+a|
+ECHILD
+a|
+No child processes
+a|
+011
+a|
+EAGAIN
+a|
+Try again
+a|
+012
+a|
+ENOMEM
+a|
+Out of memory
+a|
+013
+a|
+EACCES
+a|
+Permission denied
+a|
+014
+a|
+EFAULT
+a|
+Bad address
+a|
+015
+a|
+ENOTBLK
+a|
+Block device required
+a|
+016
+a|
+EBUSY
+a|
+Device or resource busy
+a|
+017
+a|
+EEXIST
+a|
+File exists
+a|
+018
+a|
+EXDEV
+a|
+Cross-device link
+a|
+019
+a|
+ENODEV
+a|
+No such device
+a|
+020
+a|
+ENOTDIR
+a|
+Not a directory
+a|
+021
+a|
+EISDIR
+a|
+Is a directory
+a|
+022
+a|
+EINVAL
+a|
+Invalid argument
+a|
+023
+a|
+ENFILE
+a|
+File table overflow
+a|
+024
+a|
+EMFILE
+a|
+Too many open files
+a|
+025
+a|
+ENOTTY
+a|
+Not a typewriter
+a|
+026
+a|
+ETXTBSY
+a|
+Text file busy
+a|
+027
+a|
+EFBIG
+a|
+File too large
+a|
+028
+a|
+ENOSPC
+a|
+No space left on device
+a|
+029
+a|
+ESPIPE
+a|
+Illegal seek
+a|
+030
+a|
+EROFS
+a|
+Read-only file system
+a|
+031
+a|
+EMLINK
+a|
+Too many links
+a|
+032
+a|
+EPIPE
+a|
+Broken pipe
+a|
+033
+a|
+EDOM
+a|
+Math argument out of domain of func
+a|
+034
+a|
+ERANGE
+a|
+Math result not representable
+a|
+035
+a|
+EDEADLK
+a|
+Resource deadlock would occur
+a|
+036
+a|
+ENAMETOOLONG
+a|
+File name too long
+a|
+037
+a|
+ENOLCK
+a|
+No record locks available
+a|
+038
+a|
+ENOSYS
+a|
+Function not implemented
+a|
+039
+a|
+ENOTEMPTY
+a|
+Directory not empty
+a|
+040
+a|
+ELOOP
+a|
+Too many symbolic links encountered
+a|
+041
+a|
+
+a|
+
+a|
+042
+a|
+ENOMSG
+a|
+No message of desired type
+a|
+043
+a|
+EIDRM
+a|
+Identifier removed
+a|
+044
+a|
+ECHRNG
+a|
+Channel number out of range
+a|
+045
+a|
+EL2NSYNC
+a|
+Level 2 not synchronized
+a|
+046
+a|
+EL3HLT
+a|
+Level 3 halted
+a|
+047
+a|
+EL3RST
+a|
+Level 3 reset
+a|
+048
+a|
+ELNRNG
+a|
+Link number out of range
+a|
+049
+a|
+EUNATCH
+a|
+Protocol driver not attached
+a|
+050
+a|
+ENOCSI
+a|
+No CSI structure available
+a|
+051
+a|
+EL2HLT
+a|
+Level 2 halted
+a|
+052
+a|
+EBADE
+a|
+Invalid exchange
+a|
+053
+a|
+EBADR
+a|
+Invalid request descriptor
+a|
+054
+a|
+EXFULL
+a|
+Exchange full
+a|
+055
+a|
+ENOANO
+a|
+No anode
+a|
+056
+a|
+EBADRQC
+a|
+Invalid request code
+a|
+057
+a|
+EBADSLT
+a|
+Invalid slot
+a|
+058
+a|
+
+a|
+
+a|
+059
+a|
+EBFONT
+a|
+Bad font file format
+a|
+060
+a|
+ENOSTR
+a|
+Device not a stream
+a|
+061
+a|
+ENODATA
+a|
+No data available
+a|
+062
+a|
+ETIME
+a|
+Timer expired
+a|
+063
+a|
+ENOSR
+a|
+Out of streams resources
+a|
+064
+a|
+ENONET
+a|
+Machine is not on the network
+a|
+065
+a|
+ENOPKG
+a|
+Package not installed
+a|
+066
+a|
+EREMOTE
+a|
+Object is remote
+a|
+067
+a|
+ENOLINK
+a|
+Link has been severed
+a|
+068
+a|
+EADV
+a|
+Advertise error
+a|
+069
+a|
+ESRMNT
+a|
+Srmount error
+a|
+070
+a|
+ECOMM
+a|
+Communication error on send
+a|
+071
+a|
+EPROTO
+a|
+Protocol error
+a|
+072
+a|
+EMULTIHOP
+a|
+Multihop attempted
+a|
+073
+a|
+EDOTDOT
+a|
+RFS specific error
+a|
+074
+a|
+EBADMSG
+a|
+Not a data message
+a|
+075
+a|
+EOVERFLOW
+a|
+Value too large for defined data type
+a|
+076
+a|
+ENOTUNIQ
+a|
+Name not unique on network
+a|
+077
+a|
+EBADFD
+a|
+File descriptor in bad state
+a|
+078
+a|
+EREMCHG
+a|
+Remote address changed
+a|
+079
+a|
+ELIBACC
+a|
+Cannot access a needed shared library
+a|
+080
+a|
+ELIBBAD
+a|
+Accessing a corrupted shared library
+a|
+081
+a|
+ELIBSCN
+a|
+.lib section in a.out corrupted
+a|
+082
+a|
+ELIBMAX
+a|
+Attempting to link in too many shared libraries
+a|
+083
+a|
+ELIBEXEC
+a|
+Cannot exec a shared library directly
+a|
+084
+a|
+EILSEQ
+a|
+Illegal byte sequence
+a|
+085
+a|
+ERESTART
+a|
+Interrupted system call should be restarted
+a|
+086
+a|
+ESTRPIPE
+a|
+Streams pipe error
+a|
+087
+a|
+EUSERS
+a|
+Too many users
+a|
+088
+a|
+ENOTSOCK
+a|
+Socket operation on non-socket
+a|
+089
+a|
+EDESTADDRREQ
+a|
+Destination address required
+a|
+090
+a|
+EMSGSIZE
+a|
+Message too long
+a|
+091
+a|
+EPROTOTYPE
+a|
+Protocol wrong type for socket
+a|
+092
+a|
+ENOPROTOOPT
+a|
+Protocol not available
+a|
+093
+a|
+EPROTONOSUPPORT
+a|
+Protocol not supported
+a|
+094
+a|
+ESOCKTNOSUPPORT
+a|
+Socket type not supported
+a|
+095
+a|
+EOPNOTSUPP
+a|
+Operation not supported on transport endpoint
+a|
+096
+a|
+EPFNOSUPPORT
+a|
+Protocol family not supported
+a|
+097
+a|
+EAFNOSUPPORT
+a|
+Address family not supported by protocol
+a|
+098
+a|
+EADDRINUSE
+a|
+Address already in use
+a|
+099
+a|
+EADDRNOTAVAIL
+a|
+Cannot assign requested address
+a|
+100
+a|
+ENETDOWN
+a|
+Network is down
+a|
+101
+a|
+ENETUNREACH
+a|
+Network is unreachable
+a|
+102
+a|
+ENETRESET
+a|
+Network dropped connection because of reset
+a|
+103
+a|
+ECONNABORTED
+a|
+Software caused connection abort
+a|
+104
+a|
+ECONNRESET
+a|
+Connection reset by peer
+a|
+105
+a|
+ENOBUFS
+a|
+No buffer space available
+a|
+106
+a|
+EISCONN
+a|
+Transport endpoint is already connected
+a|
+107
+a|
+ENOTCONN
+a|
+Transport endpoint is not connected
+a|
+108
+a|
+ESHUTDOWN
+a|
+Cannot send after transport endpoint shutdown
+a|
+109
+a|
+ETOOMANYREFS
+a|
+Too many references: cannot splice
+a|
+110
+a|
+ETIMEDOUT
+a|
+Connection timed out
+a|
+111
+a|
+ECONNREFUSED
+a|
+Connection refused
+a|
+112
+a|
+EHOSTDOWN
+a|
+Host is down
+a|
+113
+a|
+EHOSTUNREACH
+a|
+No route to host
+a|
+114
+a|
+EALREADY
+a|
+Operation already in progress
+a|
+115
+a|
+EINPROGRESS
+a|
+Operation now in progress
+a|
+116
+a|
+
+a|
+
+a|
+117
+a|
+EUCLEAN
+a|
+Structure needs cleaning
+a|
+118
+a|
+ENOTNAM
+a|
+Not a XENIX named type file
+a|
+119
+a|
+ENAVAIL
+a|
+No XENIX semaphores available
+a|
+120
+a|
+EISNAM
+a|
+Is a named type file
+a|
+121
+a|
+EREMOTEIO
+a|
+Remote I/O error
+a|
+122
+a|
+EDQUOT
+a|
+Quota exceeded
+a|
+123
+a|
+ENOMEDIUM
+a|
+No medium found
+a|
+124
+a|
+EMEDIUMTYPE
+a|
+Wrong medium type
+a|
+125
+a|
+ECANCELED
+a|
+Operation Canceled
+a|
+126
+a|
+ENOKEY
+a|
+Required key not available
+a|
+127
+a|
+EKEYEXPIRED
+a|
+Key has expired
+a|
+128
+a|
+EKEYREVOKED
+a|
+Key has been revoked
+a|
+129
+a|
+EKEYREJECTED
+a|
+Key was rejected by service
+a|
+130
+a|
+EOWNERDEAD
+a|
+For robust mutexes: Owner died
+a|
+131
+a|
+ENOTRECOVERABLE
+a|
+For robust mutexes: State not recoverable
+|===

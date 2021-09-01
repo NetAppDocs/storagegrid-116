@@ -1,0 +1,31 @@
+---
+permalink: audit/arcb-archive-object-retrieve-begin.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, ARCB, Archive Object Retrieve Begin  
+summary: 'This message is generated when a request is made to retrieve archived object data and the retrieval process begins. Retrieval requests are processed immediately, but can be reordered to improve efficiency of retrieval from linear media such as tape.'
+---
+= ARCB: Archive Object Retrieve Begin
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message is generated when a request is made to retrieve archived object data and the retrieval process begins. Retrieval requests are processed immediately, but can be reordered to improve efficiency of retrieval from linear media such as tape.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block ID
+a|
+The unique identifier of the Content Block to be retrieved from the external archival storage system.
+a|
+RSLT
+a|
+Result
+a|
+Indicates the result of starting the archive retrieval process. Currently defined value is:SUCS: The content request was received and queued for retrieval.
+
+|===
+This audit message marks the time of an archive retrieval. It allows you to match the message with a corresponding ARCE end message to determine the duration of archive retrieval, and whether the operation was successful.

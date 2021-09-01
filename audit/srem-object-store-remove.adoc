@@ -1,0 +1,33 @@
+---
+permalink: audit/srem-object-store-remove.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, SREM, Object Store Remove
+summary: 'This message is issued when content is removed from persistent storage and is no longer accessible through regular APIs.'
+---
+= SREM: Object Store Remove
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message is issued when content is removed from persistent storage and is no longer accessible through regular APIs.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block Identifier
+a|
+The unique identifier of the content block deleted from permanent storage.
+a|
+RSLT
+a|
+Result Code
+a|
+Indicates the result of the content removal operations. The only defined value is:
+
+SUCS: Content removed from persistent storage
+
+|===
+This audit message means a given content block has been deleted from a node and can no longer be requested directly. The message can be used to track the flow of deleted content within the system.

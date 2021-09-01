@@ -1,0 +1,30 @@
+---
+permalink: monitor/logs-files-reference.html
+sidebar: sidebar
+keywords: log, logs, log files
+summary: 'The following sections list the logs used to capture events, diagnostic messages, and error conditions. You might be asked to collect log files and forward them to technical support to assist with troubleshooting.'
+---
+= Log files reference
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following sections list the logs used to capture events, diagnostic messages, and error conditions. You might be asked to collect log files and forward them to technical support to assist with troubleshooting.
+
+* xref:storagegrid-software-logs.adoc[StorageGRID software logs]
+* xref:deployment-and-maintenance-logs.adoc[Deployment and maintenance logs]
+* xref:logs-for-third-party-software.adoc[Logs for third-party software]
+* xref:about-bycast-log.adoc[About the bycast.log]
+
+IMPORTANT: The tables in this section are for reference only. The logs are intended for advanced troubleshooting by technical support. Advanced techniques that involve reconstructing the problem history using the audit logs and the application log files are beyond the scope of this guide.
+
+To access these logs, you can collect log files and system data (*Support* > *Tools* > *Logs*). Or, if the primary Admin Node is unavailable or unable to reach a specific node, you can access the logs for each grid node, as follows:
+
+. Enter the following command: `ssh admin@grid_node_IP`
+. Enter the password listed in the `Passwords.txt` file.
+. Enter the following command to switch to root: `su -`
+. Enter the password listed in the `Passwords.txt` file.
+
+.Related information
+
+xref:collecting-log-files-and-system-data.adoc[Collecting log files and system data]

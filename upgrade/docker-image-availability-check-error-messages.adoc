@@ -1,0 +1,72 @@
+---
+permalink: upgrade/docker-image-availability-check-error-messages.html
+sidebar: sidebar
+keywords: upgrade, error message, docker image availability
+summary: 'When attempting to start the upgrade process, you might receive an error message that states “The following issues were identified by the Docker image availability check validation suite.” All issues must be resolved before you can complete the upgrade.'
+---
+= "`Docker image availability check`" error messages
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When attempting to start the upgrade process, you might receive an error message that states "`The following issues were identified by the Docker image availability check validation suite.`" All issues must be resolved before you can complete the upgrade.
+
+Contact technical support if you are unsure of the changes required to resolve the identified issues.
+
+[cols="1a,1a,1a" options="header"]
+|===
+| Message| Cause| Solution
+a|
+Unable to determine upgrade version. Upgrade version info file `{file_path}` did not match the expected format.
+a|
+The upgrade package is corrupt.
+a|
+Re-upload the upgrade package, and try again. If the problem persists, contact technical support.
+a|
+Upgrade version info file `{file_path}` was not found. Unable to determine upgrade version.
+a|
+The upgrade package is corrupt.
+a|
+Re-upload the upgrade package, and try again. If the problem persists, contact technical support.
+a|
+Unable to determine currently installed release version on `{node_name}`.
+a|
+A critical file on the node is corrupt.
+a|
+Contact technical support.
+a|
+Connection error while attempting to list versions on `{node_name}`
+a|
+The node is offline or the connection was interrupted.
+a|
+Check to make sure that all nodes are online and reachable from the primary Admin Node, and try again.
+a|
+The host for node `{node_name}` does not have StorageGRID `{upgrade_version}` image loaded. Images and services must be installed on the host before the upgrade can proceed.
+a|
+The RPM or DEB packages for the upgrade have not been installed on the host where the node is running, or the images are still in the process of being imported.
+
+*Note:* This error only applies to nodes that are running as containers on Linux.
+
+a|
+Check to make sure that the RPM or DEB packages have been installed on all Linux hosts where nodes are running. Make sure the version is correct for both the service and the images file. Wait a few minutes, and try again.
+
+For more information, see the installation instructions for your Linux platform.
+
+a|
+Error while checking node `{node_name}`
+a|
+An unexpected error occurred.
+a|
+Wait a few minutes, and try again.
+a|
+Uncaught error while running prechecks. `{error_string}`
+a|
+An unexpected error occurred.
+a|
+Wait a few minutes, and try again.
+|===
+.Related information
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

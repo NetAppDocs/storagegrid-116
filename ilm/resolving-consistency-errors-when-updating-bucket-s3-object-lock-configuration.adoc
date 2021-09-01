@@ -1,0 +1,36 @@
+---
+permalink: ilm/resolving-consistency-errors-when-updating-bucket-s3-object-lock-configuration.html
+sidebar: sidebar
+keywords: 
+summary: 'If a data center site or multiple Storage Nodes at a site become unavailable, you might need to help S3 tenant users apply changes to the S3 Object Lock or legacy Compliance configuration.'
+---
+= Resolving consistency errors when updating the S3 Object Lock or legacy Compliance configuration
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If a data center site or multiple Storage Nodes at a site become unavailable, you might need to help S3 tenant users apply changes to the S3 Object Lock or legacy Compliance configuration.
+
+Tenant users who have buckets with S3 Object Lock (or legacy Compliance) enabled can change certain settings. For example, a tenant user using S3 Object Lock might need to put an object version under legal hold.
+
+When a tenant user updates the settings for an S3 bucket or an object version, StorageGRID attempts to immediately update the bucket or object metadata across the grid. If the system is unable to update the metadata because a data center site or multiple Storage Nodes are unavailable, it displays an error message. Specifically:
+
+* Tenant Manager users see the following error message:
++
+image::../media/bucket_configure_compliance_consistency_error.gif[screenshot of warning message if a service is down when you change bucket compliance settings]
+
+* Tenant Management API users and S3 API users receive a response code of `503 Service Unavailable` with similar message text.
+
+To resolve this error, follow these steps:
+
+. Attempt to make all Storage Nodes or sites available again as soon as possible.
+. If you are unable to make enough of the Storage Nodes at each site available, contact technical support, who can help you recover nodes and ensure that changes are consistently applied across the grid.
+. Once the underlying issue has been resolved, remind the tenant user to retry their configuration changes.
+
+.Related information
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:../s3/index.adoc[Use S3]
+
+xref:../maintain/index.adoc[Maintain & recover]

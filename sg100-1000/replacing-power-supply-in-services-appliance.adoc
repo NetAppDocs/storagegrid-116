@@ -1,0 +1,49 @@
+---
+permalink: sg100-1000/replacing-power-supply-in-services-appliance.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, Replacing, replace, power supply, remove, removing, removal, install, installing, installation 
+summary: 'The services appliance has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the appliance has redundant power.'
+---
+= Replacing a power supply in the services appliance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The services appliance has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the appliance has redundant power.
+
+.What you'll need
+
+* You have unpacked the replacement power supply unit.
+* You have physically located the appliance where you are replacing the power supply in the data center.
++
+xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
+
+* You can confirmed that the other power supply is installed and running.
+
+.About this task
+
+The figure shows the two power supply units for the SG100, which are accessible from the back of the appliance.
+
+image::../media/sg1000_power_supplies.png[Back of SG100 with Two Power Supplies]
+
+NOTE: The power supplies for the SG1000 are identical.
+
+.Steps
+
+. Unplug the power cord from the power supply.
+. Lift the cam handle.
++
+image::../media/sg6000_cn_lift_cam_handle_psu.gif[Lifting the cam handle to remove SG1000 PSU]
+
+. Press the blue latch and pull the power supply out.
++
+image::../media/sg6000_cn_remove_power_supply.gif[Removing an SG1000 power supply]
+
+. Slide the replacement power supply into the chassis.
++
+Ensure that the blue latch is on the right side when you slide the unit in.
++
+image::../media/sg6000_cn_insert_power_supply.gif[Sliding power supply into SG1000]
+
+. Push the cam handle down to secure the power supply.
+. Attach the power cord to the power supply, and ensure that the green LED comes on.

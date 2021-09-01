@@ -1,0 +1,111 @@
+---
+permalink: sg100-1000/viewing-boot-up-codes-for-appliance-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, boot codes, boot-up codes, start codes, codes, boot, start, bmc 
+summary: 'When you apply power to the appliance, the BMC logs a series of boot-up codes. You can view these codes on a graphical console that is connected to the BMC management port.'
+---
+= Viewing boot-up codes for the appliance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When you apply power to the appliance, the BMC logs a series of boot-up codes. You can view these codes on a graphical console that is connected to the BMC management port.
+
+.What you'll need
+
+* You know how to access the BMC dashboard.
+* If you want to use a kernel-based virtual machine (KVM), you have experience deploying and using KVM applications.
+* If you want to use serial-over-LAN (SOL), you have experience using IPMI SOL console applications.
+
+.Steps
+
+. Select one of the following methods for viewing the boot-up codes for the appliance controller, and gather the required equipment.
++
+[options="header"]
+|===
+| Method| Required equipment
+a|
+VGA console
+a|
+
+ ** VGA-capable monitor
+ ** VGA cable
+
+a|
+KVM
+a|
+
+ ** KVM application
+ ** RJ-45 cable
+
+a|
+Serial port
+a|
+
+ ** DB-9 serial cable
+ ** Virtual serial terminal
+
+a|
+SOL
+a|
+
+ ** Virtual serial terminal
+
+|===
+
+. If you are using a VGA console, perform these steps:
+ .. Connect a VGA-capable monitor to the VGA port on the back of the appliance.
+ .. View the codes displayed on the monitor.
+. If you are using BMC KVM, perform these steps:
+ .. Connect to the BMC management port and log into the BMC web interface.
+ .. Select *Remote Control*.
+ .. Launch the KVM.
+ .. View the codes on the virtual monitor.
+. If you are using a serial port and terminal, perform these steps:
+ .. Connect to the DB-9 serial port on the back of the appliance.
+ .. Use settings `115200 8-N-1`.
+ .. View the codes printed over the serial terminal.
+. If you are using SOL, perform these steps:
+ .. Connect to the IPMI SOL using the BMC IP address and login credentials.
++
+`ipmitool -I lanplus -H 10.224.3.91 -U root -P calvin sol activate`
+
+ .. View the codes on the virtual serial terminal.
+. Use the table to look up the codes for your appliance.
++
+[options="header"]
+|===
+| Code| Indicates
+a|
+HI
+a|
+The master boot script has started.
+a|
+HP
+a|
+The system is checking to see if the network interface card (NIC) firmware needs to be updated.
+a|
+RB
+a|
+The system is rebooting after applying firmware updates.
+a|
+FP
+a|
+The hardware subsystem firmware update checks have been completed. Inter-controller communication services are starting.
+a|
+HC
+a|
+The system is checking for existing StorageGRID installation data.
+a|
+HO
+a|
+The StorageGRID appliance is running.
+a|
+HA
+a|
+StorageGRID is running.
+|===
+
+.Related information
+
+xref:accessing-bmc-interface-sg1000.adoc[Accessing the BMC interface]

@@ -1,0 +1,22 @@
+---
+permalink: maintain/restoring-existing-nodes.html
+sidebar: sidebar
+keywords: storagegrid, recover, restore node to host
+summary: 'To restore a failed grid node to a new Linux host, you restore the node configuration file using the appropriate commands.'
+---
+= Restoring grid nodes to the host
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To restore a failed grid node to a new Linux host, you restore the node configuration file using the appropriate commands.
+
+When doing a fresh install, you create a node configuration file for each grid node to be installed on a host. When restoring a grid node to a replacement host, you restore or replace the node configuration file for any failed grid nodes.
+
+If any block storage volumes were preserved from the previous host, you might have to perform additional recovery procedures. The commands in this section help you determine which additional procedures are required.
+
+.Steps
+
+* xref:restoring-and-validating-grid-nodes.adoc[Restoring and validating grid nodes]
+* xref:starting-storagegrid-host-service.adoc[Starting the StorageGRID host service]
+* xref:recovering-nodes-that-fail-to-start-normally.adoc[Recovering nodes that fail to start normally]

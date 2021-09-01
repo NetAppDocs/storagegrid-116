@@ -1,0 +1,47 @@
+---
+permalink: sg6000/replacing-power-supply-in-sg6000-cn-controller.html
+sidebar: sidebar
+keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, sg6000-cn, power supply, remove, removing, removal, install, installing, installation 
+summary: 'The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power.'
+---
+= Replacing a power supply in the SG6000-CN controller
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power.
+
+.What you'll need
+
+* You have unpacked the replacement power supply unit.
+* You have physically located the controller where you are replacing the power supply in the data center.
++
+xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
+
+* You have confirmed that the other power supply is installed and running.
+
+.About this task
+
+The figure shows the two power supply units for the SG6000-CN controller, which are accessible from the back of the controller.
+
+image::../media/sg6000_cn_power_supplies.gif[back of SG6000-CN with two power supplies]
+
+.Steps
+
+. Unplug the power cord from the power supply.
+. Lift the cam handle.
++
+image::../media/sg6000_cn_lift_cam_handle_psu.gif[Lifting the cam handle to remove SG6000-CN PSU]
+
+. Press the blue latch and pull the power supply out.
++
+image::../media/sg6000_cn_remove_power_supply.gif[Removing an SG6000-CN power supply]
+
+. Slide the replacement power supply into the chassis.
++
+Ensure that the blue latch is on the right side when you slide the unit in.
++
+image::../media/sg6000_cn_insert_power_supply.gif[Sliding power supply into SG6000-CN]
+
+. Push the cam handle down to secure the power supply.
+. Attach the power cord to the power supply, and ensure that the green LED comes on.

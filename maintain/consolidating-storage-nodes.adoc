@@ -1,0 +1,22 @@
+---
+permalink: maintain/consolidating-storage-nodes.html
+sidebar: sidebar
+keywords: storagegrid, storage node, consolidate storage node, consolidating storage node
+summary: 'You can consolidate Storage Nodes to reduce the Storage Node count for a site or deployment while increasing storage capacity.'
+---
+= Consolidating Storage Nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can consolidate Storage Nodes to reduce the Storage Node count for a site or deployment while increasing storage capacity.
+
+When you consolidate Storage Nodes, you expand the StorageGRID system to add new, larger capacity Storage Nodes and then decommission the old, smaller capacity Storage Nodes. During the decommission procedure, objects are migrated from the old Storage Nodes to the new Storage Nodes.
+
+For example, you might add two new, larger capacity Storage Nodes to replace three older Storage Nodes. You would first use the expansion procedure to add the two new, larger Storage Nodes, and then use the decommission procedure to remove the three old, smaller capacity Storage Nodes.
+
+By adding new capacity before removing existing Storage Nodes, you ensure a more balanced distribution of data across the StorageGRID system. You also reduce the possibility that an existing Storage Node might be pushed beyond the storage watermark level.
+
+.Related information
+
+xref:../expand/index.adoc[Expand your grid]

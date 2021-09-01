@@ -1,0 +1,107 @@
+---
+permalink: vmware/downloading-and-extracting-storagegrid-installation-files.html
+sidebar: sidebar
+keywords: storagegrid, vmware, download installation files, downloading installation files
+summary: 'You must download the StorageGRID installation archives and extract the files..'
+---
+= Downloading and extracting the StorageGRID installation files
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must download the StorageGRID installation archives and extract the files..
+
+.Steps
+
+. Go to the NetApp Downloads page for StorageGRID.
++
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^]
+
+. Select the button for downloading the latest release, or select another version from the drop-down menu and select *Go*.
+. Sign in with the username and password for your NetApp account.
+. If a Caution/MustRead statement appears, read it and select the check box.
++
+You must apply any required hotfixes after you install the StorageGRID release. For more information, see the hotfix procedure in the recovery and maintenance instructions.
+
+. Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
+. In the *Install StorageGRID* column, select the appropriate software.
++
+Download the `.tgz` or `.zip` archive file for your platform.
+
+ ** `StorageGRID-Webscale-version-VMware-uniqueID.zip`
+ ** `StorageGRID-Webscale-version-VMware-uniqueID.tgz`
+
+NOTE: Use the `.zip` file if you are running Windows on the service laptop.
+
+[start=7]
+. Save and extract the archive file.
+. Choose the files you need from the following list.
++
+The files you need depend on your planned grid topology and how you will deploy your StorageGRID system.
+
+NOTE: The paths listed in the table are relative to the top-level directory installed by the extracted installation archive.
+
+[cols="1a,1a" options="header"]
+|===
+| Path and file name| Description
+m|./vsphere/README
+|A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./vsphere/NLF000000.txt
+|A free license that does not provide any support entitlement for the product.
+
+m|./vsphere/NetApp-SG-version-SHA.vmdk
+|The virtual machine disk file that is used as a template for creating grid node virtual machines.
+
+m|./vsphere/vsphere-primary-admin.ovf
+
+./vsphere/vsphere-primary-admin.mf
+|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
+
+m|./vsphere/vsphere-non-primary-admin.ovf
+
+./vsphere/vsphere-non-primary-admin.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
+
+m|./vsphere/vsphere-archive.ovf
+
+./vsphere/vsphere-archive.mf
+
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
+
+m|./vsphere/vsphere-gateway.ovf
+
+./vsphere/vsphere-gateway.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
+
+m|./vsphere/vsphere-storage.ovf
+
+./vsphere/vsphere-storage.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
+
+h|Deployment scripting tool h|Description
+m|./vsphere/deploy-vsphere-ovftool.sh
+|A Bash shell script used to automate the deployment of virtual grid nodes.
+
+m|./vsphere/deploy-vsphere-ovftool-sample.ini
+|A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
+
+m|./vsphere/configure-storagegrid.py
+|A Python script used to automate the configuration of a StorageGRID system.
+
+m|./vsphere/configure-sga.py
+|A Python script used to automate the configuration of StorageGRID appliances.
+
+m|./vsphere/storagegrid-ssoauth.py
+|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
+
+m|./vsphere/configure-storagegrid.sample.json
+|A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|./vsphere/configure-storagegrid.blank.json
+|A blank configuration file for use with the `configure-storagegrid.py` script.
+|===
+
+.Related information
+
+xref:../maintain/index.adoc[Maintain & recover]

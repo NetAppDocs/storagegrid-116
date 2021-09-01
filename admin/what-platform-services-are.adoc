@@ -1,0 +1,49 @@
+---
+permalink: admin/what-platform-services-are.html
+sidebar: sidebar
+keywords: 
+summary: 'Platform services include CloudMirror replication, event notifications, and the search integration service.'
+---
+= What platform services are
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Platform services include CloudMirror replication, event notifications, and the search integration service.
+
+These services allow tenants to use the following functionality with their S3 buckets:
+
+* *CloudMirror replication*: The StorageGRID CloudMirror replication service is used to mirror specific objects from a StorageGRID bucket to a specified external destination.
++
+For example, you might use CloudMirror replication to mirror specific customer records into Amazon S3 and then leverage AWS services to perform analytics on your data.
++
+NOTE: CloudMirror replication is not supported if the source bucket has S3 Object Lock enabled.
+
+* *Notifications*: Per-bucket event notifications are used to send notifications about specific actions performed on objects to a specified external Amazon Simple Notification Service™ (SNS).
++
+For example, you could configure alerts to be sent to administrators about each object added to a bucket, where the objects represent log files associated with a critical system event.
++
+NOTE: Although event notification can be configured on a bucket with S3 Object Lock enabled, the S3 Object Lock metadata (including Retain Until Date and Legal Hold status) of the objects will not be included in the notification messages.
+
+* *Search integration service*: The search integration service is used to send S3 object metadata to a specified Elasticsearch index where the metadata can be searched or analyzed using the external service.
++
+For example, you could configure your buckets to send S3 object metadata to a remote Elasticsearch service. You could then use Elasticsearch to perform searches across buckets, and perform sophisticated analyses of patterns present in your object metadata.
++
+NOTE: Although Elasticsearch integration can be configured on a bucket with S3 Object Lock enabled, the S3 Object Lock metadata (including Retain Until Date and Legal Hold status) of the objects will not be included in the notification messages.
+
+Platform services give tenants the ability to use external storage resources, notification services, and search or analysis services with their data. Because the target location for platform services is typically external to your StorageGRID deployment, you must decide if you want to permit tenants to use these services. If you do, you must enable the use of platform services when you create or edit tenant accounts. You must also configure your network such that the platform services messages that tenants generate can reach their destinations.
+
+== Recommendations for using platform services
+
+Before using platform services, you must be aware of the following recommendations:
+
+* You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
+* If an S3 bucket in the StorageGRID system has both versioning and CloudMirror replication enabled, you should also enable S3 bucket versioning for the destination endpoint. This allows CloudMirror replication to generate similar object versions on the endpoint.
+
+.Related information
+
+xref:../tenant/index.adoc[Use a tenant account]
+
+xref:configuring-storage-proxy-settings.adoc[Configuring Storage proxy settings]
+
+xref:../monitor/index.adoc[Monitor & troubleshoot]

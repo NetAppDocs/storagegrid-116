@@ -1,0 +1,82 @@
+---
+permalink: monitor/troubleshooting-low-object-data-storage-alert.html
+sidebar: sidebar
+keywords:
+summary: 'The *Low object data storage* alert monitors how much space is available for storing object data on each Storage Node.'
+---
+
+= Troubleshooting the Low object data storage alert
+:experimental:
+:icons: font
+:imagesdir: ../media/
+
+
+[.lead]
+The *Low object data storage* alert monitors how much space is available for storing object data on each Storage Node.
+
+.What you'll need
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must have specific access permissions.
+
+.About this task
+The *Low object data storage* is triggered when the total amount of replicated and erasure coded object data on a Storage Node meets one of the conditions configured in the alert rule.
+
+By default, a major alert is triggered when this condition evaluates as true:
+
+----
+(storagegrid_storage_utilization_data_bytes/
+(storagegrid_storage_utilization_data_bytes + storagegrid_storage_utilization_usable_space_bytes)) >=0.90
+----
+
+In this condition:
+
+* `storagegrid_storage_utilization_data_bytes` is an estimate of the total size of replicated and erasure coded object data for a Storage Node.
+* `storagegrid_storage_utilization_usable_space_bytes` is the total amount of object storage space remaining for a Storage Node.
+
+If a major or minor *Low object data storage* alert is triggered, you should perform an expansion procedure as soon as possible.
+
+.Steps
+. Select *Alerts* > *Current*.
++
+The Alerts page appears.
+
+. From the table of alerts, expand the *Low object data storage* alert group, if required, and select the alert you want to view.
++
+NOTE: Select the alert, not the heading for a group of alerts.
+
+. Review the details in the dialog box, and note the following:
+ ** Time triggered
+ ** The name of the site and node
+ ** The current values of the metrics for this alert
+. Select *Nodes* > *_Storage Node or Site_* > *Storage*.
+. Hover your cursor over the Storage Used - Object Data graph.
++
+The following values are shown:
+
+ ** *Used (%)*: The percentage of the Total usable space that has been used for object data.
+ ** *Used*: The amount of the Total usable space that has been used for object data.
+ ** *Replicated data*: An estimate of the amount of replicated object data on this node, site, or grid.
+ ** *Erasure-coded data*: An estimate of the amount of erasure-coded object data on this node, site, or grid.
+ ** *Total*: The total amount of usable space on this node, site, or grid.
+The Used value is the `storagegrid_storage_utilization_data_bytes` metric.
+
++
+image::../media/nodes_page_storage_used_object_data.png[Nodes Page Storage Used Object Data]
+
+. Select the time controls above the graph to view storage use over different time periods.
++
+Looking at storage use over time can help you understand how much storage was used before and after the alert was triggered and can help you estimate how long it might take for the node's remaining space to become full.
+
+. As soon as possible, perform an expansion procedure to add storage capacity.
++
+You can add storage volumes (LUNs) to existing Storage Nodes, or you can add new Storage Nodes.
++
+NOTE: To manage a full Storage Node, see the instructions for administering StorageGRID.
+
+.Related information
+
+xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Storage Status (SSTS) alarm]
+
+xref:../expand/index.adoc[Expand your grid]
+
+xref:../admin/index.adoc[Administer StorageGRID]

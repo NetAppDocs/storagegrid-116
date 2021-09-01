@@ -1,0 +1,23 @@
+---
+permalink: s3/benefits-of-keeping-idle-http-connections-open.html
+sidebar: sidebar
+keywords: 
+summary: 'You should keep HTTP connections open even when client applications are idle to allow client applications to perform subsequent transactions over the open connection. Based on system measurements and integration experience, you should keep an idle HTTP connection open for a maximum of 10 minutes. StorageGRID might automatically close an HTTP connection that is kept open and idle for longer than 10 minutes.'
+---
+= Benefits of keeping idle HTTP connections open
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should keep HTTP connections open even when client applications are idle to allow client applications to perform subsequent transactions over the open connection. Based on system measurements and integration experience, you should keep an idle HTTP connection open for a maximum of 10 minutes. StorageGRID might automatically close an HTTP connection that is kept open and idle for longer than 10 minutes.
+
+Open and idle HTTP connections provide the following benefits:
+
+* Reduced latency from the time that the StorageGRID system determines it has to perform an HTTP transaction to the time that the StorageGRID system can perform the transaction
++
+Reduced latency is the main advantage, especially for the amount of time required to establish TCP/IP and TLS connections.
+
+* Increased data transfer rate by priming the TCP/IP slow-start algorithm with previously performed transfers
+* Instantaneous notification of several classes of fault conditions that interrupt connectivity between the client application and the StorageGRID system
+
+Determining how long to keep an idle connection open is a trade‐off between the benefits of slow start that is associated with the existing connection and the ideal allocation of the connection to internal system resources.

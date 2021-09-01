@@ -1,0 +1,24 @@
+---
+permalink: maintain/grid-node-recovery-procedures.html
+sidebar: sidebar
+keywords: storagegrid, recovery
+summary: 'If a grid node fails, you can recover it by replacing the failed physical or virtual server, reinstalling StorageGRID software, and restoring recoverable data.'
+---
+= Grid node recovery procedures
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If a grid node fails, you can recover it by replacing the failed physical or virtual server, reinstalling StorageGRID software, and restoring recoverable data.
+
+Grid nodes can fail if a hardware, virtualization, operating system, or software fault renders the node inoperable or unreliable. There are many kinds of failure that can trigger the need to recover a grid node.
+
+The steps to recover a grid node vary, depending on the platform where the grid node is hosted and on the type of grid node. Each type of grid node has a specific recovery procedure, which you must follow exactly.
+
+Generally, you try to preserve data from the failed grid node where possible, repair or replace the failed node, use the Grid Manager to configure the replacement node, and restore the node's data.
+
+IMPORTANT: If an entire StorageGRID site has failed, contact technical support. Technical support will work with you to develop and execute a site recovery plan that maximizes the amount of data that is recovered, and meets your business objectives.
+
+.Related information
+
+xref:how-site-recovery-is-performed-by-technical-support.adoc[How site recovery is performed by technical support]

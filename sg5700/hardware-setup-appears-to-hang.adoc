@@ -1,0 +1,55 @@
+---
+permalink: sg5700/hardware-setup-appears-to-hang.html
+sidebar: sidebar
+keywords: storagegrid, sg5700, storage node, storage appliance, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck
+summary: 'The StorageGRID Appliance Installer might not be available if hardware faults or cabling errors prevent the E5700SG controller from completing its boot-up processing.'
+---
+= Hardware setup appears to hang
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID Appliance Installer might not be available if hardware faults or cabling errors prevent the E5700SG controller from completing its boot-up processing.
+
+.Steps
+
+. Watch the codes on the seven-segment displays.
++
+While the hardware is initializing during power up, the two seven-segment displays show a sequence of codes. When the hardware boots successfully, the seven-segment displays show different codes for each controller.
+
+. Review the codes on the seven-segment display for the E5700SG controller.
++
+NOTE: The installation and provisioning take time. Some installation phases do not report updates to the StorageGRID Appliance Installer for several minutes.
++
+If an error occurs, the seven-segment display flashes a sequence, such as HE.
+
+. To understand what these codes mean, see the following resources:
++
+[options="header"]
+|===
+| Controller| Reference
+a|
+E5700SG controller
+a|
+
+ ** "`Status indicators on the E5700SG controller`"
+ ** "`HE error: Error synchronizing with SANtricity OS Software`"
+
+a|
+E2800 controller
+a|
+_E5700 and E2800 System Monitoring Guide_
+
+*Note:* The codes described for the E-Series E5700 controller do not apply to the E5700SG controller in the appliance.
+
+|===
+
+. If this does not resolve the issue, contact technical support.
+
+.Related information
+
+xref:status-indicators-on-e5700sg-controller.adoc[Status indicators on the E5700SG controller]
+
+xref:he-error-error-synchronizing-with-santricity-os-software.adoc[HE error: Error synchronizing with SANtricity OS Software]
+
+http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site^]

@@ -1,0 +1,32 @@
+---
+permalink: maintain/replacing-non-primary-admin-node.html
+sidebar: sidebar
+keywords: storagegrid, recover, replace non-primary admin node, replacing non-primary admin node, non-primary admin node
+summary: 'To recover a non-primary Admin Node, you first must replace the physical or virtual hardware.'
+---
+= Replacing a non-primary Admin Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To recover a non-primary Admin Node, you first must replace the physical or virtual hardware.
+
+You can replace a failed non-primary Admin Node with a non-primary Admin Node running on the same platform, or you can replace a non-primary Admin Node running on VMware or a Linux host with a non-primary Admin Node hosted on a services appliance.
+
+Use the procedure that matches the replacement platform you select for the node. After you complete the node replacement procedure (which is suitable for all node types), that procedure will direct you to the next step for non-primary Admin Node recovery.
+
+[cols="1a,2a" options="header"]
+|===
+| Replacement platform| Procedure
+|VMware
+|xref:all-node-types-replacing-vmware-node.adoc[Replacing a VMware node]
+
+|Linux
+|xref:all-node-types-replacing-linux-node.adoc[Replacing a Linux node]
+
+|SG100 and SG1000 services appliances
+|xref:replacing-failed-node-with-services-appliance.adoc[Replacing a services appliance]
+
+|OpenStack
+|NetApp-provided virtual machine disk files and scripts for OpenStack are no longer supported for recovery operations. If you need to recover a node running in an OpenStack deployment, download the files for your Linux operating system. Then, follow the procedure for replacing a Linux node.
+|===

@@ -1,0 +1,43 @@
+---
+permalink: audit/atce-archive-object-store-begin.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, ATCE, Archive Object Store Begin
+summary: 'This message indicates that writing a content block to an external archival storage has started.'
+---
+= ATCE: Archive Object Store Begin
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message indicates that writing a content block to an external archival storage has started.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block ID
+a|
+The unique identifier of the content block to be archived.
+a|
+VLID
+a|
+Volume Identifier
+a|
+The unique identifier of the volume to which the content block is written. If the operation fails, a volume ID of 0 is returned.
+a|
+RSLT
+a|
+Result
+a|
+Indicates the result of the transfer of the content block. Currently defined values are:
+
+* SUCS: success (content block stored successfully)
+* EXIS: ignored (content block was already stored)
+* ISFD: failed (insufficient disk space)
+* STER: failed (error storing the CBID)
+* OFFL: failed (archiving is offline)
+* GERR: failed (general error)
+
+|===

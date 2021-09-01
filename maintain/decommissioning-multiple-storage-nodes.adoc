@@ -1,0 +1,15 @@
+---
+permalink: maintain/decommissioning-multiple-storage-nodes.html
+sidebar: sidebar
+keywords: storagegrid, decommission nodes, storage node, multiple storage nodes
+summary: 'If you need to remove more than one Storage Node, you can decommission them either sequentially or in parallel.'
+---
+= Decommissioning multiple Storage Nodes
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you need to remove more than one Storage Node, you can decommission them either sequentially or in parallel.
+
+* If you decommission Storage Nodes sequentially, you must wait for the first Storage Node to complete decommissioning before starting to decommission the next Storage Node.
+* If you decommission Storage Nodes in parallel, the Storage Nodes simultaneously process decommission tasks for all Storage Nodes being decommissioned. This can result in a situation where all permanent copies of a file are marked as "`read‐only,`" temporarily disabling deletion in grids where this functionality is enabled.

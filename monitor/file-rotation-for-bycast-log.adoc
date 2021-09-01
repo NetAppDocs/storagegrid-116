@@ -1,0 +1,24 @@
+---
+permalink: monitor/file-rotation-for-bycast-log.html
+sidebar: sidebar
+keywords: file rotation, bycast, log, file rotation, bycast.log
+summary: 'When the `bycast.log` file reaches 1 GB, the existing file is saved, and a new log file is started.'
+---
+= File rotation for bycast.log
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When the `bycast.log` file reaches 1 GB, the existing file is saved, and a new log file is started.
+
+The saved file is renamed `bycast.log.1`, and the new file is named `bycast.log`. When the new `bycast.log` reaches 1 GB, `bycast.log.1` is renamed and compressed to become `bycast.log.2.gz`, and `bycast.log` is renamed `bycast.log.1`.
+
+The rotation limit for `bycast.log` is 21 files. When the 22nd version of the `bycast.log` file is created, the oldest file is deleted.
+
+The rotation limit for `bycast-err.log` is seven files.
+
+NOTE: If a log file has been compressed, you must not uncompress it to the same location in which it was written. Uncompressing the file to the same location can interfere with the log rotation scripts.
+
+.Related information
+
+xref:collecting-log-files-and-system-data.adoc[Collecting log files and system data]

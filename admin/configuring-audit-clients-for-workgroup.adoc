@@ -1,0 +1,141 @@
+---
+permalink: admin/configuring-audit-clients-for-workgroup.html
+sidebar: sidebar
+keywords:
+summary: 'Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.'
+---
+= Configuring audit clients for Workgroup
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Perform this procedure for each Admin Node in a StorageGRID deployment from which you want to retrieve audit messages.
+
+.What you'll need
+* You must have the `Passwords.txt` file with the root/admin account password (available in the SAID package).
+* You must have the `Configuration.txt` file (available in the SAID package).
+
+.About this task
+Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
+
+.Steps
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Confirm that all services have a state of Running or Verified: `storagegrid-status`
++
+If all services are not Running or Verified, resolve issues before continuing.
+
+. Return to the command line, press *Ctrl*+*C*.
+. Start the CIFS configuration utility: `config_cifs.rb`
++
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+
+. Set the authentication for the Windows Workgroup:
++
+If authentication has already been set, an advisory message appears. If authentication has already been set, go to the next step.
+
+ .. Enter: `set-authentication`
+ .. When prompted for Windows Workgroup or Active Directory installation, enter: `workgroup`
+ .. When prompted, enter a name of the Workgroup: `_workgroup_name_`
+ .. When prompted, create a meaningful NetBIOS name: `_netbios_name_`
++
+or
++
+Press *Enter* to use the Admin Node's hostname as the NetBIOS name.
++
+The script restarts the Samba server and changes are applied. This should take less than one minute. After setting authentication, add an audit client.
+
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+. Add an audit client:
+ .. Enter: `add-audit-share`
++
+NOTE: The share is automatically added as read-only.
+
+ .. When prompted, add a user or group: `_user_`
+ .. When prompted, enter the audit user name: `_audit_user_name_`
+ .. When prompted, enter a password for the audit user: `_password_`
+ .. When prompted, re-enter the same password to confirm it: `_password_`
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
++
+NOTE: There is no need to enter a directory. The audit directory name is predefined.
+. If more than one user or group is permitted to access the audit share, add the additional users:
+ .. Enter: `add-user-to-share`
++
+A numbered list of enabled shares is displayed.
+
+ .. When prompted, enter the number of the audit-export share: `_share_number_`
+ .. When prompted, add a user or group: `user`
++
+or `group`
+
+ .. When prompted, enter the name of the audit user or group: `_audit_user or audit_group_`
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+ .. Repeat these substeps for each additional user or group that has access to the audit share.
+. Optionally, verify your configuration: `validate-config`
++
+The services are checked and displayed. You can safely ignore the following messages:
++
+----
+Can't find include file /etc/samba/includes/cifs-interfaces.inc
+Can't find include file /etc/samba/includes/cifs-filesystem.inc
+Can't find include file /etc/samba/includes/cifs-custom-config.inc
+Can't find include file /etc/samba/includes/cifs-shares.inc
+rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
+----
+
+ .. When prompted, press *Enter*.
++
+The audit client configuration is displayed.
+
+ .. When prompted, press *Enter*.
++
+The CIFS configuration utility is displayed.
+
+. Close the CIFS configuration utility: `exit`
+. Start the Samba service: `service smbd start`
+. If the StorageGRID deployment is a single site, go to the next step.
++
+or
++
+Optionally, if the StorageGRID deployment includes Admin Nodes at other sites, enable these audit share as required:
+
+ .. Remotely log in to a site's Admin Node:
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
+ .. Repeat the steps to configure the audit share for each additional Admin Node.
+ .. Close the remote secure shell login to the remote Admin Node: `exit`
+
+. Log out of the command shell: `exit`
+
+.Related information
+
+xref:../upgrade/index.adoc[Upgrade software]

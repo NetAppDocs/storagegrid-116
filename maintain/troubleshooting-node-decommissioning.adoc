@@ -1,0 +1,38 @@
+---
+permalink: maintain/troubleshooting-node-decommissioning.html
+sidebar: sidebar
+keywords: storagegrid, recover, decommission, troubleshoot
+summary: 'If the node decommission procedure stops because of an error, you can take specific steps to troubleshoot the problem.'
+---
+= Troubleshooting node decommissioning
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If the node decommission procedure stops because of an error, you can take specific steps to troubleshoot the problem.
+
+.What you'll need
+
+You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+.About this task
+
+If you shut down the grid node being decommissioned, the task stops until the grid node is restarted. The grid node must be online.
+
+.Steps
+
+. Select *Support* > *Tools* > *Grid Topology*.
+. In the Grid Topology tree, expand each Storage Node entry, and verify that the DDS and LDR services are both online.
++
+To perform Storage Node decommissioning, the StorageGRID system's DDS services (hosted by Storage Nodes) must be online. This is a requirement of the ILM re-evaluation.
+
+. To view the active grid tasks, select *primary Admin Node* > *CMN* > *Grid Tasks* > *Overview*.
+. Check the status of the decommissioning grid task.
+ .. If the status of the decommissioning grid task indicates a problem with saving grid task bundles, select *primary Admin Node* > *CMN* > *Events* > *Overview*
+ .. Check the number of Available Audit Relays.
++
+If the attribute Available Audit Relay is one or greater, the CMN service is connected to at least one ADC service. ADC services act as Audit Relays.
++
+The CMN service must be connected to at least one ADC service and a majority (50 percent plus one) of the StorageGRID system's ADC services must be available in order for a grid task to move from one stage of decommissioning to another and finish.
+
+ .. If the CMN service is not connected to enough ADC services, ensure that Storage Nodes are online, and check network connectivity between the primary Admin Node and Storage Nodes.

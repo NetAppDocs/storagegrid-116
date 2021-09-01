@@ -1,0 +1,29 @@
+---
+permalink: maintain/preparing-appliance-storage-node-for-reinstallation.html
+sidebar: sidebar
+keywords: storagegrid, recover, appliance, reinstallation appliance, reinstall appliance
+summary: 'When recovering an appliance Storage Node, you must first prepare the appliance for reinstallation of StorageGRID software.'
+---
+= Preparing an appliance Storage Node for reinstallation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When recovering an appliance Storage Node, you must first prepare the appliance for reinstallation of StorageGRID software.
+
+. Log in to the failed Storage Node:
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
+
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Prepare the appliance Storage Node for the installation of StorageGRID software. `sgareinstall`
+. When prompted to continue, enter: `y`
++
+The appliance reboots, and your SSH session ends. It usually takes about 5 minutes for the StorageGRID Appliance Installer to become available, although in some cases you might need to wait up to 30 minutes.
++
+The StorageGRID appliance Storage Node is reset, and data on the Storage Node is no longer accessible. IP addresses configured during the original installation process should remain intact; however, it is recommended that you confirm this when the procedure completes.
++
+After executing the `sgareinstall` command, all StorageGRID-provisioned accounts, passwords, and SSH keys are removed, and new host keys are generated.

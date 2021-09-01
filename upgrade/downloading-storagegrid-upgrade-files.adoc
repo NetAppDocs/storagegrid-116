@@ -1,0 +1,66 @@
+---
+permalink: upgrade/downloading-storagegrid-upgrade-files.html
+sidebar: sidebar
+keywords: download, upgrade files
+summary: 'You must download the required files to a service laptop before you upgrade your StorageGRID system.'
+---
+= Downloading the StorageGRID upgrade files
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must download the required files to a service laptop before you upgrade your StorageGRID system.
+
+.What you'll need
+You must have installed all required hotfixes for the StorageGRID software version you are upgrading. See the hotfix procedure in the recovery and maintenance instructions.
+
+.About this task
+You must download the `.upgrade` archive for any platform. If any nodes are deployed on Linux hosts, you must also download an RPM or DEB archive, which you will install before you start the upgrade.
+
+.Steps
+. Go to the NetApp Downloads page for StorageGRID.
++
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^]
+
+. Select the button for downloading the latest release, or select another version from the drop-down menu and select *Go*.
++
+StorageGRID software versions have this format: 11._x.y_. StorageGRID hotfixes have this format: 11._x.y.z_.
+
+. Sign in with the username and password for your NetApp account.
+. If a Caution/MustRead statement appears, read it and select the check box.
++
+This statement appears if there is a required hotfix for the release.
+
+. Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
++
+The downloads page for the version you selected appears. The page contains three columns:
+
+ ** Install StorageGRID
+ ** Upgrade StorageGRID
+ ** Support files for StorageGRID Appliances
+
+. In the *Upgrade StorageGRID* column, select and download the `.upgrade` archive.
++
+Every platform requires the `.upgrade` archive.
+
+. If any nodes are deployed on Linux hosts, also download the RPM or DEB archive in either `.tgz` or `.zip` format.
++
+You must install the RPM or DEB archive on all Linux nodes before you start the upgrade.
++
+NOTE: No additional files are required for the SG100 or SG1000.
++
+NOTE: Select the `.zip` file if you are running Windows on the service laptop.
+
+* Red Hat Enterprise Linux or CentOS +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz`
+
+* Ubuntu or Debian +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz`
+
+.Related information
+
+xref:linux-installing-rpm-or-deb-package-on-all-hosts.adoc[Linux: Installing the RPM or DEB package on all hosts]
+
+xref:../maintain/index.adoc[Maintain & recover]

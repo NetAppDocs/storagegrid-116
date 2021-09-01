@@ -1,0 +1,67 @@
+---
+permalink: sg5600/storagegrid-appliance-overview.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, overview, models, features
+summary: 'The StorageGRID SG5600 appliance is an integrated storage and computing platform that operates as a Storage Node in a StorageGRID grid.'
+---
+= StorageGRID appliance overview
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID SG5600 appliance is an integrated storage and computing platform that operates as a Storage Node in a StorageGRID grid.
+
+The StorageGRID SG5600 appliance includes the following components:
+
+[options="header"]
+|===
+| Component| Description
+a|
+E5600SG controller
+a|
+Compute serverThe E5600SG controller runs the Linux operating system and the StorageGRID software.
+
+This controller connects to the following:
+
+* The Admin, Grid, and Client Networks for the StorageGRID system
+* The E2700 controller, using dual SAS paths (active/active) with the E5600SG controller operating as the initiator
+
+a|
+E2700 controller
+a|
+Storage controllerThe E2700 controller operates as a standard E-Series storage array in simplex mode, and runs the SANtricity operating system (controller firmware).
+
+This controller connects to the following:
+
+* The management network where SANtricity Storage Manager is installed
+* The E5600SG controller, using dual SAS paths (active/active) with the E2700 controller operating as the target
+
+|===
+The SG5600 appliance also includes the following components, depending on the model:
+
+[options="header"]
+|===
+| Component| Model SG5612| Model SG5660
+a|
+Drives
+a|
+12 NL-SAS drives
+a|
+60 NL-SAS drives
+a|
+Enclosure
+a|
+DE1600 enclosure, a two rack-unit (2U) chassis that houses the drives and the controllers
+a|
+DE6600 enclosure, a four rack-unit (4U) chassis that houses the drives and the controllers
+a|
+Power supplies and fans
+a|
+Two power-fan canisters
+a|
+Two power supplies and two fans
+|===
+
+NOTE: The E5600SG controller is highly customized for use in the StorageGRID appliance. All other components operate as described in E-Series documentation, except as indicated in these instructions.
+
+The maximum raw storage available on each StorageGRID appliance Storage Node is fixed, based on the appliance model and configuration. You cannot expand the available storage by adding a shelf with additional drives.

@@ -1,0 +1,39 @@
+---
+permalink: ubuntu/starting-storagegrid-host-service.html
+sidebar: sidebar
+keywords: storagegrid, starting host services, start host service
+summary: 'To start your StorageGRID nodes, and ensure they restart after a host reboot, you must enable and start the StorageGRID host service.'
+---
+= Starting the StorageGRID host service
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+To start your StorageGRID nodes, and ensure they restart after a host reboot, you must enable and start the StorageGRID host service.
+
+.Steps
+
+. Run the following commands on each host:
++
+----
+sudo systemctl enable storagegrid
+sudo systemctl start storagegrid
+----
+
+. Run the following command to ensure the deployment is proceeding:
++
+----
+sudo storagegrid node status node-name
+----
++
+For any node that returns a status of "`Not Running`" or "`Stopped`", run the following command:
++
+----
+sudo storagegrid node start node-name
+----
+
+. If you have previously enabled and started the StorageGRID host service (or if you are unsure if the service has been enabled and started), also run the following command:
++
+----
+sudo systemctl reload-or-restart storagegrid
+----

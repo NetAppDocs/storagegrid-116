@@ -1,0 +1,21 @@
+---
+permalink: upgrade/changes-to-tenant-management-api.html
+sidebar: sidebar
+keywords: tenant management api, api, api version, swagger, rest api
+summary: 'StorageGRID 11.6 uses version 3 of the Tenant Management API. Version 3 deprecates version 2; however, version 1 and version 2 are still supported.'
+---
+= Changes to the Tenant Management API
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+StorageGRID 11.6 uses version 3 of the Tenant Management API. Version 3 deprecates version 2; however, version 1 and version 2 are still supported.
+
+IMPORTANT: You can continue to use version 1 and version 2 of the management API with StorageGRID 11.6; however, support for these versions of the API will be removed in a future release of StorageGRID. After upgrading to StorageGRID 11.6, the deprecated v1 and v2 APIs can be deactivated using the `PUT /grid/config/management` API.
+
+
+.Related information
+
+xref:../s3/index.adoc[Use S3]
+
+xref:../tenant/index.adoc[Use a tenant account]

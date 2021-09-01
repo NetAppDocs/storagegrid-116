@@ -1,0 +1,49 @@
+---
+permalink: sg5600/verifying-and-upgrading-storagegrid-appliance-installer-version.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, Verifying, verify, upgrading, upgrade, update, updating, Appliance Installer, version, release
+summary: 'The StorageGRID Appliance Installer version on the appliance must match the software version installed on your StorageGRID system to ensure that all StorageGRID features are supported.'
+---
+= Verifying and upgrading the StorageGRID Appliance Installer version
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID Appliance Installer version on the appliance must match the software version installed on your StorageGRID system to ensure that all StorageGRID features are supported.
+
+.What you'll need
+
+You have accessed the StorageGRID Appliance Installer.
+
+StorageGRID appliances come from the factory preinstalled with the StorageGRID Appliance Installer. If you are adding an appliance to a recently upgraded StorageGRID system, you might need to manually upgrade the StorageGRID Appliance Installer before installing the appliance as a new node.
+
+The StorageGRID Appliance Installer automatically upgrades when you upgrade to a new StorageGRID version. You do not need to upgrade the StorageGRID Appliance Installer on installed appliance nodes. This procedure is only required when you are installing an appliance that contains an earlier version of the StorageGRID Appliance Installer.
+
+.Steps
+
+. From the StorageGRID Appliance Installer, select *Advanced* > *Upgrade Firmware*.
+. Compare the Current Firmware version to the software version installed on your StorageGRID system (from the Grid Manager select *Help* > *About*).
++
+The second digit in the two versions should match. For example, if your StorageGRID system is running version 11.*5*._x_._y_, the StorageGRID Appliance Installer version should be 3.*5*._z_.
+
+. If the appliance has a down-level version of the StorageGRID Appliance Installer, go to the NetApp Downloads page for StorageGRID.
++
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^]
++
+Sign in with the username and password for your NetApp account.
+
+. Download the appropriate version of the *Support file for StorageGRID Appliances* and the corresponding checksum file.
++
+The Support file for StorageGRID Appliances file is a `.zip` archive that contains the current and previous firmware versions for all StorageGRID appliance models, in subdirectories for each controller type.
++
+After downloading the Support file for StorageGRID Appliances file, extract the `.zip` archive and see the README file for important information about installing the StorageGRID Appliance Installer.
+
+. Follow the instructions on the Upgrade Firmware page of the StorageGRID Appliance Installer to perform these steps:
+ .. Upload the appropriate support file (firmware image) for your controller type and the checksum file.
+ .. Upgrade the inactive partition.
+ .. Reboot and swap partitions.
+ .. Upgrade the second partition.
+
+.Related information
+
+xref:accessing-storagegrid-appliance-installer-sg5600.adoc[Accessing the StorageGRID Appliance Installer]

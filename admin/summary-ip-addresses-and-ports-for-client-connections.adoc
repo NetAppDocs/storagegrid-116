@@ -1,0 +1,163 @@
+---
+permalink: admin/summary-ip-addresses-and-ports-for-client-connections.html
+sidebar: sidebar
+keywords:
+summary: 'Client applications can connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability \(HA\) groups are configured, client applications can connect using the virtual IP address of the HA group.'
+---
+= Summary: IP addresses and ports for client connections
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Client applications can connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability (HA) groups are configured, client applications can connect using the virtual IP address of the HA group.
+
+.About this task
+This table summarizes the different ways that clients can connect to StorageGRID and the IP addresses and ports that are used for each type of connection. The instructions describe how to find this information in the Grid Manager if load balancer endpoints and high availability (HA) groups are already configured.
+
+[cols="1a,1a,1a,1a" options="header"]
+|===
+| Where connection is made| Service that client connects to| IP address| Port
+a|
+HA group
+a|
+Load Balancer
+a|
+Virtual IP address of an HA group
+a|
+
+* Load balancer endpoint port
+
+a|
+HA group
+a|
+CLB
+
+*Note:* The CLB service is deprecated.
+
+a|
+Virtual IP address of an HA group
+a|
+Default S3 ports:
+
+* HTTPS: 8082
+* HTTP: 8084
+
+Default Swift ports:
+
+* HTTPS:8083
+* HTTP:8085
+
+a|
+Admin Node
+a|
+Load Balancer
+a|
+IP address of the Admin Node
+a|
+
+* Load balancer endpoint port
+
+a|
+Gateway Node
+a|
+Load Balancer
+a|
+IP address of the Gateway Node
+a|
+
+* Load balancer endpoint port
+
+a|
+Gateway Node
+a|
+CLB
+
+*Note:* The CLB service is deprecated.
+
+a|
+IP address of the Gateway Node
+
+*Note:* By default, HTTP ports for CLB and LDR are not enabled.
+
+a|
+Default S3 ports:
+
+* HTTPS: 8082
+* HTTP: 8084
+
+Default Swift ports:
+
+* HTTPS:8083
+* HTTP:8085
+
+a|
+Storage Node
+a|
+LDR
+a|
+IP address of Storage Node
+a|
+Default S3 ports:
+
+* HTTPS: 18082
+* HTTP: 18084
+
+Default Swift ports:
+
+* HTTPS: 18083
+* HTTP:18085
+
+|===
+.Examples
+
+To connect an S3 client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
+
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
+
+For example, if the virtual IP address of the HA group is 192.0.2.5 and the port number of an S3 Load Balancer endpoint is 10443, then an S3 client could use the following URL to connect to StorageGRID:
+
+* `\https://192.0.2.5:10443`
+
+To connect a Swift client to the Load Balancer endpoint of an HA group of Gateway Nodes, use a URL structured as shown below:
+
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
+
+For example, if the virtual IP address of the HA group is 192.0.2.6 and the port number of a Swift Load Balancer endpoint is 10444, then a Swift client could use the following URL to connect to StorageGRID:
+
+* `\https://192.0.2.6:10444`
+
+It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
+
+.Steps
+
+. Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+. To find the IP address of a grid node:
+ .. Select *Nodes*.
+ .. Select the Admin Node, Gateway Node, or Storage Node to which you want to connect.
+ .. Select the *Overview* tab.
+ .. In the Node Information section, note the IP addresses for the node.
+ .. Click *Show more* to view IPv6 addresses and interface mappings.
++
+You can establish connections from client applications to any of the IP addresses in the list:
+
+  * *eth0:* Grid Network
+  * *eth1:* Admin Network (optional)
+  * *eth2:* Client Network (optional)
++
+NOTE: If you are viewing an Admin Node or a Gateway Node and it is the active node in a high availability group, the virtual IP address of the HA group is shown on eth2.
+. To find the virtual IP address of a high availability group:
+ .. Select *Configuration* > *Network Settings* > *High Availability Groups*.
+ .. In the table, note the virtual IP address of the HA group.
+. To find the port number of a Load Balancer endpoint:
+ .. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
++
+The Load Balancer Endpoints page appears, showing the list of endpoints that have already been configured.
+
+ .. Select an endpoint, and click *Edit endpoint*.
++
+The Edit Endpoint window opens and displays additional details about the endpoint.
+
+ .. Confirm that the endpoint you have selected is configured for use with the correct protocol (S3 or Swift), then click *Cancel*.
+ .. Note the port number for the endpoint that you want to use for a client connection.
++
+NOTE: If the port number is 80 or 443, the endpoint is configured only on Gateway Nodes, since those ports are reserved on Admin Nodes. All other ports are configured on both Gateway Nodes and Admin Nodes.

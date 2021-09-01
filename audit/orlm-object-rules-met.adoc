@@ -1,0 +1,110 @@
+---
+permalink: audit/orlm-object-rules-met.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, ORLM, Object Rules Met
+summary: 'This message is generated when the object is successfully stored and copied as specified by the ILM rules.'
+---
+= ORLM: Object Rules Met
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message is generated when the object is successfully stored and copied as specified by the ILM rules.
+
+NOTE: The ORLM message is not generated when an object is successfully stored by the default Make 2 Copies rule if another rule in the policy uses the Object Size advanced filter.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block Identifier
+a|
+The CBID of the object.
+a|
+CSIZ
+a|
+Content size
+a|
+The size of the object in bytes.
+a|
+LOCS
+a|
+Locations
+a|
+The storage location of object data within the StorageGRID system. The value for LOCS is "" if the object has no locations (for example, it has been deleted).
+
+CLEC: for erasure-coded objects, the erasure coding profile ID and the erasure coding group ID that is applied to the object's data.
+
+CLDI: for replicated objects, the LDR node ID and the volume ID of the object's location.
+
+CLNL: ARC node ID of the object's location if the object data is archived.
+
+a|
+PATH
+a|
+S3 Bucket/Key or Swift Container/Object ID
+a|
+The S3 bucket name and S3 key name, or the Swift container name and Swift object identifier.
+a|
+RSLT
+a|
+Result
+a|
+The result of the ILM operation.
+
+SUCS: The ILM operation was successful.
+
+a|
+RULE
+a|
+Rules Label
+a|
+The human-readable label given to the ILM rule applied to this object.
+a|
+SEGC
+a|
+Container UUID
+a|
+UUID of the container for the segmented object. This value is available only if the object is segmented.
+a|
+SGCB
+a|
+Container CBID
+a|
+CBID of the container for the segmented object. This value is available only if the object is segmented.
+a|
+STAT
+a|
+Status
+a|
+The status of ILM operation.
+
+DONE: ILM operations against the object have completed.
+
+DFER: The object has been marked for future ILM re-evaluation.
+
+PRGD: The object has been deleted from the StorageGRID system.
+
+NLOC: The object data can no longer be found in the StorageGRID system. This status might indicate that all copies of object data are missing or damaged.
+
+a|
+UUID
+a|
+Universally Unique Identifier
+a|
+The identifier of the object within the StorageGRID system.
+|===
+The ORLM audit message can be issued a number of times for a single object. For instance, it is issued whenever one of the following events take place:
+
+* ILM rules for the object are satisfied forever.
+* ILM rules for the object are satisfied for this epoch.
+* ILM rules have deleted the object.
+* The background verification process detects that a copy of replicated object data is corrupt. The StorageGRID system performs an ILM evaluation to replace the corrupt object.
+
+.Related information
+
+xref:object-ingest-transactions.adoc[Object ingest transactions]
+
+xref:object-delete-transactions.adoc[Object delete transactions]

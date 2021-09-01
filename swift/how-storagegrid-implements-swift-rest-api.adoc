@@ -1,0 +1,36 @@
+---
+permalink: swift/how-storagegrid-implements-swift-rest-api.html
+sidebar: sidebar
+keywords:
+summary: 'A client application can use Swift REST API calls to connect to Storage Nodes and Gateway Nodes to create containers and to store and retrieve objects. This enables service-oriented applications developed for OpenStack Swift to connect with on-premise object storage provided by the StorageGRID system.'
+---
+= How StorageGRID implements the Swift REST API
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+A client application can use Swift REST API calls to connect to Storage Nodes and Gateway Nodes to create containers and to store and retrieve objects. This enables service-oriented applications developed for OpenStack Swift to connect with on-premise object storage provided by the StorageGRID system.
+
+== Swift object management
+
+After Swift objects have been ingested in the StorageGRID system, they are managed by the information lifecycle management (ILM) rules in the system's active ILM policy. The ILM rules and policy determine how StorageGRID creates and distributes copies of object data and how it manages those copies over time. For example, an ILM rule might apply to objects in specific Swift containers and might specify that multiple object copies be saved to several data centers for a certain number of years.
+
+Contact your StorageGRID administrator if you need to understand how the grid's ILM rules and policies will affect the objects in your Swift tenant account.
+
+== Conflicting client requests
+
+Conflicting client requests, such as a two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when Swift clients begin an operation.
+
+== Consistency guarantees and controls
+
+By default, StorageGRID provides read-after-write consistency for newly created objects and eventual consistency for object updates and HEAD operations. Any GET following a successfully completed PUT will be able to read the newly written data. Overwrites of existing objects, metadata updates, and deletes are eventually consistent. Overwrites generally take seconds or minutes to propagate, but can take up to 15 days.
+
+StorageGRID also allows you to control consistency on a per container basis. You can change the consistency control to make a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:get-container-consistency-request.adoc[GET container consistency request]
+
+xref:put-container-consistency-request.adoc[PUT container consistency request]

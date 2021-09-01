@@ -1,0 +1,36 @@
+---
+permalink: audit/sadd-security-audit-disable.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, SADD, Security Audit Disable
+summary: 'This message indicates that the originating service \(node ID\) has turned off audit message logging; audit messages are no longer being collected or delivered.'
+---
+= SADD: Security Audit Disable
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message indicates that the originating service (node ID) has turned off audit message logging; audit messages are no longer being collected or delivered.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+AETM
+a|
+Enable Method
+a|
+The method used to disable the audit.
+a|
+AEUN
+a|
+User Name
+a|
+The user name that executed the command to disable audit logging.
+a|
+RSLT
+a|
+Result
+a|
+This field has the value NONE. RSLT is a mandatory message field, but is not relevant for this message. NONE is used rather than SUCS so that this message is not filtered.
+|===
+The message implies that logging was previously enabled, but has now been disabled. This is typically used only during bulk ingest to improve system performance. Following the bulk activity, auditing is restored (SADE) and the capability to disable auditing is then permanently blocked.

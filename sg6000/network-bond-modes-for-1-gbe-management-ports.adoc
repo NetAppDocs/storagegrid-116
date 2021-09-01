@@ -1,0 +1,33 @@
+---
+permalink: sg6000/network-bond-modes-for-1-gbe-management-ports.html
+sidebar: sidebar
+keywords: storagegrid, sg6000, storage node, storage appliance, Network bond, Network bonding, Network bond mode, Network-bond mode, independent, active-backup, active backup, 1-gbe, 1 gbe, sg6000-cn 
+summary: 'For the two 1-GbE management ports on the SG6000-CN controller, you can choose Independent network bond mode or Active-Backup network bond mode to connect to the optional Admin Network.'
+---
+= Network bond modes for the 1-GbE management ports
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+For the two 1-GbE management ports on the SG6000-CN controller, you can choose Independent network bond mode or Active-Backup network bond mode to connect to the optional Admin Network.
+
+In Independent mode, only the management port on the left is connected to the Admin Network. This mode does not provide a redundant path. The management port on the right is unconnected and available for temporary local connections (uses IP address 169.254.0.1)
+
+In Active-Backup mode, both management ports are connected to the Admin Network. Only one port is active at a time. If the active port fails, its backup port automatically provides a failover connection. Bonding these two physical ports into one logical management port provides a redundant path to the Admin Network.
+
+NOTE: If you need to make a temporary local connection to the SG6000-CN controller when the 1-GbE management ports are configured for Active-Backup mode, remove the cables from both management ports, plug your temporary cable into the management port on the right, and access the appliance using IP address 169.254.0.1.
+
+image::../media/sg6000_cn_bonded_managemente_ports.gif[1-GbE ports]
+
+[options="header"]
+|===
+| Callout| Network bond mode
+a|
+A
+a|
+Both management ports are bonded into one logical management port connected to the Admin Network.
+a|
+I
+a|
+The port on the left is connected to the Admin Network. The port on the right is available for temporary local connections (IP address 169.254.0.1).
+|===

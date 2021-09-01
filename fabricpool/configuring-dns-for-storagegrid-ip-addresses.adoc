@@ -1,0 +1,19 @@
+---
+permalink: fabricpool/configuring-dns-for-storagegrid-ip-addresses.html
+sidebar: sidebar
+keywords: fabricPool, DNS, domain name system, FQDN, fully qualified domain name, IP address, VIP
+summary: 'After configuring high availability groups and load balancer endpoints, you must ensure that the domain name system \(DNS\) for the ONTAP system includes a record to associate the StorageGRID server name \(fully qualified domain name\) to the IP address that FabricPool will use to make connections.'
+---
+= Configure the DNS server for StorageGRID IP addresses
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After configuring high availability groups and load balancer endpoints, you must ensure that the domain name system (DNS) for the ONTAP system includes a record to associate the StorageGRID server name (fully qualified domain name) to the IP address that FabricPool will use to make connections.
+
+The IP address you enter in the DNS record depends on whether you are using an HA group of load-balancing nodes:
+
+* If you have configured a HA group, FabricPool will connect to the virtual IP addresses of that HA group.
+* If you are not using a HA group, FabricPool can connect to the StorageGRID Load Balancer service using the IP address of any Gateway Node or Admin Node.
+
+You must also ensure that the DNS record references all required endpoint domain names, including any wildcard names.

@@ -1,0 +1,75 @@
+---
+permalink: admin/grid-management-api-versioning.html
+sidebar: sidebar
+keywords:
+summary: 'The Grid Management API uses versioning to support non-disruptive upgrades.'
+---
+= Grid Management API versioning
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Grid Management API uses versioning to support non-disruptive upgrades.
+
+For example, this Request URL specifies version 3 of the API.
+
+`https://_hostname_or_ip_address_/api/v3/authorize`
+
+The major version of the Tenant Management API is bumped when changes are made that are *_not compatible_* with older versions. The minor version of the Tenant Management API is bumped when changes are made that *_are compatible_* with older versions. Compatible changes include the addition of new endpoints or new properties. The following example illustrates how the API version is bumped based on the type of changes made.
+
+[cols="1a,1a,1a" options="header"]
+|===
+| Type of change to API| Old version| New version
+a|
+Compatible with older versions
+a|
+2.1
+a|
+2.2
+a|
+Not compatible with older versions
+a|
+2.1
+a|
+3.0
+|===
+When you install StorageGRID software for the first time, only the most recent version of the Grid Management API is enabled. However, when you upgrade to a new feature release of StorageGRID, you continue to have access to the older API version for at least one StorageGRID feature release.
+
+NOTE: You can use the Grid Management API to configure the supported versions. See the "`config`" section of the Swagger API documentation for more information. You should deactivate support for the older version after updating all Grid Management API clients to use the newer version.
+
+Outdated requests are marked as deprecated in the following ways:
+
+* The response header is "Deprecated: true"
+* The JSON response body includes "deprecated": true
+* A deprecated warning is added to nms.log. For example:
++
+----
+Received call to deprecated v1 API at POST "/api/v1/authorize"
+----
+
+== Determining which API versions are supported in the current release
+
+Use the following API request to return a list of the supported API major versions:
+
+----
+GET https://{{IP-Address}}/api/versions
+{
+  "responseTime": "2019-01-10T20:41:00.845Z",
+  "status": "success",
+  "apiVersion": "3.0",
+  "data": [
+    2,
+    3
+  ]
+}
+----
+
+== Specifying an API version for a request
+
+You can specify the API version using a path parameter (`/api/v3`) or a header (`Api-Version: 3`). If you provide both values, the header value overrides the path value.
+
+----
+curl https://[IP-Address]/api/v3/grid/accounts
+
+curl -H "Api-Version: 3" https://[IP-Address]/api/grid/accounts
+----

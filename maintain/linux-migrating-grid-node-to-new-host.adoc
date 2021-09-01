@@ -1,0 +1,35 @@
+---
+permalink: maintain/linux-migrating-grid-node-to-new-host.html
+sidebar: sidebar
+keywords: storagegrid, recover, linux, migrate node, migrating node, new host for node
+summary: 'You can migrate StorageGRID nodes from one Linux host to another to perform host maintenance \(such as OS patching and reboot\) without impacting the functionality or availability of your grid.'
+---
+= Linux: Migrating a grid node to a new host
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can migrate StorageGRID nodes from one Linux host to another to perform host maintenance (such as OS patching and reboot) without impacting the functionality or availability of your grid.
+
+You migrate one or more nodes from one Linux host (the "`source host`") to another Linux host (the "`target host`"). The target host must have previously been prepared for StorageGRID use.
+
+IMPORTANT: You can use this procedure only if you planned your StorageGRID deployment to include migration support.
+
+To migrate a grid node to a new host, both of the following conditions must be true:
+
+* Shared storage is used for all per-node storage volumes
+* Network interfaces have consistent names across hosts
+
+NOTE: In a production deployment, do not run more than one Storage Node on a single host. Using a dedicated host for each Storage Node provides an isolated failure domain.
+
+Other types of nodes, such as Admin Nodes or Gateway Nodes, can be deployed on the same host. However, if you have multiple nodes of the same type (two Gateway Nodes, for example), do not install all instances on the same host.
+
+For more information, see "`Node migration requirements`" in the StorageGRID installation instructions for your Linux operating system.
+
+.Related information
+
+xref:deploying-new-linux-hosts.adoc[Deploying new Linux hosts]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

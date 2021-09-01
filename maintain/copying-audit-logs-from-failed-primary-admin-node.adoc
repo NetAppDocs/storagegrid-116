@@ -1,0 +1,41 @@
+---
+permalink: maintain/copying-audit-logs-from-failed-primary-admin-node.html
+sidebar: sidebar
+keywords: storagegrid, audit log, copy audit log, copying audit log, primary admin node, primary admin node 
+summary: 'If you are able to copy audit logs from the failed primary Admin Node, you should preserve them to maintain the grid’s record of system activity and usage. You can restore the preserved audit logs to the recovered primary Admin Node after it is up and running.'
+---
+= Copying audit logs from the failed primary Admin Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you are able to copy audit logs from the failed primary Admin Node, you should preserve them to maintain the grid's record of system activity and usage. You can restore the preserved audit logs to the recovered primary Admin Node after it is up and running.
+
+This procedure copies the audit log files from the failed Admin Node to a temporary location on a separate grid node. These preserved audit logs can then be copied to the replacement Admin Node. Audit logs are not automatically copied to the new Admin Node.
+
+Depending on the type of failure, you might not be able to copy audit logs from a failed Admin Node. If the deployment has only one Admin Node, the recovered Admin Node starts recording events to the audit log in a new empty file and previously recorded data is lost. If the deployment includes more than one Admin Node, you can recover the audit logs from another Admin Node.
+
+NOTE: If the audit logs are not accessible on the failed Admin Node now, you might be able to access them later, for example, after host recovery.
+
+. Log in to the failed Admin Node if possible. Otherwise, log in to the primary Admin Node or another Admin Node, if available.
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Stop the AMS service to prevent it from creating a new log file:``service ams stop``
+. Rename the audit.log file so that it does not overwrite the existing file when you copy it to the recovered Admin Node.
++
+Rename audit.log to a unique numbered file name such as yyyy-mm-dd.txt.1. For example, you can rename the audit.log file to 2015-10-25.txt.1``cd /var/local/audit/export```ls -l``mv audit.log 2015-10-25.txt.1`
+
+. Restart the AMS service: `service ams start`
+. Create the directory to copy all audit log files to a temporary location on a separate grid node: `ssh admin@_grid_node_IP_ mkdir -p /var/local/tmp/saved-audit-logs`
++
+When prompted, enter the password for admin.
+
+. Copy all audit log files: `scp -p * admin@_grid_node_IP_:/var/local/tmp/saved-audit-logs`
++
+When prompted, enter the password for admin.
+
+. Log out as root: `exit`

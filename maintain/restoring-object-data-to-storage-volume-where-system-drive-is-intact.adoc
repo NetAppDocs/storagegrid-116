@@ -1,0 +1,213 @@
+---
+permalink: maintain/restoring-object-data-to-storage-volume-where-system-drive-is-intact.html
+sidebar: sidebar
+keywords: storagegrid, recover, restore object data, storage volume, system drive intact
+summary: 'After recovering a storage volume on a Storage Node where the system drive is intact, you can restore the object data that was lost when the storage volume failed.'
+---
+= Restoring object data to a storage volume where the system drive is intact
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After recovering a storage volume on a Storage Node where the system drive is intact, you can restore the object data that was lost when the storage volume failed.
+
+.What you'll need
+
+* You must have confirmed that the recovered Storage Node has a Connection State of *Connected*image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the *Nodes* > *Overview* tab in the Grid Manager.
+
+.About this task
+
+Object data can be restored from other Storage Nodes, an Archive Node, or a Cloud Storage Pool, assuming that the grid's ILM rules were configured such that object copies are available.
+
+IMPORTANT: If an ILM rule was configured to store only one replicated copy and that copy existed on a storage volume that failed, you will not be able to recover the object.
+
+IMPORTANT: If the only remaining copy of an object is in a Cloud Storage Pool, StorageGRID must issue multiple requests to the Cloud Storage Pool endpoint to restore object data. Before performing this procedure, contact technical support for help in estimating the recovery time frame and the associated costs.
+
+NOTE: If the only remaining copy of an object is on an Archive Node, object data is retrieved from the Archive Node. Due to the latency associated with retrievals from external archival storage systems, restoring object data to a Storage Node from an Archive Node takes longer than restoring copies from other Storage Nodes.
+
+To restore object data, you run the `repair-data` script. This script begins the process of restoring object data and works with ILM scanning to ensure that ILM rules are met. You use different options with the `repair-data` script, based on whether you are restoring replicated data or erasure coded data, as follows:
+
+* *Replicated data*: Two commands are available for restoring replicated data, based on whether you need to repair the entire node or only certain volumes on the node:
++
+----
+repair-data start-replicated-node-repair
+----
++
+----
+repair-data start-replicated-volume-repair
+----
+
+* *Erasure coded (EC) data*: Two commands are available for restoring erasure coded data, based on whether you need to repair the entire node or only certain volumes on the node:
++
+----
+repair-data start-ec-node-repair
+----
++
+----
+repair-data start-ec-volume-repair
+----
++
+Repairs of erasure coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available. You can track repairs of erasure coded data with this command:
++
+----
+repair-data show-ec-repair-status
+----
+
+NOTE: The EC repair job temporarily reserves a large amount of storage. Storage alerts might be triggered, but will resolve when the repair is complete. If there is not enough storage for the reservation, the EC repair job will fail. Storage reservations are released when the EC repair job completes, whether the job failed or succeeded.
+
+For more information on using the `repair-data` script, enter `repair-data --help` from the command line of the primary Admin Node.
+
+.Steps
+
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Use the `/etc/hosts` file to find the hostname of the Storage Node for the restored storage volumes. To see a list of all nodes in the grid, enter the following: `cat /etc/hosts`
+. If all storage volumes have failed, repair the entire node. (If only some volumes have failed, go to the next step.)
++
+IMPORTANT: You cannot run `repair-data` operations for more than one node at the same time. To recover multiple nodes, contact technical support.
+
+ ** If your grid includes replicated data, use the `repair-data start-replicated-node-repair` command with the `--nodes` option to repair the entire Storage Node.
++
+This command repairs the replicated data on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-replicated-node-repair --nodes SG-DC-SN3
+----
++
+NOTE: As object data is restored, the *Objects Lost* alert is triggered if the StorageGRID system cannot locate replicated object data. Alerts might be triggered on Storage Nodes throughout the system. You should determine the cause of the loss and if recovery is possible. See the instructions for monitoring and troubleshooting StorageGRID.
+
+ ** If your grid contains erasure coded data, use the `repair-data start-ec-node-repair` command with the `--nodes` option to repair the entire Storage Node.
++
+This command repairs the erasure coded data on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-ec-node-repair --nodes SG-DC-SN3
+----
++
+The operation returns a unique `repair ID` that identifies this `repair_data` operation. Use this `repair ID` to track the progress and result of the `repair_data` operation. No other feedback is returned as the recovery process completes.
++
+NOTE: Repairs of erasure coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available.
+
+ ** If your grid has both replicated and erasure coded data, run both commands.
+
+. If only some of the volumes have failed, repair the affected volumes.
++
+Enter the volume IDs in hexadecimal. For example, `0000` is the first volume and `000F` is the sixteenth volume. You can specify one volume, a range of volumes, or multiple volumes that are not in a sequence.
++
+All the volumes must be on the same Storage Node. If you need to restore volumes for more than one Storage Node, contact technical support.
+
+ ** If your grid contains replicated data, use the `start-replicated-volume-repair` command with the `--nodes` option to identify the node. Then add either the `--volumes` or `--volume-range` option, as shown in the following examples.
++
+*Single volume*: This command restores replicated data to volume `0002` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volumes 0002
+----
++
+*Range of volumes*: This command restores replicated data to all volumes in the range `0003` to `0009` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volume-range 0003-0009
+----
++
+*Multiple volumes not in a sequence*: This command restores replicated data to volumes `0001`, `0005`, and `0008` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volumes 0001,0005,0008
+----
++
+NOTE: As object data is restored, the *Objects Lost* alert is triggered if the StorageGRID system cannot locate replicated object data. Alerts might be triggered on Storage Nodes throughout the system. You should determine the cause of the loss and if recovery is possible. See the instructions for monitoring and troubleshooting StorageGRID.
+
+ ** If your grid contains erasure coded data, use the `start-ec-volume-repair` command with the `--nodes` option to identify the node. Then add either the `--volumes` or `--volume-range` option, as shown in the following examples.
++
+*Single volume*: This command restores erasure coded data to volume `0007` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volumes 0007
+----
++
+*Range of volumes*: This command restores erasure coded data to all volumes in the range `0004` to `0006` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volume-range 0004-0006
+----
++
+*Multiple volumes not in a sequence*: This command restores erasure coded data to volumes `000A`, `000C`, and `000E` on a Storage Node named SG-DC-SN3:
++
+----
+repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volumes 000A,000C,000E
+----
++
+The `repair-data` operation returns a unique `repair ID` that identifies this `repair_data` operation. Use this `repair ID` to track the progress and result of the `repair_data` operation. No other feedback is returned as the recovery process completes.
++
+NOTE: Repairs of erasure coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available.
+
+ ** If your grid has both replicated and erasure coded data, run both commands.
+
+. Monitor the repair of replicated data.
+ .. Select *Nodes* > *Storage Node being repaired* > *ILM*.
+ .. Use the attributes in the Evaluation section to determine if repairs are complete.
++
+When repairs are complete, the Awaiting - All attribute indicates 0 objects.
+
+ .. To monitor the repair in more detail, select *Support* > *Tools* > *Grid Topology*.
+ .. Select *grid* > *Storage Node being repaired* > *LDR* > *Data Store*.
+ .. Use a combination of the following attributes to determine, as well as possible, if replicated repairs are complete.
++
+NOTE: Cassandra inconsistencies might be present, and failed repairs are not tracked.
+
+  *** *Repairs Attempted (XRPA)*: Use this attribute to track the progress of replicated repairs. This attribute increases each time a Storage Node tries to repair a high-risk object. When this attribute does not increase for a period longer than the current scan period (provided by the *Scan Period -- Estimated* attribute), it means that ILM scanning found no high-risk objects that need to be repaired on any nodes.
++
+NOTE: High-risk objects are objects that are at risk of being completely lost. This does not include objects that do not satisfy their ILM configuration.
+
+  *** *Scan Period -- Estimated (XSCM)*: Use this attribute to estimate when a policy change will be applied to previously ingested objects. If the *Repairs Attempted* attribute does not increase for a period longer than the current scan period, it is probable that replicated repairs are done. Note that the scan period can change. The *Scan Period -- Estimated (XSCM)* attribute applies to the entire grid and is the maximum of all node scan periods. You can query the *Scan Period -- Estimated* attribute history for the grid to determine an appropriate time frame.
+. Monitor the repair of erasure coded data, and retry any requests that might have failed.
+ .. Determine the status of erasure coded data repairs:
+  *** Use this command to see the status of a specific `repair-data` operation:
++
+----
+repair-data show-ec-repair-status --repair-id repair ID
+----
+
+  *** Use this command to list all repairs:
++
+----
+repair-data show-ec-repair-status
+----
++
+The output lists information, including `repair ID`, for all previously and currently running repairs.
++
+----
+root@DC1-ADM1:~ # repair-data show-ec-repair-status
+
+ Repair ID Scope  Start Time  End Time  State  Est Bytes Affected/Repaired Retry Repair
+========================================================================================
+ 949283 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:27:06.9 Success 17359 17359 No
+ 949292 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:37:06.9 Failure 17359 0     Yes
+ 949294 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:47:06.9 Failure 17359 0     Yes
+ 949299 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:57:06.9 Failure 17359 0     Yes
+----
+ .. If the output shows that the repair operation failed, use the `--repair-id` option to retry the repair.
++
+This command retries a failed node repair, using the repair ID 83930030303133434:
++
+----
+repair-data start-ec-node-repair --repair-id 83930030303133434
+----
++
+This command retries a failed volume repair, using the repair ID 83930030303133434:
++
+----
+repair-data start-ec-volume-repair --repair-id 83930030303133434
+----
+
+.Related information
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../monitor/index.adoc[Monitor & troubleshoot]

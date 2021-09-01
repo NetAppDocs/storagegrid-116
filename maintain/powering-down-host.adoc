@@ -1,0 +1,65 @@
+---
+permalink: maintain/powering-down-host.html
+sidebar: sidebar
+keywords: storagegrid, recover, stop services, power down host, power off host
+summary: 'Before you power down a host, you must stop services on all grid nodes on that host.'
+---
+= Powering down a host
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before you power down a host, you must stop services on all grid nodes on that host.
+
+.Steps
+
+. Log in to the grid node:
+ .. Enter the following command: `ssh admin@_grid_node_IP_`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
+
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+. Stop all services running on the node: `service servermanager stop`
++
+Services can take up to 15 minutes to shut down, and you might want to log in to the system remotely to monitor the shutdown process.
+
+. Repeat steps 1 and 2 for each node on the host.
+. If you have a Linux host:
+ .. Log in to the host operating system.
+ .. Stop the node: `storagegrid node stop`
+ .. Shut down the host operating system.
+. If the node is running on a VMware virtual machine or it is an appliance node, issue the shutdown command: `shutdown -h now`
++
+Perform this step regardless of the outcome of the `service servermanager stop` command.
++
+NOTE: After you issue the `shutdown -h now` command on an appliance node, you must power cycle the appliance to restart the node.
++
+For the appliance, this command shuts down the controller, but the appliance is still powered on. You must complete the next step.
+
+. If you are powering down an appliance node:
+ ** For the SG100 or SG1000 services appliance
+  ... Turn off the power to the appliance.
+  ... Wait for the blue power LED to turn off.
+ ** For the SG6000 appliance
+  ... Wait for the green Cache Active LED on the back of the storage controller to turn off.
++
+This LED is on when cached data needs to be written to the drives. You must wait for this LED to turn off before you turn off power.
+
+  ... Turn off the power to the appliance, and wait for the blue power LED to turn off.
+ ** For the SG5700 appliance
+  ... Wait for the green Cache Active LED on the back of the storage controller to turn off.
++
+This LED is on when cached data needs to be written to the drives. You must wait for this LED to turn off before you turn off power.
+
+  ... Turn off the power to the appliance, and wait for all LED and seven-segment display activity to stop.
+. Log out of the command shell: `exit`
+
+.Related information
+
+xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+
+xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+xref:../sg5700/index.adoc[SG5700 storage appliances]

@@ -1,0 +1,82 @@
+---
+permalink: s3/custom-operations-on-buckets.html
+sidebar: sidebar
+keywords: operations, buckets, custom, custom operations on buckets
+summary: 'The StorageGRID system supports custom bucket operations that are added on to the S3 REST API and are specific to the system.'
+---
+= Custom operations on buckets
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system supports custom bucket operations that are added on to the S3 REST API and are specific to the system.
+
+The following table lists the custom bucket operations supported by StorageGRID.
+
+[options="header"]
+|===
+| Operation| Description| For more information
+a|
+GET Bucket consistency
+a|
+Returns the consistency level being applied to a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[GET Bucket consistency request]
+a|
+PUT Bucket consistency
+a|
+Sets the consistency level applied to a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket consistency request]
+a|
+GET Bucket last access time
+a|
+Returns whether last access time updates are enabled or disabled for a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[GET Bucket last access time request]
+a|
+PUT Bucket last access time
+a|
+Allows you to enable or disable last access time updates for a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket last access time request]
+a|
+DELETE Bucket metadata notification configuration
+a|
+Deletes the metadata notification configuration XML associated with a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[DELETE Bucket metadata notification configuration request]
+a|
+GET Bucket metadata notification configuration
+a|
+Returns the metadata notification configuration XML associated with a particular bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[GET Bucket metadata notification configuration request]
+a|
+PUT Bucket metadata notification configuration
+a|
+Configures the metadata notification service for a bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket metadata notification configuration request]
+a|
+PUT Bucket modifications for compliance
+a|
+Deprecated and not supported: You can no longer create new buckets with Compliance enabled.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[Deprecated: PUT Bucket request modifications for compliance]
+a|
+GET Bucket compliance
+a|
+Deprecated but supported: Returns the compliance settings currently in effect for an existing legacy Compliant bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[Deprecated: GET Bucket compliance request]
+a|
+PUT Bucket compliance
+a|
+Deprecated but supported: Allows you to modify the compliance settings for an existing legacy Compliant bucket.
+a|
+xref:storagegrid-s3-rest-api-operations.adoc[Deprecated: PUT Bucket compliance request]
+|===
+.Related information
+
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]

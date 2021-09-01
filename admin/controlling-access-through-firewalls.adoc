@@ -1,0 +1,68 @@
+---
+permalink: admin/controlling-access-through-firewalls.html
+sidebar: sidebar
+keywords: 
+summary: 'When you want to control access through firewalls, you open or close specific ports at the external firewall.'
+---
+= Controlling access through firewalls
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+When you want to control access through firewalls, you open or close specific ports at the external firewall.
+
+== Controlling access at the external firewall
+
+You can control access to the user interfaces and APIs on StorageGRID Admin Nodes by opening or closing specific ports at the external firewall. For example, you might want to prevent tenants from being able to connect to the Grid Manager at the firewall, in addition to using other methods to control system access.
+
+[cols="1a,1a,2a" options="header"]
+|===
+| Port| Description| If port is open...
+a|
+443
+a|
+Default HTTPS port for Admin Nodes
+a|
+Web browsers and management API clients can access the Grid Manager, the Grid Management API, the Tenant Manager, and the Tenant Management API.
+
+*Note:* Port 443 is also used for some internal traffic.
+
+a|
+8443
+a|
+Restricted Grid Manager port on Admin Nodes
+a|
+
+* Web browsers and management API clients can access the Grid Manager and the Grid Management API using HTTPS.
+* Web browsers and management API clients cannot access the Tenant Manager or the Tenant Management API.
+* Requests for internal content will be rejected.
+
+a|
+9443
+a|
+Restricted Tenant Manager port on Admin Nodes
+a|
+
+* Web browsers and management API clients can access the Tenant Manager and the Tenant Management API using HTTPS.
+* Web browsers and management API clients cannot access the Grid Manager or the Grid Management API.
+* Requests for internal content will be rejected.
+
+|===
+
+IMPORTANT: Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
+
+.Related information
+
+xref:signing-in-to-grid-manager.adoc[Signing in to the Grid Manager]
+
+xref:creating-tenant-account-if-storagegrid-is-not-using-sso.adoc[Creating a tenant account if StorageGRID is not using SSO]
+
+xref:summary-ip-addresses-and-ports-for-client-connections.adoc[Summary: IP addresses and ports for client connections]
+
+xref:managing-untrusted-client-networks.adoc[Managing untrusted Client Networks]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]

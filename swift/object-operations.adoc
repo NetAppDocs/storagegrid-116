@@ -1,0 +1,183 @@
+---
+permalink: swift/object-operations.html
+sidebar: sidebar
+keywords:
+summary: 'The following Swift API operations are performed on objects.'
+---
+= Object operations
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following Swift API operations are performed on objects.
+
+== DELETE object
+
+This operation deletes an object's content and metadata from the StorageGRID system.
+
+The following request parameters are required:
+
+* `Account`
+* `Container`
+* `Object`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+A successful execution returns the following response headers with an `HTTP/1.1 204 No Content` response:
+
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Trans-Id`
+
+When processing a DELETE Object request, StorageGRID attempts to immediately remove all copies of the object from all stored locations. If successful, StorageGRID returns a response to the client immediately. If all copies cannot be removed within 30 seconds (for example, because a location is temporarily unavailable), StorageGRID queues the copies for removal and then indicates success to the client.
+
+For more information on how objects are deleted, see the instructions for managing objects with information lifecycle management.
+
+== GET object
+
+This operation retrieves the object content and gets the object metadata from a StorageGRID system.
+
+The following request parameters are required:
+
+* `Account`
+* `Container`
+* `Object`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+The following request headers are optional:
+
+* `Accept-Encoding`
+* `If-Match`
+* `If-Modified-Since`
+* `If-None-Match`
+* `If-Unmodified-Since`
+* `Range`
+
+A successful execution returns the following headers with an `HTTP/1.1 200 OK` response:
+
+* `Accept-Ranges`
+* `Content-Disposition`, returned only if `Content-Disposition` metadata was set
+* `Content-Encoding`, returned only if `Content-Encoding` metadata was set
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+== HEAD object
+
+This operation retrieves metadata and properties of an ingested object from a StorageGRID system.
+
+The following request parameters are required:
+
+* `Account`
+* `Container`
+* `Object`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+A successful execution returns the following headers with an "HTTP/1.1 200 OK" response:
+
+* `Accept-Ranges`
+* `Content-Disposition`, returned only if `Content-Disposition` metadata was set
+* `Content-Encoding`, returned only if `Content-Encoding` metadata was set
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+== PUT object
+
+This operation creates a new object with data and metadata, or replaces an existing object with data and metadata in a StorageGRID system.
+
+StorageGRID supports objects up to 5 TB in size.
+
+IMPORTANT: Conflicting client requests, such as a two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when Swift clients begin an operation.
+
+The following request parameters are required:
+
+* `Account`
+* `Container`
+* `Object`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+The following request headers are optional:
+
+* `Content-Disposition`
+* `Content-Encoding`
++
+Do not use chunked `Content-Encoding` if the ILM rule that applies to an object filters objects based on size and uses synchronous placement on ingest (the Balanced or Strict options for Ingest Behavior).
+
+* `Transfer-Encoding`
++
+Do not use compressed or chunked `Transfer-Encoding` if the ILM rule that applies to an object filters objects based on size and uses synchronous placement on ingest (the Balanced or Strict options for Ingest Behavior).
+
+* `Content-Length`
++
+If an ILM rule filters objects by size and uses synchronous placement on ingest, you must specify `Content-Length`.
++
+NOTE: If you do not follow these guidelines for `Content-Encoding`, `Transfer-Encoding`, and `Content-Length`, StorageGRID must save the object before it can determine object size and apply the ILM rule. In other words, StorageGRID must default to creating interim copies of an object on ingest. That is, StorageGRID must use the Dual Commit option for Ingest Behavior.
++
+For more information about synchronous placement and ILM rules, see the instructions for managing objects with information lifecycle management.
+
+* `Content-Type`
+* `ETag`
+* `X-Object-Meta-<name\>` (object-related metadata)
++
+If you want to use the *User Defined Creation Time* option as the Reference Time for an ILM rule, you must store the value in a user-defined header named `X-Object-Meta-Creation-Time`. For example:
++
+----
+X-Object-Meta-Creation-Time: 1443399726
+----
++
+This field is evaluated as seconds since January 1, 1970.
+
+* `X-Storage-Class: reduced_redundancy`
++
+This header affects how many object copies StorageGRID creates if the ILM rule that matches an ingested object specifies an Ingest Behavior of Dual Commit or Balanced.
+
+ ** *Dual commit*: If the ILM rule specifies the Dual commit option for Ingest Behavior, StorageGRID creates a single interim copy as the object is ingested (single commit).
+ ** *Balanced*: If the ILM rule specifies the Balanced option, StorageGRID makes a single interim copy only if the system cannot immediately make all copies specified in the rule. If StorageGRID can perform synchronous placement, this header has no effect.
+
++
+The `reduced_redundancy` header is best used when the ILM rule that matches the object creates a single replicated copy. In this case using `reduced_redundancy` eliminates the unnecessary creation and deletion of an extra object copy for every ingest operation.
+
++
+Using the `reduced_redundancy` header is not recommended in other circumstances because it increases the risk the loss of object data during ingest. For example, you might lose data if the single copy is initially stored on a Storage Node that fails before ILM evaluation can occur.
+
++
+IMPORTANT: Having only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
+
++
+Note that specifying `reduced_redundancy` only affects how many copies are created when an object is first ingested. It does not affect how many copies of the object are made when the object is evaluated by the active ILM policy and does not result in data being stored at lower levels of redundancy in the StorageGRID system.
+
+A successful execution returns the following headers with an "HTTP/1.1 201 Created" response:
+
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `ETag`
+* `Last-Modified`
+* `X-Trans-Id`
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:monitoring-and-auditing-operations.adoc[Swift operations tracked in the audit logs]

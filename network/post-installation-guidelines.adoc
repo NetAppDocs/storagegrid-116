@@ -1,0 +1,39 @@
+---
+permalink: network/post-installation-guidelines.html
+sidebar: sidebar
+keywords:
+summary: 'After completing grid node deployment and configuration, follow these guidelines for DHCP addressing and network configuration changes.'
+---
+= Post-installation guidelines
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After completing grid node deployment and configuration, follow these guidelines for DHCP addressing and network configuration changes.
+
+* If DHCP was used to assign IP addresses, configure a DHCP reservation for each IP address on the networks being used.
++
+You can only set up DHCP during the deployment phase. You cannot set up DHCP during configuration.
++
+IMPORTANT: Nodes reboot when their IP addresses change, which can cause outages if a DHCP address change affects multiple nodes at the same time.
+
+* You must use the Change IP procedures if you want to change IP addresses, subnet masks, and default gateways for a grid node. See the information about configuring IP addresses in the recovery and maintenance instructions.
+* If you make networking configuration changes, including routing and gateway changes, client connectivity to the primary Admin Node and other grid nodes might be lost. Depending on the networking changes applied, you might need to re-establish these connections.
+
+.Related information
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+
+xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+xref:../sg5600/index.adoc[SG5600 storage appliances]
+
+xref:../maintain/index.adoc[Maintain & recover]

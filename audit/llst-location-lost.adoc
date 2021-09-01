@@ -1,0 +1,76 @@
+---
+permalink: audit/llst-location-lost.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, LLST, Location Lost
+summary: 'This message is generated whenever a location for an object copy \(replicated or erasure coded\) cannot be found.'
+---
+= LLST: Location Lost
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This message is generated whenever a location for an object copy (replicated or erasure coded) cannot be found.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBIL
+a|
+CBID
+a|
+The affected CBID.
+a|
+NOID
+a|
+Source Node ID
+a|
+The node ID on which the locations were lost.
+a|
+UUID
+a|
+Universally Unique ID
+a|
+The identifier of the affected object in the StorageGRID system.
+a|
+ECPR
+a|
+Erasure Coding Profile
+a|
+For erasure-coded object data. The ID of the Erasure Coding profile used.
+a|
+LTYP
+a|
+Location Type
+a|
+CLDI (Online): For replicated object data
+
+CLEC (Online): For erasure-coded object data
+
+CLNL (Nearline): For archived replicated object data
+
+a|
+PCLD
+a|
+Path to replicated object
+a|
+The complete path to the disk location of the lost object data. Only returned when LTYP has a value of CLDI (that is, for replicated objects).
+
+Takes the form `/var/local/rangedb/2/p/13/13/00oJs6X%{h{U)SeUFxE@`
+
+a|
+RSLT
+a|
+Result
+a|
+Always NONE. RSLT is a mandatory message field, but is not relevant for this message. NONE is used rather than SUCS so that this message is not filtered.
+a|
+TSRC
+a|
+Triggering Source
+a|
+USER: User triggered
+
+SYST: System triggered
+
+|===

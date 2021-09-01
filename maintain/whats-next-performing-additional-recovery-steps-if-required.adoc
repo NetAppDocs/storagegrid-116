@@ -1,0 +1,55 @@
+---
+permalink: maintain/whats-next-performing-additional-recovery-steps-if-required.html
+sidebar: sidebar
+keywords: storagegrid, recover, corrective action, additional recovery
+summary: 'Depending on the specific actions you took to get the StorageGRID nodes running on the replacement host, you might need to perform additional recovery steps for each node.'
+---
+= What's next: Performing additional recovery steps, if required
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Depending on the specific actions you took to get the StorageGRID nodes running on the replacement host, you might need to perform additional recovery steps for each node.
+
+Node recovery is complete if you did not need to take any corrective actions while you replaced the Linux host or restored the failed grid node to the new host.
+
+== Corrective actions and next steps
+
+During node replacement, you may have needed to take one of these corrective actions:
+
+* You had to use the `--force` flag to import the node.
+* For any `<PURPOSE>`, the value of the `BLOCK_DEVICE_<PURPOSE>` configuration file variable refers to a block device that does not contain the same data it did before the host failure.
+* You issued `storagegrid node force-recovery _node-name_` for the node.
+* You added a new block device.
+
+If you took *any* of these corrective actions, you must perform additional recovery steps.
+
+[cols="1a,1a" options="header"]
+|===
+| Type of recovery| Next step
+|Primary Admin Node
+|xref:configuring-replacement-primary-admin-node.adoc[Configuring the replacement primary Admin Node]
+
+|Non-primary Admin Node
+|xref:selecting-start-recovery-to-configure-non-primary-admin-node.adoc[Selecting Start Recovery to configure a non-primary Admin Node]
+
+|Gateway Node
+|xref:selecting-start-recovery-to-configure-gateway-node.adoc[Selecting Start Recovery to configure a Gateway Node]
+
+|Archive Node
+|link:selecting_start_recovery_to_configure_archive_node.adoc[Selecting Start Recovery to configure an Archive Node]
+
+|Storage Node (software-based):
+
+* If you had to use the `--force` flag to import the node, or you issued `storagegrid node force-recovery _node-name_`
+* If you had to do a full node reinstall, or you needed to restore /var/local
+
+|xref:selecting-start-recovery-to-configure-storage-node.adoc[Selecting Start Recovery to configure a Storage Node]
+
+|Storage Node (software-based):
+
+* If you added a new block device.
+* If, for any `<PURPOSE>`, the value of the `BLOCK_DEVICE_<PURPOSE>` configuration file variable refers to a block device that does not contain the same data it did before the host failure.
+
+|link:recovering_from_storage_volume_failure_where_system_drive_is_intact.adoc[Recovering from storage volume failure where the system drive is intact]
+|===

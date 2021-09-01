@@ -1,0 +1,99 @@
+---
+permalink: ilm/what-cloud-storage-pool-is.html
+sidebar: sidebar
+keywords:
+summary: 'A Cloud Storage Pool lets you use ILM to move object data outside of your StorageGRID system. For example, you might want to move infrequently accessed objects to lower-cost cloud storage, such as Amazon S3 Glacier, S3 Glacier Deep Archive, or the Archive access tier in Microsoft Azure Blob storage. Or, you might want to maintain a cloud backup of StorageGRID objects to enhance disaster recovery.'
+---
+= What a Cloud Storage Pool is
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+A Cloud Storage Pool lets you use ILM to move object data outside of your StorageGRID system. For example, you might want to move infrequently accessed objects to lower-cost cloud storage, such as Amazon S3 Glacier, S3 Glacier Deep Archive, or the Archive access tier in Microsoft Azure Blob storage. Or, you might want to maintain a cloud backup of StorageGRID objects to enhance disaster recovery.
+
+From an ILM perspective, a Cloud Storage Pool is similar to a storage pool. To store objects in either location, you select the pool when creating the placement instructions for an ILM rule. However, while storage pools consist of Storage Nodes or Archive Nodes within the StorageGRID system, a Cloud Storage Pool consists of an external bucket (S3) or container (Azure Blob storage).
+
+The following table compares storage pools to Cloud Storage Pools and shows the high-level similarities and differences.
+
+[cols="1a,2a,2a" options="header"]
+|===
+|  | Storage pool| Cloud Storage Pool
+a|
+How is it created?
+
+a|
+Using the *ILM* > *Storage Pools* option in Grid Manager.
+
+You must set up storage grades before you can create the storage pool.
+
+a|
+Using the *ILM* > *Storage Pools* option in Grid Manager.
+
+You must set up the external bucket or container before you can create the Cloud Storage Pool.
+
+a|
+How many pools can you create?
+
+a|
+Unlimited.
+
+a|
+Up to 10.
+
+a|
+Where are objects stored?
+
+a|
+On one or more Storage Nodes or Archive Nodes within StorageGRID.
+
+a|
+In an Amazon S3 bucket or Azure Blob storage container that is external to the StorageGRID system.
+
+If the Cloud Storage Pool is an Amazon S3 bucket:
+
+* You can optionally configure a bucket lifecycle to transition objects to low-cost, long-term storage, such as Amazon S3 Glacier or S3 Glacier Deep Archive. The external storage system must support the Glacier storage class and the S3 POST Object restore API.
+* You can create Cloud Storage Pools for use with AWS Commercial Cloud Services (C2S), which supports the AWS Secret Region.
+
+If the Cloud Storage Pool is an Azure Blob storage container, StorageGRID transitions the object to the Archive tier.
+
+*Note:* In general, do not configure Azure Blob Storage lifecycle management for the container used for a Cloud Storage Pool. POST Object restore operations on objects in the Cloud Storage Pool can be affected by the configured lifecycle.
+
+a|
+What controls object placement?
+
+a|
+An ILM rule in the active ILM policy.
+
+a|
+An ILM rule in the active ILM policy.
+
+a|
+What data protection method is used?
+
+a|
+Replication or erasure coding.
+
+a|
+Replication.
+
+a|
+How many copies of each object are allowed?
+
+a|
+Multiple.
+
+a|
+One copy in the Cloud Storage Pool and, optionally, one or more copies in StorageGRID.
+
+*Note:* You cannot store an object in more than one Cloud Storage Pool at any given time.
+
+a|
+What are the advantages?
+
+a|
+Objects are quickly accessible at any time.
+
+a|
+Low-cost storage.
+
+|===

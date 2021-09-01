@@ -1,0 +1,85 @@
+---
+permalink: maintain/removing-port-remaps-on-bare-metal-hosts.html
+sidebar: sidebar
+keywords: storagegrid, recover, linux, linux host, bare metal host, baremetal host, remove port remap, removing port remap, port remap
+summary: 'If you want to configure an endpoint for the Load Balancer service, and you want to use a port that has already been configured as the Mapped-To Port of a port remap, you must first remove the existing port remap, or the endpoint will not be effective. If you are running StorageGRID on bare metal hosts, follow this procedure instead of the general procedure for removing port remaps. You must edit the node configuration file for each Admin Node and Gateway Node that has conflicting remapped ports to remove all of the node’s port remaps and restart the node.'
+---
+= Removing port remaps on bare metal hosts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you want to configure an endpoint for the Load Balancer service, and you want to use a port that has already been configured as the Mapped-To Port of a port remap, you must first remove the existing port remap, or the endpoint will not be effective. If you are running StorageGRID on bare metal hosts, follow this procedure instead of the general procedure for removing port remaps. You must edit the node configuration file for each Admin Node and Gateway Node that has conflicting remapped ports to remove all of the node's port remaps and restart the node.
+
+.About this task
+
+CAUTION: This procedure removes all port remaps. If you need to keep some of the remaps, contact technical support.
+
+For information about configuring load balancer endpoints, see the instructions for administering StorageGRID.
+
+IMPORTANT: This procedure can result in temporary loss of service as nodes are restarted.
+
+.Steps
+
+. Log in to the host supporting the node. Log in as root or with an account that has sudo permission.
+. Run the following command to temporarily disable the node: `sudo storagegrid node stop _node-name_`
+. Using a text editor such as vim or pico, edit the node configuration file for the node.
++
+The node configuration file can be found at `/etc/storagegrid/nodes/_node-name_.conf`.
+
+. Locate the section of the node configuration file that contains the port remaps.
++
+See the last two lines in the following example.
++
+[source]
+[subs="specialcharacters,quotes"]
+----
+ADMIN_NETWORK_CONFIG = STATIC
+ADMIN_NETWORK_ESL = 10.0.0.0/8, 172.19.0.0/16, 172.21.0.0/16
+ADMIN_NETWORK_GATEWAY = 10.224.0.1
+ADMIN_NETWORK_IP = 10.224.5.140
+ADMIN_NETWORK_MASK = 255.255.248.0
+ADMIN_NETWORK_MTU = 1400
+ADMIN_NETWORK_TARGET = eth1
+ADMIN_NETWORK_TARGET_TYPE = Interface
+BLOCK_DEVICE_VAR_LOCAL = /dev/sda2
+CLIENT_NETWORK_CONFIG = STATIC
+CLIENT_NETWORK_GATEWAY = 47.47.0.1
+CLIENT_NETWORK_IP = 47.47.5.140
+CLIENT_NETWORK_MASK = 255.255.248.0
+CLIENT_NETWORK_MTU = 1400
+CLIENT_NETWORK_TARGET = eth2
+CLIENT_NETWORK_TARGET_TYPE = Interface
+GRID_NETWORK_CONFIG = STATIC
+GRID_NETWORK_GATEWAY = 192.168.0.1
+GRID_NETWORK_IP = 192.168.5.140
+GRID_NETWORK_MASK = 255.255.248.0
+GRID_NETWORK_MTU = 1400
+GRID_NETWORK_TARGET = eth0
+GRID_NETWORK_TARGET_TYPE = Interface
+NODE_TYPE = VM_API_Gateway
+*PORT_REMAP = client/tcp/8082/443*
+*PORT_REMAP_INBOUND = client/tcp/8082/443*
+----
+
+. Edit the PORT_REMAP and PORT_REMAP_INBOUND entries to remove port remaps.
++
+----
+PORT_REMAP =
+PORT_REMAP_INBOUND =
+----
+
+. Run the following command to validate your changes to the node configuration file for the node: ``sudo storagegrid node validate _node-name_``
++
+Address any errors or warnings before proceeding to the next step.
+
+. Run the following command to restart the node without port remaps: `sudo storagegrid node start _node-name_`
+. Log in to the node as admin using the password listed in the `Passwords.txt` file.
+. Verify that the services start correctly.
+ .. View a listing of the statuses of all services on the server:``sudo storagegrid-status``
++
+The status is updated automatically.
+
+ .. Wait until all services have a status of either Running or Verified.
+ .. Exit the status screen:``Ctrl+C``
+. Repeat these steps on each Admin Node and Gateway Node that has conflicting remapped ports.

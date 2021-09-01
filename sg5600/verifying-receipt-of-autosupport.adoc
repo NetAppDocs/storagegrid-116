@@ -1,0 +1,37 @@
+---
+permalink: sg5600/verifying-receipt-of-autosupport.html
+sidebar: sidebar
+keywords: storagegrid, sg5600, storage node, storage appliance, verify, verification, verifying, confirm, confirmation, confirming, autosupport, auto-support, status
+summary: 'You should verify that technical support is receiving your AutoSupport messages. You can find the status of AutoSupport for your systems on the Active IQ portal. Verifying receipt of these messages ensures that technical support has your information if you need assistance.'
+---
+= Verifying receipt of AutoSupport
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You should verify that technical support is receiving your AutoSupport messages. You can find the status of AutoSupport for your systems on the Active IQ portal. Verifying receipt of these messages ensures that technical support has your information if you need assistance.
+
+.About this task
+
+AutoSupport can show one of the following statuses:
+
+* *ON*
++
+An ON status indicates that technical support is currently receiving AutoSupport messages from the system.
+
+* *OFF*
++
+An OFF status suggests that you might have disabled AutoSupport because technical support has not received a Weekly Log from the system in the last 15 calendar days or there might have been a change in your environment or configuration (as an example).
+
+* *DECLINE*
++
+A DECLINE status means that you have notified technical support that you will not enable AutoSupport.
+
+After technical support receives a Weekly Log from the system, the AutoSupport status changes to ON.
+
+.Steps
+
+. Go to the NetApp Support Site at http://mysupport.netapp.com/[mysupport.netapp.com^], and sign in to the Active IQ portal.
+. If the AutoSupport status is OFF, and you believe that is incorrect, complete the following:
+ .. Check your system configuration to ensure that you have turned AutoSupport on.
+ .. Check your network environment and configuration to ensure that the system can send messages to technical support.

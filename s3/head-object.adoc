@@ -1,0 +1,125 @@
+---
+permalink: s3/head-object.html
+sidebar: sidebar
+keywords:
+summary: 'You can use the S3 HEAD Object request to retrieve metadata from an object without returning the object itself.'
+---
+= HEAD Object
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the S3 HEAD Object request to retrieve metadata from an object without returning the object itself. If the object is stored in a Cloud Storage Pool, you can use HEAD Object to determine the object's transition state.
+
+== Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
+
+Use all three of these headers if the object is encrypted with a unique key that you provided.
+
+* `x-amz-server-side-encryption-customer-algorithm`: Specify `AES256`.
+* `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the object.
+* `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the object's encryption key.
+
+IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+
+== UTF-8 characters in user metadata
+
+StorageGRID does not parse or interpret escaped UTF-8 characters in user-defined metadata. HEAD requests for an object with escaped UTF-8 characters in user-defined metadata do not return the `x-amz-missing-meta` header if the key name or value includes unprintable characters.
+
+== Unsupported request header
+
+The following request header is not supported and returns `XNotImplemented`:
+
+* `x-amz-website-redirect-location`
+
+== Response headers for Cloud Storage Pool objects
+
+If the object is stored in a Cloud Storage Pool (see the instructions for managing objects with information lifecycle management), the following response headers are returned:
+
+* `x-amz-storage-class: GLACIER`
+* `x-amz-restore`
+
+The response headers provide information about the state of an object as it is moved to a Cloud Storage Pool, optionally transitioned to a non-retrievable state, and restored.
+
+[options="header"]
+|===
+| State of object| Response to HEAD object
+a|
+Object ingested into StorageGRID but not yet evaluated by ILM, or object stored in a traditional storage pool or using erasure coding
+a|
+`200 OK` (No special response header is returned.)
+
+a|
+Object in Cloud Storage Pool but not yet transitioned to a non-retrievable state
+
+a|
+`200 OK`
+
+`x-amz-storage-class: GLACIER`
+
+`x-amz-restore: ongoing-request="false", expiry-date="Sat, 23 July 20 2030 00:00:00 GMT"`
+
+Until the object is transitioned to a non-retrievable state, the value for `expiry-date` is set to some distant time in the future. The exact time of transition is not controlled by the StorageGRID system.
+
+a|
+Object has transitioned to non-retrievable state, but at least one copy also exists on the grid
+
+a|
+`200 OK`
+
+`x-amz-storage-class: GLACIER`
+
+`x-amz-restore: ongoing-request="false", expiry-date="Sat, 23 July 20 2030 00:00:00 GMT"`
+
+The value for `expiry-date` is set to some distant time in the future.
+
+*Note*: If the copy on the grid is not available (for example, a Storage Node is down), you must issue a POST Object restore request to restore the copy from the Cloud Storage Pool before you can successfully retrieve the object.
+
+a|
+Object transitioned to a non-retrievable state, and no copy exists on the grid
+
+a|
+`200 OK`
+
+`x-amz-storage-class: GLACIER`
+
+a|
+Object in process of being restored from a non-retrievable state
+
+a|
+`200 OK`
+
+`x-amz-storage-class: GLACIER`
+
+`x-amz-restore: ongoing-request="true"`
+
+a|
+Object fully restored to the Cloud Storage Pool
+
+a|
+`200 OK`
+
+`x-amz-storage-class: GLACIER`
+
+`x-amz-restore: ongoing-request="false", expiry-date="Sat, 23 July 20 2018 00:00:00 GMT"`
+
+The `expiry-date` indicates when the object in the Cloud Storage Pool will be returned to a non-retrievable state.
+
+|===
+
+== Multipart or segmented objects in a Cloud Storage Pool
+
+If you uploaded a multipart object or if StorageGRID split a large object into segments, StorageGRID determines whether the object is available in the Cloud Storage Pool by sampling a subset of the object's parts or segments. In some cases, a HEAD Object request might incorrectly return `x-amz-restore: ongoing-request="false"` when some parts of the object have already been transitioned to a non-retrievable state or when some parts of the object have not yet been restored.
+
+== Versioning
+
+If a `versionId` subresource is not specified, the operation fetches the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`Not Found`" status is returned with the `x-amz-delete-marker` response header set to `true`.
+
+.Related information
+
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Using server-side encryption]
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:post-object-restore.adoc[POST Object restore]
+
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]

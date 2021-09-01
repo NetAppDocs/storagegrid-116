@@ -1,0 +1,68 @@
+---
+permalink: audit/object-ingest-transactions.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, messages, transaction, transactions, Object ingest, S3 ingest, Swift ingest, S3, Swift, SPUT, ORLM, WPUT 
+summary: 'You can identify client ingest transactions in the audit log by locating API-specific \(S3 or Swift\) audit messages.'
+---
+= Object ingest transactions
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can identify client ingest transactions in the audit log by locating API-specific (S3 or Swift) audit messages.
+
+Not all audit messages generated during an ingest transaction are listed in the following tables. Only the messages required to trace the ingest transaction are included.
+
+== S3 ingest audit messages
+
+[options="header"]
+|===
+| Code| Name| Description| Trace| See
+a|
+SPUT
+a|
+S3 PUT transaction
+a|
+An S3 PUT ingest transaction has completed successfully.
+a|
+CBID, S3BK, S3KY
+a|
+xref:sput-s3-put.adoc[SPUT: S3 PUT]
+a|
+ORLM
+a|
+Object Rules Met
+a|
+The ILM policy has been satisfied for this object.
+a|
+CBID
+a|
+xref:orlm-object-rules-met.adoc[ORLM: Object Rules Met]
+|===
+
+== Swift ingest audit messages
+
+[options="header"]
+|===
+| Code| Name| Description| Trace| See
+a|
+WPUT
+a|
+Swift PUT transaction
+a|
+A Swift PUT ingest transaction has successfully completed.
+a|
+CBID, WCON, WOBJ
+a|
+xref:wput-swift-put.adoc[WPUT: Swift PUT]
+a|
+ORLM
+a|
+Object Rules Met
+a|
+The ILM policy has been satisfied for this object.
+a|
+CBID
+a|
+xref:orlm-object-rules-met.adoc[ORLM: Object Rules Met]
+|===

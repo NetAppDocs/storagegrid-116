@@ -1,0 +1,72 @@
+---
+permalink: swift/account-operations.html
+sidebar: sidebar
+keywords:
+summary: 'The following Swift API operations are performed on accounts.'
+---
+= Account operations
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The following Swift API operations are performed on accounts.
+
+== GET account
+
+This operation retrieves the container list associated with the account and account usage statistics.
+
+The following request parameter is required:
+
+* `Account`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+The following supported request query parameters are optional:
+
+* `Delimiter`
+* `End_marker`
+* `Format`
+* `Limit`
+* `Marker`
+* `Prefix`
+
+A successful execution returns the following headers with an "`HTTP/1.1 204 No Content`" response if the account is found and has no containers or the container list is empty; or an "`HTTP/1.1 200 OK`" response if the account is found and the container list is not empty:
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Content-Type`
+* `Date`
+* `X-Account-Bytes-Used`
+* `X-Account-Container-Count`
+* `X-Account-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+== HEAD account
+
+This operation retrieves account information and statistics from a Swift account.
+
+The following request parameter is required:
+
+* `Account`
+
+The following request header is required:
+
+* `X-Auth-Token`
+
+A successful execution returns the following headers with an "`HTTP/1.1 204 No Content`" response:
+
+* `Accept-Ranges`
+* `Content-Length`
+* `Date`
+* `X-Account-Bytes-Used`
+* `X-Account-Container-Count`
+* `X-Account-Object-Count`
+* `X-Timestamp`
+* `X-Trans-Id`
+
+.Related information
+
+xref:monitoring-and-auditing-operations.adoc[Swift operations tracked in the audit logs]

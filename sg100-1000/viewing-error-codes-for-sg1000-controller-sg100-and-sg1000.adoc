@@ -1,0 +1,224 @@
+---
+permalink: sg100-1000/viewing-error-codes-for-sg1000-controller-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, error codes, errors, error, codes, bmc
+summary: 'If a hardware error occurs when the appliance is booting up, the BMC logs an error code. As required, you can view these error codes using the BMC interface, and then work with technical support to resolve the issue.'
+---
+= Viewing error codes for the appliance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If a hardware error occurs when the appliance is booting up, the BMC logs an error code. As required, you can view these error codes using the BMC interface, and then work with technical support to resolve the issue.
+
+.What you'll need
+
+* You know how to access the BMC dashboard.
+
+.Steps
+
+. From the BMC dashboard, select *BIOS POST Code*.
+. Review the information displayed for Current Code and the Previous Code.
++
+If any of the following error codes are shown, work with technical support to resolve the issue.
++
+[options="header"]
+|===
+| Code| Indicates
+a|
+0x0E
+a|
+Microcode not found
+a|
+0x0F
+a|
+Microcode not loaded
+a|
+0x50
+a|
+Memory initialization error. Invalid memory type or incompatible memory speed.
+a|
+0x51
+a|
+Memory initialization error. SPD reading has failed.
+a|
+0x52
+a|
+Memory initialization error. Invalid memory size or memory modules do not match.
+a|
+0x53
+a|
+Memory initialization error. No usable memory detected.
+a|
+0x54
+a|
+Unspecified memory initialization error
+a|
+0x55
+a|
+Memory not installed
+a|
+0x56
+a|
+Invalid CPU type or speed
+a|
+0x57
+a|
+CPU mismatch
+a|
+0x58
+a|
+CPU self-test failed, or possible CPU cache error
+a|
+0x59
+a|
+CPU micro-code is not found, or micro-code update failed
+a|
+0x5A
+a|
+Internal CPU error
+a|
+0x5B
+a|
+Reset PPI is not available
+a|
+0x5C
+a|
+PEI phase BMC self-test failure
+a|
+0xD0
+a|
+CPU initialization error
+a|
+0xD1
+a|
+North bridge initialization error
+a|
+0xD2
+a|
+South bridge initialization error
+a|
+0xD3
+a|
+Some architectural protocols are not available
+a|
+0xD4
+a|
+PCI resource allocation error. Out of resources.
+a|
+0xD5
+a|
+No space for legacy option ROM
+a|
+0xD6
+a|
+No console output devices are found
+a|
+0xD7
+a|
+No console input devices are found
+a|
+0xD8
+a|
+Invalid password
+a|
+0xD9
+a|
+Error loading boot option (LoadImage returned error)
+a|
+0xDA
+a|
+Boot option failed (StartImage returned error)
+a|
+0xDB
+a|
+Flash update failed
+a|
+0xDC
+a|
+Reset protocol is not available
+a|
+0xDD
+a|
+DXE phase BMC self-test failure
+a|
+0xE8
+a|
+MRC: ERR_NO_MEMORY
+a|
+0xE9
+a|
+MRC: ERR_LT_LOCK
+a|
+0xEA
+a|
+MRC: ERR_DDR_INIT
+a|
+0xEB
+a|
+MRC: ERR_MEM_TEST
+a|
+0xEC
+a|
+MRC: ERR_VENDOR_SPECIFIC
+a|
+0xED
+a|
+MRC: ERR_DIMM_COMPAT
+a|
+0xEE
+a|
+MRC: ERR_MRC_COMPATIBILITY
+a|
+0xEF
+a|
+MRC: ERR_MRC_STRUCT
+a|
+0xF0
+a|
+MRC: ERR_SET_VDD
+a|
+0xF1
+a|
+MRC: ERR_IOT_MEM_BUFFER
+a|
+0xF2
+a|
+MRC: ERR_RC_INTERNAL
+a|
+0xF3
+a|
+MRC: ERR_INVALID_REG_ACCESS
+a|
+0xF4
+a|
+MRC: ERR_SET_MC_FREQ
+a|
+0xF5
+a|
+MRC: ERR_READ_MC_FREQ
+a|
+0x70
+a|
+MRC: ERR_DIMM_CHANNEL
+a|
+0x74
+a|
+MRC: ERR_BIST_CHECK
+a|
+0xF6
+a|
+MRC: ERR_SMBUS
+a|
+0xF7
+a|
+MRC: ERR_PCU
+a|
+0xF8
+a|
+MRC: ERR_NGN
+a|
+0xF9
+a|
+MRC: ERR_INTERLEAVE_FAILURE
+|===

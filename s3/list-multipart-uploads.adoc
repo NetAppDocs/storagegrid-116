@@ -1,0 +1,26 @@
+---
+permalink: s3/list-multipart-uploads.html
+sidebar: sidebar
+keywords: list multipart uploads, uploads, multipart uploads, bucket
+summary: 'The List Multipart Uploads operation lists in-progress multipart uploads for a bucket.'
+---
+= List Multipart Uploads
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The List Multipart Uploads operation lists in-progress multipart uploads for a bucket.
+
+The following request parameters are supported:
+
+* `encoding-type`
+* `max-uploads`
+* `key-marker`
+* `prefix`
+* `upload-id-marker`
+
+The `delimiter` request parameter is not supported.
+
+== Versioning
+
+Multipart upload consists of separate operations for initiating the upload, listing uploads, uploading parts, assembling the uploaded parts, and completing the upload. When the Complete Multipart Upload operation is performed, that is the point when objects are created (and versioned if applicable).

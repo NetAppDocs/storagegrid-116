@@ -1,0 +1,223 @@
+---
+permalink: maintain/downloading-and-extracting-storagegrid-installation-files.html
+sidebar: sidebar
+keywords: storagegrid, installation files, download
+summary: 'Before you can recover StorageGRID grid nodes, you must download the software and extract the files.'
+---
+= Downloading and extracting the StorageGRID installation files
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Before you can recover StorageGRID grid nodes, you must download the software and extract the files.
+
+You must use the version of StorageGRID that is currently running on the grid.
+
+.Steps
+
+. Determine which version of the software is currently installed. From the Grid Manager, go to *Help* > *About*.
+. Go to the NetApp Downloads page for StorageGRID.
++
+https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID]
+
+. Select the version of StorageGRID that is currently running on the grid.
++
+StorageGRID software versions have this format: 11.x.y.
+
+. Sign in with the username and password for your NetApp account.
+. Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
+. In the *Install StorageGRID* column of the download page, select the `.tgz` or `.zip` file for your platform.
++
+The version shown in the installation archive file must match the version of the software that is currently installed.
++
+Use the `.zip` file if you are running Windows.
++
+[cols="1a,2a" options="header"]
+|===
+| Platform| Installation archive
+|VMware
+m|StorageGRID-Webscale-_version_-VMware-_uniqueID_.zip
+
+StorageGRID-Webscale-_version_-VMware-_uniqueID_.tgz
+
+|Red Hat Enterprise Linux or CentOS
+m|StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip
+
+ StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz
+
+|Ubuntu or Debian
+
+or Appliances
+m|StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip
+
+ StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz
+
+|OpenStack or other hypervisor
+|NetApp-provided virtual machine disk files and scripts for OpenStack are no longer supported for recovery operations. If you need to recover a node running in an OpenStack deployment, download the files for your Linux operating system. Then, follow the procedure for replacing a Linux node.
+|===
+
+. Download and extract the archive file.
+. Follow the appropriate step for your platform to choose the files you need, based on your platform and which grid nodes you need to recover.
++
+The paths listed in the step for each platform are relative to the top-level directory installed by the archive file.
+
+. If you are recovering a VMware system, select the appropriate files.
++
+[cols="1a,1a" options="header"]
+|===
+| Path and file name| Description
+m|./vsphere/README
+|A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./vsphere/NLF000000.txt
+|A free license that does not provide any support entitlement for the product.
+
+m|./vsphere/NetApp-SG-_version_-SHA.vmdk
+|The virtual machine disk file that is used as a template for creating grid node virtual machines.
+
+m|./vsphere/vsphere-primary-admin.ovf
+
+./vsphere/vsphere-primary-admin.mf
+|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
+
+m|./vsphere/vsphere-non-primary-admin.ovf
+
+./vsphere/vsphere-non-primary-admin.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
+
+m|/vsphere/vsphere-archive.ovf
+
+./vsphere/vsphere-archive.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
+
+m|./vsphere/vsphere-gateway.ovf
+
+./vsphere/vsphere-gateway.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
+
+m|./vsphere/vsphere-storage.ovf
+
+./vsphere/vsphere-storage.mf
+|The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
+
+h|Deployment scripting tool h|Description
+
+m|./vsphere/deploy-vsphere-ovftool.sh
+|A Bash shell script used to automate the deployment of virtual grid nodes.
+
+m|./vsphere/deploy-vsphere-ovftool-sample.ini
+|A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
+
+m|./vsphere/configure-storagegrid.py
+|A Python script used to automate the configuration of a StorageGRID system.
+
+m|./vsphere/configure-sga.py
+|A Python script used to automate the configuration of StorageGRID appliances.
+
+m|./vsphere/storagegrid-ssoauth.py
+|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
+
+m|./vsphere/configure-storagegrid.sample.json
+|A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|./vsphere/configure-storagegrid.blank.json
+|A blank configuration file for use with the `configure-storagegrid.py` script.
+|===
+
+. If you are recovering a Red Hat Enterprise Linux or CentOS system, select the appropriate files.
++
+[cols="1a,1a" options="header"]
+|===
+| Path and file name| Description
+m|./rpms/README
+|A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./rpms/NLF000000.txt
+|A free license that does not provide any support entitlement for the product.
+
+m|./rpms/StorageGRID-Webscale-Images-_version_-SHA.rpm
+|RPM package for installing the StorageGRID node images on your RHEL or CentOS hosts.
+
+m|./rpms/StorageGRID-Webscale-Service-_version_-SHA.rpm
+|RPM package for installing the StorageGRID host service on your RHEL or CentOS hosts.
+
+h|Deployment scripting tool h|Description
+
+m|./rpms/configure-storagegrid.py
+|A Python script used to automate the configuration of a StorageGRID system.
+
+m|./rpms/configure-sga.py
+|A Python script used to automate the configuration of StorageGRID appliances.
+
+m|./rpms/configure-storagegrid.sample.json
+|A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|./rpms/storagegrid-ssoauth.py
+|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
+
+m|./rpms/configure-storagegrid.blank.json
+|A blank configuration file for use with the `configure-storagegrid.py` script.
+
+m|./rpms/extras/ansible
+|Example Ansible role and playbook for configuring RHEL or CentOS hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
+|===
+. If you are recovering an Ubuntu or Debian system, select the appropriate files.
++
+[cols="1a,1a" options="header"]
+|===
+| Path and file name| Description
+m|./debs/README
+|A text file that describes all of the files contained in the StorageGRID download file.
+
+m|./debs/NLF000000.txt
+|A non-production NetApp License File that you can use for testing and proof of concept deployments.
+
+m|./debs/storagegrid-webscale-images-_version_-SHA.deb
+|DEB package for installing the StorageGRID node images on Ubuntu or Debian hosts.
+
+m|./debs/storagegrid-webscale-images-_version_-SHA.deb.md5
+|MD5 checksum for the file `/debs/storagegrid-webscale-images-version-SHA.deb`
+
+m|./debs/storagegrid-webscale-service-_version_-SHA.deb
+|DEB package for installing the StorageGRID host service on Ubuntu or Debian hosts.
+
+h|Deployment scripting tool h|Description
+
+m|./debs/configure-storagegrid.py
+|A Python script used to automate the configuration of a StorageGRID system.
+
+m|./debs/configure-sga.py
+|A Python script used to automate the configuration of StorageGRID appliances.
+m|./debs/storagegrid-ssoauth.py
+|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
+
+m|./debs/configure-storagegrid.sample.json
+|A sample configuration file for use with the `configure-storagegrid.py` script.
+
+m|./debs/configure-storagegrid.blank.json
+|A blank configuration file for use with the `configure-storagegrid.py` script.
+
+m|./debs/extras/ansible
+|Example Ansible role and playbook for configuring Ubuntu or Debian hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
+|===
+
+. If you are recovering a StorageGRID appliance-based system, select the appropriate files.
++
+[cols="1a,1a" options="header"]
+|===
+| Path and file name| Description
+m|./debs/storagegrid-webscale-images-_version_-SHA.deb
+|DEB package for installing the StorageGRID node images on your appliances.
+
+m|./debs/storagegrid-webscale-images-_version_-SHA.deb.md5
+|Checksum of the DEB installation package used by the StorageGRID Appliance Installer to validate that the package is intact after upload.
+|===
+*Note:* For appliance installation, these files are only required if you need to avoid network traffic. The appliance can download the required files from the primary Admin Node.
+
+.Related information
+
+xref:../vmware/index.adoc[Install VMware]
+
+xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

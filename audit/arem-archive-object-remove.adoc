@@ -1,0 +1,40 @@
+---
+permalink: audit/arem-archive-object-remove.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, AREM, Archive Object Remove 
+summary: 'The Archive Object Remove audit message indicates that a content block was successfully or unsuccessfully deleted from an Archive Node. If the result is successful, the Archive Node has successfully informed the external archival storage system that StorageGRID has released an object location. Whether the object is removed from the external archive storage system depends on the type of system and its configuration.'
+---
+= AREM: Archive Object Remove
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Archive Object Remove audit message indicates that a content block was successfully or unsuccessfully deleted from an Archive Node. If the result is successful, the Archive Node has successfully informed the external archival storage system that StorageGRID has released an object location. Whether the object is removed from the external archive storage system depends on the type of system and its configuration.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+CBID
+a|
+Content Block ID
+a|
+The unique identifier of the Content Block to be retrieved from the external archival media system.
+a|
+VLID
+a|
+Volume Identifier
+a|
+The identifier of the volume on which the object data was archived.
+a|
+RSLT
+a|
+Result
+a|
+The completion status of the archive removal process:
+
+* SUCS: successful
+* ARUN: failed (external archival storage system unavailable)
+* GERR: failed (general error)
+
+|===
