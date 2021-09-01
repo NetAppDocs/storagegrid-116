@@ -2,32 +2,34 @@
 permalink: admin/configuring_administrator_client_certificates.html
 sidebar: sidebar
 keywords:
-summary: 'You can use client certificates to allow authorized external clients to access the StorageGRID Prometheus database. Client certificates provide a secure way to use external tools to monitor StorageGRID.'
+summary: 'Client certificates allow authorized external clients to access the StorageGRID Prometheus database, providing a secure way for external tools to monitor StorageGRID. Implementing appliance encryption using a key management server (KMS) also requires a client certificate.'
 ---
-= Configuring administrator client certificates
+= Configure client certificates
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can use client certificates to allow authorized external clients to access the StorageGRID Prometheus database. Client certificates provide a secure way to use external tools to monitor StorageGRID.
+Client certificates allow authorized external clients to access the StorageGRID Prometheus database, providing a secure way for external tools to monitor StorageGRID. Implementing appliance encryption using a key management server (KMS) also requires a client certificate.
 
-If you need to access StorageGRID using an external monitoring tool, you must upload or generate a client certificate using the Grid Manager and copy the certificate information to the external tool.
+If you need to access StorageGRID using an external monitoring tool, you must upload or generate an administrator client certificate using the Grid Manager and copy the certificate information to the external tool.
+
+If you are using a key management server (KMS) to protect the data on specially configured appliance nodes, see   xref:kms_adding.adoc[Adding a key management server (KMS)] for information about uploading a KMS client certificate.
 
 == Adding administrator client certificates
 
-To add a client certificate, you can provide your own certificate or generate one using the Grid Manager.
+To add an administrator client certificate, you can provide your own certificate or generate one using the Grid Manager.
 
 .What you'll need
 
 * You must have the Root Access permission.
 * You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
 * You must know the IP address or domain name of the Admin Node.
-* You must have configured the StorageGRID Management Interface Server Certificate and have the corresponding CA bundle
+* You must have configured the StorageGRID management interface certificate and have the corresponding CA bundle.
 * If you want to upload your own certificate, the public key and private key for the certificate must be available on your local computer.
 
 .Steps
 
-. In the Grid Manager, select *Configuration* > *Access Control* > *Client Certificates*.
+. In the Grid Manager, select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 +
 The Client Certificates page appears.
 +
@@ -89,10 +91,10 @@ StorageGRID does not require this information, but you must provide a name to te
 For example: `+https://admin-node.example.com:9091+`
 
  .. Enable *TLS Client Authorization* and *With CA Cert*.
- .. Copy and paste the Management Interface Server Certificate or CA bundle to**CA Cert** under TLS/SSL Auth Details.
+ .. Copy and paste the management interface certificate or CA bundle to**CA Cert** under TLS/SSL Auth Details.
  .. *ServerName*: Enter the domain name of the Admin Node.
 +
-ServerName must match the domain name as it appears in the Management Interface Server Certificate.
+ServerName must match the domain name as it appears in the management interface certificate.
 
  .. Save and test the certificate and private key that you copied from StorageGRID or a local file.
 +
@@ -110,7 +112,7 @@ xref:../monitor/index.adoc[Monitor & troubleshoot]
 
 == Editing administrator client certificates
 
-You can edit a certificate to change its name, enable or disable Prometheus access, or upload a new certificate when the current one has expired.
+You can edit an administrator client certificate to change its name, enable or disable Prometheus access, or upload a new certificate when the current one has expired.
 
 .What you'll need
 
@@ -121,7 +123,7 @@ You can edit a certificate to change its name, enable or disable Prometheus acce
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Client Certificates*.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 +
 The Client Certificates page appears. The existing certificates are listed.
 +
@@ -153,7 +155,7 @@ IMPORTANT: You will not be able to view or copy the private key after you close 
 == Removing administrator client certificates
 
 
-If you no longer need a certificate, you can remove it.
+If you no longer need an administrator client certificate, you can remove it.
 
 .What you'll need
 
@@ -162,7 +164,7 @@ If you no longer need a certificate, you can remove it.
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Client Certificates*.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 +
 The Client Certificates page appears. The existing certificates are listed.
 +

@@ -24,7 +24,7 @@ Each StorageGRID system includes one primary Admin Node and any number of non-pr
 * Alarm acknowledgments (legacy system) made on one Admin Node are not copied to other Admin Nodes. For this reason, the information displayed for alarms might not look the same on each Admin Node.
 * Some maintenance procedures can only be performed from the primary Admin Node.
 
-If Admin Nodes are included in a high availability (HA) group, you connect using the virtual IP address of the HA group or a fully qualified domain name that maps to the virtual IP address. The primary Admin Node should be selected as the group's preferred Master, so that when you access the Grid Manager, you access it on the primary Admin Node unless the primary Admin Node is not available.
+If Admin Nodes are included in a high availability (HA) group, you connect using the virtual IP address of the HA group or a fully qualified domain name that maps to the virtual IP address. The primary Admin Node should be selected as the group's primary interface, so that when you access the Grid Manager, you access it on the primary Admin Node unless the primary Admin Node is not available.
 
 .Steps
 . Launch a supported web browser.

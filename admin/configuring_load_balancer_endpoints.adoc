@@ -218,11 +218,15 @@ NOTE: To change the protocol for an existing endpoint, for example from HTTP to 
 
 == Remove load balancer endpoints
 
-You can remove a load balancer endpoint that you no longer need.
+You can remove one or more load balancer endpoints.
+
+To prevent client disruptions, update any affected S3 or Swift client applications before you remove a load balancer endpoint. Update each client to connect using a port assigned to another load balancer endpoint. Be sure to update any required certificate information as well.
 
 .Steps
 
 . Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
-. Select the radio button for the endpoint you want to remove.
-. Select *Actions* > *Remove*.
-. Select *OK*.
+. Do one of the following:
+** Select the load balancer endpoint name. Then, select *Remove* on the details page.
+** Select the check box for each endpoint you want to remove. Then, select *Actions* > *Remove load balancer endpoint*.
+
+. Select *OK* to confirm your selection. All endpoints you selected are removed, and a green success banner appears on the Load balancer endpoints page.

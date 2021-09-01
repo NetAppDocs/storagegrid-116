@@ -14,6 +14,20 @@ StorageGRID 11.6 uses version 3 of the Grid Management API. Version 3 deprecates
 IMPORTANT: You can continue to use version 1 and version 2 of the management API with StorageGRID 11.6; however, support for these versions of the API will be removed in a future release of StorageGRID. After upgrading to StorageGRID 11.6, the deprecated v1 and v2 APIs can be deactivated using the `PUT /grid/config/management` API.
 
 
+== Can now import S3 access keys
+You can now use the Grid Management API to import S3 access keys for tenant users. For example, you can migrate access keys from another S3 provider to StorageGRID or use this feature to keep user credentials the same between grids.
+
+IMPORTANT: When this feature is enabled, any Grid Manager user with the Change Tenant Root Password permission has full access to tenant data. Disable this feature immediately after use to protect tenant data.
+
+Three new `grid/account` API operations have been added:
+
+* `POST /grid​/account-enable-s3-key-import`: This request enables the Import S3 Credentials feature. You must have the Root Access permission to enable this feature.
+
+* `POST /grid​/accounts​/{id}​/users​/{user_id}​/s3-access-keys`: This request imports S3 credentials for a given user in a tenant account. You must have the Root Access or Change Tenant Root Password permission, and you must know the user ID and the tenant account ID.
+
+* `POST /grid​/account-disable-s3-key-import`: This request disables the Import S3 Credentials feature. You must have the Root Access permission to disable this feature.
+
+
 .Related information
 
 xref:../admin/index.adoc[Administer StorageGRID]

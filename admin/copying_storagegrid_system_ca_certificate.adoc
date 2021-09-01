@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'StorageGRID uses an internal Certificate Authority \(CA\) to secure internal traffic. This certificate does not change if you upload your own certificates.'
 ---
-= Copying the StorageGRID system's CA certificate
+= Copy the Grid CA certificate
 :icons: font
 :imagesdir: ../media/
 
@@ -22,15 +22,34 @@ If a custom server certificate has been configured, client applications should v
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the *Internal CA Certificate* section, select all of the certificate text.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Grid CA* tab.
+. In the *Certificate PEM* section download or copy the certificate.
 +
-You must include `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` in your selection.
-+
-image::../media/ca_certificate_export.png[CA Certificate Export]
+[role="tabbed-block"]
+====
 
-. Right-click the selected text, and select *Copy*.
-. Paste the copied certificate into a text editor.
-. Save the file with the extension `.pem`.
+.Download certificate file
+--
+
+Download the certificate `.pem` file.
+
+. Select *Download certificate*.
+. Specify the certificate file name and download location. Save the file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
+
+--
+
+.Copy certificate PEM
+--
+
+Copy the certificate text to paste elsewhere.
+
+. Select *Copy certificate PEM*.
+. Paste the copied certificate into a text editor.
+. Save the text file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+--
+
+====
