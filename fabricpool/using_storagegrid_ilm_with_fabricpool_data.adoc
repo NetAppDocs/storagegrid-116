@@ -17,7 +17,7 @@ Review these guidelines to ensure that your ILM rules and ILM policy are suitabl
 
 * You can use any combination of replication and erasure-coding rules to protect cloud tier data.
 +
-The recommended best practice is to use 2+1 erasure coding within a site for cost-efficient data protection. Erasure coding uses more CPU, but significantly less storage capacity, than replication. The 4+1 and 6+1 schemes use less capacity than 2+1, but at the cost of lower throughput and less flexibility when you add Storage Nodes during grid expansion.
+The recommended best practice is to use 2+1 erasure coding within a site for cost-efficient data protection. Erasure coding uses more CPU, but offers significantly less storage capacity, than replication. The 4+1 and 6+1 schemes use less capacity than the 2+1 scheme. However, the 4+1 and 6+1 schemes are less flexible if you need to add Storage Nodes during grid expansion. For details, see xref:../expand/adding_storage_capacity_for_erasure_coded_objects..adoc[Add storage capacity for erasure-coded objects].
 
 * Each rule applied to FabricPool data must either use erasure coding or it must create at least two replicated copies.
 +

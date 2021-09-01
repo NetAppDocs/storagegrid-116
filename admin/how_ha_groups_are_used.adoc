@@ -20,17 +20,17 @@ An HA group can provide high availability only if all nodes included in the grou
 * *Admin Nodes*: Include the Load Balancer service and enable access to the Grid Manager or the Tenant Manager.
 * *Gateway Nodes*: Include the Load Balancer service and the CLB service (deprecated).
 
-[cols="1a,1a" options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Purpose of HA group| Add nodes of this type to the HA group
 a|
 Access to Grid Manager
 a|
 
-* Primary Admin Node (*preferred Master*)
+* Primary Admin Node (*Primary*)
 * Non-primary Admin Nodes
 
-*Note:* The primary Admin Node must be the preferred Master. Some maintenance procedures can only be performed from the primary Admin Node.
+*Note:* The primary Admin Node must be the Primary interface. Some maintenance procedures can only be performed from the primary Admin Node.
 
 a|
 Access to Tenant Manager only

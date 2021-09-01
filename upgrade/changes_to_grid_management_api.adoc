@@ -21,11 +21,11 @@ IMPORTANT: When this feature is enabled, any Grid Manager user with the Change T
 
 Three new `grid/account` API operations have been added:
 
-* `POST /grid​/account-enable-s3-key-import`: This request enables the Import S3 Credentials feature for all tenant accounts. You must have the Root Access permission to enable this feature.
+* `POST /grid​/account-enable-s3-key-import`: This request enables the Import S3 Credentials feature. You must have the Root Access permission to enable this feature.
 
 * `POST /grid​/accounts​/{id}​/users​/{user_id}​/s3-access-keys`: This request imports S3 credentials for a given user in a tenant account. You must have the Root Access or Change Tenant Root Password permission, and you must know the user ID and the tenant account ID.
 
-* `POST /grid​/account-disable-s3-key-import`: This request disables the Import S3 Credentials feature for all tenant accounts. You must have the Root Access permission to disable this feature.
+* `POST /grid​/account-disable-s3-key-import`: This request disables the Import S3 Credentials feature. You must have the Root Access permission to disable this feature.
 
 
 .Related information
