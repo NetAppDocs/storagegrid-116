@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fabricPool, load balancer, endpoint, load balancing, create, creating, certificate
 summary: 'When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.'
 ---
-= Creating a load balancer endpoint for FabricPool
+= Create a load balancer endpoint for FabricPool
 :icons: font
 :imagesdir: ../media/
 
@@ -12,29 +12,29 @@ summary: 'When configuring StorageGRID for use with FabricPool, you configure a 
 When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
-* You must have the Root Access permission.
+* You are signed in to the Grid Manager using a xref:../admin/web_browser_requirements.adoc[supported web browser].
+* You have the Root Access permission.
 * You have the following files:
  ** Server Certificate: The custom server certificate file.
  ** Server Certificate Private Key: The custom server certificate private key file.
  ** CA Bundle: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
 .About this task
-For details about this task, see xref:../admin/configuring_load_balancer_endpoints.adoc[Configuring load balancer endpoints].
+For details about this task, see xref:../admin/configuring_load_balancer_endpoints.adoc[Configure load balancer endpoints].
 
 .Steps
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select *CONFIGURATION* > *Network* > *Load Balancer Endpoints*.
 +
 image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
 
 . Select *Add endpoint*.
 . Enter the following information.
 +
-[cols="1a,1a" options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Field| Description
 a|
-Display name
+Name
 a|
 A descriptive name for the endpoint
 a|
@@ -47,6 +47,10 @@ The StorageGRID port you want to use for load balancing. This field defaults to 
 xref:../network/network_port_reference.adoc[Network port reference]
 
 You must provide this same port number to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
+a|
+Client type
+a|
+Select *S3*.
 a|
 Protocol
 a|
@@ -66,7 +70,6 @@ Use the *Global* setting (recommended) or restrict the accessibility of this end
 +
 The Edit Endpoint dialog box appears.
 
-. For *Endpoint Service Type*, select *S3*.
 . Select *Upload Certificate* (recommended) and then browse to your server certificate, certificate private key, and CA bundle.
 +
 image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]

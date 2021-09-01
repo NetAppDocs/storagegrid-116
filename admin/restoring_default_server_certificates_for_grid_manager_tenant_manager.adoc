@@ -2,20 +2,21 @@
 permalink: admin/restoring_default_server_certificates_for_grid_manager_tenant_manager.html
 sidebar: sidebar
 keywords:
-summary: 'You can revert to using the default server certificates for the Grid Manager and the Tenant Manager.'
+summary: 'You can revert to using the default management interface certificates for Grid Manager and Tenant Manager connections'
 ---
-= Restoring the default server certificates for the Grid Manager and the Tenant Manager
+= Restore the default management interface certificate
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can revert to using the default server certificates for the Grid Manager and the Tenant Manager.
+You can revert to using the default management interface certificate for Grid Manager and Tenant Manager connections.
 
 .Steps
-. Select *Configuration* > *Network Settings* > *Server Certificates*.
-. In the Manage Interface Server Certificate section, click *Use Default Certificates*.
-. Click *OK* in the confirmation dialog box.
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
+. Select *Management interface certificate*.
+. Select *Use default certificate*.
 +
-When you restore the default server certificates, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default server certificates are used for all subsequent new client connections.
+When you restore the default management interface certificate, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default management interface certificate is used for all subsequent new client connections.
 
 . Refresh the page to ensure the web browser is updated.
+  
