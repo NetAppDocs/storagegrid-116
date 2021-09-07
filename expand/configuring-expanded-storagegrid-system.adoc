@@ -36,11 +36,11 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 a|
 Verify that the Storage Node is ingesting objects.
 a|
-xref:verifying-storage-node-is-active.adoc[Verifying that the Storage Node is active]
+xref:verifying-storage-node-is-active.adoc[Verify that the Storage Node is active]
 a|
 Rebalance erasure-coded data (only if you were unable to add the recommended number of Storage Nodes).
 a|
-xref:rebalancing-erasure-coded-data-after-adding-storage-nodes.adoc[Rebalancing erasure-coded data after adding Storage Nodes]
+xref:rebalancing-erasure-coded-data-after-adding-storage-nodes.adoc[Rebalance erasure-coded data after adding Storage Nodes]
 |===
 
 . If you added a Gateway Node, complete the following configuration tasks.
@@ -62,7 +62,7 @@ xref:../admin/index.adoc[Administer StorageGRID]
 a|
 If single sign-on is enabled for your StorageGRID system, you must create a relying party trust in Active Directory Federation Services (AD FS) for the new Admin Node. You cannot sign in to the node until you create this relying party trust.
 a|
-xref:../admin/configuring-sso.adoc[Configuring single sign-on]
+xref:../admin/configuring-sso.adoc[Configure single sign-on]
 a|
 If you plan to use the Load Balancer service on Admin Nodes, you might need to add the Admin Nodes to High Availability groups. Select *Configuration* > *Network Settings* > *High Availability Groups* to review the list of existing HA groups and to add the new nodes.
 a|
@@ -70,15 +70,15 @@ xref:../admin/index.adoc[Administer StorageGRID]
 a|
 Optionally, copy the Admin Node database from the primary Admin Node to the expansion Admin Node if you want to keep the attribute and audit information consistent on each Admin Node.
 a|
-xref:copying-admin-node-database.adoc[Copying the Admin Node database]
+xref:copying-admin-node-database.adoc[Copy the Admin Node database]
 a|
 Optionally, copy the Prometheus database from the primary Admin Node to the expansion Admin Node if you want to keep the historical metrics consistent on each Admin Node.
 a|
-xref:copying-prometheus-metrics.adoc[Copying Prometheus metrics]
+xref:copying-prometheus-metrics.adoc[Copy Prometheus metrics]
 a|
 Optionally, copy the existing audit logs from the primary Admin Node to the expansion Admin Node if you want to keep the historical log information consistent on each Admin Node.
 a|
-xref:copying-audit-logs.adoc[Copying audit logs]
+xref:copying-audit-logs.adoc[Copy audit logs]
 a|
 Optionally, configure access to the system for auditing purposes through an NFS or a CIFS file share.
 
@@ -132,13 +132,13 @@ For more information, see the recovery and maintenance instructions.
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:verifying-storage-node-is-active.adoc[Verifying that the Storage Node is active]
+xref:verifying-storage-node-is-active.adoc[Verify that the Storage Node is active]
 
-xref:copying-admin-node-database.adoc[Copying the Admin Node database]
+xref:copying-admin-node-database.adoc[Copy the Admin Node database]
 
-xref:copying-prometheus-metrics.adoc[Copying Prometheus metrics]
+xref:copying-prometheus-metrics.adoc[Copy Prometheus metrics]
 
-xref:copying-audit-logs.adoc[Copying audit logs]
+xref:copying-audit-logs.adoc[Copy audit logs]
 
 xref:../upgrade/index.adoc[Upgrade software]
 
