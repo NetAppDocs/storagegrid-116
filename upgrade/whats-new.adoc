@@ -44,11 +44,7 @@ The following new alerts were added for StorageGRID 11.6:
 * xref:../monitor/index.adoc[Monitor & troubleshoot]
 
 === Changes to the ORLM audit message
-The following changes were made to the ORLM: Object Rules Met audit message: 
-
-* A new BUID field shows the bucket ID, which is used for internal operations. The BUID field appears only if the message status is PRGD.
-
-* If the message is for a part in a multipart object, the UUID field now shows the UUID of the segment container.
+A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BUID field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
 
 
 == Kevin's what's new changes
