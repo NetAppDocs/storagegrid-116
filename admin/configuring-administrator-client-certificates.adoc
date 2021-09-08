@@ -13,69 +13,96 @@ Client certificates allow authorized external clients to access the StorageGRID 
 
 If you need to access StorageGRID using an external monitoring tool, you must upload or generate an administrator client certificate using the Grid Manager and copy the certificate information to the external tool.
 
-If you are using a key management server (KMS) to protect the data on specially configured appliance nodes, see   xref:kms-adding.adoc[Adding a key management server (KMS)] for information about uploading a KMS client certificate.
-
-== Adding administrator client certificates
-
-To add an administrator client certificate, you can provide your own certificate or generate one using the Grid Manager.
+See the information about xref:using-storagegrid-security-certificates.adoc[general security certificate use] and xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configuring custom server certificates]. If you are using a key management server (KMS) to protect the data on specially configured appliance nodes, see the xref:kms-adding.adoc[information about uploading a KMS client certificate].
 
 .What you'll need
 
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must know the IP address or domain name of the Admin Node.
-* You must have configured the StorageGRID management interface certificate and have the corresponding CA bundle.
-* If you want to upload your own certificate, the public key and private key for the certificate must be available on your local computer.
+* You have Root Access permission.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* To configure a client certificate:
+** You have the IP address or domain name of the Admin Node.
+** You have configured the StorageGRID management interface certificate and have the corresponding CA bundle.
+** To upload your own certificate, the public key and private key for the certificate is available on your local computer.
+* To edit a client certificate:
+** You have the IP address or domain name of the Admin Node.
+** To upload a new certificate and private key, they are available on your local computer.
+
+== Add client certificates
+
+To add an administrator client certificate, you can provide your own certificate or generate one using the Grid Manager.
 
 .Steps
 
 . In the Grid Manager, select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
-+
-The Client Certificates page appears.
-+
-image::../media/certificates_page_admin_client.png[Certificates Page - Admin Clients]
-
 . Select *Add*.
-+
-The Upload Certificate page appears.
-+
-image::../media/certificate_admin_upload.png[Certificate -Admin - Upload]
+. Enter a certificate name between 1 and 32 characters.
+. To access Prometheus metrics using your external monitoring tool, select *Allow Prometheus*.
 
-. Type a name between 1 and 32 characters for the certificate.
-. To access Prometheus metrics using your external monitoring tool, select the *Allow Prometheus* check box.
-. Upload  or generate a certificate:
-.. To upload a certificate, go <<upload_cert,here>>.
-.. To generate a certificate, go <<generate_cert,here>>.
 
-. [[upload_cert]]To upload a certificate:
- .. Select *Upload Client Certificate*.
- .. Browse for the public key for the certificate.
+. In the *Certificate type* section, upload or generate the certificate.
 +
-After you upload the public key for the certificate, the *Certificate metadata* and *Certificate PEM* fields are populated.
-+
-image::../media/certificate_admin_upload_cert_file.png[Certificate - Admin - Upload Cert File]
+[role="tabbed-block"]
+====
 
- .. Select *Copy certificate to clipboard* and paste the certificate to your external monitoring tool.
- .. Use an editing tool to copy and paste the private key to your external monitoring tool.
- .. Select *Save* to save the certificate in the Grid Manager.
+.Upload certificate
+--
 
-. [[generate_cert]]To generate a certificate:
- .. Select *Generate Client Certificate*.
- .. Enter the domain name or IP address of the Admin Node.
- .. Optionally, enter an X.509 subject, also referred to as the Distinguished Name (DN), to identify the administrator who owns the certificate.
- .. Optionally, select the number of days the certificate is valid. The default is 730 days.
- .. Select *Generate*.
-+
-The *Certificate metadata*, *Certificate PEM*, and *Certificate private key* fields are populated.
-+
-image::../media/certificate_admin_upload_generated.png[Certificate - Admin - Upload Generated]
+Upload the certificate `.pem` file.
 
- .. Select *Copy certificate to clipboard* and paste the certificate to your external monitoring tool.
- .. Select *Copy private key to clipboard* and paste the key to your external monitoring tool.
+. Select *Upload certificate* and then select *Continue*.
+. Upload the client certificate name (`.pem`).
 +
-IMPORTANT: You will not be able to view the private key after you close the dialog box. Copy the key to a safe location.
+Select *Client certificate details* to display detailed certificate information.
++
+* *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
- .. Select *Save* to save the certificate in the Grid Manager.
+. Select *Create* to save the certificate in the Grid Manager.
++
+The new certificate displays on the client certificate page.
+
+--
+
+.Generate certificate
+--
+
+Generate the certificate text to paste elsewhere.
+
+. Select *Generate certificate*.
+. Specify the certificate information:
+ ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
+ ** *IP*: One or more IP addresses to include in the certificate.
+ ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
+ ** *Days valid*: Number of days after creation that the certificate expires.
+. Select *Generate*. +
+You cannot generate the certificate until the minimum required certificate information is specified.
++
+Select *Client certificate details* to display detailed certificate information.
++
+IMPORTANT: You will not be able to view the certificate private key after you close the dialog. Copy or download the key to a safe location.
++
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+* *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* *Copy private key* to copy the certificate private key for pasting elsewhere.
+* *Download private key* to save the private key as a file.
++
+Specify the private key file name and download location.
+
+. Select *Create* to save the certificate in the Grid Manager.
++
+The new certificate displays on the client certificate page.
+--
+
+====
+
 . Configure the following settings on your external monitoring tool, such as Grafana.
 +
 A Grafana example is shown in the following screenshot:
@@ -100,83 +127,113 @@ ServerName must match the domain name as it appears in the management interface 
 +
 You can now access the Prometheus metrics from StorageGRID with your external monitoring tool.
 +
-For information about the metrics, see the instructions for monitoring and troubleshooting StorageGRID.
+For information about the metrics, see the xref:../monitor/index.adoc[instructions for monitoring StorageGRID].
 
-.Related information
 
-xref:using-storagegrid-security-certificates.adoc[Using StorageGRID security certificates]
-
-xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
-
-xref:../monitor/index.adoc[Monitor & troubleshoot]
-
-== Editing administrator client certificates
+== Edit client certificates
 
 You can edit an administrator client certificate to change its name, enable or disable Prometheus access, or upload a new certificate when the current one has expired.
 
-.What you'll need
-
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must know the IP address or domain name of the Admin Node.
-* If you want to upload a new certificate and private key, they must be available on your local computer.
-
 .Steps
 
 . Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 +
-The Client Certificates page appears. The existing certificates are listed.
-+
-Certificate expiration dates are listed in the table. If a certificate will expire soon or is already expired, a message appears in the table and an alert is triggered.
-+
-image::../media/certificate_admin_list.png[Certificate - Admin - List]
+Certificate expiration dates and Prometheus access permissions are listed in the table. If a certificate will expire soon or is already expired, a message appears in the table and an alert is triggered.
 
-. Select the radio button to the left of the certificate you want to edit.
-. Select *Edit*.
+. Select the certificate you want to edit.
+. Select *Edit* and then select an edit option.
 +
-The Edit Certificate dialog box appears.
+[role="tabbed-block"]
+====
+
+.Edit name and permission
+--
+
+Edit the certificate.
+
+. Enter a certificate name between 1 and 32 characters.
+. To access Prometheus metrics using your external monitoring tool, select *Allow Prometheus*.
+. Select *Continue* to save the certificate in the Grid Manager.
 +
-image::../media/certificate_admin_edit.png[Certificate - Admin - Edit]
+The updated certificate displays on the client certificate page.
 
-. Make the desired changes to the certificate.
-. Select *Save* to save the certificate in the Grid Manager.
-. If you uploaded a new certificate:
- .. Select *Copy certificate to clipboard* to paste the certificate to your external monitoring tool.
- .. Use an editing tool to copy and paste the new private key to your external monitoring tool.
- .. Save and test the certificate and private key in your external monitoring tool.
-. If you generated a new certificate:
- .. Select *Copy certificate to clipboard* to paste the certificate to your external monitoring tool.
- .. Select *Copy private key to clipboard* to paste the certificate to your external monitoring tool.
+--
+
+.Attach new certificate
+--
+
+Copy the certificate text to paste elsewhere.
+
+. Select *Upload certificate* and then select *Continue*.
+. Upload the client certificate name (`.pem`).
 +
-IMPORTANT: You will not be able to view or copy the private key after you close the dialog box. Copy the key to a safe location.
+Select *Client certificate details* to display detailed certificate information.
++
+* *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
- .. Save and test the certificate and private key in your external monitoring tool.
+. Select *Create* to save the certificate in the Grid Manager.
++
+The updated certificate displays on the client certificate page.
 
-== Removing administrator client certificates
+--
+====
 
+== Copy or download client certificates
+
+You can copy or download a client certificate for use elsewhere.
+
+.Steps
+
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
+. Select the certificate you want to copy or download.
+. Copy or download the certificate.
++
+[role="tabbed-block"]
+====
+
+.Download certificate file
+--
+
+Download the certificate `.pem` file.
+
+. Select *Download certificate*.
+. Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+
+--
+
+.Copy certificate
+--
+
+Copy the certificate text to paste elsewhere.
+
+. Select *Copy certificate PEM*.
+. Paste the copied certificate into a text editor.
+. Save the text file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+--
+
+====
+
+== Remove client certificates
 
 If you no longer need an administrator client certificate, you can remove it.
 
-.What you'll need
-
-* You must have the Root Access permission.
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-
 .Steps
 
 . Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
-+
-The Client Certificates page appears. The existing certificates are listed.
-+
-image::../media/certificate_admin_list.png[Certificate - Admin - List]
 
-. Select the radio button to the left of the certificate you want to remove.
-. Select *Remove*.
-+
-A confirmation dialog box appears.
-+
-image::../media/certificate_confirm_delete.png[Certificate - Confirm Delete]
+. Select the certificate you want to remove.
 
-. Select *OK*.
-+
-The certificate is removed.
+. Select *Remove* and then confirm.
+
+NOTE: To remove multiple certificates, select each certificate to remove on the Client tab and then select *Actions* > *Remove*.
+
+After a certificate is removed, clients that used the certificate must specify a new client certificate to access the StorageGRID Prometheus database.

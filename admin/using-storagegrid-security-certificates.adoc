@@ -99,15 +99,15 @@ You can xref:copying-storagegrid-system-ca-certificate.adoc[copy or download the
 
 The certificate table has a row for each configured client certificate and indicates whether the certificate can be used for Prometheus database access, along with the certificate expiration date.
 
-Select a certificate name to display the certificate details where you can:
-
-* Change the client certificate name
-* Set the Prometheus access permission
-* xref:configuring-administrator-client-certificates.adoc[Upload or generate a certificate]
-
-Select *Actions* to xref:configuring-administrator-client-certificates.adoc[edit or remove a certificate].
-
-*_Additional updates are needed as the client certificate workflow evolves. Also need to update configuring_administrator_client_certificates.adoc to reflect new workflow. _*
+You can: 
+* xref:configuring-administrator-client-certificates.adoc#add-client-certificates[Upload or generate a new client certificate]
+* Select a certificate name to display the certificate details where you can:
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Change the client certificate name]
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Set the Prometheus access permission]
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Upload and replace the client certificate]
+** xref:configuring-administrator-client-certificates.adoc#copy-or-download-client-certificates[Copy or download the client certificate]
+** xref:configure-client-certificates.adoc#remove-client-certificates[Remove the client certificate]
+* Select *Actions* to quickly xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[edit] or xref:configure-client-certificates.adoc#remove-client-certificates[remove] multiple client certificates.
 
 --
 
@@ -178,7 +178,7 @@ Installed on each client, allowing StorageGRID to authenticate external client a
 a|
 *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab
 a|
-xref:configuring-administrator-client-certificates.adoc[Configuring administrator client certificates]
+xref:configuring-administrator-client-certificates.adoc[Configure administrator client certificates]
 |===
 
 === Identity federation certificate
@@ -193,7 +193,7 @@ Authenticates the connection between StorageGRID and an external Active Director
 a|
 *Configuration* > *Access Control* > *Identity Federation*
 a|
-xref:using-identity-federation.adoc[Using identity federation]
+xref:using-identity-federation.adoc[Use identity federation]
 a|
 |===
 
@@ -208,7 +208,7 @@ Authenticates the connection between Active Directory Federation Services (AD FS
 a|
 *Configuration* > *Access Control* > *Single Sign-on*
 a|
-xref:configuring-sso.adoc[Configuring single sign-on]
+xref:configuring-sso.adoc[Configure single sign-on]
 a|
 |===
 
