@@ -15,10 +15,10 @@ StorageGRID 11.6 introduces a new user interface, VLAN support, ability to chang
 
 === Updates to load balance endpoints
 
-The user interface for creating a load balancer endpoint has been revised.
+The user interface for creating a load balancer endpoint was revised.
 
 === Updates to HA groups
-The user interface for creating an HA group has been revised.
+The user interface for creating an HA group was revised.
 
 A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
 
@@ -42,6 +42,13 @@ The following new alerts were added for StorageGRID 11.6:
 
 .Learn more
 * xref:../monitor/index.adoc[Monitor & troubleshoot]
+
+=== Changes to the ORLM audit message
+The following changes were made to the ORLM: Object Rules Met audit message: 
+
+* A new BUID field shows the bucket ID, which is used for internal operations. The BUID field appears only if the message status is PRGD.
+
+* If the message is for a part in a multipart object, the UUID field now shows the UUID of the segment container.
 
 
 == Kevin's what's new changes
