@@ -13,7 +13,21 @@ StorageGRID 11.6 introduces a new user interface, VLAN support, ability to chang
 
 == Kathy's what's new changes
 
-* Updates to the user interface for creating a load balancer endpoint.
+=== Updates to load balance endpoints
+
+The user interface for creating a load balancer endpoint has been revised.
+
+=== Updates to HA groups
+The user interface for creating an HA group has been revised.
+
+A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
+
+* Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
+
+* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
+
+=== Can configure VLAN interfaces
+You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
