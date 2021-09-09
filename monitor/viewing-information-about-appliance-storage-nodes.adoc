@@ -16,12 +16,15 @@ The Nodes page lists information about service health and all computational, dis
 . From the Nodes page, select an appliance Storage Node.
 . Select *Overview*.
 +
-The Node Information table on the Overview tab displays the node's ID and name, the node type, the software version installed, and the IP addresses associated with the node. The Interface column contains the name of the interface, as follows:
+The Node information section of the Overview tab displays summary information for the node, such as the node's name, type, ID, and connection state. The list of IP addresses includes the name of the interface for each address, as follows:
 
  ** *eth*: The Grid Network, Admin Network, or Client Network.
  ** *hic*: One of the physical 10, 25, or 100 GbE ports on the appliance. These ports can be bonded together and connected to the StorageGRID Grid Network (eth0) and Client Network (eth2).
  ** *mtc*: One of the physical 1 GbE ports on the appliance, which can be bonded or aliased and connected to the StorageGRID Admin Network (eth1).
 image:../media/nodes_page_overview_tab_extended.png[Nodes Page Overview Extended]
+
++
+The Alerts section of the Overview tab displays any active alerts for the node.
 
 . Select *Hardware* to see more information about the appliance.
  .. View the CPU Utilization and Memory graphs to determine the percentages of CPU and memory usage over time. To display a different time interval, select one of the controls above the chart or graph. You can display the information available for intervals of 1 hour, 1 day, 1 week, or 1 month. You can also set a custom interval, which allows you to specify date and time ranges.
@@ -30,7 +33,7 @@ image::../media/nodes_page_hardware_tab_graphs.png[Hardware Graphs]
 
  .. Scroll down to view the table of components for the appliance. This table contains information such as the model name of the appliance; controller names, serial numbers, and IP addresses; and the status of each component.
 +
-NOTE: Some fields, such as Compute Controller BMC IP and Compute Hardware, appear only for appliances with that feature.
+NOTE: Some fields, such as Compute controller BMC IP and Compute hardware, appear only for appliances with that feature.
 +
 Components for the storage shelves, and expansion shelves if they are part of the installation, appear in a separate table below the appliance table.
 +
@@ -128,7 +131,7 @@ The serial number of the compute controller.
 a|
 Compute hardware
 a|
-The status of the compute controller hardware.        This field is not displayed for appliance models that do not have separate compute hardware and storage hardware.
+The status of the compute controller hardware. This field is not displayed for appliance models that do not have separate compute hardware and storage hardware.
 a|
 Compute controller CPU temperature
 a|
