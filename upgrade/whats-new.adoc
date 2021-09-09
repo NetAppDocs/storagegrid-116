@@ -49,7 +49,14 @@ A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BU
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
 
+== Changes to S3 REST API support
 
+=== GET object and HEAD object support for multipart objects
+
+Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. Starting in StorageGRID 11.6, you can now issue GET and HEAD requests to retrieve a specific part of a multipart object. HEAD Object also supports the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
+
+.Learn more
+* xref:../s3/index.adoc[Use S3]
 
 == Kevin's what's new changes
 

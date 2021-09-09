@@ -11,13 +11,9 @@ summary: 'You can use the S3 GET Object request to retrieve an object from an S3
 [.lead]
 You can use the S3 GET Object request to retrieve an object from an S3 bucket.
 
-== partNumber request parameter is not supported
+== partNumber request parameter
 
-The `partNumber` request parameter is not supported for GET Object requests. You cannot perform a GET request to retrieve a specific part of a multipart object. A 501 Not Implemented error is returned with the following message:
-
-----
-GET Object by partNumber is not implemented
-----
+You can use the `partNumber` request parameter to retrieve a specific part of a multipart or segmented object. Setting `partNumber` to 1 is also supported for non-segmented or non-multipart objects.
 
 == Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
