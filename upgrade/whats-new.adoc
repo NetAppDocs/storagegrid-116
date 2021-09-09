@@ -2,20 +2,22 @@
 permalink: upgrade/whats-new.html
 sidebar: sidebar
 keywords: what is new in StorageGRID 11.6
-summary: 'StorageGRID 11.6 introduces a new user interface for the Grid Manager, VLAN support, ability to change SSH passwords, support for new SSO providers, and more.'
+summary: 'StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces a new user interface for the Grid Manager, VLAN support, ability to change SSH passwords, support for new SSO providers, and more.
+StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
 
 == Kathy's what's new changes
 
-=== Updates to load balance endpoints
+=== Support for multiple VLAN interfaces
+You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
 
-The user interface for creating a load balancer endpoint was revised.
+.Learn more
+* xref:../admin/index.adoc[Administer StorageGRID]
 
 === Updates to HA groups
 The user interface for creating an HA group was revised.
@@ -26,13 +28,19 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
 
-=== Can configure VLAN interfaces
-You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
+=== Updates to load balance endpoints
 
-.Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+The user interface for creating a load balancer endpoint was revised.
 
-=== New alerts added
+=== Usability enhancements 
+The Grid Manager user interface has been redesigned.
+
+* New sidebar
+* New menu structure
+* New Nodes page
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
+
+=== New alerts
 
 The following new alerts were added for StorageGRID 11.6:
 
