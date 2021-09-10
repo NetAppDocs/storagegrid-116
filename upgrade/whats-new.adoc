@@ -1,24 +1,46 @@
 ---
 permalink: upgrade/whats-new.html
 sidebar: sidebar
-keywords: new features, 11.6
-summary: 'StorageGRID 11.6 introduces a new user interface, VLAN support, ability to change SSH password, support for new SSO providers, and more.'
+keywords: what is new in StorageGRID 11.6
+summary: 'StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces a new user interface, VLAN support, ability to change SSH password, support for new SSO providers, and more.
+StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
 
 == Kathy's what's new changes
 
-* Updates to the user interface for creating a load balancer endpoint.
+=== Support for multiple VLAN interfaces
+You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
 
-=== New alerts added
+=== Updates to HA groups
+The user interface for creating an HA group was revised.
+
+A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
+
+* Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
+
+* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
+
+=== Updates to load balance endpoints
+
+The user interface for creating a load balancer endpoint was revised.
+
+=== Usability enhancements 
+The Grid Manager user interface has been redesigned.
+
+* New sidebar
+* New menu structure
+* New Nodes page
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
+
+=== New alerts
 
 The following new alerts were added for StorageGRID 11.6:
 
@@ -29,6 +51,20 @@ The following new alerts were added for StorageGRID 11.6:
 .Learn more
 * xref:../monitor/index.adoc[Monitor & troubleshoot]
 
+=== Changes to the ORLM audit message
+A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BUID field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
+
+.Learn more
+* xref:../audit/index.adoc[Review audit logs]
+
+== Changes to S3 REST API support
+
+=== GET object and HEAD object support for multipart objects
+
+Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. Starting in StorageGRID 11.6, you can now issue GET and HEAD requests to retrieve a specific part of a multipart object. HEAD Object also supports the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
+
+.Learn more
+* xref:../s3/index.adoc[Use S3]
 
 == Kevin's what's new changes
 
