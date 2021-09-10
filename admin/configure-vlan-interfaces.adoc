@@ -89,7 +89,7 @@ You can edit a VLAN interface to change its VLAN ID or description or to select 
 
 For example, you might need to remove a parent interface from a VLAN interface if you want to remove the associated node in a site or node decommission procedure.
 
-Note that you can't change the VLAN ID or remove a parent interface if the VLAN is currently used in a HA group. You must remove the VLAN interface from the HA group before you can update these values.
+You can't change the VLAN ID or remove a parent interface if the VLAN is currently used in an HA group. You must remove the VLAN interface from the HA group before you can update these values.
 
 .Steps
 
@@ -99,7 +99,7 @@ Note that you can't change the VLAN ID or remove a parent interface if the VLAN 
 
 . Optionally, update the VLAN ID or the description. Then, select *Continue*.
 +
-You can't update a VLAN ID if the VLAN is used to an HA group.
+You can't update a VLAN ID if the VLAN is used in an HA group.
 
 . Optionally, select or unselect the check boxes to add or remove parent interfaces. Then, select *Continue*.
 +
@@ -109,16 +109,16 @@ You can't remove a parent interface if the VLAN is used in an HA group.
 
 . Select *Save*. 
 
-==  Remove a VLAN interfaces
+==  Remove a VLAN interface
 
 You can remove one or more VLAN interfaces.
 
-Note that you can't remove a VLAN interface if it is currently used in a HA group. You must remove the VLAN interface from the HA group before you can remove it.
+You can't remove a VLAN interface if it is currently used in an HA group. You must remove the VLAN interface from the HA group before you can remove it.
 
 To avoid any disruptions in client traffic, consider doing one of the following:
 
-* Adding a new VLAN interface to the HA group before removing this VLAN interface.
-* Creating a new HA group that does not use this VLAN interface. 
+* Add a new VLAN interface to the HA group before removing this VLAN interface.
+* Create a new HA group that does not use this VLAN interface. 
 
 .Steps
 
@@ -126,4 +126,6 @@ To avoid any disruptions in client traffic, consider doing one of the following:
 
 . Select the check box for each VLAN interface you want to remove. Then, select *Actions* > *Delete*.
 
-. Select *Yes* to confirm your selection. All VLAN interfaces you selected are removed. A green success banner appears on the VLAN interfaces page.
+. Select *Yes* to confirm your selection.
++
+All VLAN interfaces you selected are removed. A green success banner appears on the VLAN interfaces page.
