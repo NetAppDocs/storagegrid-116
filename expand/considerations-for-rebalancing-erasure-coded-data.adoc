@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: erasure coding, rebalance, ec rebalance, site rebalance
 summary: 'If you are performing an expansion to add Storage Nodes and your ILM policy includes one or more ILM rules to erasure code data, you might need to perform the EC rebalance procedure after the expansion is complete.'
 ---
-= Considerations for rebalancing erasure-coded data
+= Rebalance erasure-coded data
 :icons: font
 :imagesdir: ../media/
 
@@ -65,7 +65,7 @@ In general, you should only run the EC rebalance procedure in limited cases. Spe
 * The *Low Object Storage* alert has been triggered for one or more Storage Nodes at a site, indicating that the nodes are 80% or more full.
 * You are unable to add the recommended number of new Storage Nodes for the erasure-coding scheme in use.
 +
-xref:adding-storage-capacity-for-erasure-coded-objects.adoc[Adding storage capacity for erasure-coded objects]
+xref:adding-storage-capacity-for-erasure-coded-objects.adoc[Add storage capacity for erasure-coded objects]
 
 * Your S3 and Swift clients can tolerate lower performance for their write and read operations while the EC rebalance procedure is running.
 
@@ -137,4 +137,4 @@ While the EC rebalance procedure is running, avoid making ILM changes that might
 
 .Related information
 
-xref:rebalancing-erasure-coded-data-after-adding-storage-nodes.adoc[Rebalancing erasure-coded data after adding Storage Nodes]
+xref:rebalancing-erasure-coded-data-after-adding-storage-nodes.adoc[Rebalance erasure-coded data after adding Storage Nodes]
