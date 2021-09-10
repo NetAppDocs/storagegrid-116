@@ -13,9 +13,9 @@ You can use the S3 HEAD Object request to retrieve metadata from an object witho
 
 == HEAD object and multipart objects
 
-The `partNumber` request parameter allows you to perform a HEAD operation on a specific part of a multipart or segmented object. 
+You can use the `partNumber` request parameter to retrieve metadata for a specific part of a multipart or segmented object.  The `x-amz-mp-parts-count` response element indicates how many parts the object has.
 
-The `x-amz-mp-parts-count` response element indicates how many parts an object has.
+You can set `partNumber` to 1 for both segmented/multipart objects and  non-segmented/non-multipart objects; however, the `x-amz-mp-parts-count` response element is only returned for segmented or multipart objects.
 
 == Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
