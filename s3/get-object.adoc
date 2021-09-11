@@ -13,7 +13,9 @@ You can use the S3 GET Object request to retrieve an object from an S3 bucket.
 
 == partNumber request parameter
 
-You can use the `partNumber` request parameter to retrieve a specific part of a multipart or segmented object. Setting `partNumber` to 1 is also supported for non-segmented or non-multipart objects.
+You can use the `partNumber` request parameter to retrieve a specific part of a multipart or segmented object.  The `x-amz-mp-parts-count` response element indicates how many parts the object has.
+
+You can set `partNumber` to 1 for both segmented/multipart objects and  non-segmented/non-multipart objects; however, the `x-amz-mp-parts-count` response element is only returned for segmented or multipart objects.
 
 == Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
