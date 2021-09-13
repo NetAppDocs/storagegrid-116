@@ -1,0 +1,131 @@
+---
+permalink: admin/configure-vlan-interfaces.html
+sidebar: sidebar
+keywords: how to configure vlan interfaces, vlan interfaces
+summary: 'You can create virtual LAN \(VLAN\) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.'
+---
+= Configure VLAN interfaces
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root Access permission.
+* The VLANs have already been configured and you know their VLAN IDs.
+
+== Create a VLAN interface
+
+Your StorageGRID network administrator might have configured one or more VLANs to segregate the client or admin traffic belonging to different applications or tenants. Each VLAN is identified by a numeric ID or tag. For example, your network might use VLAN 100 for FabricPool traffic and VLAN 200 for an archive application. 
+
+You can use the Grid Manager to create a VLAN interface that allow clients on a specific VLAN to access StorageGRID. When you create a VLAN interface, you select one or more parent interfaces for each VLAN.
+
+=== Requirements for a parent interface
+
+* You must select at least one StorageGRID parent interface for each VLAN interface.
+
+* A parent interface must be on a Gateway Node or an Admin Node. These nodes contain the Load Balancer service.
+
+* A parent interface can be any current interface on the node. For example, a parent interface can be the Grid (eth0), Admin (eth1), or Client Network (eth2) interface, or it can be any other interface attached to the VM or bare-metal host (for example, ens236).
+
+* For each VLAN interface, you can only select one parent interface for a given node. For example, you cannot use both the Grid Network interface and the Admin Network interface on the same Gateway Node as the parent interface for the same VLAN.
+
+* A parent interface must be configured as a trunk interface at the switch.
+
+* If the VLAN interface is for Admin Node traffic, which includes traffic related to the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
+
+* If the VLAN interface is for S3 or Swift client traffic, select interfaces on either Admin Nodes or Gateway Nodes.
+
+=== Access the wizard
+
+. Select *CONFIGURATION* > *Network* > *VLAN interfaces*.
+
+. Select *Create*.
+
+
+=== Enter details for the VLAN interfaces
+
+. Specify the ID of the VLAN in your network. You can enter any value between 1 and 4094.
++
+VLAN IDs do not need to be unique. If you specify an ID that has already been used, a message appears. You can continue creating another VLAN interface for the same VLAN ID, or you can select *Cancel* and then edit the existing ID.
+
+. Optionally, enter a short description for the VLAN interface.
++
+image::../media/vlan-details.png[VLAN interface create wizard VLAN details]
+
+. Select *Continue*.
+
+=== Choose parent interfaces
+The table lists the current interfaces for all Admin Nodes and Gateway Nodes at each site in your grid.  
+
+. Select one or more parent interfaces to attach this VLAN to.
++
+For example, you might want to attach a VLAN to the Client Network (eth2) interface for a Gateway Node and an Admin Node at a site.  
++
+image::../media/vlan-create-parent-interfaces.png[VLAN create wizard parent interfaces]
+
+. Select *Continue*.
+
+=== Confirm the settings
+
+. Review the configuration and make any changes.
+
+* If you need to change the VLAN ID or description, select *Enter VLAN details* at the top of the page.
+
+* If you need to change a parent interface, select *Choose parent interfaces* at the top of the page or select *Previous*.
+
+* If you need to remove a parent interface, select the trash can image:../media/icon-trash-can.png[trash can icon].
+
+. Select *Save*.
++
+The VLAN interface is created. You can now use it in a high availability (HA) group or load balancer endpoint. See xref:configure-high-availability-group.adoc[Configure high availability groups] and xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints] for instructions.
+
+== Edit a VLAN interface
+
+You can edit a VLAN interface to change its VLAN ID or description or to select a different parent interface.
+
+For example, you might need to remove a parent interface from a VLAN interface if you want to remove the associated node in a site or node decommission procedure.
+
+You can't change the VLAN ID or remove a parent interface if the VLAN is currently used in an HA group. You must remove the VLAN interface from the HA group before you can update these values.
+
+.Steps
+
+. Select *CONFIGURATION* > *Network* > *VLAN interfaces*.
+
+. Select the check box for the VLAN interface you want to edit. Then, select *Actions* > *Edit*.
+
+. Optionally, update the VLAN ID or the description. Then, select *Continue*.
++
+You can't update a VLAN ID if the VLAN is used in an HA group.
+
+. Optionally, select or unselect the check boxes to add or remove parent interfaces. Then, select *Continue*.
++
+You can't remove a parent interface if the VLAN is used in an HA group.
+
+. Review the configuration and make any changes.
+
+. Select *Save*. 
+
+==  Remove a VLAN interface
+
+You can remove one or more VLAN interfaces.
+
+You can't remove a VLAN interface if it is currently used in an HA group. You must remove the VLAN interface from the HA group before you can remove it.
+
+To avoid any disruptions in client traffic, consider doing one of the following:
+
+* Add a new VLAN interface to the HA group before removing this VLAN interface.
+* Create a new HA group that does not use this VLAN interface. 
+
+.Steps
+
+. Select *CONFIGURATION* > *Network* > *VLAN interfaces*.
+
+. Select the check box for each VLAN interface you want to remove. Then, select *Actions* > *Delete*.
+
+. Select *Yes* to confirm your selection.
++
+All VLAN interfaces you selected are removed. A green success banner appears on the VLAN interfaces page.
