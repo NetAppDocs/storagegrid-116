@@ -91,8 +91,8 @@ You can edit a VLAN interface to change its VLAN ID or description, to add paren
 
 Note the following:
 
-* If the VLAN interface is used in an HA group, you can't change its VLAN ID.
-* If the VLAN interface is used in an HA group, you can only remove a parent interface if the parent interface is not used. 
+* You can't change a VLAN ID if the VLAN interface is used in an HA group.
+* You can't remove a parent interface if that parent interface is used in an HA group. 
 +
 For example, suppose VLAN 200 is attached to parent interfaces on Nodes A and B. If an HA group uses the VLAN 200 interface for Node A  and the eth2 interface for Node B, you can remove the unused parent interface for Node B, but you can't remove the used parent interface for Node A.
 
