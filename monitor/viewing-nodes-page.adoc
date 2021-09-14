@@ -13,7 +13,7 @@ When you need more detailed information about your StorageGRID system than the D
 
 image::../media/nodes_menu.png[Nodes Menu]
 
-The Nodes table lists all the sites and all the nodes in your StorageGRID system. Summary information is displayed for each node, including an icon that indicates if the node is connected or if there are any active alerts.
+The Nodes table lists all the sites and nodes in your StorageGRID system. Summary information is displayed for each node. If a node has an active alert, an icon appears next to the node name. If the node is connected and has no active alerts, no  icon is shown.
 
 == Connection state icons
 
@@ -29,9 +29,7 @@ If a node is disconnected from the grid, it might have an underlying alert, but 
 
 == Alert icons
 
-For each node that is connected to the grid, the table view shows one of the following icons:
-
-* *Normal* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark]: No alerts are active, and the node is connected to the grid.
+If there is an active alert for a node, one of the following icons appears next to the node name:
 
 * *Critical* image:../media/icon_alert_red_critical.png[Icon Alert Red Critical]: An abnormal condition exists that has stopped the normal operations of a StorageGRID node or service. You must address the underlying issue immediately. Service disruption and loss of data might result if the issue is not resolved.
 
