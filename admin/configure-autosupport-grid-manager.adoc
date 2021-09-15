@@ -15,12 +15,12 @@ You can enable the AutoSupport feature and the individual AutoSupport options wh
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Root Access or Other Grid Configuration permission.
-* If you will use the HTTPS or HTTP protocol for sending AutoSupport messages, you must have provided outbound internet access to the primary Admin Node, either directly or using a proxy server (inbound connections not required).
-* If you will use the HTTPS or HTTP protocol and you want to use a proxy server, you must have xref:configuring-admin-proxy-settings.adoc[configured an Admin proxy server].
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root Access or Other Grid Configuration permission.
+* If you will use the HTTPS or HTTP protocol for sending AutoSupport messages, you have provided outbound internet access to the primary Admin Node, either directly or using a proxy server (inbound connections not required).
+* If you will use the HTTPS or HTTP protocol and you want to use a proxy server, you have xref:configuring-admin-proxy-settings.adoc[configured an Admin proxy server].
 
-* If you will use SMTP as the protocol for AutoSupport messages, you must have configured an SMTP mail server. The same mail server configuration is used for alarm email notifications (legacy system).
+* If you will use SMTP as the protocol for AutoSupport messages, you have configured an SMTP mail server. The same mail server configuration is used for alarm email notifications (legacy system).
 
 == Specify the protocol for AutoSupport messages
 
@@ -39,6 +39,8 @@ The protocol you set is used for sending all types of AutoSupport messages.
 . Select *SUPPORT* > *Tools* > *AutoSupport*.
 +
 The AutoSupport page appears, and the *Settings* tab is selected.
++
+image:../media/autosupport_settings_tab.png[AutoSupport page with Settings tab selected.png]
 
 . Select the protocol you want to use to send AutoSupport messages.
 
@@ -54,7 +56,7 @@ All weekly, user-triggered, and event-triggered messages are sent using the sele
 
 By default, the StorageGRID system is configured to send an AutoSupport message to NetApp Support once a week.
 
-To determine when the weekly AutoSupport message will be sent, see *Next Scheduled Time* under *Weekly AutoSupport* on the *AutoSupport* > *Results* tab. 
+To determine when the weekly AutoSupport message will be sent, go to the *AutoSupport* > *Results* tab. In *Weekly AutoSupport* section, look at the value for *Next Scheduled Time*. 
 
 image:../media/autosupport_weekly_next_scheduled_time.png[Weekly AutoSupport next scheduled time]
 
@@ -101,7 +103,9 @@ AutoSupport on Demand is enabled, and technical support can send AutoSupport on 
 
 == Disable checks for software updates
 
-By default, AutoSupport checks to determine if software updates are available for your system. You can optionally disable these checks.
+By default, StorageGRID contacts NetApp to determine if software updates are available for your system. If a StorageGRID hotfix or new version is available, the new version is shown on the Software Upgrade page. 
+
+As required, you can optionally disable the check for software updates. For example, if your system does not have WAN access, you should disable the check to avoid download errors.
 
 .Steps
 
