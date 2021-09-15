@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg5700, storage node, storage appliance, controller, storage controller, upgrade, upgrading, SANtricity OS, SANtricity, grid manager
 summary: 'For storage controllers currently using SANtricity OS 08.42.20.00 \(11.42\) or newer, you must use the Grid Manager to apply an upgrade.'
 ---
-= Upgrading SANtricity OS on the storage controllers using the Grid Manager
+= Upgrade SANtricity OS on the storage controllers using the Grid Manager
 :icons: font
 :imagesdir: ../media/
 
@@ -23,7 +23,7 @@ For storage controllers currently using SANtricity OS 08.42.20.00 (11.42) or new
 
 You cannot perform other software updates (StorageGRID software upgrade or a hotfix) until you have completed the SANtricity OS upgrade process. If you attempt to start a hotfix or a StorageGRID software upgrade before the SANtricity OS upgrade process has finished, you are redirected to the SANtricity OS upgrade page.
 
-The procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
+You can upgrade the SANtricity OS version on some of your appliances and upgrade the others at a later time. However, the procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
 
 CAUTION: The following steps are only applicable when you are using the Grid Manager to perform the upgrade. The storage controllers in the SG5700 series appliance cannot be upgraded using the Grid Manager when the controllers are using SANtricity OS older than 08.42.20.00 (11.42).
 
@@ -143,4 +143,4 @@ NOTE: For any nodes with a status of Needs Attention, use maintenance mode to pe
 
 .Related information
 
-xref:upgrading-santricity-os-on-e2800-controller-using-maintenance-mode.adoc[Upgrading SANtricity OS on the E2800 controller using maintenance mode]
+xref:upgrading-santricity-os-on-e2800-controller-using-maintenance-mode.adoc[Upgrade SANtricity OS on the E2800 controller using maintenance mode]

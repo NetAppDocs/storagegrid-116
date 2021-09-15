@@ -11,6 +11,12 @@ summary: 'You can use the S3 HEAD Object request to retrieve metadata from an ob
 [.lead]
 You can use the S3 HEAD Object request to retrieve metadata from an object without returning the object itself. If the object is stored in a Cloud Storage Pool, you can use HEAD Object to determine the object's transition state.
 
+== HEAD object and multipart objects
+
+You can use the `partNumber` request parameter to retrieve metadata for a specific part of a multipart or segmented object.  The `x-amz-mp-parts-count` response element indicates how many parts the object has.
+
+You can set `partNumber` to 1 for both segmented/multipart objects and  non-segmented/non-multipart objects; however, the `x-amz-mp-parts-count` response element is only returned for segmented or multipart objects.
+
 == Request headers for server-side encryption with customer-provided encryption keys (SSE-C)
 
 Use all three of these headers if the object is encrypted with a unique key that you provided.
