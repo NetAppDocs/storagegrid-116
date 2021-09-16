@@ -2,19 +2,13 @@
 permalink: tenant/index.html
 sidebar: sidebar
 keywords: use tenant account
-summary: 'Learn how to use a StorageGRID tenant account.'
+summary: 'A tenant account allows you to use either the Simple Storage Service (S3) REST API or the Swift REST API to store and retrieve objects in a StorageGRID system.'
 ---
-= Use the Tenant Manager
+= What is a tenant account?
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The Tenant Manager allows you to manage all aspects of a StorageGRID tenant account.
-
-You can use the Tenant Manager to monitor a tenant account's storage usage and to manage users with identity federation or by creating local groups and users. For S3 tenant accounts, you can also manage S3 keys, manage S3 buckets, and configure platform services.
-
-== Using a StorageGRID tenant account
-
 A tenant account allows you to use either the Simple Storage Service (S3) REST API or the Swift REST API to store and retrieve objects in a StorageGRID system.
 
 Each tenant account has its own federated or local groups, users, S3 buckets or Swift containers, and objects.
@@ -42,7 +36,13 @@ In addition, grid administrators can enable the S3 Object Lock setting for the S
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-=== Configuring S3 tenants
+=== Tenant Manager
+
+The Tenant Manager allows you to manage all aspects of a StorageGRID tenant account.
+
+You can use the Tenant Manager to monitor a tenant account's storage usage and to manage users with identity federation or by creating local groups and users. For S3 tenant accounts, you can also manage S3 keys, manage S3 buckets, and configure platform services.
+
+==== Configuring S3 tenants
 
 After an S3 tenant account is created, you can access the Tenant Manager to perform tasks such as the following:
 
@@ -56,7 +56,7 @@ IMPORTANT: While you can create and manage S3 buckets with the Tenant Manager, y
 
 xref:../s3/index.adoc[Use S3]
 
-=== Configuring Swift tenants
+==== Configuring Swift tenants
 
 After a Swift tenant account is created, users with the Root Access permission can access the Tenant Manager to perform tasks such as the following:
 
