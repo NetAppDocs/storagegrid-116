@@ -146,7 +146,7 @@ StorageGRID uses other security certificates for specific purposes. These certif
 * <<Key management server (KMS) certificate,Key management servers (KMS) certificates>>
 * <<Single sign-on (SSO) certificate,Single sign-on certificates>>
 * <<Email alert notification certificate,Email alert notification certificates>>
-* <<Remote syslog server certificate,Remote Syslog server certificates>>
+* <<External syslog server certificate,External Syslog server certificates>>
 
 Information indicates the type of certificate a function uses and its server and client certificate expiration dates, as applicable. Selecting a function name opens a browser tab where you can view and edit the certificate details.
 
@@ -194,7 +194,7 @@ xref:configuring-administrator-client-certificates.adoc[Configure administrator 
 a|
 Server
 a|
-Authenticates the connection between StorageGRID and an external Active Directory, OpenLDAP, or Oracle Directory Server.Used for identity federation, which allows admin groups and users to be managed by an external system.
+Authenticates the connection between StorageGRID and an external Active Directory, OpenLDAP, or Oracle Directory Server. Used for identity federation, which allows admin groups and users to be managed by an external system.
 
 a|
 *Configuration* > *Access Control* > *Identity Federation*
@@ -210,7 +210,7 @@ a|
 a|
 Server
 a|
-Authenticates the connection between Active Directory Federation Services (AD FS) and StorageGRID that is used for single sign-on (SSO) requests.
+Authenticates the connection between identity federation services, such as Active Directory Federation Services (AD FS), and StorageGRID that are used for single sign-on (SSO) requests.
 a|
 *Configuration* > *Access Control* > *Single Sign-on*
 a|
@@ -227,7 +227,7 @@ Server and client
 a|
 Authenticates the connection between StorageGRID and an external key management server (KMS), which provides encryption keys to StorageGRID appliance nodes.
 a|
-*Configuration* > *System Settings* > *Key Management Server*
+*CONFIGURATION* > *Security* > *Key Management Server*
 a|
 xref:kms-adding.adoc[Add key management server (KMS)]
 |===
@@ -263,7 +263,7 @@ Authenticates the connection between S3 or Swift clients and the StorageGRID Loa
 *Note:* The load balancer certificate is the most used certificate during normal StorageGRID operation.
 
 a|
-*Configuration* > *Network Settings* > *Load Balancer Endpoints*
+*CONFIGURATION* > *Network* > *Load Balancer Endpoints*
 a|
 
 * xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
@@ -339,14 +339,14 @@ a|
 xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to the Storage Node or the CLB service]
 |===
 
-=== Remote syslog server certificate
+=== External syslog server certificate
 [cols="1a,1a,1a,1a" options="header"]
 |===
 | Certificate type| Description| Navigation location| Details
 a|
 Server
 a|
-Authenticates the connection between a remote syslog server that logs events and StorageGRID.
+Authenticates the connection between an external syslog server that logs events and StorageGRID.
 
 a|
 *CONFIGURATION* > *Monitoring* > *Audit messages* and then select *Configure external syslog server*
