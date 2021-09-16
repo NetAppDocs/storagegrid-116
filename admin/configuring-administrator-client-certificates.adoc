@@ -143,25 +143,30 @@ You can edit an administrator client certificate to change its name, enable or d
 Certificate expiration dates and Prometheus access permissions are listed in the table. If a certificate will expire soon or is already expired, a message appears in the table and an alert is triggered.
 
 . Select the certificate you want to edit.
-. Select *Edit* and then select an edit option.
-+
-[role="tabbed-block"]
-====
-
-.Edit name and permission
---
-
-Edit the certificate.
-
+. Select *Edit* and then select *Edit name and permission*
 . Enter a certificate name between 1 and 32 characters.
 . To access Prometheus metrics using your external monitoring tool, select *Allow Prometheus*.
 . Select *Continue* to save the certificate in the Grid Manager.
 +
 The updated certificate displays on the client certificate page.
 
---
+== Attach new client certificate
 
-.Attach new certificate
+You can upload a new certificate when the current one has expired.
+
+.Steps
+
+. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
++
+Certificate expiration dates and Prometheus access permissions are listed in the table. If a certificate will expire soon or is already expired, a message appears in the table and an alert is triggered.
+
+. Select the certificate you want to edit.
+. Select *Edit* and then select an edit option.
++
+[role="tabbed-block"]
+====
+
+.Upload certificate
 --
 
 Copy the certificate text to paste elsewhere.
@@ -221,6 +226,7 @@ The new certificate displays on the client certificate page.
 --
 
 ====
+
 
 == Download or copy client certificates
 
