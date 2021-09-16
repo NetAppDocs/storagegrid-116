@@ -16,12 +16,15 @@ The Nodes page lists information about service health and all computational, dis
 . From the Nodes page, select an appliance Storage Node.
 . Select *Overview*.
 +
-The Node Information table on the Overview tab displays the node's ID and name, the node type, the software version installed, and the IP addresses associated with the node. The Interface column contains the name of the interface, as follows:
+The Node information section of the Overview tab displays summary information for the node, such as the node's name, type, ID, and connection state. The list of IP addresses includes the name of the interface for each address, as follows:
 
  ** *eth*: The Grid Network, Admin Network, or Client Network.
  ** *hic*: One of the physical 10, 25, or 100 GbE ports on the appliance. These ports can be bonded together and connected to the StorageGRID Grid Network (eth0) and Client Network (eth2).
  ** *mtc*: One of the physical 1 GbE ports on the appliance, which can be bonded or aliased and connected to the StorageGRID Admin Network (eth1).
 image:../media/nodes_page_overview_tab_extended.png[Nodes Page Overview Extended]
+
++
+The Alerts section of the Overview tab displays any active alerts for the node.
 
 . Select *Hardware* to see more information about the appliance.
  .. View the CPU Utilization and Memory graphs to determine the percentages of CPU and memory usage over time. To display a different time interval, select one of the controls above the chart or graph. You can display the information available for intervals of 1 hour, 1 day, 1 week, or 1 month. You can also set a custom interval, which allows you to specify date and time ranges.
@@ -30,7 +33,7 @@ image::../media/nodes_page_hardware_tab_graphs.png[Hardware Graphs]
 
  .. Scroll down to view the table of components for the appliance. This table contains information such as the model name of the appliance; controller names, serial numbers, and IP addresses; and the status of each component.
 +
-NOTE: Some fields, such as Compute Controller BMC IP and Compute Hardware, appear only for appliances with that feature.
+NOTE: Some fields, such as Compute controller BMC IP and Compute hardware, appear only for appliances with that feature.
 +
 Components for the storage shelves, and expansion shelves if they are part of the installation, appear in a separate table below the appliance table.
 +
@@ -40,101 +43,101 @@ image::../media/nodes_page_hardware_tab_for_appliance.png[Nodes Page Hardware Ta
 |===
 | Field in the Appliance table| Description
 a|
-Appliance Model
+Appliance model
 a|
 The model number for this StorageGRID appliance shown in SANtricity software.
 a|
-Storage Controller Name
+Storage controller name
 a|
 The name for this StorageGRID appliance shown in SANtricity software.
 a|
-Storage Controller A Management IP
+Storage controller A management IP
 a|
 IP address for management port 1 on storage controller A. You use this IP to access SANtricity software to troubleshoot storage issues.
 a|
-Storage Controller B Management IP
+Storage controller B management IP
 a|
 IP address for management port 1 on storage controller B. You use this IP to access SANtricity software to troubleshoot storage issues.
 
 Some appliance models do not have a storage controller B.
 a|
-Storage Controller WWID
+Storage controller WWID
 a|
 The worldwide identifier of the storage controller shown in SANtricity software.
 a|
-Storage Appliance Chassis Serial Number
+Storage appliance chassis serial number
 a|
 The chassis serial number of the appliance.
 a|
-Storage Controller Firmware Version
+Storage controller firmware version
 a|
 The version of the firmware on the storage controller for this appliance.
 a|
-Storage Hardware
+Storage hardware
 a|
 The overall status of the storage controller hardware.        If SANtricity System Manager reports a status of Needs Attention for the storage hardware, the StorageGRID system also reports this value.
 +
 If the status is "`needs attention,`" first check the storage controller using SANtricity software. Then, ensure that no other alarms exist that apply to the compute controller.
 a|
-Storage Controller Failed Drive Count
+Storage controller failed drive count
 a|
 The number of drives that are not optimal.
 a|
-Storage Controller A
+Storage controller A
 a|
 The status of storage controller A.
 a|
-Storage Controller B
+Storage controller B
 a|
 The status of storage controller B. Some appliance models do not have a storage controller B.
 a|
-Storage Controller Power Supply A
+Storage controller power supply A
 a|
 The status of power supply A for the storage controller.
 a|
-Storage Controller Power Supply B
+Storage controller power supply B
 a|
 The status of power supply B for the storage controller.
 a|
-Storage Data Drive Type
+Storage data drive type
 a|
 The type of drives in the appliance, such as HDD (hard disk drive) or SSD (solid state drive).
 a|
-Storage Data Drive Size
+Storage data drive size
 a|
 The total capacity including all data drives in the appliance.
 a|
-Storage RAID Mode
+Storage RAID mode
 a|
 The RAID mode configured for the appliance.
 a|
-Storage Connectivity
+Storage connectivity
 a|
 The storage connectivity state.
 a|
-Overall Power Supply
+Overall power supply
 a|
 The status of all power supplies for the appliance.
 a|
-Compute Controller BMC IP
+Compute controller BMC IP
 a|
 The IP address of the baseboard management controller (BMC) port in the compute controller. You use this IP to connect to the BMC interface to monitor and diagnose the appliance hardware.
 
 This field is not displayed for appliance models that do not contain a BMC.
 a|
-Compute Controller Serial Number
+Compute controller serial number
 a|
 The serial number of the compute controller.
 a|
-Compute Hardware
+Compute hardware
 a|
-The status of the compute controller hardware.        This field is not displayed for appliance models that do not have separate compute hardware and storage hardware.
+The status of the compute controller hardware. This field is not displayed for appliance models that do not have separate compute hardware and storage hardware.
 a|
-Compute Controller CPU Temperature
+Compute controller CPU temperature
 a|
 The temperature status of the compute controller's CPU.
 a|
-Compute Controller Chassis Temperature
+Compute controller chassis temperature
 a|
 The temperature status of the compute controller.
 |===
@@ -143,7 +146,7 @@ The temperature status of the compute controller.
 |===
 | Column in the Storage Shelves table| Description
 a|
-Shelf Chassis Serial Number
+Shelf chassis serial number
 a|
 The serial number for the storage shelf chassis.
 a|
@@ -158,47 +161,47 @@ The numeric identifier for the storage shelf.
 *Note:* Expansion shelves apply to the SG6060 only.
 
 a|
-Shelf Status
+Shelf status
 a|
 The overall status of the storage shelf.
 a|
-IOM Status
+IOM status
 a|
 The status of the input/output modules (IOMs) in any expansion shelves. N/A if this is not an expansion shelf.
 a|
-Power Supply Status
+Power supply status
 a|
 The overall status of the power supplies for the storage shelf.
 a|
-Drawer Status
+Drawer status
 a|
 The status of the drawers in the storage shelf. N/A if the shelf does not contain drawers.
 a|
-Fan Status
+Fan status
 a|
 The overall status of the cooling fans in the storage shelf.
 a|
-Drive Slots
+Drive slots
 a|
 The total number of drive slots in the storage shelf.
 a|
-Data Drives
+Data drives
 a|
 The number of drives in the storage shelf that are used for data storage.
 a|
-Data Drive Size
+Data drive size
 a|
 The effective size of one data drive in the storage shelf.
 a|
-Cache Drives
+Cache drives
 a|
 The number of drives in the storage shelf that are used as cache.
 a|
-Cache Drive Size
+Cache drive size
 a|
 The size of the smallest cache drive in the storage shelf. Normally, cache drives are all the same size.
 a|
-Configuration Status
+Configuration status
 a|
 The configuration status of the storage shelf.
 |===
@@ -213,11 +216,11 @@ If a status is not "`Nominal,`" review any current alerts. You can also use SANt
 
 The Network Traffic graph provides a summary of overall network traffic.
 
-image::../media/nodes_page_network_traffic_graph.gif[Nodes Page Network Traffic Graph]
+image::../media/nodes_page_network_traffic_graph.png[Nodes Page Network Traffic Graph]
 
  .. Review the Network Interfaces section.
 +
-image::../media/nodes_page_network_interfaces.gif[Nodes Page Network Interfaces]
+image::../media/nodes_page_network_interfaces.png[Nodes Page Network Interfaces]
 +
 Use the following table with the values in the *Speed* column in the Network Interfaces table to determine whether the 10/25-GbE network ports on the appliance were configured to use active/backup mode or LACP mode.
 +
@@ -281,7 +284,7 @@ See the installation and maintenance instructions for your appliance for more in
 +
 The Receive and Transmit tables show how many bytes and packets have been received and sent across each network as well as other receive and transmit metrics.
 +
-image::../media/nodes_page_network_communication.gif[Nodes Page Network Comm]
+image::../media/nodes_page_network_communication.png[Nodes Page Network Comm]
 
 [start=5]
 . Select *Storage* to view graphs that show the percentages of storage used over time for object data and object metadata, as well as information about disk devices, volumes, and object stores.
