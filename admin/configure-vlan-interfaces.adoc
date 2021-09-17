@@ -15,25 +15,25 @@ You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes a
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Root Access permission.
-* The VLANs have already been configured and you know their VLAN IDs.
+* The VLANs have already been configured in the network, and you know their VLAN IDs.
 
 == Create a VLAN interface
 
 Your StorageGRID network administrator might have configured one or more VLANs to segregate the client or admin traffic belonging to different applications or tenants. Each VLAN is identified by a numeric ID or tag. For example, your network might use VLAN 100 for FabricPool traffic and VLAN 200 for an archive application. 
 
-You can use the Grid Manager to create a VLAN interface that allow clients on a specific VLAN to access StorageGRID. When you create a VLAN interface, you select one or more parent interfaces for each VLAN.
+You can use the Grid Manager to create VLAN interfaces that allow clients on a specific VLAN to access StorageGRID. When you create VLAN interfaces, you select one or more parent interfaces for each VLAN.
 
-=== Requirements for a parent interface
+=== Considerations for parent interfaces
 
 * You must select at least one StorageGRID parent interface for each VLAN interface.
 
-* A parent interface must be on a Gateway Node or an Admin Node. These nodes contain the Load Balancer service.
+* Parent interfaces must be configured as a trunk interface at the switch.
 
-* A parent interface can be any current interface on the node. For example, a parent interface can be the Grid (eth0), Admin (eth1), or Client Network (eth2) interface, or it can be any other interface attached to the VM or bare-metal host (for example, ens236).
+* Parent interfaces must be on a Gateway Node or an Admin Node. These nodes contain the Load Balancer service.
+
+* Parent interfaces can be any current interface on the node. For example, a parent interface can be the Grid (eth0), Admin (eth1), or Client Network (eth2) interface, or it can be any other interface attached to the VM or bare-metal host (for example, ens236).
 
 * For each VLAN interface, you can only select one parent interface for a given node. For example, you cannot use both the Grid Network interface and the Admin Network interface on the same Gateway Node as the parent interface for the same VLAN.
-
-* A parent interface must be configured as a trunk interface at the switch.
 
 * If the VLAN interface is for Admin Node traffic, which includes traffic related to the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
 
@@ -50,7 +50,9 @@ You can use the Grid Manager to create a VLAN interface that allow clients on a 
 
 . Specify the ID of the VLAN in your network. You can enter any value between 1 and 4094.
 +
-VLAN IDs do not need to be unique. If you specify an ID that has already been used, a message appears. You can continue creating another VLAN interface for the same VLAN ID, or you can select *Cancel* and then edit the existing ID.
+VLAN IDs do not need to be unique. For example, you might use VLAN ID 200 for admin traffic at one site and the same VLAN ID for client traffic at another site. You can create separate VLAN interfaces with different sets of parent interfaces at each site. However, two VLAN interfaces with the same ID cannot share the same interface on a node.
++
+If you specify an ID that has already been used, a message appears. You can continue creating another VLAN interface for the same VLAN ID, or you can select *Cancel* and then edit the existing ID.
 
 . Optionally, enter a short description for the VLAN interface.
 +
@@ -81,15 +83,18 @@ image::../media/vlan-create-parent-interfaces.png[VLAN create wizard parent inte
 
 . Select *Save*.
 +
-The VLAN interface is created. You can now use it in a high availability (HA) group or load balancer endpoint. See xref:configure-high-availability-group.adoc[Configure high availability groups] and xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints] for instructions.
+The VLAN interface is created. You can now use it in a high availability (HA) group. See xref:configure-high-availability-group.adoc[Configure high availability groups] for instructions.
 
 == Edit a VLAN interface
 
-You can edit a VLAN interface to change its VLAN ID or description or to select a different parent interface.
+You can edit a VLAN interface to change its VLAN ID or description, to add parent interfaces, or to remove parent interfaces. For example, you might want to remove a parent interface from a VLAN interface if you plan to decommission the associated node.
 
-For example, you might need to remove a parent interface from a VLAN interface if you want to remove the associated node in a site or node decommission procedure.
+Note the following:
 
-You can't change the VLAN ID or remove a parent interface if the VLAN is currently used in an HA group. You must remove the VLAN interface from the HA group before you can update these values.
+* You can't change a VLAN ID if the VLAN interface is used in an HA group.
+* You can't remove a parent interface if that parent interface is used in an HA group. 
++
+For example, suppose VLAN 200 is attached to parent interfaces on Nodes A and B. If an HA group uses the VLAN 200 interface for Node A  and the eth2 interface for Node B, you can remove the unused parent interface for Node B, but you can't remove the used parent interface for Node A.
 
 .Steps
 
@@ -101,9 +106,7 @@ You can't change the VLAN ID or remove a parent interface if the VLAN is current
 +
 You can't update a VLAN ID if the VLAN is used in an HA group.
 
-. Optionally, select or unselect the check boxes to add or remove parent interfaces. Then, select *Continue*.
-+
-You can't remove a parent interface if the VLAN is used in an HA group.
+. Optionally, select or unselect the check boxes to add parent interfaces or to remove unused interfaces. Then, select *Continue*.
 
 . Review the configuration and make any changes.
 
