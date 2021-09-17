@@ -146,16 +146,21 @@ StorageGRID uses other security certificates for specific purposes. These certif
 * <<Key management server (KMS) certificate,Key management servers (KMS) certificates>>
 * <<Single sign-on (SSO) certificate,Single sign-on certificates>>
 * <<Email alert notification certificate,Email alert notification certificates>>
+* <<External syslog server certificate,External Syslog server certificates>>
 
-Information indicates the type of certificate a function uses and its client and server certificate expiration dates. Selecting a function name opens a browser tab where you can view and edit the certificate details.
+Information indicates the type of certificate a function uses and its server and client certificate expiration dates, as applicable. Selecting a function name opens a browser tab where you can view and edit the certificate details.
+
+NOTE: You can only view and access information for other certificates if you have the appropriate permission.
 
 You can:
 
 * xref:using-identity-federation.adoc[View and edit an identity federation certificate]
 * xref:kms-adding.adoc[Upload key management server (KMS) server and client certificates]
-* Specify a cloud storage pool certificate for xref:../ilm/s3-authentication-details-for-cloud-storage-pool.adoc[S3], xref:../ilm/c2s_s3-authentication-details-for-cloud-storage-pool.adoc[C2S S3], or xref:../ilm/azure-authentication-details-for-cloud-storage-pool.adoc[Azure]
+* Specify a cloud storage pool certificate for xref:../ilm/s3-authentication-details-for-cloud-storage-pool.adoc[S3], xref:../ilm/c2s-s3-authentication-details-for-cloud-storage-pool.adoc[C2S S3], or xref:../ilm/azure-authentication-details-for-cloud-storage-pool.adoc[Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
 * xref:../monitor/managing-alerts.adoc#setting-up-email-notifications-for-alerts[Specify an email alert notification certificate]
+* xref:../audit/configuring-syslog-server.adoc#attach-certificate[Specify an external syslog server certificate]
+// TBD - Update configuring-syslog-server.adoc#attach-certificate link based on new subsection title.
 
 --
 
@@ -189,7 +194,7 @@ xref:configuring-administrator-client-certificates.adoc[Configure administrator 
 a|
 Server
 a|
-Authenticates the connection between StorageGRID and an external Active Directory, OpenLDAP, or Oracle Directory Server.Used for identity federation, which allows admin groups and users to be managed by an external system.
+Authenticates the connection between StorageGRID and an external Active Directory, OpenLDAP, or Oracle Directory Server. Used for identity federation, which allows admin groups and users to be managed by an external system.
 
 a|
 *Configuration* > *Access Control* > *Identity Federation*
@@ -205,7 +210,7 @@ a|
 a|
 Server
 a|
-Authenticates the connection between Active Directory Federation Services (AD FS) and StorageGRID that is used for single sign-on (SSO) requests.
+Authenticates the connection between identity federation services, such as Active Directory Federation Services (AD FS), and StorageGRID that are used for single sign-on (SSO) requests.
 a|
 *Configuration* > *Access Control* > *Single Sign-on*
 a|
@@ -222,9 +227,9 @@ Server and client
 a|
 Authenticates the connection between StorageGRID and an external key management server (KMS), which provides encryption keys to StorageGRID appliance nodes.
 a|
-*Configuration* > *System Settings* > *Key Management Server*
+*CONFIGURATION* > *Security* > *Key Management Server*
 a|
-xref:kms-adding.adoc[Adding key management server (KMS)]
+xref:kms-adding.adoc[Add key management server (KMS)]
 |===
 
 === Email alert notification certificate
@@ -258,10 +263,10 @@ Authenticates the connection between S3 or Swift clients and the StorageGRID Loa
 *Note:* The load balancer certificate is the most used certificate during normal StorageGRID operation.
 
 a|
-*Configuration* > *Network Settings* > *Load Balancer Endpoints*
+*CONFIGURATION* > *Network* > *Load Balancer Endpoints*
 a|
 
-* xref:configuring-load-balancer-endpoints.adoc[Configuring load balancer endpoints]
+* xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
 
 * Creating a load balancer endpoint for FabricPool
 +
@@ -285,8 +290,8 @@ a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *Management interface certificate*
 a|
 
-* xref:configuring-server-certificates.adoc[Configuring server certificates]
-* xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
+* xref:configuring-server-certificates.adoc[Configure server certificates]
+* xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
 |===
 
 === Cloud Storage Pool endpoint certificate
@@ -331,8 +336,27 @@ Authenticates secure S3 or Swift client connections to the Local Distribution Ro
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *S3 and Swift API certificate*
 a|
-xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configuring a custom server certificate for connections to the Storage Node or the CLB service]
+xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to the Storage Node or the CLB service]
 |===
+
+=== External syslog server certificate
+[cols="1a,1a,1a,1a" options="header"]
+|===
+| Certificate type| Description| Navigation location| Details
+a|
+Server
+a|
+Authenticates the connection between an external syslog server that logs events and StorageGRID.
+
+a|
+*CONFIGURATION* > *Monitoring* > *Audit messages* and then select *Configure external syslog server*
+a|
+
+xref:../audit/configuring-syslog-server.adoc[Using a syslog server certificate]
+
+|===
+
+
 
 == Certificate examples
 
