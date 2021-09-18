@@ -92,9 +92,7 @@ The foreground verification feature was renamed to object existence check. This 
 === Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
 
-* The Nodes page has been redesigned to display a list of all sites and nodes in the grid. The list includes summary information, such as object data used and object metadata used.
-
-* For any node that has an active alert, the Nodes summary page displays an alert icon next to the node name.
+The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
@@ -102,7 +100,7 @@ The appearance and organization of the Grid Manager user interface has been comp
 == Object metadata allowed space increased
 If you are installing or upgrading to StorageGRID 11.6, the allowed metadata space for Storage Nodes will be increased to 3.96 TB so that more objects can be stored. This new value also ensures that adequate metadata space is reserved for future hardware and software versions.
 
-NOTE: If your Storage Nodes have enough RAM and sufficient space on volume 0, you can manually increase the Metadata Reserved Space setting up to 8 TB after you upgrade. Reserving additional metadata space after the StorageGRID 11.6 upgrade will simplify future hardware and software upgrades. xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[Increasing the Metadata Reserved Space setting]
+NOTE: If your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you upgrade. Reserving additional metadata space after the StorageGRID 11.6 upgrade will simplify future hardware and software upgrades.
 
 == Paul's what's new changes
 
