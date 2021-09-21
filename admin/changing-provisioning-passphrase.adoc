@@ -2,14 +2,14 @@
 permalink: admin/changing-provisioning-passphrase.html
 sidebar: sidebar
 keywords:
-summary: 'Use this procedure to change the StorageGRID provisioning passphrase. The passphrase is required for recovery, expansion, and maintenance procedures. The passphrase is also required to download Recovery Package backups that include the grid topology information and encryption keys for the StorageGRID system.'
+summary: 'Use this procedure to change the StorageGRID provisioning passphrase. The passphrase is required for recovery, expansion, and maintenance procedures. The passphrase is also required to download recovery package backups that include the grid topology information and encryption keys for the StorageGRID system.'
 ---
 = Change the provisioning passphrase
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Use this procedure to change the StorageGRID provisioning passphrase. The passphrase is required for recovery, expansion, and maintenance procedures. The passphrase is also required to download Recovery Package backups that include the grid topology information and encryption keys for the StorageGRID system.
+Use this procedure to change the StorageGRID provisioning passphrase. The passphrase is required for recovery, expansion, and maintenance procedures. The passphrase is also required to download recovery package backups that include the grid topology information and encryption keys for the StorageGRID system.
 
 .What you'll need
 
@@ -24,16 +24,15 @@ The provisioning passphrase is required for many installation and maintenance pr
 .Steps
 . Select *Configuration* > *Access Control* > *Grid Passwords*.
 +
-image::../media/grid_password_change.png[Grid passwords]
+image::../media/grid_password_change_provisioning_firstpage.png[Grid passwords]
 +
-. Select *Make a change* under *Change provisioning passphrase*
+. Select *Make a change* under *Change provisioning passphrase*.
 +
 image::../media/grid_password_change_provisioning_passphrase.png[Grid passwords change provisioning passphrase]
 
 . Enter your current provisioning passphrase.
-. Enter the new passsphrase.The passphrase must contain at least 8 and no more than 32 characters. Passphrases are case-sensitive.
-+
-CAUTION: Store the new provisioning passphrase in a secure location. It is required for installation, expansion, and maintenance procedures.
+. Enter the new passsphrase. The passphrase must contain at least 8 and no more than 32 characters. Passphrases are case-sensitive.
+. Store the new provisioning passphrase in a secure location. It is required for installation, expansion, and maintenance procedures.
 
 . Re-enter the new passphrase, and click *Save*.
 +
@@ -41,7 +40,7 @@ The system displays a green success banner when the provisioning passphrase chan
 +
 image::../media/change_provisioning_passphrase_success.png[]
 
-. Select the *Recovery Package page* link inside the success banner.
-. Download the new Recovery Package from the Grid Manager. Select *Maintenance* > *Recovery Package* and enter the new provisioning passphrase.
+. Select the *Recovery package page* link inside the success banner.
+. Download the new Recovery Package from the Grid Manager. Select *Maintenance* > *Recovery package* and enter the new provisioning passphrase.
 +
 CAUTION: After changing the provisioning passphrase, you must immediately download a new Recovery Package. The Recovery Package file allows you to restore the system if a failure occurs.
