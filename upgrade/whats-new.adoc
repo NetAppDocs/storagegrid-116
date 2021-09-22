@@ -32,6 +32,15 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 The user interface for creating a load balancer endpoint was revised.
 
+=== New upgrade process
+
+//more text goes here//
+
+A new *Check for software updates* check box was added to the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*). By default, StorageGRID contacts NetApp to determine if software updates are available for your system, but you can disable the check box as required. 
+
+.Learn more
+* xref:../admin/configure-autosupport-grid-manager.adoc[Configure AutoSupport]
+
 === Usability enhancements 
 The Grid Manager user interface has been redesigned.
 
@@ -77,18 +86,26 @@ The Available consistency control behaves the same as the “read-after-new-writ
 
 == Lisa's what's new changes
 
+=== Object existence check added to maintenance tasks
+The foreground verification feature was renamed to object existence check. This feature has been redesigned and is now available from the Grid Manager at *MAINTENANCE > Object existence check*.
+
+=== Enhancements to the Grid Manager 
+The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
+
+The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
+
+== Object metadata allowed space increased
+If you are installing or upgrading to StorageGRID 11.6, the allowed metadata space for Storage Nodes will be increased to 3.96 TB so that more objects can be stored. This new value also ensures that adequate metadata space is reserved for future hardware and software versions.
+
+NOTE: If your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you upgrade. Reserving additional metadata space after the StorageGRID 11.6 upgrade will simplify future hardware and software upgrades.
 
 == Paul's what's new changes
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
-
-
-
-
 
 == StorageGRID documentation changes
 
