@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'Security certificates are small data files used to create secure, trusted connections between StorageGRID components and between StorageGRID components and external systems.'
 ---
-= Use security certificates
+= About security certificates
 :icons: font
 :imagesdir: ../media/
 
@@ -13,8 +13,8 @@ Security certificates are small data files used to create secure, trusted connec
 
 StorageGRID uses two types of security certificates:
 
-* xref:configuring-server-certificates.adoc[*Server certificates*] are required when you use HTTPS connections. Server certificates are used to establish secure connections between clients and servers, authenticating the identity of a server to its clients and providing a secure communication path for data. The server and the client each have a copy of the certificate.
-* xref:configuring-administrator-client-certificates.adoc[*Client certificates*] authenticate a client or user identity to the server, providing more secure authentication than passwords alone. Client certificates do not encrypt data.
+* *Server certificates* are required when you use HTTPS connections. Server certificates are used to establish secure connections between clients and servers, authenticating the identity of a server to its clients and providing a secure communication path for data. The server and the client each have a copy of the certificate.
+* *Client certificates* authenticate a client or user identity to the server, providing more secure authentication than passwords alone. Client certificates do not encrypt data.
 
 When a client connects to the server using HTTPS, the server responds with the server certificate, which contains a public key. The client verifies this certificate by comparing the server signature to the signature on its copy of the certificate. If the signatures match, the client starts a session with the server using the same public key.
 
@@ -23,7 +23,7 @@ StorageGRID functions as the server for some connections (such as the load balan
 [#gridca_details]
 *Default Grid CA certificate*
 
-StorageGRID also includes a built-in certificate authority (CA) that generates an internal Grid CA certificate during system installation. The Grid CA certificate is used, by default, to secure internal StorageGRID traffic. An external certificate authority (CA) can issue custom certificates that are fully compliant with your organization's information security policies. Although you can use the Grid CA certificate for a non-production environment, the best practice for a production environment is to use custom certificates signed by an external certificate authority. Unsecured connections with no certificate are also supported but are not recommended.
+StorageGRID includes a built-in certificate authority (CA) that generates an internal Grid CA certificate during system installation. The Grid CA certificate is used, by default, to secure internal StorageGRID traffic. An external certificate authority (CA) can issue custom certificates that are fully compliant with your organization's information security policies. Although you can use the Grid CA certificate for a non-production environment, the best practice for a production environment is to use custom certificates signed by an external certificate authority. Unsecured connections with no certificate are also supported but are not recommended.
 
 * Custom CA certificates do not remove the internal certificates; however, the custom certificates should be the ones specified for verifying server connections.
 * All custom certificates must meet the xref:../harden/index.adoc[system hardening guidelines] for server certificates.
@@ -42,14 +42,14 @@ You can access information about all StorageGRID certificates in a single locati
 // Update image
 image::security_certificates.png["Certificates page"]
 
-. Select a tab on the certificate page for information about each certificate category and to access the certificate settings. You can only access a tab if you have the appropriate permission.
+. Select a tab on the Certificates page for information about each certificate category and to access the certificate settings. You can only access a tab if you have the appropriate permission.
 +
-* *Global*: secures StorageGRID access from web browsers and external API clients.
-* *Grid CA*: secures internal StorageGRID traffic.
-* *Client*: secures connections between external clients and the StorageGRID Prometheus database.
-* *Load balancer endpoints*: secures connections between S3 and Swift clients and the StorageGRID Load Balancer.
-* *Tenants*: secures connections to identity federation servers or from platform service endpoints to S3 storage resources.
-* *Other*: secures StorageGRID connections requiring specific certificates.
+* *Global*: Secures StorageGRID access from web browsers and external API clients.
+* *Grid CA*: Secures internal StorageGRID traffic.
+* *Client*: Secures connections between external clients and the StorageGRID Prometheus database.
+* *Load balancer endpoints*: Secures connections between S3 and Swift clients and the StorageGRID Load Balancer.
+* *Tenants*: Secures connections to identity federation servers or from platform service endpoints to S3 storage resources.
+* *Other*: Secures StorageGRID connections requiring specific certificates.
 
 +
 Each tab is described below with links to additional certificate details.
@@ -61,8 +61,8 @@ Each tab is described below with links to additional certificate details.
 --
 The global certificates secure StorageGRID access from web browsers and external API clients. Two global certificates are initially generated by the StorageGRID certificate authority during installation. The best practice for a production environment is to use custom certificates signed by an external certificate authority.
 
-* <<Management interface certificate>>: secures client web-browser connections from management interfaces.
-* <<S3 and Swift API certificate>>: secures client API connections.
+* <<Management interface certificate>>: Secures client web-browser connections from management interfaces.
+* <<S3 and Swift API certificate>>: Secures client API connections to the Storage Nodes, Admin Nodes, and Gateway Nodes, which client API applications use to upload and download object data.
 
 Information about the global certificates that are installed includes:
 
@@ -72,14 +72,15 @@ Information about the global certificates that are installed includes:
 You should always use a custom certificate for improved grid security.
 * *Expiration date*: If using the default certificate, no expiration date is shown.
 
-For improved grid security, replace the default certificates with custom certificates signed by an external certificate authority:
+You can:
 
-* xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Replace the default StorageGRID-generated management interface certificate] used for Grid Manager and Tenant Manager connections.
-* xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Replace the S3 and Swift API certificate] used for Storage Node or CLB service (deprecated) connections.
+* Replace the default certificates with custom certificates signed by an external certificate authority for improved grid security:
+** xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Replace the default StorageGRID-generated management interface certificate] used for Grid Manager and Tenant Manager connections.
+** xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Replace the S3 and Swift API certificate] used for Storage Node, CLB service (deprecated), and load balancer endpoint (optional) connections.
 
-You can restore the default xref:restoring-default-server-certificates-for-grid-manager-tenant-manager.adoc[management interface certificate] and xref:restoring-default-server-certificates-for-s3-swift-api-endpoints.adoc[S3 and Swift API certificate].
-
-You can also xref:generating-self-signed-certificate-for-management-interface.adoc[generate a new self-signed server certificate for the management interface] from within StorageGRID.
+* xref:restoring-default-server-certificates-for-grid-manager-tenant-manager.adoc[Restore the default management interface certificate.]
+* xref:restoring-default-server-certificates-for-s3-swift-api-endpoints.adoc[Restore the default S3 and Swift API certificate.]
+* xref:generating-self-signed-certificate-for-management-interface.adoc[Generate a new self-signed server certificate for the management interface] from within StorageGRID.
 
 --
 
@@ -89,7 +90,7 @@ The <<gridca_details,Grid CA certificate>>, generated by the StorageGRID certifi
 
 Certificate information includes the certificate expiration date and the certificate contents.
 
-You can xref:copying-storagegrid-system-ca-certificate.adoc[copy or download the Grid CA certificate], but cannot change it.
+You can xref:copying-storagegrid-system-ca-certificate.adoc[copy or download the Grid CA certificate], but you cannot change it.
 
 --
 
@@ -101,26 +102,28 @@ The certificate table has a row for each configured client certificate and indic
 
 You can:
 
-* xref:configuring-administrator-client-certificates.adoc#add-client-certificates[Upload or generate a new client certificate]
+* xref:configuring-administrator-client-certificates.adoc#add-client-certificates[Upload or generate a new client certificate.]
 * Select a certificate name to display the certificate details where you can:
-** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Change the client certificate name]
-** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Set the Prometheus access permission]
-** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Upload and replace the client certificate]
-** xref:configuring-administrator-client-certificates.adoc#download-or-copy-client-certificates[Copy or download the client certificate]
-** xref:configuring-administrator-client-certificates.adoc#remove-client-certificates[Remove the client certificate]
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Change the client certificate name.]
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Set the Prometheus access permission.]
+** xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[Upload and replace the client certificate.]
+** xref:configuring-administrator-client-certificates.adoc#download-or-copy-client-certificates[Copy or download the client certificate.]
+** xref:configuring-administrator-client-certificates.adoc#remove-client-certificates[Remove the client certificate.]
 * Select *Actions* to quickly xref:configuring-administrator-client-certificates.adoc#edit-client-certificates[edit], xref:configuring-administrator-client-certificates.adoc#attach-new-client-certificate[attach], or xref:configuring-administrator-client-certificates.adoc#remove-client-certificates[remove] a client certificate. You can select up to 10 client certificates and remove them at one time using *Actions* > *Remove*.
 
 --
 
 .Load balancer endpoints
 --
-<<Load balancer endpoint certificate,Load balancer endpoint certificates>>, that you upload or generate, secure the connections between S3 and Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. You can also xref:configuring-load-balancer-endpoints.adoc[use the global S3 and Swift API certificate] instead of generating a new load balancer endpoint certificate.
+<<Load balancer endpoint certificate,Load balancer endpoint certificates>>, that you upload or generate, secure the connections between S3 and Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. 
 
 The load balancer endpoint table has a row for each configured load balancer endpoint and indicates whether the S3 and Swift API certificate is being used for the endpoint instead of a custom certificate, along with the certificate expiration date.
 
-Selecting an endpoint name opens a browser tab with xref:configuring-load-balancer-endpoints.adoc[information about the load balancer endpoint, including its certificate details].
+You can:
 
-You can also xref:../fabricpool/creating-load-balancer-endpoint-for-fabricpool.adoc[specify a load balancer endpoint certificate for FabricPool].
+* xref:configuring-load-balancer-endpoints.adoc[Select an endpoint name to open a browser tab with information about the load balancer endpoint, including its certificate details.]
+* xref:../fabricpool/creating-load-balancer-endpoint-for-fabricpool.adoc[Specify a load balancer endpoint certificate for FabricPool.]
+* xref:configuring-load-balancer-endpoints.adoc[Use the global S3 and Swift API certificate] instead of generating a new load balancer endpoint certificate.
 
 --
 
@@ -128,12 +131,14 @@ You can also xref:../fabricpool/creating-load-balancer-endpoint-for-fabricpool.a
 --
 Tenants can use <<Identity federation certificate,identity federation server certificates>> or <<Platform services endpoint certificate,platform service endpoint certificates>> to secure their connections with StorageGRID.
 
-
 The tenant table has a row for each tenant and indicates if each tenant has permission to use its own identity source or platform services.
 
-Selecting a tenant name opens a browser tab where you can xref:../tenant/signing-in-to-tenant-manager.adoc[log in to the Tenant Manager] and view information about xref:../tenant/using-identity-federation.adoc[identity federation] and xref:../tenant/editing-platform-services-endpoint.adoc[platform services].
+You can:
 
-You can also xref:../tenant/creating-platform-services-endpoint.adoc[specify a platform service endpoint certificate during endpoint creation].
+* xref:../tenant/signing-in-to-tenant-manager.adoc[Select a tenant name to log in to the Tenant Manager] 
+* xref:../tenant/using-identity-federation.adoc[Select a tenant name to view the tenant identity federation details]
+* xref:../tenant/editing-platform-services-endpoint.adoc[Select a tenant name to view tenant platform services details]
+* xref:../tenant/creating-platform-services-endpoint.adoc[Specify a platform service endpoint certificate during endpoint creation]
 
 --
 
@@ -143,10 +148,10 @@ StorageGRID uses other security certificates for specific purposes. These certif
 
 * <<Identity federation certificate,Identity federation certificates>>
 * <<Cloud Storage Pool endpoint certificate,Cloud Storage Pool certificates>>
-* <<Key management server (KMS) certificate,Key management servers (KMS) certificates>>
+* <<Key management server (KMS) certificate,Key management server (KMS) certificates>>
 * <<Single sign-on (SSO) certificate,Single sign-on certificates>>
 * <<Email alert notification certificate,Email alert notification certificates>>
-* <<External syslog server certificate,External Syslog server certificates>>
+* <<External syslog server certificate,External syslog server certificates>>
 
 Information indicates the type of certificate a function uses and its server and client certificate expiration dates, as applicable. Selecting a function name opens a browser tab where you can view and edit the certificate details.
 
@@ -156,7 +161,7 @@ You can:
 
 * xref:using-identity-federation.adoc[View and edit an identity federation certificate]
 * xref:kms-adding.adoc[Upload key management server (KMS) server and client certificates]
-* Specify a cloud storage pool certificate for xref:../ilm/s3-authentication-details-for-cloud-storage-pool.adoc[S3], xref:../ilm/c2s-s3-authentication-details-for-cloud-storage-pool.adoc[C2S S3], or xref:../ilm/azure-authentication-details-for-cloud-storage-pool.adoc[Azure]
+* xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate for S3, C2S S3, or Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
 * xref:../monitor/managing-alerts.adoc#setting-up-email-notifications-for-alerts[Specify an email alert notification certificate]
 * xref:../audit/configuring-syslog-server.adoc#attach-certificate[Specify an external syslog server certificate]
@@ -194,10 +199,10 @@ xref:configuring-administrator-client-certificates.adoc[Configure administrator 
 a|
 Server
 a|
-Authenticates the connection between StorageGRID and an external Active Directory, OpenLDAP, or Oracle Directory Server. Used for identity federation, which allows admin groups and users to be managed by an external system.
+Authenticates the connection between StorageGRID and an external identity provider, such as Active Directory, OpenLDAP, or Oracle Directory Server. Used for identity federation, which allows admin groups and users to be managed by an external system.
 
 a|
-*Configuration* > *Access Control* > *Identity Federation*
+*CONFIGURATION* > *Access Control* > *Identity federation*
 a|
 xref:using-identity-federation.adoc[Use identity federation]
 a|
@@ -212,7 +217,7 @@ Server
 a|
 Authenticates the connection between identity federation services, such as Active Directory Federation Services (AD FS), and StorageGRID that are used for single sign-on (SSO) requests.
 a|
-*Configuration* > *Access Control* > *Single Sign-on*
+*CONFIGURATION* > *Access Control* > *Single sign-on*
 a|
 xref:configuring-sso.adoc[Configure single sign-on]
 a|
@@ -227,7 +232,7 @@ Server and client
 a|
 Authenticates the connection between StorageGRID and an external key management server (KMS), which provides encryption keys to StorageGRID appliance nodes.
 a|
-*CONFIGURATION* > *Security* > *Key Management Server*
+*CONFIGURATION* > *Security* > *Key management server*
 a|
 xref:kms-adding.adoc[Add key management server (KMS)]
 |===
@@ -245,9 +250,9 @@ Authenticates the connection between an SMTP email server and StorageGRID that i
 * Specify a client certificate only if the SMTP email server requires client certificates for authentication.
 
 a|
-*Alerts* > *Email Setup*
+*ALERTS* > *Email setup*
 a|
-xref:../monitor/index.adoc[Monitor & troubleshoot]
+xref:../monitor/managing-alerts.adoc#setting-up-email-notifications-for-alerts[Set up email notifications for alerts]
 a|
 |===
 
@@ -258,12 +263,12 @@ a|
 a|
 Server
 a|
-Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes or Admin Nodes. You upload or generate a load balancer certificate when you configure a load balancer endpoint.Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
+Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. You upload or generate a load balancer certificate when you configure a load balancer endpoint. Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
 
 *Note:* The load balancer certificate is the most used certificate during normal StorageGRID operation.
 
 a|
-*CONFIGURATION* > *Network* > *Load Balancer Endpoints*
+*CONFIGURATION* > *Network* > *Load balancer endpoints*
 a|
 
 * xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
@@ -289,9 +294,7 @@ You can use the default certificate created during installation or upload a cust
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *Management interface certificate*
 a|
-
-* xref:configuring-server-certificates.adoc[Configure server certificates]
-* xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
+xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
 |===
 
 === Cloud Storage Pool endpoint certificate
@@ -301,10 +304,10 @@ a|
 a|
 Server
 a|
-Authenticates the connection from the StorageGRID Cloud Storage Pool to an external storage location (such as S3 Glacier or Microsoft Azure Blob storage). A different certificate is required for each cloud provider type.
+Authenticates the connection from a StorageGRID Cloud Storage Pool to an external storage location, such as S3 Glacier or Microsoft Azure Blob storage. A different certificate is required for each cloud provider type.
 
 a|
-*ILM* > *Storage Pools*
+*ILM* > *Storage pools*
 a|
 xref:../ilm/index.adoc[Manage objects with ILM]
 
@@ -332,7 +335,7 @@ xref:../tenant/index.adoc[Use a tenant account]
 a|
 Server
 a|
-Authenticates secure S3 or Swift client connections to the Local Distribution Router (LDR) service on a Storage Node or to the deprecated Connection Load Balancer (CLB) service on a Gateway Node.
+Authenticates secure S3 or Swift client connections to a Storage Node, to the deprecated Connection Load Balancer (CLB) service on a Gateway Node, and load balancer endpoints (optional).
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *S3 and Swift API certificate*
 a|
