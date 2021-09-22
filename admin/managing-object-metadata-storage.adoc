@@ -146,8 +146,6 @@ The following table summarizes how StorageGRID determines the allowed metadata s
 
 |===
 
-NOTE: If your StorageGRID system stores (or is expected to store) more than 2.64 TB of metadata on any Storage Node, the allowed metadata space can be increased in some cases. If your Storage Nodes each have more than 128 GB of RAM and available free space on storage volume 0, contact your NetApp account representative. NetApp will review your requirements and increase the allowed metadata space for each Storage Node, if possible.
-
 To view the allowed metadata space for a Storage Node:
 
 . From the Grid Manager, select *Node* > *_Storage Node_*.
@@ -185,30 +183,22 @@ Consider the following example:
 [cols="1a,1a,1a,1a" options="header"]
 |===
 | Storage Node| Size of volume 0| Actual reserved metadata space| Allowed metadata space
-a|
-SN1
-a|
-2.2 TB
-a|
-2.2 TB
-a|
-1.32 TB
-a|
-SN2
-a|
-5 TB
-a|
-4 TB
-a|
-1.98 TB
-a|
-SN3
-a|
-6 TB
-a|
-4 TB
-a|
-1.98 TB
+
+|SN1
+|2.2 TB
+|2.2 TB
+|1.32 TB
+
+|SN2
+|5 TB
+|4 TB
+|1.98 TB
+
+|SN3
+|6 TB
+|4 TB
+|1.98 TB
+
 |===
 
 Because object metadata is evenly distributed across the Storage Nodes at a site, each node in this example can only hold 1.32 TB of metadata. The additional 0.66 TB of allowed metadata space for SN2 and SN3 cannot be used.
