@@ -173,6 +173,8 @@ You can:
 
 == Security certificate details
 
+Each type of security certificate is described below, with links to articles that contain implementation instructions. 
+
 [#adminclientcert_details]
 === Administrator client certificate
 [cols="1a,1a,1a,1a" options="header"]
@@ -273,9 +275,7 @@ a|
 
 * xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
 
-* Creating a load balancer endpoint for FabricPool
-+
-xref:../fabricpool/index.adoc[Configure StorageGRID for FabricPool]
+* xref:../fabricpool/creating-load-balancer-endpoint-for-fabricpool.adoc[Create a load balancer endpoint for FabricPool]
 |===
 
 === Management interface certificate
@@ -309,7 +309,7 @@ Authenticates the connection from a StorageGRID Cloud Storage Pool to an externa
 a|
 *ILM* > *Storage pools*
 a|
-xref:../ilm/index.adoc[Manage objects with ILM]
+xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate]
 
 |===
 
@@ -339,7 +339,7 @@ Authenticates secure S3 or Swift client connections to a Storage Node, to the de
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *S3 and Swift API certificate*
 a|
-xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to the Storage Node or the CLB service]
+xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to Storage Nodes, the CLB service on Gateway Nodes, or to load balancer endpoints.]
 |===
 
 === External syslog server certificate

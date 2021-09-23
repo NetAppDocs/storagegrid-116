@@ -16,7 +16,7 @@ By default, every Admin Node is issued a certificate signed by the grid CA. Thes
 
 Because a single custom management interface certificate is used for all Admin Nodes, you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the Grid Manager and Tenant Manager. Define the custom certificate such that it matches all Admin Nodes in the grid.
 
-You need to complete configuration on the server, and depending on the root Certificate Authority (CA) you are using, users might also need to install the Grid CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
+You need to complete configuration on the server, and depending on the root certificate authority (CA) you are using, users might also need to install the Grid CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
 NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *SUPPORT* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
 
@@ -44,32 +44,26 @@ You can <<Upload a custom management interface certificate,upload>> or <<Generat
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
- ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+ ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
-. Expand *Certificate details* to see the metadata for each certificate you uploaded. If there are multiple CA bundles, each certificate displays on its own tab.
+. Expand *Certificate details* to see the metadata for each certificate you uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
 +
-* Select *Download certificate* to save the certificate file.
+* Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
 +
 Specify the certificate file name and download location. Save the file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
-* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+* Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
 
 . Select *Save*. +
-The custom management interface certificate is used for all subsequent new client connections.
+The custom management interface certificate is used for all subsequent new connections to the Grid Manager, Tenant Manager, Grid Manager API or Tenant Manager API.
 
 . Refresh the page to ensure the web browser is updated.
 +
 NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
 
-. After you add a custom management interface certificate, the Management interface certificate page displays detailed certificate information for the certificates that are in use.
-
-* Select *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+. After you add a custom management interface certificate, the Management interface certificate page displays detailed certificate information for the certificates that are in use. +
+You can download or copy the certificate PEM as required.
 
 == Generate a custom management interface certificate
 
@@ -87,10 +81,9 @@ The best practice for a production environment is to use a custom management int
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
 
-. Select *Generate*. +
-You cannot generate the certificate until the minimum required certificate information is specified.
+. Select *Generate*.
 
-. Expand  *Certificate details* to see information about the generated certificate.
+. Select  *Certificate details* to see the metadata for the generated certificate.
 
 * Select *Download certificate* to save the certificate file.
 +
@@ -100,7 +93,7 @@ For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
 . Select *Save*. +
-The custom management interface certificate is used for all subsequent new client connections.
+The custom management interface certificate is used for all subsequent new connections to the Grid Manager, Tenant Manager, Grid Manager API or Tenant Manager API.
 
 . Refresh the page to ensure the web browser is updated.
 +

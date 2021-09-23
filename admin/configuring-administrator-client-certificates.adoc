@@ -23,11 +23,11 @@ NOTE: If you are using a key management server (KMS) to protect the data on spec
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * To configure a client certificate:
 ** You have the IP address or domain name of the Admin Node.
-** You have configured the StorageGRID management interface certificate and have the corresponding CA bundle.
-** To upload your own certificate, the public key and private key for the certificate is available on your local computer.
+** You have configured the StorageGRID management interface certificate and have the corresponding optional CA bundle.
+** To upload your own certificate, the public key and private key for the certificate are available on your local computer.
 * To edit a client certificate:
 ** You have the IP address or domain name of the Admin Node.
-** To upload a new certificate and private key, they are available on your local computer.
+** To upload a new certificate and private key, the public key and private key for the certificate are available on your local computer.
 
 == Add client certificates
 
@@ -54,7 +54,7 @@ Upload the certificate `.pem` file.
 . Select *Upload certificate* and then select *Continue*.
 . Upload the client certificate name (`.pem`).
 +
-Select *Client certificate details* to display detailed certificate information.
+Select *Client certificate details* to display the certificate metadata and certificate PEM..
 +
 * Select *Download certificate* to save the certificate file.
 +
@@ -65,7 +65,7 @@ For example: `storagegrid_certificate.pem`
 
 . Select *Create* to save the certificate in the Grid Manager.
 +
-The new certificate displays on the Client tab.
+The new certificate appears on the Client tab.
 
 --
 
@@ -80,10 +80,9 @@ Generate the certificate text to paste elsewhere.
  ** *IP*: One or more IP addresses to include in the certificate.
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
-. Select *Generate*. +
-You cannot generate the certificate until the minimum required certificate information is specified.
-+
-Select *Client certificate details* to display detailed certificate information.
+. Select *Generate*. 
+
+. Select *Client certificate details* to display the certificate metadata and certificate PEM.
 +
 IMPORTANT: You will not be able to view the certificate private key after you close the dialog. Copy or download the key to a safe location.
 +
@@ -100,7 +99,7 @@ Specify the private key file name and download location.
 
 . Select *Create* to save the certificate in the Grid Manager.
 +
-The new certificate displays on the Client tab.
+The new certificate appears on the Client tab.
 --
 
 ====
@@ -120,7 +119,7 @@ StorageGRID does not require this information, but you must provide a name to te
 For example: `+https://admin-node.example.com:9091+`
 
  .. Enable *TLS Client Auth* and *With CA Cert*.
- .. Copy and paste the management interface certificate or CA bundle to **CA Cert** under TLS/SSL Auth Details.
+ .. Copy and paste the management interface certificate or optional CA bundle to **CA Cert** under TLS/SSL Auth Details.
  .. *ServerName*: Enter the domain name of the Admin Node.
 +
 ServerName must match the domain name as it appears in the management interface certificate.
@@ -174,7 +173,7 @@ Copy the certificate text to paste elsewhere.
 . Select *Upload certificate* and then select *Continue*.
 . Upload the client certificate name (`.pem`).
 +
-Select *Client certificate details* to display detailed certificate information.
+Select *Client certificate details* to display the certificate metadata and certificate PEM.
 +
 * Select *Download certificate* to save the certificate file.
 +
@@ -201,10 +200,9 @@ Generate the certificate text to paste elsewhere.
  ** *IP*: One or more IP addresses to include in the certificate.
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
-. Select *Generate*. +
-You cannot generate the certificate until the minimum required certificate information is specified.
-+
-Select *Client certificate details* to display detailed certificate information.
+. Select *Generate*. 
+
+. Select *Client certificate details* to display the certificate metadata and certificate PEM..
 +
 IMPORTANT: You will not be able to view the certificate private key after you close the dialog. Copy or download the key to a safe location.
 +
@@ -221,7 +219,7 @@ Specify the private key file name and download location.
 
 . Select *Create* to save the certificate in the Grid Manager.
 +
-The new certificate displays on the Client tab.
+The new certificate appears on the Client tab.
 
 --
 
