@@ -98,7 +98,7 @@ The Nodes page has been redesigned to include a summary page that contains a tab
 * xref:../admin/index.adoc[Administer StorageGRID]
 
 == Object metadata allowed space increased
-If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes (nodes with an actual reserved space for metadata of more than 4 TB). This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
+If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
 
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
 
