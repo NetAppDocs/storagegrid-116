@@ -2,14 +2,14 @@
 permalink: admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.html
 sidebar: sidebar
 keywords:
-summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.'
+summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings. You can also revert to the default management interface certificate or generate a new one.'
 ---
-= Configure a custom management interface certificate
+= Configure management interface certificates
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can replace the default management interface certificate with a single custom certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings.
+You can replace the default management interface certificate with a single custom certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings. You can also revert to the default management interface certificate or generate a new one.
 
 .About this task
 By default, every Admin Node is issued a certificate signed by the grid CA. These CA signed certificates can be replaced by a single common custom management interface certificate and corresponding private key.
@@ -18,25 +18,35 @@ Because a single custom management interface certificate is used for all Admin N
 
 You need to complete configuration on the server, and depending on the root certificate authority (CA) you are using, users might also need to install the Grid CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *SUPPORT* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the management interface certificate on the Global tab.
 
 [NOTE]
 ====
 If you are accessing the Grid Manager or Tenant Manager using a domain name instead of an IP address, the browser shows a certificate error without an option to bypass if either of the following occurs:
 
 * Your custom management interface certificate expires.
-* You xref:restoring-default-server-certificates-for-grid-manager-tenant-manager.adoc[revert from a custom management interface certificate to the default server certificate].
+* You <<Restore the default management interface certificate,revert from a custom management interface certificate to the default server certificate>>.
 ====
 
-You can <<Upload a custom management interface certificate,upload>> or <<Generate a custom management interface certificate,generate>> a custom management interface certificate.
+== Add a custom management interface certificate
 
-== Upload a custom management interface certificate
+To add a custom management interface certificate, you can provide your own certificate or generate one using the Grid Manager.
 
 .Steps
 
 . Select *CONFIGURATION* > *Security* > *Certificates*.
 . On the *Global* tab, select *Management interface certificate*.
 . Select *Use custom certificate*.
+
+. Upload or generate the certificate.
++
+[role="tabbed-block"]
+====
+
+.Upload certificate
+--
+Upload the required server certificate files.
+
 . Select *Upload certificate*.
 . Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (`.crt`).
@@ -58,22 +68,15 @@ For example: `storagegrid_certificate.pem`
 . Select *Save*. +
 The custom management interface certificate is used for all subsequent new connections to the Grid Manager, Tenant Manager, Grid Manager API or Tenant Manager API.
 
-. Refresh the page to ensure the web browser is updated.
-+
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+--
 
-. After you add a custom management interface certificate, the Management interface certificate page displays detailed certificate information for the certificates that are in use. +
-You can download or copy the certificate PEM as required.
+.Generate certificate
+--
 
-== Generate a custom management interface certificate
+Generate the server certificate files. 
 
-The best practice for a production environment is to use a custom management interface certificate signed by an external certificate authority.
+NOTE: The best practice for a production environment is to use a custom management interface certificate signed by an external certificate authority.
 
-.Steps
-
-. Select *CONFIGURATION* > *Security* > *Certificates*.
-. On the *Global* tab, select *Management interface certificate*.
-. Select *Use custom certificate*.
 . Select *Generate certificate*.
 . Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
@@ -95,15 +98,77 @@ For example: `storagegrid_certificate.pem`
 . Select *Save*. +
 The custom management interface certificate is used for all subsequent new connections to the Grid Manager, Tenant Manager, Grid Manager API or Tenant Manager API.
 
+--
+
+====
+
 . Refresh the page to ensure the web browser is updated.
 +
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+NOTE: After uploading or generating a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
 
-. After you add a custom management interface certificate, the Management interface certificate page displays detailed certificate information for the certificates that are in use.
+. After you add a custom management interface certificate, the Management interface certificate page displays detailed certificate information for the certificates that are in use. +
+You can download or copy the certificate PEM as required.
 
-* Select *Download certificate* to save the certificate file.
+== Restore the default management interface certificate
+
+You can revert to using the default management interface certificate for Grid Manager and Tenant Manager connections.
+
+.Steps
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *Management interface certificate*.
+. Select *Use default certificate*.
 +
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
+When you restore the default management interface certificate, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default management interface certificate is used for all subsequent new client connections.
+
+. Refresh the page to ensure the web browser is updated.
+  
+== Use a script to generate a new self-signed management interface certificate
+
+If strict hostname validation is required, you can use a script to generate the management interface certificate.
+
+.What you'll need
+
+* You must have specific access permissions.
+* You must have the `Passwords.txt` file.
+
+.About this task
+
+The best practice for a production environment is to use a certificate signed by an external certificate authority.
+
+.Steps
+
+. Obtain the fully qualified domain name (FQDN) of each Admin Node.
+. Log in to the primary Admin Node:
+ .. Enter the following command: `ssh admin@primary_Admin_Node_IP`
+ .. Enter the password listed in the `Passwords.txt` file.
+ .. Enter the following command to switch to root: `su -`
+ .. Enter the password listed in the `Passwords.txt` file.
 +
-For example: `storagegrid_certificate.pem`
-* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+When you are logged in as root, the prompt changes from `$` to `#`.
+
+
+. Configure StorageGRID with a new self-signed certificate.
++
+`$ sudo make-certificate --domains _wildcard-admin-node-fqdn_ --type management`
+
+ ** For `--domains`, use wildcards to represent the fully qualified domain names of all Admin Nodes. For example, `*.ui.storagegrid.example.com` uses the * wildcard to represent `admin1.ui.storagegrid.example.com` and `admin2.ui.storagegrid.example.com`.
+ ** Set `--type` to `management` to configure the management interface certificate, which is used by Grid Manager and Tenant Manager.
+ ** By default, generated certificates are valid for one year (365 days) and must be recreated before they expire. You can use the `--days` argument to override the default validity period.
++
+NOTE: A certificate's validity period begins when `make-certificate` is run. You must ensure the management client is synchronized to the same time source as StorageGRID; otherwise, the client might reject the certificate.
+
+
+ $ sudo make-certificate --domains *.ui.storagegrid.example.com --type management --days 720
++
+The resulting output contains the public certificate needed by your management API client.
+. Select and copy the certificate.
++
+Include the BEGIN and the END tags in your selection.
+
+. Log out of the command shell. `$ exit`
+. Confirm the certificate was configured:
+ .. Access the Grid Manager.
+ .. Select *CONFIGURATION* > *Security* > *Certificates*
+ .. On the *Global* tab, select *Management interface certificate*.
+. Configure your management client to use the public certificate you copied. Include the BEGIN and END tags.
+
