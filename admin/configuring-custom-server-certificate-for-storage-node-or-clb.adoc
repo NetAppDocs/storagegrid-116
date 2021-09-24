@@ -2,14 +2,14 @@
 permalink: admin/configuring-custom-server-certificate-for-storage-node-or-clb.html
 sidebar: sidebar
 keywords:
-summary: 'You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service \(deprecated\) on Gateway Node. The replacement custom server certificate is specific to your organization.'
+summary: 'You can replace or restore the server certificate that is used for S3 or Swift client connections to Storage Nodes, the deprecated CLB service on Gateway Nodes, or to load balancer endpoints. The replacement custom server certificate is specific to your organization.'
 ---
-= Configure a custom S3 and Swift API certificate
+= Configure S3 and Swift API certificates
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can replace the server certificate that is used for S3 or Swift client connections to the Storage Node or to the CLB service (deprecated) on Gateway Node. The replacement custom server certificate is specific to your organization.
+You can replace or restore the server certificate that is used for S3 or Swift client connections to Storage Nodes, the deprecated CLB service on Gateway Nodes, or to load balancer endpoints. The replacement custom server certificate is specific to your organization.
 
 .About this task
 
@@ -17,24 +17,28 @@ By default, every Storage Node is issued a X.509 server certificate signed by th
 
 A single custom server certificate is used for all Storage Nodes, so you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the storage endpoint. Define the custom certificate such that it matches all Storage Nodes in the grid.
 
-After completing configuration on the server, users might also need to install the Grid CA certificate in the S3 or Swift API client they will use to access the system, depending on the root Certificate Authority (CA) you are using.
+After completing configuration on the server, users might also need to install the Grid CA certificate in the S3 or Swift API client they will use to access the system, depending on the root certificate authority (CA) you are using.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Storage API Endpoints* alert and the legacy Storage API Service Endpoints Certificate Expiry (SCEP) alarm are both triggered when the root server certificate is about to expire. As required, you can view the number of days until the current service certificate expires by selecting *Support* > *Tools* > *Grid Topology*. Then, select *_primary Admin Node_* > *CMN* > *Resources*.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Storage API Endpoints* alert and the legacy Storage API Service Endpoints Certificate Expiry (SCEP) alarm are both triggered when the root server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the S3 and Swift API certificate on the Global tab.
 
-The custom certificates are only used if clients connect to StorageGRID using the deprecated CLB service on Gateway Nodes, or if they connect directly to Storage Nodes. S3 or Swift clients that connect to StorageGRID using the Load Balancer service on Admin Nodes or Gateway Nodes use the certificate configured for the load balancer endpoint.
+You can upload or generate a custom S3 and Swift API certificate.
 
-NOTE: The *Expiration of load balancer endpoint certificate* alert is triggered for load balancer endpoints that will expire soon.
-
-You can <<Upload a custom S3 and Swift API certificate,upload>> or <<Generate a custom S3 and Swift API certificate,generate>> a custom S3 and Swift API certificate.
-
-
-== Upload a custom S3 and Swift API certificate
+== Add a custom management interface certificate
 
 .Steps
 
-. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
-. Select *S3 and Swift API certificate*.
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *S3 and Swift API certificate*.
 . Select *Use custom certificate*.
+. Upload or generate the certificate.
++
+[role="tabbed-block"]
+====
+
+.Upload certificate
+--
+Upload the required server certificate files.
+
 . Select *Upload certificate*.
 . Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (`.crt`).
@@ -42,44 +46,27 @@ You can <<Upload a custom S3 and Swift API certificate,upload>> or <<Generate a 
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
- ** *CA bundle*: A single file containing the certificates from each intermediate issuing Certificate Authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+ ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority. The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
-. Click the certificate details to display detailed certificate information for each custom S3 and Swift API certificate that was uploaded. If there are multiple CA bundles, each certificate displays on its own tab.
+. Select the certificate details to display the metadata and PEM for each custom S3 and Swift API certificate that was uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
 +
-* *Download certificate* to save the certificate file.
+* Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
 +
 Specify the certificate file name and download location. Save the file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
-* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+* Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
 
 . Select *Save*. +
-The custom server certificate is used for all subsequent new API client connections.
-+
-Select a tab to display detailed information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
-+
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+The custom server certificate is used for subsequent new S3 and Swift client connections.
 
-. Refresh the page to ensure the web browser is updated.
+--
 
-. After you add a custom S3 and Swift API certificate the S3 and Swift API certificate page displays detailed certificate information for the custom S3 and Swift API certificate that is in use.
+.Generate certificate
+--
 
-* *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+Generate the server certificate files. 
 
-== Generate a custom S3 and Swift API certificate
-
-The best practice for a production environment is to use a custom S3 and Swift API certificate signed by an external certificate authority.
-
-.Steps
-
-. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
-. Select *S3 and Swift API certificate*.
-. Select *Use custom certificate*.
 . Select *Generate certificate*.
 . Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
@@ -87,35 +74,47 @@ The best practice for a production environment is to use a custom S3 and Swift A
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
 
-. Select *Generate*. +
- You cannot generate the certificate until the minimum required certificate information is specified.
+. Select *Generate*. 
 
-. Click the certificate details to display detailed certificate information for the custom S3 and Swift API certificate that was generated.
-
-* *Download certificate* to save the certificate file.
+. Select *Certificate Details* to display the metadata and PEM for the custom S3 and Swift API certificate that was generated.
++
+* Select *Download certificate* to save the certificate file.
 +
 Specify the certificate file name and download location. Save the file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
-* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
 . Select *Save*. +
-The custom server certificate is used for all subsequent new API client connections.
+The custom server certificate is used for subsequent new S3 and Swift client connections.
+
+--
+
+====
+
+. Select a tab to display metadata for the default StorageGRID server certificate, a CA signed certificate that was uploaded, or a custom certificate that was generated.
 +
-Select a tab to display detailed information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
-+
-NOTE: After uploading a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
+NOTE: After uploading or generating a new certificate, allow up to one day for any related certificate expiration alerts (or legacy alarms) to clear.
 
 . Refresh the page to ensure the web browser is updated.
 
-. After you add a custom S3 and Swift API certificate the S3 and Swift API certificate page displays detailed certificate information for the custom S3 and Swift API certificate that is in use.
+. After you add a custom S3 and Swift API certificate the S3 and Swift API certificate page displays detailed certificate information for the custom S3 and Swift API certificate that is in use. +
+You can download or copy the certificate PEM as required.
 
-* *Download certificate* to save the certificate file.
+
+== Restore the default S3 and Swift API certificate
+
+You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections Storage Node, to the deprecated Connection Load Balancer (CLB) service on a Gateway Node, and load balancer endpoints (optional).
+
+.Steps
+
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *S3 and Swift API certificate*.
+. Select *Use default certificate*.
 +
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+When you restore the default S3 and Swift API certificate for the object storage API endpoints, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate is used for subsequent new S3 and Swift client connections to a Storage Node, to the deprecated Connection Load Balancer (CLB) service on a Gateway Node, and load balancer endpoints (optional).
+
+. Refresh the page to ensure the web browser is updated.
 
 .Related information
 

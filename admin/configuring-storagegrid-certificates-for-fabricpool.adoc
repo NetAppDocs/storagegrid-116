@@ -18,7 +18,7 @@ For S3 clients that perform strict hostname validation and do not support disabl
 
 .About this task
 
-When you create a load balancer endpoint, you can generate a self-signed server certificate or upload a certificate that is signed by a known Certificate Authority (CA). In production environments, you should use a certificate that is signed by a known CA. Certificates signed by a CA can be rotated non-disruptively. They are also more secure because they provide better protection against man-in-the-middle attacks.
+When you create a load balancer endpoint, you can generate a self-signed server certificate or upload a certificate that is signed by a known certificate authority (CA). In production environments, you should use a certificate that is signed by a known CA. Certificates signed by a CA can be rotated non-disruptively. They are also more secure because they provide better protection against man-in-the-middle attacks.
 
 The following steps provide general guidelines for S3 clients that use FabricPool. For more detailed information and procedures, see the instructions for configuring StorageGRID for FabricPool.
 
@@ -29,7 +29,7 @@ NOTE: The separate Connection Load Balancer (CLB) service on Gateway Nodes is de
 . Optionally, configure a high availability (HA) group for FabricPool to use.
 . Create an S3 load balancer endpoint for FabricPool to use.
 +
-When you create an HTTPS load balancer endpoint, you are prompted to upload your server certificate, certificate private key, and CA bundle.
+When you create an HTTPS load balancer endpoint, you are prompted to upload your server certificate, certificate private key, and optional CA bundle.
 
 . Attach StorageGRID as a cloud tier in ONTAP.
 +
