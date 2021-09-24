@@ -47,7 +47,8 @@ The node uses the DNS server settings specified on this page to reconnect to the
 . After node data is decrypted, reboot the node. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
-image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
++
+image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
 NOTE: When the node reboots and rejoins the grid, it uses the system-wide DNS servers listed in the Grid Manager. After rejoining the grid, the appliance will no longer use the temporary DNS servers specified in the StorageGRID Appliance Installer while the appliance was in maintenance mode.
 +
