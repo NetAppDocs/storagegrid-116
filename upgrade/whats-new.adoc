@@ -94,7 +94,7 @@ Security certificate information and access has been consolidated in a single lo
 == Lisa's what's new changes
 
 === Object existence check added to maintenance tasks
-The foreground verification feature was renamed to object existence check. This feature has been redesigned and is now available from the Grid Manager at *MAINTENANCE > Object existence check*.
+The foreground verification feature was renamed to object existence check. This feature has been redesigned for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
 
 === Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
@@ -105,9 +105,9 @@ The Nodes page has been redesigned to include a summary page that contains a tab
 * xref:../admin/index.adoc[Administer StorageGRID]
 
 == Object metadata allowed space increased
-If you are installing or upgrading to StorageGRID 11.6, the allowed metadata space for Storage Nodes will be increased to 3.96 TB so that more objects can be stored. This new value also ensures that adequate metadata space is reserved for future hardware and software versions.
+If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
 
-NOTE: If your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you upgrade. Reserving additional metadata space after the StorageGRID 11.6 upgrade will simplify future hardware and software upgrades.
+NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
 
 == Paul's what's new changes
 

@@ -23,9 +23,9 @@ Background verification automatically and continuously checks all Storage Nodes 
 +
 NOTE: The *Unidentified corrupt object detected* alert is triggered if the system detects a corrupt object that cannot be corrected automatically.
 
-* *Foreground verification* can be triggered by a user to more quickly verify the existence (although not the correctness) of object data.
+* *Object existence check* can be triggered by a user to more quickly verify the existence (although not the correctness) of object data.
 +
-Foreground verification allows you to verify the existence of replicated and erasure-coded object data on a specific Storage Node, checking that each object that is expected to be present is there. You can run foreground verification on all or some of a Storage Node's object stores to help determine if there are integrity problems with a storage device. Large numbers of missing objects might indicate that there is an issue with storage.
+Object existence check allows you to verify the existence of replicated and erasure-coded object data on a specific Storage Node, checking that each object that is expected to be present is there. You can run foreground verification on all or some of a Storage Node's object stores to help determine if there are integrity problems with a storage device. Large numbers of missing objects might indicate that there is an issue with storage.
 
 To review results from background and foreground verifications, such as corrupt or missing objects, you can look at the Nodes page for a Storage Node. You should investigate any instances of corrupt or missing object data immediately, to determine the root cause.
 
