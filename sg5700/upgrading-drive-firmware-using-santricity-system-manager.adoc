@@ -63,8 +63,9 @@ The E-Series Disk Firmware page displays.
 
  .. Search for each *Drive Identifier* installed in your storage appliance and verify that each drive identifier has the latest firmware revision.
   *** If the firmware revision is not a link, this drive identifier has the latest firmware revision.
-  *** If one or more drive part numbers are listed for a drive identifier, a firmware upgrade is available for these drives. You can select any link to download the firmware file.
-image:../media/storagegrid_drive_firmware_download.png[E-Series Disk Firmware page]
+  *** If one or more drive part numbers are listed for a drive identifier, a firmware upgrade is available for these drives. You can select any link to download the firmware file. 
++
+image::../media/storagegrid_drive_firmware_download.png[E-Series Disk Firmware page]
  .. If a later firmware revision is listed, select the link in the Firmware Rev. (Download) column to download a `.zip` archive containing the firmware file.
  .. Extract (unzip) the drive firmware archive files you downloaded from the Support site.
 . Install the drive firmware upgrade:
@@ -169,7 +170,8 @@ Contact technical support to resolve this issue.
 . Once the upgrade operation has completed, reboot the appliance. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
-image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
++
+image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
