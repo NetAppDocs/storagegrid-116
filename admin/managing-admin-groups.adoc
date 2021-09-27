@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing-admin-groups.html
 sidebar: sidebar
-keywords:
+keywords: what is admin group, user permissions
 summary: 'You can create admin groups to manage the security permissions for one or more admin users. Users must belong to a group to be granted access to the StorageGRID system.'
 ---
 = Managing admin groups
@@ -17,13 +17,13 @@ Admin groups allow you to determine which users can access which features and op
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have specific access permissions.
-* If you plan to import a federated group, you must have configured identity federation and the federated group must already exist in the configured identity source.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
+* If you plan to import a federated group, you have configured identity federation and the federated group already exists in the configured identity source.
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Admin Groups*.
+. Select *CONFIGURATION* > *Access control* > *Admin groups*.
 +
 The Admin Groups page appears and lists any existing admin groups.
 +
@@ -94,7 +94,7 @@ If you want a user to monitor grid topology and acknowledge alarms only, you sho
 
 This permission provides access to the following menu options:
 
-* Configuration tabs available from the pages in *Support* > *Tools* > *Grid Topology*.
+* Configuration tabs available from the pages in *SUPPORT* > *Tools* > *Grid Topology*.
 * *Reset event counts* link on the *Nodes* > *Events* tab.
 
 === Other Grid Configuration
@@ -103,28 +103,28 @@ This permission provides access to additional grid configuration options.
 
 IMPORTANT: To see these additional options, users must also have the Grid Topology Page Configuration permission.
 
-* *Alarms* (legacy system):
- ** Global Alarms
- ** Legacy Email Setup
+
 * *ILM*:
- ** Storage Pools
- ** Storage Grades
-* *Configuration* > *Network Settings*
- ** Link Cost
-* *Configuration* > *System Settings*:
- ** Display Options
- ** Grid Options
- ** Storage Options
-* *Configuration* > *Monitoring*:
+ ** Storage pools
+ ** Storage grades
+* *CONFIGURATION* > *Network*:
+ ** Link cost
+* *CONFIGURATION* > *System*:
+ ** Display options
+ ** Grid options
+ ** Storage options
+* *CONFIGURATION* > *Monitoring*:
  ** Events
-* *Support*:
+* *SUPPORT*:
  ** AutoSupport
+* *SUPPORT* > *Alarms (legacy)*:
+ ** Global alarms
+ ** Legacy email setup
 
 === Tenant Accounts
 
-This permission provides access to the *Tenants* > *Tenant Accounts* page.
+This permission provides access to the *TENANTS* > *Tenant Accounts* page, where you can create, edit, and remove tenant accounts. This permission also allows users to view existing traffic classification policies. 
 
-NOTE: Version 1 of the Grid Management API (which has been deprecated) uses this permission to manage tenant group policies, reset Swift admin passwords, and manage root user S3 access keys.
 
 === Change Tenant Root Password
 
@@ -136,48 +136,50 @@ NOTE: You must assign the Tenant Accounts permission to the group before you can
 
 This permission provides access to the following menu options:
 
-* *Configuration* > *System Settings*:
- ** Domain Names*
- ** Server Certificates*
-* *Configuration* > *Monitoring*:
+* *CONFIGURATION* > *Network*:
+** Certificates*
+ ** Domain names*
+* *CONFIGURATION* > *Monitoring*:
  ** Audit*
-* *Configuration* > *Access Control*:
- ** Grid Passwords
-* *Maintenance* > *Maintenance Tasks*
+* *CONFIGURATION* > *Access control*:
+ ** Grid passwords
+ 
+* *MAINTENANCE* > *Tasks*
  ** Decommission
  ** Expansion
  ** Recovery
-* *Maintenance* > *Network*:
- ** DNS Servers*
- ** Grid Network*
- ** NTP Servers*
-* *Maintenance* > *System*:
+* *MAINTENANCE* > *System*:
  ** License*
- ** Recovery Package
- ** Software Update
-* *Support* > *Tools*:
+ ** Recovery package
+ ** Software update
+* *MAINTENANCE* > *Network*:
+ ** DNS servers*
+ ** Grid network*
+ ** NTP servers*
+
+* *SUPPORT* > *Tools*:
  ** Logs
 
 * Users who do not have the Maintenance permission can view, but not edit, the pages marked with an asterisk.
 
 === Metrics Query
 
-This permission provides access to the *Support* > *Tools* > *Metrics* page. This permission also provides access to custom Prometheus metrics queries using the *Metrics* section of the Grid Management API.
+This permission provides access to the *SUPPORT* > *Tools* > *Metrics* page. This permission also provides access to custom Prometheus metrics queries using the *Metrics* section of the Grid Management API.
 
 === ILM
 
 This permission provides access to the following *ILM* menu options:
 
-* *Erasure Coding*
+* *Erasure coding*
 * *Rules*
 * *Policies*
 * *Regions*
 
-NOTE: Access to the *ILM* > *Storage Pools* and *ILM* > *Storage Grades* menu options is controlled by the Other Grid Configuration and Grid Topology Page Configuration permissions.
+NOTE: Access to the *ILM* > *Storage pools* and *ILM* > *Storage grades* menu options is controlled by the Other Grid Configuration and Grid Topology Page Configuration permissions.
 
 === Object Metadata Lookup
 
-This permission provides access to the *ILM* > *Object Metadata Lookup* menu option.
+This permission provides access to the *ILM* > *Object metadata lookup* menu option.
 
 === Storage Appliance Administrator
 
@@ -249,7 +251,7 @@ You can modify an admin group to change the permissions associated with the grou
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Admin Groups*.
+. Select *CONFIGURATION* > *Access control* > *Admin groups*.
 . Select the group.
 +
 If your system includes more than 20 items, you can specify how many rows are shown on each page at one time. You can then use your browser's find feature to search for a specific item in the currently displayed rows.
@@ -289,7 +291,7 @@ When you delete a group, users assigned to that group will lose all access privi
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Admin Groups*.
+. Select *CONFIGURATION* > *Access control* > *Admin groups*.
 . Select the name of the group.
 +
 If your system includes more than 20 items, you can specify how many rows are shown on each page at one time. You can then use your browser's find feature to search for a specific item in the currently displayed rows.

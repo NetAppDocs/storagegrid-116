@@ -75,6 +75,9 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 .Learn more
 * xref:../s3/index.adoc[Use S3]
 
+== Updates to Tenant Accounts permission
+Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
+
 == Kevin's what's new changes
 
 === Available consistency control now includes GET operations
@@ -84,29 +87,35 @@ The Available consistency control behaves the same as the “read-after-new-writ
 .Learn more
 * xref:../s3/index.adoc[Use S3]
 
+=== Access security certificates from single location
+
+Security certificate information and access has been consolidated in a single location in the Grid Manager at *CONFIGURATON* > *Security* > *Certificates*.
+
+.Learn more
+* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates] 
+
 == Lisa's what's new changes
 
 === Object existence check added to maintenance tasks
-The foreground verification feature was renamed to object existence check. This feature has been redesigned and is now available from the Grid Manager at *MAINTENANCE > Object existence check*.
+The foreground verification feature was renamed to object existence check. This feature has been redesigned for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
 
 === Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
 
-* The Nodes page has been redesigned to display a list of all sites and nodes in the grid. The list includes summary information, such as object data used and object metadata used.
-
-* For any node that has an active alert, the Nodes summary page displays an alert icon next to the node name.
+The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
+
+== Object metadata allowed space increased
+If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
+
+NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
 
 == Paul's what's new changes
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
-
-
-
-
 
 == StorageGRID documentation changes
 
