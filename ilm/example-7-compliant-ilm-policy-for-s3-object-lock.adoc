@@ -42,7 +42,8 @@ Bucket Region
 a|
 us-east-1 (default)
 |===
-image:../media/compliant_bucket.png[screen shot of an example compliant bucket]
+
+image::../media/compliant_bucket.png[screen shot of an example compliant bucket]
 
 Each object and object version that is added to the bank-records bucket will use the following values for `retain-until-date` and `legal hold` settings.
 
@@ -92,7 +93,8 @@ Object Size (MB) greater than 0.20
 *Note:* This filter ensures that erasure coding is not used for objects 200 KB or smaller.
 
 |===
-image:../media/compliant_rule_ec_copy_step_1.png[screenshot of Example Compliant Rule EC Copy Step 1]
+
+image::../media/compliant_rule_ec_copy_step_1.png[screenshot of Example Compliant Rule EC Copy Step 1]
 
 [cols="1a,2a" options="header"]
 |===
@@ -113,7 +115,8 @@ a|
 * Uses 6+3 erasure-coding scheme
 
 |===
-image:../media/compliant_rule_ec_copy_step_2.png[screenshot of Example Compliant Rule EC Copy Step 2]
+
+image::../media/compliant_rule_ec_copy_step_2.png[screenshot of Example Compliant Rule EC Copy Step 2]
 
 == ILM rule 2 for S3 Object Lock example: Non-compliant rule
 
@@ -140,7 +143,8 @@ Advanced filtering
 a|
 Not specified
 |===
-image:../media/ilm_example_non_compliant_rule_step_1.png[Example Non-Compliant Rule Step 1]
+
+image::../media/ilm_example_non_compliant_rule_step_1.png[Example Non-Compliant Rule Step 1]
 
 [cols="1a,2a" options="header"]
 |===
@@ -182,7 +186,8 @@ Advanced filtering
 a|
 Not specified
 |===
-image:../media/compliant_rule_2_copies_2_data_centers_1.png[screenshot showing step 1 of creating default rule for compliance example]
+
+image::../media/compliant_rule_2_copies_2_data_centers_1.png[screenshot showing step 1 of creating default rule for compliance example]
 
 [cols="1a,2a" options="header"]
 |===
@@ -196,7 +201,8 @@ Placements
 a|
 From Day 0 to forever, keep two replicated copies--one on Storage Nodes in Data Center 1 and one on Storage Nodes in Data Center 2.
 |===
-image:../media/compliant_rule_2_copies_2_data_centers_2.png[screenshot showing step 2 of creating default rule for compliance example]
+
+image::../media/compliant_rule_2_copies_2_data_centers_2.png[screenshot showing step 2 of creating default rule for compliance example]
 
 == Compliant ILM policy for S3 Object Lock example
 
