@@ -1,5 +1,5 @@
 ---
-permalink: monitor/configure-audit-messages.html
+permalink: audit/configure-audit-messages.html
 sidebar: sidebar
 keywords: audit messages, configure syslog server, configure external syslog server
 summary: 'All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded.'
@@ -57,7 +57,7 @@ Accept the suggested port number or enter any external port that is not used by 
 
 If you enter *80* or *443*, the endpoint is configured only on Gateway Nodes. These ports are reserved on Admin Nodes.
 
-xref:../network/index.adoc[Network guidelines]
+xref:../network/index.adoc[Networking guidelines]
 
 |Client type
 |The type of client application that will use this endpoint, either *S3* or *Swift*.
@@ -135,7 +135,7 @@ The certificate secures the connections between S3 and Swift clients and the Loa
 
 |===
 +
-. If you selected *Upload certificate*, browse for the server certificate, the certificate private key, and the CA bundle (optional).
+. If you selected *Upload certificate*, browse for the server certificate, the certificate private key, and the optional CA bundle.
 +
 image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
 

@@ -564,18 +564,18 @@ Expiration of server certificate for management interface
 a|
 The server certificate used for the management interface is about to expire.
 
-. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
-. Select *Management interface certificate*.
-. xref:../admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#upload-a-custom-management-interface-certificate[Upload a new management interface certificate.]
+. Select *CONFIGURATION* > *Security* > *Certificates*. 
+. On the *Global* tab, select *Management interface certificate*.
+. xref:../admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#add-a-custom-management-interface-certificate[Upload a new management interface certificate.]
 
 a|
 Expiration of server certificate for Storage API Endpoints
 a|
 The server certificate used for accessing storage API endpoints is about to expire.
 
-. Select *CONFIGURATION* > *Security* > *Certificates* and then select the *Global* tab.
-. Select *S3 and Swift API certificate*.
-. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#upload-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *S3 and Swift API certificate*.
+. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
 
 
 a|
@@ -1119,11 +1119,11 @@ a|
 A file was found in replicated object storage that could not be identified as a replicated object.
 
 . Determine if there are any issues with the underlying storage on a Storage Node. For example, run hardware diagnostics or perform a filesystem check.
-. After resolving any storage issues, run foreground verification to determine if objects are missing and to replace them if possible.
+. After resolving any storage issues, run object existence check to determine if objects are missing and to replace them if possible.
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
 
-xref:troubleshooting-storagegrid-system.adoc[Running foreground verification]
+xref:troubleshooting-storagegrid-system.adoc[Running object existence check]
 
 |===
 *Related information*

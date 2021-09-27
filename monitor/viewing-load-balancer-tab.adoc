@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: 'The Load Balancer tab includes performance and diagnostic graphs related to the operation of the Load Balancer service.'
 ---
-= Viewing the Load Balancer tab
+= View the Load Balancer tab
 :icons: font
 :imagesdir: ../media/
 
@@ -17,21 +17,21 @@ If there is no I/O being run through the Load Balancer service, or there is no l
 
 image::../media/nodes_page_load_balancer_tab.png[Nodes Page Load Balancer Tab]
 
-== Load Balancer Request Traffic
+== Request traffic
 
 This graph provides a 3-minute moving average of the throughput of data transmitted between load balancer endpoints and the clients making the requests, in bits per second.
 
 NOTE: This value is updated at the completion of each request. As a result, this value might differ from the real-time throughput at low request rates or for very long-lived requests. You can look at the Network tab to get a more realistic view of the current network behavior.
 
-== Load Balancer Incoming Request Rate
+== Incoming request rate
 
 This graph provides a 3-minute moving average of the number of new requests per second, broken down by request type (GET, PUT, HEAD, and DELETE). This value is updated when the headers of a new request have been validated.
 
-== Average Request Duration (Non-Error)
+== Average request duration (non-error)
 
 This graph provides a 3-minute moving average of request durations, broken down by request type (GET, PUT, HEAD, and DELETE). Each request duration starts when a request header is parsed by the Load Balancer service and ends when the complete response body is returned to the client.
 
-== Error Response Rate
+== Error response rate
 
 This graph provides a 3-minute moving average of the number of error responses returned to clients per second, broken down by the error response code.
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: 'When you need more detailed information about your StorageGRID system than the Dashboard provides, you can use the Nodes page to view metrics for the entire grid, each site in the grid, and each node at a site.'
 ---
-= Viewing the Nodes page
+= View the Nodes page
 :icons: font
 :imagesdir: ../media/
 
@@ -13,11 +13,9 @@ When you need more detailed information about your StorageGRID system than the D
 
 image::../media/nodes_menu.png[Nodes Menu]
 
-The Nodes table lists all the sites and nodes in your StorageGRID system. Summary information is displayed for each node. If a node has an active alert, an icon appears next to the node name. If the node is connected and has no active alerts, no  icon is shown.
+The Nodes table lists all the sites and nodes in your StorageGRID system. Summary information is displayed for each node. If a node has an active alert, an icon appears next to the node name. If the node is connected and has no active alerts, no icon is shown.
 
 == Connection state icons
-
-* *Normal* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark]: The node is connected to the grid, and no alerts are active.
 
 * *Not connected - Unknown* image:../media/icon_alarm_blue_unknown.png[blue question mark icon]: The node is not connected to the grid for an unknown reason. For example, the network connection between nodes has been lost or the power is down. The *Unable to communicate with node* alert might also be triggered. Other alerts might be active as well. This situation requires immediate attention.
 +
@@ -41,6 +39,8 @@ If there is an active alert for a node, one of the following icons appears next 
 
 To view the available information, select the name of the grid, site, or node as follows:
 
-* Select the grid name to see an aggregate summary of the statistics for your entire StorageGRID system. (The screenshot shows a system named StorageGRID Deployment.)
+* Select the grid name to see an aggregate summary of the statistics for your entire StorageGRID system.
 * Select a specific data center site to see an aggregate summary of the statistics for all nodes at that site.
 * Select a specific node to view detailed information for that node.
+
+image::../media/nodes_page_grid_level.png[Nodes page grid level]

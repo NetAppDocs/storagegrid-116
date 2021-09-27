@@ -11,9 +11,9 @@ summary: 'The StorageGRID system verifies the integrity of object data on Storag
 [.lead]
 The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.
 
-There are two verification processes: background verification and foreground verification. They work together to ensure data integrity. Background verification runs automatically, and continuously checks the correctness of object data. Foreground verification can be triggered by a user, to more quickly verify the existence (although not the correctness) of objects.
+There are two verification processes: background verification and object existence check. They work together to ensure data integrity. Background verification runs automatically, and continuously checks the correctness of object data. Foreground verification can be triggered by a user, to more quickly verify the existence (although not the correctness) of objects.
 
-== What background verification is
+== What is background verification?
 
 The background verification process automatically and continuously checks Storage Nodes for corrupt copies of object data, and automatically attempts to repair any issues that it finds.
 
@@ -96,22 +96,22 @@ NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was tr
  .. Select *Delete Quarantined Objects*.
  .. Click *Apply Changes*.
 
-== What foreground verification is
+== What is object existence check?
 
 Foreground verification is a user-initiated process that checks if all expected object data exists on a Storage Node. Foreground verification is used to verify the integrity of a storage device.
 
-Foreground verification is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If foreground verification finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node.
+Foreground verification is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If an object existence check finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node.
 
 Foreground verification checks both replicated object data and erasure-coded object data, as follows:
 
 * *Replicated objects*: If a copy of replicated object data is found to be missing, StorageGRID automatically attempts to replace the copy from copies stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because the missing copy no longer exists at the expected location. A new copy is generated and placed to satisfy the system's active ILM policy. This new copy might not be placed in the same location that the missing copy was stored.
 * *Erasure-coded objects*: If a fragment of an erasure-coded object is found to be missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), the Corrupt Copies Detected (ECOR) attribute is incremented by one. ILM then attempts to find another copy of the object, which it can use to generate a new erasure-coded copy.
 +
-If foreground verification identifies an issue with erasure coding on a storage volume, the foreground verification task pauses with an error message that identifies the affected volume. You must perform a recovery procedure for any affected storage volumes.
+If an object existence check identifies an issue with erasure coding on a storage volume, the object existence check job pauses with an error message that identifies the affected volume. You must perform a recovery procedure for any affected storage volumes.
 
 If no other copies of a missing replicated object or a corrupted erasure-coded object can be found in the grid, the *Objects lost* alert and the LOST (Lost Objects) legacy alarm are triggered.
 
-== Running foreground verification
+== Running object existence check
 
 Foreground verification enables you to verify the existence of data on a Storage Node. Missing object data might indicate that an issue exists with the underlying storage device.
 
@@ -129,16 +129,16 @@ Foreground verification does not provide useful information while recovery proce
 .About this task
 Foreground verification checks for both missing replicated object data and missing erasure-coded object data:
 
-* If foreground verification finds large amounts of missing object data, there is likely an issue with the Storage Node's storage that needs to be investigated and addressed.
-* If foreground verification finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
+* If object existence check finds large amounts of missing object data, there is likely an issue with the Storage Node's storage that needs to be investigated and addressed.
+* If object existence check finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
 
-You can configure foreground verification to check all of a Storage Node's object stores or only specific object stores.
+You can configure an object existence check to check all of a Storage Node's object stores or only specific object stores.
 
-If foreground verification finds missing object data, the StorageGRID system attempts to replace it. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
+If object existence check finds missing object data, the StorageGRID system attempts to replace it. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
 
-Foreground verification generates an LDR Foreground Verification grid task that, depending on the number of objects stored on a Storage Node, can take days or weeks to complete. It is possible to select multiple Storage Nodes at the same time; however, these grid tasks are not run simultaneously. Instead, they are queued and run one after the other until completion. When foreground verification is in progress on a Storage Node, you cannot start another foreground verification task on that same Storage Node even though the option to verify additional volumes might appear to be available for the Storage Node.
+Foreground verification generates an LDR Foreground Verification grid task that, depending on the number of objects stored on a Storage Node, can take days or weeks to complete. It is possible to select multiple Storage Nodes at the same time; however, these grid tasks are not run simultaneously. Instead, they are queued and run one after the other until completion. When object existence check is in progress on a Storage Node, you cannot start another object existence check job on that same Storage Node even though the option to verify additional volumes might appear to be available for the Storage Node.
 
-If a Storage Node other than the one where foreground verification is being run goes offline, the grid task continues to run until the *% Complete* attribute reaches 99.99 percent. The *% Complete* attribute then falls back to 50 percent and waits for the Storage Node to return to online status. When the Storage Node's state returns to online, the LDR Foreground Verification grid task continues until it completes.
+If a Storage Node other than the one where object existence check is being run goes offline, the grid task continues to run until the *% Complete* attribute reaches 99.99 percent. The *% Complete* attribute then falls back to 50 percent and waits for the Storage Node to return to online status. When the Storage Node's state returns to online, the LDR Foreground Verification grid task continues until it completes.
 
 .Steps
 . Select *_Storage Node_* > *LDR* > *Verification*.
@@ -167,16 +167,16 @@ If the number of *Missing Objects Detected* is large (if there are a hundreds of
 If the number of *Missing Fragments Detected* is large (if there are a hundreds of missing fragments), there is likely an issue with the Storage Node's storage. Contact technical support.
 
 +
-If foreground verification does not detect a significant number of missing replicated object copies or a significant number of missing fragments, then the storage is operating normally.
-. Monitor the completion of the foreground verification grid task:
+If object existence check does not detect a significant number of missing replicated object copies or a significant number of missing fragments, then the storage is operating normally.
+. Monitor the completion of the object existence check grid task:
  .. Select *Support* > *Tools* > *Grid Topology*. Then select *site* > *_Admin Node_* > *CMN* > *Grid Task* > *Overview* > *Main*.
- .. Verify that the foreground verification grid task is progressing without errors.
+ .. Verify that the object existence check grid task is progressing without errors.
 +
-*Note*: A notice-level alarm is triggered on grid task status (SCAS) if the foreground verification grid task pauses.
+*Note*: A notice-level alarm is triggered on grid task status (SCAS) if the object existence check grid task pauses.
 
- .. If the grid task pauses with a `critical storage error`, recover the affected volume and then run foreground verification on the remaining volumes to check for additional errors.
+ .. If the grid task pauses with a `critical storage error`, recover the affected volume and then run object existence check on the remaining volumes to check for additional errors.
 +
-*Attention*: If the foreground verification grid task pauses with the message `Encountered a critical storage error in volume _volID_`, you must perform the procedure for recovering a failed storage volume. See the recovery and maintenance instructions.
+*Attention*: If the object existence check job pauses with the message `Encountered a critical storage error in volume _volID_`, you must perform the procedure for recovering a failed storage volume. See the recovery and maintenance instructions.
 
 .After you finish
 
