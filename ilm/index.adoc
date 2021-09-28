@@ -2,15 +2,25 @@
 permalink: ilm/index.html
 sidebar: sidebar
 keywords:
-summary: 'Learn how to manage objects with information lifecycle rules and policies and how to use S3 Object Lock to comply with regulations for object retention.'
+summary: 'You manage the objects in a StorageGRID system by configuring information lifecycle management (ILM) rules and policies. The ILM rules and policies instruct StorageGRID how to create and distribute copies of object data and how to manage those copies over time.'
 ---
-= Manage objects with ILM
+= Overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Learn how to manage objects with information lifecycle rules and policies and how to use S3 Object Lock to comply with regulations for object retention.
 
-* xref:managing-objects-with-information-lifecycle-management.adoc[Managing objects with information lifecycle management]
-* xref:managing-objects-with-s3-object-lock.adoc[Managing objects with S3 Object Lock]
-* xref:example-ilm-rules-and-policies.adoc[Example ILM rules and policies]
+You manage the objects in a StorageGRID system by configuring information lifecycle management (ILM) rules and policies. The ILM rules and policies instruct StorageGRID how to create and distribute copies of object data and how to manage those copies over time.
+
+== About these instructions
+
+Use these instructions to:
+
+* Learn about StorageGRID ILM, including how ILM operates throughout an object's life and what ILM policies and rules are.
+* Learn how to configure storage pools, Erasure Coding profiles, and ILM rules.
+* Learn how to create and activate an ILM policy that will protect object data across one or more sites.
+* Learn how to manage objects with S3 Object Lock, which helps to ensure that objects in specific S3 buckets are not deleted or overwritten for a specified amount of time.
+
+== Before you start
+
+Designing and implementing ILM rules and the ILM policy requires careful planning. You must understand your operational requirements, the topology of your StorageGRID system, your object protection needs, and the available storage types. Then, you must determine how you want different types of objects to be copied, distributed, and stored.

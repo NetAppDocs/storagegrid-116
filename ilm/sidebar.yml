@@ -1,24 +1,22 @@
 section: ilm
 title: Manage objects with ILM
-url: "/ilm/index.html"
 entries:
-  - title: Manage objects with information lifecycle management
-    url: "/ilm/managing-objects-with-information-lifecycle-management.html"
+  - title: Overview
+    url: "/ilm/index.html"
+  - title: How ILM operates throughout an object's life
+    url: "/ilm/how-ilm-operates-throughout-objects-life.html"
     entries:
-    - title: How ILM operates throughout an object's life
-      url: "/ilm/how-ilm-operates-throughout-objects-life.html"
+    - title: How objects are ingested
+      url: "/ilm/how-objects-are-ingested.html"
       entries:
-      - title: How objects are ingested
-        url: "/ilm/how-objects-are-ingested.html"
-        entries:
         - title: Data-protection options for ingest
           url: "/ilm/data-protection-options-for-ingest.html"
         - title: Advantages, disadvantages, and limitations of the data-protection
               options
           url: "/ilm/advantages-disadvantages-of-ingest-options.html"
-      - title: How objects are stored (replication or erasure coding)
-        url: "/ilm/how-objects-are-stored-replication-erasure-coding.html"
-        entries:
+    - title: How objects are stored (replication or erasure coding)
+      url: "/ilm/how-objects-are-stored-replication-erasure-coding.html"
+      entries:
         - title: What replication is
           url: "/ilm/what-replication-is.html"
         - title: Why you should not use single-copy replication
@@ -29,25 +27,24 @@ entries:
           url: "/ilm/what-erasure-coding-schemes-are.html"
         - title: Advantages, disadvantages, and requirements for erasure coding
           url: "/ilm/advantages-disadvantages-and-requirements-for-ec.html"
-      - title: How object retention is determined
-        url: "/ilm/how-object-retention-is-determined.html"
-      - title: How objects are deleted
-        url: "/ilm/how-objects-are-deleted.html"
-        entries:
+    - title: How object retention is determined
+      url: "/ilm/how-object-retention-is-determined.html"
+    - title: How objects are deleted
+      url: "/ilm/how-objects-are-deleted.html"
+      entries:
         - title: How S3 versioned objects are deleted
           url: "/ilm/how-s3-versioned-objects-are-deleted.html"
-    - title: What an ILM policy is
-      url: "/ilm/what-ilm-policy-is.html"
-    - title: What an ILM rule is
-      url: "/ilm/what-ilm-rule-is.html"
-      entries:
+  - title: What an ILM policy is
+    url: "/ilm/what-ilm-policy-is.html"
+  - title: What an ILM rule is
+    url: "/ilm/what-ilm-rule-is.html"
+    entries:
       - title: What ILM rule filtering is
         url: "/ilm/what-ilm-rule-filtering-is.html"
       - title: What ILM rule placement instructions are
         url: "/ilm/what-ilm-placement-instructions-are.html"
-    - title: Create storage grades, storage pools, EC profiles, and regions
-      url: "/ilm/creating-storage-grades-storage-pools-ec-profiles-regions.html"
-      entries:
+  - title: Create storage grades, storage pools, EC profiles, and regions
+    entries:
       - title: Create and assign storage grades
         url: "/ilm/creating-and-assigning-storage-grades.html"
       - title: Configure storage pools
@@ -110,9 +107,10 @@ entries:
           url: "/ilm/deactivating-erasure-coding-profile.html"
       - title: Configure regions (optional and S3 only)
         url: "/ilm/configuring-regions-optional-and-s3-only.html"
-    - title: Create an ILM rule
-      url: "/ilm/creating-ilm-rule.html"
-      entries:
+  - title: Create an ILM rule 
+    entries:
+      - title: 'Access Create ILM Rule wizard.html'
+        url: "/ilm/access-create-ilm-rule-wizard.html"
       - title: 'Step 1 of 3: Define basics'
         url: "/ilm/step-1-of-3-define-basics.html"
         entries:
@@ -127,9 +125,9 @@ entries:
         url: "/ilm/step-3-of-3-define-ingest-behavior.html"
       - title: Create a default ILM rule
         url: "/ilm/creating-default-ilm-rule.html"
-    - title: Create an ILM policy
-      url: "/ilm/creating-ilm-policy.html"
-      entries:
+  - title: Create an ILM policy
+    url: "/ilm/creating-ilm-policy.html"
+    entries:
       - title: Create a proposed ILM policy
         url: "/ilm/creating-proposed-ilm-policy.html"
       - title: Create an ILM policy after S3 Object Lock is enabled
@@ -143,11 +141,12 @@ entries:
         url: "/ilm/activating-ilm-policy.html"
       - title: Verify an ILM policy with object metadata lookup
         url: "/ilm/verifying-ilm-policy-with-object-metadata-lookup.html"
-    - title: Work with ILM rules and ILM policies
-      url: "/ilm/working-with-ilm-rules-and-ilm-policies.html"
-  - title: Manage objects with S3 Object Lock
-    url: "/ilm/managing-objects-with-s3-object-lock.html"
+  - title: Work with ILM rules and ILM policies
+    url: "/ilm/working-with-ilm-rules-and-ilm-policies.html"
+  - title: Use S3 Object Lock
     entries:
+    - title: Manage objects with S3 Object Lock
+      url: "/ilm/managing-objects-with-s3-object-lock.html" 
     - title: Compare S3 Object Lock to legacy Compliance
       url: "/ilm/comparing-s3-object-lock-to-legacy-compliance.html"
     - title: Workflow for S3 Object Lock
@@ -160,7 +159,6 @@ entries:
         Compliance configuration
       url: "/ilm/resolving-consistency-errors-when-updating-bucket-s3-object-lock-configuration.html"
   - title: Example ILM rules and policies
-    url: "/ilm/example-ilm-rules-and-policies.html"
     entries:
     - title: 'Example 1: ILM rules and policy for object storage'
       url: "/ilm/example-1-ilm-rules-and-policy-for-object-storage.html"

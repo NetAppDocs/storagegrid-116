@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, recover, restore grid node, restore node, validate grid node, validate node
 summary: 'You must restore the grid configuration files for any failed grid nodes, and then validate the grid configuration files and resolve any errors.'
 ---
-= Restoring and validating grid nodes
+= Restore and validate grid nodes
 :icons: font
 :imagesdir: ../media/
 
@@ -49,7 +49,7 @@ The `storagegrid node import` command succeeds only if the target node was shut 
 
  .. If you see the error about the node being owned by another host, run the command again with the `--force` flag to complete the import:``sudo storagegrid --force node import node-var-local-volume-path``
 +
-NOTE: Any nodes imported with the `--force` flag will require additional recovery steps before they can rejoin the grid, as described in "`Performing additional recovery steps, if required.`"
+NOTE: Any nodes imported with the `--force` flag will require additional recovery steps before they can rejoin the grid, as described in xref:whats-next-performing-additional-recovery-steps-if-required.adoc[What's next: Perform additional recovery steps, if required].
 
 . For grid nodes that do not have a `/var/local` volume, recreate the node's configuration file to restore it to the host.
 +
@@ -57,7 +57,7 @@ Follow the guidelines in "`Creating node configuration files`" in the installati
 +
 IMPORTANT: When you re-create the configuration file for a node, you must use the same name for the replacement node that was used for the node you are recovering. For Linux deployments, ensure that the configuration file name contains the node name. You should use the same network interfaces, block device mappings, and IP addresses when possible. This practice minimizes the amount of data that needs to be copied to the node during recovery, which could make the recovery significantly faster (in some cases, minutes rather than weeks).
 +
-IMPORTANT: If you use any new block devices (devices that the StorageGRID node did not use previously) as values for any of the configuration variables that start with `BLOCK_DEVICE_` when you are recreating the configuration file for a node, be sure to follow all of the guidelines in "`Fixing missing block device errors.`"
+IMPORTANT: If you use any new block devices (devices that the StorageGRID node did not use previously) as values for any of the configuration variables that start with `BLOCK_DEVICE_` when you are recreating the configuration file for a node, be sure to follow all of the guidelines in xref:fixing-missing-block-device-errors.adoc[Fix missing block device errors].
 
 . Run the following command on the recovered host to list all StorageGRID nodes.
 +
@@ -75,8 +75,4 @@ xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 
 xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
 
-xref:fixing-mssing-network-interface-errors.adoc[Fixing missing network interface errors]
-
-xref:fixing-missing-block-device-errors.adoc[Fixing missing block device errors]
-
-xref:whats-next-performing-additional-recovery-steps-if-required.adoc[What's next: Performing additional recovery steps, if required]
+xref:fixing-mssing-network-interface-errors.adoc[Fix missing network interface errors]
