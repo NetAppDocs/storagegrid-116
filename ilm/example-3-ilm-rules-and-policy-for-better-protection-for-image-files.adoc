@@ -42,7 +42,8 @@ Content Placement
 a|
 Create a 2+1 erasure-coded copy using three sites
 |===
-image:../media/policy_3_rule_1_ec_images_adv_filtering.gif[ILM rule 1 for example 3: Use EC for image files larger than 200 KB]
+
+image::../media/policy_3_rule_1_ec_images_adv_filtering.gif[ILM rule 1 for example 3: Use EC for image files larger than 200 KB]
 
 Because this rule is configured as the first rule in the policy, the erasure-coding placement instruction only applies to images that are larger than 200 KB.
 
@@ -72,7 +73,8 @@ Content Placement
 a|
 Create 3 replicated copies in all Storage Nodes
 |===
-image:../media/policy_3_rule_2_copies_for_images_adv_filtering.gif[ILM rule 2 for example 3: Replicate 3 copies for all remaining image files]
+
+image::../media/policy_3_rule_2_copies_for_images_adv_filtering.gif[ILM rule 2 for example 3: Replicate 3 copies for all remaining image files]
 
 Because the first rule in the policy has already matched image files larger than 200 KB, these placement instructions only apply to image files 200 KB or smaller.
 
