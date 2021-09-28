@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, recover, linux, adding interfaces, add interfaces, adding interface to node, add interface to node
 summary: 'If you want to add an interface to a Linux-based node that you did not install initially, you must use this procedure.'
 ---
-= Linux: Adding interfaces to an existing node
+= Linux: Add interfaces to existing node
 :icons: font
 :imagesdir: ../media/
 
@@ -19,9 +19,7 @@ xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
 
 You perform this procedure on the Linux server hosting the node that needs the new network assignment, not inside the node. This procedure only adds the interface to the node; a validation error occurs if you attempt to specify any other network parameters.
 
-To provide addressing information, you must use the Change IP tool. See the information about changing a node's network configuration.
-
-xref:changing-nodes-network-configuration.adoc[Changing a node's network configuration]
+To provide addressing information, you must use the Change IP tool. See xref:changing-nodes-network-configuration.adoc[Change node network configuration]
 
 .Steps
 
@@ -51,5 +49,3 @@ CLIENT_NETWORK_MAC = aa:57:61:07:ea:5c
 xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 
 xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-xref:changing-nodes-network-configuration.adoc[Changing a node's network configuration]

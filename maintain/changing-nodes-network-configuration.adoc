@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, network configuration, node network configuration
 summary: 'You can change the network configuration of one or more nodes using the Change IP tool. You can change the configuration of the Grid Network, or add, change, or remove the Admin or Client Networks.'
 ---
-= Changing a node's network configuration
+= Change node network configuration
 :icons: font
 :imagesdir: ../media/
 
@@ -21,7 +21,7 @@ You must have the `Passwords.txt` file.
 
 See the StorageGRID installation instructions for your Linux operating system.
 
-*Appliances:* On StorageGRID appliances, if the Client or Admin Network was not configured in the StorageGRID Appliance Installer during the initial installation, the network cannot be added by using only the Change IP tool. First, you must place the appliance in maintenance mode, configure the links, return the appliance to normal operating mode, and then use the Change IP tool to modify the network configuration. See the procedure for configuring network links in the installation and maintenance instructions for your appliance.
+*Appliances:* On StorageGRID appliances, if the Client or Admin Network was not configured in the StorageGRID Appliance Installer during the initial installation, the network cannot be added by using only the Change IP tool. First, you must xref:placing-appliance-into-maintenance-mode.adoc[place the appliance in maintenance mode], configure the links, return the appliance to normal operating mode, and then use the Change IP tool to modify the network configuration. See the procedure for configuring network links in the installation and maintenance instructions for your appliance.
 
 You can change the IP address, subnet mask, gateway, or MTU value for one or more nodes on any network.
 
@@ -161,7 +161,7 @@ After applying or staging changes, a new Recovery Package is generated as a resu
 
 .Related information
 
-xref:linux-adding-interfaces-to-existing-node.adoc[Linux: Adding interfaces to an existing node]
+xref:linux-adding-interfaces-to-existing-node.adoc[Linux: Add interfaces to existing node]
 
 xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 
@@ -175,4 +175,4 @@ xref:../sg5700/index.adoc[SG5700 storage appliances]
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:configuring-ip-addresses.adoc[Configuring IP addresses]
+xref:configuring-ip-addresses.adoc[Configure IP addresses]
