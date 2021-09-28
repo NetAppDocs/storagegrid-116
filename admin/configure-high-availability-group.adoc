@@ -53,8 +53,6 @@ image::../media/ha_group_add_interfaces.png[HA Groups Add Interfaces]
 
 * You must select at least one interface.
 * You can select only one interface for a node.
-+
-IP addresses will be restricted to the smallest subnet (the one with the largest prefix).
 
 * If the HA group is for HA protection of Admin Node services, which include the the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
 
@@ -84,7 +82,7 @@ If the HA group includes more than one interface and the Primary interface fails
 
 === Enter IP addresses
 
-. If the virtual IP addresses for this HA group are on a different subnet than the ones used by S3 and Swift clients or by Grid Manager and Tenant Manager users, specify the gateway for the VIP subnet.
+. If the virtual IP addresses for this HA group are on a different subnet than the ones used by S3 and Swift clients or by Grid Manager and Tenant Manager users, specify the gateway and subnet prefix length for the VIP subnet.
 +
 image::../media/ha_group_select_virtual_ips.png[HA Groups enter VIPs]
 +
