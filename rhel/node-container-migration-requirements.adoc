@@ -20,13 +20,13 @@ If you want to use the StorageGRID node migration feature, your deployment must 
 
 If you are using virtual hosts and the underlying hypervisor layer supports VM migration, you might want to use this capability instead of StorageGRID's node migration feature. In this case, you can ignore these additional requirements.
 
-Before performing migration or hypervisor maintenance, shut down the nodes gracefully. See the recovery and maintenance instructions for shutting down a grid node.
+Before performing migration or hypervisor maintenance, shut down the nodes gracefully. See the xref:shutting-down-grid-node.adoc[shut down grid node] instructions.
 
 == VMware Live Migration not supported
 
 OpenStack Live Migration and VMware live vMotion cause the virtual machine clock time to jump and are not supported for grid nodes of any type. Though rare, incorrect clock times can result in loss of data or configuration updates.
 
-Cold migration is supported. In cold migration, you shut down the StorageGRID nodes before migrating them between hosts. See the procedure for shutting down a grid node in the recovery and maintenance instructions.
+Cold migration is supported. In cold migration, you shut down the StorageGRID nodes before migrating them between hosts. See the xref:shutting-down-grid-node.adoc[shut down grid node] instructions.
 
 == Consistent network interface names
 

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, recover, maintenance, maintain, failed storage volumes, failed volumes, cassandra, cassandra rebuild, rebuild cassandra, cassandra database
 summary: 'You must run a script that reformats and remounts storage on failed storage volumes, and rebuilds the Cassandra database on the Storage Node if the system determines that it is necessary.'
 ---
-= Recovering failed storage volumes and rebuilding the Cassandra database
+= Recover failed storage volumes and rebuild Cassandra database
 :icons: font
 :imagesdir: ../media/
 
@@ -17,9 +17,7 @@ You must run a script that reformats and remounts storage on failed storage volu
 * The total size of the replacement storage must be the same as the original.
 * You have checked that a Storage Node decommissioning is not in progress, or you have paused the node decommission procedure. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Decommission*.)
 * You have checked that an expansion is not in progress. (In the Grid Manager, select *Maintenance* > *Maintenance Tasks* > *Expansion*.)
-* You have reviewed the warnings about storage volume recovery.
-+
-link:reviewing_warnings_about_storage_volume_recovery.adoc[Reviewing warnings about storage volume recovery]
+* You have link:reviewing_warnings_about_storage_volume_recovery.adoc[reviewed the warnings about storage volume recovery].
 
 . As needed, replace failed physical or virtual storage associated with the failed storage volumes that you identified and unmounted earlier.
 +
@@ -75,7 +73,3 @@ Starting services.
 Reformatting done.  Now do manual steps to
 restore copies of data.
 ----
-
-.Related information
-
-xref:reviewing-warnings-about-storage-volume-recovery.adoc[Reviewing warnings about storage volume recovery]
