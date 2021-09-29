@@ -52,6 +52,7 @@ image::../media/ha_group_add_interfaces.png[HA Groups Add Interfaces]
 .Guidelines for selecting interfaces
 
 * You must select at least one interface.
+
 * You can select only one interface for a node.
 
 * If the HA group is for HA protection of Admin Node services, which include the the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
@@ -60,9 +61,7 @@ image::../media/ha_group_add_interfaces.png[HA Groups Add Interfaces]
 
 * If the HA group is for HA protection of the deprecated CLB service, select interfaces on Gateway Nodes only.
 
-* If you select interfaces on different types of nodes, an informational note appears. Only the services common to the selected nodes will be available on the virtual IPs.
-+
-image::../media/ha_groups_different_node_types.png[HA Groups Different Node Types]
+* If you select interfaces on different types of nodes, an informational note appears. You are reminded that if a failover occurs, services provided by the previously active node might not be available on the newly active node. For example, a failover Gateway Node would not be able to provide HA protection of Admin Node services.
 
 . Select *Continue*.
 
@@ -72,6 +71,9 @@ image::../media/ha_groups_different_node_types.png[HA Groups Different Node Type
 +
 Drag and drop rows to change the values in the *Failover order* column.
 +
+image::../media/ha_group_determine_failover.png[HA Groups determine failover order]
++
+
 IMPORTANT: If the HA group provides access to the Grid Manager, you must select an interface on the primary Admin Node to be the Primary interface. Some maintenance procedures can only be performed from the primary Admin Node.
 +
 The first interface in the list is the Primary interface. The Primary interface is the active interface unless a failure occurs.
