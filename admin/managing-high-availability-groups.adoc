@@ -11,9 +11,9 @@ summary: 'You can group the network interfaces of multiple Admin and Gateway Nod
 [.lead]
 You can group the network interfaces of multiple Admin and Gateway Nodes into a high availability (HA) group. If the active interface in the group fails, a backup interface can manage the workload.
 
-== What is a high availability group?
+== What is an HA group?
 
-You can use HA groups to provide highly available data connections for S3 and Swift clients or to provide highly available connections to the Grid Manager and the Tenant Manager.
+You can use high availability (HA) groups to provide highly available data connections for S3 and Swift clients or to provide highly available connections to the Grid Manager and the Tenant Manager.
 
 Each HA group provides access to the shared services on the selected nodes.
 
@@ -27,13 +27,13 @@ Each HA group provides access to the shared services on the selected nodes.
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
 
-. You assign one or more virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
+. You assign one to 10 virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
 
 . You specify one interface to be the Primary interface. The Primary interface is the active interface unless a failure occurs.
 
 . You determine the failover order for any Backup interfaces.
 
-For instructions: xref:configure-high-availability-group.adoc[Configure high availability groups]
+For instructions: xref:configure-high-availability-group.adoc[Configure high availability groups].
 
 == What is the active interface?
 
