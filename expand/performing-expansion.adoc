@@ -17,7 +17,7 @@ When you perform the expansion, the new grid nodes are added to your existing St
 * You must have the Maintenance or Root Access permission.
 * You must have the provisioning passphrase.
 * You must have deployed all of the grid nodes that are being added in this expansion.
-* If you are adding Storage Nodes, you must have confirmed that all data-repair operations performed as part of a recovery are complete. See the steps for checking data repair jobs in the recovery and maintenance instructions.
+* If you are adding Storage Nodes, you must have confirmed that all data-repair operations performed as part of a recovery are complete. See xref:checking-data-repair-jobs.adoc[Check data repair jobs]
 * If you are adding a new site, you must review and update ILM rules before starting the expansion procedure to ensure that object copies are not stored to the new site until after the expansion is complete. For example, if a rule uses the default storage pool (All Storage Nodes), you must create a new storage pool that contains only the existing Storage Nodes and update the ILM rule to use the new storage pool. Otherwise, objects will be copied to the new site as soon as the first node at that site becomes active. See the instructions for managing objects with information lifecycle management.
 
 .About this task

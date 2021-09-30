@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, recover, stop services, shut down nodes, node shutdown
 summary: 'Before you can power off a StorageGRID system, you must stop all services running on each grid node, and then shut down all VMware virtual machines, Docker containers, and StorageGRID appliances.'
 ---
-= Stopping services and shutting down grid nodes
+= Stop services and shut down grid nodes
 :icons: font
 :imagesdir: ../media/
 
@@ -22,9 +22,7 @@ This approach allows you to use the primary Admin Node to monitor the status of 
 
 NOTE: If a single host includes more than one grid node, do not shut down the host until you have stopped all of the nodes on that host. If the host includes the primary Admin Node, shut down that host last.
 
-NOTE: If required, you can migrate nodes from one Linux host to another to perform host maintenance without impacting the functionality or availability of your grid.
-
-xref:linux-migrating-grid-node-to-new-host.adoc[Linux: Migrating a grid node to a new host]
+NOTE: If required, you can xref:linux-migrating-grid-node-to-new-host.adoc[migrate nodes from one Linux host to another] to perform host maintenance without impacting the functionality or availability of your grid.
 
 .Steps
 

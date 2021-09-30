@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, disconnected nodes, decommission node
 summary: 'You might need to decommission a node that is not currently connected to the grid \(one whose Health is Unknown or Administratively Down\).'
 ---
-= Decommissioning disconnected grid nodes
+= Decommission disconnected grid nodes
 :icons: font
 :imagesdir: ../media/
 
@@ -13,15 +13,9 @@ You might need to decommission a node that is not currently connected to the gri
 
 .What you'll need
 
-* You understand the requirements and considerations for decommissioning grid nodes.
-+
-xref:considerations-for-decommissioning-grid-nodes.adoc[Considerations for decommissioning grid nodes]
-
+* You understand the requirements and xref:considerations-for-decommissioning-grid-nodes.adoc[considerations for decommissioning grid nodes].
 * You have obtained all prerequisite items.
-* You have ensured that no data repair jobs are active.
-+
-xref:checking-data-repair-jobs.adoc[Checking data repair jobs]
-
+* You have ensured that no data repair jobs are active. See xref:checking-data-repair-jobs.adoc[Check data repair jobs].
 * You have confirmed that Storage Node recovery is not in progress anywhere in the grid. If it is, you must wait until any Cassandra rebuild performed as part of the recovery is complete. You can then proceed with decommissioning.
 * You have ensured that other maintenance procedures will not be run while the node decommission procedure is running, unless the node decommission procedure is paused.
 * The *Decommission Possible* column for the disconnected node or nodes you want to decommission includes a green check mark.
@@ -50,9 +44,7 @@ IMPORTANT: If you believe that object data can still be recovered from the node,
 IMPORTANT: If you have more than one disconnected Storage Node that you cannot recover, contact technical support to determine the best course of action.
 
 * When you decommission a disconnected Storage Node, StorageGRID starts data repair jobs at the end of the decommissioning process. These jobs attempt to reconstruct the object data and metadata that was stored on the disconnected node.
-* When you decommission a disconnected Storage Node, the decommission procedure completes relatively quickly. However, the data repair jobs can take days or weeks to run and are not monitored by the decommission procedure. You must manually monitor these jobs and restart them as needed. See the instructions on monitoring data repair.
-+
-xref:checking-data-repair-jobs.adoc[Checking data repair jobs]
+* When you decommission a disconnected Storage Node, the decommission procedure completes relatively quickly. However, the data repair jobs can take days or weeks to run and are not monitored by the decommission procedure. You must manually monitor these jobs and restart them as needed. See xref:checking-data-repair-jobs.adoc[Check data repair jobs].
 
 * If you decommission a disconnected Storage Node that contains the only copy of an object, the object will be lost. The data repair jobs can only reconstruct and recover objects if at least one replicated copy or enough erasure-coded fragments exist on Storage Nodes that are currently connected.
 
@@ -91,7 +83,7 @@ image::../media/decommission_nodes_procedure_in_progress_disconnected.png[screen
 
 . As soon as the new Recovery Package is available, click the link or select *Maintenance* > *System* > *Recovery Package* to access the Recovery Package page. Then, download the `.zip` file.
 +
-See the instructions for downloading the Recovery Package.
+See the instructions for xref:downloading-recovery-package.adoc[downloading the Recovery Package].
 +
 NOTE: Download the Recovery Package as soon as possible to ensure you can recover your grid if something goes wrong during the decommission procedure.
 +
@@ -124,7 +116,7 @@ NOTE: High-risk objects are objects that are at risk of being completely lost. T
  .. Use the following commands to track or restart repairs:
   *** Use the `repair-data show-ec-repair-status` command to track repairs of erasure coded data.
   *** Use the `repair-data start-ec-node-repair` command with the `--repair-id` option to restart a failed repair.
-See the instructions for checking data repair jobs.
+See xref:checking-data-repair-jobs.adoc[Check data repair jobs].
 . Continue to track the status of EC data repairs until all repair jobs have completed successfully.
 +
 As soon as the disconnected nodes have been decommissioned and all data repair jobs have been completed, you can decommission any connected grid nodes as required.
@@ -145,7 +137,3 @@ xref:../sg6000/index.adoc[SG6000 storage appliances]
 .Related information
 
 xref:grid-node-recovery-procedures.adoc[Grid node recovery procedures]
-
-xref:downloading-recovery-package.adoc[Downloading the Recovery Package]
-
-xref:checking-data-repair-jobs.adoc[Checking data repair jobs]

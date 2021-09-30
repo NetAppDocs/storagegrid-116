@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, missing block device, block device error
 summary: 'The system checks that each recovered node maps to a valid block device special file or a valid softlink to a block device special file. If StorageGRID finds invalid mapping in the `/etc/storagegrid/nodes/_node-name_.conf` file, a missing block device error displays.'
 ---
-= Fixing missing block device errors
+= Fix missing block device errors
 :icons: font
 :imagesdir: ../media/
 
@@ -19,7 +19,7 @@ If you observe an error matching this pattern:
 
 It means that `/etc/storagegrid/nodes/_node-name_.conf` maps the block device used by _node-name_ for PURPOSE to the given path-name in the Linux file system, but there is not a valid block device special file, or softlink to a block device special file, at that location.
 
-Verify that you completed the steps in "`Deploying new Linux hosts.`" Use the same persistent device names for all block devices as were used on the original host.
+Verify that you completed the steps in xref:deploying-new-linux-hosts.adoc[Deploy new Linux hosts]. Use the same persistent device names for all block devices as were used on the original host.
 
 If you are unable to restore or recreate the missing block device special file, you can allocate a new block device of the appropriate size and storage category and edit the node configuration file to change the value of BLOCK_DEVICE_PURPOSE to point to the new block device special file.
 
@@ -36,8 +36,6 @@ sudo dd if=/dev/zero of=/dev/mapper/my-block-device-name bs=1G count=1
 ----
 
 .Related information
-
-xref:deploying-new-linux-hosts.adoc[Deploying new Linux hosts]
 
 xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 
