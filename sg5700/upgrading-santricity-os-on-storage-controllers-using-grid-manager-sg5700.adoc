@@ -14,10 +14,10 @@ For storage controllers currently using SANtricity OS 08.42.20.00 (11.42) or new
 .What you'll need
 
 * You have consulted the NetApp Interoperability Matrix Tool (IMT) to confirm that the SANtricity OS version you are using for the upgrade is compatible with your appliance.
-* You must have the Maintenance permission.
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the provisioning passphrase.
-* You must have access to the NetApp downloads page for SANtricity OS.
+* You have the Maintenance or Root Access permission.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the provisioning passphrase.
+* You have access to the NetApp downloads page for SANtricity OS.
 
 .About this task
 
@@ -115,7 +115,7 @@ For some nodes, the selected upgrade file is intentionally not applied and you c
 *** Storage Node was already upgraded.
 *** SANtricity OS upgrade is not applicable to this node.
 *** SANtricity OS file is not compatible with this node.
-*** Fix the issues with the node first and then try the upgrade again. xxxxxxxxxxxxxxxxxxxxxxxxx
+*** Fix the issues with the node first and then try the upgrade again. 
 
 +
 The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message. +
