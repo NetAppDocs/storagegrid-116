@@ -1,39 +1,32 @@
 ---
-permalink: audit/configure-audit-messages.html
+permalink: admin/configuring-syslog-server.html
 sidebar: sidebar
-keywords: audit messages, configure syslog server, configure external syslog server
-summary: 'All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded.'
+keywords: how to configure syslog server, syslog, syslog server
+summary: 'Configure syslog server.'
 ---
-= Configure audit messages
+= Configure syslog serverxxxxxxxxxxxxxxxxxxxx
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded. You can also specify whether these messages are sent to the audit log on Admin Nodes (default), to an external syslog server, or to both. For a description of StorageGrid audit messages, see xxxxxxxxxxxxxxx.
+Load balancer endpoints dexxxxxxxxxxxxxxrageGRID load balancer on Gateway and Admin Nodes.
 
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission. or maintenance?? xxxxxxxxxx
-* DNS ????xxxxxxxxxxxxxxxx
-xxxxxxxxxxxIs auditing turned on by default? Can it be turned off?
 
-== Configure audit message levels and protocol headers
-Why is this done? xxxxxxxxxxxxxxxxxxxx? What if it is not done? morexxxxxxxxxxxxxxxxxxxxxx
-Add existing  content here. ///////???
+* You have the Root Access permission.
 
 
-== Configure audit destinations
 
-By default, StorageGrid sends audit messages to the Admin node. You can configure an external syslog server to receiveve audit messages from the StorageGRID system. The messages are xxxxxxxxxxx.
 
-=== Configure external syslog server
+== Create a load balancer endpointcxxxxxxxxxxxxxxxxxxxx
 
-==== Access the wizardxxxxxxxxxxxx
+Each load balancer endpoint specifies a port, a client type (S3 or Swift), and a network protocol (HTTP or HTTPS).
 
-. From the *Audit* page, select Configure syslog server.
-+
+=== Access the wizardxxxxxxxxxxxx
 
+. Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
 
 . Select *Create*.
 
