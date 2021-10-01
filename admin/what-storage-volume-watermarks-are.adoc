@@ -1,51 +1,109 @@
 ---
 permalink: admin/what-storage-volume-watermarks-are.html
 sidebar: sidebar
-keywords: 
-summary: 'StorageGRID uses Storage Volume watermarks to allow you to monitor the amount of usable space available on Storage Nodes. If the amount of space available on a node is less than a configured watermark setting, the Storage Status (SSTS) alarm is triggered so that you can determine if you need to add Storage Nodes.'
+keywords: what are storage volume watermarks, storage volume soft read-only watermark, storage volume hard read-only watermark, storage volume read-write watermark
+summary: 'Storage volume watermarks ensure that Storage Nodes are transitioned to a read-only state as they becomes full and allow Storage Nodes that have transitioned to a read-only state to become read-write again.'
+
 ---
-= What Storage Volume watermarks are
+= What are storage volume watermarks?
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID uses Storage Volume watermarks to allow you to monitor the amount of usable space available on Storage Nodes. If the amount of space available on a node is less than a configured watermark setting, the Storage Status (SSTS) alarm is triggered so that you can determine if you need to add Storage Nodes.
+Storage volume watermarks ensure that Storage Nodes are transitioned to a read-only state as they becomes full and allow Storage Nodes that have transitioned to a read-only state to become read-write again.
 
-To view the current settings for the Storage Volume watermarks, select *Configuration* > *Storage Options* > *Overview*.
+Two storage volume watermarks control when full Storage Nodes become read-only, as follows:
 
-image::../media/storage_watermarks.png[Watermarks]
+* When the free space on each storage volume in a Storage Node is less than that volume's *Storage Volume Soft Read-Only Watermark*, the Storage Node transitions to the soft read-only state.
 
-The following figure represents a Storage Node that has three volumes and shows the relative position of the three Storage Volume watermarks. Within each Storage Node, StorageGRID reserves space on volume 0 for object metadata; any remaining space on that volume is used for object data. All other volumes are used exclusively for object data, which includes replicated copies and erasure-coded fragments.
+* When the free space on each storage volume in a Storage Node is less than that volume's *Storage Volume Hard Read-Only Watermark*, the Storage Node transitions to the hard read-only state.
 
+A third storage volume watermark allows Storage Nodes that have transitioned to either read-only state to become read-write again. When the free space on any one storage volume in a Storage Node is greater than that volume's *Storage Volume Read-Write Watermark*, the Storage Node transitions back to the read-write state.
+
+The following figure shows the relative position of these three Storage Volume watermarks on a Storage Node. In this example, all storage volumes are the same size, so they have the same watermark settings. 
+ 
 image::../media/storage_volume_watermarks.png[Watermarks diagram]
 
-The Storage Volume watermarks are system-wide defaults that indicate the minimum amount of free space required on each volume in the Storage Node to prevent StorageGRID from changing the node's read-write behavior or triggering an alarm. Note that all volumes must reach the watermark before StorageGRID takes action. If some volumes have more than the minimum required amount of free space, the alarm is not triggered and the node's read-write behavior does not change.
+For any given storage volume, the following statements are always true:
 
-== Storage Volume Soft Read-Only Watermark (VHWM)
+* The Hard Read-Only Watermark is always less than the Soft Read-Only Watermark. For example, the Hard Read-Only Watermark might be 5 GB, while the Soft Read-Only Watermark might be 10 GB.
 
-The Storage Volume Soft Read-Only Watermark is the first watermark to indicate that a node's usable space for object data is becoming full. This watermark represents how much free space must exist on every volume in a Storage Node to prevent the node from going into "`soft read-only mode.`" Soft read-only mode means that the Storage Node advertises read-only services to the rest of the StorageGRID system, but fulfills all pending write requests.
+* The Soft Read-Only Watermark is always less than the Read-Write Watermark. For example, the Soft Read-Only Watermark might be 10 GB, while the Read-Write Watermark might be 30 GB.
 
-If the amount of free space on each volume is less than the setting of this watermark, the Storage Status (SSTS) alarm is trigged at the Notice level, and the Storage Node transitions to soft read-only mode.
+NOTE: The storage volume watermarks only apply to the space used for object data (replicated and erasure-coded copies). To learn about the space reserved for object metadata on volume 0, go to 
+xref:managing-object-metadata-storage.adoc[Manage object metadata storage].
 
-For example, suppose the Storage Volume Soft Read-Only Watermark is set to 10 GB, which is its default value. If less than 10 GB of free space remains on each volume in the Storage Node, the SSTS alarm is triggered at the Notice level, and the Storage Node transitions to soft read-only mode.
+== Storage Volume Soft Read-Only Watermark
 
-== Storage Volume Hard Read-Only Watermark (VROM)
+The Storage Volume Soft Read-Only Watermark is the first watermark to indicate that a Storage Node's usable space for object data is becoming full. If each volume in a Storage Node has less free space than that volume's Soft Read-Only Watermark, the Storage Node transitions into "`soft read-only mode.`" 
 
-The Storage Volume Hard Read-Only Watermark is the next watermark to indicate that a node's usable space for object data is becoming full. This watermark represents how much free space must exist on every volume in a Storage Node to prevent the node from going in to "`hard read-only mode.`" Hard read-only mode means that the Storage Node is read-only and no longer accepts write requests.
+Soft read-only mode means that the Storage Node advertises read-only services to the rest of the StorageGRID system, but fulfills all pending write requests.
 
-If the amount of free space on every volume in a Storage Node is less than the setting of this watermark, the Storage Status (SSTS) alarm is trigged at the Major level, and the Storage Node transitions to hard read-only mode.
+For example, suppose each volume in a Storage Node has a Soft Read-Only Watermark of 10 GB. If each of these volumes has less than 10 GB of free space, the Storage Node transitions to soft read-only mode.
 
-For example, suppose the Storage Volume Hard Read-Only Watermark is set to 5 GB, which is its default value. If less than 5 GB of free space remains on each storage volume in the Storage Node, the SSTS alarm is triggered at the Major level, and the Storage Node transitions to hard read-only mode.
+== Storage Volume Hard Read-Only Watermark
 
-The value of the Storage Volume Hard Read-Only Watermark must be less than the value of the Storage Volume Soft Read-Only Watermark.
+The Storage Volume Hard Read-Only Watermark is the next watermark to indicate that a node's usable space for object data is becoming full. If each volume in a Storage Node has less free space than that volume's Hard Read-Only Watermark, the Storage Node transitions into "`hard read-only mode.`" 
 
-== Storage Volume Read-Write Watermark (VLWM)
+Hard read-only mode means that the Storage Node is read-only and no longer accepts write requests.
+
+For example, suppose each volume in a Storage Node has a Hard Read-Only Watermark of 5 GB. If each of these volume has less than 5 GB of free space, the Storage Node transitions to hard read-only mode.
+
+
+== Storage Volume Read-Write Watermark
 
 The Storage Volume Read-Write Watermark only applies to Storage Nodes that have transitioned to read-only mode. This watermark determines when the Storage Node is allowed to become read-write again.
 
-For example, suppose a Storage Node has transitioned to hard read-only mode. If the Storage Volume Read-Write Watermark is set to 30 GB (default), the free space on every storage volume in the Storage Node must increase from 5 GB to 30 GB before the node can become read-write again.
+For example, suppose the Storage Node has transitioned to hard read-only mode. Also suppose that each of its volumes has a Read-Write Watermark of 30 GB. If the free space for any one of the volumes increases to 30 GB, the node becomes read-write again.
 
-The value of the Storage Volume Read-Write Watermark must be greater than the value of the Storage Volume Soft Read-Only Watermark.
+== View the storage watermarks
+
+Starting in StorageGRID 11.6, StorageGRID automatically calculates the setting of each watermark for every storage volume on every Storage Node. It optimizes the settings based on the size of the Storage Node and the relative size of each volume.
+
+As required, you can view the minimum and maximum watermark settings for the volumes on a given Storage Node.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+* You have the Root Access permission.
+
+.Steps
+
+. Select *SUPPORT* > *Metrics*.
+. Select the link in the *Prometheus* section to access the Prometheus user interface. 
+
+. Search the list for the following metrics:
+
+** storagegrid_storage_volume_minimum_default_soft_readonly_watermark
+**
+**
+
+== View the storage watermark overrides
+
+You can view the three Storage Volume Watermark Overrides.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+* You have the Root Access permission.
+
+.Steps
+
+. Select *CONFIGURATION* > *Storage Options* > *Overview*.
+
+. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides. 
++
+image::../media/storage_watermarks.png[Watermarks]
+
+. Determine if the watermark has been optimized for every storage volumes on every Storage Node.
+
+** If a watermark is set to 0 (default and recommended), the value of the watermark is optimized for every storage volume on every Storage Node. 
+
+** If set to any non-0 value (not recommended), the optimized watermark values are ignored. Instead, this setting determines the watermark used by all storage volumes on all Storage Nodes.
++
+NOTE: If you set these values manually, the Hard Read-Only Watermark must be less than the Soft Read-Only Watermark, which must be less than the Read-Write Watermark.
 
 .Related information
 
