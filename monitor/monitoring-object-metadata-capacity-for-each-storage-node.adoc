@@ -23,37 +23,30 @@ Some of the factors that can increase metadata usage include the size and quanti
 
 .Steps
 . Select *Nodes* > *_Storage Node_* > *Storage*.
-. Hover your cursor over the Storage Used - Object Metadata graph to see the values for a specific time.
+. Hover your cursor over the Storage used - object metadata graph to see the values for a specific time.
 +
 image::../media/storage_used_object_metadata.png[Storage Used - Object Metadata]
 +
-[options="header"]
+[cols="1a,3a,2a" options="header"]
 |===
 | Value| Description| Prometheus metric
-a|
-Used (%)
-a|
-The percentage of the allowed metadata space that has been used on this Storage Node.
-a|
-`storagegrid_storage_utilization_metadata_bytes/ storagegrid_storage_utilization_metadata_allowed_bytes`
-a|
-Used
-a|
-The bytes of the allowed metadata space that have been used on this Storage Node.
-a|
-`storagegrid_storage_utilization_metadata_bytes`
-a|
-Allowed
-a|
-The space allowed for object metadata on this Storage Node.     To learn how this value is determine for each Storage Node, see the instructions for administering StorageGRID.
-a|
-`storagegrid_storage_utilization_metadata_allowed_bytes`
-a|
-Actual reserved
-a|
-The actual space reserved for metadata on this Storage Node. Includes the allowed space and the required space for essential metadata operations.     To learn how this value is calculated for each Storage Node, see the instructions for administering StorageGRID.
-a|
-`storagegrid_storage_utilization_metadata_reserved_bytes`
+
+|Used (%)
+|The percentage of the allowed metadata space that has been used on this Storage Node.
+|`storagegrid_storage_utilization_metadata_bytes/ storagegrid_storage_utilization_metadata_allowed_bytes`
+
+|Used
+|The bytes of the allowed metadata space that have been used on this Storage Node.
+|`storagegrid_storage_utilization_metadata_bytes`
+
+|Allowed
+|The space allowed for object metadata on this Storage Node.     To learn how this value is determine for each Storage Node, see the instructions for administering StorageGRID.
+|`storagegrid_storage_utilization_metadata_allowed_bytes`
+
+|Actual reserved
+|The actual space reserved for metadata on this Storage Node. Includes the allowed space and the required space for essential metadata operations.     To learn how this value is calculated for each Storage Node, see the instructions for administering StorageGRID.
+|`storagegrid_storage_utilization_metadata_reserved_bytes`
+
 |===
 NOTE: The total values for a site or the grid do not include nodes that have not reported metrics for at least five minutes, such as offline nodes.
 

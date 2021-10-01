@@ -43,14 +43,10 @@ If the service is in an error state, the following message is returned: `_servic
 ldr in error state
 ----
 +
-NOTE: If the service status is `disabled`, see the instructions for removing a DoNotStart file for a service.
+NOTE: If the service status is `disabled`, see the instructions for xref:removing-donotstart-file-for-service.adoc[removing a DoNotStart file for a service].
 
 . Attempt to remove the error state by restarting the service: `service _servicename_ restart`
 +
 If the service fails to restart, contact technical support.
 
 . Log out of the command shell: `exit`
-
-.Related information
-
-xref:removing-donotstart-file-for-service.adoc[Removing a DoNotStart file for a service]

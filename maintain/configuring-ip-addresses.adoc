@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, ip address, configure ip address, configuring ip address, network configuration, network configure, network configuring
 summary: 'You can perform network configuration by configuring IP addresses for grid nodes using the Change IP tool.'
 ---
-= Configuring IP addresses
+= Configure IP addresses
 :icons: font
 :imagesdir: ../media/
 
@@ -13,9 +13,7 @@ You can perform network configuration by configuring IP addresses for grid nodes
 
 You must use the Change IP tool to make most changes to the networking configuration that was initially set during grid deployment. Manual changes using standard Linux networking commands and files might not propagate to all StorageGRID services, and might not persist across upgrades, reboots, or node recovery procedures.
 
-NOTE: If you want to change the Grid Network IP address for all nodes in the grid, use the special procedure for grid-wide changes.
-
-xref:changing-ip-addresses-and-mtu-values-for-all-nodes-in-grid.adoc[Changing IP addresses for all nodes in the grid]
+NOTE: If you want to change the Grid Network IP address for all nodes in the grid, use the xref:changing-ip-addresses-and-mtu-values-for-all-nodes-in-grid.adoc[special procedure for grid-wide changes].
 
 NOTE: If you are making changes to the Grid Network Subnet List only, use the Grid Manager to add or change the network configuration. Otherwise, use the Change IP tool if the Grid Manager is inaccessible due to a network configuration issue, or you are performing both a Grid Network routing change and other network changes at the same time.
 
@@ -40,8 +38,7 @@ You can only set up DHCP during the deployment phase. You cannot set up DHCP dur
 
 .Choices
 
-* xref:changing-nodes-network-configuration.adoc[Changing a node's network configuration]
-* xref:adding-to-or-changing-subnet-lists-on-admin-network.adoc[Adding to or changing subnet lists on the Admin Network]
-* xref:adding-to-or-changing-subnet-lists-on-grid-network.adoc[Adding to or changing subnet lists on the Grid Network]
-* xref:linux-adding-interfaces-to-existing-node.adoc[Linux: Adding interfaces to an existing node]
-* xref:changing-ip-addresses-and-mtu-values-for-all-nodes-in-grid.adoc[Changing IP addresses for all nodes in the grid]
+* xref:changing-nodes-network-configuration.adoc[Change node network configuration]
+* xref:adding-to-or-changing-subnet-lists-on-admin-network.adoc[Add to or change subnet lists on Admin Network]
+* xref:adding-to-or-changing-subnet-lists-on-grid-network.adoc[Add to or change subnet lists on Grid Network]
+* xref:linux-adding-interfaces-to-existing-node.adoc[Linux: Add interfaces to existing node]

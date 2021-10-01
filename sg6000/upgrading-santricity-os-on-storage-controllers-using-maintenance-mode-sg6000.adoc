@@ -18,7 +18,7 @@ For storage controllers currently using SANtricity OS older than 08.42.20.00 (11
 +
 NOTE: Maintenance mode interrupts the connection to the storage controller.
 +
-xref:placing-appliance-into-maintenance-mode.adoc[Placing an appliance into maintenance mode]
+xref:placing-appliance-into-maintenance-mode.adoc[Place appliance into maintenance mode]
 
 .About this task
 
@@ -40,7 +40,8 @@ NOTE: Activate the upgrade files immediately. Do not defer activation.
 . Once the upgrade operation has completed, reboot the node. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
-image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
++
+image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
