@@ -2,7 +2,7 @@
 permalink: admin/what-storage-volume-watermarks-are.html
 sidebar: sidebar
 keywords: what are storage volume watermarks, storage volume soft read-only watermark, storage volume hard read-only watermark, storage volume read-write watermark
-summary: 'Storage volume watermarks ensure that Storage Nodes are transitioned to a read-only state as they becomes full and allow Storage Nodes that have transitioned to a read-only state to become read-write again.'
+summary: 'The three storage volume watermarks ensure that Storage Nodes are safely transitioned to a read-only state before they run out of space and allow Storage Nodes that have been transitioned to a read-only state to become read-write again.'
 
 ---
 = What are storage volume watermarks?
@@ -10,28 +10,23 @@ summary: 'Storage volume watermarks ensure that Storage Nodes are transitioned t
 :imagesdir: ../media/
 
 [.lead]
-Storage volume watermarks ensure that Storage Nodes are transitioned to a read-only state as they becomes full and allow Storage Nodes that have transitioned to a read-only state to become read-write again.
+The three storage volume watermarks ensure that Storage Nodes are safely transitioned to a read-only state before they run out of space and allow Storage Nodes that have been transitioned to a read-only state to become read-write again.
 
-Two storage volume watermarks control when full Storage Nodes become read-only, as follows:
+The *Storage Volume Soft Read-Only Watermark* and the *Storage Volume Hard Read-Only Watermark* control when Storage Nodes become read-only, while the *Storage Volume Read-Write Watermark* controls when Storage Nodes can become read-write again.  
 
-* When the free space on each storage volume in a Storage Node is less than that volume's *Storage Volume Soft Read-Only Watermark*, the Storage Node transitions to the soft read-only state.
-
-* When the free space on each storage volume in a Storage Node is less than that volume's *Storage Volume Hard Read-Only Watermark*, the Storage Node transitions to the hard read-only state.
-
-A third storage volume watermark allows Storage Nodes that have transitioned to either read-only state to become read-write again. When the free space on any one storage volume in a Storage Node is greater than that volume's *Storage Volume Read-Write Watermark*, the Storage Node transitions back to the read-write state.
-
-The following figure shows the relative position of these three Storage Volume watermarks on a Storage Node. In this example, all storage volumes are the same size, so they have the same watermark settings. 
+The following figure shows the relative position of these three watermarks on a Storage Node. In this example, all of the node's storage volumes are the same size, so they have the same watermark settings. 
  
 image::../media/storage_volume_watermarks.png[Watermarks diagram]
 
 For any given storage volume, the following statements are always true:
 
-* The Hard Read-Only Watermark is always less than the Soft Read-Only Watermark. For example, the Hard Read-Only Watermark might be 5 GB, while the Soft Read-Only Watermark might be 10 GB.
+* The Hard Read-Only Watermark is always less than the Soft Read-Only Watermark.
 
-* The Soft Read-Only Watermark is always less than the Read-Write Watermark. For example, the Soft Read-Only Watermark might be 10 GB, while the Read-Write Watermark might be 30 GB.
+* The Soft Read-Only Watermark is always less than the Read-Write Watermark.
 
 NOTE: The storage volume watermarks only apply to the space used for object data (replicated and erasure-coded copies). To learn about the space reserved for object metadata on volume 0, go to 
 xref:managing-object-metadata-storage.adoc[Manage object metadata storage].
+
 
 == Storage Volume Soft Read-Only Watermark
 
@@ -56,11 +51,12 @@ The Storage Volume Read-Write Watermark only applies to Storage Nodes that have 
 
 For example, suppose the Storage Node has transitioned to hard read-only mode. Also suppose that each of its volumes has a Read-Write Watermark of 30 GB. If the free space for any one of the volumes increases to 30 GB, the node becomes read-write again.
 
+
 == View the storage watermarks
 
-Starting in StorageGRID 11.6, StorageGRID automatically calculates the setting of each watermark for every storage volume on every Storage Node. It optimizes the settings based on the size of the Storage Node and the relative size of each volume.
+StorageGRID can automatically calculate the setting of each watermark for every storage volume on every Storage Node. It optimizes the settings based on the size of the Storage Node and the relative size of each volume.
 
-As required, you can view the minimum and maximum watermark settings for the volumes on a given Storage Node.
+As required, you can view the minimum and maximum watermark settings for all volumes on a given Storage Node.
 
 .What you'll need
 
@@ -75,13 +71,16 @@ As required, you can view the minimum and maximum watermark settings for the vol
 
 . Search the list for the following metrics:
 
-** storagegrid_storage_volume_minimum_default_soft_readonly_watermark
-**
-**
+** ~storagegrid_storage_volume_minimum_default_soft_readonly_watermark~
+** ~storagegrid_storage_volume_maximum_default_soft_readonly_watermark~
+
+. Enter the metric into an expression, and select *Execute*.
+
+. View the results.
 
 == View the storage watermark overrides
 
-You can view the three Storage Volume Watermark Overrides.
+After upgrading to StorageGRID 11.6, you can determine if your system is using the optimized values for the three storage volume watermarks.
 
 .What you'll need
 
@@ -99,7 +98,7 @@ image::../media/storage_watermarks.png[Watermarks]
 
 . Determine if the watermark has been optimized for every storage volumes on every Storage Node.
 
-** If a watermark is set to 0 (default and recommended), the value of the watermark is optimized for every storage volume on every Storage Node. 
+** If set to 0 (default and recommended), the value of the watermark is optimized for every storage volume on every Storage Node. 
 
 ** If set to any non-0 value (not recommended), the optimized watermark values are ignored. Instead, this setting determines the watermark used by all storage volumes on all Storage Nodes.
 +
