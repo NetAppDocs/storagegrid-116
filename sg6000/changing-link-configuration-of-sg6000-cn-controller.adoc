@@ -13,9 +13,7 @@ You can change the Ethernet link configuration of the SG6000-CN controller. You 
 
 .What you'll need
 
-The appliance has been placed maintenance mode.
-
-xref:placing-appliance-into-maintenance-mode.adoc[Placing an appliance into maintenance mode]
+The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed maintenance mode].
 
 .About this task
 
@@ -42,7 +40,7 @@ For more information on the options, see xref:configuring-network-links-sg6000.a
 NOTE: You might lose your connection if you made changes to the network or link you are connected through. If you are not reconnected within 1 minute, re-enter the URL for the StorageGRID Appliance Installer using one of the other IP addresses assigned to the appliance: +
 `*https://_Appliance_Controller_IP_:8443*`
 +
-If you made changes to the VLAN settings, the subnet for the appliance might have changed. If you need to change the IP addresses for the appliance, follow the instructions for configuring IP addresses.
+If you made changes to the VLAN settings, the subnet for the appliance might have changed. If you need to change the IP addresses for the appliance, follow the xref:configuring-ip-addresses.adoc[Configure IP addresses] instructions.
 +
 xref:configuring-storagegrid-ip-addresses-sg6000.adoc[Configuring StorageGRID IP addresses]
 
@@ -54,7 +52,8 @@ In addition to any other tests you choose to perform, confirm that you can ping 
 . When you are satisfied that your link configuration changes are working, reboot the node. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
  ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
-image:../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
++
+image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +

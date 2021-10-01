@@ -1,8 +1,9 @@
 section: admin
 title: Administer StorageGRID
 entries:
-  - title: Administer a StorageGRID system
+  - title: Overview
     url: "/admin/index.html"
+  - title: Get started
     entries:
     - title: Web browser requirements
       url: "/admin/web-browser-requirements.html"
@@ -36,30 +37,25 @@ entries:
       - title: Use the API if single sign-on is enabled
         url: "/admin/using-api-if-sso-is-enabled.html"
   - title: Control access to StorageGRID
-    url: "/admin/controlling-administrator-access-to-storagegrid.html"
     entries:
     - title: Control access through firewalls
       url: "/admin/controlling-access-through-firewalls.html"
-    - title: Use security certificates
-      url: "/admin/using-storagegrid-security-certificates.html"
+    - title: Security certificate authentication
       entries:
+      - title: About security certificates
+        url: "/admin/using-storagegrid-security-certificates.html"
       - title: Configure server certificates
-        url: "/admin/configuring-server-certificates.html"
         entries:
-        - title: Configure a custom management interface certificate
+        - title: Supported server certificate types
+          url: "/admin/global-certificate-types.html"
+        - title: Configure management interface certificates
           url: "/admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.html"
-        - title: Restore the default management interface certificate
-          url: "/admin/restoring-default-server-certificates-for-grid-manager-tenant-manager.html"
-        - title: Configure a custom S3 and Swift API certificate
+        - title: Configure S3 and Swift API certificates
           url: "/admin/configuring-custom-server-certificate-for-storage-node-or-clb.html"
-        - title: Restore the default S3 and Swift API certificate
-          url: "/admin/restoring-default-server-certificates-for-s3-swift-api-endpoints.html"
         - title: Copy or download the Grid CA certificate
           url: "/admin/copying-storagegrid-system-ca-certificate.html"
         - title: Configure StorageGRID certificates for FabricPool
           url: "/admin/configuring-storagegrid-certificates-for-fabricpool.html"
-        - title: Generate a self-signed server certificate for the management interface
-          url: "/admin/generating-self-signed-certificate-for-management-interface.html"
       - title: Configure client certificates
         url: "/admin/configuring-administrator-client-certificates.html"
     - title: Use identity federation
@@ -94,8 +90,9 @@ entries:
             Node
           url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
   - title: Configure key management servers
-    url: "/admin/kms-configuring.html"
     entries:
+    - title: Configure key management servers
+      url: "/admin/kms-configuring.html"
     - title: Review StorageGRID encryption methods
       url: "/admin/reviewing-storagegrid-encryption-methods.html"
     - title: Overview of KMS and appliance configuration
@@ -124,8 +121,9 @@ entries:
     - title: Remove a key management server (KMS)
       url: "/admin/kms-removing.html"
   - title: Manage tenants
-    url: "/admin/managing-tenants.html"
     entries:
+    - title: Manage tenants
+      url: "/admin/managing-tenants.html"
     - title: Create a tenant account
       url: "/admin/creating-tenant-account.html"
       entries:
@@ -158,20 +156,20 @@ entries:
       url: "/admin/summary-ip-addresses-and-ports-for-client-connections.html"
     - title: Configure VLAN interfaces
       url: "/admin/configure-vlan-interfaces.html"
-    - title: Manage high availability groups
-      url: "/admin/managing-high-availability-groups.html"
+    - title: Manage high availability (HA) groups  
       entries:
-      - title: What is an HA group
-        url: "/admin/what-ha-group-is.html"
-      - title: How HA groups are used
+      - title: Manage HA groups
+        url: "/admin/managing-high-availability-groups.html"
+      - title: How are HA groups used
         url: "/admin/how-ha-groups-are-used.html"
       - title: Configuration options for HA groups
         url: "/admin/configuration-options-for-ha-groups.html"
-      - title: Configure high availability groups
+      - title: Configure HA groups
         url: "/admin/configure-high-availability-group.html"
     - title: Manage load balancing
-      url: "/admin/managing-load-balancing.html"
       entries:
+      - title: Manage load balancing
+        url: "/admin/managing-load-balancing.html"
       - title: How load balancing works - Load Balancer service
         url: "/admin/how-load-balancing-works-load-balancer-service.html"
       - title: Configure load balancer endpoints
@@ -189,9 +187,10 @@ entries:
       url: "/admin/enabling-http-for-client-communications.html"
     - title: Control which client operations are permitted
       url: "/admin/controlling-which-client-operations-are-permitted.html"
-  - title: Manage StorageGRID networks and connections
-    url: "/admin/managing-storagegrid-networks-and-connections.html"
+  - title: Manage networks and connections
     entries:
+    - title: Manage networks and connections
+      url: "/admin/managing-storagegrid-networks-and-connections.html"
     - title: Guidelines for StorageGRID networks
       url: "/admin/guidelines-for-storagegrid-networks.html"
     - title: View IP addresses
@@ -205,8 +204,9 @@ entries:
     - title: Configure Admin proxy settings
       url: "/admin/configuring-admin-proxy-settings.html"
     - title: Manage traffic classification policies
-      url: "/admin/managing-traffic-classification-policies.html"
       entries:
+      - title: Manage traffic classification policies
+        url: "/admin/managing-traffic-classification-policies.html"
       - title: Create traffic classification policies
         url: "/admin/creating-traffic-classification-policies.html"
       - title: Edit a traffic classification policy
@@ -215,9 +215,10 @@ entries:
         url: "/admin/deleting-traffic-classification-policy.html"
       - title: View network traffic metrics
         url: "/admin/viewing-network-traffic-metrics.html"
-    - title: What link costs are
-      url: "/admin/what-link-costs-are.html"
+    - title: Manage link costs
       entries:
+      - title: What link costs are
+        url: "/admin/what-link-costs-are.html"
       - title: Update link costs
         url: "/admin/updating-link-costs.html"
   - title: Use AutoSupport
@@ -233,8 +234,9 @@ entries:
     - title: Send E-Series AutoSupport messages through StorageGRID
       url: "/admin/sending-eseries-autosupport-messages-through-storagegrid.html"
   - title: Manage Storage Nodes
-    url: "/admin/managing-storage-nodes.html"
     entries:
+    - title: Manage Storage Nodes
+      url: "/admin/managing-storage-nodes.html"
     - title: What is Storage Node?
       url: "/admin/what-storage-node-is.html"
     - title: Managing Storage Options
@@ -260,7 +262,6 @@ entries:
     - title: Manage full Storage Nodes
       url: "/admin/managing-full-storage-nodes.html"
   - title: Manage Admin Nodes
-    url: "/admin/managing-admin-nodes.html"
     entries:
     - title: What an Admin Node is
       url: "/admin/what-admin-node-is.html"

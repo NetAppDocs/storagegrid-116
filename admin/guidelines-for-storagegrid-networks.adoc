@@ -9,19 +9,24 @@ summary: 'StorageGRID supports up to three network interfaces per grid node, all
 :imagesdir: ../media/
 
 [.lead]
+You can use the Grid Manager to configure and manage StorageGRID networks and connections.
+
+See xref:configuring-client-connections.adoc[Configuring S3 and Swift client connections] to learn how to connect S3 or Swift clients.
+
+== About StorageGRID networks
 StorageGRID supports up to three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements.
 
-NOTE: To modify or add a network for a grid node, see the recovery and maintenance instructions. For more information about network topology, see the networking instructions.
+NOTE: To modify or add a network for a grid node, see xref:../maintain/index.adoc[Maintain & recover]. For more information about network topology, see xref:../network/index.adoc[Networking guidelines].
 
-== Grid Network
+=== Grid Network
 
 Required. The Grid Network is used for all internal StorageGRID traffic. It provides connectivity between all nodes in the grid, across all sites and subnets.
 
-== Admin Network
+=== Admin Network
 
 Optional. The Admin Network is typically used for system administration and maintenance. It can also be used for client protocol access. The Admin Network is typically a private network and does not need to be routable between sites.
 
-== Client Network
+=== Client Network
 
 Optional. The Client Network is an open network typically used to provide access to S3 and Swift client applications, so the Grid Network can be isolated and secured. The Client Network can communicate with any subnet reachable through the local gateway.
 
@@ -54,8 +59,3 @@ eth2
 * The Client Network does not become operational until the grid node has joined the grid
 * The Admin Network can be configured during grid node deployment to allow access to the installation user interface before the grid is fully installed.
 
-.Related information
-
-xref:../maintain/index.adoc[Maintain & recover]
-
-xref:../network/index.adoc[Network guidelines]

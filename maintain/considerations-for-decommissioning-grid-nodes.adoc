@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, decommission
 summary: 'Before you start this procedure to decommission one or more nodes, you must understand the implications of removing each type of node. Upon the successful decommissioning of a node, its services will be disabled and the node will be automatically shut down.'
 ---
-= Considerations for decommissioning grid nodes
+= Considerations for grid node decommission
 :icons: font
 :imagesdir: ../media/
 
@@ -22,8 +22,6 @@ You cannot decommission a node if doing so will leave the StorageGRID in an inva
 * You cannot decommission a connected node if your grid includes any disconnected nodes (nodes whose health is Unknown or Administratively Down). You must decommission or recover the disconnected nodes first.
 * If your grid contains multiple disconnected nodes, the software requires you to decommission them at all the same time, which increases the potential for unexpected results.
 * If a disconnected node cannot be removed (for example, a Storage Node that is required for the ADC quorum), no other disconnected node can be removed.
-* If you want to replace an older appliance with a newer appliance, consider using the appliance node cloning procedure instead of decommissioning the old node and adding the new node in an expansion.
-+
-xref:appliance-node-cloning.adoc[Appliance node cloning]
+* If you want to replace an older appliance with a newer appliance, consider xref:appliance-node-cloning.adoc[cloning the appliance node] instead of decommissioning the old node and adding the new node in an expansion.
 
 IMPORTANT: Do not remove a grid node's virtual machine or other resources until instructed to do so in decommission procedures.
