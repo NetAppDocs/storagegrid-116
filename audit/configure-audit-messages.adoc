@@ -1,4 +1,4 @@
-statu---
+---
 permalink: audit/configure-audit-messages.html
 sidebar: sidebar
 keywords: audit message, change audit message level, change audit destination
@@ -41,24 +41,7 @@ NOTE: During upgrades, audit level configurations will not be effective immediat
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
 
-xref:../network/index.adoc[Networking guidelines]
-
-|Client type
-|The type of client application that will use this endpoint, either *S3* or *Swift*.
-
-|Network protocol
-|The network protocol that clients will use when connecting to this endpoint.
-
-*  Select *HTTPS* for secure, TLS encrypted communication. You must attach a security certificate before you can save the endpoint.
-
-* Select *HTTP* for less secure, unencrypted communication. Use HTTP only for a non-production grid.
-|===
-
-. Select *Continue*.
-
-=== Select the binding mode
-
-. Select a binding mode for the endpoint to control how the endpoint is accessed--using any IP address or using specific IP addresses and network interfaces.
+. For each category of audit message, select an audit level from the drop-down list:
 +
 [cols=2*,options="header",cols="20,80"]
 [options="header"]
@@ -119,7 +102,7 @@ image::../media/audit-message-configure-syslog-server.png[Configure external sys
 ==== Manage Syslog content
 . Select *Dxxxxxxxxxx*.
 +
-. If you selected *Upload certificate*, browse for the server certificate, the certificate private key, and the optional CA bundle.
+//xxxxxxxxxxxxxxxxxxxxxxx.
 +
 //image::../media/ssh-download-current-recovery-package.png[Download current recovery package]//
 
