@@ -98,11 +98,11 @@ NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was tr
 
 == What is object existence check?
 
-Foreground verification is a user-initiated process that checks if all expected object data exists on a Storage Node. Foreground verification is used to verify the integrity of a storage device.
+Object existence check is a user-initiated process that checks if all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. Object existence check is used to verify the integrity of a storage device.
 
-Foreground verification is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If an object existence check finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node.
+Object existence check is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If an object existence check finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node. If object existence check finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
 
-Foreground verification checks both replicated object data and erasure-coded object data, as follows:
+An object existence check job verifies both replicated object data and erasure-coded object data, as follows:
 
 * *Replicated objects*: If a copy of replicated object data is found to be missing, StorageGRID automatically attempts to replace the copy from copies stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because the missing copy no longer exists at the expected location. A new copy is generated and placed to satisfy the system's active ILM policy. This new copy might not be placed in the same location that the missing copy was stored.
 * *Erasure-coded objects*: If a fragment of an erasure-coded object is found to be missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), the Corrupt Copies Detected (ECOR) attribute is incremented by one. ILM then attempts to find another copy of the object, which it can use to generate a new erasure-coded copy.
@@ -113,7 +113,7 @@ If no other copies of a missing replicated object or a corrupted erasure-coded o
 
 == Running object existence check
 
-Foreground verification enables you to verify the existence of data on a Storage Node. Missing object data might indicate that an issue exists with the underlying storage device.
+Object existence check enables you to verify the existence of data on a Storage Node. Missing object data might indicate that an issue exists with the underlying storage device.
 
 .What you'll need
 * You have ensured that the following grid tasks are not running:
@@ -124,30 +124,25 @@ If these grid tasks are running, wait for them to complete or release their lock
 * You have ensured that the following recovery procedures are not running on the same Storage Node:
  ** Recovery of a failed storage volume
  ** Recovery of a Storage Node with a failed system drive
-Foreground verification does not provide useful information while recovery procedures are in progress.
+
+Object existence check does not provide useful information while recovery procedures are in progress.
 
 .About this task
-Foreground verification checks for both missing replicated object data and missing erasure-coded object data:
 
-* If object existence check finds large amounts of missing object data, there is likely an issue with the Storage Node's storage that needs to be investigated and addressed.
-* If object existence check finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
-
-You can configure an object existence check to check all of a Storage Node's object stores or only specific object stores.
+You can configure an object existence check to verify all of a Storage Node's object stores or only specific object stores.
 
 If object existence check finds missing object data, the StorageGRID system attempts to replace it. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
 
-Foreground verification generates an LDR Foreground Verification grid task that, depending on the number of objects stored on a Storage Node, can take days or weeks to complete. It is possible to select multiple Storage Nodes at the same time; however, these grid tasks are not run simultaneously. Instead, they are queued and run one after the other until completion. When object existence check is in progress on a Storage Node, you cannot start another object existence check job on that same Storage Node even though the option to verify additional volumes might appear to be available for the Storage Node.
+Object existence check generates an LDR Foreground Verification grid task that, depending on the number of objects stored on a Storage Node, can take days or weeks to complete. It is possible to select multiple Storage Nodes at the same time; however, these grid tasks are not run simultaneously. Instead, they are queued and run one after the other until completion. When object existence check is in progress on a Storage Node, you cannot start another object existence check job on that same Storage Node even though the option to verify additional volumes might appear to be available for the Storage Node.
 
 If a Storage Node other than the one where object existence check is being run goes offline, the grid task continues to run until the *% Complete* attribute reaches 99.99 percent. The *% Complete* attribute then falls back to 50 percent and waits for the Storage Node to return to online status. When the Storage Node's state returns to online, the LDR Foreground Verification grid task continues until it completes.
 
 .Steps
-. Select *_Storage Node_* > *LDR* > *Verification*.
-. Select *Configuration* > *Main*.
-. Under *Foreground Verification*, select the check box for each storage volume ID you want to verify.
+. Select *MAINTENANCE* > *Object existence check*.
 +
-image::../media/foreground_verification_volume_id_selection.gif[Foreground Verification Configuration page]
+// image::../media/foreground_verification_volume_id_selection.gif[Foreground Verification Configuration page]
 
-. Click *Apply Changes*.
+. Select *Apply Changes*.
 +
 Wait until the page auto-refreshes and reloads before you leave the page. Once refreshed, object stores become unavailable for selection on that Storage Node.
 +
