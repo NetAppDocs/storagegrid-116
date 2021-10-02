@@ -47,7 +47,7 @@ The Grid Manager user interface has been redesigned.
 * New sidebar
 * New menu structure
 * New Nodes page
-* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
 === New alerts
 
@@ -75,8 +75,22 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 .Learn more
 * xref:../s3/index.adoc[Use S3]
 
-== Updates to Tenant Accounts permission
+=== Updates to Tenant Accounts permission
 Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
+
+.Learn more
+* xref:../admin/index.adoc[Administer StorageGRID]
+
+=== Storage volume watermarks now optimized
+StorageGRID uses three storage volume watermarks to ensure that Storage Nodes safely transition to a read-only state before they run critically low on space and to allow read-only Storage Nodes to become read-write again.
+
+Previously, the Storage Volume Watermarks were system-wide defaults &mdash; the same values applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize the watermark settings. It uses different values for every storage volume in every Storage Node, based on the size of the Storage Node and the relative size of the volume.
+
+Optimized watermarks will be used for all new and most upgraded StorageGRID 11.6 systems. The exception is an upgraded system in which non-default watermark values had been in use. 
+
+After you upgrade to StorageGRID 11.6, you can determine if the new values are being used. See xref:../upgrade/determine-if-storage-watermark-overrides-are-in-use.adoc[Determine if storage watermark overrides are in use].
+
+
 
 == Kevin's what's new changes
 

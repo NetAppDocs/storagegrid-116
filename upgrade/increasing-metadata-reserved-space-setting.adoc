@@ -2,23 +2,23 @@
 permalink: upgrade/increasing-metadata-reserved-space-setting.html
 sidebar: sidebar
 keywords: upgrade, metadata reserved space setting
-summary: 'After you upgrade to StorageGRID 11.5, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.'
+summary: 'After you upgrade to StorageGRID 11.6, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.'
 ---
 = Increase the Metadata Reserved Space setting
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After you upgrade to StorageGRID 11.5, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.
+After you upgrade to StorageGRID 11.6, you might be able to increase the Metadata Reserved Space system setting if your Storage Nodes meet specific requirements for RAM and available space.
 
 .What you'll need
 * You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You must have the Root Access permission or the Grid Topology Page Configuration and Other Grid Configuration permissions.
-* You have started the StorageGRID 11.5 upgrade and the *Enable New Features* upgrade task has completed.
+* You have started the StorageGRID 11.6 upgrade and the *Enable New Features* upgrade task has completed.
 
 .About this task
 
-You might be able to manually increase the system-wide Metadata Reserved Space setting up to 8 TB after upgrading to StorageGRID 11.5. Reserving additional metadata space after the 11.5 upgrade will simplify future hardware and software upgrades.
+You might be able to manually increase the system-wide Metadata Reserved Space setting up to 8 TB after upgrading to StorageGRID 11.6. Reserving additional metadata space after the 11.6 upgrade will simplify future hardware and software upgrades.
 
 You can only increase the value of the system-wide Metadata Reserved Space setting if both of these statements are true:
 
@@ -29,17 +29,15 @@ Be aware that if you increase this setting, you will simultaneously reduce the s
 
 NOTE: In general, it is better to use a higher value instead of a lower value. If the Metadata Reserved Space setting is too large, you can decrease it later. In contrast, if you increase the value later, the system might need to move object data to free up space.
 
-For a detailed explanation of how the Metadata Reserved Space setting affects the allowed space for object metadata storage on a particular Storage Node, go to the instructions for administering StorageGRID and search for "`managing object metadata storage.`"
-
-xref:../admin/index.adoc[Administer StorageGRID]
+For a detailed explanation of how the Metadata Reserved Space setting affects the allowed space for object metadata storage on a particular Storage Node, go to xref:../admin/managing-object-metadata-storage.adoc[Manage object metadata storage].
 
 .Steps
 . Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 . Determine the current Metadata Reserved Space setting.
- .. Select *Configuration* > *System Settings* > *Storage Options*.
+ .. Select *CONFIGURATION* > *System* > *Storage Options*.
  .. In the Storage Watermarks section, note the value of *Metadata Reserved Space*.
 . Ensure you have enough available space on storage volume 0 of each Storage Node to increase this value.
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select the first Storage Node in the grid.
  .. Select the Storage tab.
  .. In the Volumes section, locate the */var/local/rangedb/0* entry.
@@ -59,7 +57,7 @@ For example, if the Metadata Reserved Space setting is currently 4 TB and you wa
   *** If one or more Storage Nodes do not have enough available total memory, the Metadata Reserved Space value cannot be increased. Do not continue with this procedure.
   *** If each Storage Node has at least 128 GB of total memory, go to the next step.
 . Update the Metadata Reserved Space setting.
- .. Select *Configuration* > *System Settings* > *Storage Options*.
+ .. Select *CONFIGURATION* > *System* > *Storage Options*.
  .. Select the Configuration tab.
  .. In the Storage Watermarks section, select *Metadata Reserved Space*.
  .. Enter the new value.

@@ -1,0 +1,79 @@
+---
+permalink: upgrade/determine-if-storage-watermark-overrides-are-in-use.html
+sidebar: sidebar
+keywords: upgrade, storage volume watermarks
+summary: 'After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks.'
+---
+= Determine if storage watermark overrides are in use
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks.
+
+When StorageGRID optimizes the watermarks, it uses different values for every storage volume in every Storage Node, based on the size of the Storage Node and the relative size of the volume.
+
+If optimized watermarks are not being used, you can optionally switch to the optimized settings.  
+
+== View the storage watermark overrides
+
+You can view the current storage watermark settings in the Grid Manager.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+* You have the Root Access permission.
+
+.Steps
+
+. Select *CONFIGURATION* > *System* > *Storage options*.
+
+. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides. 
++
+image::../media/storage_watermarks.png[Watermarks]
+
+** If the watermark overrides are set to 0, the values of these watermarks are optimized for every storage volume on every Storage Node. This is the default and recommended setting.
+
+** If the watermark overrides are set to any non-0 value, optimized watermark values are not used. Instead, these three settings determine the watermark values used by all storage volumes on all Storage Nodes. Using non-optimized watermark settings is not recommended.
+
+. If the watermark overrides are set to any non-0 value, go to <<View the calculated storage watermarks>> to optionally start using the optimized watermark settings. 
++
+IMPORTANT: Do not start using the new optimized values until you ensure that the change will not cause any Storage Node to become read-only, as described below.
+
+NOTE: If you set these values manually, the Hard Read-Only Watermark must be less than the Soft Read-Only Watermark, which must be less than the Read-Write Watermark.
+
+== View the calculated storage watermarks
+
+If the watermark overrides are set to any non-0 value, you must ensure that no Storage Nodes will become read-only if you start using the optimized values instead. 
+
+StorageGRID uses two Prometheus metrics to show the optimized values it has calculated for the Storage Volume Soft Read-Only Watermark: 
+
+* For a given Storage Node, the `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark` metric shows the minimum optimized value for all storage volumes on that node.
+
+* For a given Storage Node, the `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark` metric shows the maximum optimized value for all storage volumes on that node.
+
+The optimized minimum and maximum values for the Storage Volume Hard Read-Only Watermark and the Storage Volume Read-Write Watermark are calculated using the two metrics above. The minimum and maximum values for these other watermarks do not have their own metrics.
+
+Whether these optimized values are actually used depends on the setting of the three Watermark Overrides on the *CONFIGURATION* > *System* > *Storage options* page. All Watermark Overrides must be 0 if you want StorageGRID to use the optimized values.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+* You have the Root Access permission.
+
+.Steps
+
+. Select *SUPPORT* > *Metrics*.
+
+. Select the link in the *Prometheus* section to access the Prometheus user interface. 
+
+. Search the list for the following metrics:
+
+** `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
+** `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
+
+. Enter the metric into an expression, and select *Execute*.
+
+. View the results.

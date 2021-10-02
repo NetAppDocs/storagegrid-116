@@ -2,7 +2,7 @@
 permalink: admin/what-storage-volume-watermarks-are.html
 sidebar: sidebar
 keywords: what are storage volume watermarks, storage volume soft read-only watermark, storage volume hard read-only watermark, storage volume read-write watermark
-summary: 'Three storage volume watermarks ensure that Storage Nodes are safely transitioned to a read-only state before they run out of space and allow Storage Nodes that have been transitioned to a read-only state to become read-write again.'
+summary: 'StorageGRID uses three storage volume watermarks to ensure that Storage Nodes are safely transitioned to a read-only state before before they run critically low on space and to allow Storage Nodes that have been transitioned to a read-only state to become read-write again.'
 
 ---
 = What are storage volume watermarks?
@@ -10,7 +10,7 @@ summary: 'Three storage volume watermarks ensure that Storage Nodes are safely t
 :imagesdir: ../media/
 
 [.lead]
-Three storage volume watermarks ensure that Storage Nodes are safely transitioned to a read-only state before they run out of space and allow Storage Nodes that have been transitioned to a read-only state to become read-write again.
+StorageGRID uses three storage volume watermarks to ensure that Storage Nodes are safely transitioned to a read-only state before before they run critically low on space and to allow Storage Nodes that have been transitioned to a read-only state to become read-write again.
 
 The *Storage Volume Soft Read-Only Watermark* and the *Storage Volume Hard Read-Only Watermark* control when Storage Nodes become read-only, while the *Storage Volume Read-Write Watermark* controls when Storage Nodes can become read-write again.  
 
@@ -50,64 +50,6 @@ For example, suppose each volume in a Storage Node has a Hard Read-Only Watermar
 The Storage Volume Read-Write Watermark only applies to Storage Nodes that have transitioned to read-only mode. It determines when the node can become read-write again. When the free space on any one storage volume in a Storage Node is greater than that volume’s Storage Volume Read-Write Watermark, the node automatically transitions back to the read-write state.
 
 For example, suppose the Storage Node has transitioned to hard read-only mode. Also suppose that each of its volumes has a Read-Write Watermark of 30 GB. If the free space for any one of the volumes increases to 30 GB, the node becomes read-write again.
-
-
-== View the storage watermarks
-
-StorageGRID can automatically calculate the setting of each watermark for every storage volume on every Storage Node. It optimizes the settings based on the size of the Storage Node and the relative size of each volume.
-
-StorageGRID uses the following Prometheus metrics to show the optimized values of the Storage Volume Soft Read-Only Watermark: 
-
-* For a given Storage Node, the ~storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark~ metric shows the minimum optimized value for all storage volumes on that node.
-* For a given Storage Node, the ~storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark~ metric shows the maximum optimized value for all storage volumes on that node.
-
-Whether these optimized values are actually used depends on the setting of the three Watermark Overrides on the *CONFIGURATION* > *Storage Options*  page. All Watermark Overrides must be 0 if you want StorageGRID to use the optimized values.
-
-.What you'll need
-
-* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-
-* You have the Root Access permission.
-
-.Steps
-
-. Select *SUPPORT* > *Metrics*.
-. Select the link in the *Prometheus* section to access the Prometheus user interface. 
-
-. Search the list for the following metrics:
-
-** ~storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark~
-** ~storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark~
-
-. Enter the metric into an expression, and select *Execute*.
-
-. View the results.
-
-== View the storage watermark overrides
-
-After upgrading to StorageGRID 11.6, you can determine if your system is using the optimized values for the three storage volume watermarks.
-
-.What you'll need
-
-* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-
-* You have the Root Access permission.
-
-.Steps
-
-. Select *CONFIGURATION* > *Storage Options*.
-
-. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides. 
-+
-image::../media/storage_watermarks.png[Watermarks]
-
-. Determine if the watermark has been optimized for every storage volumes on every Storage Node.
-
-** If set to 0 (default and recommended), the value of the watermark is optimized for every storage volume on every Storage Node. 
-
-** If set to any non-0 value (not recommended), the optimized watermark values are ignored. Instead, this setting determines the watermark used by all storage volumes on all Storage Nodes.
-+
-NOTE: If you set these values manually, the Hard Read-Only Watermark must be less than the Soft Read-Only Watermark, which must be less than the Read-Write Watermark.
 
 .Related information
 
