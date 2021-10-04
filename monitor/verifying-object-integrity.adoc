@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.'
 ---
-= Verifying object integrity
+= Verify object integrity
 :icons: font
 :imagesdir: ../media/
 
@@ -35,7 +35,7 @@ If the system detects a corrupt object that it cannot correct automatically (bec
 
 If background verification cannot replace a corrupted object because it cannot locate another copy, the *Objects lost* alert and the LOST (Lost Objects) legacy alarm are triggered.
 
-== Changing the background verification rate
+=== Changing the background verification rate
 
 You can change the rate at which background verification checks replicated object data on a Storage Node if you have concerns about data integrity.
 
@@ -98,7 +98,7 @@ NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was tr
 
 == What is object existence check?
 
-Object existence check is a user-initiated process that checks if all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. Object existence check is used to verify the integrity of a storage device.
+Object existence check is a user-initiated process that verifies if all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. You can use object existence check to verify the integrity of a storage device.
 
 Object existence check is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If an object existence check finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node. If object existence check finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
 
