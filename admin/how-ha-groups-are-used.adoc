@@ -2,14 +2,14 @@
 permalink: admin/how-ha-groups-are-used.html
 sidebar: sidebar
 keywords:
-summary: 'You might want to use high availability \(HA\) groups for several reasons.'
+summary: 'You can use high availability (HA) groups to provide highly available connections to StorageGRID for object data and for administrative use.'
 ---
 = How are HA groups used?
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You might want to use high availability (HA) groups for several reasons.
+You can use high availability (HA) groups to provide highly available connections to StorageGRID for object data and for administrative use.
 
 * An HA group can provide highly available administrative connections to the Grid Manager or the Tenant Manager.
 * An HA group can provide highly available data connections for S3 and Swift clients.
@@ -58,7 +58,7 @@ a|
 
 == Limitations of using HA groups with Grid Manager or Tenant Manager
 
-The failure of services for the Grid Manager or the Tenant Manager does not trigger failover within the HA group.
+If a Grid Manager or Tenant Manager service fails, HA group failover is not triggered.
 
 If you are signed in to the Grid Manager or the Tenant Manager when failover occurs, you are signed out and must sign in again to resume your task.
 

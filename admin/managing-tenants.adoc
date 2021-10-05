@@ -44,6 +44,8 @@ After a tenant account is created, you can perform the following tasks:
 * *Manage platform services for the grid*: If you enable platform services for tenant accounts, ensure that you understand how platform services messages are delivered and the networking requirements that the use of platform services place on your StorageGRID deployment.
 * *Monitor a tenant account's storage usage*: After tenants begin using their accounts, you can use Grid Manager to monitor how much storage each tenant consumes.
 +
+NOTE: A tenant's storage usage values might become out of date if nodes are isolated from other nodes in the grid. The totals will be updated when network connectivity is restored.
++
 If you have set quotas for tenants, you can enable the *Tenant quota usage high* alert to determine if tenants are consuming their quotas. If enabled, this alert is triggered when a tenant has used 90% of its quota. For more information, see the alerts reference in the instructions for monitoring and troubleshooting StorageGRID.
 
 * *Configure client operations*: You can configure if some types of client operations are forbidden.

@@ -43,9 +43,7 @@ Before removing a connected or disconnected site, you must be aware of the follo
 * You cannot decommission a site if any of the nodes have an interface that belongs to a high availability (HA) group. You must either edit the HA group to remove the node's interface or remove the entire HA group.
 * You cannot decommission a site if it contains a mixture of connected (image:../media/icon_alert_green_checkmark.png[Icon Alert Green Checkmark]) and disconnected (image:../media/icon_alarm_blue_unknown.png[Icon Alarm Blue Unknown] or image:../media/icon_alarm_gray_administratively_down.png[Icon Alarm Gray Administratively Down]) nodes.
 * You cannot decommission a site if any node at any other site is disconnected (image:../media/icon_alarm_blue_unknown.png[Icon Alarm Blue Unknown] or image:../media/icon_alarm_gray_administratively_down.png[Icon Alarm Gray Administratively Down]).
-* You cannot start the site decommission procedure if an ec-node-repair operation is in progress. See the following topic to track repairs of erasure-coded data.
-+
-xref:checking-data-repair-jobs.adoc[Checking data repair jobs]
+* You cannot start the site decommission procedure if an ec-node-repair operation is in progress. See xref:checking-data-repair-jobs.adoc[Check data repair jobs] to track repairs of erasure-coded data.
 
 * While the site decommission procedure is running:
  ** You cannot create ILM rules that refer to the site being decommissioned. You also cannot edit an existing ILM rule to refer to the site.

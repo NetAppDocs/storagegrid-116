@@ -23,13 +23,13 @@ Each HA group provides access to the shared services on the selected nodes.
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
 
-. You assign one or more virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
+. You assign one to 10 virtual IP (VIP) addresses to each HA group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
 
 . You specify one interface to be the Primary interface. The Primary interface is the active interface unless a failure occurs.
 
 . You determine the failover order for any Backup interfaces.
 
-For instructions: xref:configure-high-availability-group.adoc[Configure high availability groups]
+For instructions: xref:configure-high-availability-group.adoc[Configure high availability groups].
 
 == What is the active interface?
 
