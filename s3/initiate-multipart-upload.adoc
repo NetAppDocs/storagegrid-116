@@ -58,17 +58,22 @@ The value for `creation-time` is evaluated as seconds since January 1, 1970.
 NOTE: Adding `creation-time` as user-defined metadata is not allowed if you are adding an object to a bucket that has legacy Compliance enabled. An error will be returned.
 
 * S3 Object Lock request headers:
++ 
+NOTE: If S3 object lock is enabled at the bucket level and a default retention mode or retain-until-date is specified, these default values are assigned to all objects added to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`. +
+Retention periods are based on the request time, not the actual time that objects are ingested. 
+
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
-
++
 xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
+
 * SSE request headers:
  ** `x-amz-server-side-encryption`
  ** `x-amz-server-side-encryption-customer-key-MD5`
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
-
++
 xref:s3-rest-api-supported-operations-and-limitations.adoc[s3-rest-api-supported-operations-and-limitations]
 
 NOTE: For information on how StorageGRID handles UTF-8 characters, see the documentation for PUT Object.
