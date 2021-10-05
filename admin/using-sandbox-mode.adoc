@@ -24,11 +24,11 @@ To allow StorageGRID (the service provider) and AD FS (the identity provider) to
 
 Sandbox mode makes it easy to perform this back-and-forth configuration and to test all of your settings before you enable SSO.
 
-NOTE: Using sandbox mode is highly recommended, but not strictly required. If you are prepared to create AD FS relying party trusts immediately after you configure SSO in StorageGRID, and you do not need to test the SSO and single logout (SLO) processes for each Admin Node, click *Enabled*, enter the StorageGRID settings, create a relying party trust for each Admin Node in AD FS, and then click *Save* to enable SSO.
+NOTE: Using sandbox mode is highly recommended, but not strictly required. If you are prepared to create AD FS relying party trusts immediately after you configure SSO in StorageGRID, and you do not need to test the SSO and single logout (SLO) processes for each Admin Node, select *Enabled*, enter the StorageGRID settings, create a relying party trust for each Admin Node in AD FS, and then select *Save* to enable SSO.
 
-.Steps
+== Access Sandbox Mode and select Service Type
 
-. Select *Configuration* > *Access Control* > *Single Sign-on*.
+. Select *CONFIGURATION* > *Access Control* > *Single sign-on*.
 +
 The Single Sign-on page appears, with the *Disabled* option selected.
 +
@@ -38,36 +38,135 @@ NOTE: If the SSO Status options do not appear, confirm you have configured Activ
 
 . Select the *Sandbox Mode* option.
 +
-The Identity Provider and Relying Party settings appear. In the Identity Provider section, the *Service Type* field is read only. It shows the type of identity federation service you are using (for example, Active Directory).
+The Identity Provider and Relying Party settings appear.
 
-. In the Identity Provider section:
- .. Enter the Federation Service name, exactly as it appears in AD FS.
+. Select the *Service Type*.
+
+
+== Enter Identity provider details
+
+Enter values in the Identity Provider section for the selected service type.
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.Active Directory
+--
+.Steps
+
+. Enter the Federation Service name, exactly as it appears in AD FS.
 +
 NOTE: To locate the Federation Service Name, go to Windows Server Manager. Select *Tools* > *AD FS Management*. From the Action menu, select *Edit Federation Service Properties*. The Federation Service Name is shown in the second field.
 
- .. Specify whether you want to use Transport Layer Security (TLS) to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
-  *** *Use operating system CA certificate*: Use the default CA certificate installed on the operating system to secure the connection.
-  *** *Use custom CA certificate*: Use a custom CA certificate to secure the connection.
+. Specify whether you want to use Transport Layer Security (TLS) to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
+
+** *Use operating system CA certificate*: Use the default CA certificate installed on the operating system to secure the connection.
+** *Use custom CA certificate*: Use a custom CA certificate to secure the connection.
 +
 If you select this setting, copy and paste the certificate in the *CA Certificate* text box.
 
-  *** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
+** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
+
 . In the Relying Party section, specify the relying party identifier you will use for StorageGRID Admin Nodes when you configure relying party trusts.
- ** For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
- ** If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that includes a relying party identifier for each Admin Node, based on the node's hostname.
- +
+
+* For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
+
+* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that includes a relying party identifier for each Admin Node, based on the node's hostname.
++
 NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
 
 +
-image::../media/sso_status_sandbox_mode.gif[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
-. Click *Save*.
- ** A green check mark appears on the *Save* button for a few seconds.
+image::../media/sso_status_sandbox_mode_active_directory.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
+. Select *Save*.
+
+* A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
- ** The Sandbox mode confirmation notice appears, confirming that sandbox mode is now enabled. You can use this mode while you use AD FS to configure a relying party trust for each Admin Node and test the single sign-in (SSO) and single logout (SLO) processes.
+** The Sandbox mode confirmation notice appears, confirming that sandbox mode is now enabled. You can use this mode while you use AD FS to configure a relying party trust for each Admin Node and test the single sign-in (SSO) and single logout (SLO) processes.
 +
 image::../media/sso_sandbox_mode_enabled.gif[SSO Sandbox Mode Enabled]
+--
+
+.Azure
+--
+.Steps
+
+. Enter the Federation Service name, exactly as it appears in Azure.
+
+. Specify whether you want to use Transport Layer Security (TLS) to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
+
+** *Use operating system CA certificate*: Use the default CA certificate installed on the operating system to secure the connection.
+
+** *Use custom CA certificate*: Use a custom CA certificate to secure the connection.
++
+If you select this setting, copy and paste the certificate in the *CA Certificate* text box.
+
+** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
+
+. In the Relying Party section, specify the relying party identifier you will use for StorageGRID Admin Nodes when you configure relying party trusts.
+
+* For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
+
+* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that includes a relying party identifier for each Admin Node, based on the node's hostname.
++
+NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
+
++
+image::../media/sso_status_sandbox_mode_ping_federated.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
+. Select *Save*.
+
+* A green check mark appears on the *Save* button for a few seconds.
++
+image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
+
+** The Sandbox mode confirmation notice appears, confirming that sandbox mode is now enabled. You can use this mode while you use AD FS to configure a relying party trust for each Admin Node and test the single sign-in (SSO) and single logout (SLO) processes.
++
+image::../media/sso_sandbox_mode_enabled.gif[SSO Sandbox Mode Enabled]
+--
+
+.Ping Federated
+--
+.Steps
+
+. Enter the Federation Service name, exactly as it appears in Ping Federated.
+
+. Specify whether you want to use Transport Layer Security (TLS) to secure the connection when the identity provider sends SSO 
+configuration information in response to StorageGRID requests.
+
+** *Use operating system CA certificate*: Use the default CA certificate installed on the operating system to secure the connection.
+** *Use custom CA certificate*: Use a custom CA certificate to secure the connection.
++
+If you select this setting, copy and paste the certificate in the *CA Certificate* text box.
+
+** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
+
+. In the Relying Party section, specify the relying party identifier you will use for StorageGRID Admin Nodes when you configure relying party trusts.
+
+* For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
+* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that includes a relying party identifier for each Admin Node, based on the node's hostname.
++
+NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
++
+image::../media/sso_status_sandbox_mode_ping_federated.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
+. Select *Save*.
+
+* A green check mark appears on the *Save* button for a few seconds.
++
+image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
+
+** The Sandbox mode confirmation notice appears, confirming that sandbox mode is now enabled. You can use this mode while you use AD FS to configure a relying party trust for each Admin Node and test the single sign-in (SSO) and single logout (SLO) processes.
++
+image::../media/sso_sandbox_mode_enabled.gif[SSO Sandbox Mode Enabled]
+--
+
+====
+
+// end tabbed area
+
+
 
 .Related information
 
