@@ -66,6 +66,15 @@ A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BU
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
 
+=== Storage volume watermarks now optimized
+StorageGRID uses three storage volume watermarks to ensure that Storage Nodes safely transition to a read-only state before they run critically low on space and to allow read-only Storage Nodes to become read-write again.
+
+Previously, the Storage Volume Watermarks were system-wide defaults &mdash; the same values applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize the watermark settings. It uses different values for every storage volume in every Storage Node, based on the size of the Storage Node and the relative size of the volume.
+
+Optimized watermarks will be used for all new and most upgraded StorageGRID 11.6 systems. The exception is an upgraded system in which non-default watermark values had been in use. 
+
+After you upgrade to StorageGRID 11.6, you can determine if the new values are being used. See xref:../upgrade/determine-if-storage-watermark-overrides-are-in-use.adoc[Determine if storage watermark overrides are in use].
+
 == Changes to S3 REST API support
 
 === GET object and HEAD object support for multipart objects
@@ -80,15 +89,6 @@ Admin users who belong to a group with the Tenant Accounts permission can now vi
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
-
-=== Storage volume watermarks now optimized
-StorageGRID uses three storage volume watermarks to ensure that Storage Nodes safely transition to a read-only state before they run critically low on space and to allow read-only Storage Nodes to become read-write again.
-
-Previously, the Storage Volume Watermarks were system-wide defaults &mdash; the same values applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize the watermark settings. It uses different values for every storage volume in every Storage Node, based on the size of the Storage Node and the relative size of the volume.
-
-Optimized watermarks will be used for all new and most upgraded StorageGRID 11.6 systems. The exception is an upgraded system in which non-default watermark values had been in use. 
-
-After you upgrade to StorageGRID 11.6, you can determine if the new values are being used. See xref:../upgrade/determine-if-storage-watermark-overrides-are-in-use.adoc[Determine if storage watermark overrides are in use].
 
 
 
