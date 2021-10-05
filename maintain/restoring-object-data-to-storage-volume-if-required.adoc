@@ -192,6 +192,9 @@ Repair ID Scope Start Time End Time State Est Bytes Affected/Repaired Retry Repa
 949294 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:47:06.9 Failure 17359 0 Yes
 949299 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:57:06.9 Failure 17359 0 Yes
 ----
++
+*** To view the estimated time to completion and the completion percentage for the current job, select *SUPPORT* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completion* dashboards.
+
  .. If the output shows that the repair operation failed, use the `--repair-id` option to retry the repair.
 +
 This command retries a failed node repair, using the repair ID 83930030303133434:

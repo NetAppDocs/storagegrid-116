@@ -38,7 +38,7 @@ S3 and Swift API operations to upload objects (or object parts) might fail durin
 .Steps
 
 . [[review_object_storage]]Review the current object storage details for the site you plan to rebalance.
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select the first Storage Node at the site.
  .. Select the *Storage* tab.
  .. Hover your cursor over the Storage Used - Object Data chart to see the current amount of replicated data and erasure-coded data on the Storage Node.
@@ -77,6 +77,8 @@ To get help on the rebalance-data command:
 
 `rebalance-data --help`
 ====
++
+** To view the estimated time to completion and the completion percentage for the current job, select *SUPPORT* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completion* dashboards.
 
 . Perform additional steps, based on the status returned:
  ** If the status is `In progress`, the EC rebalance operation is still running. You should periodically monitor the procedure until it completes.
