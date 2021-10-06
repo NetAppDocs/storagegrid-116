@@ -1128,7 +1128,7 @@ a|
 A file was found in replicated object storage that could not be identified as a replicated object.
 
 . Determine if there are any issues with the underlying storage on a Storage Node. For example, run hardware diagnostics or perform a filesystem check.
-. After resolving any storage issues, perform an xref:verifying-object-integrity.adoc#What is object existence check?[object existence check] to determine if any replicated copies are missing.
+. After resolving any storage issues, perform an xref:verifying-object-integrity.adoc[object existence check] to determine if any replicated copies, as defined by your ILM policy, are missing.
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
 
