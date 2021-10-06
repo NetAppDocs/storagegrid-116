@@ -98,80 +98,94 @@ NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was tr
 
 == What is object existence check?
 
-Object existence check is a user-initiated process that verifies if all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. You can use object existence check to verify the integrity of a storage device.
+Object existence check verifies whether all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. Object existence check does not verify the object data itself (background verification does that); instead, it provides a way to verify the integrity of storage devices, especially if a recent hardware issue could have affected data integrity.
 
-Object existence check is a faster alternative to background verification that checks the existence, but not the integrity, of object data on a Storage Node. If an object existence check finds that many items are missing, there might be an issue with all or part of a storage device associated with the Storage Node. If object existence check finds a serious storage error associated with erasure-coded data, it will notify you. You must perform storage volume recovery to repair the error.
+You must manually run object existence check.
 
-An object existence check job verifies both replicated object data and erasure-coded object data, as follows:
+Object existence check verifies both replicated object copies and erasure-coded object copies as follows:
 
-* *Replicated objects*: If a copy of replicated object data is found to be missing, StorageGRID automatically attempts to replace the copy from copies stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because the missing copy no longer exists at the expected location. A new copy is generated and placed to satisfy the system's active ILM policy. This new copy might not be placed in the same location that the missing copy was stored.
-* *Erasure-coded objects*: If a fragment of an erasure-coded object is found to be missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), the Corrupt Copies Detected (ECOR) attribute is incremented by one. ILM then attempts to find another copy of the object, which it can use to generate a new erasure-coded copy.
+* *Replicated copies*: If a copy of replicated object data is missing, StorageGRID automatically attempts to replace the copy from copies stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because the missing copy no longer exists at the expected location. A new copy is generated and placed to satisfy the system’s active ILM policy. This new copy might not be placed in the same location that the missing copy was stored.
+* *Erasure-coded copies*: If a fragment of an erasure-coded object is missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), the Corrupt Copies Detected (ECOR) attribute is incremented by one. ILM then attempts to find another copy of the object, which it can use to generate a new erasure-coded copy.
 +
 If an object existence check identifies an issue with erasure coding on a storage volume, the object existence check job pauses with an error message that identifies the affected volume. You must perform a recovery procedure for any affected storage volumes.
 
 If no other copies of a missing replicated object or a corrupted erasure-coded object can be found in the grid, the *Objects lost* alert and the LOST (Lost Objects) legacy alarm are triggered.
 
-== Running object existence check
+=== Running object existence check
 
-Object existence check enables you to verify the existence of data on a Storage Node. Missing object data might indicate that an issue exists with the underlying storage device.
+You create and run one object existence check job at a time. When you create a job, you select the  Storage Nodes and volumes you want to verify. You also select the consistency control for the job.
 
 .What you'll need
-* You have ensured that the following grid tasks are not running:
- ** Grid Expansion: Add Server (GEXP), when adding a Storage Node
- ** Storage Node Decommissioning (LDCM) on the same Storage Node
-If these grid tasks are running, wait for them to complete or release their lock.
-* You have ensured that the storage is online. (Select *Support* > *Tools* > *Grid Topology*. Then, select *_Storage Node_* > *LDR* > *Storage* > *Overview* > *Main*. Ensure that *Storage State - Current* is Online.)
-* You have ensured that the following recovery procedures are not running on the same Storage Node:
+
+* You have ensured that the Storage Nodes you want to check are online.
++
+Select *Nodes* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
+* You have ensured that the following procedures are not running on the nodes you want to check:
+ ** Grid expansion to add a Storage Node
+ ** Storage Node decommissioning
  ** Recovery of a failed storage volume
  ** Recovery of a Storage Node with a failed system drive
-
-Object existence check does not provide useful information while recovery procedures are in progress.
++
+While expansion, decommissioning, or recovery procedures are in progress, object existence check does not provide useful information.
 
 .About this task
 
-You can configure an object existence check to verify all of a Storage Node's object stores or only specific object stores.
+An object existence check job can take days or weeks to complete, depending on the number of objects in the grid, the selected storage nodes and volumes, and the selected consistency control. You can run only one job at a time, but you can select multiple Storage Nodes and volumes at the same time.
 
-If object existence check finds missing object data, the StorageGRID system attempts to replace it. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
-
-Object existence check generates an LDR Foreground Verification grid task that, depending on the number of objects stored on a Storage Node, can take days or weeks to complete. It is possible to select multiple Storage Nodes at the same time; however, these grid tasks are not run simultaneously. Instead, they are queued and run one after the other until completion. When object existence check is in progress on a Storage Node, you cannot start another object existence check job on that same Storage Node even though the option to verify additional volumes might appear to be available for the Storage Node.
-
-If a Storage Node other than the one where object existence check is being run goes offline, the grid task continues to run until the *% Complete* attribute reaches 99.99 percent. The *% Complete* attribute then falls back to 50 percent and waits for the Storage Node to return to online status. When the Storage Node's state returns to online, the LDR Foreground Verification grid task continues until it completes.
+If object existence check finds missing copies, the StorageGRID system attempts to replace the copies. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
 
 .Steps
+
 . Select *MAINTENANCE* > *Object existence check*.
-+
-// image::../media/foreground_verification_volume_id_selection.gif[Foreground Verification Configuration page]
 
-. Select *Apply Changes*.
+. Select *Create job*. The Create an object existence check job wizard appears.
+.	Select the nodes containing the volumes you want to verify.
 +
-Wait until the page auto-refreshes and reloads before you leave the page. Once refreshed, object stores become unavailable for selection on that Storage Node.
+To select all online nodes, select the *Node name* check box in the column header.
 +
-An LDR Foreground Verification grid task is generated and runs until it completes, pauses, or is aborted.
+You can search by node name or site. 
++
+You will not be able to select any nodes that are not connected to the grid.
+.	Select *Continue*.
+. Select one or more volumes for each node in the list.
++
+To select all volumes for each node you selected, select the *Storage volume* check box in the column header.
+.	Select *Continue*.
+.	Select the consistency control for the job.
++
+* Strong-site
+* Strong-global
+* All (default)
++
+The consistency controls are described in the wizard.
++
+. Select *Continue*.
+.	Review and verify your selections. Select *Previous* to go to a previous step in the wizard to update your selections. 
++
+An Object existence check job is generated and runs until one of the following occurs:
++
+* The job completes.
+* You pause or cancel the job. You can resume a job that you have paused, but you cannot resume a job that you have canceled.
+* The job stalls. If a job stalls, an *Object existence check has stalled* alert is triggered. Follow the corrective actions specified for the alert.
+* The job fails. You must follow the corrective actions provided before you can resume the job. 
 
-. Monitor missing objects or missing fragments:
- .. Select *_Storage Node_* > *LDR* > *Verification*.
- .. On the Overview tab under *Verification Results*, note the value of *Missing Objects Detected*.
 +
-*Note*: The same value is reported as *Lost Objects* on the Nodes page. Go to *Nodes* > *_Storage Node_*, and select the *Objects* tab.
+NOTE: As needed, you can navigate away from the Object existence check page and return to continue monitoring the job.
 +
-If the number of *Missing Objects Detected* is large (if there are a hundreds of missing objects), there is likely an issue with the Storage Node's storage. Contact technical support.
+. As the job runs, view the *Active job* tab and note the value of Missing object copies detected.
++
+This value represents the total number of missing copies of replicated objects and erasure-coded objects with one or more missing fragments.
+ +
+(The same value is reported as Lost Object on the Nodes page...*William's comment*: Not Lost Objects, but it isn't exactly "Missing Objects" since the latter only includes replicated objects. Can have another sub bullet similar to the EC one below, just for replicated.)
++
+If the number of Missing object copies detected is greater than hundreds, there is likely an issue with the Storage Node’s storage.
 
- .. Select *_Storage Node_* > *LDR* > *Erasure Coding*.
- .. On the Overview tab under *Verification Results*, note the value of *Missing Fragments Detected*.
-+
-If the number of *Missing Fragments Detected* is large (if there are a hundreds of missing fragments), there is likely an issue with the Storage Node's storage. Contact technical support.
+.	After the job has completed, take any additional required actions:
+ ..	If Missing object copies detected was zero, then no issues were found. No action is required.
+ ..	If Missing object copies detected was greater than zero and the *Object lost* alert has not triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
+ ..	If Missing object copies detected was greater than zero and the *Object lost* alert has been triggered, data integrity could be affected. Contact technical support.
 
-+
-If object existence check does not detect a significant number of missing replicated object copies or a significant number of missing fragments, then the storage is operating normally.
-. Monitor the completion of the object existence check grid task:
- .. Select *Support* > *Tools* > *Grid Topology*. Then select *site* > *_Admin Node_* > *CMN* > *Grid Task* > *Overview* > *Main*.
- .. Verify that the object existence check grid task is progressing without errors.
-+
-*Note*: A notice-level alarm is triggered on grid task status (SCAS) if the object existence check grid task pauses.
-
- .. If the grid task pauses with a `critical storage error`, recover the affected volume and then run object existence check on the remaining volumes to check for additional errors.
-+
-*Attention*: If the object existence check job pauses with the message `Encountered a critical storage error in volume _volID_`, you must perform the procedure for recovering a failed storage volume. See the recovery and maintenance instructions.
+.	If you selected the strong-site or strong-global consistency control for the job, run the job on the same volumes again after waiting for metadata consistency (in approximately three weeks). Check the *Job history* tab to determine which jobs are ready to be re-run.
 
 .After you finish
 
