@@ -86,7 +86,7 @@ NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Referen
 * `x-amz-tagging`
 * S3 Object Lock request headers
 + 
-NOTE: If S3 object lock is enabled at the bucket level and a default retention mode and default retention period are specified, these default values are used to calculate the retain-until-date upon ingest of new object versions to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`. +
+NOTE: If S3 object lock is enabled at the bucket level and a default retention mode and default retention period are specified, these default values are used to calculate the retain-until-date when new object versions ingest to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`. +
 If the default retention period is modified after ingest of an object version, the retain-until-date of the object version remains the same and is not recalculated using the new default retention period. 
 
  ** `x-amz-object-lock-mode`
