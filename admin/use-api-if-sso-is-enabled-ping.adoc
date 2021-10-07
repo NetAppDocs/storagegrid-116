@@ -1,0 +1,35 @@
+---
+permalink: admin/using-api-if-sso-is-enabled-ping.html
+sidebar: sidebar
+keywords:
+summary: 'If single sign-on (SSO) has been enabled and you are using Ping Federate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
+---
+= Use the API if single sign-on is enabled (Ping)
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If single sign-on (SSO) has been enabled and you are using Ping Federate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
+
+== Sign in to the API if single sign-on is enabled
+
+These instructions apply if you are using Ping Federate as the SSO identity provider
+
+.What you'll need
+
+* You know the SSO username and password for a federated user who belongs to a StorageGRID user group.
+* If you want to access the Tenant Management API, you know the tenant account ID.
+
+.About this task
+
+To obtain an authentication token, you can use one of the following examples:
+
+* The `storagegrid-ssoauth.py` Python script, which is located in the StorageGRID installation files directory (`./rpms` for Red Hat Enterprise Linux or CentOS, `./debs` for Ubuntu or Debian, and `./vsphere` for VMware).
+* An example workflow of curl requests.
++
+The curl workflow might time out if you perform it too slowly. You might see the error: `A valid SubjectConfirmation was not found on this Response.`
++
+NOTE: The example curl workflow does not protect the password from being seen by other users.
+
+If you have a URL-encoding issue, you might see the error: `Unsupported SAML version`.
+
