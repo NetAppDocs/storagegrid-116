@@ -13,7 +13,7 @@ After recovering storage volumes for the appliance Storage Node, you can restore
 
 .What you'll need
 
-* You must have confirmed that the recovered Storage Node has a Connection State of *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the *Nodes* > *Overview* tab in the Grid Manager.
+* You must have confirmed that the recovered Storage Node has a Connection State of *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the *NODES* > *Overview* tab in the Grid Manager.
 
 .About this task
 
@@ -150,13 +150,13 @@ NOTE: Repairs of erasure coded data can begin while some Storage Nodes are offli
  ** If your grid has both replicated and erasure coded data, run both commands.
 
 . Monitor the repair of replicated data.
- .. Select *Nodes* > *Storage Node being repaired* > *ILM*.
+ .. Select *NODES* > *_Storage Node being repaired_* > *ILM*.
  .. Use the attributes in the Evaluation section to determine if repairs are complete.
 +
 When repairs are complete, the Awaiting - All attribute indicates 0 objects.
 
- .. To monitor the repair in more detail, select *Support* > *Tools* > *Grid Topology*.
- .. Select *grid* > *Storage Node being repaired* > *LDR* > *Data Store*.
+ .. To monitor the repair in more detail, select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *_grid_* > *_Storage Node being repaired_* > *LDR* > *Data Store*.
  .. Use a combination of the following attributes to determine, as well as possible, if replicated repairs are complete.
 +
 NOTE: Cassandra inconsistencies might be present, and failed repairs are not tracked.
@@ -168,7 +168,7 @@ NOTE: High-risk objects are objects that are at risk of being completely lost. T
   *** *Scan Period -- Estimated (XSCM)*: Use this attribute to estimate when a policy change will be applied to previously ingested objects. If the *Repairs Attempted* attribute does not increase for a period longer than the current scan period, it is probable that replicated repairs are done. Note that the scan period can change. The *Scan Period -- Estimated (XSCM)* attribute applies to the entire grid and is the maximum of all node scan periods. You can query the *Scan Period -- Estimated* attribute history for the grid to determine an appropriate time frame.
 . Monitor the repair of erasure coded data, and retry any requests that might have failed.
  .. Determine the status of erasure coded data repairs:
- *** Select *SUPPORT* > *Metrics* to view the estimated time to completion and the completion percentage for the current job. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completion* dashboards.
+ *** Select *SUPPORT* > *Tools* > *Metrics* to view the estimated time to completion and the completion percentage for the current job. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
  
   *** Use this command to see the status of a specific `repair-data` operation:
 +
