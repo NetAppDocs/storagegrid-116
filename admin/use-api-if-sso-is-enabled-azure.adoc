@@ -1,5 +1,5 @@
 ---
-permalink: admin/using-api-if-sso-is-enabled-azure.html
+permalink: admin/use-api-if-sso-is-enabled-azure.html
 sidebar: sidebar
 keywords:
 summary: 'If single sign-on (SSO) has been enabled and you are using Azure as the SSO provider, you can use two example scripts to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
@@ -52,6 +52,8 @@ The python script will then call the corresponding `Node.js` script to perform t
 ** The tenant account ID, if you want to access the Tenant Management API
  
 . When prompted, enter the password and be prepared to provide an MFA authorization to Azure if requested.
++
+image::../media/sso_api_password_mfa.png[Prompt to enter password and MFA]
 +
 NOTE: The script assumes MFA is done using Microsoft Authenticator. You might need to modify the script to support other forms of MFA (such as entering a code received via text message).
 +
