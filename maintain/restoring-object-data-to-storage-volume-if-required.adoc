@@ -155,7 +155,7 @@ NOTE: Repairs of erasure coded data can begin while some Storage Nodes are offli
 +
 When repairs are complete, the Awaiting - All attribute indicates 0 objects.
 
- .. To monitor the repair in more detail, select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. To monitor the repair in more detail, select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_grid_* > *_Storage Node being repaired_* > *LDR* > *Data Store*.
  .. Use a combination of the following attributes to determine, as well as possible, if replicated repairs are complete.
 +
@@ -191,16 +191,16 @@ image::../media/ec_repair_status.png[ec repair status]
 
  .. If the output shows that the repair operation failed, use the `--repair-id` option to retry the repair.
 +
-This command retries a failed node repair, using the repair ID 83930030303133434:
+This command retries a failed node repair, using the repair ID 6949309319275667690:
 +
 ----
-repair-data start-ec-node-repair --repair-id 83930030303133434
+repair-data start-ec-node-repair --repair-id 6949309319275667690
 ----
 +
-This command retries a failed volume repair, using the repair ID 83930030303133434:
+This command retries a failed volume repair, using the repair ID 6949309319275667690:
 +
 ----
-repair-data start-ec-volume-repair --repair-id 83930030303133434
+repair-data start-ec-volume-repair --repair-id 6949309319275667690
 ----
 
 .Related information

@@ -11,8 +11,6 @@ summary: 'You can use sandbox mode to configure and test single sign-on (SSO) be
 [.lead]
 You can use sandbox mode to configure and test single sign-on (SSO) before enabling it for all StorageGRID users. After SSO has been enabled, you can return to sandbox mode whenever you need to change or retest the configuration. 
 
-Whenever sandbox mode is enabled, SSO is disabled for all StorageGRID users.
-
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
@@ -22,18 +20,15 @@ Whenever sandbox mode is enabled, SSO is disabled for all StorageGRID users.
 +
 [cols="1a,1a"]  
 |===
-|LDAP service type |SSO identity provider
+|Configured LDAP service type |Options for SSO identity provider
 
-|Active Directory
-|Active Directory
-
-|* Active Directory
+|AD FS
+|* AD FS
 * Azure AD
+* Ping Federate
 
-|Azure
-
-|Active Directory
-|Ping Federate
+|Azure AD
+|Azure AD
 
 |===
 
@@ -97,6 +92,11 @@ If you select this setting, copy the text of the custom certificate and and past
 image::../media/sso_status_sandbox_mode_active_directory.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
 +
 NOTE: You must create a relying party trust for each Admin Node in your StorageGRID system. Having a relying party trust for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
+.. Select *Save*.
++
+A green check mark appears on the *Save* button for a few seconds.
++
+image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
 --
 .Azure
@@ -125,6 +125,11 @@ image::../media/sso_status_sandbox_mode_ping_federated.png[Single Sign-on, Sandb
 +
 To access this URL, select the enterprise application and open the Single sign-on page.
 
+.. Select *Save*.
++
+A green check mark appears on the *Save* button for a few seconds.
++
+image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
 --
 .Ping Federated
@@ -159,24 +164,26 @@ Use the following format:
 ----
 https://<Federation Service Name>:9031/pf/federation_metadata.ping?PartnerSpId=<Relying Party Identifier>
 ----
---
 
+.. Select *Save*.
++
+A green check mark appears on the *Save* button for a few seconds.
++
+image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
++
+
+--
 ====
 
 // end tabbed area
 
-[start=3]
-. Select *Save*.
+== Configure relying party trusts or SP connections
 
-* A green check mark appears on the *Save* button for a few seconds.
-+
-image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
+When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust or service provider (SP) connection for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
 
-** The Sandbox mode confirmation notice appears, confirming that sandbox mode is now enabled. You can use this mode while you configure a relying party trust for each Admin Node in the SSO identity provider and while you test the single sign-in (SSO) and single logout (SLO) processes.
-+
-image::../media/sso_sandbox_mode_enabled.gif[SSO Sandbox Mode Enabled]
+StorageGRID can remain in sandbox mode as long as required. However, when *Sandbox Mode* is active, SSO is disabled for all StorageGRID users. Only local users can sign in.
 
-. Use the SSO identity provider software to configure a relying party trust for each Admin Node and test the single sign-in (SSO) and single logout (SLO) processes.
+To configure relying party trusts or SP connections, follow these steps, based on the SSO provider.
 
 // start tabbed area
 
@@ -185,17 +192,77 @@ image::../media/sso_sandbox_mode_enabled.gif[SSO Sandbox Mode Enabled]
 
 .Active Directory
 --
-//content
+
+. Go to Active Directory Federation Services (AD FS).
+
+. Create one or more relying party trusts for StorageGRID, using the relying party identifier(s) shown in the table on the StorageGRID Single Sign-on page.
++
+You must create one trust for each Admin Node shown in the table.
+
+. Select the link in the Sandbox mode notification to go to your identity provider's sign-on page.
+
+. From this page, sign in to each relying party trust you created for StorageGRID.
++
+If the SSO operation is successful, StorageGRID displays a page with a success message. Otherwise, an error message is displayed.
+
+. Sign out of StorageGRID to verify the single logout (SLO) process.
+
+. When you have confirmed SSO for each of the relying party trusts and you are ready to enforce the use of SSO for StorageGRID, follow these steps:
+.. Return to the Single Sign-on page in StorageGRID.
+.. Change the SSO Status to *Enabled*.
+.. Select *Save*.
++
+When the SSO Status is *Enabled,* all users must use SSO to access StorageGRID. No local users can sign in.
+
 --
 
 .Azure
 --
-//content
+
+. Go to the Azure portal. 
+
+. Create one or more enterprise applications for StorageGRID, using the relying party identifier(s) shown in the table on the StorageGRID Single Sign-on page.
++
+You must create one enterprise application for each Admin Node shown in the table.
+
+. For each enterprise application you created, go to the Single sign-on page in the Azure portal.
+
+. Test the settings for each application. 
++
+You can sign in as the current user or as someone else. StorageGRID displays a success or error message for each test.
+
+. Sign out of StorageGRID to verify the single logout (SLO) process.
+
+. When you have confirmed SSO for each of the enterprise applications and you are ready to enforce the use of SSO for StorageGRID, follow these steps:
+.. Return to the Single Sign-on page in StorageGRID.
+.. Change the SSO Status to *Enabled*.
+.. Select *Save*.
++
+When the SSO Status is *Enabled,* all users must use SSO to access StorageGRID. No local users can sign in.
+
+
 --
 
 .Ping Federated
 --
-//content
+
+. Go to Ping Federate.
+
+. Create one or more SP connections for StorageGRID, using the relying party identifier(s) shown shown in the table on the StorageGRID Single Sign-on page.
++
+You must create one SP connection for each Admin Node shown in the table.
+
+. Select each link in the Sandbox mode notification to test SSO and SLO for each Admin Node.
++
+StorageGRID displays a success or error message for each test.
+
+. When you have confirmed SSO for each SP connection and you are ready to enforce the use of SSO for StorageGRID, follow these steps:
+.. Return to the Single Sign-on page in StorageGRID.
+.. Change the SSO Status to *Enabled*.
+.. Select *Save*.
++
+When the SSO Status is *Enabled,* all users must use SSO to access StorageGRID. No local users can sign in.
+
 --
 
 ====

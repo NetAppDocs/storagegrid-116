@@ -1,7 +1,7 @@
 ---
 permalink: admin/use-api-if-sso-is-enabled-adfs.html
 sidebar: sidebar
-keywords:
+keywords: how to access storagegrid API if SSO is enabled with ADFS
 summary: 'If single sign-on (SSO) has been enabled and you are using Active Directory Federated Services (AD FS) as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
 ---
 = Use the API if single sign-on is enabled (Active Directory)
@@ -9,7 +9,7 @@ summary: 'If single sign-on (SSO) has been enabled and you are using Active Dire
 :imagesdir: ../media/
 
 [.lead]
-If single sign-on (SSO) has been enabled and you are using Active Directory Federated Services (AD FS) as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
+If single sign-on (SSO) has been enabled and you are using Active Directory Federated Services (AD FS) as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
 
 == Sign in to the API if single sign-on is enabled
 
@@ -53,6 +53,7 @@ The StorageGRID authorization token is provided in the output. You can now use t
 . If you want to use curl requests, use the following procedure.
  .. Declare the variables needed to sign in.
 +
+[source,bash]
 ----
 export SAMLUSER='my-sso-username'
 export SAMLPASSWORD='my-password'
@@ -68,14 +69,13 @@ NOTE: To access the Grid Management API, use 0 as `TENANTACCOUNTID`.
 +
 This example shows a POST request for a signed authentication URL for `TENANTACCOUNTID`. The results will be passed to python `-m json.tool` to remove the JSON encoding.
 +
-[source,curl]
+[source,bash]
 curl -X POST "https://$STORAGEGRID_ADDRESS/api/v3/authorize-saml" \
   -H "accept: application/json" -H  "Content-Type: application/json" \
   --data "{\"accountId\": \"$TENANTACCOUNTID\"}" | python -m json.tool
 +
 The response for this example includes a signed URL that is URL-encoded, but it does not include the additional JSON-encoding layer.
 +
-[source,json]
 ----
 {
     "apiVersion": "3.0",
@@ -87,6 +87,7 @@ The response for this example includes a signed URL that is URL-encoded, but it 
 
  .. Save the `SAMLRequest` from the response for use in subsequent commands.
 +
+[source,bash]
 ----
 export SAMLREQUEST='fZHLbsIwEEV%2FJTuv7...sSl%2BfQ33cvfwA%3D'
 ----
@@ -95,14 +96,13 @@ export SAMLREQUEST='fZHLbsIwEEV%2FJTuv7...sSl%2BfQ33cvfwA%3D'
 +
 One option is to request the login form using the URL from the previous response.
 +
-[source,curl]
+[source,bash]
 ----
 curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID" | grep 'form method="post" id="loginForm"'
 ----
 +
 The response includes the client request ID:
 +
-[source,curl]
 ----
 <form method="post" id="loginForm" autocomplete="off" novalidate="novalidate" onKeyPress="if (event && event.keyCode == 13) Login.submitLoginRequest();" action="/adfs/ls/?
 SAMLRequest=fZHRToMwFIZfhb...UJikvo77sXPw%3D%3D&RelayState=12345&client-request-id=00000000-0000-0000-ee02-0080000000de" >
@@ -110,13 +110,14 @@ SAMLRequest=fZHRToMwFIZfhb...UJikvo77sXPw%3D%3D&RelayState=12345&client-request-
 
  .. Save the client request ID from the response.
 +
+[source,bash]
 ----
 export SAMLREQUESTID='00000000-0000-0000-ee02-0080000000de'
 ----
 
  .. Send your credentials to the form action from the previous response.
 +
-[source,curl]
+[source,bash]
 ----
 curl -X POST "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \
 --data "UserName=$SAMLUSER@$SAMLDOMAIN&Password=$SAMLPASSWORD&AuthMethod=FormsAuthentication" --include
@@ -126,7 +127,6 @@ AD FS returns a 302 redirect, with additional information in the headers.
 +
 NOTE: If multi-factor authentication (MFA) is enabled for your SSO system, the form post will also contain the second password or other credentials.
 +
-[source,https]
 ----
 HTTP/1.1 302 Found
 Content-Length: 0
@@ -136,23 +136,22 @@ Set-Cookie: MSISAuth=AAEAADAvsHpXk6ApV...pmP0aEiNtJvWY=; path=/adfs; HttpOnly; S
 Date: Tue, 06 Nov 2018 16:55:05 GMT
 ----
 
-
 .. Save the `MSISAuth` cookie from the response.
 +
+[source,bash]
 ----
 export MSISAuth='AAEAADAvsHpXk6ApV...pmP0aEiNtJvWY='
 ----
 
 .. Send a GET request to the specified location with the cookies from the authentication POST.
 +
-[source,curl]
+[source,bash]
 ----
 curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \ --cookie "MSISAuth=$MSISAuth" --include
 ----
 +
 The response headers will contain AD FS session information for later logout usage, and the response body contains the SAMLResponse in a hidden form field.
 +
-[source,https]
 ----
 HTTP/1.1 200 OK
 Cache-Control: no-cache,no-store
@@ -173,6 +172,7 @@ Date: Wed, 07 Nov 2018 16:32:59 GMT
 
  .. Save the `SAMLResponse` from the hidden field:
 +
+[source,bash]
 ----
 export SAMLResponse='PHNhbWxwOlJlc3BvbnN...1scDpSZXNwb25zZT4='
 ----
@@ -181,7 +181,7 @@ export SAMLResponse='PHNhbWxwOlJlc3BvbnN...1scDpSZXNwb25zZT4='
 +
 For `RelayState`, use the tenant account ID or use 0 if you want to sign in to the Grid Management API.
 +
-[source,curl]
+[source,bash]
 ----
 curl -X POST "https://$STORAGEGRID_ADDRESS:443/api/saml-response" \
   -H "accept: application/json" \
@@ -192,7 +192,6 @@ curl -X POST "https://$STORAGEGRID_ADDRESS:443/api/saml-response" \
 +
 The response includes the authentication token.
 +
-[source,json]
 ----
 {
     "apiVersion": "3.0",
@@ -204,6 +203,7 @@ The response includes the authentication token.
 
  .. Save the authentication token in the response as `MYTOKEN`.
 +
+[source,bash]
 ----
 export MYTOKEN="56eb07bf-21f6-40b7-af0b-5c6cacfb25e7"
 ----
@@ -223,7 +223,7 @@ If required, you can sign out of the StorageGRID API simply by logging out from 
 
 . To generate a signed logout request, pass `cookie "sso=true"` to the SLO API:
 +
-[source,curl]
+[source,bash]
 ----
 curl -k -X DELETE "https://$STORAGEGRID_ADDRESS/api/v3/authorize" \
 -H "accept: application/json" \
@@ -234,7 +234,6 @@ curl -k -X DELETE "https://$STORAGEGRID_ADDRESS/api/v3/authorize" \
 +
 A logout URL is returned:
 +
-[source,json]
 ----
 {
     "apiVersion": "3.0",
@@ -246,20 +245,20 @@ A logout URL is returned:
 
 . Save the logout URL.
 +
+[source,bash]
 ----
 export LOGOUT_REQUEST='https://adfs.example.com/adfs/ls/?SAMLRequest=fZDNboMwEIRfhZ...HcQ%3D%3D'
 ----
 
 . Send a request to the logout URL to trigger SLO and to redirect back to StorageGRID.
 +
-[source,curl]
+[source,bash]
 ----
 curl --include "$LOGOUT_REQUEST"
 ----
 +
 The 302 response is returned. The redirect location is not applicable to API-only logout.
 +
-[source,https]
 ----
 HTTP/1.1 302 Found
 Location: https://$STORAGEGRID_ADDRESS:443/api/saml-logout?SAMLResponse=fVLLasMwEPwVo7ss%...%23rsa-sha256
@@ -270,7 +269,7 @@ Set-Cookie: MSISSignoutProtocol=U2FtbA==; expires=Tue, 20 Nov 2018 22:35:03 GMT;
 +
 Deleting the StorageGRID bearer token works the same way as without SSO. If `cookie "sso=true"` is not provided, the user is logged out of StorageGRID without affecting the SSO state.
 +
-[source,curl]
+[source,bash]
 ----
 curl -X DELETE "https://$STORAGEGRID_ADDRESS/api/v3/authorize" \
 -H "accept: application/json" \
