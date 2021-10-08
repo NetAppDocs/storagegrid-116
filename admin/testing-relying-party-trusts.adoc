@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'Before you enforce the use of single sign-on \(SSO\) for StorageGRID, confirm that single sign-on and single logout \(SLO\) are correctly configured. If you created a relying party trust for each Admin Node, confirm you can use SSO and SLO for each Admin Node.'
 ---
-= Testing relying party trusts
+= Test relying party trusts
 :icons: font
 :imagesdir: ../media/
 
@@ -19,18 +19,18 @@ Before you enforce the use of single sign-on (SSO) for StorageGRID, confirm that
 
 .Steps
 
-. Select *Configuration* > *Access Control* > *Single Sign-on*.
+. Select *CONFIGURATION* > *Access control* > *Single sign-on*.
 +
 The Single Sign-on page appears, with the *Sandbox Mode* option selected.
 
 . In the instructions for sandbox mode, locate the link to your identity provider's sign-on page.
 +
-The URL is derived from the value you entered in the *Federated Service Name* field.
+The URL is derived from the value you entered in the *Federation service name* field.
 +
 image::../media/sso_sandbox_mode_url.gif[URL for identity provider sign-on page]
 
-. Click the link, or copy and paste the URL into a browser, to access your identity provider's sign-on page.
-. To confirm you can use SSO to sign in to StorageGRID, select *Sign in to one of the following sites*, select the relying party identifier for your primary Admin Node, and click *Sign in*.
+. Select the link, or copy and paste the URL into a browser, to access your identity provider's sign-on page.
+. To confirm you can use SSO to sign in to StorageGRID, select *Sign in to one of the following sites*, select the relying party identifier for your primary Admin Node, and select *Sign in*.
 +
 image::../media/sso_sandbox_mode_testing.gif[Testing relying party trusts in SSO Sandbox Mode]
 +
