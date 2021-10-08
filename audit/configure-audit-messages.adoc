@@ -9,175 +9,155 @@ summary: 'All StorageGRID nodes generate audit messages to track system activity
 :imagesdir: ../media/
 
 [.lead]
-All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded. You can also specify whether these messages are sent to the audit log on Admin Nodes (default), to an external syslog server, or to both. For a description of StorageGrid audit messages, see xxxxxxxxxxxxxxx.
+All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category. You can also change the destination of audit messages.
+
 
 .What you'll need
 
-* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission. or maintenance?? xxxxxxxxxx
-* DNS ????xxxxxxxxxxxxxxxx
-xxxxxxxxxxxIs auditing turned on by default? Can it be turned off?
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must have Maintenance or Root Access permissions.
 
-== Configure audit message levels and protocol headers
-Why is this done? xxxxxxxxxxxxxxxxxxxx? What if it is not done? morexxxxxxxxxxxxxxxxxxxxxx
-Add existing  content here. ///////???
+.About this task
 
+By default, audit messages are sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *Configuration* > *Monitoring* > *Audit messages* page. Optionally, you can configure audit messages to be sent to a remote syslog server. 
 
-== Configure audit destinations
+== Change audit message levels
 
-By default, StorageGrid sends audit messages to the Admin node. You can configure an external syslog server to receiveve audit messages from the StorageGRID system. The messages are xxxxxxxxxxx.
+You can set a different audit level for each of the following categories of messages:
 
-=== Configure external syslog server
+* *System*: By default, this level is set to Normal.
+* *Storage*: By default, this level is set to Error.
+* *Management*: By default, this level is set to Normal.
+* *Client Reads*: By default, this level is set to Normal.
+* *Client Writes*: By default, this level is set to Normal.
 
-==== Access the wizardxxxxxxxxxxxx
+NOTE: These defaults apply if you initially installed StorageGRID using version 10.3 or later. If you have upgraded from an earlier version of StorageGRID, the default for all categories is set to Normal.
 
-. From the *Audit* page, select Configure syslog server.
+NOTE: During upgrades, audit level configurations will not be effective immediately.
+
+.Steps
+
+. Select *Configuration* > *Monitoring* > *Audit messages*.
 +
+image::../media/audit-messages-main-page.png[Audit messages main page]
 
-
-. Select *Create*.
-
-=== Enter endpoint detailsxxxxxxxxxxxxxxxxx
-
-. Enter details for the endpoint.
+. For each category of audit message, select an audit level from the drop-down list:
 +
-image::../media/load_balancer_endpoint_create_http.png[Create LB Endpoint]
-+
-[cols="1a,2a" options="header"]
+[cols=2*,options="header",cols="20,80"]
+[options="header"]
 |===
-| Field| Description
-
-|Name
-|A descriptive name for the endpoint, which will appear in the table on the Load balancer endpoints page.
-
-|Port
-|The port clients will use to connect to the Load Balancer service on Admin Nodes and Gateway Nodes.
-
-Accept the suggested port number or enter any external port that is not used by another grid service. Enter a value between 1 and 65535.
-
-If you enter *80* or *443*, the endpoint is configured only on Gateway Nodes. These ports are reserved on Admin Nodes.
-
-xref:../network/index.adoc[Networking guidelines]
-
-|Client type
-|The type of client application that will use this endpoint, either *S3* or *Swift*.
-
-|Network protocol
-|The network protocol that clients will use when connecting to this endpoint.
-
-*  Select *HTTPS* for secure, TLS encrypted communication. You must attach a security certificate before you can save the endpoint.
-
-* Select *HTTP* for less secure, unencrypted communication. Use HTTP only for a non-production grid.
+| Audit level| Description
+a|
+Off
+a|
+No audit messages from the category are logged.
+a|
+Error
+a|
+Only error messages are logged--audit messages for which the result code was not "successful" (SUCS).
+a|
+Normal
+a|
+Standard transactional messages are logged--the messages listed in these instructions for the category.
+a|
+Debug
+a|
+Deprecated. This level behaves the same as the Normal audit level.
 |===
+The messages included for any particular level include those that would be logged at the higher levels. For example, the Normal level includes all of the Error messages.
 
+. Under *Audit protocol headers*, enter the name of the HTTP request headers to be included in Client Reads and Client Writes audit messages. Use an asterisk (\*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Click the plus sign to create a list of header name fields.
+//how many can be added?
++
+NOTE: Audit protocol headers apply to S3 and Swift requests only.
++
+When such HTTP headers are found in a request, they are included in the audit message under the field HTRH.
++
+NOTE: Audit protocol request headers are logged only if the audit level for *Client Reads* or *Client Writes* is not *Off*.
+
+[start=4]
+. If you want to change the selected audit message destination, Go to <<Change-audit-destinations,Change audit message destinations>>. Otherwise, select *Save*.
+
+== [[Change-audit-destinations]]Change audit message destinations
+
+You can specify whether audit messages are sent to the audit log on Admin Nodes (default), to an external syslog server, or both. If you want to use an external server, you must configure it first.
+
+If you want to use an external syslog server, see <<Access-the-syslog-server-configuration-wizard,Access the syslog server configuration wizard>> to open the syslog server configuration wizard. Otherwise, go to <<Select-the-destination-for-audit-messages-from-the-listed-options,Select the destination for audit messages from the listed options>>.
+
+=== [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
+. From the Audit messages page, Select *Configure external syslog server*.
++
+image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
+
+
+
+==== Enter Syslog info
+The Syslog info page appears: 
+//banner always there?
+
+image::../media/enter-syslog-info.png[Enter syslog info]
+
+. Enter the FQDN or IP of the remote server.
+. Enter the port.
+. Select the protocol used to send the audit messages to the remote server. 
+
++
+. If you select UDP or TCP, select *Continue*.
+. IF you select TLS, you must upload at least one certificate. Do the following: 
+//of the remote server? 
+
+..
++
+//image::../media/ssh-provisioning-xxxxpassphrase.png[xxxxxxxxxxxxxxxxx]//
+
+[start=2]
+//. Select *Continue*xxxxxxxxxxxxxxxx.
+
+==== Manage Syslog content
+. Select *Dxxxxxxxxxx*.
++
+//xxxxxxxxxxxxxxxxxxxxxxx.
++
+//image::../media/ssh-download-current-recovery-package.png[Download current recovery package]//
+
+[start=3]
 . Select *Continue*.
+==== Manage Syslog content
+. Select *Continue*.
+==== Send test messages
+Send test messages. Skip and Finish. Finish.
 
-=== Select the binding mode
-
-. Select a binding mode for the endpoint to control how the endpoint is accessed--using any IP address or using specific IP addresses and network interfaces.
+. [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit messages from the listed options.
 +
 [cols="1a,2a" options="header"]
 |===
-| Option | Description
-
-|Global (default)
-|Clients can access the endpoint using the IP address of any Gateway Node or Admin Node, or the virtual IP address of any HA group on any network.
-
-Use the *Global* setting (default) unless you need to restrict the accessibility of this endpoint.
-
-|Virtual IPs of HA groups
-|Clients can only access the endpoint using a virtual IP address of an HA group.
-
-Endpoints using this mode can all use the same port number, as long as the HA groups you select for the endpoints do not overlap.
-
-|Node interfaces
-|Clients can only access the endpoint using the IP address of a selected node and network interface.
-
-Endpoints using this mode can all use the same port number as long as the interfaces you select for the endpoints do not overlap.
-
-|===
-+
-[NOTE]
-If you use the same port for morexxxxxxxxxxxxxxxxxxxxxx than one endpoint, an endpoint using *Virtual IPs of HA groups* mode overrides an endpoint using *Node interfaces* mode, which overrides an endpoint using *Global* mode.
-
-. If you selected *Virtual IPs of HA groups*, select one or more HA groups.
-+
-image::../media/load_balancer_endpoint_ha_group_vips_binding_mode.png[Endpoint HA Group VIPs Binding Mode]
-
-+
-. If you selected *Node interfaces*, select one xxxxxxxxxxxxxxxxxxor more node interfaces for each Admin Node or Gateway Node that you want to associate with this endpoint.
-+
-image::../media/load_balancer_endpoint_node_interfaces_binding_mode.png[Endpoint Node Interfaces Binding Mode]
-
-. If you are creating an *HTTP* endpoint, you do not need to attach a certificate. Select *Create* and go to <<After-you-finish,After you finish>>. Otherwise, select *Continue* to attach the certificate.
-
-
-=== Attach certificatexxxxxxxxxxxxxxxxxxxx
-
-. If you are creating an *HTTPS* endpoint, select the type of security certificate you want to attach to the endpoint.
-+
-The certificate secures the connections between S3 and Swift clients and the Load Balancer service on Admin Node or Gateway Nodes.
-+
-[cols="1a,2a" options="header"]
-|===
-| Option| Descriptionxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-|Use StorageGRID S3 and Swift certificate
-|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). If you use this global certificate for a load balancer endpoint, you should replace the default certificate with a custom certificate signed by an external certificate authority.
-
-//See ...tbd... for instructions.//
-
-|Upload certificate
-|You can upload a custom certificate for this endpoint.
-
-|Generate certificate
-|You can generate a custom certificate for this endpoint.
-
-|===
-+
-. If you selected *Upload certificate*, browse for the server certificate, the certificate private key, and the optional CA bundle.
-+
-image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
-
-. If you selected *Generate certificate*, enter information for the certificate.
-+
-image::../media/load_balancer_endpoint_generate_cert.png[Generate certificate]
-
-+
-[cols="1a,2a" options="header"]
-|===
-| Field| Description
+| Option| Description
 
 |Admin Node
 |Audit messages are sent to the audit log on the Admin Node.
 
-Select *Add another domain* to add any other domain names.
+|External syslog server
+|Audit messages are sent to an external syslog server. This option is enabled only after you have configured the external syslog server.
 
-|IP address
-|An IP address for the generated certificate.
+|Admin Node and external syslog server.
+|Audit messages are sent to both the audit log on the Admin Node and the external syslog server.
 
-
-Select *Add another IP address* to add any other IP addresses.
-
-If you are using high availability (HA) groups, add the domain names and IP addresses of the HA virtual IPs.
-
-|Subject
-|Optionally, enter an X.509 subject, also referred to as the Distinguished Name (DN), to identify who owns the certificate.
-
-|Days valid
-|Optionally, enter the number of days the generated certificate is valid, starting at the time it is generated. The default is 730 days.
-
+|None
+|No audit messages are sent. 
 
 |===
 
-. Select *Generate*.
-
-. Select *Create*.
+. Click *Save*
 
 
-=== [[After-you-finish]]After you finish
-Provide S3 and Swift clients with the information needed to connect to the endpoint:
+.Related information
 
-* Port number
-* IP address, which might be the VIP of an HA group or the IP address of a Gateway or Admin Node
-* Any required certificate details
+xref:system-audit-messages.adoc[System audit messages]
+
+xref:object-storage-audit-messages.adoc[Object storage audit messages]
+
+xref:management-audit-message.adoc[Management audit message]
+
+xref:client-read-audit-messages.adoc[Client read audit messages]
+
+xref:../admin/index.adoc[Administer StorageGRID]
