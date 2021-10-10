@@ -688,7 +688,7 @@ a|
 The certificate authority (CA) certificate used to sign the key management server (KMS) certificate is about to expire.
 
 . Using the KMS software, update the CA certificate for the key management server.
-. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. From the Grid Manager, select *CONFIGURATION* > *Security* > *Key management server*.
 . Select the KMS that has a certificate status warning.
 . Select *Edit*.
 . Select *Next* to go to Step 2 (Upload Server Certificate).
@@ -702,7 +702,7 @@ KMS client certificate expiration
 a|
 The client certificate for a key management server is about to expire.
 
-. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. From the Grid Manager, select *CONFIGURATION* > *Security* > *Key management server*.
 . Select the KMS that has a certificate status warning.
 . Select *Edit*.
 . Select *Next* to go to Step 3 (Upload Client Certificates).
@@ -725,7 +725,7 @@ KMS connectivity error
 a|
 An appliance node could not connect to the key management server for its site.
 
-. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. From the Grid Manager, select *CONFIGURATION* > *Security* > *Key management server*.
 . Confirm that the port and hostname entries are correct.
 . Confirm that the server certificate, client certificate, and the client certificate private key are correct and not expired.
 . Ensure that firewall settings allow the appliance node to communicate with the specified KMS.
@@ -750,7 +750,7 @@ KMS is not configured
 a|
 No key management server exists for this site.
 
-. From the Grid Manager, select *Configuration* > *System Settings* > *Key Management Server*.
+. From the Grid Manager, select *CONFIGURATION* > *Security* > *Key management server*.
 . Add a KMS for this site or add a default KMS.
 
 xref:../admin/index.adoc[Administer StorageGRID]
@@ -1128,11 +1128,9 @@ a|
 A file was found in replicated object storage that could not be identified as a replicated object.
 
 . Determine if there are any issues with the underlying storage on a Storage Node. For example, run hardware diagnostics or perform a filesystem check.
-. After resolving any storage issues, run object existence check to determine if objects are missing and to replace them if possible.
+. After resolving any storage issues, perform an xref:verifying-object-integrity.adoc[object existence check] to determine if any replicated copies, as defined by your ILM policy, are missing.
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
-
-xref:troubleshooting-storagegrid-system.adoc[Running object existence check]
 
 |===
 *Related information*
