@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'If the global S3 Object Lock setting is enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.'
 ---
-= Creating an ILM policy after S3 Object Lock is enabled
+= Create an ILM policy after S3 Object Lock is enabled
 :icons: font
 :imagesdir: ../media/
 
@@ -52,7 +52,7 @@ You must enter at least 1 and no more than 128 characters.
 +
 The Select Rules for Policy dialog box appears, with all defined rules listed.
 
- ** The Select Default Rule section lists the rules that can be the default for a compliant policy. It includes compliant rules that do not use filters.
+ ** The Select Default Rule section lists the rules that can be the default for a compliant policy. It includes compliant rules that do not use filters or the Noncurrent reference time.
  ** The Select Other Rules section lists the other compliant and non-compliant rules that can be selected for this policy.
 + 
 image::../media/ilm_policy_select_rules_for_compliant_policy.png[ILM Policy Select Rules for Compliant Policy]

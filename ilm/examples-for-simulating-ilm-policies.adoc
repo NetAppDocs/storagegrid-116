@@ -12,7 +12,7 @@ summary: 'These examples show how you can verify ILM rules by simulating the ILM
 [.lead]
 These examples show how you can verify ILM rules by simulating the ILM policy before activating it.
 
-== Example 1: Verifying rules when simulating a proposed ILM policy
+== Example 1: Verify rules when simulating a proposed ILM policy
 
 This example shows how to verify rules when simulating a proposed policy.
 
@@ -20,16 +20,16 @@ In this example, the *Example ILM policy* is being simulated against the ingeste
 
 * The first rule, *Two copies, two years for bucket-a*, applies only to objects in bucket-a.
 * The second rule, menu:EC objects[1 MB], applies to all buckets but filters on objects greater than 1 MB.
-* The third rule is the default rule and does not include any filters.
+* The third rule is the default rule and does not include any filters and does not use the Noncurrent reference time.
 
 image::../media/saved_policy_for_simulation.png[Saved Policy for Simulation]
 
 .Steps
-. After adding the rules and saving the policy, click *Simulate*.
+. After adding the rules and saving the policy, select *Simulate*.
 +
 The Simulate ILM Policy dialog box appears.
 
-. In the *Object* field, enter the S3 bucket/object-key or the Swift container/object-name for a test object, and click *Simulate*.
+. In the *Object* field, enter the S3 bucket/object-key or the Swift container/object-name for a test object, and select *Simulate*.
 +
 The Simulation Results appear, showing which rule in the policy matched each object you tested.
 +
@@ -43,7 +43,7 @@ In this example:
  .. `bucket-b/test object greater than 1 MB.pdf` is in `bucket-b`, so it did not match the first rule. Instead, it was correctly matched by the second rule, which filters on objects greater than 1 MB.
  .. `bucket-b/test object less than 1 MB.pdf` did not match the filters in the first two rules, so it will be placed by the default rule, which includes no filters.
 
-== Example 2: Reordering rules when simulating a proposed ILM policy
+== Example 2: Reorder rules when simulating a proposed ILM policy
 
 This example shows how you can reorder rules to change the results when simulating a policy.
 
@@ -56,8 +56,8 @@ In this example, the *Demo* policy is being simulated. This policy, which is int
 image::../media/simulate_reorder_rules_pngs_rule.png[Example 2: Reordering rules when simulating a proposed ILM policy]
 
 .Steps
-. After adding the rules and saving the policy, click *Simulate*.
-. In the *Object* field, enter the S3 bucket/object-key or the Swift container/object-name for a test object, and click *Simulate*.
+. After adding the rules and saving the policy, select *Simulate*.
+. In the *Object* field, enter the S3 bucket/object-key or the Swift container/object-name for a test object, and select *Simulate*.
 +
 The Simulation Results appear, showing that the `Havok.png` object was matched by the *PNGs* rule.
 +
@@ -66,14 +66,14 @@ image::../media/simulate_reorder_rules_pngs_result.gif[Example 2: Reordering rul
 However, the rule that the `Havok.png` object was meant to test was the *X-men* rule.
 
 . To resolve the issue, reorder the rules.
- .. Click *Finish* to close the Simulate ILM Policy page.
- .. Click *Edit* to edit the policy.
+ .. Select *Finish* to close the Simulate ILM Policy page.
+ .. Select *Edit* to edit the policy.
  .. Drag the *X-men* rule to the top of the list.
 +
 image::../media/simulate_reorder_rules_correct_rule.png[Simulate - Reorder Rules - Correct Rule]
 
- .. Click *Save*.
-. Click *Simulate*.
+ .. Select *Save*.
+. Select *Simulate*.
 +
 The objects you previously tested are re-evaluated against the updated policy, and the new simulation results are shown. In the example, the Rule Matched column shows that the `Havok.png` object now matches the X-men metadata rule, as expected. The Previous Match column shows that the PNGs rule matched the object in the previous simulation.
 +
@@ -93,7 +93,7 @@ When a test object is not matched by the expected rule in the policy, you must e
 
 .Steps
 
-. For each rule in the policy, view the rule settings by clicking the rule name or the more details icon image:../media/icon_nms_more_details.gif[more details icon] on any dialog box where the rule is displayed.
+. For each rule in the policy, view the rule settings by selecting the rule name or the more details icon image:../media/icon_nms_more_details.gif[more details icon] on any dialog box where the rule is displayed.
 . Review the rule's tenant account, reference time, and filtering criteria.
 +
 In this example, the metadata for the X-men rule includes an error. The metadata value was entered as "`x-men1`" instead of "`x-men.`"
@@ -108,29 +108,29 @@ image::../media/simulate_rules_select_rule_popup_with_wrong_metadata.png[Example
 |===
 | Option| Description
 a|
-Cloning the rule
+Clone the rule
 a|
 
  .. Select *ILM* > *Rules*.
- .. Select the incorrect rule, and click *Clone*.
- .. Change the incorrect information, and click *Save*.
+ .. Select the incorrect rule, and select *Clone*.
+ .. Change the incorrect information, and select *Save*.
  .. Select *ILM* > *Policies*.
- .. Select the proposed policy, and click *Edit*.
- .. Click *Select Rules*.
- .. Select the check box for the new rule, uncheck the check box for the original rule, and click *Apply*.
- .. Click *Save*.
+ .. Select the proposed policy, and select *Edit*.
+ .. Select *Select Rules*.
+ .. Select the check box for the new rule, uncheck the check box for the original rule, and select *Apply*.
+ .. Select *Save*.
 
 a|
-Editing the rule
+Edit the rule
 a|
- .. Select the proposed policy, and click *Edit*.
- .. Click the delete icon image:../media/icon_nms_delete_new.gif[delete icon] to remove the incorrect rule, and click *Save*.
+ .. Select the proposed policy, and select *Edit*.
+ .. Select the delete icon image:../media/icon_nms_delete_new.gif[delete icon] to remove the incorrect rule, and select *Save*.
  .. Select *ILM* > *Rules*.
- .. Select the incorrect rule, and click *Edit*.
- .. Change the incorrect information, and click *Save*.
+ .. Select the incorrect rule, and select *Edit*.
+ .. Change the incorrect information, and select *Save*.
  .. Select *ILM* > *Policies*.
- .. Select the proposed policy, and click *Edit*.
- .. Select the corrected rule, click *Apply*, and click *Save*.
+ .. Select the proposed policy, and select *Edit*.
+ .. Select the corrected rule, select *Apply*, and select *Save*.
 
 +
 |===
