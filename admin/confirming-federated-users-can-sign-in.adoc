@@ -26,34 +26,35 @@ xref:requirements-for-sso.adoc[Requirements for using single sign-on]
 IMPORTANT: When you enable SSO, an identity source configured in the Tenant Manager is overridden by the identity source configured in the Grid Manager. Users belonging to the tenant's identity source will no longer be able to sign in unless they have an account with the Grid Manager identity source.
 
  .. Sign in to the Tenant Manager for each tenant account.
- .. Select *Access Control* > *Identity Federation*.
- .. Confirm that the *Enable Identity Federation* check box is not selected.
- .. If it is, confirm that any federated groups that might be in use for this tenant account are no longer required, unselect the check box, and click *Save*.
+ .. Select *ACCESS MANAGEMENT* > *Identity federation*.
+ .. Confirm that the *Enable identity federation* check box is not selected.
+ .. If it is, confirm that any federated groups that might be in use for this tenant account are no longer required, unselect the check box, and select *Save*.
 
 . Confirm that a federated user can access the Grid Manager:
- .. From Grid Manager, select *Configuration* > *Access Control* > *Admin Groups*.
+ .. From Grid Manager, select *CONFIGURATION* > *Access control* > *Admin groups*.
  .. Ensure that at least one federated group has been imported from the Active Directory identity source and that it has been assigned the Root Access permission.
  .. Sign out.
  .. Confirm you can sign back in to the Grid Manager as a user in the federated group.
 . If there are existing tenant accounts, confirm that a federated user who has Root Access permission can sign in:
- .. From the Grid Manager, select *Tenants*.
- .. Select the tenant account, and click *Edit Account*.
- .. If the *Uses Own Identity Source* check box is selected, uncheck the box and click *Save*.
+ .. From the Grid Manager, select *TENANTS*.
+ .. Select the tenant account, and select *Actions* > *Edit*.
+ .. On the Enter details tab, select *Continue*.
+ .. If the *Use own identity source* check box is selected, uncheck the box and select *Save*.
 +
-image::../media/sso_uses_own_identity_source_for_tenant.gif[Edit Tenant Account > Uses Own Identity Source check box not selected]
+image::../media/sso_uses_own_identity_source_for_tenant.png[Edit Tenant Account > Use own identity source check box not selected]
 +
-The Tenant Accounts page appears.
+The Tenant page appears.
 
- .. Select the tenant account, click *Sign In*, and sign in to the tenant account as the local root user.
- .. From the Tenant Manager, click *Access Control* > *Groups*.
+ .. Select the tenant account, select *Sign in*, and sign in to the tenant account as the local root user.
+ .. From the Tenant Manager, select *ACCESS MANAGEMENT* > *Groups*.
  .. Ensure that at least one federated group from the Grid Manager has been assigned the Root Access permission for this tenant.
  .. Sign out.
  .. Confirm you can sign back in to the tenant as a user in the federated group.
 
 .Related information
 
-xref:requirements-for-sso.adoc[Requirements for using single sign-on]
+* xref:requirements-for-sso.adoc[Requirements for using single sign-on]
 
-xref:managing-admin-groups.adoc[Managing admin groups]
+* xref:managing-admin-groups.adoc[Managing admin groups]
 
-xref:../tenant/index.adoc[Use a tenant account]
+* xref:../tenant/index.adoc[Use a tenant account]

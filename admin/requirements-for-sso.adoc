@@ -14,16 +14,42 @@ Before enabling single sign-on (SSO) for a StorageGRID system, review the requir
 
 == Identity provider requirements
 
-The identity provider (IdP) for SSO must meet the following requirements:
+StorageGRID supports the following SSO identity providers (IdP):
 
-* Any of the following versions of Active Directory Federation Service (AD FS):
- ** Windows Server 2022 AD FS
- ** Windows Server 2019 AD FS
- ** Windows Server 2016 AD FS
-+
+* Active Directory Federation Service (AD FS)
+* Azure Active Directory (Azure AD)
+* Ping Federate
+
+You must configure identity federation for your StorageGRID system before you can configure an SSO identity provider. The type of LDAP service you use for identity federation controls which type of SSO you can implement.
+
+[cols="1a,1a"]  
+|===
+|Configured LDAP service type |Options for SSO identity provider
+
+|AD FS
+|* AD FS
+* Azure AD
+* Ping Federate
+
+|Azure AD
+|Azure AD
+
+|===
+
+
+=== AD FS requirements
+You can use any of the following versions of AD FS:
+
+ * Windows Server 2022 AD FS
+ * Windows Server 2019 AD FS
+ * Windows Server 2016 AD FS
+
 NOTE: Windows Server 2016 should be using the https://support.microsoft.com/en-us/help/3201845/cumulative-update-for-windows-10-version-1607-and-windows-server-2016[KB3201845 update^], or higher.
 
  ** AD FS 3.0, included with Windows Server 2012 R2 update, or higher.
+
+=== Additional requirements
+
 * Transport Layer Security (TLS) 1.2 or 1.3
 * Microsoft .NET Framework, version 3.5.1 or higher
 
