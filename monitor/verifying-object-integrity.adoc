@@ -117,15 +117,13 @@ You create and run one object existence check job at a time. When you create a j
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Maintenance or Root Access permission.
-* You have ensured that the Storage Nodes you want to check are online.
-
-Select *NODES* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
+* You have ensured that the Storage Nodes you want to check are online. Select *NODES* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
 * You have ensured that the following procedures are not running on the nodes you want to check:
  ** Grid expansion to add a Storage Node
  ** Storage Node decommission
  ** Recovery of a failed storage volume
  ** Recovery of a Storage Node with a failed system drive
-+
+
 While expansion, decommission, or recovery procedures are in progress, object existence check does not provide useful information.
 
 .About this task
@@ -137,15 +135,14 @@ An object existence check job can take days or weeks to complete, depending on t
 . Select *MAINTENANCE* > *Tasks* > *Object existence check*.
 
 . Select *Create job*. The Create an object existence check job wizard appears.
-.	Select the nodes containing the volumes you want to verify.
-+
-image::../media/oec_select_nodes.png[OEC select nodes]
-+
-To select all online nodes, select the *Node name* check box in the column header.
+.	Select the nodes containing the volumes you want to verify. To select all online nodes, select the *Node name* check box in the column header.
 +
 You can search by node name or site. 
 +
 You cannot select nodes that are not connected to the grid.
++
+image::../media/oec_select_nodes.png[OEC select nodes]
+
 .	Select *Continue*.
 . Select one or more volumes for each node in the list.
 +
