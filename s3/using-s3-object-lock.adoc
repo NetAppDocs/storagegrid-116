@@ -29,7 +29,7 @@ xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets
 
 You cannot add or disable S3 Object Lock after the bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
 
-A bucket with S3 Object Lock enabled can contain a combination of objects with and without S3 Object Lock settings. StorageGRID does not support default retention for the objects in S3 Object Lock buckets, so the PUT Object Lock Configuration bucket operation is not supported.
+A bucket with S3 Object Lock enabled can contain a combination of objects with and without S3 Object Lock settings. StorageGRID supports default retention for the objects in S3 Object Lock buckets and supports the PUT Object Lock Configuration bucket operation.
 
 == Determining if S3 Object Lock is enabled for a bucket
 
