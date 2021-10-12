@@ -99,13 +99,13 @@ NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was tr
 
 == What is object existence check?
 
-Object existence check verifies whether all expected replicated copies of objects and copies of erasure-coded fragments exist on a Storage Node. Object existence check does not verify the object data itself (background verification does that); instead, it provides a way to verify the integrity of storage devices, especially if a recent hardware issue could have affected data integrity.
+Object existence check verifies whether all expected replicated copies of objects and erasure-coded fragments exist on a Storage Node. Object existence check does not verify the object data itself (background verification does that); instead, it provides a way to verify the integrity of storage devices, especially if a recent hardware issue could have affected data integrity.
 
-You must manually run object existence check.
+Unlike background verification, which occurs automatically, you must manually start an object existence check job.
 
-Object existence check reads the metadata for every object stored in StorageGRID and verifies both replicated object copies and erasure-coded object copies. If data is missing: 
+Object existence check reads the metadata for every object stored in StorageGRID and verifies the existence of both replicated object copies and erasure-coded object fragments. If data is missing, each type of data is handled as follows: 
 
-* *Replicated copies*: If a copy of replicated object data is missing, StorageGRID automatically attempts to replace the copy from copies stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because the missing copy no longer exists at the expected location. A new copy is generated and placed to satisfy the system’s active ILM policy. This new copy might not be placed in the same location where the missing copy was stored.
+* *Replicated copies*: If a copy of replicated object data is missing, StorageGRID automatically attempts to replace the copy from a copy stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because another copy is missing. A new copy is generated and placed to satisfy the system’s active ILM policy. This new copy might not be placed in the same location where the missing copy was stored.
 * *Erasure-coded copies*: If a fragment of an erasure-coded object is missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), the Corrupt Copies Detected (ECOR) attribute is incremented by one. ILM then attempts to find another copy of the object, which it can use to generate a new erasure-coded copy.
 
 [[run_oec]]
@@ -115,28 +115,26 @@ You create and run one object existence check job at a time. When you create a j
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Maintenance or Root Access permission.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Maintenance or Root Access permission.
 * You have ensured that the Storage Nodes you want to check are online.
 
-Select *Nodes* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
+Select *NODES* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
 * You have ensured that the following procedures are not running on the nodes you want to check:
  ** Grid expansion to add a Storage Node
- ** Storage Node decommissioning
+ ** Storage Node decommission
  ** Recovery of a failed storage volume
  ** Recovery of a Storage Node with a failed system drive
 +
-While expansion, decommissioning, or recovery procedures are in progress, object existence check does not provide useful information.
+While expansion, decommission, or recovery procedures are in progress, object existence check does not provide useful information.
 
 .About this task
 
 An object existence check job can take days or weeks to complete, depending on the number of objects in the grid, the selected storage nodes and volumes, and the selected consistency control. You can run only one job at a time, but you can select multiple Storage Nodes and volumes at the same time.
 
-If object existence check finds missing copies, the StorageGRID system attempts to replace the copies. If a replacement copy cannot be made, the LOST (Lost Objects) alarm might be triggered.
-
 .Steps
 
-. Select *MAINTENANCE* > *Object existence check*.
+. Select *MAINTENANCE* > *Tasks* > *Object existence check*.
 
 . Select *Create job*. The Create an object existence check job wizard appears.
 .	Select the nodes containing the volumes you want to verify.
@@ -147,7 +145,7 @@ To select all online nodes, select the *Node name* check box in the column heade
 +
 You can search by node name or site. 
 +
-You will not be able to select any nodes that are not connected to the grid.
+You cannot select nodes that are not connected to the grid.
 .	Select *Continue*.
 . Select one or more volumes for each node in the list.
 +
@@ -170,7 +168,7 @@ An Object existence check job is generated and runs until one of the following o
 +
 * The job completes.
 * You pause or cancel the job. You can resume a job that you have paused, but you cannot resume a job that you have canceled.
-* The job stalls. If a job stalls, an *Object existence check has stalled* alert is triggered. Follow the corrective actions specified for the alert.
+* The job stalls. If a job stalls, the *Object existence check has stalled* alert is triggered. Follow the corrective actions specified for the alert.
 * The job fails. You must follow the corrective actions provided before you can resume the job. 
 
 +
@@ -181,22 +179,23 @@ NOTE: As needed, you can navigate away from the Object existence check page and 
 +
 This value represents the total number of missing copies of replicated objects and erasure-coded objects with one or more missing fragments.
 +
-If the number of Missing object copies detected is greater than hundreds, there is likely an issue with the Storage Node’s storage.
+If the number of Missing object copies detected is in the hundreds, there is likely an issue with the Storage Node’s storage.
 
 +
 image::../media/oec_active.png[OEC active job]
 
 .	After the job has completed, take any additional required actions:
- ..	If Missing object copies detected was zero, then no issues were found. No action is required.
- ..	If Missing object copies detected was greater than zero and the *Object lost* alert has not triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
- ..	If Missing object copies detected was greater than zero and the *Object lost* alert has been triggered, data integrity could be affected. Contact technical support.
+*	If Missing object copies detected is zero, then no issues were found. No action is required.
+*	If Missing object copies detected is greater than zero and the *Objects lost* alert has not been triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
+* If Missing object copies detected is greater than zero and the *Objects lost* alert has been triggered, then data integrity could be affected. Contact technical support.
 
-.	If you selected the strong-site or strong-global consistency control for the job, run the job on the same volumes again after waiting for metadata consistency (in approximately three weeks). Check the *Job history* tab to determine which jobs are ready to be re-run.
+.	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then <<rerunoec,run the job>> on the same volumes again. Check the *Job history* tab to determine which jobs are ready to be re-run.
 
 .After you finish
 
-If you still have concerns about data integrity, go to *LDR* > *Verification* > *Configuration* > *Main* and increase the background Verification Rate. Background verification checks the correctness of all stored object data and repairs any issues that it finds. Finding and xref:../maintain/index.adoc[repairing] potential issues as quickly as possible reduces the risk of data loss.
+If you still have concerns about data integrity, go to *SUPPORT* > *Tools* > *Grid topology* > *_site_* > *_Storage Node_* > *LDR* > *Verification* > *Configuration* > *Main* and increase the Background Verification Rate. Background verification checks the correctness of all stored object data and repairs any issues that it finds. Finding and xref:../maintain/index.adoc[repairing] potential issues as quickly as possible reduces the risk of data loss.
 
+[[rerunoec]]
 === Re-run an object existence check job
 
 Approximately three weeks after running an object consistency check job, StorageGRID will have had time to achieve metadata consistency for the nodes and volumes included in the job. At that time, you should re-run the same job. Re-running a job allows previous errors to clear if they were caused by metadata inconsistency.
