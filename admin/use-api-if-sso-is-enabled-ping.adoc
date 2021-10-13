@@ -59,7 +59,7 @@ The StorageGRID authorization token is provided in the output. You can now use t
 ----
 export SAMLUSER='my-sso-username'
 export SAMLPASSWORD='my-password'
-export TENANTACCOUNTID=’12345’
+export TENANTACCOUNTID='12345'
 export STORAGEGRID_ADDRESS='storagegrid.example.com'
 export AD_FS_ADDRESS='adfs.example.com'
 ----
@@ -68,7 +68,7 @@ NOTE: To access the Grid Management API, use 0 as `TENANTACCOUNTID`.
 
  .. To receive a signed authentication URL, issue a POST request to `/api/v3/authorize-saml`, and remove the additional JSON encoding from the response.
 +
-This example shows a POST request for a signed authentication URL for `TENANTACCOUNTID`. The results will be passed to the Python -m json.tool to remove the JSON encoding.
+This example shows a POST request for a signed authentication URL for TENANTACCOUNTID. The results will be passed to python -m json.tool to remove the JSON encoding.
 +
 [source,bash]
 curl -X POST "https://$STORAGEGRID_ADDRESS/api/v3/authorize-saml" \
@@ -88,40 +88,44 @@ The response for this example includes a signed URL that is URL-encoded, but it 
 
  .. Save the `SAMLRequest` from the response for use in subsequent commands.
 +
-[source,bash]
 ----
 export SAMLREQUEST="https://my-pf-baseurl/idp/SSO.saml2?..."
 ----
 .. Export the response and cookie, and echo the response:
 +
-[source,bash]
 ----
 RESPONSE=$(curl -c - "$SAMLREQUEST")
-
+----
++
+[source,bash]
+----
 echo "$RESPONSE" | grep 'input type="hidden" name="pf.adapterId" id="pf.adapterId"'
 ----
 
 .. Export the 'pf.adapterId' value, and echo the response:
 +
-[source,bash]
 ----
 export ADAPTER='myAdapter'
-
+----
++
+[source,bash]
+----
 echo "$RESPONSE" | grep 'base'
 ----
 
 .. Export the 'href' value (remove the trailing slash /), and echo the response:
 +
-[source,bash]
 ----
 export BASEURL='https://my-pf-baseurl'
-
+----
++
+[source,bash]
+----
 echo "$RESPONSE" | grep 'form method="POST"'
 ----
 
 .. Export the 'action' value:
 +
-[source,bash]
 ----
 export SSOPING='/idp/.../resumeSAML20/idp/SSO.ping'
 ----
@@ -201,7 +205,7 @@ A logout URL is returned:
 ----
 {
     "apiVersion": "3.0",
-    "data": "https:my-ping-url/idp/SLO.saml2?SAMLRequest=fZDNboMwEIRfhZ...HcQ%3D%3D",
+    "data": "https://my-ping-url/idp/SLO.saml2?SAMLRequest=fZDNboMwEIRfhZ...HcQ%3D%3D",
     "responseTime": "2021-10-12T22:20:30.839Z",
     "status": "success"
 }
@@ -211,7 +215,7 @@ A logout URL is returned:
 +
 [source,bash]
 ----
-export LOGOUT_REQUEST='https:my-ping-url/idp/SLO.saml2?SAMLRequest=fZDNboMwEIRfhZ...HcQ%3D%3D'
+export LOGOUT_REQUEST='https://my-ping-url/idp/SLO.saml2?SAMLRequest=fZDNboMwEIRfhZ...HcQ%3D%3D'
 ----
 
 . Send a request to the logout URL to trigger SLO and to redirect back to StorageGRID.
