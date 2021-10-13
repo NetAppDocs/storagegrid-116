@@ -803,58 +803,50 @@ a|
 Will compare to the sender's username from which the request was sent. Can be used for bucket or object operations.
 
 a|
-S3:GetBucketPolicy
-a|
-s3:object-lock-remaining-retention-days
-a|    
-Retrieve the default retention period for a bucket using a GET Bucket Policy request.
+s3:ListBucket and
 
-a|
-S3:ListBucket and
-
-S3:ListBucketVersions permissions
+s3:ListBucketVersions permissions
 
 a|
 s3:delimiter
 a|
 Will compare to the delimiter parameter specified in a GET Bucket or GET Bucket Object versions request.
-a|
-S3:ListBucket and
 
-S3:ListBucketVersions permissions
+a|
+s3:ListBucket and
+
+s3:ListBucketVersions permissions
 a|
 s3:max-keys
 a|
 Will compare to the max-keys parameter specified in a GET Bucket or GET Bucket Object versions request.
-a|
-S3:ListBucket and
 
-S3:ListBucketVersions permissions
+a|
+s3:ListBucket and
+
+s3:ListBucketVersions permissions
 a|
 s3:prefix
 a|
 Will compare to the prefix parameter specified in a GET Bucket or GET Bucket Object versions request.
 
 a|
-S3:PutObject
+s3:PutObject
 a|
 s3:object-lock-remaining-retention-days
 a|    
-Set the default retention period during new bucket creation using one of the following requests:
+Compares to the retain-until-date specified in the `x-amz-object-lock-retain-until-date` request header or computed from the bucket default retention period in the following requests:
 
 * PUT Object
 * PUT Object - Copy
-* POST Object
 * Initiate Multipart Upload
-* Complete Multipart Upload
-* Upload Part
 
 a|
-S3:PutObjectRetention
+s3:PutObjectRetention
 a|
 s3:object-lock-remaining-retention-days
 a|    
-Set the default retention period for an existing bucket using a PUT Object Retention request.
+Compares to the retain-until-date specified in the PUT Object Retention request.
 
 |===
 
