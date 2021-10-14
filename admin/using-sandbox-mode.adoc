@@ -131,6 +131,10 @@ A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
+.. Download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the relying party trust.
+
+NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
+
 --
 .Ping Federate
 --
@@ -170,7 +174,11 @@ https://<Federation Service Name>:9031/pf/federation_metadata.ping?PartnerSpId=<
 A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
-+
+
+.. Download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the service provider (SP) connection for each Admin Node.
+
+NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
+
 
 --
 ====
@@ -222,7 +230,7 @@ If the SSO operation is successful, StorageGRID displays a page with a success m
 
 . Go to the Azure portal. 
 
-. Create one or more enterprise applications for StorageGRID, using the relying party identifier(s) shown in the table on the StorageGRID Single Sign-on page.
+. Create one or more enterprise applications for StorageGRID. Use the relying party identifier for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
 +
 You must create one enterprise application for each Admin Node shown in the table.
 
@@ -243,7 +251,7 @@ You can sign in as the current user or as someone else. StorageGRID displays a s
 
 . Go to Ping Federate.
 
-. Create one or more service provider (SP) connections for StorageGRID, using the relying party identifier(s) shown shown in the table on the StorageGRID Single Sign-on page.
+. Create one or more service provider (SP) connections for StorageGRID. Use the relying party identifier for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
 +
 You must create one SP connection for each Admin Node shown in the table.
 
