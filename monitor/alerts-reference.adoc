@@ -375,20 +375,24 @@ The Cassandra auto-compactor exists on all Storage Nodes and manages the size of
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
 
-a|
-Cassandra auto-compactor metrics out of date
-a|
-The metrics that describe the Cassandra auto-compactor are out of date.
+a|Audit logs are being added to the in-memory queue
+
+a|Node cannot send logs to the local syslog server and the in-memory queue is filling up.
+
+. Ensure that the rsyslog service is running on the node.
+. If necessary, restart the rsyslog service on the node using the command `service rsyslog restart`.
+. If the rsyslog service cannot be restarted and you do not save audit messages on Admin Nodes, contact technical support. Audit logs will be lost if this condition is not corrected.
+
+a|Cassandra auto-compactor metrics out of date
+a|The metrics that describe the Cassandra auto-compactor are out of date.
 
 The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this alert persists, certain workloads will experience unexpectedly high metadata consumption.
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
 
-a|
-Cassandra communication error
-a|
-The nodes that run the Cassandra service are having trouble communicating with each other.
+a|Cassandra communication error
+a|The nodes that run the Cassandra service are having trouble communicating with each other.
 
 This alert indicates that something is interfering with node-to-node communications. There might be a network issue or the Cassandra service might be down on one or more Storage Nodes.
 
@@ -586,6 +590,39 @@ The server certificate used for accessing storage API endpoints is about to expi
 . On the *Global* tab, select *S3 and Swift API certificate*.
 . xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
 
+a|External syslog CA certificate expiration
+a|The certificate authority (CA) certificate used to sign the external syslog server certificate is about to expire.
+
+. Update the CA certificate on the external syslog server.
+. Obtain a copy of the updated CA certificate.
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Select *Browse* to upload the new certificate.
+. Complete the Configuration wizard to save the new certificate and key.
+
+a|External syslog client certificate expiration
+a|The client certificate for an external syslog server is about to expire.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Select *Browse* to upload the new certificate.
+. Select *Browse* to upload the new private key.
+. Complete the Configuration wizard to save the new certificate and key.
+
+a|External syslog server certificate expiration
+a|The server certificate presented by the external syslog server is about to expire.
+
+. Update the server certificate on the external syslog server.
+. (OPTIONAL) If you previously used the Grid Manager API to provide a server certificate for certificate validation, upload the updated server certificate using the API.
+
+a|External syslog server forwarding error
+a|Node cannot forward logs to the external syslog server.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Advance through the Configuration wizard until you are able to select *Send test messages*.
+. Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
+. Resolve any reported issues.
 
 a|
 Grid Network MTU mismatch
@@ -784,6 +821,16 @@ The disk queue for audit messages is full.
 . Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*Configuration* > *Monitoring* > *Audit*).
 
 xref:../audit/index.adoc[Review audit logs]
+
+
+a|Logs are being added to the on-disk queue
+a|Node cannot forward logs to the external syslog server and the on-disk queue is filling up.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Advance through the Configuration wizard until you are able to select *Send test messages*.
+. Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
+. Resolve any reported issues.
 
 a|
 Low audit log disk capacity
