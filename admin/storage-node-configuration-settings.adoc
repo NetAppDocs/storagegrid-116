@@ -94,36 +94,22 @@ The time limit in seconds within which a health check test must complete in orde
 [cols="1a,1a,2a" options="header"]
 |===
 | Attribute Name| Code| Description
-a|
-Reset Missing Objects Count
-a|
-VCMI
-a|
-Resets the count of Missing Objects Detected (OMIS). Use only after object existence check completes. Missing replicated object data is restored automatically by the StorageGRID system.
-a|
-Verify
-a|
-FVOV
-a|
-Select object stores on which to perform object existence check.
-a|
-Verification Rate
-a|
-VPRI
-a|
-Set the rate at which background verification takes place. See information on configuring the background verification rate.
-a|
-Reset Corrupt Objects Count
-a|
-VCCR
-a|
-Reset the counter for corrupt replicated object data found during background verification. This option can be used to clear the Corrupt Objects Detected (OCOR) alarm condition. For details, see the instructions for monitoring and troubleshooting StorageGRID.
-a|
-Delete Quarantined Objects
-a|
-OQRT
-a|
-Delete corrupt objects from the quarantine directory, reset the count of quarantined objects to zero, and clear the Quarantined Objects Detected (OQRT) alarm. This option is used after corrupt objects have been automatically restored by the StorageGRID system.
+
+|Reset Missing Objects Count
+|VCMI
+|Resets the count of Missing Objects Detected (OMIS). Use only after object existence check completes. Missing replicated object data is restored automatically by the StorageGRID system.
+
+|Verification Rate
+|VPRI
+|Set the rate at which background verification takes place. See information on configuring the background verification rate.
+
+|Reset Corrupt Objects Count
+|VCCR
+|Reset the counter for corrupt replicated object data found during background verification. This option can be used to clear the Corrupt Objects Detected (OCOR) alarm condition. For details, see the instructions for monitoring and troubleshooting StorageGRID.
+
+|Delete Quarantined Objects
+|OQRT
+|Delete corrupt objects from the quarantine directory, reset the count of quarantined objects to zero, and clear the Quarantined Objects Detected (OQRT) alarm. This option is used after corrupt objects have been automatically restored by the StorageGRID system.
 
 If a Lost Objects alarm is triggered, technical support might want to access the quarantined objects. In some cases, quarantined objects might be useful for data recovery or for debugging the underlying issues that caused the corrupt object copies.
 
