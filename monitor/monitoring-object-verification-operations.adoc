@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: object, verification
 summary: 'The StorageGRID system can verify the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.'
 ---
-= Monitoring object verification operations
+= Monitor object verification operations
 :icons: font
 :imagesdir: ../media/
 
@@ -12,10 +12,11 @@ summary: 'The StorageGRID system can verify the integrity of object data on Stor
 The StorageGRID system can verify the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.
 
 .What you'll need
-You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must have the Maintenance or Root Access permission.
 
 .About this task
-There are two verification processes that work together to ensure data integrity:
+Two xref:verifying-object-integrity.adoc[verification processes] work together to ensure data integrity:
 
 * *Background verification* runs automatically, continuously checking the correctness of object data.
 +
@@ -25,26 +26,29 @@ NOTE: The *Unidentified corrupt object detected* alert is triggered if the syste
 
 * *Object existence check* can be triggered by a user to more quickly verify the existence (although not the correctness) of object data.
 +
-Object existence check allows you to verify the existence of replicated and erasure-coded object data on a specific Storage Node, checking that each object that is expected to be present is there. You can run foreground verification on all or some of a Storage Node's object stores to help determine if there are integrity problems with a storage device. Large numbers of missing objects might indicate that there is an issue with storage.
 
-To review results from background and foreground verifications, such as corrupt or missing objects, you can look at the Nodes page for a Storage Node. You should investigate any instances of corrupt or missing object data immediately, to determine the root cause.
+Object existence check verifies whether all expected replicated copies of objects and erasure-coded fragments exist on a Storage Node. Object existence check provides a way to verify the integrity of storage devices, especially if a recent hardware issue could have affected data integrity.
+
+You should review the results from background verifications and object existence checks regularly. Investigate any instances of corrupt or missing object data immediately to determine the root cause.
 
 .Steps
-. Select *Nodes*.
-. Select *_Storage Node_* > *Objects*.
-. To check the verification results:
+. Review the results from background verifications:
+.. Select *NODES*.
+.. Select *_Storage Node_* > *Objects*.
+.. Check the verification results:
  ** To check replicated object data verification, look at the attributes in the Verification section.
 +
 image::../media/nodes_storage_node_object_verification.png[Nodes > Storage Node > Object > Verification]
-+
-NOTE: Click an attribute's name in the table to display help text.
 
- ** To check erasure-coded fragment verification, select *_Storage Node_* > *ILM* and look at the attributes in the Erasure Coding Verification table.
+ ** To check erasure-coded fragment verification, select *_Storage Node_* > *ILM* and look at the attributes in the Erasure coding verification section.
 +
-image::../media/nodes_storage_node_ilm_ec_verification.gif[Nodes > Storage Node > ILM > EC Verification]
+image::../media/nodes_storage_node_ilm_ec_verification.png[Nodes > Storage Node > ILM > EC Verification]
 +
-NOTE: Click an attribute's name in the table to display help text.
+Select the question mark image:../media/icon_nms_question.png[question mark] next to an attribute's name to display help text.
 
-.Related information
-
-xref:troubleshooting-storagegrid-system.adoc[Verifying object integrity]
+. Review the results from object existence check jobs:
+.. Select *MAINTENANCE*.
+.. Select *Object existence check*.
+.. Select *Job history* and scan the Missing object copies detected column. If any jobs resulted in 100 or more missing object copies and the *Objects lost* xref:alerts-reference.adoc[alert has been triggered], contact technical support.
++
+image::../media/oec_job_history.png[Object existence check job history]
