@@ -950,7 +950,7 @@ The GET Object Lock Configuration request allows you to determine if default ret
 
 The default retention mode and default retention period are used to calculate the retain-until-date when new object versions ingest to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`.
 
-You must have the s3:GetBucketObjectLockConfiguration permission, or be account root, to complete this operation.
+You have the s3:GetBucketObjectLockConfiguration permission, or be account root, to complete this operation.
 
 === Request example
 
@@ -1055,13 +1055,13 @@ The default retention mode and default retention period are used to calculate th
 
 If the default retention period is modified after ingest of an object version, the retain-until-date of the object version remains the same and is not recalculated using the new default retention period.
 
-You must have the s3:PutBucketObjectLockConfiguration permission, or be account root, to complete this operation.
+You have the s3:PutBucketObjectLockConfiguration permission, or be account root, to complete this operation.
 
 === Request
 
 The PUT request must contain the following parameters and values.
 
-NOTE: The `content-MD5` request header must be specified in PUR request.
+NOTE: The `content-MD5` request header must be specified in PUT request.
 
 [options="header"]
 |===
@@ -1071,7 +1071,7 @@ ObjectLockConfiguration
 a|
 Container tag for rules used to specify the default object lock settings for the bucket. This container must be included in the PUT request.
 
-Contains one or more status or Rule elements.
+Contains one or more status or rule elements.
 
 a|
 ObjectLockEnabled
@@ -1105,7 +1105,7 @@ Object lock only supports Compliance mode for object retention.
 
 A mode must be specified. 
 
-If the default retention mode is Governance, it can be it to Compliance by setting the Mode parameter to COMPLIANCE (all capitals)+
+If the default retention mode is Governance, it can be set to Compliance by setting the Mode parameter to COMPLIANCE (all capitals)+
 `<Mode>COMPLIANCE</Mode>` 
 
 Included in the DefaultRetention element.
@@ -1116,7 +1116,7 @@ a|
 Default retention period for the bucket in days. 
 
 * A default retention period must be specified in days or years, but not in both days and years.
-* Days must be an integer value between 1 and 36500 (100 years).
+* Days must be an integer value between 1 and 36500, inclusive (100 years).
 * Days are 24 hours.
 
 Included in the DefaultRetention element.
@@ -1127,7 +1127,7 @@ a|
 Default retention period for the bucket in years. 
 
 * A default retention period must be specified in days or years, but not in both days and years.
-* Years must be an integer value between 1 and 100.
+* Years must be an integer value between 1 and 100, inclusive.
 * Years are calendar years (not always 365 days).
 
 Included in the DefaultRetention element.
