@@ -19,7 +19,7 @@ You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
 
-=== Updates to HA groups
+=== Updates to high availability (HA) groups
 The user interface for creating an HA group was revised.
 
 A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
@@ -28,7 +28,7 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
 
-=== Updates to load balance endpoints
+=== Updates to load balancer endpoints
 
 The user interface for creating a load balancer endpoint was revised.
 
@@ -45,7 +45,7 @@ A new *Check for software updates* check box was added to the AutoSupport page (
 The Grid Manager user interface has been redesigned.
 
 * New sidebar
-* New menu structure
+* New menu structure. CONFIGURATION menu reorganized with new section for Security.
 * New Nodes page
 * New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
 
@@ -53,6 +53,7 @@ The Grid Manager user interface has been redesigned.
 
 The following new alerts were added for StorageGRID 11.6:
 
+* Cassandra table corruption
 * EC rebalance failure
 * EC repair failure
 * Identity federation synchronization failure for a tenant
@@ -77,6 +78,10 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 
 == Updates to Tenant Accounts permission
 Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
+
+== New "Estimated time to completion" chart for EC rebalance and EC repair jobs
+You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
+
 
 == Kevin's what's new changes
 

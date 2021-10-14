@@ -56,11 +56,11 @@ image::../media/santricity_os_upgrade_first.png[screenshot showing StorageGRID f
  .. Locate and select the file.
  .. Click *Open*.
 +
-The file is uploaded and validated. When the validation process is done, the file name is shown in the Details field.
+The file is uploaded and validated. When the validation process is done, the file name is shown next to the *Browse* button.
 +
 NOTE: Do not change the file name since it is part of the verification process.
 +
-image::../media/santricity_upgrade_os_file_validated.png[SANtricity OS upgrade valid file]
+[SANtricity OS upgrade valid file]
 . Enter the provisioning passphrase.
 +
 The *Start* button is enabled.
@@ -106,10 +106,8 @@ NOTE: If the order in which nodes are upgraded is important, approve nodes or gr
 
 NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
 
-+
-After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. +
+After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. 
 
-+
 For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. For nodes intentionally not upgraded, the process will show stage of Complete with one of the following messages in the Details column:
 
 *** Storage Node was already upgraded.
@@ -118,10 +116,36 @@ For some nodes, the selected upgrade file is intentionally not applied and you c
 *** Fix the issues with the node first and then try the upgrade again. 
 
 +
-The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message. +
+The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message.
+ +
 The message "`SANtricity OS file is not compatible with this node`" indicates that the node requires a SANtricity OS file different than the one the process is attempting to install. After you complete the current SANtricity OS upgrade, download the SANtricity OS appropriate for the node and repeat the upgrade process.
 
+[start=10]
+. If you want to pause approving nodes and return to the SANtricity OS page without approving all of them, do the following: 
+
+.. Select *Skip Nodes and Finish* 
++
+
+A warning box appears asking if you are sure you want to finish the upgrade process without upgrading all nodes. 
+
++
+
+image::../media/santricity-skip-nodes.png[screenshot showing the SANtricity OS upgrade skip warning]
+
+[start=2]
+.. Select *OK* to return to the *SANtricity OS* page.
++
+
+Nodes already approved and with stage of complete remain upgraded. 
++
+
+Repeat the upgrade procedure to upgrade the remaining nodes at a later time. 
+
+NOTE: When you repeat the upgrade procedure, you have to approve previously upgraded nodes.
+
+[start=11]
 . If you need to remove a node or all nodes from the SANtricity OS upgrade queue, click *Remove* or *Remove All*.
+
 +
 When the stage progresses beyond Queued, the *Remove* button is hidden and you can no longer remove the node from the SANtricity OS upgrade process. 
 
@@ -133,11 +157,14 @@ If the firmware on the node is too old to be upgraded with the Grid Manager, the
 
  .. Use maintenance mode to upgrade SANtricity OS on the node that shows a stage of Error.
  .. Use the Grid Manager to re-start and complete the SANtricity OS upgrade.
-+
+
+
+
 When the SANtricity OS upgrade is complete on all approved nodes, the SANtricity OS Upgrade Progress table closes and a green banner shows the date and time the SANtricity OS upgrade was completed.
-+
+
 image::../media/santricity_upgrade_finish_banner.png[screenshot of SANtricity OS upgrade page after the upgrade completes]
 
+[start=13]
 . Repeat this upgrade procedure for any nodes with a stage of Complete that require a different SANtricity OS upgrade file.
 +
 NOTE: For any nodes with a status of Needs Attention, use maintenance mode to perform the upgrade.
