@@ -61,7 +61,6 @@ export SAMLUSER='my-sso-username'
 export SAMLPASSWORD='my-password'
 export TENANTACCOUNTID='12345'
 export STORAGEGRID_ADDRESS='storagegrid.example.com'
-export AD_FS_ADDRESS='adfs.example.com'
 ----
 +
 NOTE: To access the Grid Management API, use 0 as `TENANTACCOUNTID`.
@@ -93,6 +92,7 @@ export SAMLREQUEST="https://my-pf-baseurl/idp/SSO.saml2?..."
 ----
 .. Export the response and cookie, and echo the response:
 +
+[source,bash]
 ----
 RESPONSE=$(curl -c - "$SAMLREQUEST")
 ----
@@ -230,7 +230,7 @@ The 302 response is returned. The redirect location is not applicable to API-onl
 ----
 HTTP/1.1 302 Found
 Location: https://$STORAGEGRID_ADDRESS:443/api/saml-logout?SAMLResponse=fVLLasMwEPwVo7ss%...%23rsa-sha256
-Set-Cookie: MSISSignoutProtocol=U2FtbA==; expires=Tue, 12 Oct 2021 22:35:03 GMT; path=/adfs; HttpOnly; Secure
+Set-Cookie: PF=QoKs...SgCC; Path=/; Secure; HttpOnly; SameSite=None
 ----
 
 . Delete the StorageGRID bearer token.

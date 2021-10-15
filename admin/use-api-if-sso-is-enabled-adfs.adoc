@@ -41,7 +41,7 @@ If you have a URL-encoding issue, you might see the error: `Unsupported SAML ver
 +
 When prompted, enter values for the following arguments:
 
- ** The SSO method. You can enter any value. For example, adfs.
+ ** The SSO method. Enter ADFS or adfs.
  ** The SSO username
  ** The domain where StorageGRID is installed
  ** The address for StorageGRID
@@ -148,7 +148,8 @@ export MSISAuth='AAEAADAvsHpXk6ApV...pmP0aEiNtJvWY='
 +
 [source,bash]
 ----
-curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \ --cookie "MSISAuth=$MSISAuth" --include
+curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \ 
+--cookie "MSISAuth=$MSISAuth" --include
 ----
 +
 The response headers will contain AD FS session information for later logout usage, and the response body contains the SAMLResponse in a hidden form field.
