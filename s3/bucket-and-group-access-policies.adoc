@@ -835,7 +835,7 @@ s3:PutObject
 a|
 s3:object-lock-remaining-retention-days
 a|    
-Compares to the retain-until-date specified in the `x-amz-object-lock-retain-until-date` request header or computed from the bucket default retention period in the following requests:
+Compares to the retain-until-date specified in the `x-amz-object-lock-retain-until-date` request header or computed from the bucket default retention period to make sure that these values are within the allowable range for the following requests:
 
 * PUT Object
 * PUT Object - Copy
@@ -846,7 +846,7 @@ s3:PutObjectRetention
 a|
 s3:object-lock-remaining-retention-days
 a|    
-Compares to the retain-until-date specified in the PUT Object Retention request.
+Compares to the retain-until-date specified in the PUT Object Retention request to ensure that it is within the allowable range.
 
 |===
 
