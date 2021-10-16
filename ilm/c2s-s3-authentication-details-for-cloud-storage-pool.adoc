@@ -29,17 +29,17 @@ image::../media/cloud_storage_pool_create_c2s.png[Create Cloud Storage Pool C2S]
 
 . Provide the following information:
  .. For *Temporary Credentials URL*, enter the complete URL that StorageGRID will use to obtain temporary credentials from the CAP server, including all the required and optional API parameters assigned to your C2S account.
- .. For *Server CA Certificate*, click *Select New*, and upload the PEM-encoded CA certificate that StorageGRID will use to verify the CAP server.
- .. For *Client Certificate*, click *Select New*, and upload the PEM-encoded certificate that StorageGRID will use to identify itself to the CAP server.
- .. For *Client Private Key*, click *Select New*, and upload the PEM-encoded private key for the client certificate.
+ .. For *Server CA Certificate*, select *Select New*, and upload the PEM-encoded CA certificate that StorageGRID will use to verify the CAP server.
+ .. For *Client Certificate*, select *Select New*, and upload the PEM-encoded certificate that StorageGRID will use to identify itself to the CAP server.
+ .. For *Client Private Key*, select *Select New*, and upload the PEM-encoded private key for the client certificate.
 +
 If the private key is encrypted, the traditional format must be used. (PKCS #8 encrypted format is not supported.)
 
  .. If the client private key is encrypted, enter the passphrase for decrypting the client private key. Otherwise, leave the *Client Private Key Passphrase* field blank.
 . In the Server Verification section, provide the following information:
  .. For *Certificate Validation*, select *Use custom CA certificate*.
- .. Click *Select New*, and upload the PEM-encoded CA certificate.
-. Click *Save*.
+ .. Select *Select New*, and upload the PEM-encoded CA certificate.
+. Select *Save*.
 
 When you save a Cloud Storage Pool, StorageGRID does the following:
 

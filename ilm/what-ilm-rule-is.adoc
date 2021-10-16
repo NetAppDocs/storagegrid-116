@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: 'To manage objects, you create a set of information lifecycle management \(ILM\) rules and organize them into an ILM policy. Every object ingested into the system is evaluated against the active policy. When a rule in the policy matches an object’s metadata, the instructions in the rule determine what actions StorageGRID takes to copy and store that object.'
 ---
-= What is an ILM rule?
+= What an ILM rule is
 :icons: font
 :imagesdir: ../media/
 
@@ -31,6 +31,63 @@ An ILM rule has three elements:
 * *Placement instructions*: A rule's placement instructions define the number, type, and location of object copies. Each rule can include a sequence of placement instructions to change the number, type, and location of object copies over time. When the time period for one placement expires, the instructions in the next placement are automatically applied by the next ILM evaluation.
 * *Ingest behavior*: A rule's ingest behavior defines what happens when an S3 or Swift client saves an object to the grid. Ingest behavior controls whether object copies are immediately placed according to the instructions in the rule, or if interim copies are made and the placement instructions are applied later.
 
+== What ILM rule filtering is
+
+When you create an ILM rule, you specify filters to identify which objects the rule applies to.
+
+In the simplest case, a rule might not use any filters. Any rule that does not use filters applies to all objects, so it must be the last (default) rule in an ILM policy. The default rule provides storage instructions for objects that do not match the filters in another rule.
+
+Basic filters allow you to apply different rules to large, distinct groups of objects. The basic filters on the Define Basics page of the Create ILM Rule wizard allow you to apply a rule to specific tenant accounts, specific S3 buckets or Swift containers, or both.
+
+image::../media/ilm_create_ilm_rule_wizard_1.png[ILM wizard: step 1 of 3]
+
+These basic filters give you a simple way to apply different rules to large numbers of objects. For example, your company's financial records might need to be stored to meet regulatory requirements, while data from the marketing department might need to be stored to facilitate daily operations. After creating separate tenant accounts for each department or after segregating data from the different departments into separate S3 buckets, you can easily create one rule that applies to all financial records and a second rule that applies to all marketing data.
+
+The *Advanced Filtering* page of the Create ILM Rule wizard gives you granular control. You can create filters to select objects based on the following object properties:
+
+* Ingest time
+* Last access time
+* All or part of the object name (Key)
+* S3 bucket region (Location Constraint)
+* Object size
+* User metadata
+* S3 object tags
+
+You can filter objects on very specific criteria. For example, objects stored by a hospital's imaging department might be used frequently when they are less than 30 days old and infrequently afterwards, while objects that contain patient visit information might need to be copied to the billing department at the health network's headquarters. You can create filters that identify each type of object based on object name, size, S3 object tags, or any other relevant criteria, and then create separate rules to store each set of objects appropriately.
+
+You can also combine basic and advanced filters as needed in a single rule. For example, the marketing department might want to store large image files differently than their vendor records, while the Human Resources department might need to store personnel records in a specific geography and policy information centrally. In this case you can create rules that filter by tenant account to segregate the records from each department, while using advanced filters in each rule to identify the specific type of objects that the rule applies to.
+
+== What ILM rule placement instructions are
+Placement instructions determine where, when, and how object data is stored. An ILM rule can include one or more placement instructions. Each placement instruction applies to a single period of time.
+
+When you create a placement instruction, you specify when the placement applies (the time period), which type of copies to create (replicated or erasure coded), and where to store the copies (one or more storage locations). Within a single rule you can specify multiple placements for one time period, and placement instructions for more than one time period:
+
+* To specify more than one object placement during a single time period, select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[Plus Sign Icon Black on White] to add more than one line for that time period.
+* To specify object placements for more than one time period, select the *Add* button to add the next time period. Then, specify one or more lines within the time period.
+
+The example shows the Define Placements page of the Create ILM Rule wizard.
+
+image::../media/ilm_rule_multiple_placements_in_single_time_period.png[ILM placements screen from Grid Manager]
+
+[cols="1a,3a"]
+|===
+a|
+image:../media/icon_number_1.png[icon number 1]
+a|
+The first placement instruction has two lines for the first year:
+
+. The first line creates two replicated object copies at two data center sites.
+. The second line creates a 6+3 erasure-coded copy using three data center sites.
+
+a|
+image:../media/icon_number_2.png[icon number 2]
+a|
+The second placement instruction creates two archived copies after one year and keeps those copies forever.
+|===
+When you define the set of placement instructions for a rule, you must ensure that at least one placement instruction begins at day 0, that there are no gaps between the time periods you have defined, and that the final placement instruction continues either forever or until you no longer require any object copies.
+
+As each time period in the rule expires, the content placement instructions for the next time period are applied. New object copies are created and any unneeded copies are deleted.
+
 == Example ILM rule
 
 This example ILM rule applies to the objects belonging to Tenant A. It makes two replicated copies of those objects and stores each copy at a different site. The two copies are retained "`forever,`" which means that StorageGRID will not automatically delete them. Instead, StorageGRID will retain these objects until they are deleted by a client delete request or by the expiration of a bucket lifecycle.
@@ -41,14 +98,10 @@ image::../media/ilm_example_rule_2_copies_tenant_a.png[Example ILM Rule 2 Copies
 
 .Related information
 
-xref:data-protection-options-for-ingest.adoc[Data-protection options for ingest]
+* xref:data-protection-options-for-ingest.adoc[Data-protection options for ingest]
 
-xref:what-storage-pool-is.adoc[What a storage pool is]
+* xref:what-storage-pool-is.adoc[What a storage pool is]
 
-xref:what-cloud-storage-pool-is.adoc[What a Cloud Storage Pool is]
+* xref:what-cloud-storage-pool-is.adoc[What a Cloud Storage Pool is]
 
-xref:how-objects-are-stored-replication-erasure-coding.adoc[How objects are stored (replication or erasure coding)]
 
-xref:what-ilm-rule-filtering-is.adoc[What ILM rule filtering is]
-
-xref:what-ilm-placement-instructions-are.adoc[What ILM rule placement instructions are]

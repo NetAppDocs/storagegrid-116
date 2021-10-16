@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords:
 summary: 'If you encounter errors when creating, editing, or deleting a Cloud Storage Pool, use these troubleshooting steps to help resolve the issue.'
 ---
-= Troubleshooting Cloud Storage Pools
+= Troubleshoot Cloud Storage Pools
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 If you encounter errors when creating, editing, or deleting a Cloud Storage Pool, use these troubleshooting steps to help resolve the issue.
 
-== Determining if an error has occurred
+== Determine if an error has occurred
 
 StorageGRID performs a simple health check on every Cloud Storage Pool once a minute to ensure that the Cloud Storage Pool can be accessed and that it is functioning correctly. If the health check detects an issue, a message is shown in the Last Error column of the Cloud Storage Pools table on the Storage Pools page.
 
@@ -21,9 +21,9 @@ image::../media/cloud_storage_pools_error.png[Cloud Storage Pools Error]
 
 In addition, a *Cloud Storage Pool connectivity error* alert is triggered if the health check detects that one or more new Cloud Storage Pool errors have occurred within the past 5 minutes. If you receive an email notification for this alert, go to the Storage Pool page (select *ILM* > *Storage Pools*), review the error messages in the Last Error column, and refer to the troubleshooting guidelines below.
 
-== Checking if an error has been resolved
+== Check if an error has been resolved
 
-After resolving any underlying issues, you can determine if the error has been resolved. From the Cloud Storage Pool page, select the radio button for the endpoint, and click *Clear Error*. A confirmation message indicates that StorageGRID has cleared the error for the Cloud Storage Pool.
+After resolving any underlying issues, you can determine if the error has been resolved. From the Cloud Storage Pool page, select the radio button for the endpoint, and select *Clear Error*. A confirmation message indicates that StorageGRID has cleared the error for the Cloud Storage Pool.
 
 image::../media/cloud_storage_pool_clear_error_message.png[Cloud Storage Pool Clear Error Message]
 
