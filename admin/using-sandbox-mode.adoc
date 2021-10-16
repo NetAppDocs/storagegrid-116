@@ -57,7 +57,7 @@ NOTE: If the SSO Status options do not appear, confirm you have configured the i
 
 . Select *Sandbox Mode*.
 +
-The Identity Provider and Relying Party sections appear.
+The Identity Provider section appears.
 
 == Enter identity provider details
 
@@ -104,7 +104,7 @@ image::../media/save_button_green_checkmark.gif[Save Button with a green checkma
 --
 .Azure
 --
-.. Enter the *Federation service name* for the identity provider, exactly as it appears in Azure.
+.. Enter the *Provider name* for the identity provider, exactly as it appears in Azure.
 
 .. Specify which TLS certificate will be used to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
 
@@ -116,13 +116,13 @@ If you select this setting, copy the text of the custom certificate and and past
 
 ** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
 
-.. In the Relying Party section, specify the unique *Relying party identifier* you will enter in relying party trusts to identify StorageGRID.
+.. In the Enterprise Application section, specify the unique *Enterprise Application Name* you will use for StorageGRID when you configure an enterprise application in Azure.
 
 * For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
 
-* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that shows the relying party identifier for each Admin Node in your system, based on the node's hostname.
+* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that shows an enterprise application name for each Admin Node in your system, based on the node's hostname.
 +
-image::../media/sso_status_sandbox_mode_ping_federated.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
+image::../media/sso_status_sandbox_mode_azure.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
 
 .. Copy the federation metadata URL from the SAML Signing Certificate section and paste it in the *Federation metadata URL* field.
 +
@@ -143,8 +143,7 @@ NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each
 --
 
 
-.. Enter the *Federation service name* for the identity provider, exactly as it appears in Ping Federate.
-
+.. Enter the *Base domain* for the identity provider, exactly as it appears in Ping Federate.
 
 .. Specify which TLS certificate will be used to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
 
@@ -156,11 +155,11 @@ If you select this setting, copy the text of the custom certificate and and past
 
 ** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
 
-.. In the Relying Party section, specify the unique *Relying party identifier* you will enter in relying party trusts to identify StorageGRID.
+.. In the Service Provider (SP) section, specify the unique *SP connection ID* you will enter in SP connections to identify StorageGRID.
 
 * For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
 
-* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that shows the relying party identifier for each Admin Node in your system, based on the node's hostname.
+* If your grid includes more than one Admin Node, include the string `[HOSTNAME]` in the identifier. For example, `SG-[HOSTNAME]`. This generates a table that shows the SP connection ID for each Admin Node in your system, based on the node's hostname.
 +
 image::../media/sso_status_sandbox_mode_ping_federated.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
 
