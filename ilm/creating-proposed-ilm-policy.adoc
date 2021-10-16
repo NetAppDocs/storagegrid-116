@@ -1,7 +1,7 @@
 ---
 permalink: ilm/creating-proposed-ilm-policy.html
 sidebar: sidebar
-keywords:
+keywords: how to create ILM policy, proposed policy
 summary: 'You can create a proposed ILM policy from scratch, or you can clone the current active policy if you want to start with the same set of rules.'
 ---
 = Create a proposed ILM policy
@@ -11,14 +11,18 @@ summary: 'You can create a proposed ILM policy from scratch, or you can clone th
 [.lead]
 You can create a proposed ILM policy from scratch, or you can clone the current active policy if you want to start with the same set of rules.
 
+NOTE: If the global S3 Object Lock setting has been enabled, use this procedure instead: xref:creating-ilm-policy-after-s3-object-lock-is-enabled.adoc[Create an ILM policy after S3 Object Lock is enabled].
+
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have specific access permissions.
-* You must have created the ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules.
-* You must have created a default ILM rule for the policy that does not contain any filters.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
+* You have created the ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules.
+* You have created a xref:creating-default-ilm-rule.adoc[default ILM rule] for the policy that does not contain any filters.
+
+* Optionally, you have watched the video: https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7[Video: StorageGRID ILM Policies^]
 +
-xref:creating-default-ilm-rule.adoc[Creating a default ILM rule]
+image::../media/video-screenshot-ilm-policies.png[Screenshot of ILM policies video]
 
 .About this task
 
@@ -30,13 +34,6 @@ Typical reasons for creating a proposed ILM policy include:
 * You started to use a Cloud Storage Pool.
 
 IMPORTANT: Use the system's built-in policy, Baseline 2 Copies Policy, in test systems only. The Make 2 Copies rule in this policy uses the All Storage Nodes storage pool, which contains all sites. If your StorageGRID system has more than one site, two copies of an object might be placed on the same site.
-
-[NOTE]
-====
-If the global S3 Object Lock setting has been enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.
-
-See xref:creating-ilm-policy-after-s3-object-lock-is-enabled.adoc[Creating an ILM policy after S3 Object Lock is enabled].
-====
 
 .Steps
 . Select *ILM* > *Policies*.
@@ -119,12 +116,7 @@ image::../media/ilm_rule_summary_page.png[ILM Rule Summary Page]
 +
 The default rule applies to any objects that do not match another rule in the policy. The default rule cannot use any filter and is always evaluated last.
 +
-[NOTE]
-====
-If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and create a default rule.
-
-xref:creating-default-ilm-rule.adoc[Creating a default ILM rule]
-====
+NOTE: If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and xref:creating-default-ilm-rule.adoc[create a default ILM rule].
 +
 IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a policy. The Make 2 Copies rule uses a single storage pool, All Storage Nodes, which contains all sites. If your StorageGRID system has more than one site, two copies of an object might be placed on the same site.
 
@@ -161,10 +153,10 @@ The ILM Policies page is updated:
 +
 image::../media/ilm_policy_proposed_policy_saved.png[ILM Policy Proposed Policy Saved]
 
-. Go to xref:simulating-ilm-policy.adoc[Simulating an ILM policy].
+. Go to xref:simulating-ilm-policy.adoc[Simulate an ILM policy].
 
 .Related information
 
-xref:what-ilm-policy-is.adoc[What an ILM policy is]
+* xref:what-ilm-policy-is.adoc[What an ILM policy is]
 
-xref:managing-objects-with-s3-object-lock.adoc[Managing objects with S3 Object Lock]
+* xref:managing-objects-with-s3-object-lock.adoc[Manage objects with S3 Object Lock]

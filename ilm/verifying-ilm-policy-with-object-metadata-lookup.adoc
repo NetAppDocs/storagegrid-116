@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'After you have activated an ILM policy, you should ingest representative test objects into the StorageGRID system. You should then perform an object metadata lookup to confirm that copies are being made as intended and placed in the correct locations.'
 ---
-= Verifying an ILM policy with object metadata lookup
+= Verify an ILM policy with object metadata lookup
 :icons: font
 :imagesdir: ../media/
 
@@ -13,7 +13,7 @@ After you have activated an ILM policy, you should ingest representative test ob
 
 .What you'll need
 
-* You must have an object identifier, which can be one of:
+* You have an object identifier, which can be one of:
  ** *UUID*: The object's Universally Unique Identifier. Enter the UUID in all uppercase.
  ** *CBID*: The object's unique identifier within StorageGRID. You can obtain an object's CBID from the audit log. Enter the CBID in all uppercase.
  ** *S3 bucket and object key*: When an object is ingested through the S3 interface, the client application uses a bucket and object key combination to store and identify the object.
@@ -28,7 +28,7 @@ You can enter a UUID, CBID, S3 bucket/object-key, or Swift container/object-name
 +
 image::../media/object_lookup.png[Object Lookup page]
 
-. Click *Look Up*.
+. Select *Look Up*.
 +
 The object metadata lookup results appear. This page lists the following types of information:
 +
@@ -47,12 +47,10 @@ image::../media/object_lookup_results.png[Object Lookup Results]
 
 . Confirm that the object is stored in the correct location or locations and that it is the correct type of copy.
 +
-NOTE: If the Audit option is enabled, you can also monitor the audit log for the ORLM Object Rules Met message. The ORLM audit message can provide you with more information about the status of the ILM evaluation process, but it cannot give you information about the correctness of the object data's placement or the completeness of the ILM policy. You must evaluate this yourself. For details, see the information about understanding audit messages.
+NOTE: If the Audit option is enabled, you can also monitor the audit log for the ORLM Object Rules Met message. The ORLM audit message can provide you with more information about the status of the ILM evaluation process, but it cannot give you information about the correctness of the object data's placement or the completeness of the ILM policy. You must evaluate this yourself. For details, see xref:../audit/index.adoc[Review audit logs].
 
 .Related information
 
-xref:../audit/index.adoc[Review audit logs]
+* xref:../s3/index.adoc[Use S3]
 
-xref:../s3/index.adoc[Use S3]
-
-xref:../swift/index.adoc[Use Swift]
+* xref:../swift/index.adoc[Use Swift]
