@@ -41,12 +41,13 @@ If you have a URL-encoding issue, you might see the error: `Unsupported SAML ver
 +
 When prompted, enter values for the following arguments:
 
+ ** The SSO method. Enter ADFS or adfs.
  ** The SSO username
  ** The domain where StorageGRID is installed
  ** The address for StorageGRID
- ** If you want to access the Tenant Management API, the tenant account ID.
+ ** The tenant account ID, if you want to access the Tenant Management API.
 +
-image::../media/sso_auth_python_script.png[SSO Authentication Script]
+image::../media/sso_auth_python_script_adfs.png[SSO Authentication Script for AD FS]
 +
 The StorageGRID authorization token is provided in the output. You can now use the token for other requests, similar to how you would use the API if SSO was not being used.
 
@@ -58,7 +59,7 @@ The StorageGRID authorization token is provided in the output. You can now use t
 export SAMLUSER='my-sso-username'
 export SAMLPASSWORD='my-password'
 export SAMLDOMAIN='my-domain'
-export TENANTACCOUNTID=’12345’
+export TENANTACCOUNTID='12345'
 export STORAGEGRID_ADDRESS='storagegrid.example.com'
 export AD_FS_ADDRESS='adfs.example.com'
 ----
@@ -67,7 +68,7 @@ NOTE: To access the Grid Management API, use 0 as `TENANTACCOUNTID`.
 
  .. To receive a signed authentication URL, issue a POST request to `/api/v3/authorize-saml`, and remove the additional JSON encoding from the response.
 +
-This example shows a POST request for a signed authentication URL for `TENANTACCOUNTID`. The results will be passed to python `-m json.tool` to remove the JSON encoding.
+This example shows a POST request for a signed authentication URL for `TENANTACCOUNTID`. The results will be passed to `python -m json.tool` to remove the JSON encoding.
 +
 [source,bash]
 curl -X POST "https://$STORAGEGRID_ADDRESS/api/v3/authorize-saml" \
@@ -147,7 +148,8 @@ export MSISAuth='AAEAADAvsHpXk6ApV...pmP0aEiNtJvWY='
 +
 [source,bash]
 ----
-curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \ --cookie "MSISAuth=$MSISAuth" --include
+curl "https://$AD_FS_ADDRESS/adfs/ls/?SAMLRequest=$SAMLREQUEST&RelayState=$TENANTACCOUNTID&client-request-id=$SAMLREQUESTID" \ 
+--cookie "MSISAuth=$MSISAuth" --include
 ----
 +
 The response headers will contain AD FS session information for later logout usage, and the response body contains the SAMLResponse in a hidden form field.
