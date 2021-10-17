@@ -114,7 +114,7 @@ image::../media/ilm_rule_summary_page.png[ILM Rule Summary Page]
 
 . In the *Select Default Rule* section, select one default rule for the proposed policy.
 +
-The default rule applies to any objects that do not match another rule in the policy. The default rule cannot use any filter and is always evaluated last.
+The default rule applies to any objects that do not match another rule in the policy. The default rule cannot use any filters and is always evaluated last.
 +
 NOTE: If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and xref:creating-default-ilm-rule.adoc[create a default ILM rule].
 +
@@ -122,7 +122,7 @@ IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a pol
 
 . In the *Select Other Rules* section, select any other rules you want to include in the policy.
 +
-The other rules are evaluated before the default rule and must use at least one filter (tenant account, bucket name, or an advanced filter, such as object size).
+The other rules are evaluated before the default rule and must use at least one filter (tenant account, bucket name, advanced filter, or the Noncurrent reference time).
 
 . When you are done selecting rules, select *Apply*.
 +

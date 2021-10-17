@@ -60,10 +60,18 @@ You can also combine basic and advanced filters as needed in a single rule. For 
 == What ILM rule placement instructions are
 Placement instructions determine where, when, and how object data is stored. An ILM rule can include one or more placement instructions. Each placement instruction applies to a single period of time.
 
-When you create a placement instruction, you specify when the placement applies (the time period), which type of copies to create (replicated or erasure coded), and where to store the copies (one or more storage locations). Within a single rule you can specify multiple placements for one time period, and placement instructions for more than one time period:
+When you create placement instructions:
 
-* To specify more than one object placement during a single time period, select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[Plus Sign Icon Black on White] to add more than one line for that time period.
-* To specify object placements for more than one time period, select the *Add* button to add the next time period. Then, specify one or more lines within the time period.
+* You start by specifying the reference time, which determines when the placement instructions start. The reference time might be when an object is ingested, when an object is accessed, when a versioned object becomes noncurrent, or a user-defined time. 
+
+* Next, you specify when the placement will apply, relative to the reference time. For example, a placement  might start on day 0 and continue for 365 days, relative to when the object was ingested.
+
+* Finally, you specify the type of copies (replication or erasure coding) and the location where the copies are stored. For example, you might want to store two replicated copies at two different sites.
+
+Each rule can define multiple placements for a single time period and different placements for different time periods.
+
+* To place  objects in multiple locations during a single time period, select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[Plus Sign Icon Black on White] to add more than one line for that time period.
+* To place objects in different locations in different time periods, select the *Add* button to add the next time period. Then, specify one or more lines within the time period.
 
 The example shows the Define Placements page of the Create ILM Rule wizard.
 
