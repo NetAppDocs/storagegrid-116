@@ -21,7 +21,7 @@ IMPORTANT: The space used values are estimates. These estimates are affected by 
 .Steps
 . Select *TENANTS* to review the amount of storage used by all tenants.
 +
-The Logical space used, Quota utilization, Quota, and Object count are listed for each tenant. If a quota is not set for a tenant, the Quota utilization and Quota fields contain a dash ( -- ).
+The Logical space used, Quota utilization, Quota, and Object count are listed for each tenant. If a quota is not set for a tenant, the Quota utilization and Quota fields contain a dash (&#8212;).
 +
 image::../media/tenant_accounts_page.png[Tenant Accounts page]
 +
@@ -95,14 +95,13 @@ For instance, you can monitor the following types of information:
  ** Object sizes
  ** The ILM rule applied to objects
  ** The source IP of client requests
-
++
 Audit logs are written to text files that you can analyze using your choice of log analysis tool. This allows you to better understand client activities, or to implement sophisticated chargeback and billing models.
-
++
 See the instructions for understanding audit messages for more information.
-
-[start=8}
++
 . Optionally, use Prometheus metrics to report on tenant activity:
- ** In the Grid Manager, select *Support* > *Tools* > *Metrics*. You can use existing dashboards, such as S3 Overview, to review client activities.
+ ** In the Grid Manager, select *SUPPORT* > *Tools* > *Metrics*. You can use existing dashboards, such as S3 Overview, to review client activities.
 +
 IMPORTANT: The tools available on the Metrics page are primarily intended for use by technical support. Some features and menu items within these tools are intentionally non-functional.
 
