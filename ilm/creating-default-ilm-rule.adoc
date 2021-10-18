@@ -2,21 +2,21 @@
 permalink: ilm/creating-default-ilm-rule.html
 sidebar: sidebar
 keywords:
-summary: 'Every ILM policy must have a default rule that does not filter objects. Before creating an ILM policy, you must create at least one ILM rule that can be used as the default rule for the policy.'
+summary: 'Before creating an ILM policy, you must create a default rule to place any objects not matched by another rule in the policy. The default rule cannot use any filter. It must apply to all tenants, all buckets, and all object versions.'
 ---
-= Creating a default ILM rule
+= Create a default ILM rule
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Every ILM policy must have a default rule that does not filter objects. Before creating an ILM policy, you must create at least one ILM rule that can be used as the default rule for the policy.
+Before creating an ILM policy, you must create a default rule to place any objects not matched by another rule in the policy. The default rule cannot use any filters. It must apply to all tenants, all buckets, and all object versions.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have specific access permissions.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
 
 .About this task
-The default rule is the last rule to be evaluated in an ILM policy, so it cannot use any filters. The placement instructions for the default rule are applied to any objects that are not matched by another rule in the policy.
+The default rule is the last rule to be evaluated in an ILM policy, so it cannot use any filters or the Noncurrent reference time. The placement instructions for the default rule are applied to any objects that are not matched by another rule in the policy.
 
 In this example policy, the first rule applies only to objects belonging to Tenant A. The default rule, which is last, applies to objects belonging to all other tenant accounts.
 
@@ -26,6 +26,7 @@ When you create the default rule, keep these requirements in mind:
 
 * The default rule is automatically placed as the last rule in the policy.
 * The default rule cannot use any basic or advanced filters.
+* The default rule cannot use the Noncurrent Time reference time&mdash;it must apply to all object versions.
 * The default rule should create replicated copies.
 +
 IMPORTANT: Do not use a rule that creates erasure-coded copies as the default rule for a policy. Erasure-coding rules should use an advanced filter to prevent smaller objects from being erasure coded.
@@ -61,6 +62,10 @@ The default rule cannot specify any filters.
 +
 Step 2 (Define Placements) appears.
 
+. For Reference Time, select any option except *Noncurrent Time*.
++
+The default rule must apply all object versions.
+
 . Specify the placement instructions for the default rule.
  * The default rule should retain objects forever. A warning appears when you activate a new policy if the default rule does not retain objects forever. You must confirm this is the behavior you expect.
  * The default rule should create replicated copies.
@@ -74,8 +79,8 @@ IMPORTANT: Do not use a rule that creates erasure-coded copies as the default ru
   ** Object copies cannot be saved on Archive Nodes.
   ** At least one line of the placement instructions must start at day 0, using Ingest Time as the reference time.
   ** At least one line of the placement instructions must be "`forever.`"
-. Click *Refresh* to update the Retention Diagram and to confirm your placement instructions.
-. Click *Next*.
+. Select *Refresh* to update the Retention Diagram and to confirm your placement instructions.
+. Select *Next*.
 +
 Step 3 (Define Ingest Behavior) appears.
 
