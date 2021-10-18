@@ -21,13 +21,15 @@ IMPORTANT: The space used values are estimates. These estimates are affected by 
 .Steps
 . Select *TENANTS* to review the amount of storage used by all tenants.
 +
-The Logical space used, Quota utilization, Quota, and Object count are listed for each tenant. If a quota is not set for a tenant, the Quota utilization and Quota fields contain a dash (--).
+The Logical space used, Quota utilization, Quota, and Object count are listed for each tenant. If a quota is not set for a tenant, the Quota utilization and Quota fields contain a dash ( -- ).
 +
 image::../media/tenant_accounts_page.png[Tenant Accounts page]
 +
 If your system includes more than 20 items, you can specify how many rows are shown on each page at one time. Use the search box to search for a tenant account by name or tenant ID.
 +
-You can sign in to a tenant account by selecting the link in the *Sign in/Copy URL* column of the table.
+You can sign in to a tenant account by selecting the sign-in link image:../media/icon_tenant_sign_in.png[Tenant sign-in icon] in the *Sign in/Copy URL* column of the table.
++
+You can copy the URL for a tenant's sign-in page by selecting the copy URL link image:../media/icon_tenant_copy_url.png[Tenant copy URL icon] in the *Sign in/Copy URL* column of the table.
 
 . Optionally, select *Export to CSV* to view and export a .csv file containing the usage values for all tenants.
 +
@@ -41,15 +43,21 @@ You can open the .csv file in a spreadsheet application or use it in automation.
 
 . To view details for a specific tenant, including usage charts, select the tenant account name from the Tenants page.
 +
-The tenant's details page appears. This page contains tabs for Space breakdown, Performance, Platform services endpoints, and Identity federation.
-+
 image::../media/tenant_usage_modal.png[Tenant usage modal]
++
+** *Tenant summary*
++
+The summary area for the tenant contains values for object count, quota utilization, logical space used, and the quota setting.
 
- ** *Quota*
+ ** *Space breakdown -- Bucket space consumption*
 +
-If a quota was set for this tenant, the *Quota* chart shows how much of that quota this tenant has used and how much is still available. If no quota was set, the tenant has an unlimited quota, and an informational message is displayed. If the tenant has exceeded the storage quota by more than 1% and by at least 1 GB, the chart shows the total quota and the excess amount.
+The Space breakdown tab includes values for bucket (S3) or container (Swift) space consumption as well as space used and object count for each bucket or container.
 +
-You can place your cursor over the Used Space segment to see the number of stored objects and the total bytes used. You can place your cursor over the Free Space segment to see how many bytes of storage quota are available.
+If a quota was set for this tenant, the amount of quota used and remaining is displayed in text (for example, `85.00 GB of 100 GB used`). If no quota was set, the tenant has an unlimited quota, and the text includes only an amount of space used (for example, `85.00 GB used`). The bar chart shows the percentage of quota in each bucket. If the tenant has exceeded the storage quota by more than 1% and by at least 1 GB, the chart shows the total quota and the excess amount.
++
+You can place your cursor over the bar chart to see the storage used by each bucket. You can place your cursor over the free space segment to see the amount of storage quota remaining.
++
+image::../media/tenant_bucket_space_consumption_GM.png[Tenant bucket consumption bar chart]
 +
 IMPORTANT: Quota utilization is based on internal estimates and might be exceeded in some cases. For example, StorageGRID checks the quota when a tenant starts uploading objects and rejects new ingests if the tenant has exceeded the quota. However, StorageGRID does not take into account the size of the current upload when determining if the quota has been exceeded. If objects are deleted, a tenant might be temporarily prevented from uploading new objects until the quota utilization is recalculated. Quota utilization calculations can take 10 minutes or longer.
 +
@@ -57,19 +65,9 @@ NOTE: A tenant's quota utilization indicates the total amount of object data the
 +
 NOTE: You can enable the *Tenant quota usage high* alert to determine if tenants are consuming their quotas. If enabled, this alert is triggered when a tenant has used 90% of its quota. For more information, see the alerts reference.
 
- ** *Space and quota utilization over time*
+** *Space breakdown -- Bucket or container details*
 +
-The Space breakdown tab contains summary information, a chart that represents quota usage, a chart that represents the amount of object data in buckets (S3) or containers (Swift), and bucket or container details.
-+
-The *Space Used by Buckets* (S3) or *Space Used by Containers* (Swift) chart shows the largest buckets for the tenant. Space used is the total amount of object data in the bucket. This value does not represent the storage space required for ILM copies and object metadata.
-+
-If the tenant has more than nine buckets or containers, they are combined into a segment called Other. Some chart segments might be too small to include a label. You can place your cursor over any of the segments to see the label and obtain more information, including the number of stored objects and total bytes for each bucket or container.
-+
-image::../media/tenant_dashboard_storage_usage_segment_other.png[Storage Usage Segment - Other]
-
-. Select *Bucket Details* (S3) or *Container Details* (Swift) to view a list of the spaced used and number of objects for each of the tenant's buckets or containers.
-+
-image::../media/tenant_bucket_details.png[Tenant bucket details]
+The *Bucket details* (S3) or *Container details* (Swift) table lists the buckets or containers for the tenant. Space used is the total amount of object data in the bucket or container. This value does not represent the storage space required for ILM copies and object metadata.
 
 . Optionally, select *Export to CSV* to view and export a .csv file containing the usage values for each bucket or container.
 +
