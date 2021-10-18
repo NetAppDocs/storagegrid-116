@@ -10,3 +10,7 @@ summary: 'Some features were removed or deprecated in StorageGRID 11.6. You must
 
 [.lead]
 Some features were removed or deprecated in StorageGRID 11.6. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
+
+== PATCH method deprecated
+
+The PATCH method, used in the Grid Management API and the Tenant Management API, has now been deprecated and will be removed in a future release. As required, perform a PUT operation to replace a resource instead of using a PATCH operation to modify the resource. 

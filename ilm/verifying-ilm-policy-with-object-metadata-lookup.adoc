@@ -18,13 +18,13 @@ After you have activated an ILM policy, you should ingest representative test ob
  ** *CBID*: The object's unique identifier within StorageGRID. You can obtain an object's CBID from the audit log. Enter the CBID in all uppercase.
  ** *S3 bucket and object key*: When an object is ingested through the S3 interface, the client application uses a bucket and object key combination to store and identify the object.
  ** *Swift container and object name*: When an object is ingested through the Swift interface, the client application uses a container and object name combination to store and identify the object.
+ * If you want to look up a specific version of an object, you have the version ID.
 
 .Steps
 . Ingest the object.
 . Select *ILM* > *Object Metadata Lookup*.
-. Type the object's identifier in the *Identifier* field.
-+
-You can enter a UUID, CBID, S3 bucket/object-key, or Swift container/object-name.
+. Type the object's identifier in the *Identifier* field. You can enter a UUID, CBID, S3 bucket/object-key, or Swift container/object-name.
+. Optionally, enter a version ID for the object.
 +
 image::../media/object_lookup.png[Object Lookup page]
 
@@ -32,14 +32,14 @@ image::../media/object_lookup.png[Object Lookup page]
 +
 The object metadata lookup results appear. This page lists the following types of information:
 +
- ** System metadata, including the object ID (UUID), the object name, the name of the container, the tenant account name or ID, the logical size of the object, the date and time the object was first created, and the date and time the object was last modified.
- ** Any custom user metadata key-value pairs associated with the object.
- ** For S3 objects, any object tag key-value pairs associated with the object.
- ** For replicated object copies, the current storage location of each copy.
- ** For erasure-coded object copies, the current storage location of each fragment.
- ** For object copies in a Cloud Storage Pool, the location of the object, including the name of the external bucket and the object's unique identifier.
- ** For segmented objects and multipart objects, a list of object segments including segment identifiers and data sizes. For objects with more than 100 segments, only the first 100 segments are shown.
- ** All object metadata in the unprocessed, internal storage format. This raw metadata includes internal system metadata that is not guaranteed to persist from release to release.
+ * System metadata, including the object ID (UUID), the object name, the name of the container, the tenant account name or ID, the logical size of the object, the date and time the object was first created, and the date and time the object was last modified.
+ * Any custom user metadata key-value pairs associated with the object.
+ * For S3 objects, any object tag key-value pairs associated with the object.
+ * For replicated object copies, the current storage location of each copy.
+ * For erasure-coded object copies, the current storage location of each fragment.
+ * For object copies in a Cloud Storage Pool, the location of the object, including the name of the external bucket and the object's unique identifier.
+ * For segmented objects and multipart objects, a list of object segments including segment identifiers and data sizes. For objects with more than 100 segments, only the first 100 segments are shown.
+ * All object metadata in the unprocessed, internal storage format. This raw metadata includes internal system metadata that is not guaranteed to persist from release to release.
 +
 The following example shows the object metadata lookup results for an S3 test object that is stored as two replicated copies.
 +
