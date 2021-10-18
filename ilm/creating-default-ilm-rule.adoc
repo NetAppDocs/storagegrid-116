@@ -26,7 +26,7 @@ When you create the default rule, keep these requirements in mind:
 
 * The default rule is automatically placed as the last rule in the policy.
 * The default rule cannot use any basic or advanced filters.
-* The default rule cannot use the Noncurrent Time reference time&mdash;it must apply to all object versions.
+* The default rule must apply to all object versions, so it cannot use the Noncurrent Time reference time.
 * The default rule should create replicated copies.
 +
 IMPORTANT: Do not use a rule that creates erasure-coded copies as the default rule for a policy. Erasure-coding rules should use an advanced filter to prevent smaller objects from being erasure coded.
