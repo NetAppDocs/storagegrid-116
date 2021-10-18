@@ -539,10 +539,10 @@ The StorageGRID node is unable to contact your DHCP server. The DHCP lease for t
 |Email notification failure
 |The email notification for an alert could not be sent.
 
-This alert is triggered when an alert email notification fails or a test email (sent from the *Alerts* > *Email Setup* page) cannot be delivered.
+This alert is triggered when an alert email notification fails or a test email (sent from the *ALERTS* > *Email setup* page) cannot be delivered.
 
 . Sign in to Grid Manager from the Admin Node listed in the *Site/Node* column of the alert.
-. Go to the *Alerts* > *Email Setup* page, check the settings, and change them if required.
+. Go to the *ALERTS* > *Email setup* page, check the settings, and change them if required.
 . Click *Send Test Email*, and check the inbox of a test recipient for the email. A new instance of this alert might be triggered if the test email cannot be sent.
 . If the test email could not be sent, confirm your email server is online.
 . If the server is working, select *Support* > *Tools* > *Logs*, and collect the log for the Admin Node. Specify a time period that is 15 minutes before and after the time of the alert.
@@ -613,7 +613,7 @@ a|External syslog server certificate expiration
 a|The server certificate presented by the external syslog server is about to expire.
 
 . Update the server certificate on the external syslog server.
-. (OPTIONAL) If you previously used the Grid Manager API to provide a server certificate for certificate validation, upload the updated server certificate using the API.
+. If you previously used the Grid Manager API to provide a server certificate for certificate validation, upload the updated server certificate using the API.
 
 a|External syslog server forwarding error
 a|Node cannot forward logs to the external syslog server.
@@ -1009,10 +1009,10 @@ The Admin Network port 1 on the appliance is down or disconnected.
 
 . Check the cable and physical connection to Admin Network port 1.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance link down on Admin Network (or Client Network)
@@ -1021,10 +1021,10 @@ The appliance interface to the Admin Network (eth1) or the Client Network (eth2)
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance link down on network port 1, 2, 3, or 4
@@ -1033,10 +1033,10 @@ Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance storage connectivity degraded
@@ -1061,12 +1061,12 @@ The Admin Network port 1 on the appliance is down or disconnected.
 
 . Check the cable and physical connection to Admin Network port 1.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance link down on Admin Network (or Client Network)
@@ -1075,12 +1075,12 @@ The appliance interface to the Admin Network (eth1) or the Client Network (eth2)
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance link down on network port 1, 2, 3, or 4
@@ -1089,12 +1089,12 @@ Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance storage connectivity degraded
@@ -1179,11 +1179,6 @@ A file was found in replicated object storage that could not be identified as a 
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
 
-<<<<<<< HEAD
-xref:verifying-object-integrity.adoc[Verify object integrity]
-
-=======
->>>>>>> main
 |===
 *Related information*
 
