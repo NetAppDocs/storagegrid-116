@@ -186,25 +186,20 @@ image::../media/oec_active.png[OEC active job]
 *	If Missing object copies detected is greater than zero and the *Objects lost* alert has not been triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
 * If Missing object copies detected is greater than zero and the *Objects lost* alert has been triggered, then data integrity could be affected. Contact technical support.
 
-.	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then <<rerunoec,run the job>> on the same volumes again. Check the *Job history* tab to determine which jobs are ready to be re-run.
+.	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then re-run the job on the same volumes again.
++
+When StorageGRID has had time to achieve metadata consistency for the nodes and volumes included in the job, re-running the job could clear erroneously reported missing object copies or cause additional object copies to be checked if they were missed.
++
+.. Select *MAINTENANCE* > *Object existence check* > *Job history*.
+..	Determine which jobs are ready to be re-run:
+... Look at the *End time* column to determine which jobs were run more than three weeks ago.
+... For those jobs, scan the Consistency control column for strong-site or strong-global.
+.. Select the check box for each job you want to re-run, then select *Re-run*.
+. In the Re-run jobs wizard, review the selected nodes and volumes and the consistency control.
+. When you are ready to re-run the jobs, select *Re-run job*.
++
+The Active job tab appears. All the jobs you selected are re-run as one job at a consistency control of strong-site. A Linked jobs field in the Details section lists the job IDs for the original jobs.
 
 .After you finish
 
 If you still have concerns about data integrity, go to *SUPPORT* > *Tools* > *Grid topology* > *_site_* > *_Storage Node_* > *LDR* > *Verification* > *Configuration* > *Main* and increase the Background Verification Rate. Background verification checks the correctness of all stored object data and repairs any issues that it finds. Finding and xref:../maintain/index.adoc[repairing] potential issues as quickly as possible reduces the risk of data loss.
-
-[[rerunoec]]
-=== Re-run an object existence check job
-
-Approximately three weeks after running an object consistency check job, StorageGRID will have had time to achieve metadata consistency for the nodes and volumes included in the job. At that time, you should re-run the same job. Re-running a job allows previous errors to clear if they were caused by metadata inconsistency.
-
-.Steps
-
-. Select *MAINTENANCE* > *Object existence check* > *Job history*.
-. Look at the Status column to determine which jobs are ready to be re-run.
-. Select the check box for each job you want to re-run. Select *Continue*.
-. In the Re-run jobs wizard, review the selected nodes and volumes and the consistency control.
-. When you are ready to re-run the jobs, select *Re-run job*.
-+
-The Active job tab appears.  A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
-+
-. Follow the instructions in <<run_oec,Run object existence check>>.
