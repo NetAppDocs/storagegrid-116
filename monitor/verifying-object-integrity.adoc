@@ -191,14 +191,15 @@ image::../media/oec_active.png[OEC active job]
 When StorageGRID has had time to achieve metadata consistency for the nodes and volumes included in the job, re-running the job could clear erroneously reported missing object copies or cause additional object copies to be checked if they were missed.
 +
 .. Select *MAINTENANCE* > *Object existence check* > *Job history*.
-..	Determine which jobs are ready to be re-run:
+.. Determine which jobs are ready to be re-run:
 ... Look at the *End time* column to determine which jobs were run more than three weeks ago.
 ... For those jobs, scan the Consistency control column for strong-site or strong-global.
 .. Select the check box for each job you want to re-run, then select *Re-run*.
-. In the Re-run jobs wizard, review the selected nodes and volumes and the consistency control.
-. When you are ready to re-run the jobs, select *Re-run job*.
+.. In the Re-run jobs wizard, review the selected nodes and volumes and the consistency control.
+.. When you are ready to re-run the jobs, select *Re-run job*.
+
 +
-The Active job tab appears. All the jobs you selected are re-run as one job at a consistency control of strong-site. A Linked jobs field in the Details section lists the job IDs for the original jobs.
+The Active job tab appears. All the jobs you selected are re-run as one job at a consistency control of strong-site. A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
 
 .After you finish
 
