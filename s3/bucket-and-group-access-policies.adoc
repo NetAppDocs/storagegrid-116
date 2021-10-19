@@ -801,31 +801,53 @@ a|
 aws:username
 a|
 Will compare to the sender's username from which the request was sent. Can be used for bucket or object operations.
-a|
-S3:ListBucket and
 
-S3:ListBucketVersions permissions
+a|
+s3:ListBucket and
+
+s3:ListBucketVersions permissions
 
 a|
 s3:delimiter
 a|
 Will compare to the delimiter parameter specified in a GET Bucket or GET Bucket Object versions request.
-a|
-S3:ListBucket and
 
-S3:ListBucketVersions permissions
+a|
+s3:ListBucket and
+
+s3:ListBucketVersions permissions
 a|
 s3:max-keys
 a|
 Will compare to the max-keys parameter specified in a GET Bucket or GET Bucket Object versions request.
-a|
-S3:ListBucket and
 
-S3:ListBucketVersions permissions
+a|
+s3:ListBucket and
+
+s3:ListBucketVersions permissions
 a|
 s3:prefix
 a|
 Will compare to the prefix parameter specified in a GET Bucket or GET Bucket Object versions request.
+
+a|
+s3:PutObject
+a|
+s3:object-lock-remaining-retention-days
+a|    
+Compares to the retain-until-date specified in the `x-amz-object-lock-retain-until-date` request header or computed from the bucket default retention period to make sure that these values are within the allowable range for the following requests:
+
+* PUT Object
+* PUT Object - Copy
+* Initiate Multipart Upload
+
+a|
+s3:PutObjectRetention
+a|
+s3:object-lock-remaining-retention-days
+a|    
+Compares to the retain-until-date specified in the PUT Object Retention request to ensure that it is within the allowable range.
+
 |===
 
 == Specifying variables in a policy
