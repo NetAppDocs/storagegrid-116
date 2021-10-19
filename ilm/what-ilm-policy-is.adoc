@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: 
 summary: 'An information lifecycle management \(ILM\) policy is an ordered set of ILM rules that determines how the StorageGRID system manages object data over time.'
 ---
-= What an ILM policy is
+= What is an ILM policy?
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 An information lifecycle management (ILM) policy is an ordered set of ILM rules that determines how the StorageGRID system manages object data over time.
 
-== How an ILM policy evaluates objects
+== How does an ILM policy evaluate objects?
 
 The active ILM policy for your StorageGRID system controls the placement, duration, and data protection of all objects.
 
@@ -19,7 +19,7 @@ When clients save objects to StorageGRID, the objects are evaluated against the 
 
 . If the filters for the first rule in the policy match an object, the object is ingested according to that rule's ingest behavior and stored according to that rule's placement instructions.
 . If the filters for the first rule do not match the object, the object is evaluated against each subsequent rule in the policy until a match is made.
-. If no rules match an object, the ingest behavior and placement instructions for the default rule in the policy are applied. The default rule is the last rule in a policy and cannot use any filters.
+. If no rules match an object, the ingest behavior and placement instructions for the default rule in the policy are applied. The default rule is the last rule in a policy. The default rule must apply to all tenants, all buckets, and all object versions and cannot use any advanced filters.
 
 == Example ILM policy
 
@@ -35,7 +35,7 @@ Rule 3 is the last and default rule in the policy, and it does not use filters. 
 
 image::../media/ilm_policy_and_rules.png[ILM Policy and Rules]
 
-== What proposed, active, and historical policies are
+== What are proposed, active, and historical policies?
 
 Every StorageGRID system must have one active ILM policy. A StorageGRID system might also have one proposed ILM policy and any number of historical policies.
 

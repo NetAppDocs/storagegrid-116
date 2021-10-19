@@ -1,10 +1,10 @@
 ---
 permalink: ilm/creating-ilm-policy-after-s3-object-lock-is-enabled.html
 sidebar: sidebar
-keywords:
+keywords: how to create ILM policy, policy for S3 object lock
 summary: 'If the global S3 Object Lock setting is enabled, the steps for creating a policy are slightly different. You must ensure that the ILM policy is compliant with the requirements of buckets that have S3 Object Lock enabled.'
 ---
-= Creating an ILM policy after S3 Object Lock is enabled
+= Create an ILM policy after S3 Object Lock is enabled
 :icons: font
 :imagesdir: ../media/
 
@@ -13,24 +13,21 @@ If the global S3 Object Lock setting is enabled, the steps for creating a policy
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have specific access permissions.
-* The global S3 Object Lock setting must already be enabled for the StorageGRID system.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
+* The global S3 Object Lock setting is already enabled for the StorageGRID system.
 +
-[NOTE]
-====
-If the global S3 Object Lock setting has not been enabled, use the general instructions for creating a proposed policy instead.
+NOTE: If the global S3 Object Lock setting has not been enabled, use the general instructions for xref:creating-proposed-ilm-policy.adoc[creating a proposed ILM policy].
 
-xref:creating-proposed-ilm-policy.adoc[Creating a proposed ILM policy]
-====
+* You have created the compliant and non-compliant ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules. See
+xref:example-7-compliant-ilm-policy-for-s3-object-lock.adoc[Example 7: Compliant ILM policy for S3 Object Lock].
 
-* You must have created the compliant and non-compliant ILM rules you want to add to the proposed policy. As required, you can save a proposed policy, create additional rules, and then edit the proposed policy to add the new rules.
+* You have created a compliant xref:creating-default-ilm-rule.adoc[default ILM rule] for the policy.
+
+* Optionally, you have watched the video: https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7[Video: StorageGRID ILM Policies^]
 +
-xref:example-7-compliant-ilm-policy-for-s3-object-lock.adoc[Example 7: Compliant ILM policy for S3 Object Lock]
+image::../media/video-screenshot-ilm-policies.png[Screenshot of ILM policies video]
 
-* You must have created a compliant default ILM rule for the policy.
-+
-xref:creating-default-ilm-rule.adoc[Creating a default ILM rule]
 
 .Steps
 
@@ -52,7 +49,7 @@ You must enter at least 1 and no more than 128 characters.
 +
 The Select Rules for Policy dialog box appears, with all defined rules listed.
 
- ** The Select Default Rule section lists the rules that can be the default for a compliant policy. It includes compliant rules that do not use filters.
+ ** The Select Default Rule section lists the rules that can be the default for a compliant policy. It includes compliant rules that do not use filters or the Noncurrent reference time.
  ** The Select Other Rules section lists the other compliant and non-compliant rules that can be selected for this policy.
 + 
 image::../media/ilm_policy_select_rules_for_compliant_policy.png[ILM Policy Select Rules for Compliant Policy]
@@ -62,12 +59,8 @@ image::../media/ilm_policy_select_rules_for_compliant_policy.png[ILM Policy Sele
 +
 The table in this section only lists the rules that are compliant and do not use any filters.
 +
-[NOTE]
-====
-If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and create a default rule that is compliant.
+NOTE: If no rule is listed in the Select Default Rule section, you must exit the ILM policy page and xref:creating-default-ilm-rule.adoc[create a default ILM rule] that is compliant.
 
-xref:creating-default-ilm-rule.adoc[Creating a default ILM rule]
-====
 +
 IMPORTANT: Do not use the Make 2 Copies stock rule as the default rule for a policy. The Make 2 Copies rule uses a single storage pool, All Storage Nodes, which contains all sites. If you use this rule, multiple copies of an object might be placed on the same site.
 
@@ -95,7 +88,7 @@ You cannot move the default rule or the non-compliant "`default`" rule.
 +
 IMPORTANT: You must confirm that the ILM rules are in the correct order. When the policy is activated, new and existing objects are evaluated by the rules in the order listed, starting at the top.
 
-. As required, click the delete icon image:../media/icon_nms_delete_new.gif[delete icon] to delete any rules that you do not want in the policy, or select *Select Rules* to add more rules.
+. As required, select the delete icon image:../media/icon_nms_delete_new.gif[delete icon] to delete any rules that you do not want in the policy, or *Select Rules* to add more rules.
 . When you are done, select *Save*.
 +
 The ILM Policies page is updated:
@@ -105,4 +98,4 @@ The ILM Policies page is updated:
 +
 image::../media/ilm_policy_proposed_policy_s3_object_lock.png[ILM Policy Proposed Policy S3 Object Lock]
 
-. Go to xref:simulating-ilm-policy.adoc[Simulating an ILM policy].
+. Go to xref:simulating-ilm-policy.adoc[Simulate an ILM policy].
