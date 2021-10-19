@@ -55,13 +55,13 @@ NOTE: Windows Server 2016 should be using the https://support.microsoft.com/en-u
 
 == Server certificate requirements
 
-StorageGRID uses a management interface certificate on each Admin Node to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API. When you configure SSO relying party trusts for StorageGRID in AD FS, you use the server certificate as the signature certificate for StorageGRID requests to AD FS.
+StorageGRID uses a management interface certificate on each Admin Node to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API. When you configure relying party trusts (AD FS), enterprise application (Azure) or service provider connections (Ping Federate) for StorageGRID, you use the server certificate as the signature certificate for StorageGRID requests.
 
 If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts.
 
 xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
 
-NOTE: Using an Admin Node's default server certificate in the AD FS relying party trust is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust in AD FS with the new certificate.
+NOTE: Using an Admin Node's default server certificate in a relying party trust or SP connection is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust, enterprise application, or SP connection with the new certificate.
 
 You can access an Admin Node's server certificate by logging in to the command shell of the node and going to the `/var/local/mgmt-api` directory. A custom server certificate is named `custom-server.crt`. The node's default server certificate is named `server.crt`.
 

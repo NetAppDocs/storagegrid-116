@@ -85,7 +85,7 @@ Appliance BMC communication error
 a|
 Communication with the baseboard management controller (BMC) has been lost.
 
-. Confirm that the BMC is operating normally. Select *Nodes*, and then select the *Hardware* tab for the appliance node. Locate the Compute Controller BMC IP field, and browse to that IP.
+. Confirm that the BMC is operating normally. Select *NODES*, and then select the *Hardware* tab for the appliance node. Locate the Compute Controller BMC IP field, and browse to that IP.
 . Attempt to restore BMC communications by placing the node into maintenance mode and then powering the appliance off and back on. See the installation and maintenance instructions for your appliance.
  ** xref:../sg6000/index.adoc[SG6000 storage appliances]
  ** xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
@@ -206,7 +206,7 @@ Appliance Fibre Channel fault detected
 a|
 There is a problem with the Fibre Channel connection between the storage and compute controllers in the appliance.
 
-. Check the hardware components for errors (*Nodes* > *_appliance node_* > *Hardware*). If the status of any of the components is not "`Nominal,`" take these actions:
+. Check the hardware components for errors (*NODES* > *_appliance node_* > *Hardware*). If the status of any of the components is not "`Nominal,`" take these actions:
  .. Verify that the Fibre Channel cables between controllers are completely connected.
  .. Ensure that the Fibre Channel cables are free of excessive bends.
  .. Confirm that the SFP+ modules are properly seated.
@@ -375,26 +375,30 @@ The Cassandra auto-compactor exists on all Storage Nodes and manages the size of
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
 
-a|
-Cassandra auto-compactor metrics out of date
-a|
-The metrics that describe the Cassandra auto-compactor are out of date.
+a|Audit logs are being added to the in-memory queue
+
+a|Node cannot send logs to the local syslog server and the in-memory queue is filling up.
+
+. Ensure that the rsyslog service is running on the node.
+. If necessary, restart the rsyslog service on the node using the command `service rsyslog restart`.
+. If the rsyslog service cannot be restarted and you do not save audit messages on Admin Nodes, contact technical support. Audit logs will be lost if this condition is not corrected.
+
+a|Cassandra auto-compactor metrics out of date
+a|The metrics that describe the Cassandra auto-compactor are out of date.
 
 The Cassandra auto-compactor exists on all Storage Nodes and manages the size of the Cassandra database for overwrite and delete heavy workloads. While this alert persists, certain workloads will experience unexpectedly high metadata consumption.
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Contact technical support.
 
-a|
-Cassandra communication error
-a|
-The nodes that run the Cassandra service are having trouble communicating with each other.
+a|Cassandra communication error
+a|The nodes that run the Cassandra service are having trouble communicating with each other.
 
 This alert indicates that something is interfering with node-to-node communications. There might be a network issue or the Cassandra service might be down on one or more Storage Nodes.
 
 . Determine if there is another alert affecting one or more Storage Nodes. This alert might be resolved when you resolve the other alert.
 . Check for a network issue that might be affecting one or more Storage Nodes.
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid Topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is "Running."
 . If Cassandra is not running, follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra service are now running and the alert is not resolved, contact technical support.
@@ -415,7 +419,7 @@ Cassandra repair metrics out of date
 a|
 The metrics that describe Cassandra repair jobs are out of date. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
 
-. Reboot the node. From the Grid Manager, go to *Nodes*, select the node, and select the Tasks tab.
+. Reboot the node. From the Grid Manager, go to *NODES*, select the node, and select the Tasks tab.
 . If this alert persists, contact technical support.
 
 a|
@@ -436,7 +440,7 @@ The Cassandra repair service is not available.
 
 The Cassandra repair service exists on all Storage Nodes and provides critical repair functions for the Cassandra database. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
 
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid Topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra Reaper service is "Running."
 . If Cassandra Reaper is not running, follow the steps for follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra Reaper service are now running and the alert is not resolved, contact technical support.
@@ -535,13 +539,13 @@ The StorageGRID node is unable to contact your DHCP server. The DHCP lease for t
 |Email notification failure
 |The email notification for an alert could not be sent.
 
-This alert is triggered when an alert email notification fails or a test email (sent from the *Alerts* > *Email Setup* page) cannot be delivered.
+This alert is triggered when an alert email notification fails or a test email (sent from the *ALERTS* > *Email setup* page) cannot be delivered.
 
 . Sign in to Grid Manager from the Admin Node listed in the *Site/Node* column of the alert.
-. Go to the *Alerts* > *Email Setup* page, check the settings, and change them if required.
+. Go to the *ALERTS* > *Email setup* page, check the settings, and change them if required.
 . Click *Send Test Email*, and check the inbox of a test recipient for the email. A new instance of this alert might be triggered if the test email cannot be sent.
 . If the test email could not be sent, confirm your email server is online.
-. If the server is working, select *Support* > *Tools* > *Logs*, and collect the log for the Admin Node. Specify a time period that is 15 minutes before and after the time of the alert.
+. If the server is working, select *SUPPORT* > *Tools* > *Logs*, and collect the log for the Admin Node. Specify a time period that is 15 minutes before and after the time of the alert.
 . Extract the downloaded archive, and review the contents of `prometheus.log` `(_/GID<gid><time_stamp>/<site_node>/<time_stamp>/metrics/prometheus.log)`.
 . If you are unable to resolve the problem, contact technical support.
 
@@ -586,6 +590,39 @@ The server certificate used for accessing storage API endpoints is about to expi
 . On the *Global* tab, select *S3 and Swift API certificate*.
 . xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
 
+a|External syslog CA certificate expiration
+a|The certificate authority (CA) certificate used to sign the external syslog server certificate is about to expire.
+
+. Update the CA certificate on the external syslog server.
+. Obtain a copy of the updated CA certificate.
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Select *Browse* to upload the new certificate.
+. Complete the Configuration wizard to save the new certificate and key.
+
+a|External syslog client certificate expiration
+a|The client certificate for an external syslog server is about to expire.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Select *Browse* to upload the new certificate.
+. Select *Browse* to upload the new private key.
+. Complete the Configuration wizard to save the new certificate and key.
+
+a|External syslog server certificate expiration
+a|The server certificate presented by the external syslog server is about to expire.
+
+. Update the server certificate on the external syslog server.
+. If you previously used the Grid Manager API to provide a server certificate for certificate validation, upload the updated server certificate using the API.
+
+a|External syslog server forwarding error
+a|Node cannot forward logs to the external syslog server.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Advance through the Configuration wizard until you are able to select *Send test messages*.
+. Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
+. Resolve any reported issues.
 
 a|
 Grid Network MTU mismatch
@@ -785,6 +822,16 @@ The disk queue for audit messages is full.
 
 xref:../audit/index.adoc[Review audit logs]
 
+
+a|Logs are being added to the on-disk queue
+a|Node cannot forward logs to the external syslog server and the on-disk queue is filling up.
+
+. From the Grid Manager, go to *CONFIGURATION* > *Audit messages*.
+. Select *Edit external syslog server*.
+. Advance through the Configuration wizard until you are able to select *Send test messages*.
+. Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
+. Resolve any reported issues.
+
 a|
 Low audit log disk capacity
 a|
@@ -842,7 +889,7 @@ Immediately add Storage Nodes in an expansion procedure.
 
 *Minor alert*
 
-. Monitor the rate at which object metadata space is being used. Select *Nodes* > *_Storage Node_* > *Storage*, and view the Storage Used - Object Metadata graph.
+. Monitor the rate at which object metadata space is being used. Select *NODES* > *_Storage Node_* > *Storage*, and view the Storage Used - Object Metadata graph.
 . Add Storage Nodes in an expansion procedure as soon as possible.
 
 Once new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
@@ -942,7 +989,7 @@ This alert might indicate that data has been permanently lost and is not retriev
 xref:troubleshooting-storagegrid-system.adoc[Troubleshooting lost and missing object data]
 
 . When the underlying problem is resolved, reset the counter:
- .. Select *Support* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid Topology*.
  .. For the Storage Node that raised the alert, select *_site_* > *_grid node_* > *LDR* > *Data Store* > *Configuration* > *Main*.
  .. Select *Reset Lost Objects Count* and click *Apply Changes*.
 
@@ -962,10 +1009,10 @@ The Admin Network port 1 on the appliance is down or disconnected.
 
 . Check the cable and physical connection to Admin Network port 1.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance link down on Admin Network (or Client Network)
@@ -974,10 +1021,10 @@ The appliance interface to the Admin Network (eth1) or the Client Network (eth2)
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance link down on network port 1, 2, 3, or 4
@@ -986,10 +1033,10 @@ Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Services appliance storage connectivity degraded
@@ -998,7 +1045,7 @@ One of the two SSDs in a services appliance has failed or is out of synchronizat
 
 Appliance functionality is not impacted, but you should address the issue immediately. If both drives fail, the appliance will no longer function.
 
-. From the Grid Manager, select *Nodes* > ***_services appliance_, and then select the **Hardware* tab.
+. From the Grid Manager, select *NODES* > ***_services appliance_, and then select the **Hardware* tab.
 . Review the message in the *Storage RAID Mode* field.
 . If the message shows the progress of a resynchronization operation, wait for the operation to complete and then confirm that the alert is resolved. A resynchronization message means that SSD was replaced recently or that it is being resynchronized for another reason.
 . If the message indicates that one of the SSDs has failed, replace the failed drive as soon as possible.
@@ -1014,12 +1061,12 @@ The Admin Network port 1 on the appliance is down or disconnected.
 
 . Check the cable and physical connection to Admin Network port 1.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance link down on Admin Network (or Client Network)
@@ -1028,12 +1075,12 @@ The appliance interface to the Admin Network (eth1) or the Client Network (eth2)
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance link down on network port 1, 2, 3, or 4
@@ -1042,12 +1089,12 @@ Network port 1, 2, 3, or 4 on the appliance is down or disconnected.
 
 . Check the cables, SFPs, and physical connections to the StorageGRID network.
 . Address any connection issues. See the installation and maintenance instructions for your appliance hardware.
-. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *Alerts* > *Alert Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+. If this port is disconnected on purpose, disable this rule. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 * xref:../sg6000/index.adoc[SG6000 storage appliances]
 * xref:../sg5700/index.adoc[SG5700 storage appliances]
 * xref:../sg5600/index.adoc[SG5600 storage appliances]
-* xref:managing-alerts.adoc[Disabling an alert rule]
+* xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 Storage appliance storage connectivity degraded
@@ -1060,7 +1107,7 @@ There is a problem with one or more connections between the compute controller a
 +
 *Note:* If a second cable needs to be replaced, do not unplug it for at least 5 minutes. Otherwise, the root volume might become read-only, which requires a hardware restart.
 
-. From the Grid Manager, select *Nodes*. Then, select the Hardware tab of the node that had the problem. Verify that the alert condition has resolved.
+. From the Grid Manager, select *NODES*. Then, select the Hardware tab of the node that had the problem. Verify that the alert condition has resolved.
 
 a|
 Storage device inaccessible
@@ -1088,7 +1135,7 @@ A high percentage of tenant quota space is being used. If a tenant exceeds its q
 
 *Note:* This alert rule is disabled by default because it might generate a lot of notifications.
 
-. From the Grid Manager, select *Tenants*.
+. From the Grid Manager, select *TENANTS*.
 . Sort the table by *Quota Utilization*.
 . Select a tenant whose quota utilization is close to 100%.
 . Do either or both of the following:

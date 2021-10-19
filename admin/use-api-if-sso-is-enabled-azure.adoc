@@ -22,28 +22,28 @@ These instructions apply if you are using Azure AD as the SSO identity provider
 .About this task
 To obtain an authentication token, you can use the following example scripts:
 
-* The `storagegrid-azure-ssoauth.py` python script
-* The `storagegrid-azure-ssoauth.js Node.js` script
+* The `storagegrid-ssoauth-azure.py` Python script
+* The `storagegrid-ssoauth-azure.js` Node.js script
 
 Both scripts  are located in the StorageGRID installation files directory (`./rpms` for Red Hat Enterprise Linux or CentOS, `./debs` for Ubuntu or Debian, and `./vsphere` for VMware).
 
-To write your own API integration with Azure AD, see the `storagegrid-azure-ssoauth.py` script. The python script makes two requests to StorageGRID directly (first to get the SAMLRequest, and later to get the authorization token), and also calls the `Node.js` script to interact with Azure to perform the SSO operations.
+To write your own API integration with Azure AD, see the `storagegrid-ssoauth-azure.py` script. The Python script makes two requests to StorageGRID directly (first to get the SAMLRequest, and later to get the authorization token), and also calls the Node.js script to interact with Azure to perform the SSO operations.
 
-SSO operations can be executed using a series of API requests, but doing so is not straightforward. The `Puppeteer Node.js` module is used to scrape the Azure SSO interface.
+SSO operations can be executed using a series of API requests, but doing so is not straightforward. The Puppeteer Node.js module is used to scrape the Azure SSO interface.
 
 If you have a URL-encoding issue, you might see the error: `Unsupported SAML version`.
 
 .Steps
 . Install the required dependencies, as follows:
 
-.. Install `Node.js` (see https://nodejs.org/en/download/[https://nodejs.org/en/download/^]).
-.. Install the required `Node.js` modules (puppeteer and jsdom):
+.. Install Node.js (see https://nodejs.org/en/download/[https://nodejs.org/en/download/^]).
+.. Install the required Node.js modules (puppeteer and jsdom):
 +
 `npm install -g <module>`
 
-.	Pass the python script to the Python interpreter to run the script.
+.	Pass the Python script to the Python interpreter to run the script.
 +
-The python script will then call the corresponding `Node.js` script to perform the Azure SSO interactions.
+The Python script will then call the corresponding Node.js script to perform the Azure SSO interactions.
 
 . When prompted, enter values for the following arguments (or pass them in using parameters):
 

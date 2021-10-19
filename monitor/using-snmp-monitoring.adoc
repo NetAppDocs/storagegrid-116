@@ -4,15 +4,15 @@ sidebar: sidebar
 keywords: snmp, monitoring
 summary: 'If you want to monitor StorageGRID using the Simple Network Management Protocol \(SNMP\), you must configure the SNMP agent that is included with StorageGRID.'
 ---
-= Using SNMP monitoring
+= Use SNMP monitoring
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 If you want to monitor StorageGRID using the Simple Network Management Protocol (SNMP), you must configure the SNMP agent that is included with StorageGRID.
 
-* xref:configuring-snmp-agent.adoc[Configuring the SNMP agent]
-* xref:updating-snmp-agent.adoc[Updating the SNMP agent]
+* xref:configuring-snmp-agent.adoc[Configure the SNMP agent]
+* xref:updating-snmp-agent.adoc[Update the SNMP agent]
 
 == Capabilities
 
@@ -86,18 +86,18 @@ USM user for each trap destination
 * SNMPv3: The only authentication protocol supported is SHA (HMAC-SHA-96).
 * SNMPv3: The only privacy protocol supported is AES.
 
-== Accessing the MIB
+== Access the MIB
 
 You can access the MIB definition file at the following location on any StorageGRID node:
 
-/usr/share/snmp/mibs/NETAPP-STORAGEGRID-MIB.txt
+`/usr/share/snmp/mibs/NETAPP-STORAGEGRID-MIB.txt`
 
 .Related information
 
-xref:alerts-reference.adoc[Alerts reference]
+* xref:alerts-reference.adoc[Alerts reference]
 
-xref:alarms-reference.adoc[Alarms reference (legacy system)]
+* xref:alarms-reference.adoc[Alarms reference (legacy system)]
 
-xref:alarms-that-generate-snmp-notifications.adoc[Alarms that generate SNMP notifications (legacy system)]
+* xref:alarms-that-generate-snmp-notifications.adoc[Alarms that generate SNMP notifications (legacy system)]
 
-xref:managing-alerts.adoc[Silencing alert notifications]
+* xref:silencing-alert-notifications.adoc[Silence alert notifications]
