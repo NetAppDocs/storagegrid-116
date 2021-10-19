@@ -25,7 +25,7 @@ You cannot perform other software updates (StorageGRID software upgrade or a hot
 
 The procedure will not be complete until the SANtricity OS upgrade has been successfully applied to all applicable nodes. It might take more than 30 minutes to load the SANtricity OS on each node and up to 90 minutes to reboot each StorageGRID storage appliance.
 
-CAUTION: The following steps are only applicable when you are using the Grid Manager to perform the upgrade. The storage controllers in the SG5700 series appliance cannot be upgraded using the Grid Manager when the controllers are using SANtricity OS older than 08.42.20.00 (11.42).
+CAUTION: The following steps are only applicable when you are using the Grid Manager to perform the upgrade. The storage controllers in the appliance cannot be upgraded using the Grid Manager when the controllers are using SANtricity OS older than 08.42.20.00 (11.42).
 
 NOTE: This procedure will automatically upgrade the NVSRAM to the most recent version associated with the SANtricity OS upgrade. You do not need to apply a separate NVSRAM upgrade file.
 
@@ -83,7 +83,7 @@ NOTE: If any errors are reported, resolve them and click *Start* again.
 
  .. The SANtricity OS Upgrade Progress table appears. This table shows all Storage Nodes in your grid and the current stage of the upgrade for each node.
 +
-NOTE: The table shows all Storage Nodes, including software-based Storage Nodes. You must approve the upgrade for all Storage Nodes, even though a SANtricity OS upgrade has no effect on software-based Storage Nodes. The upgrade message returned for software-based Storage Nodes is "`SANtricity OS upgrade is not applicable to this node.`"
+NOTE: The table shows all appliance Storage Nodes Software-based Storage Nodes are not displayed. You must approve the upgrade for all applicable Storage Nodes to complete the upgrade process.
 +
 image::../media/santricity_upgrade_progress_table.png[screenshot showing the SANtricity OS Upgrade Progress part of the SANtricity OS Upgrade page]
 
@@ -101,10 +101,6 @@ NOTE: If the order in which nodes are upgraded is important, approve nodes or gr
 
 +
 ** Click one or more *Approve* buttons to add one or more nodes to the SANtricity OS upgrade queue.
-+
-
-
-NOTE: You can delay applying a SANtricity OS upgrade to a node, but the SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes.
 
 After you click *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. 
 
@@ -120,7 +116,11 @@ The message "`SANtricity OS upgrade is not applicable to this node`" indicates t
  +
 The message "`SANtricity OS file is not compatible with this node`" indicates that the node requires a SANtricity OS file different than the one the process is attempting to install. After you complete the current SANtricity OS upgrade, download the SANtricity OS appropriate for the node and repeat the upgrade process.
 
++
+NOTE: During the upgrade process, you can skip applying the SANtricity OS upgrade to remaining nodes and finish the upgrade process without upgrading all nodes. Skipped nodes have to be upgraded later. The SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes. If you want to skip upgrading nodes, go to <<Skip Nodes and Finish,Skip Nodes and Finish>> step.
+
 [start=10]
+[Skip Nodes and Finish,Skip Nodes and Finish]
 . If you want to pause approving nodes and return to the SANtricity OS page without approving all of them, do the following: 
 
 .. Select *Skip Nodes and Finish* 
@@ -157,8 +157,6 @@ If the firmware on the node is too old to be upgraded with the Grid Manager, the
 
  .. Use maintenance mode to upgrade SANtricity OS on the node that shows a stage of Error.
  .. Use the Grid Manager to re-start and complete the SANtricity OS upgrade.
-
-
 
 When the SANtricity OS upgrade is complete on all approved nodes, the SANtricity OS Upgrade Progress table closes and a green banner shows the date and time the SANtricity OS upgrade was completed.
 
