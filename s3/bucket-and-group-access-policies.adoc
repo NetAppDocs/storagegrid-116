@@ -668,7 +668,7 @@ Possible settings for this permission include:
  ** If an existing object is not found, this permission has no effect.
 * When this permission is not present, the effect is the same as if Allow were set.
 
-IMPORTANT: If the current S3 policy allows overwrite, and the PutOverwriteObject permission is set to Deny, the client cannot overwrite an object's data, user-defined metadata, or object tagging. In addition, if the *Prevent Client Modification* check box is selected (*Configuration* > *Grid Options*), that setting overrides the setting of the PutOverwriteObject permission.
+IMPORTANT: If the current S3 policy allows overwrite, and the PutOverwriteObject permission is set to Deny, the client cannot overwrite an object's data, user-defined metadata, or object tagging. In addition, if the *Prevent Client Modification* check box is selected (*CONFIGURATION* > *System* > *Grid options*), that setting overrides the setting of the PutOverwriteObject permission.
 
 .Related information
 
@@ -1004,7 +1004,7 @@ You can create write-once-read-many (WORM) buckets to protect data, user-defined
 
 To ensure that overwrites are always denied, you can:
 
-* From the Grid Manager, go to *Configuration* > *Grid Options*, and select the *Prevent Client Modification* check box.
+* From the Grid Manager, go to *CONFIGURATION* > *System* > *Grid options*, and select the *Prevent Client Modification* check box.
 * Apply the following rules and S3 policies:
  ** Add a PutOverwriteObject DENY operation to the S3 policy.
  ** Add a DeleteObject DENY operation to the S3 policy.
