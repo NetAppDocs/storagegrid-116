@@ -21,6 +21,8 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 
 *  You have created any high availability (HA) groups you plan to use. See xref:managing-high-availability-groups.adoc[Manage high availability groups].
 
+* If S3 tenants will use S3 Select, you are configuring an HA group that uses SG100 or SG1000 appliance or VMware-based software nodes for the endpoint. HA groups are not required, but are recommended when using S3 Select.
+
 *  You have configured any VLAN interfaces you plan to use. See xref:configure-vlan-interfaces.adoc[Configure VLAN interfaces].
 
 * If you are creating an HTTPS endpoint (recommended), you have the information for the server certificate.
