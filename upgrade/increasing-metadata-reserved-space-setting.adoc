@@ -39,7 +39,7 @@ xref:../admin/index.adoc[Administer StorageGRID]
  .. Select *Configuration* > *System Settings* > *Storage Options*.
  .. In the Storage Watermarks section, note the value of *Metadata Reserved Space*.
 . Ensure you have enough available space on storage volume 0 of each Storage Node to increase this value.
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select the first Storage Node in the grid.
  .. Select the Storage tab.
  .. In the Volumes section, locate the */var/local/rangedb/0* entry.
@@ -51,7 +51,7 @@ For example, if the Metadata Reserved Space setting is currently 4 TB and you wa
   *** If one or more Storage Nodes do not have enough available space, the Metadata Reserved Space value cannot be increased. Do not continue with this procedure.
   *** If each Storage Node has enough available space on volume 0, go to the next step.
 . Ensure you have at least 128 GB of RAM on each Storage Node.
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select the first Storage Node in the grid.
  .. Select the *Hardware* tab.
  .. Hover your cursor over the Memory Usage chart. Ensure that *Total Memory* is at least 128 GB.

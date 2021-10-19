@@ -28,7 +28,7 @@ See the section on configuring client connections in the instructions for admini
 
 .Steps
 . If S3 or Swift clients connect using the Load Balancer service, check that Admin Nodes or Gateway Nodes are actively distributing traffic as you expect:
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select a Gateway Node or Admin Node.
  .. On the *Overview* tab, check if a node interface is in an HA group and if the node interface has the role of Master.
 +
@@ -43,13 +43,13 @@ Nodes in an active-backup HA group might take the Backup role from time to time.
  .. Repeat these steps for each Admin Node or Gateway Node in the StorageGRID system.
  .. Optionally, use traffic classification policies to view a more detailed breakdown of traffic being served by the Load Balancer service.
 . If S3 or Swift clients connect using the CLB service (deprecated), perform the following checks:
- .. Select *Nodes*.
+ .. Select *NODES*.
  .. Select a Gateway Node.
  .. On the *Overview* tab, check if a node interface is in an HA group, and if the node interface has the role of Master.
 +
 Nodes with the role of Master and nodes that are not in an HA group should be actively distributing requests to clients.
 
- .. For each Gateway Node that should be actively distributing client requests, select *Support* > *Tools* > *Grid Topology*.
+ .. For each Gateway Node that should be actively distributing client requests, select *SUPPORT* > *Tools* > *Grid Topology*.
  .. Select *_Gateway Node_* > *CLB* > *HTTP* > *Overview* > *Main*.
  .. Review the number of *Incoming Sessions - Established* to verify that the Gateway Node has been actively handling requests.
 . Verify that these requests are being evenly distributed to Storage Nodes.
