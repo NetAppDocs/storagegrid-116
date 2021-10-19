@@ -104,7 +104,6 @@ image::../media/save_button_green_checkmark.gif[Save Button with a green checkma
 --
 .Azure
 --
-.. Enter the *Provider name* for the identity provider, exactly as it appears in Azure.
 
 .. Specify which TLS certificate will be used to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
 
@@ -116,7 +115,7 @@ If you select this setting, copy the text of the custom certificate and and past
 
 ** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
 
-.. In the Enterprise Application section, specify the unique *Enterprise Application Name* you will use for StorageGRID when you configure an enterprise application in Azure.
+.. In the Enterprise Application section, specify the unique *Enterprise application name* you will use for StorageGRID when you configure an enterprise application in Azure.
 
 * For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
 
@@ -134,16 +133,13 @@ A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
-.. Download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the relying party trust.
+.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the relying party trust.
 
 NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
 
 --
 .Ping Federate
 --
-
-
-.. Enter the *Base domain* for the identity provider, exactly as it appears in Ping Federate.
 
 .. Specify which TLS certificate will be used to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
 
@@ -177,7 +173,7 @@ A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
-.. Download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the service provider (SP) connection for each Admin Node.
+.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the service provider (SP) connection for each Admin Node.
 
 NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
 
@@ -189,7 +185,7 @@ NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each
 
 == Configure relying party trusts, enterprise applications, or SP connections
 
-When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust (AD FS), enterprise application (Azure), or service provider (Ping Federate) connection for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
+When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust (AD FS), enterprise application (Azure), or service provider connection (Ping Federate) for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
 
 StorageGRID can remain in sandbox mode as long as required. However, when *Sandbox Mode* is selected on the Single Sign-on page, SSO is disabled for all StorageGRID users. Only local users can sign in.
 
@@ -230,7 +226,7 @@ If the SSO operation is successful, StorageGRID displays a page with a success m
 
 . Go to the Azure portal. 
 
-. Create one or more enterprise applications for StorageGRID. Use the relying party identifier for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
+. Create one or more enterprise applications for StorageGRID. Use the Enterprise application name for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
 +
 You must create one enterprise application for each Admin Node shown in the table.
 
@@ -239,8 +235,6 @@ You must create one enterprise application for each Admin Node shown in the tabl
 . Test the settings for each application. 
 +
 You can sign in as the current user or as someone else. StorageGRID displays a success or error message for each test.
-
-. Sign out of StorageGRID to verify the single logout (SLO) process.
 
 . When you have confirmed SSO for each of the enterprise applications and you are ready to enforce the use of SSO for StorageGRID, go to xref:admin/enabling-single-sign-on.adoc[Enable single sign-on].
 
@@ -251,7 +245,7 @@ You can sign in as the current user or as someone else. StorageGRID displays a s
 
 . Go to Ping Federate.
 
-. Create one or more service provider (SP) connections for StorageGRID. Use the relying party identifier for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
+. Create one or more service provider (SP) connections for StorageGRID. Use the SP connection ID for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
 +
 You must create one SP connection for each Admin Node shown in the table.
 
