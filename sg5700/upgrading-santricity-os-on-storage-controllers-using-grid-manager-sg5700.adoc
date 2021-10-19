@@ -111,12 +111,10 @@ For some nodes, the selected upgrade file is intentionally not applied and you c
 *** SANtricity OS file is not compatible with this node.
 *** Fix the issues with the node first and then try the upgrade again. 
 
-+
 The message "`SANtricity OS upgrade is not applicable to this node`" indicates that the node does not have a storage controller that can be managed by the StorageGRID system. This message will appear for non-appliance Storage Nodes. You can complete the SANtricity OS upgrade process without upgrading the node displaying this message.
- +
+
 The message "`SANtricity OS file is not compatible with this node`" indicates that the node requires a SANtricity OS file different than the one the process is attempting to install. After you complete the current SANtricity OS upgrade, download the SANtricity OS appropriate for the node and repeat the upgrade process.
 
-+
 NOTE: During the upgrade process, you can skip applying the SANtricity OS upgrade to remaining nodes and finish the upgrade process without upgrading all nodes. Skipped nodes have to be upgraded later. The SANtricity OS upgrade process will not be complete until you approve the SANtricity OS upgrade on all the listed Storage Nodes. If you want to skip upgrading nodes, go to <<Skip Nodes and Finish,Skip Nodes and Finish>> step.
 
 [start=10]
@@ -136,7 +134,7 @@ image::../media/santricity-skip-nodes.png[screenshot showing the SANtricity OS u
 .. Select *OK* to return to the *SANtricity OS* page.
 +
 
-Nodes already approved and with stage of complete remain upgraded. 
+Nodes already approved and with stage of Complete remain upgraded. 
 +
 
 Repeat the upgrade procedure to upgrade the remaining nodes at a later time. 
