@@ -1,10 +1,10 @@
 ---
 permalink: admin/specifying-node-client-network-is-untrusted.html
 sidebar: sidebar
-keywords:
+keywords: how to specify if client network is untrusted, what is untrusted client network
 summary: 'If you are using a Client Network, you can specify whether each node’s Client Network is trusted or untrusted. You can also specify the default setting for new nodes added in an expansion.'
 ---
-= Specifying a node's Client Network is untrusted
+= Specify a node's Client Network is untrusted
 :icons: font
 :imagesdir: ../media/
 
@@ -13,19 +13,17 @@ If you are using a Client Network, you can specify whether each node's Client Ne
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Root Access permission.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root Access permission.
 * If you want an Admin Node or Gateway Node to accept inbound traffic only on explicitly configured endpoints, you have defined the load balancer endpoints.
 +
 NOTE: Existing client connections might fail if load balancer endpoints have not been configured.
 
 .Steps
 
-. Select *Configuration* > *Network Settings* > *Untrusted Client Network*.
+. Select *CONFIGURATION* > *Security* > *Untrusted Client Networks*.
 +
-The Untrusted Client Networks page appears.
-+
-This page lists all nodes in your StorageGRID system. The Unavailable Reason column includes an entry if the Client Network on the node must be trusted.
+The Untrusted Client Networks page lists all nodes in your StorageGRID system. The Unavailable Reason column includes an entry if the Client Network on the node must be trusted.
 +
 image::../media/untrusted_client_networks_page.png[Untrusted Client Networks]
 
@@ -40,10 +38,7 @@ NOTE: This setting does not affect the existing nodes in your StorageGRID system
 +
 You can select or unselect the check box in the title to select or unselect all nodes.
 
-. Click *Save*.
+. Select *Save*.
 +
 The new firewall rules are immediately added and enforced. Existing client connections might fail if load balancer endpoints have not been configured.
 
-.Related information
-
-xref:configuring-load-balancer-endpoints.adoc[Configuring load balancer endpoints]

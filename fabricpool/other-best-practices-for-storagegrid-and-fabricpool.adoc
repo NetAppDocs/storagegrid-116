@@ -13,11 +13,11 @@ When configuring a StorageGRID system for use with FabricPool, you should avoid 
 
 == Object encryption
 
-When configuring StorageGRID, you can optionally enable the global *Stored Object Encryption* setting if data encryption is required for other StorageGRID clients (*Configuration* > *System Settings* > *Grid Options*). The data that is tiered from FabricPool to StorageGRID is already encrypted, so enabling the StorageGRID setting is not required. Client-side encryption keys are owned by ONTAP.
+When configuring StorageGRID, you can optionally enable the global *Stored Object Encryption* setting if data encryption is required for other StorageGRID clients (*CONFIGURATION* > *System* > *Grid options*). The data that is tiered from FabricPool to StorageGRID is already encrypted, so enabling the StorageGRID setting is not required. Client-side encryption keys are owned by ONTAP.
 
 == Object compression
 
-When configuring StorageGRID, do not enable the global *Compress Stored Objects* setting (*Configuration* > *System Settings* > *Grid Options*). The data that is tiered from FabricPool to StorageGRID is already compressed. Enabling *Compress Stored Objects* will not further reduce an object's size.
+When configuring StorageGRID, do not enable the global *Compress Stored Objects* setting (*CONFIGURATION* > *System* > *Grid options*). The data that is tiered from FabricPool to StorageGRID is already compressed. Enabling *Compress Stored Objects* will not further reduce an object's size.
 
 == FabricPool tiering
 

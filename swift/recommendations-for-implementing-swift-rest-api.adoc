@@ -37,7 +37,7 @@ mycontainer/f8e3-image3132.jpg
 
 == Recommendations for "`range reads`"
 
-If the *Compress Stored Objects* option is selected (*Configuration* > *System Settings* > *Grid Options*), Swift client applications should avoid performing GET object operations that specify a range of bytes be returned. These "`range read`" operations are inefficient because StorageGRID must effectively uncompress the objects to access the requested bytes. GET Object operations that request a small range of bytes from a very large object are especially inefficient; for example, it is very inefficient to read a 10 MB range from a 50 GB compressed object.
+If the *Compress Stored Objects* option is selected (*CONFIGURATION* > *System* > *Grid options*), Swift client applications should avoid performing GET object operations that specify a range of bytes be returned. These "`range read`" operations are inefficient because StorageGRID must effectively uncompress the objects to access the requested bytes. GET Object operations that request a small range of bytes from a very large object are especially inefficient; for example, it is very inefficient to read a 10 MB range from a 50 GB compressed object.
 
 If ranges are read from compressed objects, client requests can time out.
 
