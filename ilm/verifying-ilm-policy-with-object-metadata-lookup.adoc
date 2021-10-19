@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'After you have activated an ILM policy, you should ingest representative test objects into the StorageGRID system. You should then perform an object metadata lookup to confirm that copies are being made as intended and placed in the correct locations.'
 ---
-= Verifying an ILM policy with object metadata lookup
+= Verify an ILM policy with object metadata lookup
 :icons: font
 :imagesdir: ../media/
 
@@ -47,12 +47,10 @@ image::../media/object_lookup_results.png[Object Lookup Results]
 
 . Confirm that the object is stored in the correct location or locations and that it is the correct type of copy.
 +
-NOTE: If the Audit option is enabled, you can also monitor the audit log for the ORLM Object Rules Met message. The ORLM audit message can provide you with more information about the status of the ILM evaluation process, but it cannot give you information about the correctness of the object data's placement or the completeness of the ILM policy. You must evaluate this yourself. For details, see the information about understanding audit messages.
+NOTE: If the Audit option is enabled, you can also monitor the audit log for the ORLM Object Rules Met message. The ORLM audit message can provide you with more information about the status of the ILM evaluation process, but it cannot give you information about the correctness of the object data's placement or the completeness of the ILM policy. You must evaluate this yourself. For details, see xref:../audit/index.adoc[Review audit logs].
 
 .Related information
 
-xref:../audit/index.adoc[Review audit logs]
+* xref:../s3/index.adoc[Use S3]
 
-xref:../s3/index.adoc[Use S3]
-
-xref:../swift/index.adoc[Use Swift]
+* xref:../swift/index.adoc[Use Swift]

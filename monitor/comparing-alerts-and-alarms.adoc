@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: alerts, alarms, comparing alerts and alarms
 summary: 'There are a number of similarities between the alert system and the legacy alarm system, but the alert system offers significant benefits and is easier to use.'
 ---
-= Comparing alerts and alarms
+= Compare alerts and alarms
 :icons: font
 :imagesdir: ../media/
 
@@ -13,7 +13,7 @@ There are a number of similarities between the alert system and the legacy alarm
 
 Refer to the following table to learn how to perform similar operations.
 
-[options="header"]
+[cols="1a,1a,1a" options="header"]
 |===
 |  | Alerts| Alarms (legacy system)
 a|
@@ -21,16 +21,16 @@ How do I see which alerts or alarms are active?
 
 a|
 
-* Click the *Current alerts* link on the Dashboard.
-* Click the alert on the *Nodes* > *Overview* page.
-* Select *Alerts* > *Current*.
+* Select the *Current alerts* link on the Dashboard.
+* Select the alert on the *NODES* > *Overview* page.
+* Select *ALERTS* > *Current*.
 
-xref:viewing-current-alerts.adoc[Viewing current alerts]
+xref:viewing-current-alerts.adoc[View current alerts]
 
 a|
 
-* Click the *Legacy alarms* link on the Dashboard.
-* Select *Support* > *Alarms (legacy)* > *Current Alarms*.
+* Select the *Legacy alarms* link on the Dashboard.
+* Select *SUPPORT* > *Alarms (legacy)* > *Current Alarms*.
 
 xref:viewing-legacy-alarms.adoc[Viewing legacy alarms]
 
@@ -40,7 +40,7 @@ What causes an alert or an alert to be triggered?
 a|
 Alerts are triggered when a Prometheus expression in an alert rule evaluates as true for the specific trigger condition and duration.
 
-xref:managing-alerts.adoc[Viewing alert rules]
+xref:view-alert-rules.adoc[View alert rules]
 
 a|
 Alarms are triggered when a StorageGRID attribute reaches a threshold value.
@@ -58,30 +58,34 @@ As required, additional information is provided in the StorageGRID documentation
 xref:alerts-reference.adoc[Alerts reference]
 
 a|
-You can learn about an alarm by clicking the attribute name, or you can search for an alarm code in the StorageGRID documentation.xref:alarms-reference.adoc[Alarms reference (legacy system)]
+You can learn about an alarm by selecting the attribute name, or you can search for an alarm code in the StorageGRID documentation.
+
+xref:alarms-reference.adoc[Alarms reference (legacy system)]
 
 a|
 Where can I see a list of alerts or alarms have been resolved?
 a|
 
-* Click the *Recently resolved alerts* link on the Dashboard.
-* Select *Alerts* > *Resolved*.
+* Select the *Recently resolved alerts* link on the Dashboard.
+* Select *ALERTS* > *Resolved*.
 
-xref:viewing-resolved-alerts.adoc[Viewing resolved alerts]
+xref:viewing-resolved-alerts.adoc[View resolved alerts]
 
 a|
-Select *Support* > *Alarms (legacy)* > *Historical Alarms*. xref:managing-alarms.adoc[Reviewing historical alarms and alarm frequency (legacy system)]
+Select *SUPPORT* > *Alarms (legacy)* > *Historical Alarms*. 
+
+xref:managing-alarms.adoc[Reviewing historical alarms and alarm frequency (legacy system)]
 
 a|
 Where do I manage the settings?
 
 a|
-Select *Alerts*. Then, use the options in the Alerts menu.
+Select *ALERTS*. Then, use the options in the Alerts menu.
 
-xref:managing-alerts.adoc[Managing alerts]
+xref:managing-alerts.adoc[Manage alerts]
 
 a|
-Select *Support*. Then, use the options in the *Alarms (legacy)* section of the menu.
+Select *SUPPORT*. Then, use the options in the *Alarms (legacy)* section of the menu.
 
 xref:managing-alarms.adoc[Managing alarms (legacy system)]
 
@@ -106,22 +110,28 @@ xref:../admin/index.adoc[Administer StorageGRID]
 a|
 How do I manage email notifications?
 a|
-Select *Alerts* > *Email Setup*.
+Select *ALERTS* > *Email setup*.
 
 *Note:* Because alarms and alerts are independent systems, the email setup used for alarm and AutoSupport notifications is not used for alert notifications. However, you can use the same mail server for all notifications.
 
-xref:managing-alerts.adoc[Managing alert notifications]
+xref:set-up-email-alert-notifications.adoc[Set up email notifications for alerts]
 
 a|
-Select *Support* > *Alarms (legacy)* > *Legacy Email Setup*. xref:managing-alarms.adoc[Configuring notifications for alarms (legacy system)]
+Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*. 
+
+xref:managing-alarms.adoc[Configuring notifications for alarms (legacy system)]
 
 a|
 How do I manage SNMP notifications?
 a|
-Select *Configuration* > *Monitoring* > *SNMP Agent*. xref:using-snmp-monitoring.adoc[Using SNMP monitoring]
+Select *Configuration* > *Monitoring* > *SNMP Agent*. 
+
+xref:using-snmp-monitoring.adoc[Use SNMP monitoring]
 
 a|
-Select *Configuration* > *Monitoring* > *SNMP Agent*. xref:using-snmp-monitoring.adoc[Using SNMP monitoring]
+Select *Configuration* > *Monitoring* > *SNMP Agent*.
+
+xref:using-snmp-monitoring.adoc[Use SNMP monitoring]
 
 *Note*: SNMP notifications are not sent for every alarm or alarm severity.
 
@@ -131,14 +141,14 @@ a|
 How do I control who receives notifications?
 a|
 
-. Select *Alerts* > *Email Setup*.
+. Select *ALERTS* > *Email setup*.
 . In the *Recipients* section, enter an email address for each email list or person who should receive an email when an alert occurs.
 
-xref:managing-alerts.adoc[Setting up email notifications for alerts]
+xref:set-up-email-alert-notifications.adoc[Set up email notifications for alerts]
 
 a|
 
-. Select *Support* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
 . Creating a mailing list.
 . Select *Notifications*.
 . Select the mailing list.
@@ -165,7 +175,7 @@ How do I suppress some notifications?
 
 a|
 
-. Select *Alerts* > *Silences*.
+. Select *ALERTS* > *Silences*.
 . Select the alert rule you want to silence.
 . Specify a duration for the silence.
 . Select the severity of alert you want to silence.
@@ -173,11 +183,11 @@ a|
 
 *Note*: If you have enabled the SNMP agent, silences also suppress SNMP traps and informs.
 
-xref:managing-alerts.adoc[Silencing alert notifications]
+xref:silencing-alert-notifications.adoc[Silence alert notifications]
 
 a|
 
-. Select *Support* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
 . Select *Notifications*.
 . Select a mailing list, and select *Suppress*.
 
@@ -186,11 +196,11 @@ xref:managing-alarms.adoc[Suppressing alarm notifications for a mailing list (le
 a|
 How do I suppress all notifications?
 a|
-Select *Alerts* > *Silences*.Then, select *All rules*.
+Select *ALERTS* > *Silences*.Then, select *All rules*.
 
 *Note*: If you have enabled the SNMP agent, silences also suppress SNMP traps and informs.
 
-xref:managing-alerts.adoc[Silencing alert notifications]
+xref:silencing-alert-notifications.adoc[Silence alert notifications]
 
 a|
 
@@ -205,16 +215,16 @@ a|
 How do I customize the conditions and triggers?
 a|
 
-. Select *Alerts* > *Alert Rules*.
+. Select *ALERTS* > *Rules*.
 . Select a default rule to edit, or select *Create custom rule*.
 
-xref:managing-alerts.adoc[Editing an alert rule]
+xref:editing-alert-rules.adoc[Edit alert rules]
 
-xref:managing-alerts.adoc[Creating custom alert rules]
+xref:creating-custom-alert-rules.adoc[Create custom alert rules]
 
 a|
 
-. Select *Support* > *Alarms (legacy)* > *Global Alarms*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
 . Create a Global Custom alarm to override a Default alarm or to monitor an attribute that does not have a Default alarm.
 
 xref:managing-alarms.adoc[Creating Global Custom alarms (legacy system)]
@@ -223,16 +233,16 @@ a|
 How do I disable an individual alert or alarm?
 a|
 
-. Select *Alerts* > *Alert Rules*.
-. Select the rule, and click *Edit rule*.
+. Select *ALERTS* > *Rules*.
+. Select the rule, and select *Edit rule*.
 . Unselect the *Enabled* check box.
 
-xref:managing-alerts.adoc[Disabling an alert rule]
+xref:disabling-alert-rules.adoc[Disable alert rules]
 
 a|
 
-. Select *Support* > *Alarms (legacy)* > *Global Alarms*.
-. Select the rule, and click the Edit icon.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
+. Select the rule, and select the Edit icon.
 . Unselect the *Enabled* check box.
 
 xref:managing-alarms.adoc[Disabling a Default alarm (legacy system)]
