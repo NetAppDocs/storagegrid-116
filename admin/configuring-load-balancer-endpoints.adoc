@@ -134,52 +134,76 @@ The certificate secures the connections between S3 and Swift clients and the Loa
 |You can generate a custom certificate for this endpoint.
 
 |Use StorageGRID S3 and Swift certificate
-|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). If you use this global certificate for a load balancer endpoint, you  must replace the default certificate with a custom certificate signed by an external certificate authority.
+|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). Before you can select the global certificate for a load balancer endpoint, you  must have replaced the default certificate with a custom certificate signed by an external certificate authority.
 
-//See ...tbd... for instructions.//
-
-
-|===
-+
-. If you selected *Upload certificate*, browse for the server certificate, the certificate private key, and the optional CA bundle.
-+
-image::../media/load_balancer_endpoint_upload_cert.png[Upload Cert]
-
-. If you selected *Generate certificate*, enter information for the certificate.
-+
-image::../media/load_balancer_endpoint_generate_cert.png[Generate certificate]
-
-+
-[cols="1a,2a" options="header"]
-|===
-| Field| Description
-
-|Domain name
-|A domain name for the certificate. Use a wildcard (*) to represent more than one fully qualified domain name.
-
-Select *Add another domain* to add any other domain names.
-
-|IP address
-|An IP address for the generated certificate.
-
-
-Select *Add another IP address* to add any other IP addresses.
-
-If you are using high availability (HA) groups, add the domain names and IP addresses of the HA virtual IPs.
-
-|Subject
-|Optionally, enter an X.509 subject, also referred to as the Distinguished Name (DN), to identify who owns the certificate.
-
-|Days valid
-|Optionally, enter the number of days the generated certificate is valid, starting at the time it is generated. The default is 730 days.
+See xref:configuring-custom-server-certificate-for-storage-node-or-clb.html for [Configure S3 and Swift API certificates] for instructions.
 
 
 |===
+
+. If you are not using the StorageGRID S3 and Swift certificate, upload or generate the certificate.
+//tabbed blocks start here
++
+[role="tabbed-block"]
+====
+
+.Upload certificate
+--
+Upload the required server certificate files.
+
+. Select *Upload certificate*.
+. Upload the required server certificate files:
+ ** *Server certificate*: The custom server certificate file (`.crt`).
+ ** *Certificate private key*: The custom server certificate private key file (`.key`).
++
+NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
+
+ ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
+
+. Expand *Certificate details* to see the metadata for each certificate you uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
++
+* Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
+
+. Select *Create*. +
+The load balancer endpoint is created and the custom certificate is used for all subsequent new connections between S3 and Swift clients and the endpoint.
+
+--
+//end Upload, begin Generate
+
+.Generate certificate
+--
+
+. Select *Generate certificate*.
+. Specify the certificate information:
+ ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
+ ** *IP*: One or more IP addresses to include in the certificate.
+ ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
+ ** *Days valid*: Number of days after creation that the certificate expires.
 
 . Select *Generate*.
 
-. Select *Create*.
+. Select  *Certificate details* to see the metadata for the generated certificate.
 
+* Select *Download certificate* to save the certificate file.
++
+Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
+
+. Select *Create*.
++
+The load balancer endpoint is created and the custom certificate is used for all subsequent new connections between S3 and Swift clients and this endpoint.
+
+--
+
+====
+//end tabbed blocks
 
 === [[After-you-finish]]After you finish
 Provide S3 and Swift clients with the information needed to connect to the endpoint:
