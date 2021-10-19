@@ -54,7 +54,7 @@ Storage Nodes manage and store object data and metadata. Follow these guidelines
 * Do not enable outbound services for untrusted tenants. For example, when creating the account for an untrusted tenant, do not allow the tenant to use its own identity source and do not allow the use of platform services. See the steps for creating a tenant account in the instructions for administering StorageGRID.
 * Use a third-party load balancer for untrusted client traffic. Third-party load balancing offers more control and additional layers of protection against attack.
 * Optionally, use a Storage proxy for more control over Cloud Storage Pools and platform services communication from Storage Nodes to external services. See the steps for creating a Storage proxy in the instructions for administering StorageGRID.
-* Optionally, connect to external services using the Client Network. Then, select *Configuration* > *Network Settings* > *Untrusted Client Network* and indicate that the Client Network on the Storage Node is untrusted. The Storage Node no longer accepts any incoming traffic on the Client Network, but it continues to allow outbound requests for Platform Services.
+* Optionally, connect to external services using the Client Network. Then, select *CONFIGURATION* > *Network* > *Untrusted Client Networks* and indicate that the Client Network on the Storage Node is untrusted. The Storage Node no longer accepts any incoming traffic on the Client Network, but it continues to allow outbound requests for Platform Services.
 
 == Guidelines for Gateway Nodes
 
@@ -65,7 +65,7 @@ Gateway Nodes provide an optional load-balancing interface that client applicati
 NOTE: The CLB service is deprecated.
 
 * Use a third-party load balancer between the client and the Gateway Node or Storage Nodes for untrusted client traffic. Third-party load balancing offers more control and additional layers of protection against attack. If you do use a third-party load balancer, network traffic can still optionally be configured to go through an internal load balancer endpoint or be sent directly to Storage Nodes.
-* If you are using load balancer endpoints, optionally have clients connect over the Client Network. Then, select *Configuration* > *Network Settings* > *Untrusted Client Network* and indicate that the Client Network on the Gateway Node is untrusted. The Gateway Node only accepts inbound traffic on the ports explicitly configured as load balancer endpoints.
+* If you are using load balancer endpoints, optionally have clients connect over the Client Network. Then, select *CONFIGURATION* > *Network* > *Untrusted Client Networks* and indicate that the Client Network on the Gateway Node is untrusted. The Gateway Node only accepts inbound traffic on the ports explicitly configured as load balancer endpoints.
 
 == Guidelines for hardware appliance nodes
 
@@ -83,20 +83,20 @@ See the installation and maintenance instructions for your StorageGRID hardware 
 
 .Related information
 
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+* xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
 
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+* xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
 
-xref:../vmware/index.adoc[Install VMware]
+* xref:../vmware/index.adoc[Install VMware]
 
-xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:../tenant/index.adoc[Use a tenant account]
+* xref:../tenant/index.adoc[Use a tenant account]
 
-xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
+* xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
 
-xref:../sg5600/index.adoc[SG5600 storage appliances]
+* xref:../sg5600/index.adoc[SG5600 storage appliances]
 
-xref:../sg5700/index.adoc[SG5700 storage appliances]
+* xref:../sg5700/index.adoc[SG5700 storage appliances]
 
-xref:../sg6000/index.adoc[SG6000 storage appliances]
+* xref:../sg6000/index.adoc[SG6000 storage appliances]
