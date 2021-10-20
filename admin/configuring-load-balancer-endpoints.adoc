@@ -28,7 +28,8 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 
 ** To generate a certificate, you need all domain names and IP addresses S3 or Swift clients will use to access the endpoint. You must also know the subject (Distinguished Name).
 
-** If you want to use the StorageGRID S3 and Swift certificate, you have already replaced the default certificate with a custom certificate signed by an external certificate authority.
+** If you want to use the StorageGRID S3 and Swift certificate, you have already replaced the default certificate with a custom certificate signed by an external certificate authority. See 
+See xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure S3 and Swift API certificates].
 +
 The certificate can use wildcards to represent the fully qualified domain names of all Admin Nodes and Gateway Nodes running the Load Balancer service. For example, `*.storagegrid._example_.com` uses the * wildcard to represent `adm1.storagegrid._example_.com` and `gn1.storagegrid._example_.com`. See xref:configuring-s3-api-endpoint-domain-names.adoc[Configuring S3 API endpoint domain names] for more information.
 
@@ -114,7 +115,7 @@ image::../media/load_balancer_endpoint_ha_group_vips_binding_mode.png[Endpoint H
 +
 image::../media/load_balancer_endpoint_node_interfaces_binding_mode.png[Endpoint Node Interfaces Binding Mode]
 
-. If you are creating an *HTTP* endpoint, you do not need to attach a certificate. Select *Create* and go to <<After-you-finish,After you finish>>. Otherwise, select *Continue* to attach the certificate.
+. If you are creating an *HTTP* endpoint, you do not need to attach a certificate. Select *Create* to add the new load balancer endpoint. Then, go to <<After-you-finish,After you finish>>. Otherwise, select *Continue* to attach the certificate.
 
 
 === Attach certificate
@@ -134,9 +135,7 @@ The certificate secures the connections between S3 and Swift clients and the Loa
 |You can generate a custom certificate for this endpoint.
 
 |Use StorageGRID S3 and Swift certificate
-|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). Before you can select the global certificate for a load balancer endpoint, you  must have replaced the default certificate with a custom certificate signed by an external certificate authority.
-
-See xref:configuring-custom-server-certificate-for-storage-node-or-clb.html for [Configure S3 and Swift API certificates] for instructions.
+|The S3 and Swift API certificate is generated during StorageGRID installation and is signed by the grid certificate authority ("`grid CA`"). If you want to select this global certificate for a load balancer endpoint, you must have already replaced the default certificate with a custom certificate signed by an external certificate authority.
 
 
 |===
@@ -149,10 +148,9 @@ See xref:configuring-custom-server-certificate-for-storage-node-or-clb.html for 
 
 .Upload certificate
 --
-Upload the required server certificate files.
 
-. Select *Upload certificate*.
-. Upload the required server certificate files:
+.. Select *Upload certificate*.
+.. Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (`.crt`).
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
@@ -160,7 +158,7 @@ NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 
 
  ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
-. Expand *Certificate details* to see the metadata for each certificate you uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
+.. Expand *Certificate details* to see the metadata for each certificate you uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
 +
 * Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
 +
@@ -169,8 +167,8 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Create*. +
-The load balancer endpoint is created and the custom certificate is used for all subsequent new connections between S3 and Swift clients and the endpoint.
+.. Select *Create*. +
+The load balancer endpoint is created. The custom certificate is used for all subsequent new connections between S3 and Swift clients and the endpoint.
 
 --
 //end Upload, begin Generate
@@ -178,16 +176,16 @@ The load balancer endpoint is created and the custom certificate is used for all
 .Generate certificate
 --
 
-. Select *Generate certificate*.
-. Specify the certificate information:
+.. Select *Generate certificate*.
+.. Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
  ** *IP*: One or more IP addresses to include in the certificate.
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
 
-. Select *Generate*.
+.. Select *Generate*.
 
-. Select  *Certificate details* to see the metadata for the generated certificate.
+.. Select  *Certificate details* to see the metadata for the generated certificate.
 
 * Select *Download certificate* to save the certificate file.
 +
@@ -196,9 +194,9 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Create*.
+.. Select *Create*.
 +
-The load balancer endpoint is created and the custom certificate is used for all subsequent new connections between S3 and Swift clients and this endpoint.
+The load balancer endpoint is created. The custom certificate is used for all subsequent new connections between S3 and Swift clients and this endpoint.
 
 --
 
@@ -215,32 +213,57 @@ Provide S3 and Swift clients with the information needed to connect to the endpo
 == Edit load balancer endpoints
 
 
-For an unsecured (HTTP) endpoint, you can change the endpoint service type between S3 and Swift. For a secured (HTTPS) endpoint, you can edit the endpoint service type and view or change the security certificate.
+You can change an endpoint's  name and binding mode. For a secured (HTTPS) endpoint, you can also view or change the security certificate. If you need to change the service type (S3 or Swift) or the protocol (HTTP or HTTPS), you must create a new endpoint.
 
 .Steps
 
 . Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
-. Select the check box for the endpoint you want to edit.
-. Select *Actions* > *Edit*.
-. Make the desired changes to the endpoint.
++
+The table shows details for all existing load balancer endpoints. You can edit endpoint details using the *Actions* menu or from the details page.
 
-+
-For an unsecured (HTTP) endpoint, you can:
-+
- * Change the endpoint service type between S3 and Swift.
- * Change the endpoint binding mode.
-+
-For a secured (HTTPS) endpoint, you can:
+[cols="1a, 2a,2a" options="header"]
+|===
+|Detail to edit | Actions menu | Details page
 
- * Change the endpoint service type between S3 and Swift.
- * Change the endpoint binding mode.
- * View the security certificate.
- * Upload or generate a new security certificate when the current certificate is expired or about to expire.
-* Display information about the default StorageGRID server certificate or a CA signed certificate that was uploaded.
-+
-NOTE: To change the protocol for an existing endpoint, for example from HTTP to HTTPS, you must create a new endpoint. Follow the instructions for creating load balancer endpoints, and select the desired protocol.
+|Endpoint name
 
-. Select *Save*.
+|.. Select the check box for the endpoint. 
+.. Select *Actions* > *Edit endpoint name*.
+.. Enter the new name.
+.. Select *Save*.
+
+|.. Select the name of endpoint from the table.
+.. Select the edit icon image:../media/icon_edit_tm.png[Edit icon] next to the name.
+.. Select *Save*.
+
+|Endpoint binding mode
+
+|.. Select the check box for the endpoint. 
+.. Select *Actions* > *Edit endpoint binding mode*.
+.. Update the binding mode as required.
+.. Select *Save changes*.
+
+|.. Select the name of endpoint from the table.
+.. Select the *Edit binding mode* button on the details page.
+.. Update the binding mode as required.
+.. Select *Save changes*.
+
+|Endpoint certificate
+
+|.. Select the check box for the endpoint. 
+.. Select *Actions* > *Edit endpoint certificate*.
+.. Upload or generate a new custom certificate or begin using the global S3 and Swift certificate, as required.
+.. Select *Save changes*.
+
+|.. Select the name of endpoint from the table.
+.. Select the *Certificate* tab on the details page.
+.. Select the *Edit certificate* button.
+.. Upload or generate a new custom certificate or begin using the global S3 and Swift certificate, as required.
+.. Select *Save changes*.
+
+|===
+
+
 
 == Remove load balancer endpoints
 
@@ -251,8 +274,21 @@ To prevent client disruptions, update any affected S3 or Swift client applicatio
 .Steps
 
 . Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
-. Do one of the following:
-** Select the load balancer endpoint name. Then, select *Remove* on the details page.
-** Select the check box for each endpoint you want to remove. Then, select *Actions* > *Remove load balancer endpoint*.
++
+The table shows details for all existing load balancer endpoints. You can remove one or more endpoints using the *Actions* menu or you can remove a single endpoint from the details page.
 
-. Select *OK* to confirm your selection. All endpoints you selected are removed, and a green success banner appears on the Load balancer endpoints page.
+
+[cols="2a,2a" options="header"]
+|===
+ | Actions menu | Details page
+
+|.. Select the check box for each endpoint you want to remove. 
+.. Select *Actions* > *Remove*.
+.. Select *OK*. A green success banner appears on the Load balancer endpoints page.
+
+|.. Select the name of endpoint from the table.
+.. Select the *Remove* button.
+.. Select *OK*. A green success banner appears on the Load balancer endpoints page.
+
+
+|===
