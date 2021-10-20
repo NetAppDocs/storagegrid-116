@@ -13,7 +13,6 @@ StorageGRID uses the Amazon Web Services (AWS) policy language to allow S3 tenan
 
 == Access policy overview
 
-[.lead]
 There are two kinds of access policies supported by StorageGRID.
 
 * *Bucket policies*, which are configured using the GET Bucket policy, PUT Bucket policy, and DELETE Bucket policy S3 API operations. Bucket policies are attached to buckets, so they are configured to control access by users in the bucket owner account or other accounts to the bucket and the objects in it. A bucket policy applies to only one bucket and possibly multiple groups.
@@ -111,7 +110,6 @@ xref:../tenant/index.adoc[Use a tenant account]
 
 == Consistency control settings for policies
 
-[.lead]
 By default, any updates you make to group policies are eventually consistent. Once a group policy becomes consistent, the changes can take an additional 15 minutes to take effect, because of policy caching. By default, any updates you make to bucket policies are also eventually consistent.
 
 As required, you can change the consistency guarantees for bucket policy updates. For example, you might want a change to a bucket policy to become effective as soon as possible for security reasons.
@@ -122,7 +120,6 @@ NOTE: If you set the consistency level to *all* to force a new bucket policy to 
 
 == Using the ARN in policy statements
 
-[.lead]
 In policy statements, the ARN is used in Principal and Resource elements.
 
 * Use this syntax to specify the S3 resource ARN:
@@ -157,7 +154,6 @@ The HTTP request body for the PUT Bucket policy operation must be encoded with c
 
 == Specifying resources in a policy
 
-[.lead]
 In policy statements, you can use the Resource element to specify the bucket or object for which permissions are allowed or denied.
 
 * Each policy statement requires a Resource element. In a policy, resources are denoted by the element `Resource`, or alternatively, `NotResource` for exclusion.
@@ -181,7 +177,6 @@ xref:bucket-and-group-access-policies.adoc[Specifying variables in a policy]
 
 == Specifying principals in a policy
 
-[.lead]
 Use the Principal element to identity the user, group, or tenant account that is allowed/denied access to the resource by the policy statement.
 
 * Each policy statement in a bucket policy must include a Principal element. Policy statements in a group policy do not need the Principal element because the group is understood to be the principal.
@@ -235,7 +230,6 @@ For example, suppose Alex leaves the organization and the username `Alex` is del
 
 == Specifying permissions in a policy
 
-[.lead]
 In a policy, the Action element is used to allow/deny permissions to a resource. There are a set of permissions that you can specify in a policy, which are denoted by the element "Action," or alternatively, "NotAction" for exclusion. Each of these elements maps to specific S3 REST API operations.
 
 The tables lists the permissions that apply to buckets and the permissions that apply to objects.
@@ -654,7 +648,6 @@ a|
 
 == Using the PutOverwriteObject permission
 
-[.lead]
 The s3:PutOverwriteObject permission is a custom StorageGRID permission that applies to operations that create or update objects. The setting of this permission determines whether the client can overwrite an object's data, user-defined metadata, or S3 object tagging.
 
 Possible settings for this permission include:
@@ -676,7 +669,6 @@ xref:bucket-and-group-access-policies.adoc[S3 group policy examples]
 
 == Specifying conditions in a policy
 
-[.lead]
 Conditions define when a policy will be in effect. Conditions consist of operators and key-value pairs.
 
 Conditions use key-value pairs for evaluation. A Condition element can contain multiple conditions, and each condition can contain multiple key-value pairs. The condition block uses the following format:
@@ -852,7 +844,6 @@ Compares to the retain-until-date specified in the PUT Object Retention request 
 
 == Specifying variables in a policy
 
-[.lead]
 You can use variables in policies to populate policy information when it is available. You can use policy variables in the `Resource` element and in string comparisons in the `Condition` element.
 
 In this example, the variable `${aws:username}` is part of the Resource element:
@@ -909,7 +900,6 @@ Special character. Uses the character as a literal $ character.
 
 == Creating policies requiring special handling
 
-[.lead]
 Sometimes a policy can grant permissions that are dangerous for security or dangerous for continued operations, such as locking out the root user of the account. The StorageGRID S3 REST API implementation is less restrictive during policy validation than Amazon, but equally strict during policy evaluation.
 
 [options="header"]
@@ -999,7 +989,6 @@ Valid. Objects are owned by the bucket owner account. Bucket policy applies.
 
 == Write-once-read-many (WORM) protection
 
-[.lead]
 You can create write-once-read-many (WORM) buckets to protect data, user-defined object metadata, and S3 object tagging. You configure the WORM buckets to allow the creation of new objects and to prevent overwrites or deletion of existing content. Use one of the approaches described here.
 
 To ensure that overwrites are always denied, you can:
@@ -1041,12 +1030,10 @@ xref:bucket-and-group-access-policies.adoc[S3 group policy examples]
 
 == S3 policy examples
 
-[.lead]
 Use the examples in this section to build StorageGRID access policies for buckets and groups.
 
 === S3 bucket policy examples
 
-[.lead]
 Bucket policies specify the access permissions for the bucket that the policy is attached to. Bucket policies are configured using the S3 PutBucketPolicy API.
 
 A bucket policy can be configured using the AWS CLI as per the following command:
@@ -1255,7 +1242,6 @@ xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets
 
 === S3 group policy examples
 
-[.lead]
 Group policies specify the access permissions for the group that the policy is attached to. There is no `Principal` element in the policy since it is implicit. Group policies are configured using the Tenant Manager or the API.
 
 ==== Example: Setting the group policy using the Tenant Manager
