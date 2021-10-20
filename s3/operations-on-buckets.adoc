@@ -506,3 +506,29 @@ If the default retention period is modified after ingest of an object version, t
 You must have the s3:PutBucketObjectLockConfiguration permission, or be account root, to complete this operation.
 
 The `content-MD5` request header must be specified in PUT request.
+
+=== Request example
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /bucket?object-lock HTTP/1.1
+Accept-Encoding: identity
+Content-Length: 308
+Host: _host_
+Content-MD5: _request header_
+User-Agent: s3sign/1.0.0 requests/2.24.0 python/3.8.2
+X-Amz-Date: _date_
+X-Amz-Content-SHA256: _authorization string_
+Authorization: _authorization string_
+
+<ObjectLockConfiguration>
+    <ObjectLockEnabled>Enabled</ObjectLockEnabled>
+    <Rule>
+        <DefaultRetention>
+            <Mode>COMPLIANCE</Mode>
+            <Years>6</Years>
+        </DefaultRetention>
+    </Rule>
+</ObjectLockConfiguration>
+----
