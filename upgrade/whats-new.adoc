@@ -63,6 +63,8 @@ The following new alerts were added for StorageGRID 11.6:
 * External syslog server forwarding error
 * Identity federation synchronization failure for a tenant
 * Logs are being added to the on-disk queue
+* Object existence check failed
+* Object existence check stalled
 
 .Learn more
 * xref:../monitor/index.adoc[Monitor & troubleshoot]
@@ -136,18 +138,17 @@ NOTE: If you have not already done so, and if your Storage Nodes have enough RAM
 
 S3 tenants can now issue S3 Select requests to perform SQL queries on individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data.
 
-* Object format must be CSV, GZIP, or BZIP2.
+* Object format must be CSV, or GZIP or BZIP2 compressed files containing a CSV file.
 * Tenants must be granted S3 Select ability by the grid administrator.
 * The SQL query must be sent to a StorageGRID load balancer endpoint. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
 * Bare-metal load balancer nodes are not supported.
 * SQL queries cannot be sent directly to Storage Nodes.
 
-.Learn more
+Learn more:
 
-* xref:../admin/index.adoc[Administer StorageGRID]
+xref:../admin/index.adoc[Administer StorageGRID]
 
-* xref:../s3/index.adoc[Use S3]
-
+xref:../s3/index.adoc[Use S3]
 
 == Paul's what's new changes
 
