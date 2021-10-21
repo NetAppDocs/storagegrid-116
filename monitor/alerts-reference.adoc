@@ -977,6 +977,41 @@ One or more network devices are down or disconnected. This alert indicates that 
 
 Contact technical support.
 
+|Object existence check failed
+|The object existence check job has failed.
+
+. Select *MAINTENANCE > Object existence check > Active job*.
+. Note the error message. Perform the appropriate corrective actions:
++
+*Failed to start*, *Lost connection*, *Unknown error*
++
+.. Ensure the Storage Nodes and volumes included in the job are online and available.
+.. Ensure there are no service or volume failures on the Storage Nodes. If a service is not running, start or restart the service. See the recovery and maintenance instructions.
+.. Ensure the selected consistency control can be satisfied.
+.. After resolving any issues, select Retry. The job will resume from the last valid state.
+
++
+*Critical storage error in volume*
+.. Recover the failed volume. See the recovery and maintenance instructions.
+.. Select *Retry*.
+.. After the job completes, create another job for the remaining volumes on the node to check for additional errors.
+
+. If you are unable to resolve the issues, contact technical support.
+
+|Object existence check stalled
+|The object existence check job has stalled.
+
+The object existence check job cannot continue. Either one or more Storage Nodes or volumes included in the job are offline or unresponsive, or the selected consistency control can no longer be satisfied because too many nodes are down or unavailable.
+
+. Select *MAINTENANCE > Object existence check > Active job*.
+. Ensure that all Storage Nodes and volumes being checked are online and available.
+. Ensure that sufficient Storage Nodes are online and available to allow the current coordinator node to read object metadata using the selected consistency control. If necessary, start or restart a service. See the recovery and maintenance instructions.
++
+When you resolve steps 1 and 2, the job will automatically start where it left off.
+
+. If the selected consistency control cannot be satisfied, cancel the job and start another job using a lower consistency control.
+. If you are unable to resolve the issues, contact technical support.
+
 a|
 Objects lost
 a|
