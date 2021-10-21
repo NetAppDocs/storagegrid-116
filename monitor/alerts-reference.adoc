@@ -980,7 +980,7 @@ Contact technical support.
 |Object existence check failed
 |The object existence check job has failed.
 
-. Select *MAINTENANCE > Object existence check > Active job*.
+. Select *MAINTENANCE > Object existence check*.
 . Note the error message. Perform the appropriate corrective actions:
 +
 *Failed to start*, *Lost connection*, *Unknown error*
@@ -1003,8 +1003,7 @@ Contact technical support.
 
 The object existence check job cannot continue. Either one or more Storage Nodes or volumes included in the job are offline or unresponsive, or the selected consistency control can no longer be satisfied because too many nodes are down or unavailable.
 
-. Select *MAINTENANCE > Object existence check > Active job*.
-. Ensure that all Storage Nodes and volumes being checked are online and available.
+. Ensure that all Storage Nodes and volumes being checked are online and available (select *NODES*).
 . Ensure that sufficient Storage Nodes are online and available to allow the current coordinator node to read object metadata using the selected consistency control. If necessary, start or restart a service. See the recovery and maintenance instructions.
 +
 When you resolve steps 1 and 2, the job will automatically start where it left off.
