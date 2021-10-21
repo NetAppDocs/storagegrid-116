@@ -9,32 +9,102 @@ summary: 'StorageGRID supports these S3 Select formats, features, and commands.'
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID supports these S3 Select formats, features, and commands.
+StorageGRID supports these S3 Select clauses, data types, operators, and reserved keywords for the SELECT command.
 
-== SQL reference
+== Clauses
 
-[cols="1a,1a" options="header"]
-|===
-| Command| Subcommand
+* SELECT list
+* FROM clause
+* WHERE clause
+* LIMIT clause
 
-|ScanRange
-|
+The ScanRange clause is not supported.
 
-.7+|Select Command
-|SELECT list
+== Data types
 
-|FROM clause
+* bool
+* integer
+* string
+* float
+* decimal, numeric
 
-|WHERE clause
+The timestamp data type is not supported.
 
-|LIMIT clause
+== Operators
 
-|MISSING (JSON only)
+=== Logical operators
 
-|Column Name
+* AND
+* NOT
+* OR
 
-|Column Number
+=== Comparison operators
 
-|===
+* <
+* >
+* <=
+* >=
+* =
+* <>
+* !=
+* BETWEEN
+* IN – For example: IN ('a', 'b', 'c')
 
-== SQL functions
+=== Pattern matching operators
+
+* LIKE
+* _
+* %
+
+=== Unitary operators
+
+* IS NULL
+* IS NOT NULL
+
+=== Math operators
+
+* +
+* -
+* *
+* /
+* %
+
+StorageGRID follows the AWS S3 Select operator precedence.
+
+== Reserved keywords
+
+* Column Name
+
+* Column Number
+
+The `missing` keyword is not supported.
+
+== Aggregate functions
+
+* AVG()
+* COUNT
+* MAX()
+* MIN()
+* SUM()
+
+== Conditional functions
+
+* CASE
+* COALESCE
+* NULLIF
+
+== Conversion functions
+
+* CAST (for supported datatype)
+
+== Date functions
+
+StorageGRID does not support any date functions
+
+== String functions
+
+* CHAR_LENGTH, CHARACTER_LENGTH
+* LOWER
+* SUBSTRING
+* TRIM
+* UPPER
