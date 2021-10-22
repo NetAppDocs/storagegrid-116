@@ -69,7 +69,7 @@ See the xref:../network/index.adoc[Networking guidelines] for information about 
 |Network protocol
 |The network protocol that clients will use when connecting to this endpoint.
 
-*  Select *HTTPS* for secure, TLS encrypted communication. You must attach a security certificate before you can save the endpoint.
+*  Select *HTTPS* for secure, TLS encrypted communication (recommended). You must attach a security certificate before you can save the endpoint.
 
 * Select *HTTP* for less secure, unencrypted communication. Use HTTP only for a non-production grid.
 |===
@@ -244,7 +244,7 @@ IMPORTANT: After editing an endpoint, you might need to wait up to 15 minutes fo
 .. Select *Save changes*.
 
 |.. Select the endpoint name to display the details.
-.. Select the *Edit binding mode* button.
+.. Select *Edit binding mode*.
 .. Update the binding mode as required.
 .. Select *Save changes*.
 
@@ -257,7 +257,7 @@ IMPORTANT: After editing an endpoint, you might need to wait up to 15 minutes fo
 
 |.. Select the endpoint name to display the details.
 .. Select the *Certificate* tab.
-.. Select the *Edit certificate* button.
+.. Select *Edit certificate*.
 .. Upload or generate a new custom certificate or begin using the global S3 and Swift certificate, as required.
 .. Select *Save changes*.
 
@@ -279,5 +279,5 @@ IMPORTANT: To prevent client disruptions, update any affected S3 or Swift client
 
 * To remove one endpoint from the details page: 
 .. From the Load balancer page. select the endpoint name.
-.. Select the *Remove* button on the details page.
+.. Select *Remove* on the details page.
 .. Select *OK*. 
