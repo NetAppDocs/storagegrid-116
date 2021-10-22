@@ -27,7 +27,7 @@ You must be signed in to the Grid Manager using a xref:../admin/web-browser-requ
 
 .Steps
 
-. Select *SUPPORT* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *Archive Node* > *ARC* > *Target* > *Configuration* > *Main*.
 . Change the value of Tivoli Storage Manager State to *Offline*, and click *Apply Changes*.
 . After maintenance is complete, change the value of Tivoli Storage Manager State to *Online*, and click *Apply Changes*.
@@ -44,7 +44,7 @@ For more information about the TSM administrative console dsmadmc, see the _Tivo
 
 When the Archive Node requests an object from the Tivoli Storage Manager (TSM) server and the retrieval fails, the Archive Node retries the request after an interval of 10 seconds. If the object is permanently unavailable (for example, because the object is corrupted on tape), the TSM API has no way to indicate this to the Archive Node, so the Archive Node continues to retry the request.
 
-When this situation occurs, an alarm is triggered, and the value continues to increase. To see the alarm, select *SUPPORT* > *Tools* > *Grid Topology*. Then, select *Archive Node* > *ARC* > *Retrieve* > *Request Failures*.
+When this situation occurs, an alarm is triggered, and the value continues to increase. To see the alarm, select *SUPPORT* > *Tools* > *Grid topology*. Then, select *Archive Node* > *ARC* > *Retrieve* > *Request Failures*.
 
 If the object is permanently unavailable, you must identify the object and then manually cancel the Archive Node's request as described in the procedure, <<determining_objects_permanently_unavailable,Determining if objects are permanently unavailable>>.
 
@@ -93,7 +93,7 @@ For more information see the instructions for understanding audit messages.
 +
 You might also want to record the following additional information used by the TSM to identify objects saved by the Archive Node:
 
-  *** *File Space Name*: Equivalent to the Archive Node ID. To find the Archive Node ID, select *SUPPORT* > *Tools* > *Grid Topology*. Then, select *Archive Node* > *ARC* > *Target* > *Overview*.
+  *** *File Space Name*: Equivalent to the Archive Node ID. To find the Archive Node ID, select *SUPPORT* > *Tools* > *Grid topology*. Then, select *Archive Node* > *ARC* > *Target* > *Overview*.
   *** *High Level Name*: Equivalent to the volume ID assigned to the object by the Archive Node. The volume ID takes the form of a date (for example, `20091127`), and is recorded as the VLID of the object in archive audit messages.
   *** *Low Level Name*: Equivalent to the CBID assigned to an object by the StorageGRID system.
 
@@ -101,7 +101,7 @@ You might also want to record the following additional information used by the T
 . Check the TSM server to see if the objects identified in step 2 are permanently unavailable:
  .. Log in to the administrative console of the TSM server: `dsmadmc`
 +
-Use the administrative user name and password that are configured for the ARC service. Enter the user name and password in the Grid Manager. (To see the user name, select *SUPPORT* > *Tools* > *Grid Topology*. Then, select *Archive Node* > *ARC* > *Target* > *Configuration*.)
+Use the administrative user name and password that are configured for the ARC service. Enter the user name and password in the Grid Manager. (To see the user name, select *SUPPORT* > *Tools* > *Grid topology*. Then, select *Archive Node* > *ARC* > *Target* > *Configuration*.)
 
  .. Determine if the object is permanently unavailable.
 +

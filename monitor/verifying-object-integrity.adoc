@@ -52,7 +52,7 @@ You can change the Verification Rate for background verification on a Storage No
 Use the High verification rate only when you suspect that a hardware or software fault might have corrupted object data. After the High priority background verification completes, the Verification Rate automatically resets to Adaptive.
 
 .Steps
-. Select *SUPPORT* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *_Storage Node_* > *LDR* > *Verification*.
 . Select *Configuration* > *Main*.
 . Go to *LDR* > *Verification* > *Configuration* > *Main*.
@@ -79,12 +79,12 @@ If background verification finds corrupt replicated object data, the *Corrupt Ob
 +
 If background verification finds corrupt fragments of erasure-coded object data, the Corrupt Fragments Detected attribute is incremented. StorageGRID recovers by rebuilding the corrupt fragment in place on the same Storage Node.
 
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Erasure Coding*.
  .. In the Verification Results table, monitor the Corrupt Fragments Detected (ECCD) attribute.
 
 . After corrupt objects have been automatically restored by the StorageGRID system, reset the count of corrupt objects.
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Reset Corrupt Object Count*.
  .. Click *Apply Changes*.
@@ -92,7 +92,7 @@ If background verification finds corrupt fragments of erasure-coded object data,
 
 NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Delete Quarantined Objects*.
  .. Click *Apply Changes*.
