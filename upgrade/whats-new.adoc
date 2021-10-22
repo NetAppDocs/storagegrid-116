@@ -14,7 +14,7 @@ StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog tr
 == Kathy's what's new changes
 
 === Support for multiple VLAN interfaces
-You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
+You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *Network* > *VLAN interfaces*).
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
@@ -63,6 +63,8 @@ The following new alerts were added for StorageGRID 11.6:
 * External syslog server forwarding error
 * Identity federation synchronization failure for a tenant
 * Logs are being added to the on-disk queue
+* Object existence check failed
+* Object existence check stalled
 
 .Learn more
 * xref:../monitor/index.adoc[Monitor & troubleshoot]
@@ -131,6 +133,22 @@ The Nodes page has been redesigned to include a summary page that contains a tab
 If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
 
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
+
+== S3 Select feature added
+
+S3 tenants can now issue S3 Select requests to perform SQL queries on individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data.
+
+* Object format must be CSV, GZIP, or BZIP2.
+* Tenants must be granted S3 Select ability by the grid administrator.
+* The SQL query must be sent to a StorageGRID load balancer endpoint. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
+* Bare-metal load balancer nodes are not supported.
+* SQL queries cannot be sent directly to Storage Nodes.
+
+Learn more:
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../s3/index.adoc[Use S3]
 
 == Paul's what's new changes
 
