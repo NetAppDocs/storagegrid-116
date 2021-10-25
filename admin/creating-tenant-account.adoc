@@ -17,8 +17,8 @@ The Grid Manager provides a wizard that takes you through the steps for creating
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have specific access permissions.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
 * If the tenant account will use the identity source that was configured for the Grid Manager, and you want to grant Root Access permission for the tenant account to a federated group, you must have imported that federated group into the Grid Manager. You do not need to assign any Grid Manager permissions to this admin group. See the xref:managing-admin-groups.adoc[instructions for managing admin groups].
 
 .Steps
@@ -50,22 +50,22 @@ Select the permissions for the tenant.
 
 .Swift tenant
 
-If the tenant will use its own identity source rather than a federated identity source, select *Use own identity source* (selectable only if single sign-on is not being used).
+If the tenant will use its own identity source, select *Use own identity source* (selectable only if single sign-on is not being used).
 
 --
 
 ====
 
 [start=4]
-. Select *Continue* and define root access for the tenant account based on whether StorageGRID is using SSO.
+. Select *Continue* and define root access for the tenant account based on whether single sign-on (SSO) or identity federation (IF) are enabled.
 
 [role="tabbed-block"]
 ====
 
-.SSO enabled
+.SSO enabled 
 --
 
-When SSO is enabled, the tenant must use the identity source that was configured for the Grid Manager. No local users can sign in.
+When SSO is enabled for StorageGRID, the tenant must use the identity source that was configured for the Grid Manager. No local users can sign in. You also specify which federated group has Root Access permission to configure the tenant account.
 
 .. To define root access for the tenant account, do one or both of the following:
 
@@ -74,8 +74,6 @@ When SSO is enabled, the tenant must use the identity source that was configured
 NOTE: If you have adequate permissions, the existing federated groups from the Grid Manager are listed when you select the field. Otherwise, enter the group's unique name.
 +
 * Enter the local root user's credentials.
-
-.. Select *Create tenant*. The tenant account is created.
 
 .. If you are a user in the Root Access group, optionally select *Sign in as root* to immediately access the Tenant Manager, where you can configure the tenant. Otherwise, provide the URL for the Sign in link to the tenant account’s administrator. The URL for a tenant is the fully qualified domain name or IP address of any Admin Node, followed by `/?accountId=20-digit-account-id`.
 +
@@ -87,9 +85,32 @@ NOTE: An access denied message is displayed if you click Sign in and you do not 
 
 .SSO not enabled
 --
-.. Enter the local root user's credentials.
+.. Determine if the tenant will use the identity source that was configured for the Grid Manager.
 
-.. Select *Create tenant*. The tenant account is created.
+[cols="1a,3a" options="header"]
+|===
+| If the tenant will... | Do this...
+
+|Manage its own groups and users
+|
+... Select *Use own identity source*.
++
+*Note*: If this check box is selected and you want to use identity federation for tenant groups and users, the tenant must configure its own identity source. See the xref:../tenant/index.adoc[instructions for using tenant accounts].
++
+... Specify a password for the tenant's local root user.
+
+|Use the groups and users configured for the Grid Manager
+|
+... Leave *Use own identity source* deselected.
+... Do either or both of the following:
++
+* In the Root Access Group field, select an existing federated group from the Grid Manager that should have the initial Root Access permission for the tenant.
++
+*Note*: If you have adequate permissions, the existing federated groups from the Grid Manager are listed when you click the field. Otherwise, enter the group's unique name.
++
+* Specify a password for the tenant's local root user.
+
+|===
 
 .. Optionally, access the new tenant. Otherwise, go to the step for  <<STEP_SIGN_IN_LATER,accessing the tenant later>>.
 +
@@ -109,7 +130,7 @@ The URL for the Tenant Manager has this format:
  ** `_20-digit-account-id_` is the tenant's unique account ID
 
 |Accessing the Grid Manager on port 443 but you did not set a password for the local root user
-|Select *Sign In*, and enter the credentials for a user in the Root Access federated group.
+|In the Grid Manager, select *Sign In*, and enter the credentials for a user in the Root Access federated group.
 
 |Accessing the Grid Manager on port 443 and you set a password for the local root user
 |Go to the next step to <<STEP_SIGN_IN_AS_ROOT,sign in as root>>.
