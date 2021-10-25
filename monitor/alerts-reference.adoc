@@ -398,7 +398,7 @@ This alert indicates that something is interfering with node-to-node communicati
 
 . Determine if there is another alert affecting one or more Storage Nodes. This alert might be resolved when you resolve the other alert.
 . Check for a network issue that might be affecting one or more Storage Nodes.
-. Select *SUPPORT* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is "Running."
 . If Cassandra is not running, follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra service are now running and the alert is not resolved, contact technical support.
@@ -440,7 +440,7 @@ The Cassandra repair service is not available.
 
 The Cassandra repair service exists on all Storage Nodes and provides critical repair functions for the Cassandra database. If this condition persists for more than 48 hours, client queries, such as bucket listings, might show deleted data.
 
-. Select *SUPPORT* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra Reaper service is "Running."
 . If Cassandra Reaper is not running, follow the steps for follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra Reaper service are now running and the alert is not resolved, contact technical support.
@@ -1023,7 +1023,7 @@ This alert might indicate that data has been permanently lost and is not retriev
 xref:troubleshooting-storagegrid-system.adoc[Troubleshooting lost and missing object data]
 
 . When the underlying problem is resolved, reset the counter:
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. For the Storage Node that raised the alert, select *_site_* > *_grid node_* > *LDR* > *Data Store* > *Configuration* > *Main*.
  .. Select *Reset Lost Objects Count* and click *Apply Changes*.
 
