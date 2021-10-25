@@ -18,6 +18,7 @@ The following conditions apply to all object operations:
  ** `OPTIONS /`
  ** PUT Object legal hold
  ** PUT Object retention
+ ** SELECT Object content
 * Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`"evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 * All objects in a StorageGRID bucket are owned by the bucket owner, including objects created by an anonymous user, or by another account.
 * Data objects ingested to the StorageGRID system through Swift cannot be accessed through S3.
