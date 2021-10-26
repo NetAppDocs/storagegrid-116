@@ -51,7 +51,10 @@ In an Amazon S3 bucket or Azure Blob storage container that is external to the S
 
 If the Cloud Storage Pool is an Amazon S3 bucket:
 
-* You can optionally configure a bucket lifecycle to transition objects to low-cost, long-term storage, such as Amazon S3 Glacier or S3 Glacier Deep Archive. The external storage system must support the Glacier storage class and the S3 POST Object restore API.
+* You can optionally configure a bucket lifecycle to transition objects to low-cost, long-term storage, such as Amazon S3 Glacier or S3 Glacier Deep Archive. The external storage system must support the Glacier storage class and the S3 POST Object restore API. 
++
+*Note:* The Google Cloud Platform (GCP) does not support non-retrievable storage, such as Amazon S3 Glacier storage.
+
 * You can create Cloud Storage Pools for use with AWS Commercial Cloud Services (C2S), which supports the AWS Secret Region.
 
 If the Cloud Storage Pool is an Azure Blob storage container, StorageGRID transitions the object to the Archive tier.
