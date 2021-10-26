@@ -11,7 +11,7 @@ summary: 'You must create at least one tenant account to control access to the s
 [.lead]
 You must create at least one tenant account to control access to the storage in your StorageGRID system.
 
-When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If StorageGRID is not using single sign-on (SSO), you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
+When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on (SSO) is enabled for StorageGRID, you also specify which federated group has Root Access permission to configure the tenant account. If StorageGRID is not using single sign-on, you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
 
 The Grid Manager provides a wizard that takes you through the steps for creating a tenant account. The steps vary based on whether a xref:using-identity-federation.adoc[federated identity source] and xref:using-single-sign-on.adoc[single sign-on] are configured and whether the Grid Manager account you use to create the tenant account belongs to an admin group with the Root Access permission.
 
@@ -43,21 +43,21 @@ image::../media/tenant_accounts_page_blank.png[Tenant Accounts Page - Blank]
 Select the permissions for the tenant.
 
 ** Allow platform services
-** Use own identity source (selectable only if single sign-on is not being used)
+** Use own identity source (selectable only if SSO is not being used)
 ** Allow S3 select
 
 --
 
 .Swift tenant
 
-If the tenant will use its own identity source, select *Use own identity source* (selectable only if single sign-on is not being used).
+If the tenant will use its own identity source, select *Use own identity source* (selectable only if SSO is not being used).
 
 --
 
 ====
 
 [start=4]
-. Select *Continue* and define root access for the tenant account based on whether single sign-on (SSO) or identity federation (IF) are enabled.
+. Select *Continue* and define root access for the tenant account.
 
 [role="tabbed-block"]
 ====
@@ -77,16 +77,14 @@ NOTE: If you have adequate permissions, the existing federated groups from the G
 
 .. If you are a user in the Root Access group, optionally select *Sign in as root* to immediately access the Tenant Manager, where you can configure the tenant. Otherwise, provide the URL for the Sign in link to the tenant account’s administrator. The URL for a tenant is the fully qualified domain name or IP address of any Admin Node, followed by `/?accountId=20-digit-account-id`.
 +
-image::../media/step_2_sign_in_as_root.gif[Sign in as root]
-+
-NOTE: An access denied message is displayed if you click Sign in and you do not belong to the Root Access group for the tenant account.
+NOTE: An access denied message is displayed if you select *Sign in as root* and you do not belong to the Root Access group for the tenant account.
 
 --
 
 .SSO not enabled
 --
-.. Determine if the tenant will use the identity source that was configured for the Grid Manager.
-
+.. Complete the steps described in the table depending on whether the tenant will use the identity source that was configured for the Grid Manager.
++
 [cols="1a,3a" options="header"]
 |===
 | If the tenant will... | Do this...
@@ -113,7 +111,8 @@ NOTE: An access denied message is displayed if you click Sign in and you do not 
 |===
 
 [start=2b]
-.. Optionally, access the new tenant. Otherwise, go to the step for  <<STEP_SIGN_IN_LATER,accessing the tenant later>>.
+.. Optionally, access the new tenant. Otherwise, go to the step for <<STEP_SIGN_IN_LATER,accessing the tenant later>>.
+
 +
 [cols="1a,2a" options="header"]
 |===
@@ -131,7 +130,7 @@ The URL for the Tenant Manager has this format:
  ** `_20-digit-account-id_` is the tenant's unique account ID
 
 |Accessing the Grid Manager on port 443 but you did not set a password for the local root user
-|In the Grid Manager, select *Sign In*, and enter the credentials for a user in the Root Access federated group.
+|In the Grid Manager, select *Sign in as root*, and enter the credentials for a user in the Root Access federated group.
 
 |Accessing the Grid Manager on port 443 and you set a password for the local root user
 |Go to the next step to <<STEP_SIGN_IN_AS_ROOT,sign in as root>>.
@@ -139,7 +138,9 @@ The URL for the Tenant Manager has this format:
 
 .. [[STEP_SIGN_IN_AS_ROOT]]Select *Sign in as root*.
 +
-image::../media/step_2_sign_in_as_root.gif[Sign in as root]
+A green check mark appears next to the button, indicating that you are now signed in the tenant account as the root user. In addition, links for configuring buckets or containers, groups, and users appear.
++
+image::../media/configure_tenant_account.png[Configure tenant account]
 
 .. Select the links to configure the tenant account.
 +
