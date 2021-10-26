@@ -31,6 +31,7 @@ NOTE: This procedure will automatically upgrade the NVSRAM to the most recent ve
 
 .Steps
 
+[#download_SANtricity_OS]
 . From a service laptop, download the new SANtricity OS Software file from the NetApp support site.
 +
 Be sure to choose the SANtricity OS version for the E2800 storage controllers.
@@ -91,11 +92,11 @@ image::../media/santricity_upgrade_progress_table.png[screenshot showing the SAN
 +
 You can scroll through the list of nodes by using the left and right arrows at the bottom right corner of the section.
 
-. Approve the grid nodes you are ready to add to the upgrade queue. Approved nodes of the same type are upgraded one at a time.
+. Approve the grid nodes you are ready to add to the upgrade queue. Approved nodes of the same type are upgraded one at a time. 
 +
-IMPORTANT: Do not approve the SANtricity OS upgrade for an appliance storage node unless you are sure the node is ready to be stopped and rebooted. When the SANtricity OS upgrade is approved on a node, the services on that node are stopped. Later, when the node is upgraded, the appliance node is rebooted. These operations might cause service interruptions for clients that are communicating with the node.
+IMPORTANT: Do not approve the SANtricity OS upgrade for an appliance storage node unless you are sure the node is ready to be stopped and rebooted. When the SANtricity OS upgrade is approved on a node, the services on that node are stopped and the upgrade process begins. Later, when the node is finished upgrading, the appliance node is rebooted. These operations might cause service interruptions for clients that are communicating with the node.
 
- ** Select either of the *Approve All* buttons to add all Storage Nodes to the SANtricity OS upgrade queue.
+ ** Select either of the *Approve All* buttons to add all Storage Nodes to the SANtricity OS upgrade queue. 
 +
 NOTE: If the order in which nodes are upgraded is important, approve nodes or groups of nodes one at a time and wait until the upgrade is complete on each node before approving the next node(s).
 
@@ -106,7 +107,7 @@ NOTE: If the order in which nodes are upgraded is important, approve nodes or gr
 After you select *Approve*, the upgrade process determines if the node can be upgraded. If a node can be upgraded, it is added to the upgrade queue. 
 
 +
-For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. 
+For some nodes, the selected upgrade file is intentionally not applied and you can complete the upgrade process without upgrading these specific nodes. Nodes intentionally not upgraded show a stage of Complete (upgraded attempted) and list the reason the node was not upgraded in the Details column. 
 
 [start=10]
 . If a node cannot be upgraded, note the reason shown in the Details column and take the appropriate action:
@@ -134,10 +135,12 @@ A warning appears asking if you are sure you want to finish the upgrade process 
 
 +
 [start=2]
-.. Select *OK* to return to the *SANtricity OS* page.
-+
+.. Select *OK* to return to the *SANtricity OS* page. 
+.. When you are ready to continue approving nodes, go to <<download_SANtricity_OS,Download the SANtricity OS>> to re-start the upgrade process.
 
-Nodes already approved and upgraded without errors remain upgraded. 
++
+NOTE: Nodes already approved and upgraded without errors remain upgraded. 
+
 
 [start=12]
 . If you need to remove a node or all nodes from the SANtricity OS upgrade queue, select *Remove* or *Remove All*.
