@@ -2,29 +2,42 @@
 permalink: maintain/index.html
 sidebar: sidebar
 keywords:
-summary: 'Learn how to apply a hotfix; recover a failed grid node; decommission grid nodes and sites; and recover objects in the case of a system failure.'
+summary: 'Use these instructions to maintain your StorageGRID system and to recover from failures.'
 ---
-= Maintain & recover
+= Recover and maintain: Overview
 :icons: font
 :imagesdir: ../media/
 
+
 [.lead]
-Learn how to apply a hotfix; recover a failed grid node; decommission grid nodes and sites; and recover objects in the case of a system failure.
 
-* xref:introduction-to-storagegrid-recovery-and-maintenance.adoc[Introduction to StorageGRID recovery and maintenance]
+Use these instructions to maintain your StorageGRID system and to recover from failures.
 
-* xref:storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure]
+== About these instructions
+These instructions describe how to apply a software hotfix, recover grid nodes, recover a failed site, decommission grid nodes or an entire site, perform network maintenance, perform host-level and middleware maintenance procedures, and perform grid node procedures.
 
-* xref:grid-node-recovery-procedures.adoc[Grid node recovery procedures]
+NOTE: In these instructions, "`Linux`" refers to a Red Hat® Enterprise Linux®, Ubuntu®, CentOS, or Debian® deployment. Use the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^] to get a list of supported versions. 
 
-* xref:how-site-recovery-is-performed-by-technical-support.adoc[How site recovery is performed by technical support]
 
-* xref:decommission-procedure.adoc[Decommission procedure]
+== Before you begin
 
-* xref:network-maintenance-procedures.adoc[Network maintenance procedures]
+* You have a broad understanding of the StorageGRID system. 
+* You have reviewed your StorageGRID system's topology and you understand the grid configuration.
 
-* xref:host-level-and-middleware-procedures.adoc[Host-level and middleware procedures]
+* You understand that you must follow all instructions exactly and heed all warnings.
 
-* xref:grid-node-procedures.adoc[Grid node procedures]
+* You understand that maintenance procedures not described are not supported or require a services engagement.
 
-* xref:appliance-node-cloning.adoc[Appliance node cloning]
+== Maintenance procedures for appliances
+
+For hardware procedures, see the installation and maintenance instructions for your StorageGRID appliance.
+
+* xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
+
+* xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+* xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+* xref:../sg5600/index.adoc[SG5600 storage appliances]
+
+

@@ -86,21 +86,21 @@ If the HA group includes more than one interface and the Primary interface fails
 
 === Enter IP addresses
 
-. If the virtual IP addresses for this HA group are on a different subnet than the ones used by S3 and Swift clients or by Grid Manager and Tenant Manager users, specify the gateway and subnet prefix length for the VIP subnet.
+. Specify the address of the VIP subnet, followed by a slash and the subnet length (0-32).
++
+The network address must not have any host bits set. For example, `192.16.0.0/22`.
++
+NOTE: If you use a 32-bit prefix, the VIP network address also serves as the gateway address and the VIP address.
 +
 image::../media/ha_group_select_virtual_ips.png[HA Groups enter VIPs]
-+
-Enter the gateway using CIDR notation: an IPv4 address followed by a slash and the subnet length (0-32). For example, `192.16.2.1/22`.
+
+. Optionally, if any S3, Swift, administrative or tenant clients will access these VIPs from a different subnet, enter the gateway address. The gateway address must be within the VIP subnet.
 +
 Client and admin users will use this gateway to access the virtual IP addresses.
-+
-NOTE: Do not specify the the broadcast or network address of the VIP subnet.
 
-. Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses.
+. Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses. All VIPs must be within the VIP subnet.
 +
 You must provide at least one IPv4 address. Optionally, you can specify additional IPv4 and IPv6 addresses.
-+
-NOTE: If you specified a value for *Gateway CIDR*, all VIPs must be in the same subnet as the gateway.
 
 . Select *Create HA group* and select *Finish*.
 +
