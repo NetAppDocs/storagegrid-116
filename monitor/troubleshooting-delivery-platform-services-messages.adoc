@@ -5,7 +5,7 @@ keywords:
 summary: 'The Total Events (SMTT) alarm is triggered in the Grid Manager if a platform service message is delivered to an destination that cannot accept the data.'
 ---
 
-= Troubleshooting delivery of platform services messages (SMTT alarm)
+= Troubleshoot delivery of platform services messages (SMTT alarm)
 :experimental:
 :icons: font
 :imagesdir: ../media/
@@ -19,7 +19,9 @@ For example, an S3 multipart upload can succeed even though the associated repli
 
 The SMTT alarm contains a Last Event message that says, `Failed to publish notifications for _bucket-name object key_` for the last object whose notification failed.
 
-For additional information about troubleshooting platform services, see the instructions for administering StorageGRID. You might need to access the tenant from the Tenant Manager to debug a platform service error.
+Event messages are also listed in the `/var/local/log/bycast-err.log` log file. See the xref:logs-files-reference.adoc[Log files reference].
+
+For additional information about troubleshooting platform services, see the xref:../admin/index.html[instructions for administering StorageGRID]. You might need to xref:../tenant/index.adoc[access the tenant from the Tenant Manager] to debug a platform service error.
 
 .Steps
 . To view the alarm, select *NODES* > *_site_* > *_grid node_* > *Events*.
@@ -28,16 +30,6 @@ For additional information about troubleshooting platform services, see the inst
 Event messages are also listed in `/var/local/log/bycast-err.log`.
 
 . Follow the guidance provided in the SMTT alarm contents to correct the issue.
-. Click *Reset event counts*.
+. Select *Reset event counts*.
 . Notify the tenant of the objects whose platform services messages have not been delivered.
 . Instruct the tenant to trigger the failed replication or notification by updating the object's metadata or tags.
-
-.Related information
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:../tenant/index.adoc[Use a tenant account]
-
-xref:logs-files-reference.adoc[Log files reference]
-
-xref:resetting-event-counts.adoc[Resetting event counts]

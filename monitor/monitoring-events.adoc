@@ -4,39 +4,34 @@ sidebar: sidebar
 keywords: monitor, monitoring events, events, storageGRID events
 summary: 'You can monitor events that are detected by a grid node, including custom events that you have created to track events that are logged to the syslog server. The Last Event message shown in the Grid Manager provides more information about the most recent event.'
 ---
-= Monitoring events
+= Monitor events
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 You can monitor events that are detected by a grid node, including custom events that you have created to track events that are logged to the syslog server. The Last Event message shown in the Grid Manager provides more information about the most recent event.
 
-Event messages are also listed in the `/var/local/log/bycast-err.log` log file.
+Event messages are also listed in the `/var/local/log/bycast-err.log` log file. See the xref:logs-files-reference.adoc[Log files reference].
 
 The SMTT (Total events) alarm can be repeatedly triggered by issues such as network problems, power outages or upgrades. This section has information on investigating events so that you can better understand why these alarms have occurred. If an event occurred because of a known issue, it is safe to reset the event counters.
 
-== Reviewing events from the Nodes page
+== Review events
 
-The Nodes page lists the system events for each grid node.
+. Review the system events for each grid node:
 
-. Select *NODES*.
-. Select *_grid node_* > *Events*.
-. At the top of the page, determine if an event is shown for *Last Event*, which describes the last event detected by the grid node.
+.. Select *SUPPORT* > *Tools* > *Grid topology*.
+.. Select *_site_* > *_grid node_* > *SSM* > *Events* > *Overview* > *Main*.
+
+. Generate a list of previous event messages to help isolate issues that occurred in the past:
+
+.. Select *SUPPORT* > *Tools* > *Grid topology*.
+.. Select *_site_* > *_grid node_* > *SSM* > *Events* > *Reports*.
+.. Select *Text*.
 +
-The event is relayed verbatim from the grid node and includes any log messages with a severity level of ERROR or CRITICAL.
+The *Last Event* attribute is not shown in the xref:using-charts-and-reports.adoc[Charts view].
 
-. Review the table to see if the Count for any event or error is not zero.
-. After resolving issues, click *Reset event counts* to return the counts to zero.
-
-== Reviewing events from the Grid Topology page
-
-The Grid Topology page also lists the system events for each grid node.
-
-. Select *SUPPORT* > *Tools* > *Grid topology*.
-. Select *_site_* > *_grid node_* > *SSM* > *Events* > *Overview* > *Main*.
-
-.Related information
-
-xref:resetting-event-counts.adoc[Resetting event counts]
-
-xref:logs-files-reference.adoc[Log files reference]
+.. Change *Attribute* to *Last Event*.
+.. Optionally, select a time period for *Quick Query*.
+.. Select *Update*.
++
+image::../media/events_report.gif[Events page]
