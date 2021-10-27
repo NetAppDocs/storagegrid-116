@@ -15,7 +15,7 @@ Event messages are also listed in the `/var/local/log/bycast-err.log` log file. 
 
 The SMTT (Total events) alarm can be repeatedly triggered by issues such as network problems, power outages or upgrades. This section has information on investigating events so that you can better understand why these alarms have occurred. If an event occurred because of a known issue, it is safe to reset the event counters.
 
-== Review events
+.Steps
 
 . Review the system events for each grid node:
 
@@ -28,8 +28,8 @@ The SMTT (Total events) alarm can be repeatedly triggered by issues such as netw
 .. Select *_site_* > *_grid node_* > *SSM* > *Events* > *Reports*.
 .. Select *Text*.
 +
-The *Last Event* attribute is not shown in the xref:using-charts-and-reports.adoc[Charts view].
-
+The *Last Event* attribute is not shown in the xref:using-charts-and-reports.adoc[Charts view]. To view it:
++
 .. Change *Attribute* to *Last Event*.
 .. Optionally, select a time period for *Quick Query*.
 .. Select *Update*.
