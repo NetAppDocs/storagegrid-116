@@ -986,13 +986,13 @@ Contact technical support.
 *Failed to start*, *Lost connection*, *Unknown error*
 +
 .. Ensure the Storage Nodes and volumes included in the job are online and available.
-.. Ensure there are no service or volume failures on the Storage Nodes. If a service is not running, start or restart the service. See the recovery and maintenance instructions.
+.. Ensure there are no service or volume failures on the Storage Nodes. If a service is not running, start or restart the service. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 .. Ensure the selected consistency control can be satisfied.
-.. After resolving any issues, select Retry. The job will resume from the last valid state.
+.. After resolving any issues, select *Retry*. The job will resume from the last valid state.
 
 +
 *Critical storage error in volume*
-.. Recover the failed volume. See the recovery and maintenance instructions.
+.. Recover the failed volume. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 .. Select *Retry*.
 .. After the job completes, create another job for the remaining volumes on the node to check for additional errors.
 
@@ -1004,7 +1004,7 @@ Contact technical support.
 The object existence check job cannot continue. Either one or more Storage Nodes or volumes included in the job are offline or unresponsive, or the selected consistency control can no longer be satisfied because too many nodes are down or unavailable.
 
 . Ensure that all Storage Nodes and volumes being checked are online and available (select *NODES*).
-. Ensure that sufficient Storage Nodes are online and available to allow the current coordinator node to read object metadata using the selected consistency control. If necessary, start or restart a service. See the recovery and maintenance instructions.
+. Ensure that sufficient Storage Nodes are online and available to allow the current coordinator node to read object metadata using the selected consistency control. If necessary, start or restart a service. See the xref:../maintain/index.adoc[recovery and maintenance instructions].
 +
 When you resolve steps 1 and 2, the job will automatically start where it left off.
 
