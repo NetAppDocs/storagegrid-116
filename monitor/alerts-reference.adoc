@@ -565,7 +565,7 @@ Expiration of load balancer endpoint certificate
 a|
 One or more load balancer endpoint certificates are about to expire.
 
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
 . Select an endpoint that has a certificate that will expire soon.
 . Select *Edit endpoint* to upload or generate a new certificate.
 . Repeat these steps for each endpoint that has an expired certificate or one that will expire soon.
@@ -700,7 +700,7 @@ If the estimated time to complete a full ILM scan of all objects is too long (se
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Confirm that all Storage Nodes are online.
-. Temporarily reduce the amount of client traffic. For example, from the Grid Manager, select *Configuration* > *Network Settings* > *Traffic Classification*, and create a policy that limits bandwidth or the number of requests.
+. Temporarily reduce the amount of client traffic. For example, from the Grid Manager, select *CONFIGURATION* > *Network* > *Traffic classification*, and create a policy that limits bandwidth or the number of requests.
 . If disk I/O or CPU are overloaded, try to reduce the load or increase the resource.
 . If necessary, update ILM rules to use synchronous placement (default for rules created after StorageGRID 11.3).
 . If this alert persists, contact technical support.
@@ -818,7 +818,7 @@ The disk queue for audit messages is full.
 
 . Check the load on the system--if there have been a significant number of transactions, the alert should resolve itself over time, and you can ignore the alert.
 . If the alert persists and increases in severity, view a chart of the queue size. If the number is steadily increasing over hours or days, the audit load has likely exceeded the audit capacity of the system.
-. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*Configuration* > *Monitoring* > *Audit*).
+. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*CONFIGURATION* > *Monitoring* > *Audit*).
 
 xref:../audit/index.adoc[Review audit logs]
 
