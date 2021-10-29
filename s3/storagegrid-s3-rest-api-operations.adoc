@@ -18,7 +18,7 @@ The GET Bucket consistency request allows you to determine the consistency level
 
 The default consistency controls are set to guarantee read-after-write for newly created objects.
 
-You must have the s3:GetBucketConsistency permission, or be account root, to complete this operation.
+You have the s3:GetBucketConsistency permission, or be account root, to complete this operation.
 
 === Request example
 
@@ -89,7 +89,7 @@ The PUT Bucket consistency request allows you to specify the consistency level t
 
 The default consistency controls are set to guarantee read-after-write for newly created objects.
 
-You must have the s3:PutBucketConsistency permission, or be account root, to complete this operation.
+You have the s3:PutBucketConsistency permission, or be account root, to complete this operation.
 
 === Request
 
@@ -144,7 +144,7 @@ xref:consistency-controls.adoc[Consistency controls]
 [.lead]
 The GET Bucket last access time request allows you to determine if last access time updates are enabled or disabled for individual buckets.
 
-You must have the s3:GetBucketLastAccessTime permission, or be account root, to complete this operation.
+You have the s3:GetBucketLastAccessTime permission, or be account root, to complete this operation.
 
 === Request example
 
@@ -180,7 +180,7 @@ Content-Type: application/xml
 [.lead]
 The PUT Bucket last access time request allows you to enable or disable last access time updates for individual buckets. Disabling last access time updates improves performance, and is the default setting for all buckets created with version 10.3.0, or later.
 
-You must have the s3:PutBucketLastAccessTime permission for a bucket, or be account root, to complete this operation.
+You have the s3:PutBucketLastAccessTime permission for a bucket, or be account root, to complete this operation.
 
 NOTE: Starting with StorageGRID version 10.3, updates to last access time are disabled by default for all new buckets. If you have buckets that were created using an earlier version of StorageGRID and you want to match the new default behavior, you must explicitly disable last access time updates for each of those earlier buckets. You can enable or disable updates to last access time using the PUT Bucket last access time request, the *S3* > *Buckets* > *Change Last Access Setting* check box in the Tenant Manager, or the Tenant Management API.
 
@@ -224,7 +224,7 @@ xref:../tenant/index.adoc[Use a tenant account]
 [.lead]
 The DELETE Bucket metadata notification configuration request allows you to disable the search integration service for individual buckets by deleting the configuration XML.
 
-You must have the s3:DeleteBucketMetadataNotification permission for a bucket, or be account root, to complete this operation.
+You have the s3:DeleteBucketMetadataNotification permission for a bucket, or be account root, to complete this operation.
 
 === Request example
 
@@ -244,7 +244,7 @@ Host: _host_
 [.lead]
 The GET Bucket metadata notification configuration request allows you to retrieve the configuration XML used to configure search integration for individual buckets.
 
-You must have the s3:GetBucketMetadataNotification permission, or be account root, to complete this operation.
+You have the s3:GetBucketMetadataNotification permission, or be account root, to complete this operation.
 
 === Request example
 
@@ -399,7 +399,7 @@ xref:../tenant/index.adoc[Use a tenant account]
 [.lead]
 The PUT Bucket metadata notification configuration request allows you to enable the search integration service for individual buckets. The metadata notification configuration XML that you supply in the request body specifies the objects whose metadata is sent to the destination search index.
 
-You must have the s3:PutBucketMetadataNotification permission for a bucket, or be account root, to complete this operation.
+You have the s3:PutBucketMetadataNotification permission for a bucket, or be account root, to complete this operation.
 
 === Request
 
@@ -668,7 +668,7 @@ The amount of storage used by an account and its buckets can be obtained by a mo
 
 By default, StorageGRID attempts to retrieve usage information using strong-global consistency. If strong-global consistency cannot be achieved, StorageGRID attempts to retrieve the usage information at a strong-site consistency.
 
-You must have the s3:ListAllMyBuckets permission, or be account root, to complete this operation.
+You have the s3:ListAllMyBuckets permission, or be account root, to complete this operation.
 
 === Request example
 
@@ -778,7 +778,7 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 
 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
 
-You must have the s3:GetBucketCompliance permission, or be account root, to complete this operation.
+You have the s3:GetBucketCompliance permission, or be account root, to complete this operation.
 
 ==== Request example
 
@@ -861,7 +861,7 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 
 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
 
-You must have the s3:PutBucketCompliance permission, or be account root, to complete this operation.
+You have the s3:PutBucketCompliance permission, or be account root, to complete this operation.
 
 You must specify a value for every field of the compliance settings when issuing a PUT Bucket compliance request.
 

@@ -10,7 +10,7 @@ summary: 'The following table describes syslog server error messages and lists c
 
 [.lead]
 
-The following table describes external syslog server error messages and lists corrective actions. 
+The following table describes external syslog server error messages and lists corrective actions.
 
 [cols="1a,2a" options="header"]
 |===
@@ -61,9 +61,9 @@ A TCP connection to the syslog server was successfully established but was later
 
 * The syslog server might have been restarted or rebooted.
 * The node and the syslog server might have different TCP/TLS settings.
-* An intermediate firewall might be closing idle TCP connections.  
+* An intermediate firewall might be closing idle TCP connections.
 * A non-syslog server listening on the syslog server port might have closed the connection.
- 
+
 . Check that you entered the correct FQDN or IP address, port, and protocol for the syslog server.
 . If you are using TLS, confirm the syslog server is also using TLS. If you are using TCP, confirm the syslog server is also using TCP.
 . Check that an intermediate firewall is not configured to close idle TCP connections.
@@ -101,4 +101,4 @@ The Admin Node used for syslog server configuration and testing is unable to req
 |===
 .Related information
 
-xref:../monitor/index.adoc[Monitor & troubleshoot]
+xref:../monitor/index.adoc[Monitor and troubleshoot]

@@ -1,19 +1,19 @@
 ---
 permalink: admin/use-api-if-sso-is-enabled-ping.html
 sidebar: sidebar
-keywords: how to access storagegrid API if SSO is enabled with Ping Federate
-summary: 'If single sign-on (SSO) has been enabled and you are using Ping Federate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
+keywords: how to access storagegrid API if SSO is enabled with PingFederate
+summary: 'If single sign-on (SSO) has been enabled and you are using PingFederate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
 ---
-= Use the API if single sign-on is enabled (Ping Federate)
+= Use the API if single sign-on is enabled (PingFederate)
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-If single sign-on (SSO) has been enabled and you are using Ping Federate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
+If single sign-on (SSO) has been enabled and you are using PingFederate as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
 
 == Sign in to the API if single sign-on is enabled
 
-These instructions apply if you are using Ping Federate as the SSO identity provider
+These instructions apply if you are using PingFederate as the SSO identity provider
 
 .What you'll need
 
@@ -43,7 +43,7 @@ When prompted, enter values for the following arguments:
 
  ** The SSO method. You can enter any variation of "`pingfederate`" (PINGFEDERATE, pingfederate, and so on). 
  ** The SSO username
- ** The domain where StorageGRID is installed. This field is not used for Ping Federate. You can leave it blank or enter any value.
+ ** The domain where StorageGRID is installed. This field is not used for PingFederate. You can leave it blank or enter any value.
  ** The address for StorageGRID
  ** The tenant account ID, if you want to access the Tenant Management API.
 +
@@ -181,7 +181,7 @@ You can now use `MYTOKEN` for other requests, similar to how you would use the A
 == Sign out of the API if single sign-on is enabled
 
 If single sign-on (SSO) has been enabled, you must issue a series of API requests to sign out of the Grid Management API or the Tenant Management API. 
-These instructions apply if you are using Ping Federate as the SSO identity provider
+These instructions apply if you are using PingFederate as the SSO identity provider
 
 .About this task
 

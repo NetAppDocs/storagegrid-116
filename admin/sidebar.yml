@@ -67,7 +67,9 @@ entries:
           url: "/admin/using-sandbox-mode.html"
         - title: Create relying party trusts in AD FS
           url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
-        - title: Test relying party trusts
+        - title: Create SP connections in PingFederate
+          url: "/admin/creating-sp-connection-ping.html"
+        - title: Test single sign-on
           url: "/admin/testing-relying-party-trusts.html"
         - title: Enable single sign-on
           url: "/admin/enabling-single-sign-on.html"
@@ -78,9 +80,28 @@ entries:
           url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
   - title: Manage security settings
     entries:      
+    - title: Manage certificates
+      entries:
+      - title: About security certificates
+        url: "/admin/using-storagegrid-security-certificates.html"
+      - title: Configure server certificates
+        entries:
+        - title: Supported server certificate types
+          url: "/admin/global-certificate-types.html"
+        - title: Configure management interface certificates
+          url: "/admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.html"
+        - title: Configure S3 and Swift API certificates
+          url: "/admin/configuring-custom-server-certificate-for-storage-node-or-clb.html"
+        - title: Copy or download the Grid CA certificate
+          url: "/admin/copying-storagegrid-system-ca-certificate.html"
+        - title: Configure StorageGRID certificates for FabricPool
+          url: "/admin/configuring-storagegrid-certificates-for-fabricpool.html"
+      - title: Configure client certificates
+        url: "/admin/configuring-administrator-client-certificates.html"
     - title: Configure key management servers
       entries:
-      - title: Configure key management servers
+      - title: Overview
+        pdf-filename: Overview of configuring key management servers
         url: "/admin/kms-configuring.html"
       - title: Review StorageGRID encryption methods
         url: "/admin/reviewing-storagegrid-encryption-methods.html"
@@ -109,30 +130,18 @@ entries:
         url: "/admin/kms-editing.html"
       - title: Remove a key management server (KMS)
         url: "/admin/kms-removing.html"
-    - title: Manage security certificates
-      entries:
-      - title: About security certificates
-        url: "/admin/using-storagegrid-security-certificates.html"
-      - title: Configure server certificates
-        entries:
-        - title: Supported server certificate types
-          url: "/admin/global-certificate-types.html"
-        - title: Configure management interface certificates
-          url: "/admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.html"
-        - title: Configure S3 and Swift API certificates
-          url: "/admin/configuring-custom-server-certificate-for-storage-node-or-clb.html"
-        - title: Copy or download the Grid CA certificate
-          url: "/admin/copying-storagegrid-system-ca-certificate.html"
-        - title: Configure StorageGRID certificates for FabricPool
-          url: "/admin/configuring-storagegrid-certificates-for-fabricpool.html"
-      - title: Configure client certificates
-        url: "/admin/configuring-administrator-client-certificates.html"
     - title: Manage proxy settings
       entries:
       - title: Configure Storage proxy settings
         url: "/admin/configuring-storage-proxy-settings.html"
       - title: Configure Admin proxy settings
         url: "/admin/configuring-admin-proxy-settings.html"
+    - title: Manage untrusted Client Networks     
+      entries:
+      - title: Overview
+        url: "/admin/managing-untrusted-client-networks.html"
+      - title: Specify a node&#8217;s Client Network is untrusted
+        url: "/admin/specifying-node-client-network-is-untrusted.html"
   - title: Manage tenants
     entries:
     - title: Manage tenants
@@ -169,9 +178,10 @@ entries:
       url: "/admin/summary-ip-addresses-and-ports-for-client-connections.html"
     - title: Configure VLAN interfaces
       url: "/admin/configure-vlan-interfaces.html"
-    - title: Manage high availability (HA) groups  
+    - title: Manage high availability groups  
       entries:
-      - title: Manage HA groups
+      - title: Overview
+        pdf-filename: Overview of managing high availability (HA) groups
         url: "/admin/managing-high-availability-groups.html"
       - title: How are HA groups used
         url: "/admin/how-ha-groups-are-used.html"
@@ -181,7 +191,8 @@ entries:
         url: "/admin/configure-high-availability-group.html"
     - title: Manage load balancing
       entries:
-      - title: Manage load balancing
+      - title: Overview
+        pdf-filename: Overview of managing load balancing
         url: "/admin/managing-load-balancing.html"
       - title: How load balancing works - Load Balancer service
         url: "/admin/how-load-balancing-works-load-balancer-service.html"
@@ -189,11 +200,6 @@ entries:
         url: "/admin/configuring-load-balancer-endpoints.html"
       - title: How load balancing works - CLB service
         url: "/admin/how-load-balancing-works-clb-service.html"
-    - title: Manage untrusted Client Networks
-      url: "/admin/managing-untrusted-client-networks.html"
-      entries:
-      - title: Specify a node&#8217;s Client Network is untrusted
-        url: "/admin/specifying-node-client-network-is-untrusted.html"
     - title: Configure S3 API endpoint domain names
       url: "/admin/configuring-s3-api-endpoint-domain-names.html"
     - title: Enable HTTP for client communications
@@ -202,8 +208,6 @@ entries:
       url: "/admin/controlling-which-client-operations-are-permitted.html"
   - title: Manage networks and connections
     entries:
-    - title: Manage networks and connections
-      url: "/admin/managing-storagegrid-networks-and-connections.html"
     - title: Guidelines for StorageGRID networks
       url: "/admin/guidelines-for-storagegrid-networks.html"
     - title: View IP addresses
