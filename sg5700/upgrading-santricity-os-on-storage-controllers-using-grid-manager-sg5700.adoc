@@ -112,13 +112,13 @@ For some nodes, the selected upgrade file is intentionally not applied and you c
 [start=10]
 . If a node cannot be upgraded, note the reason shown in the Details column and take the appropriate action:
 
-.. "`Storage Node was already upgraded.`"
+* "`Storage Node was already upgraded.`"
 No further action required.
 
-.. "`SANtricity OS upgrade is not applicable to this node.`"
+* "`SANtricity OS upgrade is not applicable to this node.`"
 The node does not have a storage controller that can be managed by the StorageGRID system. Complete the upgrade process without upgrading the node displaying this message.
 
-.. "`SANtricity OS file is not compatible with this node.`"
+* "`SANtricity OS file is not compatible with this node.`"
 The node requires a SANtricity OS file different than the one you selected.
 After completing the current upgrade, download the correct SANtricity OS file for the node and repeat the upgrade process.
 
@@ -136,7 +136,7 @@ A warning appears asking if you are sure you want to finish the upgrade process 
 +
 [start=2]
 .. Select *OK* to return to the *SANtricity OS* page. 
-.. When you are ready to continue approving nodes, go to <<download_SANtricity_OS,Download the SANtricity OS>> to re-start the upgrade process.
+.. When you are ready to continue approving nodes, go to <<download_SANtricity_OS,Download the SANtricity OS>> to restart the upgrade process.
 
 +
 NOTE: Nodes already approved and upgraded without errors remain upgraded. 
@@ -150,12 +150,12 @@ When the stage progresses beyond Queued, the *Remove* button is hidden and you c
 
 . Wait while the SANtricity OS upgrade is applied to each approved grid node.
 
-.. If any node shows a stage of Error while the SANtricity OS upgrade is being applied, the upgrade has failed for the node. With the assistance of technical support, you might need to place the appliance in maintenance mode to recover it.
+* If any node shows a stage of Error while the SANtricity OS upgrade is being applied, the upgrade has failed for the node. With the assistance of technical support, you might need to place the appliance in maintenance mode to recover it.
 
-.. If the firmware on the node is too old to be upgraded with the Grid Manager, the node shows a stage of Error with the details: "`You must use maintenance mode to upgrade SANtricity OS on this node. See the installation and maintenance instructions for your appliance. After the upgrade, you can use this utility for future upgrades.`" To resolve the error, do the following:
+* If the firmware on the node is too old to be upgraded with the Grid Manager, the node shows a stage of Error with the details: "`You must use maintenance mode to upgrade SANtricity OS on this node. See the installation and maintenance instructions for your appliance. After the upgrade, you can use this utility for future upgrades.`" To resolve the error, do the following:
 
- ... Use maintenance mode to upgrade SANtricity OS on the node that shows a stage of Error.
- ... Use the Grid Manager to re-start and complete the SANtricity OS upgrade.
+ .. Use maintenance mode to upgrade SANtricity OS on the node that shows a stage of Error.
+ .. Use the Grid Manager to restart and complete the SANtricity OS upgrade.
 
 +
 When the SANtricity OS upgrade is complete on all approved nodes, the SANtricity OS Upgrade Progress table closes and a green banner shows the date and time the SANtricity OS upgrade was completed.
