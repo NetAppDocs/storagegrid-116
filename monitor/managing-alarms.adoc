@@ -184,7 +184,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 .Steps
 . To view the alarm, do one of the following:
  ** From the Health panel on the Dashboard, click *Legacy alarms*. This link appears only if at least one alarm is currently active.
- ** Select *SUPPORT* > *Alarms (legacy)* > *Current Alarms*.
+ ** Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
 The Current Alarms page appears.
 
 +
@@ -202,7 +202,7 @@ The alarm no longer appears on the Dashboard or the Current Alarms page.
 NOTE: When you acknowledge an alarm, the acknowledgment is not copied to other Admin Nodes. For this reason, if you view the Dashboard from another Admin Node, you might continue to see the active alarm.
 
 . As required, view acknowledged alarms.
- .. Select *SUPPORT* > *Alarms (legacy)* > *Current Alarms*.
+ .. Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
  .. Select *Show Acknowledged Alarms*.
 +
 Any acknowledged alarms are shown.
@@ -224,7 +224,7 @@ You can view the list of all Default legacy alarms.
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
 . For Filter by, select *Attribute Code* or *Attribute Name*.
 . For equals, enter an asterisk: `*`
 . Click the arrow image:../media/icon_nms_right_arrow.gif[Arrow icon] or press *Enter*.
@@ -245,7 +245,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 
 .Steps
 . Follow these steps to get a list of all alarms triggered over a period of time.
- .. Select *SUPPORT* > *Alarms (legacy)* > *Historical Alarms*.
+ .. Select *SUPPORT* > *Alarms (legacy)* > *Historical alarms*.
  .. Do one of the following:
   *** Click one of the time periods.
   *** Enter a custom range, and click *Custom Query*.
@@ -279,7 +279,7 @@ Global Custom alarms override Default alarms. You should not change Default alar
 IMPORTANT: Be very careful if you change alarm settings. For example, if you increase the threshold value for an alarm, you might not detect an underlying problem. Discuss your proposed changes with technical support before changing an alarm setting.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
 . Add a new row to the Global Custom alarms table:
  ** To add a new alarm, click *Edit*image:../media/icon_nms_edit.gif[edit icon] (if this is the first entry) or *Insert*image:../media/icon_nms_insert.gif[insert icon].
 +
@@ -381,7 +381,7 @@ Disabling an alarm for an attribute that currently has an alarm triggered does n
 IMPORTANT: Do not disable any of the legacy alarms until you have completely transitioned to the new alert system. Otherwise, you might not detect an underlying problem until it has prevented a critical operation from completing.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
 . Search for the Default alarm to disable.
  .. In the Default Alarms section, select *Filter by* > *Attribute Code* or *Attribute Name*.
  .. Type a search string.
@@ -415,7 +415,7 @@ You can disable a legacy Global Custom alarm for the entire system.
 Disabling an alarm for an attribute that currently has an alarm triggered does not clear the current alarm. The alarm will be disabled the next time the attribute crosses the alarm threshold, or you can clear the triggered alarm.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Global Alarms*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
 . In the Global Custom Alarms table, click *Edit*image:../media/icon_nms_edit.gif[edit icon] next to the alarm you want to disable.
 . Unselect the *Enabled* check box.
 +
@@ -505,7 +505,7 @@ NOTE: If you use SMTP as the protocol for AutoSupport messages, you might have a
 SMTP is the only protocol supported for sending email.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Server*.
 +
 The Email Server page appears. This page is also used to configure the email server for AutoSupport messages.
@@ -564,7 +564,7 @@ Use these settings to define the email templates used for legacy alarm notificat
 Different mailing lists might require different contact information. Templates do not include the body text of the email message.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Templates*.
 . Click *Edit*
 image:../media/icon_nms_edit.gif[edit icon] (or *Insert* image:../media/icon_nms_insert.gif[insert icon] if this is not the first template).
@@ -611,7 +611,7 @@ Mailing lists let you notify recipients when a legacy alarm is triggered or when
 Use these settings to define the mailing lists used for legacy alarm email notifications. These settings are not used for alert notifications.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Lists*.
 . Click *Edit*image:../media/icon_nms_edit.gif[edit icon] (or *Insert*image:../media/icon_nms_insert.gif[insert icon] if this is not the first mailing list).
 +
@@ -663,7 +663,7 @@ Use these settings to configure notifications for legacy alarms. These settings 
 If an email address (or list) belongs to multiple mailing lists, only one email notification is sent when a notification triggering event occurs. For example, one group of administrators within your organization can be configured to receive notifications for all alarms regardless of severity. Another group might only require notifications for alarms with a severity of critical. You can belong to both lists. If a critical alarm is triggered, you receive only one notification.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Notifications*.
 . Click *Edit*image:../media/icon_nms_edit.gif[edit icon] (or *Insert*image:../media/icon_nms_insert.gif[insert icon] if this is not the first notification).
 . Under E-mail List, select the mailing list.
@@ -691,7 +691,7 @@ Use these settings to suppress email notifications for the legacy alarm system. 
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
 .Steps
-. Select *SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*.
+. Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Notifications*.
 . Click *Edit*image:../media/icon_nms_edit.gif[Edit icon] next to the mailing list for which you want to suppress notifications.
 . Under Suppress, select the check box next to the mailing list you want to suppress, or select *Suppress* at the top of the column to suppress all mailing lists.
