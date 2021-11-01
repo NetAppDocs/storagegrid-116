@@ -25,12 +25,14 @@ NOTE: These instructions assume that you have configured single sign-on (SSO) fo
 .Steps
 . Select *TENANTS*.
 . Select *Create*.
-. Enter a display name for the FabricPool tenant account.
+. Enter a display name and a description.
 . Select *S3*.
-. Leave the *Allow Platform Services* check box selected to enable the use of platform services.
+. Leave the *Storage quota* field blank.
+. Select *Allow platform services* to enable the use of platform services.
 +
 If platform services are enabled, a tenant can use features, such as CloudMirror replication, that access external services.
+. Do not select *Use own identity source*.
+. Do not select *Allow S3 Select*.
 
-. Leave the *Storage Quota* field blank.
-. In the *Root Access Group* field, select an existing federated group from the Grid Manager to have the initial Root Access permission for the tenant.
-. Select *Save*.
+. Select an existing federated group from the Grid Manager to have the initial Root Access permission for the tenant.
+. Select *Create tenant*.
