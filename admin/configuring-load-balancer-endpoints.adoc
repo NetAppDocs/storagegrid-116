@@ -30,7 +30,7 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 
 ** To generate a certificate, you need all domain names and IP addresses S3 or Swift clients will use to access the endpoint. You must also know the subject (Distinguished Name).
 
-** If you want to use the StorageGRID S3 and Swift certificate, you have already replaced the default certificate with a custom certificate signed by an external certificate authority. See 
+** If you want to use the StorageGRID S3 and Swift API certificate (which can also be used for connections directly to Storage Nodes), you have already replaced the default certificate with a custom certificate signed by an external certificate authority. See 
 xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure S3 and Swift API certificates].
 +
 The certificate can use wildcards to represent the fully qualified domain names of all Admin Nodes and Gateway Nodes running the Load Balancer service. For example, `*.storagegrid._example_.com` uses the * wildcard to represent `adm1.storagegrid._example_.com` and `gn1.storagegrid._example_.com`. See xref:configuring-s3-api-endpoint-domain-names.adoc[Configuring S3 API endpoint domain names].
@@ -82,24 +82,25 @@ See the xref:../network/index.adoc[Networking guidelines] for information about 
 
 === Select the binding mode
 
-. Select a binding mode for the endpoint to control how the endpoint is accessed--using any IP address or using specific IP addresses and network interfaces.
+. Select a binding mode for the endpoint to control how the endpoint is accessed.
 +
 [cols="1a,3a" options="header"]
 |===
 | Option | Description
 
 |Global (default)
-|Clients can access the endpoint using the IP address of any Gateway Node or Admin Node, or the virtual IP address of any HA group on any network.
+|Clients can access the endpoint using a fully qualified domain name (FQDN), the IP address of any Gateway Node or Admin Node, or the virtual IP address of any HA group on any network.
 
 Use the *Global* setting (default) unless you need to restrict the accessibility of this endpoint.
+
+|Node interfaces
+|Clients must use the IP address of a selected node and network interface to access this endpoint.
 
 |Virtual IPs of HA groups
 |Clients must use a virtual IP address of an HA group to access this endpoint.
 
 Endpoints with this binding mode can all use the same port number, as long as the HA groups you select for the endpoints do not overlap.
 
-|Node interfaces
-|Clients must use the IP address of a selected node and network interface to access this endpoint.
 
 Endpoints with this mode can all use the same port number as long as the interfaces you select for the endpoints do not overlap.
 
@@ -108,14 +109,15 @@ Endpoints with this mode can all use the same port number as long as the interfa
 [NOTE]
 If you use the same port for more than one endpoint, an endpoint using *Virtual IPs of HA groups* mode overrides an endpoint using *Node interfaces* mode, which overrides an endpoint using *Global* mode.
 
+. If you selected *Node interfaces*, select one or more node interfaces for each Admin Node or Gateway Node that you want to associate with this endpoint.
++
+image::../media/load_balancer_endpoint_node_interfaces_binding_mode.png[Endpoint Node Interfaces Binding Mode]
+
 . If you selected *Virtual IPs of HA groups*, select one or more HA groups.
 +
 image::../media/load_balancer_endpoint_ha_group_vips_binding_mode.png[Endpoint HA Group VIPs Binding Mode]
 
 +
-. If you selected *Node interfaces*, select one or more node interfaces for each Admin Node or Gateway Node that you want to associate with this endpoint.
-+
-image::../media/load_balancer_endpoint_node_interfaces_binding_mode.png[Endpoint Node Interfaces Binding Mode]
 
 . If you are creating an *HTTP* endpoint, you do not need to attach a certificate. Select *Create* to add the new load balancer endpoint. Then, go to <<After-you-finish,After you finish>>. Otherwise, select *Continue* to attach the certificate.
 
@@ -130,9 +132,10 @@ The certificate secures the connections between S3 and Swift clients and the Loa
 
 * *Generate certificate*. Select this option if you have the values needed to generate a custom certificate.
 
-* *Use StorageGRID S3 and Swift certificate*. Select this option if you want to use the global S3 and Swift API certificate.
+* *Use StorageGRID S3 and Swift certificate*. Select this option if you want to use the global S3 and Swift API certificate, which can also be used for connections directly to Storage Nodes. 
 +
-You cannot select this option unless you have replaced the default S3 and Swift certificate, which is signed by the grid CA, with a custom certificate signed by an external certificate authority.
+You cannot select this option unless you have replaced the default S3 and Swift API certificate, which is signed by the grid CA, with a custom certificate signed by an external certificate authority. See
+xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure S3 and Swift API certificates].
 
 . If you are not using the StorageGRID S3 and Swift certificate, upload or generate the certificate.
 //tabbed blocks start here
@@ -145,7 +148,7 @@ You cannot select this option unless you have replaced the default S3 and Swift 
 
 .. Select *Upload certificate*.
 .. Upload the required server certificate files:
- ** *Server certificate*: The custom server certificate file (`.crt`).
+ ** *Server certificate*: The custom server certificate file in PEM encoding.
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
@@ -198,17 +201,29 @@ The load balancer endpoint is created. The custom certificate is used for all su
 //end tabbed blocks
 
 === [[After-you-finish]]After you finish
-Provide S3 and Swift clients with the information needed to connect to the endpoint:
 
-* Port number
-* IP address, which might be the VIP of an HA group or the IP address of a Gateway or Admin Node
-* Any required certificate details
+. If you use a domain name system (DNS), ensure that the DNS includes a record to associate the StorageGRID fully qualified domain name to each IP address that clients will use to make connections.
++
+The IP address you enter in the DNS record depends on whether you are using an HA group of load-balancing nodes:
+
+** If you have configured a HA group, clients will connect to the virtual IP addresses of that HA group.
+
+** If you are not using a HA group, clients will connect to the StorageGRID Load Balancer service using the IP address of any Gateway Node or Admin Node.
++
+You must also ensure that the DNS record references all required endpoint domain names, including any wildcard names.
+
+. Provide S3 and Swift clients with the information needed to connect to the endpoint:
+
+** Port number
+** Fully qualified domain name or IP address
+** Any required certificate details
+
 
 == View and edit load balancer endpoints
 
 You can view details for existing load balancer endpoints, including the certificate metadata for a secured endpoint. You can also change an endpoint's name or binding mode and update any associated certificates.
 
-You cannot change the service type (S3 or Swift) or the protocol (HTTP or HTTPS).
+You cannot change the service type (S3 or Swift), the port, or the protocol (HTTP or HTTPS).
 
 
 * To view basic information for all load balancer endpoints, review the table on the Load balancer endpoints page. 

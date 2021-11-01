@@ -1,0 +1,93 @@
+---
+permalink: monitor/configuring-syslog-server.html
+sidebar: sidebar
+keywords: audit messages, syslog server, configure external syslog server
+summary: 'Use this procedure to configure an external syslog server.'
+---
+= Configure an external syslog server
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+ If you want to save audit messages and a subset of logs to a location outside of your grid, use this procedure to configure an external syslog server. 
+
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have Maintenance or Root Access permissions.
+* You have a syslog server with the capacity to receive and store the log files. 
+//need specs
+
+.About this task
+
+By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. If you want to send audit information to an external syslog server, use this procedure to configure it. Local logs of audit records continue to be generated and stored when an external syslog server is configured
+
+Sending audit information to an external syslog server enables you to:
+
+* Collect and manage audit information such as audit messages, application logs, and authentication events more efficiently
+* Reduce network traffic on your admin nodes
+
+NOTE: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
+
+.Steps
+
+. Select *CONFIGURATION* > *Monitoring* > *Audit messages and logs*.
++
+image::../media/audit-messages-main-page.png[Audit messages main page]
+//need update all screens
+
+== [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
+. From the Audit messages and logs page, Select *Edit external syslog server*.
++
+image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
+//need new screen
+
+
+=== Enter syslog server address information
+The Configure external syslog server page appears: 
+//banner always there?
+
+image::../media/enter-syslog-info.png[Enter syslog info]
+
+. Enter the FQDN or IP of the remote server in the Host field.
+. Enter the port of the remote server.
+. Select the protocol used to send the audit messages to the remote server. 
+
++
+. If you select UDP or TCP, select *Continue*.
+//additional protocol? 
+[#attach-certificate]
+. IF you select TLS, you must upload at least one certificate. Do the following: 
+//of the remote server? Select Browse to upload the new certificate.
+
+//Select Browse to upload the new private key.
+
+//Complete the Configuration wizard to save the new certificate and key.
+
+
+
+=== Manage Syslog content
+//. Select **.
+
+. Select *Continue*.
+
+=== Send test messages
+Use this page to send test messages to the newly configured remote syslog server to determine if the server is configured correctly. Test results will continuously appear on the page until the test is stopped. While the test is in progress, your audit messages continue to be sent to your previously configured destinations. 
+
+. Click *Save*
+
+
+.Related information
+
+xref:../admin/system-audit-messages.adoc[System audit messages]
+
+xref:../admin/object-storage-audit-messages.adoc[Object storage audit messages]
+
+xref:../admin/management-audit-message.adoc[Management audit message]
+
+xref:../admin/client-read-audit-messages.adoc[Client read audit messages]
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server]
