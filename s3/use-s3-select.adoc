@@ -13,7 +13,7 @@ StorageGRID supports the following AWS S3 Select clauses, data types, operators,
 
 (*Note to reviewers*: We could instead state the opposite: which ones are *not* supported.)
 
-For syntax and examples, see xref:select-object-content[SELECT Object content].
+For syntax and examples, see xref:select-object-content.adoc[SELECT Object content].
 
 == Clauses
 
@@ -31,8 +31,7 @@ The ScanRange clause is not supported.
 * string
 * float
 * decimal, numeric
-
-The timestamp data type is not supported.
+* timestamp
 
 == Operators
 
@@ -46,8 +45,9 @@ The timestamp data type is not supported.
 
 * <
 * >
-* <=
-* >=
+* &lt;=
+* &gt;=
+* =
 * =
 * <>
 * !=
@@ -103,7 +103,12 @@ The `missing` keyword is not supported.
 
 == Date functions
 
-StorageGRID does not support any date functions
+* DATE_ADD
+* DATE_DIFF
+* EXTRACT
+* TO_STRING
+* TO_TIMESTAMP
+* UTCNOW
 
 == String functions
 
