@@ -565,7 +565,7 @@ Expiration of load balancer endpoint certificate
 a|
 One or more load balancer endpoint certificates are about to expire.
 
-. Select *Configuration* > *Network Settings* > *Load Balancer Endpoints*.
+. Select *CONFIGURATION* > *Network* > *Load balancer endpoints*.
 . Select an endpoint that has a certificate that will expire soon.
 . Select *Edit endpoint* to upload or generate a new certificate.
 . Repeat these steps for each endpoint that has an expired certificate or one that will expire soon.
@@ -595,7 +595,7 @@ a|The certificate authority (CA) certificate used to sign the external syslog se
 
 . Update the CA certificate on the external syslog server.
 . Obtain a copy of the updated CA certificate.
-. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit messages*.
+. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 . Select *Edit external syslog server*.
 . Select *Browse* to upload the new certificate.
 . Complete the Configuration wizard to save the new certificate and key.
@@ -603,7 +603,7 @@ a|The certificate authority (CA) certificate used to sign the external syslog se
 a|External syslog client certificate expiration
 a|The client certificate for an external syslog server is about to expire.
 
-. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit messages*.
+. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 . Select *Edit external syslog server*.
 . Select *Browse* to upload the new certificate.
 . Select *Browse* to upload the new private key.
@@ -618,7 +618,7 @@ a|The server certificate presented by the external syslog server is about to exp
 a|External syslog server forwarding error
 a|Node cannot forward logs to the external syslog server.
 
-. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit messages*.
+. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 . Select *Edit external syslog server*.
 . Advance through the Configuration wizard until you are able to select *Send test messages*.
 . Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
@@ -700,7 +700,7 @@ If the estimated time to complete a full ILM scan of all objects is too long (se
 
 . Determine if there is another alert affecting this node. This alert might be resolved when you resolve the other alert.
 . Confirm that all Storage Nodes are online.
-. Temporarily reduce the amount of client traffic. For example, from the Grid Manager, select *Configuration* > *Network Settings* > *Traffic Classification*, and create a policy that limits bandwidth or the number of requests.
+. Temporarily reduce the amount of client traffic. For example, from the Grid Manager, select *CONFIGURATION* > *Network* > *Traffic classification*, and create a policy that limits bandwidth or the number of requests.
 . If disk I/O or CPU are overloaded, try to reduce the load or increase the resource.
 . If necessary, update ILM rules to use synchronous placement (default for rules created after StorageGRID 11.3).
 . If this alert persists, contact technical support.
@@ -818,7 +818,7 @@ The disk queue for audit messages is full.
 
 . Check the load on the system--if there have been a significant number of transactions, the alert should resolve itself over time, and you can ignore the alert.
 . If the alert persists and increases in severity, view a chart of the queue size. If the number is steadily increasing over hours or days, the audit load has likely exceeded the audit capacity of the system.
-. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*Configuration* > *Monitoring* > *Audit*).
+. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level for Client Writes and Client Reads to Error or Off (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*).
 
 xref:../audit/index.adoc[Review audit logs]
 
@@ -826,7 +826,7 @@ xref:../audit/index.adoc[Review audit logs]
 a|Logs are being added to the on-disk queue
 a|Node cannot forward logs to the external syslog server and the on-disk queue is filling up.
 
-. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit messages*.
+. From the Grid Manager, go to *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 . Select *Edit external syslog server*.
 . Advance through the Configuration wizard until you are able to select *Send test messages*.
 . Select *Send test messages* to determine why logs cannot be forwarded to the external syslog server.
@@ -855,7 +855,7 @@ Low free space for storage pool
 a|
 The amount of space available to store object data in a storage pool is low.
 
-. Select *ILM* > *Storage Pools*.
+. Select *ILM* > *Storage pools*.
 . Select the storage pool listed in the alert, and select *View details*.
 . Determine where additional storage capacity is required. You can either add Storage Nodes to each site in the storage pool or add storage volumes (LUNs) to one or more existing Storage Nodes.
 . Perform an expansion procedure to increase storage capacity.
