@@ -25,7 +25,7 @@ You can use sandbox mode to configure and test single sign-on (SSO) before enabl
 |AD FS
 |* AD FS
 * Azure AD
-* Ping Federate
+* PingFederate
 
 |Azure AD
 |Azure AD
@@ -36,10 +36,10 @@ You can use sandbox mode to configure and test single sign-on (SSO) before enabl
 
 When SSO is enabled and a user attempts to sign in to an Admin Node, StorageGRID sends an authentication request to the SSO identity provider. In turn, the SSO identity provider sends an authentication response back to StorageGRID, indicating whether the authentication request was successful. For successful requests:
 
-* The response from AD FS or Ping Federate includes a universally unique identifier (UUID) for the user. 
+* The response from AD FS or PingFederate includes a universally unique identifier (UUID) for the user. 
 * The response from Azure includes a User Principal Name (UPN).
 
-To allow StorageGRID (the service provider) and the SSO identity provider to communicate securely about user authentication requests, you must configure certain settings in StorageGRID. Next, you must use the SSO identity provider's software to create a relying party trust (AD FS), Enterprise Application (Azure) or Service Provider (Ping Federate) for each Admin Node. Finally, you must return to StorageGRID to enable SSO.
+To allow StorageGRID (the service provider) and the SSO identity provider to communicate securely about user authentication requests, you must configure certain settings in StorageGRID. Next, you must use the SSO identity provider's software to create a relying party trust (AD FS), Enterprise Application (Azure) or Service Provider (PingFederate) for each Admin Node. Finally, you must return to StorageGRID to enable SSO.
 
 Sandbox mode makes it easy to perform this back-and-forth configuration and to test all of your settings before you enable SSO. When you are using sandbox mode, users cannot sign in using SSO.
 
@@ -138,7 +138,7 @@ image::../media/save_button_green_checkmark.gif[Save Button with a green checkma
 NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
 
 --
-.Ping Federate
+.PingFederate
 --
 
 .. Specify which TLS certificate will be used to secure the connection when the identity provider sends SSO configuration information in response to StorageGRID requests.
@@ -185,7 +185,7 @@ NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each
 
 == Configure relying party trusts, enterprise applications, or SP connections
 
-When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust (AD FS), enterprise application (Azure), or service provider connection (Ping Federate) for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
+When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust (AD FS), enterprise application (Azure), or service provider connection (PingFederate) for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
 
 StorageGRID can remain in sandbox mode as long as required. However, when *Sandbox Mode* is selected on the Single Sign-on page, SSO is disabled for all StorageGRID users. Only local users can sign in.
 
@@ -240,16 +240,16 @@ You can sign in as the current user or as someone else. StorageGRID displays a s
 
 --
 
-.Ping Federate
+.PingFederate
 --
 
-. Go to Ping Federate.
+. Go to PingFederate.
 
-. Create one or more service provider (SP) connections for StorageGRID. Use the SP connection ID for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
+. xref:../admin/creating-sp-connection-ping.html.adoc[Create one or more service provider (SP) connections for StorageGRID]. Use the SP connection ID for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node. 
 +
 You must create one SP connection for each Admin Node shown in the table.
 
-. Select each link in the Sandbox mode notification to test SSO and SLO for each Admin Node.
+. Select and test one link at a time from the Sandbox mode notification.
 +
 image::../media/sso_sandbox_mode_enabled_ping.png[Single Sign-on, Sandbox mode notification for Ping Federate]
 +

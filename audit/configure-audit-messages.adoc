@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: audit messages, configure syslog server, configure external syslog server
 summary: 'All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded.'
 ---
-= Configure audit messages
+= Configure audit messages and logs
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category. You can also change the destination of audit messages.
+All StorageGRID nodes generate audit messages and logs to track system activity and events. You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category. You can also change the destination of audit information.
 
 
 .What you'll need
@@ -21,9 +21,9 @@ All StorageGRID nodes generate audit messages to track system activity and event
 
 By default, audit messages are sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *CONFIGURATION* > *Monitoring* > *Audit messages* page. Optionally, you can configure audit messages to be sent to a remote syslog server. 
 
-== Change audit message levels
+== Change audit message levels in the audit log
 
-You can set a different audit level for each of the following categories of messages:
+You can set a different audit level for each of the following categories of messages in the audit log:
 
 * *System*: By default, this level is set to Normal.
 * *Storage*: By default, this level is set to Error.
@@ -37,7 +37,7 @@ NOTE: During upgrades, audit level configurations will not be effective immediat
 
 .Steps
 
-. Select *CONFIGURATION* > *Monitoring* > *Audit messages*.
+. Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
 
@@ -78,11 +78,22 @@ NOTE: Audit protocol request headers are logged only if the audit level for *Cli
 [start=4]
 . If you want to change the selected audit message destination, Go to <<Change-audit-destinations,Change audit message destinations>>. Otherwise, select *Save*.
 
-== [[Change-audit-destinations]]Change audit message destinations
+== [[Change-audit-destinations]]Change audit information destinations
 
-You can specify whether audit messages are sent to the audit log on Admin Nodes (default), to an external syslog server, or both. If you want to use an external server, you must configure it first.
+You can specify whether security event logs, application logs, and audit messages are sent to Admin Nodes (default), to an external syslog server, or both. 
 
-If you want to use an external syslog server, see <<Access-the-syslog-server-configuration-wizard,Access the syslog server configuration wizard>> to open the syslog server configuration wizard. Otherwise, go to <<Select-the-destination-for-audit-messages-from-the-listed-options,Select the destination for audit messages from the listed options>>.
+Sending audit information to an external syslog server enables you to:
+
+* Collect and manage audit information such as audit messages, application logs, and authentication events more efficiently
+* Reduce network traffic on your admin nodes
+
+NOTE: Local logs of audit records continue to be generated and stored when an external syslog server is configured.
+
+To use an external syslog server, see <<Access-the-syslog-server-configuration-wizard,Access the syslog server configuration wizard>> to open the syslog server configuration wizard. 
+//NOTE: The remote syslog server must have the capacity to receive and store the log files. 
+Otherwise, go to <<Select-the-destination-for-audit-messages-from-the-listed-options,Select the destination for audit messages from the listed options>>.
+
+NOTE: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
 
 === [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
 . From the Audit messages page, Select *Configure external syslog server*.
@@ -91,20 +102,28 @@ image::../media/audit-message-configure-syslog-server.png[Configure external sys
 
 
 
-==== Enter Syslog info
-The Syslog info page appears: 
+==== Enter syslog server address information
+The Configure external syslog server page appears: 
 //banner always there?
 
 image::../media/enter-syslog-info.png[Enter syslog info]
 
-. Enter the FQDN or IP of the remote server.
-. Enter the port.
+. Enter the FQDN or IP of the remote server in the Host field.
+. Enter the port of the remote server.
 . Select the protocol used to send the audit messages to the remote server. 
 
 +
 . If you select UDP or TCP, select *Continue*.
+//additional protocol? 
 . IF you select TLS, you must upload at least one certificate. Do the following: 
-//of the remote server? 
+//of the remote server? Select Browse to upload the new certificate.
+
+//Select Browse to upload the new private key.
+
+//Complete the Configuration wizard to save the new certificate and key.
+
+
+
 
 +
 //image::../media/ssh-provisioning-xxxxpassphrase.png[xxxxxxxxxxxxxxxxx]//
@@ -121,14 +140,23 @@ image::../media/enter-syslog-info.png[Enter syslog info]
 
 [start=3]
 . Select *Continue*.
+
 ==== Manage Syslog content
 . Select *Continue*.
+
 ==== Send test messages
-Send test messages. Skip and Finish. Finish.
+Use this page to send test messages to the newly configured remote syslog server to determine if the server is configured correctly. Test results will continuously appear on the page until the test is stopped. While the test is in progress, your audit messages continue to be sent to your previously configured destinations. 
 
 . [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit messages from the listed options.
 +
 [cols="1a,2a" options="header"]
+
+to get security logs and app
+
+to activate your syslog server, select an audit destination
+
+
+
 |===
 | Option| Description
 
@@ -136,13 +164,15 @@ Send test messages. Skip and Finish. Finish.
 |Audit messages are sent to the audit log on the Admin Node.
 
 |External syslog server
-|Audit messages are sent to an external syslog server. This option is enabled only after you have configured the external syslog server.
+|Audit messages are sent to an external syslog server and saved on the local node. This option is enabled only after you have configured the external syslog server.
+//check with syslog still saved on local
 
 |Admin Node and external syslog server.
-|Audit messages are sent to both the audit log on the Admin Node and the external syslog server.
+|Audit messages are sent to the audit log on the Admin Node and the external syslog server, and saved on the local node. 
+//check with syslog still saved on local
 
 |None
-|No audit messages are sent. 
+|No audit messages are sent to an Admin Node or remote syslog server. Audit messages are still logged on the local node.
 
 |===
 
