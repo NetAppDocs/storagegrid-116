@@ -52,7 +52,7 @@ You can change the Verification Rate for background verification on a Storage No
 Use the High verification rate only when you suspect that a hardware or software fault might have corrupted object data. After the High priority background verification completes, the Verification Rate automatically resets to Adaptive.
 
 .Steps
-. Select *SUPPORT* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *_Storage Node_* > *LDR* > *Verification*.
 . Select *Configuration* > *Main*.
 . Go to *LDR* > *Verification* > *Configuration* > *Main*.
@@ -79,12 +79,12 @@ If background verification finds corrupt replicated object data, the *Corrupt Ob
 +
 If background verification finds corrupt fragments of erasure-coded object data, the Corrupt Fragments Detected attribute is incremented. StorageGRID recovers by rebuilding the corrupt fragment in place on the same Storage Node.
 
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Erasure Coding*.
  .. In the Verification Results table, monitor the Corrupt Fragments Detected (ECCD) attribute.
 
 . After corrupt objects have been automatically restored by the StorageGRID system, reset the count of corrupt objects.
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Reset Corrupt Object Count*.
  .. Click *Apply Changes*.
@@ -92,7 +92,7 @@ If background verification finds corrupt fragments of erasure-coded object data,
 
 NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
- .. Select *SUPPORT* > *Tools* > *Grid Topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Delete Quarantined Objects*.
  .. Click *Apply Changes*.
@@ -186,20 +186,20 @@ image::../media/oec_active.png[OEC active job]
 *	If Missing object copies detected is greater than zero and the *Objects lost* alert has not been triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
 * If Missing object copies detected is greater than zero and the *Objects lost* alert has been triggered, then data integrity could be affected. Contact technical support.
 
-.	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then re-run the job on the same volumes again.
+.	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then rerun the job on the same volumes again.
 +
-When StorageGRID has had time to achieve metadata consistency for the nodes and volumes included in the job, re-running the job could clear erroneously reported missing object copies or cause additional object copies to be checked if they were missed.
+When StorageGRID has had time to achieve metadata consistency for the nodes and volumes included in the job, rerunning the job could clear erroneously reported missing object copies or cause additional object copies to be checked if they were missed.
 +
 .. Select *MAINTENANCE* > *Object existence check* > *Job history*.
-.. Determine which jobs are ready to be re-run:
+.. Determine which jobs are ready to be rerun:
 ... Look at the *End time* column to determine which jobs were run more than three weeks ago.
 ... For those jobs, scan the Consistency control column for strong-site or strong-global.
-.. Select the check box for each job you want to re-run, then select *Re-run*.
-.. In the Re-run jobs wizard, review the selected nodes and volumes and the consistency control.
-.. When you are ready to re-run the jobs, select *Re-run job*.
+.. Select the check box for each job you want to rerun, then select *Rerun*.
+.. In the Rerun jobs wizard, review the selected nodes and volumes and the consistency control.
+.. When you are ready to rerun the jobs, select *Rerun job*.
 
 +
-The Active job tab appears. All the jobs you selected are re-run as one job at a consistency control of strong-site. A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
+The Active job tab appears. All the jobs you selected are rerun as one job at a consistency control of strong-site. A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
 
 .After you finish
 

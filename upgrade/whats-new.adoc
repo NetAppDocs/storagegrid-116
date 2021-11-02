@@ -67,7 +67,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Object existence check stalled
 
 .Learn more
-* xref:../monitor/index.adoc[Monitor & troubleshoot]
+* xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 === Changes to the ORLM audit message
 A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BUID field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
@@ -84,14 +84,17 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 .Learn more
 * xref:../s3/index.adoc[Use S3]
 
-== Updates to Tenant Accounts permission
+=== Updates to Tenant Accounts permission
 Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
 
-== New "Estimated time to completion" chart for EC rebalance and EC repair jobs
+=== New "Estimated time to completion" chart for EC rebalance and EC repair jobs
 You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
 
-== Diagnostics page sorted by severity
+=== Diagnostics page sorted by severity
 The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
+
+=== Parallel S3 multipart downloads 
+//get information from Raptor team
 
 == Kevin's what's new changes
 

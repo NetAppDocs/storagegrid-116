@@ -1,70 +1,47 @@
-sudo: false
+os: linux
 dist: xenial
 language: ruby
 rvm:
 - 2.4.3
-if: repo =~ /-internal/
-before_install:
-- echo -e "machine github.com\n login $GH_TOKEN" >> ~/.netrc && chmod 600 ~/.netrc
-- git submodule add https://github.com/NetAppDocs/jekyll dependencies/jekyll
-- gem update --system && gem install bundler && gem update bundler
-- if [[ -z "$DEPLOY_BRANCH" ]]; then export DEPLOY_BRANCH=gh-pages; fi
-- cp -rl dependencies/jekyll/search.html ./admin/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ admin\/search\.html/g' ./admin/search.html
-- cp -rl dependencies/jekyll/search.html ./audit/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ audit\/search\.html/g' ./audit/search.html
-- cp -rl dependencies/jekyll/search.html ./expand/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ expand\/search\.html/g' ./expand/search.html
-- cp -rl dependencies/jekyll/search.html ./fabricpool/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ fabricpool\/search\.html/g' ./fabricpool/search.html
-- cp -rl dependencies/jekyll/search.html ./harden/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ harden\/search\.html/g' ./harden/search.html
-- cp -rl dependencies/jekyll/search.html ./ilm/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ ilm\/search\.html/g' ./ilm/search.html
-- cp -rl dependencies/jekyll/search.html ./maintain/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ maintain\/search\.html/g' ./maintain/search.html
-- cp -rl dependencies/jekyll/search.html ./monitor/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ monitor\/search\.html/g' ./monitor/search.html
-- cp -rl dependencies/jekyll/search.html ./network/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ network\/search\.html/g' ./network/search.html
-- cp -rl dependencies/jekyll/search.html ./primer/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ primer\/search\.html/g' ./primer/search.html
-- cp -rl dependencies/jekyll/search.html ./rhel/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ rhel\/search\.html/g' ./rhel/search.html
-- cp -rl dependencies/jekyll/search.html ./s3/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ s3\/search\.html/g' ./s3/search.html
-- cp -rl dependencies/jekyll/search.html ./sg100-1000/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ sg100-1000\/search\.html/g' ./sg100-1000/search.html
-- cp -rl dependencies/jekyll/search.html ./sg5600/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ sg5600\/search\.html/g' ./sg5600/search.html
-- cp -rl dependencies/jekyll/search.html ./sg5700/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ sg5700\/search\.html/g' ./sg5700/search.html
-- cp -rl dependencies/jekyll/search.html ./sg6000/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ sg6000\/search\.html/g' ./sg6000/search.html
-- cp -rl dependencies/jekyll/search.html ./swift/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ swift\/search\.html/g' ./swift/search.html
-- cp -rl dependencies/jekyll/search.html ./tenant/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ tenant\/search\.html/g' ./tenant/search.html
-- cp -rl dependencies/jekyll/search.html ./ubuntu/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ ubuntu\/search\.html/g' ./ubuntu/search.html
-- cp -rl dependencies/jekyll/search.html ./upgrade/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ upgrade\/search\.html/g' ./upgrade/search.html
-- cp -rl dependencies/jekyll/search.html ./vmware/search.html
-- sed -i 's/permalink\:\s*\/search\.html/permalink\:\ vmware\/search\.html/g' ./vmware/search.html
-- mv dependencies/jekyll/prod-build.sh ./ && ./prod-build.sh
-- sudo apt-get -y install graphicsmagick graphicsmagick-libmagick-dev-compat libmagickwand-dev
-install: bundle install --quiet --jobs=3 --retry=3
-script:
-- if [[ "$FEATURE_FLAG" = true ]]; then bundle exec rake buildAll; fi
-- mkdir -p /tmp/output && bundle exec jekyll build --trace --destination /tmp/output --config _config.yml,project.yml
-- touch /tmp/output/.nojekyll
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GH_TOKEN
-  keep_history: false
-  local_dir: /tmp/output
-  target_branch: $DEPLOY_BRANCH
-  verbose: true
-  on:
-    all_branches: true
+env:
+  global:
+    - FRAMEWORK_BRANCH=main
+    - DEPLOY_VERSION=v2
+jobs:
+  include:
+    - stage: deploy
+      if: branch = main OR repo =~ /-internal/
+      before_install:
+      - echo -e "machine github.com\n login $GH_TOKEN" > ~/.netrc && chmod 600 ~/.netrc
+      - git submodule add -b $FRAMEWORK_BRANCH https://github.com/NetAppDocs/jekyll dependencies/jekyll
+      - source dependencies/jekyll/.ci/env/configure_travis.bash
+      - source dependencies/jekyll/.ci/deploy/before_install.bash
+      - sudo apt-get -y install graphicsmagick graphicsmagick-libmagick-dev-compat libmagickwand-dev ghostscript
+      install:
+      - source .ci/deploy/install.bash
+      script:
+      - source .ci/deploy/post_install.bash
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GH_TOKEN
+        keep_history: false
+        local_dir: /tmp/output
+        target_branch: $DEPLOY_BRANCH
+        verbose: true
+        on:
+          all_branches: true
+    - stage: i18n
+      if: branch = main AND NOT repo =~ /-internal/
+      before_install:
+      - echo -e "machine github.com\n login $GH_TOKEN" >> ~/.netrc && chmod 600 ~/.netrc
+      - git submodule add -b $FRAMEWORK_BRANCH https://github.com/NetAppDocs/jekyll dependencies/jekyll
+      - git submodule add https://github.com/NetAppDocs/jekyll-harmony dependencies/jekyll-harmony
+      - source dependencies/jekyll/.ci/env/configure_travis.bash
+      - source dependencies/jekyll/.ci/i18n/before_install.bash
+      - cp -r dependencies/jekyll/.ci/ .ci/
+      - rm -Rf dependencies/jekyll/
+      install:
+      - source .ci/i18n/install.bash
+      script:
+      - source .ci/i18n/post_install.bash
