@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: what is admin group, user permissions
 summary: 'You can create admin groups to manage the security permissions for one or more admin users. Users must belong to a group to be granted access to the StorageGRID system.'
 ---
-= Managing admin groups
+= Manage admin groups
 :icons: font
 :imagesdir: ../media/
 
@@ -24,8 +24,6 @@ Admin groups allow you to determine which users can access which features and op
 .Steps
 
 . Select *CONFIGURATION* > *Access control* > *Admin groups*.
-+
-The Admin Groups page appears and lists any existing admin groups.
 +
 image::../media/groups.png[Groups page]
 
@@ -51,11 +49,7 @@ You must assign at least one permission to each group; otherwise, users belongin
 
 . Select *Save*.
 +
-The new group is created. If this is a local group, you can now add one or more users. If this is a federated group, the identity source manages which users belong to the group.
-
-.Related information
-
-xref:managing-local-users.adoc[Managing local users]
+The new group is created. If this is a local group, you can now xref:managing-local-users.adoc[add one or more users]. If this is a federated group, the identity source manages which users belong to the group.
 
 == Admin group permissions
 
@@ -126,7 +120,7 @@ This permission provides access to the *TENANTS* > *Tenant* page, where you can 
 
 === Change Tenant Root Password
 
-This permission provides access to the *Change root password* option on the Tenants page, allowing you to control who can change the password for the tenant's local root user. Users who do not have this permission cannot see the *Change root password* option.
+This permission provides access to the *Change root password* option on the Tenants page, allowing you to control who can change the password for the tenant's local root user. This permission is also used for migrating S3 keys when the S3 key import feature is enabled. Users who do not have this permission cannot see the *Change root password* option.
 
 NOTE: You must assign the Tenant Accounts permission to the group before you can assign this permission.
 
@@ -146,6 +140,7 @@ This permission provides access to the following menu options:
  ** Decommission
  ** Expansion
  ** Recovery
+ ** Object existence check
 * *MAINTENANCE* > *System*:
  ** License*
  ** Recovery package
