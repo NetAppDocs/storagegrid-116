@@ -17,7 +17,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 
 xref:alarms-reference.adoc[Alarms reference (legacy system)]
 
-xref:viewing-legacy-alarms.adoc[Viewing legacy alarms]
+xref:viewing-legacy-alarms.adoc[View legacy alarms]
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
@@ -43,42 +43,30 @@ xref:managing-alarms.adoc[Disabling Global Custom alarms (legacy system)]
 
 A legacy alarm is triggered when a StorageGRID attribute reaches a threshold value that evaluates to true against a combination of alarm class (Default or Global Custom) and alarm severity level.
 
-[options="header"]
+[cols="1a,1a,1a,3a" options="header"]
 |===
 | Icon| Color| Alarm severity| Meaning
-a|
-image:../media/icon_alarm_yellow_notice.gif[yellow square icon]
-a|
-Yellow
-a|
-Notice
-a|
-The node is connected to the grid, but an unusual condition exists that does not affect normal operations.
-a|
-image:../media/icon_alarm_light_orange_minor.gif[light orange diamond icon]
-a|
-Light Orange
-a|
-Minor
-a|
-The node is connected to the grid, but an abnormal condition exists that could affect operation in the future. You should investigate to prevent escalation.
-a|
-image:../media/icon_alarm_orange_major.gif[dark orange diamond icon]
-a|
-Dark Orange
-a|
-Major
-a|
-The node is connected to the grid, but an abnormal condition exists that currently affects operation. This requires prompt attention to prevent escalation.
-a|
-image:../media/icon_alarm_red_critical.gif[red x icon]
-a|
-Red
-a|
-Critical
-a|
-The node is connected to the grid, but an abnormal condition exists that has stopped normal operations. You should address the issue immediately.
+|image:../media/icon_alarm_yellow_notice.gif[yellow square icon]
+|Yellow
+|Notice
+|The node is connected to the grid, but an unusual condition exists that does not affect normal operations.
+
+|image:../media/icon_alarm_light_orange_minor.gif[light orange diamond icon]
+|Light Orange
+|Minor
+|The node is connected to the grid, but an abnormal condition exists that could affect operation in the future. You should investigate to prevent escalation.
+
+|image:../media/icon_alarm_orange_major.gif[dark orange diamond icon]
+|Dark Orange
+|Major
+|The node is connected to the grid, but an abnormal condition exists that currently affects operation. This requires prompt attention to prevent escalation.
+
+|image:../media/icon_alarm_red_critical.gif[red x icon]
+|Red
+|Critical
+|The node is connected to the grid, but an abnormal condition exists that has stopped normal operations. You should address the issue immediately.
 |===
+
 The alarm severity and corresponding threshold value can be set for every numerical attribute. The NMS service on each Admin Node continuously monitors current attribute values against configured thresholds. When an alarm is triggered, a notification is sent to all designated personnel.
 
 Note that a severity level of Normal does not trigger an alarm.
@@ -162,34 +150,27 @@ image::../media/disabling_alarms.gif[Volumes page showing critical alarms]
 
 == Acknowledging current alarms (legacy system)
 
-Legacy alarms are triggered when system attributes reach alarm threshold values. If you want to reduce or clear the count of legacy alarms on the Dashboard, you can acknowledge the alarms.
+Legacy alarms are triggered when system attributes reach alarm threshold values. Optionally, if you want to reduce or clear the list of legacy alarms, you can acknowledge the alarms.
 
 .What you'll need
 * You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You must have the Acknowledge Alarms permission.
 
 .About this task
-If an alarm from the legacy system is currently active, the Health panel on the Dashboard includes a *Legacy alarms* link. The number in parentheses indicates how many legacy alarms are currently active.
-
-image::../media/dashboard_health_panel_legacy_alarms.png[Dashboard Health Panel Current Alarms]
-
-Because the legacy alarm system continues to be supported, the number of legacy alarms shown on the Dashboard is incremented whenever a new alarm occurs. This count is incremented even if email notifications are no longer being sent for alarms. You can typically just ignore this number (since alerts provide a better view of the system), or you can acknowledge the alarms.
+Because the legacy alarm system continues to be supported, the list of legacy alarms on the Current Alarms page is increased whenever a new alarm occurs. You can typically ignore the alarms (since alerts provide a better view of the system), or you can acknowledge the alarms.
 
 NOTE: Optionally, when you have completely transitioned to the alert system, you can disable each legacy alarm to prevent it from being triggered and added to the count of legacy alarms.
 
-When you acknowledge an alarm, it is no longer included in the count of legacy alarms unless the alarm is triggered at the next severity level or it is resolved and occurs again.
+When you acknowledge an alarm, it is no longer listed on the Current Alarms page in the Grid Manager, unless the alarm is triggered at the next severity level or it is resolved and occurs again.
 
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
 .Steps
-. To view the alarm, do one of the following:
- ** From the Health panel on the Dashboard, click *Legacy alarms*. This link appears only if at least one alarm is currently active.
- ** Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
-The Current Alarms page appears.
+. Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
 
 +
 image::../media/current_alarms_page.png[Current Alarms Page]
-. Click the service name in the table.
+. Select the service name in the table.
 +
 The Alarms tab for the selected service appears (*SUPPORT* > *Tools* > *Grid topology* > *_Grid Node_* > *_Service_* > *Alarms*).
 +
@@ -297,7 +278,7 @@ Specify four characters or use wildcards (for example, A??? or AB*). Asterisks (
 The Default alarm is copied to the Global Custom alarms table.
 . Make any necessary changes to the Global Custom alarms settings:
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Heading| Description
 a|
@@ -514,7 +495,7 @@ image::../media/email_server_settings.png[Email Server Settings]
 
 . Add the following SMTP mail server settings:
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Item| Description
 a|
@@ -573,7 +554,7 @@ image::../media/edit_email_templates.gif[Email Template page]
 
 . In the new row add the following:
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Item| Description
 a|
@@ -619,7 +600,7 @@ image::../media/email_lists_page.gif[Email Lists page]
 
 . In the new row, add the following:
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Item| Description
 a|
