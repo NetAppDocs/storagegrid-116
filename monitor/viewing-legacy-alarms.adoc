@@ -2,72 +2,51 @@
 permalink: monitor/viewing-legacy-alarms.html
 sidebar: sidebar
 keywords: legacy alarms
-summary: 'Alarms \(legacy system\) are triggered when system attributes reach alarm threshold values. You can view the currently active alarms from the Dashboard or the Current Alarms page.'
+summary: 'Alarms \(legacy system\) are triggered when system attributes reach alarm threshold values. You can view the currently active alarms from the Current Alarms page.'
 ---
 = View legacy alarms
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Alarms (legacy system) are triggered when system attributes reach alarm threshold values. You can view the currently active alarms from the Dashboard or the Current Alarms page.
+Alarms (legacy system) are triggered when system attributes reach alarm threshold values. You can view the currently active alarms from the Current Alarms page.
+
+NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
 .What you'll need
 * You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 
-.About this task
-If one or more of the legacy alarms are currently active, the Health panel on the Dashboard includes a *Legacy alarms* link. The number in parentheses indicates how many alarms are currently active.
-
-image::../media/dashboard_health_panel_legacy_alarms.png[Dashboard Health Panel Current Alarms]
-
-The *Legacy alarms* count on the Dashboard is incremented whenever a legacy alarm is triggered. This count is incremented even if you have disabled alarm email notifications. You can typically ignore this number (since alerts provide a better view of the system), or you can view the alarms that are currently active.
-
-NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
-
 .Steps
-. To view the legacy alarms that are currently active, do one of the following:
- ** From the Health panel on the Dashboard, click *Legacy alarms*. This link appears only if at least one alarm is currently active.
- ** Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
-The Current Alarms page appears.
-
+. Select *SUPPORT* > *Alarms (legacy)* > *Current alarms*.
++
 image::../media/current_alarms_page.png[Current Alarms Page]
-
++
 The alarm icon indicates the severity of each alarm, as follows:
-[options="header"]
++
+[cols="1a,1a,1a,3a" options="header"]
 |===
 | Icon| Color| Alarm severity| Meaning
-a|
-image:../media/icon_alarm_yellow_notice.gif[yellow square icon]
-a|
-Yellow
-a|
-Notice
-a|
-The node is connected to the grid, but an unusual condition exists that does not affect normal operations.
-a|
-image:../media/icon_alarm_light_orange_minor.gif[light orange diamond icon]
-a|
-Light Orange
-a|
-Minor
-a|
-The node is connected to the grid, but an abnormal condition exists that could affect operation in the future. You should investigate to prevent escalation.
-a|
-image:../media/icon_alarm_orange_major.gif[dark orange diamond icon]
-a|
-Dark Orange
-a|
-Major
-a|
-The node is connected to the grid, but an abnormal condition exists that currently affects operation. This requires prompt attention to prevent escalation.
-a|
-image:../media/icon_alarm_red_critical.gif[red x icon]
-a|
-Red
-a|
-Critical
-a|
-The node is connected to the grid, but an abnormal condition exists that has stopped normal operations. You should address the issue immediately.
+|image:../media/icon_alarm_yellow_notice.gif[yellow square icon]
+|Yellow
+|Notice
+|The node is connected to the grid, but an unusual condition exists that does not affect normal operations.
+
+|image:../media/icon_alarm_light_orange_minor.gif[light orange diamond icon]
+|Light Orange
+|Minor
+|The node is connected to the grid, but an abnormal condition exists that could affect operation in the future. You should investigate to prevent escalation.
+
+|image:../media/icon_alarm_orange_major.gif[dark orange diamond icon]
+|Dark Orange
+|Major
+|The node is connected to the grid, but an abnormal condition exists that currently affects operation. This requires prompt attention to prevent escalation.
+
+|image:../media/icon_alarm_red_critical.gif[red x icon]
+|Red
+|Critical
+|The node is connected to the grid, but an abnormal condition exists that has stopped normal operations. You should address the issue immediately.
 |===
++
 . To learn about the attribute that caused the alarm to be triggered, right click the attribute name in the table.
 . To view additional details about an alarm, click the service name in the table.
 +
@@ -83,6 +62,6 @@ image::../media/alarms_acknowledging.png[Alarms Acknowledging]
 
 xref:alarms-reference.adoc[Alarms reference (legacy system)]
 
-xref:managing-alarms.adoc[Acknowledging current alarms (legacy system)]
+xref:managing-alarms.adoc[Acknowledge current alarms (legacy system)]
 
-xref:managing-alarms.adoc[Disabling alarms (legacy system)]
+xref:managing-alarms.adoc[Disable alarms (legacy system)]
