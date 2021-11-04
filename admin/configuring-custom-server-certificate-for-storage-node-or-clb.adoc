@@ -19,7 +19,7 @@ A single custom server certificate is used for all Storage Nodes, so you must sp
 
 After completing configuration on the server, users might also need to install the Grid CA certificate in the S3 or Swift API client they will use to access the system, depending on the root certificate authority (CA) you are using.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of global server certificate for S3 and Swift API* alert and the legacy Storage API Service Endpoints Certificate Expiry (SCEP) alarm are both triggered when the root server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the S3 and Swift API certificate on the Global tab.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of global server certificate for S3 and Swift API* alert is triggered when the root server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the S3 and Swift API certificate on the Global tab.
 
 You can upload or generate a custom S3 and Swift API certificate.
 
