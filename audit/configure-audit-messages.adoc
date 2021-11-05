@@ -1,35 +1,57 @@
 ---
-permalink: audit/configure-audit-messages.html
+permalink: monitor/configure-audit-messages.html
 sidebar: sidebar
-keywords: audit messages, configure syslog server, configure external syslog server
+keywords: audit messages, configure syslog server, configure external syslog server. log destinations
 summary: 'All StorageGRID nodes generate audit messages to track system activity and events. You can adjust audit levels to increase or decrease the type and number of audit messages recorded.'
 ---
-= Configure audit messages and logs
+= Configure audit messages and log destinations
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-All StorageGRID nodes generate audit messages and logs to track system activity and events. You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category. You can also change the destination of audit information.
+Audit messages and logs record system activities and security events and are an essential tool for monitoring and troubleshooting. You can adjust audit levels to increase or decrease the number of audit messages recorded in the audit log for each audit message category. You can also configure an external syslog server and change the destination of audit information.
 
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have Maintenance or Root Access permissions.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have Maintenance or Root Access permissions.
 
 .About this task
 
-By default, audit messages are sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *CONFIGURATION* > *Monitoring* > *Audit messages* page. Optionally, you can configure audit messages to be sent to a remote syslog server. 
+All StorageGRID nodes generate audit messages and logs to track system activity and events. By default, audit messages are sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *CONFIGURATION* > *Monitoring* > *Audit and syslog server* page. Optionally, you can configure audit messages to be sent to a remote syslog server. 
 
 == Change audit message levels in the audit log
 
 You can set a different audit level for each of the following categories of messages in the audit log:
 
-* *System*: By default, this level is set to Normal.
-* *Storage*: By default, this level is set to Error.
-* *Management*: By default, this level is set to Normal.
-* *Client Reads*: By default, this level is set to Normal.
-* *Client Writes*: By default, this level is set to Normal.
+[cols=2*,options="header",cols="20,80"]
+[options="header"]
+|===
+| Audit category| Description
+a|
+System
+a|
+By default, this level is set to Normal.
+a|
+Storage
+a|
+By default, this level is set to Error.
+a|
+Management
+a|
+By default, this level is set to Normal.
+a|
+Client Reads
+a|
+By default, this level is set to Normal.
+a|
+Client Writes
+a|
+By default, this level is set to Normal.
+|===
+
+//add detail
 
 NOTE: These defaults apply if you initially installed StorageGRID using version 10.3 or later. If you have upgraded from an earlier version of StorageGRID, the default for all categories is set to Normal.
 
@@ -40,6 +62,7 @@ NOTE: During upgrades, audit level configurations will not be effective immediat
 . Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
+//need new screen
 
 . For each category of audit message, select an audit level from the drop-down list:
 +
@@ -66,8 +89,8 @@ Deprecated. This level behaves the same as the Normal audit level.
 |===
 The messages included for any particular level include those that would be logged at the higher levels. For example, the Normal level includes all of the Error messages.
 
-. Under *Audit protocol headers*, enter the name of the HTTP request headers to be included in Client Reads and Client Writes audit messages. Use an asterisk (\*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Click the plus sign to create a list of header name fields.
-//how many can be added?
+. Under *Audit protocol headers*, enter the name of the HTTP request headers to be included in Client Reads and Client Writes audit messages. Use an asterisk (\*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Select *Add another header* to create additional headers.
+//Optional? how many headers can be added? why use headers? Such? 
 +
 NOTE: Audit protocol headers apply to S3 and Swift requests only.
 +
@@ -75,118 +98,30 @@ When such HTTP headers are found in a request, they are included in the audit me
 +
 NOTE: Audit protocol request headers are logged only if the audit level for *Client Reads* or *Client Writes* is not *Off*.
 
-[start=4]
-. If you want to change the selected audit message destination, Go to <<Change-audit-destinations,Change audit message destinations>>. Otherwise, select *Save*.
+. Click *Save*
 
-== [[Change-audit-destinations]]Change audit information destinations
+== Use external syslog server
+//add table info
+By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. 
 
-You can specify whether security event logs, application logs, and audit messages are sent to Admin Nodes (default), to an external syslog server, or both. 
+. If you want to use the default behavior, select *Default (Admin Nodes/local nodes)*.
 
-Sending audit information to an external syslog server enables you to:
-
-* Collect and manage audit information such as audit messages, application logs, and authentication events more efficiently
-* Reduce network traffic on your admin nodes
-
-NOTE: Local logs of audit records continue to be generated and stored when an external syslog server is configured.
-
-To use an external syslog server, see <<Access-the-syslog-server-configuration-wizard,Access the syslog server configuration wizard>> to open the syslog server configuration wizard. 
-//NOTE: The remote syslog server must have the capacity to receive and store the log files. 
-Otherwise, go to <<Select-the-destination-for-audit-messages-from-the-listed-options,Select the destination for audit messages from the listed options>>.
-
-NOTE: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
-
-=== [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
-. From the Audit messages page, Select *Configure external syslog server*.
-+
-image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
-
-
-
-==== Enter syslog server address information
-The Configure external syslog server page appears: 
-//banner always there?
-
-image::../media/enter-syslog-info.png[Enter syslog info]
-
-. Enter the FQDN or IP of the remote server in the Host field.
-. Enter the port of the remote server.
-. Select the protocol used to send the audit messages to the remote server. 
-
-+
-. If you select UDP or TCP, select *Continue*.
-//additional protocol? 
-. IF you select TLS, you must upload at least one certificate. Do the following: 
-//of the remote server? Select Browse to upload the new certificate.
-
-//Select Browse to upload the new private key.
-
-//Complete the Configuration wizard to save the new certificate and key.
-
-
-
-
-+
-//image::../media/ssh-provisioning-xxxxpassphrase.png[xxxxxxxxxxxxxxxxx]//
-
-[start=2]
-//. Select *Continue*xxxxxxxxxxxxxxxx.
-
-==== Manage Syslog content
-//. Select **.
-+
-//xxxxxxxxxxxxxxxxxxxxxxx.
-+
-//image::../media/ssh-download-current-recovery-package.png[Download current recovery package]//
+. If you want to save audit messages and a subset of logs externally, you must first configure it. See xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server] to open the syslog server configuration wizard. 
 
 [start=3]
-. Select *Continue*.
-
-==== Manage Syslog content
-. Select *Continue*.
-
-==== Send test messages
-Use this page to send test messages to the newly configured remote syslog server to determine if the server is configured correctly. Test results will continuously appear on the page until the test is stopped. While the test is in progress, your audit messages continue to be sent to your previously configured destinations. 
-
-. [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit messages from the listed options.
-+
-[cols="1a,2a" options="header"]
-
-to get security logs and app
-
-to activate your syslog server, select an audit destination
-
-
-
-|===
-| Option| Description
-
-|Admin Node
-|Audit messages are sent to the audit log on the Admin Node.
-
-|External syslog server
-|Audit messages are sent to an external syslog server and saved on the local node. This option is enabled only after you have configured the external syslog server.
-//check with syslog still saved on local
-
-|Admin Node and external syslog server.
-|Audit messages are sent to the audit log on the Admin Node and the external syslog server, and saved on the local node. 
-//check with syslog still saved on local
-
-|None
-|No audit messages are sent to an Admin Node or remote syslog server. Audit messages are still logged on the local node.
-
-|===
-
 . Click *Save*
 
 
 .Related information
 
-xref:system-audit-messages.adoc[System audit messages]
+xref:../admin/system-audit-messages.adoc[System audit messages]
 
-xref:object-storage-audit-messages.adoc[Object storage audit messages]
+xref:../admin/object-storage-audit-messages.adoc[Object storage audit messages]
 
-xref:management-audit-message.adoc[Management audit message]
+xref:../admin/management-audit-message.adoc[Management audit message]
 
-xref:client-read-audit-messages.adoc[Client read audit messages]
+xref:../admin/client-read-audit-messages.adoc[Client read audit messages]
 
 xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server]
