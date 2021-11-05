@@ -13,7 +13,7 @@ The example shows a successful transaction to update the metadata for an existin
 
 == SUPD: S3 Metadata Update
 
-The S3 client makes a request (SUPD) to update the specified metadata (`x-amz-meta-*`) for the S3 object (S3KY). In this example, request headers are included in the field HTRH because it has been configured as an audit protocol header (*CONFIGURATION* > *Monitoring** > *Audit and syslog server*).
+The S3 client makes a request (SUPD) to update the specified metadata (`x-amz-meta-*`) for the S3 object (S3KY). In this example, request headers are included in the field HTRH because it has been configured as an audit protocol header (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*).
 
 ----
 2017-07-11T21:54:03.157462 [AUDT:[RSLT(FC32):SUCS][TIME(UI64):17631][SAIP(IPAD):"10.96.100.254"]
@@ -31,4 +31,4 @@ The S3 client makes a request (SUPD) to update the specified metadata (`x-amz-me
 
 .Related information
 
-xref:changing-audit-message-levels-destinations.adoc[Changing audit message levels and destinations]
+xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
