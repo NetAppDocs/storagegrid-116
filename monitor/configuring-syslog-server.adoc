@@ -21,7 +21,7 @@ summary: 'Use this procedure to configure an external syslog server.'
 
 .About this task
 
-By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. If you want to send audit information to an external syslog server, use this procedure to configure it. Local logs of audit records continue to be generated and stored when an external syslog server is configured
+By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. If you want to send audit information to an external syslog server, use this procedure to configure it. Local logs of audit records continue to be generated and stored when an external syslog server is configured.
 
 Sending audit information to an external syslog server enables you to:
 
@@ -32,17 +32,15 @@ NOTE: When using an external syslog server, single logs greater than 8K are trun
 
 .Steps
 
-. Select *CONFIGURATION* > *Monitoring* > *Audit messages and logs*.
+. Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
 //need update all screens
 
 == [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
-. From the Audit messages and logs page, Select *Edit external syslog server*.
+. From the Audit messages and logs page, Select *Configure external syslog server*.
 +
 image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
-//need new screen
-
 
 === Enter syslog server address information
 The Configure external syslog server page appears: 
@@ -52,36 +50,39 @@ image::../media/enter-syslog-info.png[Enter syslog info]
 
 . Enter the FQDN or IP of the remote server in the Host field.
 . Enter the port of the remote server.
-. Select the protocol used to send the audit messages to the remote server. 
-TCP
-TLS
-RELP/TCP
-RELP/TLS
-UDP
+. Select the protocol used to send the audit information to the remote server: 
+* *TCP*
+* *TLS*
+* *RELP/TCP*
+* *RELP/TLS*
+* *UDP*
 //
 +
 .. If you select UDP or TCP, select *Continue*.
-//additional protocol? 
+.. If you select TLS or RELP/TLS, you must attach at least one certificate. 
 [#attach-certificate]
-.. IF you select TLS, you must upload at least one certificate. Do the following: 
+Using a certificate secures the connections between your grid and the external syslog server. If you select TLS or RELP/TLS as the protocol for your audit information, the following options appear:
+
+* *Server CA certificates*: The certificate file in PEM encoding.
+//get description
+* *Client certificate*: The certificate file in PEM encoding.
+* *Client private key*: The custom server certificate private key file (`.key`).
+
++
+NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
+// private key restriction true?
+//can you upload more then one CA certificate? why? 
+
+.. Select *Browse* for the certificate or key you want to use. 
++
+NOTE: If you use a client certificate you must also use a client private key. 
+
+.. Select the certificate file or key file.
+.. select *Open* to upload the file.
+.. Select *Continue*
+.. 
+//in what situations would you use one or the other? 
 //of the remote server? Select Browse to upload the new certificate.
-
-//Select Browse to upload the new private key.
-
-//Complete the Configuration wizard to save the new certificate and key.
-=== Attach certificate
-
-. To send audit information using  select the type of security certificate you want to attach to the endpoint.
-+
-The certificate secures the connections between
-// S3 and Swift clients and the Load Balancer 
-+
-* *Upload certificate*. Select this option if you have custom certificates to upload.
-
-* *Generate certificate*. Select this option if you have the values needed to generate a custom certificate.
-
-//* *Use StorageGRID S3 and Swift certificate*. Select this option if you want to use the global S3 and Swift API certificate, which can also be used for connections directly to Storage Nodes. 
-+
 
 //tabbed blocks start here
 +
@@ -96,51 +97,10 @@ The certificate secures the connections between
  ** *Server certificate*: The custom server certificate file in PEM encoding.
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
-NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
 
+
+//can this be used for syslog? 
  ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority (CA). The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
-
-.. Expand *Certificate details* to see the metadata for each certificate you uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
-+
-* Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
-
-.. Select *Create*. +
-The load balancer endpoint is created. The custom certificate is used for all subsequent new connections between S3 and Swift clients and the endpoint.
-
---
-//end Upload, begin Generate
-
-.Generate certificate
---
-
-.. Select *Generate certificate*.
-.. Specify the certificate information:
- ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
- ** *IP*: One or more IP addresses to include in the certificate.
- ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
- ** *Days valid*: Number of days after creation that the certificate expires.
-
-.. Select *Generate*.
-
-.. Select  *Certificate details* to see the metadata for the generated certificate.
-
-* Select *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
-* Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
-
-.. Select *Create*.
-+
-The load balancer endpoint is created. The custom certificate is used for all subsequent new connections between S3 and Swift clients and this endpoint.
-
---
 
 ====
 //end tabbed blocks
@@ -148,6 +108,7 @@ The load balancer endpoint is created. The custom certificate is used for all su
 
 === Manage Syslog content
 //. Select **.
+//can you configure an external syslog server and not use it? 
 
 . Select *Continue*.
 
@@ -156,30 +117,6 @@ Use this page to send test messages to the newly configured remote syslog server
 
 . Click *Save*
 
-== [[Change-audit-destinations]]Change audit information destinations
-
-You can specify whether security event logs, application logs, and audit messages are sent to Admin Nodes (default), to an external syslog server, or both. 
-
-. [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit messages from the listed options.
-+
-[cols="1a,2a" options="header"]
-
-|===
-| Option| Description
-
-|Admin Node
-|Audit messages are sent to the audit log on the Admin Node.
-
-|External syslog server
-|Audit messages are sent to an external syslog server and saved on the local node. This option is enabled only after you have configured the external syslog server.
-
-|Admin Node and external syslog server.
-|Audit messages are sent to the audit log on the Admin Node and the external syslog server, and saved on the local node. 
-
-|None
-|No audit messages are sent to an Admin Node or remote syslog server. Audit messages are still logged on the local node.
-
-|===
 .Related information
 
 xref:../admin/system-audit-messages.adoc[System audit messages]
