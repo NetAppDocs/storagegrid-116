@@ -51,8 +51,6 @@ Optionally, use the `Tier` request element to determine how long the restore job
 
 *Attention*: If an object has been transitioned to S3 Glacier Deep Archive or the Cloud Storage Pool uses Azure Blob Storage, you cannot restore it using the `Expedited` tier. The following error is returned `403 Forbidden`, `InvalidTier`: `Retrieval option is not supported by this storage class`.
 
-*Note:* The Google Cloud Platform (GCP) does not support non-retrievable storage, such as Amazon S3 Glacier storage.
-
 a|
 Object in process of being restored from a non-retrievable state
 
