@@ -4,7 +4,6 @@ sidebar: sidebar
 keywords:
 summary: 'Objects can be retrieved for several reasons, including read requests from a client application, background verifications of replicated object data, ILM re-evaluations, and the restoration of object data during the recovery of a Storage Node.'
 ---
-
 = Troubleshoot lost and missing object data
 :experimental:
 :icons: font
@@ -22,7 +21,7 @@ If this retrieval is successful, the StorageGRID system replaces the missing cop
 
 You should investigate all *Objects lost* alerts immediately to determine the root cause of the loss and to determine if the object might still exist in an offline, or otherwise currently unavailable, Storage Node or Archive Node.
 
-In the case where object data without copies is lost, there is no recovery solution. However, you must reset the Lost Object counter to prevent known lost objects from masking any new lost objects.
+In the case where object data without copies is lost, there is no recovery solution. However, you must reset the Lost objects counter to prevent known lost objects from masking any new lost objects.
 
 .Related information
 
