@@ -1,0 +1,119 @@
+---
+permalink: s3/use-s3-select.html
+sidebar: sidebar
+keywords: use S3 Select, S3 Select
+summary: 'StorageGRID supports the following AWS S3 Select clauses, data types, operators, and reserved keywords for the SELECT Object content command.'
+---
+= Use S3 Select
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+StorageGRID supports the following AWS S3 Select clauses, data types, operators, and reserved keywords for the xref:select-object-content.adoc[SELECT Object content command].
+
+(*Note to reviewers*: We could instead state the opposite: which ones are *not* supported.)
+
+For syntax, see xref:select-object-content.adoc[SELECT Object content]. For more information about S3 Select, see the xref:https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html[AWS documentation for S3 Select].
+
+== Clauses
+
+* SELECT list
+* FROM clause
+* WHERE clause
+* LIMIT clause
+
+The ScanRange clause is not supported.
+
+== Data types
+
+* bool
+* integer
+* string
+* float
+* decimal, numeric
+* timestamp
+
+== Operators
+
+=== Logical operators
+
+* AND
+* NOT
+* OR
+
+=== Comparison operators
+
+* <
+* >
+* &lt;=
+* &gt;=
+* =
+* =
+* <>
+* !=
+* BETWEEN
+* IN – For example: IN ('a', 'b', 'c')
+
+=== Pattern matching operators
+
+* LIKE
+* _
+* %
+
+=== Unitary operators
+
+* IS NULL
+* IS NOT NULL
+
+=== Math operators
+
+* +
+* -
+* *
+* /
+* %
+
+StorageGRID follows the AWS S3 Select operator precedence.
+
+== Reserved keywords
+
+* Column Name
+
+* Column Number
+
+The `missing` keyword is not supported.
+
+== Aggregate functions
+
+* AVG()
+* COUNT(*)
+* MAX()
+* MIN()
+* SUM()
+
+== Conditional functions
+
+* CASE
+* COALESCE
+* NULLIF
+
+== Conversion functions
+
+* CAST (for supported datatype)
+
+== Date functions
+
+* DATE_ADD
+* DATE_DIFF
+* EXTRACT
+* TO_STRING
+* TO_TIMESTAMP
+* UTCNOW
+
+== String functions
+
+* CHAR_LENGTH, CHARACTER_LENGTH
+* LOWER
+* SUBSTRING
+* TRIM
+* UPPER
