@@ -164,8 +164,7 @@ You can:
 * xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate for S3, C2S S3, or Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
 * xref:../monitor/set-up-email-alert-notifications.adoc[Specify an email alert notification certificate]
-* xref:../audit/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
-// TBD - Update configuring-syslog-server.adoc#attach-certificate link based on new subsection title.
+* xref:../monitor/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
 
 --
 
@@ -356,13 +355,15 @@ a|
 a|
 Server
 a|
-Authenticates the connection between an external syslog server that logs events and StorageGRID.
+Authenticates the TLS or RELP/TLS connection between an external syslog server that logs events and StorageGRID.
+
+*Note:* An external syslog server certificate is not required for TCP and UDP external syslog server connections.
 
 a|
 *CONFIGURATION* > *Monitoring* > *Audit and syslog server* and then select *Configure external syslog server*
 a|
 
-xref:../audit/configuring-syslog-server.adoc[Using a syslog server certificate]
+xref:../monitor/configuring-syslog-server.adoc[Using a syslog server certificate]
 
 |===
 
