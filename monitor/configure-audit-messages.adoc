@@ -104,18 +104,13 @@ NOTE: Audit protocol request headers are logged only if the audit level for *Cli
 //add table info
 By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. 
 
-. If you want to use the default behavior, select *Default (Admin Nodes/local nodes)*.
+. If you want the default behavior, select *Default (Admin Nodes/local nodes)*.
 
-. If you want to save audit messages and a subset of logs externally, you must first configure an external syslog server. Any of these types of logs can be sent to the external syslog server:
-•	Audit logs containing the audit messages generated during normal system operation
-•	Security events that might compromise your StorageGRID system
-•	Application logs that are frequently needed for troubleshooting
+. If you want to save audit messages and a subset of logs externally, you must first configure an external syslog server. 
 
 See xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server] to open the syslog server configuration wizard. 
 
 == Change audit information destinations
-. [[Change-audit-destinations]]Change audit information destinations
-
 You can specify where security event logs, application logs, and audit message logs are sent. 
 
 . [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit information from the listed options.
@@ -141,7 +136,9 @@ You can specify where security event logs, application logs, and audit message l
 |===
 
 
-. Click *Save*
+. Click *Save*. 
+
+A green banner appears notifying you that your audit configuration has been saved successfully. 
 
 .Related information
 
