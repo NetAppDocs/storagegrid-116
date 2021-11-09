@@ -120,6 +120,47 @@ If you have root access permission and the custom S3 and Swift API certificate w
 
 . Refresh the page to ensure the web browser is updated.
 
+== Download or copy the S3 and Swift API certificate
+
+You can save or copy the S3 and Swift API certificate contents for use elsewhere.
+
+.Steps
+
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *S3 and Swift API certificate*.
+. Select the *Server* or *CA bundle* tab and then download or copy the certificate.
++
+[role="tabbed-block"]
+====
+
+.Download certificate file or CA bundle
+--
+
+Download the certificate or CA bundle `.pem` file. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
+
+. Select *Download certificate* or *Download CA bundle*.
+. If you are downloading a certificate that is part of a bundle, select the sub-tab for the certificate to download.
+. Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+
+--
+
+.Copy certificate or CA bundle PEM
+--
+
+Copy the certificate text to paste elsewhere. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
+
+. Select *Copy certificate PEM* or *Copy CA bundle PEM*.
+. If you are copying a certificate that is part of a bundle, select the sub-tab for the certificate to copy.
+. Paste the copied certificate into a text editor.
+. Save the text file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+--
+
+====
+
 .Related information
 
 xref:../s3/index.adoc[Use S3]
