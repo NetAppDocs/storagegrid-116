@@ -11,6 +11,7 @@ summary: 'All StorageGRID nodes generate audit messages to track system activity
 [.lead]
 Audit messages and logs record system activities and security events and are an essential tool for monitoring and troubleshooting. Adjust audit levels to increase or decrease the type and number of audit messages recorded. Optionally, define any HTTP request headers you want to include in client read and write audit messages. You can also configure an external syslog server and change the destination of audit information.
 
+For more information on audit messages, see xref:../audit/audit-message-overview.adoc[Audit message overview].
 
 .What you'll need
 
@@ -108,12 +109,14 @@ By default, audit messages are saved on Admin Nodes and logs are saved on the no
 
 . If you want to save audit messages and a subset of logs externally, you must first configure an external syslog server. 
 
++
 See xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server] to open the syslog server configuration wizard. 
 
-== Change audit information destinations
+== [[Select-the-destination-for-audit-information]]Select audit information destinations
 You can specify where security event logs, application logs, and audit message logs are sent. 
 
-. [[Select-the-destination-for-audit-messages-from-the-listed-options]]Select the destination for audit information from the listed options.
+. Select the destination for audit information from the listed options: 
+
 +
 [cols="1a,2a" options="header"]
 
@@ -134,7 +137,7 @@ You can specify where security event logs, application logs, and audit message l
 |No audit messages are sent to an Admin Node or remote syslog server. Audit messages and other logs are saved only on the nodes that generated them. StorageGRID periodically removes these logs to free up space.
 
 |===
-
+NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
 
 . Click *Save*. 
 
