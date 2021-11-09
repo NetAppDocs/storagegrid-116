@@ -15,34 +15,24 @@ Not all audit messages generated during a retrieve transaction are listed in the
 
 == S3 retrieval audit messages
 
-[options="header"]
+[cols="1a,1a,2a,1a,1a" options="header"]
 |===
 | Code| Name| Description| Trace| See
-a|
-SGET
-a|
-S3 GET
-a|
-Request made to retrieve an object from a bucket.
-a|
-CBID, S3BK, S3KY
-a|
-xref:sget-s3-get.adoc[SGET: S3 GET]
+|SGET
+|S3 GET
+|Request made to retrieve an object from a bucket.
+|CBID, S3BK, S3KY
+|xref:sget-s3-get.adoc[SGET: S3 GET]
 |===
 
 == Swift retrieval audit messages
 
-[options="header"]
+[cols="1a,1a,2a,1a,1a" options="header"]
 |===
 | Code| Name| Description| Trace| See
-a|
-WGET
-a|
-Swift GET
-a|
-Request made to retrieve an object from a container.
-a|
-CBID, WCON, WOBJ
-a|
-xref:wget-swift-get.adoc[WGET: Swift GET]
+|WGET
+|Swift GET
+|Request made to retrieve an object from a container.
+|CBID, WCON, WOBJ
+|xref:wget-swift-get.adoc[WGET: Swift GET]
 |===
