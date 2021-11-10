@@ -9,7 +9,7 @@ summary: 'All StorageGRID nodes generate audit messages to track system activity
 :imagesdir: ../media/
 
 [.lead]
-Audit messages and logs record system activities and security events and are an essential tool for monitoring and troubleshooting. Adjust audit levels to increase or decrease the type and number of audit messages recorded. Optionally, define any HTTP request headers you want to include in client read and write audit messages. You can also configure an external syslog server and change the destination of audit information.
+Audit messages and logs record system activities and security events. This information is an essential tool for monitoring and troubleshooting. Adjust audit levels to increase or decrease the type and number of audit messages recorded. Optionally, define any HTTP request headers you want to include in client read and write audit messages. You can also configure an external syslog server and change the destination of audit information.
 
 For more information on audit messages, see xref:../audit/audit-message-overview.adoc[Audit message overview].
 
@@ -100,16 +100,15 @@ NOTE: Audit protocol headers apply to S3 and Swift requests only.
 . Select *Add another header* to create additional headers, if needed.
 
 +
-When such HTTP headers are found in a request, they are included in the audit message under the field HTRH.
+When HTTP headers are found in a request, they are included in the audit message under the field HTRH.
 +
 NOTE: Audit protocol request headers are logged only if the audit level for *Client Reads* or *Client Writes* is not *Off*.
 
-. Click *Save*
+. Select *Save*
 +
 A green banner displays indicating your configuration has been saved successfully.
 
-== Use external syslog server
-//add table info
+== Use an external syslog server
 By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. 
 
 . If you want the default behavior and do not want to use an external syslog server, select *Default (Admin Nodes/local nodes)*.

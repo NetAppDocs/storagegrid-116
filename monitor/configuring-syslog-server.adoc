@@ -31,7 +31,7 @@ Any of these types of logs can be sent to the external syslog server:
 
 Sending audit information to an external syslog server enables you to:
 
-* Collect and manage audit information such as audit messages, application logs, and authentication events more efficiently
+* Collect and manage audit information such as audit messages, application logs, and security events more efficiently
 * Reduce network traffic on your admin nodes
 
 +
@@ -67,11 +67,13 @@ image::../media/enter-syslog-info.png[Enter syslog info]
 TLS or RELP/TLS is recommended. You must upload a server certificate to use either of these two options. 
 
 NOTE: 
-Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using a protocol with RELP can help prevent the loss of audit information if you external syslog server has to restart. 
-+
-. If you selected UDP TCP, or RELP/TCP select *Continue*.
+Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using a protocol with RELP can help prevent the loss of audit information if your external syslog server has to restart. 
+
+
+[start=4]
+. If you selected *UDP*, *TCP*, or *RELP/TCP* select *Continue*.
 [#attach-certificate]
-. If you selected TLS or RELP/TLS, you must attach one or more server certificates. 
+. If you selected *TLS* or *RELP/TLS*, you must attach one or more server certificates. 
 
 Using certificates helps secure the connections between your grid and the external syslog server. For more information, see xref:../admin/using-storagegrid-security-certificates.adoc[Using StorageGRID security certificates].
 
@@ -89,7 +91,7 @@ NOTE: If you use a client certificate you must also use a client private key.
 .. select *Open* to upload the file.
 
 + 
-A green checkmark appears next to the certificate or key filename notifying you that it has been uploaded successfully.
+A green check appears next to the certificate or key file name, notifying you that it has been uploaded successfully.
 
 [start=3]
 .. Select *Continue*.
@@ -277,9 +279,9 @@ After you manage the syslog content, the *Send test messages* page appears.
 
 image::../media/send-test-messages.png[Send test messages]
 
-This page enables you to request that all nodes in your grid send test messages to the syslog server. You should use these test messages to help you validate your entire log collection infrastructure before you commit to sending data to the external syslog server.
+This page enables you to request that all nodes in your grid send test messages to the external syslog server. You should use these test messages to help you validate your entire log collection infrastructure before you commit to sending data to the external syslog server.
 
-CAUTION: Do not use the syslog server configuration until you confirm that the syslog server received a test message from each node in your grid and that the message was processed as expected.
+CAUTION: Do not use the external syslog server configuration until you confirm that the external syslog server received a test message from each node in your grid and that the message was processed as expected.
 
 . If you are certain your external syslog server is configured properly and can receive audit information from all the nodes in your grid, select *Skip and finish*. 
 
@@ -301,7 +303,7 @@ Test results continuously appear on the page until you stop the test. While the 
 +
 IMPORTANT: The UDP protocol does not allow for as much error detection as is available with the other protocol selections. If you are using UDP, be sure to check your entire log collection infrastructure.
 
-. select *Stop and finish*.
+. Select *Stop and finish*.
 
 +
 You are returned to the *Audit and syslog server* page. A green banner appears notifying you that your syslog server configuration has been saved successfully. 
