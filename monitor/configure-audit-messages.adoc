@@ -92,14 +92,13 @@ Deprecated. This level behaves the same as the Normal audit level.
 |===
 The messages included for any particular level include those that would be logged at the higher levels. For example, the Normal level includes all of the Error messages.
 
-. Under *Audit protocol headers*, enter the name of an S3 or Swift HTTP request header to be included in audit messages. Use a wildcard \* to match zero or more characters. Use the escape sequence (\*) to match a literal asterisk. 
+. Optionally, under *Audit protocol headers*, define any HTTP request headers you want to include in client read and write audit messages Use a wildcard \* to match zero or more characters. Use the escape sequence (\*) to match a literal asterisk. 
 
-. Select *Add another header* to create additional headers if needed.
-//Optional? how many headers can be added? why use headers? Such? 
 +
 NOTE: Audit protocol headers apply to S3 and Swift requests only.
 
-//Still true?
+. Select *Add another header* to create additional headers, if needed.
+
 +
 When such HTTP headers are found in a request, they are included in the audit message under the field HTRH.
 +
@@ -148,7 +147,7 @@ You can specify where security event logs, application logs, and audit message l
 |===
 NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
 
-. Select save
+. Select *Save*.
 
 A warning message appears: 
 
@@ -158,14 +157,15 @@ If you selected either *External syslog server* or *Admin Nodes and external sys
 
 CAUTION: If you also updated the syslog server configuration, confirm that the external syslog server can receive test StorageGRID messages. If the test messages cannot be delivered and you use this configuration, you might lose important messages regarding StorageGRID events and activities.
 
+[start=3]
 . Confirm that you want to change the destination for audit information by selecting *OK*.
 
-+
-New logs will be sent to the destinations you selected. Existing logs will remain in their current location.
 
 +
 A green banner appears notifying you that your audit configuration has been saved successfully. 
-//audit messages with the new configuration and destination are sent immediately
+
++
+New logs are sent to the destinations you selected. Existing logs remain in their current location.
 
 .Related information
 
