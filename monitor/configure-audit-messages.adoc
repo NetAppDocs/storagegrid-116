@@ -20,7 +20,7 @@ For more information on audit messages, see xref:../audit/audit-message-overview
 
 .About this task
 
-All StorageGRID nodes generate audit messages and logs to track system activity and events. By default, audit messages are sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *CONFIGURATION* > *Monitoring* > *Audit and syslog server* page. Optionally, you can configure audit messages to be sent to a remote syslog server. 
+All StorageGRID nodes generate audit messages and logs to track system activity and events. By default, audit information is sent to the audit log on Admin Nodes. The audit messages recorded in the audit log are filtered based on the settings on the *CONFIGURATION* > *Monitoring* > *Audit and syslog server* page. Adjust audit levels to increase or decrease the type and number of audit messages recorded. Optionally, you can configure audit information to be sent to a remote syslog server. 
 
 == Change audit message levels in the audit log
 
@@ -52,7 +52,7 @@ a|
 By default, this level is set to Normal.
 |===
 
-//add detail
+//add detail debug error normal off 
 
 NOTE: These defaults apply if you initially installed StorageGRID using version 10.3 or later. If you have upgraded from an earlier version of StorageGRID, the default for all categories is set to Normal.
 
@@ -92,7 +92,9 @@ Deprecated. This level behaves the same as the Normal audit level.
 |===
 The messages included for any particular level include those that would be logged at the higher levels. For example, the Normal level includes all of the Error messages.
 
-. Under *Audit protocol headers*, enter the name of the HTTP request headers to be included in Client Reads and Client Writes audit messages. Use an asterisk (\*) as a wildcard, or use the escape sequence (\*) as a literal asterisk. Select *Add another header* to create additional headers.
+. Under *Audit protocol headers*, enter the name of an S3 or Swift HTTP request header to be included in audit messages. Use a wildcard \* to match zero or more characters. Use the escape sequence (\*) to match a literal asterisk. 
+
+. Select *Add another header* to create additional headers if needed.
 //Optional? how many headers can be added? why use headers? Such? 
 +
 NOTE: Audit protocol headers apply to S3 and Swift requests only.
@@ -104,14 +106,16 @@ When such HTTP headers are found in a request, they are included in the audit me
 NOTE: Audit protocol request headers are logged only if the audit level for *Client Reads* or *Client Writes* is not *Off*.
 
 . Click *Save*
++
+A green banner displays indicating your configuration has been saved successfully.
 
 == Use external syslog server
 //add table info
 By default, audit messages are saved on Admin Nodes and logs are saved on the nodes where they were generated. 
 
-. If you want the default behavior, select *Default (Admin Nodes/local nodes)*.
+. If you want the default behavior and do not want to use an external syslog server, select *Default (Admin Nodes/local nodes)*.
 
-. If you want to save audit messages and a subset of logs externally, you must first configure an external syslog server. 
+. If you want to save audit messages and a subset of logs externally (outside of StorageGRID), you must first configure an external syslog server. 
 
 +
 See xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server] to open the syslog server configuration wizard. 
@@ -144,8 +148,22 @@ You can specify where security event logs, application logs, and audit message l
 |===
 NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
 
-. Click *Save*. 
+. Select save
 
+A warning message appears: 
+
+CAUTION: Change the log destination?
+
+If you selected either *External syslog server* or *Admin Nodes and external syslog server* as the destination for audit information, an additional warning appears:
+
+CAUTION: If you also updated the syslog server configuration, confirm that the external syslog server can receive test StorageGRID messages. If the test messages cannot be delivered and you use this configuration, you might lose important messages regarding StorageGRID events and activities.
+
+. Confirm that you want to change the destination for audit information by selecting *OK*.
+
++
+New logs will be sent to the destinations you selected. Existing logs will remain in their current location.
+
++
 A green banner appears notifying you that your audit configuration has been saved successfully. 
 //audit messages with the new configuration and destination are sent immediately
 
