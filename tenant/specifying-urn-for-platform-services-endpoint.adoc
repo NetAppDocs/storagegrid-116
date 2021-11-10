@@ -17,7 +17,8 @@ StorageGRID validates platform services endpoints as you create them. Before you
 
 The URN for a platform services endpoint must start with either `arn:aws` or `urn:mysite`, as follows:
 
-* If the service is hosted on AWS, use `arn:aws`.
+* If the service is hosted on Amazon Web Services (AWS), use `arn:aws`. 
+* If the service is hosted on Google Cloud Platform (GCP), use `arn:aws`.
 * If the service is hosted locally, use `urn:mysite`
 
 For example, if you are specifying the URN for a CloudMirror endpoint hosted on StorageGRID, the URN might begin with `urn:sgws`.
@@ -56,9 +57,9 @@ m|sns-topic-name
 
 |===
 
-== URNs for services hosted on AWS
+== URNs for services hosted on AWS and GCP
 
-For AWS entities, the complete URN is a valid AWS ARN. For example:
+For AWS and GCP entities, the complete URN is a valid AWS ARN. For example:
 
 * CloudMirror replication:
 +

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'You manage the objects in a StorageGRID system by configuring information lifecycle management (ILM) rules and policies. The ILM rules and policies instruct StorageGRID how to create and distribute copies of object data and how to manage those copies over time.'
 ---
-= Overview
+= Manage objects with ILM: Overview
 :icons: font
 :imagesdir: ../media/
 
@@ -14,6 +14,8 @@ You manage the objects in a StorageGRID system by configuring information lifecy
 
 == About these instructions
 
+Designing and implementing ILM rules and the ILM policy requires careful planning. You must understand your operational requirements, the topology of your StorageGRID system, your object protection needs, and the available storage types. Then, you must determine how you want different types of objects to be copied, distributed, and stored.
+
 Use these instructions to:
 
 * Learn about StorageGRID ILM, including how ILM operates throughout an object's life and what ILM policies and rules are.
@@ -21,6 +23,15 @@ Use these instructions to:
 * Learn how to create and activate an ILM policy that will protect object data across one or more sites.
 * Learn how to manage objects with S3 Object Lock, which helps to ensure that objects in specific S3 buckets are not deleted or overwritten for a specified amount of time.
 
-== Before you start
+== Learn more
 
-Designing and implementing ILM rules and the ILM policy requires careful planning. You must understand your operational requirements, the topology of your StorageGRID system, your object protection needs, and the available storage types. Then, you must determine how you want different types of objects to be copied, distributed, and stored.
+To learn more, review these videos:
+
+* https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=beffbe9b-e95e-4a90-9560-acc5013c93d8[Video: StorageGRID ILM Rules: Getting Started^]
++
+image::../media/video-screenshot-ilm-rules.png[link="https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=beffbe9b-e95e-4a90-9560-acc5013c93d8" alt="Video: StorageGRID ILM Rules: Getting Started", window=_blank]
+
+* https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7[Video: StorageGRID ILM Policies^]
++
+image::../media/video-screenshot-ilm-policies.png[link="https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7" alt="Video: StorageGRID ILM Policies", window=_blank]
+

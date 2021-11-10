@@ -87,7 +87,7 @@ image::../media/ilm_create_ilm_rule_warning_for_1_copy.png[Create ILM Rule Page 
 To avoid these risks, do one or more of the following:
 
   *** Increase the number of copies for the time period.
-  *** Click the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
+  *** Select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
   *** Select *erasure coded* for Type, instead of *replicated*.
 You can safely ignore this warning if this rule already creates multiple copies for all time periods.
 ====
@@ -137,11 +137,11 @@ The storage location for an erasure-coded copy includes the name of the storage 
 +
 image::../media/storage_pool_and_erasure_coding_profile.png[Storage pool and EC profile name]
 . Optionally, add different time periods or create additional copies at different locations:
- ** Click the plus icon to create additional copies at a different location during the same time period.
- ** Click *Add* to add a different time period to the placement instructions.
+ ** Select the plus icon to create additional copies at a different location during the same time period.
+ ** Select *Add* to add a different time period to the placement instructions.
 +
 NOTE: Objects are automatically deleted at the end of the final time period unless the final time period ends with *forever*.
-. Click *Refresh* to update the Retention Diagram and to confirm your placement instructions.
+. Select *Refresh* to update the Retention Diagram and to confirm your placement instructions.
 +
 Each line in the diagram shows where and when object copies will be placed. The type of copy is represented by one of the following icons:
 +
@@ -164,20 +164,20 @@ In this example, two replicated copies will be saved to two storage pools (DC1 a
 +
 image::../media/ilm_rule_retention_diagram.png[ILM Rule Retention Diagram]
 
-. Click *Next*.
+. Select *Next*.
 +
 Step 3 (Define Ingest Behavior) appears.
 
 .Related information
 
-xref:what-ilm-placement-instructions-are.adoc[What ILM rule placement instructions are]
+* xref:what-ilm-rule-is.adoc[What an ILM rule is]
 
-xref:example-4-ilm-rules-and-policy-for-s3-versioned-objects.adoc[Example 4: ILM rules and policy for S3 versioned objects]
+* xref:example-4-ilm-rules-and-policy-for-s3-versioned-objects.adoc[Example 4: ILM rules and policy for S3 versioned objects]
 
-xref:why-you-should-not-use-single-copy-replication.adoc[Why you should not use single-copy replication]
+* xref:why-you-should-not-use-single-copy-replication.adoc[Why you should not use single-copy replication]
 
-xref:managing-objects-with-s3-object-lock.adoc[Managing objects with S3 Object Lock]
+* xref:managing-objects-with-s3-object-lock.adoc[Manage objects with S3 Object Lock]
 
-xref:using-storage-pool-as-temporary-location-deprecated.adoc[Using a storage pool as a temporary location (deprecated)]
+* xref:using-storage-pool-as-temporary-location-deprecated.adoc[Use a storage pool as a temporary location (deprecated)]
 
-xref:step-3-of-3-define-ingest-behavior.adoc[Step 3 of 3: Define ingest behavior]
+* xref:step-3-of-3-define-ingest-behavior.adoc[Step 3 of 3: Define ingest behavior]

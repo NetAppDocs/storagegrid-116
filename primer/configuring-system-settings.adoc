@@ -21,11 +21,6 @@ You can use Grid Options to configure the settings for all of the objects stored
 
 You can also use these options to specify global settings for S3 and Swift client operations.
 
-== Key management servers
-
-You can configure one or more external key management servers (KMS) to provide encryption keys to StorageGRID services and storage appliances. Each KMS or KMS cluster uses the Key Management Interoperability Protocol (KMIP) to provide an encryption key to the appliance nodes at the associated StorageGRID site. Using key management servers lets you protect StorageGRID data even if an appliance is removed from the data center. After the appliance volumes are encrypted, you cannot access any data on the appliance unless the node can communicate with the KMS.
-
-NOTE: To use encryption key management, you must enable the *Node Encryption* setting for each appliance during installation, before the appliance is added to the grid.
 
 == S3 Object Lock
 
@@ -35,4 +30,4 @@ image::../media/s3_object_lock_architecture.png[S3 Object Lock Architecture]
 
 == Storage options
 
-Storage options allow you to control object segmentation and to define storage watermarks to manage a Storage Node's usable storage space.
+Storage options allow you to control object segmentation and to override storage volume watermark settings to manage a Storage Node's usable storage space.

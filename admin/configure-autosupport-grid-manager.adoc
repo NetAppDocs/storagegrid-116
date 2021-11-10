@@ -4,7 +4,6 @@ sidebar: sidebar
 keywords: how to configure autosupport, what is autosupport-on-demand
 summary: 'You can enable the AutoSupport feature and the individual AutoSupport options when you first install StorageGRID, or you can enable them later.'
 ---
-
 = Configure AutoSupport
 :icons: font
 :imagesdir: ../media/
@@ -28,7 +27,7 @@ You can use any of the following protocols for sending AutoSupport messages:
 
 * *HTTPS*: This is the default and recommended setting for new installations. The HTTPS protocol uses port 443. If you want to enable the AutoSupport on Demand feature, you must use the HTTPS protocol.
 * *HTTP*: This protocol is not secure, unless it is used in a trusted environment where the proxy server converts to HTTPS when sending data over the internet. The HTTP protocol uses port 80.
-* *SMTP*: Use this option if you want AutoSupport messages to be emailed. If you use SMTP as the protocol for AutoSupport messages, you must configure an SMTP mail server on the Legacy Email Setup page (*SUPPORT* > *Alarms (legacy)* > *Legacy Email Setup*).
+* *SMTP*: Use this option if you want AutoSupport messages to be emailed. If you use SMTP as the protocol for AutoSupport messages, you must configure an SMTP mail server on the Legacy Email Setup page (*SUPPORT* > *Alarms (legacy)* > *Legacy email setup*).
 +
 NOTE: SMTP was the only protocol available for AutoSupport messages before the StorageGRID 11.2 release. If you installed an earlier version of StorageGRID initially, SMTP might be the selected protocol.
 
@@ -74,7 +73,7 @@ By default, the StorageGRID system is configured to send an AutoSupport message 
 
 You can disable event-triggered AutoSupport messages at any time.
 
-NOTE: Event-triggered AutoSupport messages are also suppressed when you suppress email notifications system wide. (Select *CONFIGURATION* > *System* > *Display Options*. Then, select *Notification Suppress All*.)
+NOTE: Event-triggered AutoSupport messages are also suppressed when you suppress email notifications system wide. (Select *CONFIGURATION* > *System* > *Display options*. Then, select *Notification Suppress All*.)
 
 .Steps
 

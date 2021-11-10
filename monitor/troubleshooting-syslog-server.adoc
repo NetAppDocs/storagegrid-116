@@ -1,0 +1,104 @@
+---
+permalink: monitor/troubleshooting-syslog-server.html
+sidebar: sidebar
+keywords:
+summary: 'The following table describes syslog server error messages and lists corrective actions.'
+---
+= Troubleshooting the external syslog server
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+
+The following table describes external syslog server error messages and lists corrective actions.
+
+[cols="1a,2a" options="header"]
+|===
+| Error message| Description and recommended actions
+a|
+Cannot resolve hostname
+a|
+The FQDN you entered for the syslog server could not be resolved to an IP address.
+
+. Check the hostname you entered. If you entered an IP address, make sure it is a valid IP address in W.X.Y.Z (“dotted decimal”) notation.
+. Check that the DNS servers are configured correctly.
+. Confirm that each node can access the IP addresses for the DNS server.
+a|
+Connection refused
+a|
+A TCP or TLS connection to the syslog server was refused. There might be no service listening on the TCP or TLS port for the host, or a firewall might be blocking access.
+
+. Check that you entered the correct FQDN or IP address, port, and protocol for the syslog server.
+. Confirm that the host for the syslog service is running a syslog daemon that is listening on the specified port.
+. Confirm that a firewall is not blocking access to TCP/TLS connections from the nodes to the IP and port of the syslog server.
+a|
+Network unreachable
+a|
+The syslog server is not on a directly attached subnet. A router returned an ICMP failure message to indicate it could not forward the test messages from the listed nodes to the syslog server.
+
+. Check that you entered the correct FQDN or IP address for the syslog server.
+. For each node listed, check the Grid Network Subnet List, the Admin Networks Subnet Lists, and the Client Network gateways. Confirm these are configured to route traffic to the syslog server over the expected network interface and gateway (Grid, Admin, or Client).
+a|
+Host unreachable
+a|
+The syslog server is on a directly attached subnet (subnet used by the listed nodes for their Grid, Admin, or Client IP addresses). The nodes attempted to send test messages, but did not receive responses to ARP requests for the syslog server’s MAC address.
+
+. Check that you entered the correct FQDN or IP address for the syslog server.
+. Check that the host running the syslog service is up.
+a|
+Connection timed out
+a|
+A TCP/TLS connection attempt was made, but no response was received from the syslog server for a long time. There might be a routing misconfiguration or a firewall might be dropping traffic without sending any response (a common configuration).
+
+. Check that you entered the correct FQDN or IP address for the syslog server.
+. For each node listed, check the Grid Network Subnet List, the Admin Networks Subnet Lists, and the Client Network gateways. Confirm these are configured to route traffic to the syslog server via the network interface and gateway (Grid, Admin, or Client) over which you expect the syslog server to be reached.
+. Confirm that a firewall is not blocking access to TCP/TLS connections from the nodes listed to the IP and port of the syslog server.
+
+a|
+Connection closed by partner
+a|
+A TCP connection to the syslog server was successfully established but was later closed. Reasons for this might include:
+
+* The syslog server might have been restarted or rebooted.
+* The node and the syslog server might have different TCP/TLS settings.
+* An intermediate firewall might be closing idle TCP connections.
+* A non-syslog server listening on the syslog server port might have closed the connection.
+
+. Check that you entered the correct FQDN or IP address, port, and protocol for the syslog server.
+. If you are using TLS, confirm the syslog server is also using TLS. If you are using TCP, confirm the syslog server is also using TCP.
+. Check that an intermediate firewall is not configured to close idle TCP connections.
+a|
+TLS certificate error
+a|
+The server certificate received from the syslog server was not compatible with the CA certificate bundle and client certificate you provided.
+
+. Confirm that the CA certificate bundle and client certificate (if any) are compatible with the server certificate on the syslog server.
+. Confirm that the identities in the server certificate from the syslog server include the expected IP or FQDN values.
+a|
+Forwarding suspended
+a|
+Syslog records are no longer being forwarded to the syslog server and StorageGRID is unable to detect the reason.
+
+Review the debugging logs provided with this error to attempt to determine the root cause.
+a|
+TLS session terminated
+a|
+The syslog server terminated the TLS session and StorageGRID is unable to detect the reason.
+
+. Review the debugging logs provided with this error to attempt to determine the root cause.
+. Check that you entered the correct FQDN or IP address, port, and protocol for the syslog server.
+. If you are using TLS, confirm the syslog server is also using TLS. If you are using TCP, confirm the syslog server is also using TCP.
+. Confirm that the CA certificate bundle and client certificate (if any) are compatible with the server certificate from the syslog server.
+. Confirm that the identities in the server certificate from the syslog server include the expected IP or FQDN values.
+a|
+Results query failed
+a|
+The Admin Node used for syslog server configuration and testing is unable to request test results from the nodes listed. One or more nodes might be down.
+
+. Follow standard troubleshooting steps to ensure that the nodes are online and all expected services are running.
+. Restart the miscd service on the nodes listed.
+
+|===
+.Related information
+
+xref:../monitor/index.adoc[Monitor and troubleshoot]

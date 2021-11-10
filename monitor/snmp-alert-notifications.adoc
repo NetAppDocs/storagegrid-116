@@ -1,0 +1,30 @@
+---
+permalink: monitor/set-up-snmp-alert-notifications.html
+sidebar: sidebar
+keywords: how to use snmp notifications for alerts
+summary: 'If you want StorageGRID to send SNMP notifications when alerts occur, you must enable the StorageGRID SNMP agent and configure one or more trap destinations.'
+---
+= Set up SNMP notifications for alerts
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+If you want StorageGRID to send SNMP notifications when alerts occur, you must enable the StorageGRID SNMP agent and configure one or more trap destinations.
+
+You can use the *CONFIGURATION* > *Monitoring* > *SNMP agent* option in the Grid Manager or the SNMP endpoints for the Grid Management API to enable and configure the StorageGRID SNMP agent. The SNMP agent supports all three versions of the SNMP protocol.
+
+To learn how to configure the SNMP agent, see xref:using-snmp-monitoring.adoc[Use SNMP monitoring].
+
+After you configure the StorageGRID SNMP agent, two types of event-driven notifications can be sent:
+
+* Traps are notifications sent by the SNMP agent that do not require acknowledgment by the management system. Traps serve to notify the management system that something has happened within StorageGRID, such as an alert being triggered. Traps are supported in all three versions of SNMP.
+
+* Informs are similar to traps, but they require acknowledgment by the management system. If the SNMP agent does not receive an acknowledgment within a certain amount of time, it resends the inform until an acknowledgment is received or the maximum retry value has been reached. Informs are supported in SNMPv2c and SNMPv3.
+
+Trap and inform notifications are sent when a default or custom alert is triggered at any severity level. To suppress SNMP notifications for an alert, you must configure a silence for the alert. See xref:silencing-alert-notifications.adoc[Silence alert notifications].
+
+Alert notifications are sent by whichever Admin Node is configured to be the preferred sender. By default, the primary Admin Node is selected. See the xref:../admin/index.adoc[instructions for administering StorageGRID].
+
+NOTE: Trap and inform notifications are also sent when certain alarms (legacy system) are triggered at specified severity levels or higher; however, SNMP notifications are not sent for every alarm or every alarm severity. See xref:alarms-that-generate-snmp-notifications.adoc[Alarms that generate SNMP notifications (legacy system)].
+
+

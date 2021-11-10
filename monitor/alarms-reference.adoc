@@ -60,7 +60,7 @@ ADC Status
 a|
 ADC
 a|
-If an alarm is triggered, select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ADC* > *Overview* > *Main* and *ADC* > *Alarms* > *Main* to determine the cause of the alarm.
+If an alarm is triggered, select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ADC* > *Overview* > *Main* and *ADC* > *Alarms* > *Main* to determine the cause of the alarm.
 
 If the problem persists, contact technical support.
 
@@ -86,7 +86,7 @@ Only available for Archive Node's with a Target Type of Tivoli Storage Manager (
 
 If the value of Retrieve State is Waiting for Target, check the TSM middleware server and ensure that it is operating correctly. If the Archive Node has just been added to the StorageGRID system, ensure that the Archive Node's connection to the targeted external archival storage system is configured correctly.
 
-If the value of Archive Retrieve State is Offline, attempt to update the state to Online. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Archive Retrieve State* > *Online*, and click *Apply Changes*.
+If the value of Archive Retrieve State is Offline, attempt to update the state to Online. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Archive Retrieve State* > *Online*, and click *Apply Changes*.
 
 If the problem persists, contact technical support.
 
@@ -152,7 +152,7 @@ To allow you to respond in time to prevent an outage, AMQS alarms are triggered 
 
 If an AMQS alarm is triggered, check the load on the system--if there have been a significant number of transactions, the alarm should resolve itself over time. In this case, you can ignore the alarm.
 
-If the alarm persists and increases in severity, view a chart of the queue size. If the number is steadily increasing over hours or days, the audit load has likely exceeded the audit capacity of the system. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level to Error or Off. See xref:../audit/changing-audit-message-levels-destinations.adoc[Changing audit message levels and destinations].
+If the alarm persists and increases in severity, view a chart of the queue size. If the number is steadily increasing over hours or days, the audit load has likely exceeded the audit capacity of the system. Reduce the client operation rate or decrease the number of audit messages logged by changing the audit level to Error or Off. See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations].
 
 a|
 AOTE
@@ -187,7 +187,7 @@ Storage Multipath Connectivity
 a|
 SSM
 a|
-If the multipath state alarm appears as "`Degraded`" (select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *SSM* > *Events*), do the following:
+If the multipath state alarm appears as "`Degraded`" (select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *SSM* > *Events*), do the following:
 
 . Plug in or replace the cable that does not display any indicator lights.
 . Wait one to five minutes.
@@ -233,7 +233,7 @@ This alarm can indicate that the storage media holding the requested data is cor
 
 If you determine that the object data is no longer in the archive, the object will have to be removed from the StorageGRID system. For more information, contact technical support.
 
-Once the problem that triggered this alarm is addressed, reset the failures count. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Request Failure Count* and click *Apply Changes*.
+Once the problem that triggered this alarm is addressed, reset the failures count. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Request Failure Count* and click *Apply Changes*.
 
 a|
 ARRV
@@ -244,7 +244,7 @@ ARC
 a|
 To diagnose and correct this problem, contact technical support.
 
-Once the problem that triggered this alarm is addressed, reset the failures count. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Verification Failure Count* and click *Apply Changes*.
+Once the problem that triggered this alarm is addressed, reset the failures count. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Verification Failure Count* and click *Apply Changes*.
 
 a|
 ARVF
@@ -255,7 +255,7 @@ ARC
 a|
 This alarm can occur as a result of errors with the targeted external archival storage system. Check the external archival storage system for errors, and ensure that it is operating correctly.
 
-Once the problem that triggered this alarm is addressed, reset the failures count. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Store Failure Count*, and click *Apply Changes*.
+Once the problem that triggered this alarm is addressed, reset the failures count. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ARC* > *Retrieve* > *Configuration* > *Main*, select *Reset Store Failure Count*, and click *Apply Changes*.
 
 a|
 ASXP
@@ -376,7 +376,7 @@ Java Heap Usage Percent
 a|
 DDS
 a|
-An alarm is triggered if Java is unable to perform garbage collection at a rate that allows enough heap space for the system to properly function. An alarm might indicate a user workload that exceeds the resources available across the system for the DDS metadata store. Check the ILM Activity in the Dashboard, or select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *DDS* > *Resources* > *Overview* > *Main*.
+An alarm is triggered if Java is unable to perform garbage collection at a rate that allows enough heap space for the system to properly function. An alarm might indicate a user workload that exceeds the resources available across the system for the DDS metadata store. Check the ILM Activity in the Dashboard, or select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *DDS* > *Resources* > *Overview* > *Main*.
 
 If the problem persists, contact technical support.
 
@@ -473,7 +473,7 @@ CLB Status
 a|
 CLB
 a|
-If an alarm is triggered, select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *CLB* > *Overview* > *Main* and *CLB* > *Alarms* > *Main* to determine the cause of the alarm and to troubleshoot the problem.
+If an alarm is triggered, select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *CLB* > *Overview* > *Main* and *CLB* > *Alarms* > *Main* to determine the cause of the alarm and to troubleshoot the problem.
 
 If the problem persists, contact technical support.
 
@@ -495,7 +495,7 @@ CMN Status
 a|
 CMN
 a|
-If the value of CMN Status is Error, select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *CMN* > *Overview* > *Main* and *CMN* > *Alarms* > *Main* to determine the cause of the error and to troubleshoot the problem.
+If the value of CMN Status is Error, select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *CMN* > *Overview* > *Main* and *CMN* > *Alarms* > *Main* to determine the cause of the error and to troubleshoot the problem.
 
 An alarm is triggered and the value of CMN Status is No Online CMN during a hardware refresh of the primary Admin Node when the CMNs are switched (the value of the old CMN State is Standby and the new is Online).
 
@@ -613,7 +613,7 @@ The Auto-Start HTTP attribute is enabled by default. If this setting is changed,
 
 If necessary, wait for the LDR service to restart.
 
-Select *Support* > *Tools* > *Grid Topology*. Then select *_Storage Node_* > *LDR* > *Configuration*. If the HTTP protocol is offline, place it online. Verify that the Auto-Start HTTP attribute is enabled.
+Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_Storage Node_* > *LDR* > *Configuration*. If the HTTP protocol is offline, place it online. Verify that the Auto-Start HTTP attribute is enabled.
 
 If the HTTP protocol remains offline, contact technical support.
 a|
@@ -632,7 +632,7 @@ Inbound Replication Status
 a|
 BLDR, BARC
 a|
-An alarm indicates that inbound replication has been disabled. Confirm configuration settings: Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration* > *Main*.
+An alarm indicates that inbound replication has been disabled. Confirm configuration settings: Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration* > *Main*.
 
 a|
 LATA
@@ -836,7 +836,7 @@ SSM
 a|
 These errors can clear without being manually reset. If they do not clear, check network hardware. Check that the adapter hardware and driver are correctly installed and configured to work with your network routers and switches.
 
-When the underlying problem is resolved, reset the counter. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *SSM* > *Resources* > *Configuration* > *Main*, select *Reset Transmit Error Count*, and click *Apply Changes*.
+When the underlying problem is resolved, reset the counter. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *SSM* > *Resources* > *Configuration* > *Main*, select *Reset Transmit Error Count*, and click *Apply Changes*.
 
 a|
 NTFQ
@@ -907,7 +907,7 @@ LDR
 a|
 After the objects are automatically restored by the StorageGRID system, the quarantined objects can be removed from the quarantine directory.
 
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *site* > *Storage Node* > *LDR* > *Verification* > *Configuration* > *Main*.
 . Select *Delete Quarantined Objects*.
 . Click *Apply Changes*.
@@ -921,9 +921,9 @@ Outbound Replication Status
 a|
 BLDR, BARC
 a|
-An alarm indicates that outbound replication is not possible: storage is in a state where objects cannot be retrieved. An alarm is triggered if outbound replication is disabled manually. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration*.
+An alarm indicates that outbound replication is not possible: storage is in a state where objects cannot be retrieved. An alarm is triggered if outbound replication is disabled manually. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration*.
 
-An alarm is triggered if the LDR service is unavailable for replication. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage*.
+An alarm is triggered if the LDR service is unavailable for replication. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage*.
 
 a|
 OSLF
@@ -982,7 +982,7 @@ Only available for Archive Nodes with a Target Type of Tivoli Storage Manager (T
 
 If the value of Tivoli Storage Manager State is Offline, check Tivoli Storage Manager Status and resolve any problems.
 
-Bring the component back online. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *ARC* > *Target* > *Configuration* > *Main*, select *Tivoli Storage Manager State* > *Online*, and click *Apply Changes*.
+Bring the component back online. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *ARC* > *Target* > *Configuration* > *Main*, select *Tivoli Storage Manager State* > *Online*, and click *Apply Changes*.
 
 a|
 RDTU
@@ -1012,7 +1012,7 @@ BLDR, BARC
 a|
 An Inbound Replications -- Failed alarm can occur during periods of high load or temporary network disruptions. After system activity reduces, this alarm should clear. If the count of failed replications continues to increase, look for network problems and verify that the source and destination LDR and ARC services are online and available.
 
-To reset the count, select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration* > *Main*. Select *Reset Inbound Replication Failure Count*, and click *Apply Changes*.
+To reset the count, select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *LDR* > *Replication* > *Configuration* > *Main*. Select *Reset Inbound Replication Failure Count*, and click *Apply Changes*.
 
 a|
 RIRQ
@@ -1050,9 +1050,9 @@ Status
 a|
 CMN
 a|
-If the value of Status for the active grid task is Error, look up the grid task message. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *CMN* > *Grid Tasks* > *Overview* > *Main*. The grid task message displays information about the error (for example, "`check failed on node 12130011`").
+If the value of Status for the active grid task is Error, look up the grid task message. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *CMN* > *Grid Tasks* > *Overview* > *Main*. The grid task message displays information about the error (for example, "`check failed on node 12130011`").
 
-After you have investigated and corrected the problem, restart the grid task. Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *CMN* > *Grid Tasks* > *Configuration* > *Main*, and select *Actions* > *Run*.
+After you have investigated and corrected the problem, restart the grid task. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *CMN* > *Grid Tasks* > *Configuration* > *Main*, and select *Actions* > *Run*.
 
 If the value of Status for a grid task being aborted is Error, retry aborting the grid task.
 
@@ -1127,7 +1127,7 @@ SSM
 a|
 The higher the value the busier the system.
 
-If the CPU Load Average persists at a high value, the number of transactions in the system should be investigated to determine whether this is due to heavy load at the time. View a chart of the CPU load average: Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *SSM* > *Resources* > *Reports* > *Charts*.
+If the CPU Load Average persists at a high value, the number of transactions in the system should be investigated to determine whether this is due to heavy load at the time. View a chart of the CPU load average: Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *SSM* > *Resources* > *Reports* > *Charts*.
 
 If the load on the system is not heavy and the problem persists, contact technical support.
 
@@ -1149,7 +1149,7 @@ SSM
 a|
 If the value of Total Events is greater than zero, check if there are known events (such as network failures) that can be the cause. Unless these errors have been cleared (that is, the count has been reset to 0), Total Events alarms can be triggered.
 
-When an issue is resolved, reset the counter to clear the alarm. Select *Nodes* > *_site_* > *_grid node_* > *Events* > *Reset event counts*.
+When an issue is resolved, reset the counter to clear the alarm. Select *NODES* > *_site_* > *_grid node_* > *Events* > *Reset event counts*.
 
 NOTE: To reset event counts, you must have the Grid Topology Page Configuration permission.
 
@@ -1175,7 +1175,7 @@ SSM
 a|
 An alarm is triggered if SANtricity software indicates that there is a "`Needs attention`" issue with a component in a StorageGRID appliance.
 
-Select *Nodes*. Then select *appliance Storage Node* > *Hardware*. Scroll down to view the status of each component. In SANtricity software, check other appliance components to isolate the issue.
+Select *NODES*. Then select *appliance Storage Node* > *Hardware*. Scroll down to view the status of each component. In SANtricity software, check other appliance components to isolate the issue.
 
 a|
 SSMA
@@ -1184,7 +1184,7 @@ SSM Status
 a|
 SSM
 a|
-If the value of SSM Status is Error, select *Support* > *Tools* > *Grid Topology*, then select *_site_* > *_grid node_* > *SSM* > *Overview* > *Main* and *SSM* > *Overview* > *Alarms* to determine the cause of the alarm.
+If the value of SSM Status is Error, select *SUPPORT* > *Tools* > *Grid topology*, then select *_site_* > *_grid node_* > *SSM* > *Overview* > *Main* and *SSM* > *Overview* > *Alarms* to determine the cause of the alarm.
 
 If the problem persists, contact technical support.
 
@@ -1210,7 +1210,7 @@ If the value of Storage Status is Insufficient Usable Space, there is no more av
 
 Additional storage should be added. It is not impacting end user functionality, but the alarm persists until additional storage is added.
 
-If the value of Storage Status is Volume(s) Unavailable, a part of the storage is unavailable. Storage and retrieval from these volumes is not possible. Check the volume's Health for more information: Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage* > *Overview* > *Main*. The volume's Health is listed under Object Stores.
+If the value of Storage Status is Volume(s) Unavailable, a part of the storage is unavailable. Storage and retrieval from these volumes is not possible. Check the volume's Health for more information: Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage* > *Overview* > *Main*. The volume's Health is listed under Object Stores.
 
 If the value of Storage Status is Error, contact technical support.
 
@@ -1225,7 +1225,7 @@ SSM
 a|
 This alarm clears when other alarms related to a non-running service are resolved. Track the source service alarms to restore operation.
 
-Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *SSM* > *Services* > *Overview* > *Main*. When the status of a service is shown as Not Running, its state is Administratively Down. The service's status can be listed as Not Running for the following reasons:
+Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *SSM* > *Services* > *Overview* > *Main*. When the status of a service is shown as Not Running, its state is Administratively Down. The service's status can be listed as Not Running for the following reasons:
 
 * The service has been manually stopped (`/etc/init.d/<service\> stop`).
 * There is an issue with the MySQL database and Server Manager shuts down the MI service.
@@ -1312,7 +1312,7 @@ Object Verification Status
 a|
 BLDR
 a|
-Select *Support* > *Tools* > *Grid Topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage* > *Overview* > *Main*.
+Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_site_* > *_grid node_* > *LDR* > *Storage* > *Overview* > *Main*.
 
 Check the operating system for any signs of block-device or file system errors.
 

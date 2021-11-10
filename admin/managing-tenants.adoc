@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords: 
 summary: 'As a grid administrator, you create and manage the tenant accounts that S3 and Swift clients use to store and retrieve objects, monitor storage usage, and manage the actions that clients are able to perform using your StorageGRID system.'
 ---
-= Managing tenants
+= Manage tenants
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 As a grid administrator, you create and manage the tenant accounts that S3 and Swift clients use to store and retrieve objects, monitor storage usage, and manage the actions that clients are able to perform using your StorageGRID system.
 
-== What tenant accounts are
+== What are tenant accounts?
 
 Tenant accounts allow client applications that use the Simple Storage Service (S3) REST API or the Swift REST API to store and retrieve objects on StorageGRID.
 
@@ -25,7 +25,7 @@ NOTE: If you use the S3 client protocol, you can simply use S3 buckets and bucke
 
 * *Service provider use case:* If you are administering a StorageGRID system as a service provider, you can segregate the grid's object storage by the different entities that will lease the storage on your grid. In this case, you would create tenant accounts for Company A, Company B, Company C, and so on.
 
-== Creating and configuring tenant accounts
+== Create and configure tenant accounts
 
 When you create a tenant account, you specify the following information:
 
@@ -44,11 +44,13 @@ After a tenant account is created, you can perform the following tasks:
 * *Manage platform services for the grid*: If you enable platform services for tenant accounts, ensure that you understand how platform services messages are delivered and the networking requirements that the use of platform services place on your StorageGRID deployment.
 * *Monitor a tenant account's storage usage*: After tenants begin using their accounts, you can use Grid Manager to monitor how much storage each tenant consumes.
 +
+NOTE: A tenant's storage usage values might become out of date if nodes are isolated from other nodes in the grid. The totals will be updated when network connectivity is restored.
++
 If you have set quotas for tenants, you can enable the *Tenant quota usage high* alert to determine if tenants are consuming their quotas. If enabled, this alert is triggered when a tenant has used 90% of its quota. For more information, see the alerts reference in the instructions for monitoring and troubleshooting StorageGRID.
 
 * *Configure client operations*: You can configure if some types of client operations are forbidden.
 
-== Configuring S3 tenants
+== Configure S3 tenants
 
 After an S3 tenant account is created, tenant users can access the Tenant Manager to perform tasks such as the following:
 
@@ -60,7 +62,7 @@ After an S3 tenant account is created, tenant users can access the Tenant Manage
 
 IMPORTANT: S3 tenant users can create and manage S3 access key and buckets with the Tenant Manager, but they must use an S3 client application to ingest and manage objects.
 
-== Configuring Swift tenants
+== Configure Swift tenants
 
 After a Swift tenant account is created, the tenant's root user can access the Tenant Manager to perform tasks such as the following:
 

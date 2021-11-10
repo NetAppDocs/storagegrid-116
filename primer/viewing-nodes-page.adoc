@@ -11,7 +11,7 @@ summary: 'When you need more detailed information about your StorageGRID system 
 [.lead]
 When you need more detailed information about your StorageGRID system than the Dashboard provides, you can use the Nodes page to view metrics for the entire grid, each site in the grid, and each node at a site.
 
-image::../media/nodes_menu.png[Nodes Menu]
+image::../media/nodes_table.png[Nodes Menu]
 
 The Nodes table lists all the sites and nodes in your StorageGRID system. Summary information is displayed for each node. If a node has an active alert, an icon appears next to the node name.  If the node is connected and has no active alerts, no  icon is shown.
 
@@ -114,14 +114,14 @@ The metrics collected by Prometheus are used in a number of places in the Grid M
 
 * *Nodes page*: The graphs and charts on the tabs available from the Nodes page use the Grafana visualization tool to display the time-series metrics collected by Prometheus. Grafana displays time-series data in graph and chart formats, while Prometheus serves as the backend data source.
 +
-image::../media/prometheus_graph.png[Prometheus Graph]
+image::../media/nodes_page_network_traffic_graph.png[Prometheus graph]
 
 * *Alerts*: Alerts are triggered at specific severity levels when alert rule conditions that use Prometheus metrics evaluate as true.
 * *Grid Management API*: You can use Prometheus metrics in custom alert rules or with external automation tools to monitor your StorageGRID system. A complete list of Prometheus metrics is available from the Grid Management API (*Help* > *API Documentation* > *Metrics*). While more than a thousand metrics are available, only a relatively small number are required to monitor the most critical StorageGRID operations.
 +
 NOTE: Metrics that include _private_ in their names are intended for internal use only and are subject to change between StorageGRID releases without notice.
 
-* The *Support* > *Tools* > *Diagnostics* page and the *Support* > *Tools* > *Metrics* page: These pages, which are primarily intended for use by technical support, provide a number of tools and charts that use the values of Prometheus metrics.
+* The *SUPPORT* > *Tools* > *Diagnostics* page and the *SUPPORT* > *Tools* > *Metrics* page: These pages, which are primarily intended for use by technical support, provide a number of tools and charts that use the values of Prometheus metrics.
 +
 NOTE: Some features and menu items within the Metrics page are intentionally non-functional and are subject to change.
 
@@ -133,7 +133,7 @@ StorageGRID attributes are used in a number of places in the Grid Manager:
 
 * *Nodes page*: Many of the values shown on the Nodes page are StorageGRID attributes. (Prometheus metrics are also shown on the Nodes pages.)
 * *Alarms*: When attributes reach defined threshold values, StorageGRID alarms (legacy system) are triggered at specific severity levels.
-* *Grid Topology tree*: Attribute values are shown in the Grid Topology tree (*Support* > *Tools* > *Grid Topology*).
+* *Grid Topology tree*: Attribute values are shown in the Grid Topology tree (*SUPPORT* > *Tools* > *Grid topology*).
 * *Events*: System events occur when certain attributes record an error or fault condition for a node, including errors such as network errors.
 
 === Attribute values
@@ -144,7 +144,7 @@ In addition, propagation delays might slow the reporting of attributes. Updated 
 
 .Related information
 
-* xref:../monitor/index.adoc[Monitor & troubleshoot]
+* xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 * xref:monitoring-and-managing-alerts.adoc[Monitor and manage alerts]
 

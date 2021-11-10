@@ -22,13 +22,13 @@ When you create a Cloud Storage Pool, you specify the name and location of the e
 A Cloud Storage Pool specifies a single external S3 bucket or Azure Blob storage container. StorageGRID validates the Cloud Storage Pool as soon as you save it, so you must ensure that the bucket or container specified in the Cloud Storage Pool exists and is reachable.
 
 .Steps
-. Select *ILM* > *Storage Pools*.
+. Select *ILM* > *Storage pools*.
 +
 The Storage Pools page appears. This page includes two sections: Storage Pools and Cloud Storage Pools.
 +
 image::../media/storage_pools_page_cloud_storage_pool.png[Storage Pools Page Cloud Storage Pool]
 
-. In the Cloud Storage Pools section of the page, click *Create*.
+. In the Cloud Storage Pools section of the page, select *Create*.
 +
 The Create Cloud Storage Pool dialog box appears.
 +
@@ -48,8 +48,8 @@ Provider Type
 a|
 Which cloud provider you will use for this Cloud Storage Pool:
 
- ** Amazon S3 (select this option for an S3 or C2S S3 Cloud Storage Pool)
- ** Azure Blob Storage
+ ** *Amazon S3*: Select this option for an S3, C2S S3, or Google Cloud Platform (GCP) endpoint. 
+ ** *Azure Blob Storage*
 
 *Note:* When you select a Provider Type, the Service Endpoint, Authentication and Server Verification sections appear at the bottom on the page.
 

@@ -4,7 +4,6 @@ sidebar: sidebar
 keywords:
 summary: 'There are several tasks you can perform to help determine the source of object and storage issues.'
 ---
-
 = Troubleshooting object and storage issues
 :icons: font
 :imagesdir: ../media/
@@ -24,7 +23,7 @@ Depending on the problem, you might want to confirm where object data is being s
  ** *Swift container and object name*: When an object is ingested through the Swift interface, the client application uses a container and object name combination to store and identify the object.
 
 .Steps
-. Select *ILM* > *Object Metadata Lookup*.
+. Select *ILM* > *Object metadata lookup*.
 . Type the object's identifier in the *Identifier* field.
 +
 You can enter a UUID, CBID, S3 bucket/object-key, or Swift container/object-name.
@@ -61,13 +60,13 @@ xref:../swift/index.adoc[Use Swift]
 
 The underlying storage on a Storage Node is divided into object stores. These object stores are physical partitions that act as mount points for StorageGRID system's storage. Object stores are also known as storage volumes.
 
-You can view object store information for each Storage Node. Object stores are shown at the bottom of the *Nodes* > *_Storage Node_* > *Storage* page.
+You can view object store information for each Storage Node. Object stores are shown at the bottom of the *NODES* > *_Storage Node_* > *Storage* page.
 
 image::../media/nodes_page_storage_nodes_storage_tables.png[Nodes Page Storage Node Storage Tables]
 
 To see more details about each Storage Node, follow these steps:
 
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *_site_* > *_Storage Node_* > *LDR* > *Storage* > *Overview* > *Main*.
 
 image::../media/storage_node_object_stores.png[Storage Node object store]
@@ -76,4 +75,4 @@ Depending on the nature of the failure, faults with a storage volume might be re
 
 .Related information
 
-xref:../maintain/index.adoc[Maintain & recover]
+xref:../maintain/index.adoc[Recover and maintain]

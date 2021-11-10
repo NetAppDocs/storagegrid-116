@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: 
 summary: 'You must monitor the total usable space for each Storage Node to ensure that the node has enough space for new object data.'
 ---
-= Monitoring storage capacity for each Storage Node
+= Monitor storage capacity for each Storage Node
 :icons: font
 :imagesdir: ../media/
 
@@ -17,14 +17,14 @@ You must monitor the total usable space for each Storage Node to ensure that the
 .About this task
 Usable space is the amount of storage space available to store objects. The total usable space for a Storage Node is calculated by adding together the available space on all object stores within the node.
 
-image::../media/calculating_watermarks.gif[Conceptual drawing for Total Usable Space]
+image::../media/calculating_watermarks.gif[Conceptual drawing for Total usable space]
 
 .Steps
-. Select *Nodes* > *_Storage Node_* > *Storage*.
+. Select *NODES* > *_Storage Node_* > *Storage*.
 +
 The graphs and tables for the node appear.
 
-. Hover your cursor over the Storage Used - Object Data graph.
+. Hover your cursor over the Storage used - object data graph.
 +
 The following values are shown:
 
@@ -38,11 +38,11 @@ The Used value is the `storagegrid_storage_utilization_data_bytes` metric.
 +
 image::../media/nodes_page_storage_used_object_data.png[Nodes Page Storage Used Object Data]
 
-. Review the Available values in the Volumes and Object Stores tables, below the graphs.
+. Review the Available values in the Volumes and Object stores tables, below the graphs.
 +
 NOTE: To view graphs of these values, click the chart icons image:../media/icon_chart_new_for_11_5.png[Chart Icon] in the Available columns.
 +
-image::../media/nodes_page_storage_tables.png[Object Stores Tables]
+image::../media/nodes_page_storage_tables.png[Object stores tables]
 
 . Monitor the values over time to estimate the rate at which usable storage space is being consumed.
 . To maintain normal system operations, add Storage Nodes, add storage volumes, or archive object data before usable space is consumed.
@@ -53,12 +53,12 @@ NOTE: If your ILM policy uses erasure coding, you might prefer to expand when ex
 +
 For more information on planning a storage expansion, see the instructions for expanding StorageGRID.
 +
-The *Low object data storage* alert and the legacy Storage Status (SSTS) alarm are triggered when insufficient space remains for storing object data on a Storage Node.
+The *Low object data storage* alert is triggered when insufficient space remains for storing object data on a Storage Node.
 
 .Related information
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Low object data storage alert]
+xref:troubleshooting-storagegrid-system.adoc[Troubleshoot the Low object data storage alert]
 
 xref:../expand/index.adoc[Expand your grid]

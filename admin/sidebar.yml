@@ -13,10 +13,6 @@ entries:
       url: "/admin/signing-out-of-grid-manager.html"
     - title: Change your password
       url: "/admin/changing-your-password.html"
-    - title: Change the provisioning passphrase
-      url: "/admin/changing-provisioning-passphrase.html"
-    - title: Change node console passwords
-      url: "/admin/change-node-console-password.html"
     - title: Change the browser session timeout
       url: "/admin/changing-browser-session-timeout.html"
     - title: View StorageGRID license information
@@ -35,12 +31,55 @@ entries:
       - title: Protect against Cross-Site Request Forgery (CSRF)
         url: "/admin/protecting-against-cross-site-request-forgery-csrf.html"
       - title: Use the API if single sign-on is enabled
-        url: "/admin/using-api-if-sso-is-enabled.html"
+        entries:
+        - title: AD FS
+          url: "/admin/use-api-if-sso-is-enabled-adfs.html"
+        - title: Azure AD
+          url: "/admin/use-api-if-sso-is-enabled-azure.html"
+        - title: Ping Federate
+          url: "/admin/use-api-if-sso-is-enabled-ping.html"   
   - title: Control access to StorageGRID
     entries:
+    - title: Change the provisioning passphrase
+      url: "/admin/changing-provisioning-passphrase.html"
+    - title: Change node console passwords
+      url: "/admin/change-node-console-password.html"    
     - title: Control access through firewalls
       url: "/admin/controlling-access-through-firewalls.html"
-    - title: Security certificate authentication
+    - title: Use identity federation
+      url: "/admin/using-identity-federation.html"
+    - title: Manage admin groups
+      url: "/admin/managing-admin-groups.html"
+    - title: Manage local users
+      url: "/admin/managing-local-users.html"
+    - title: Use single sign-on (SSO)
+      entries:
+      - title: How single sign-on works
+        url: "/admin/how-sso-works.html"
+      - title: Requirements for using single sign-on
+        url: "/admin/requirements-for-sso.html"
+      - title: Configure single sign-on
+        url: "/admin/configuring-sso.html"
+        entries:
+        - title: Confirm federated users can sign in
+          url: "/admin/confirming-federated-users-can-sign-in.html"
+        - title: Use sandbox mode
+          url: "/admin/using-sandbox-mode.html"
+        - title: Create relying party trusts in AD FS
+          url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
+        - title: Create SP connections in PingFederate
+          url: "/admin/creating-sp-connection-ping.html"
+        - title: Test single sign-on
+          url: "/admin/testing-relying-party-trusts.html"
+        - title: Enable single sign-on
+          url: "/admin/enabling-single-sign-on.html"
+        - title: Disable single sign-on
+          url: "/admin/disabling-single-sign-on.html"
+        - title: Temporarily disable and reenable single sign-on for one Admin Node
+          url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
+  - title: Manage security settings
+    entries:      
+    - title: Manage certificates
       entries:
       - title: About security certificates
         url: "/admin/using-storagegrid-security-certificates.html"
@@ -58,79 +97,56 @@ entries:
           url: "/admin/configuring-storagegrid-certificates-for-fabricpool.html"
       - title: Configure client certificates
         url: "/admin/configuring-administrator-client-certificates.html"
-    - title: Use identity federation
-      url: "/admin/using-identity-federation.html"
-    - title: Manage admin groups
-      url: "/admin/managing-admin-groups.html"
-    - title: Manage local users
-      url: "/admin/managing-local-users.html"
-    - title: Use single sign-on (SSO) for StorageGRID
-      url: "/admin/using-single-sign-on.html"
-      entries:
-      - title: How single sign-on works
-        url: "/admin/how-sso-works.html"
-      - title: Requirements for using single sign-on
-        url: "/admin/requirements-for-sso.html"
-      - title: Configure single sign-on
-        url: "/admin/configuring-sso.html"
-        entries:
-        - title: Confirm federated users can sign in
-          url: "/admin/confirming-federated-users-can-sign-in.html"
-        - title: Use sandbox mode
-          url: "/admin/using-sandbox-mode.html"
-        - title: Create relying party trusts in AD FS
-          url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
-        - title: Test relying party trusts
-          url: "/admin/testing-relying-party-trusts.html"
-        - title: Enable single sign-on
-          url: "/admin/enabling-single-sign-on.html"
-        - title: Disable single sign-on
-          url: "/admin/disabling-single-sign-on.html"
-        - title: Temporarily disable and reenable single sign-on for one Admin
-            Node
-          url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
-  - title: Configure key management servers
-    entries:
     - title: Configure key management servers
-      url: "/admin/kms-configuring.html"
-    - title: Review StorageGRID encryption methods
-      url: "/admin/reviewing-storagegrid-encryption-methods.html"
-    - title: Overview of KMS and appliance configuration
-      url: "/admin/kms-overview-of-kms-and-appliance-configuration.html"
-    - title: Considerations and requirements for using a key management server
-      url: "/admin/kms-considerations-and-requirements.html"
-    - title: Considerations for changing the KMS for a site
-      url: "/admin/kms-considerations-for-changing-for-site.html"
-    - title: Configure StorageGRID as a client in the KMS
-      url: "/admin/kms-configuring-storagegrid-as-client.html"
-    - title: Add a key management server (KMS)
-      url: "/admin/kms-adding.html"
       entries:
-      - title: 'Step 1: Enter KMS Details'
-        url: "/admin/kms-adding-enter-kms-details.html"
-      - title: 'Step 2: Upload Server Certificate'
-        url: "/admin/kms-adding-upload-server-certificate.html"
-      - title: 'Step 3: Upload Client Certificates'
-        url: "/admin/kms-adding-upload-client-certificates.html"
-    - title: View KMS details
-      url: "/admin/kms-viewing-details.html"
-    - title: View encrypted nodes
-      url: "/admin/kms-viewing-encrypted-nodes.html"
-    - title: Edit a key management server (KMS)
-      url: "/admin/kms-editing.html"
-    - title: Remove a key management server (KMS)
-      url: "/admin/kms-removing.html"
+      - title: Overview
+        pdf-filename: Overview of configuring key management servers
+        url: "/admin/kms-configuring.html"
+      - title: Review StorageGRID encryption methods
+        url: "/admin/reviewing-storagegrid-encryption-methods.html"
+      - title: Overview of KMS and appliance configuration
+        url: "/admin/kms-overview-of-kms-and-appliance-configuration.html"
+      - title: Considerations and requirements for using a key management server
+        url: "/admin/kms-considerations-and-requirements.html"
+      - title: Considerations for changing the KMS for a site
+        url: "/admin/kms-considerations-for-changing-for-site.html"
+      - title: Configure StorageGRID as a client in the KMS
+        url: "/admin/kms-configuring-storagegrid-as-client.html"
+      - title: Add a key management server (KMS)
+        url: "/admin/kms-adding.html"
+        entries:
+        - title: 'Step 1: Enter KMS Details'
+          url: "/admin/kms-adding-enter-kms-details.html"
+        - title: 'Step 2: Upload Server Certificate'
+          url: "/admin/kms-adding-upload-server-certificate.html"
+        - title: 'Step 3: Upload Client Certificates'
+          url: "/admin/kms-adding-upload-client-certificates.html"
+      - title: View KMS details
+        url: "/admin/kms-viewing-details.html"
+      - title: View encrypted nodes
+        url: "/admin/kms-viewing-encrypted-nodes.html"
+      - title: Edit a key management server (KMS)
+        url: "/admin/kms-editing.html"
+      - title: Remove a key management server (KMS)
+        url: "/admin/kms-removing.html"
+    - title: Manage proxy settings
+      entries:
+      - title: Configure Storage proxy settings
+        url: "/admin/configuring-storage-proxy-settings.html"
+      - title: Configure Admin proxy settings
+        url: "/admin/configuring-admin-proxy-settings.html"
+    - title: Manage untrusted Client Networks     
+      entries:
+      - title: Overview
+        url: "/admin/managing-untrusted-client-networks.html"
+      - title: Specify a node&#8217;s Client Network is untrusted
+        url: "/admin/specifying-node-client-network-is-untrusted.html"
   - title: Manage tenants
     entries:
     - title: Manage tenants
       url: "/admin/managing-tenants.html"
     - title: Create a tenant account
       url: "/admin/creating-tenant-account.html"
-      entries:
-      - title: Create a tenant account if StorageGRID is not using SSO
-        url: "/admin/creating-tenant-account-if-storagegrid-is-not-using-sso.html"
-      - title: Create a tenant account if SSO is enabled
-        url: "/admin/creating-tenant-account-if-sso-is-enabled.html"
     - title: Change the password for a tenant&#8217;s local root user
       url: "/admin/changing-password-for-tenant-local-root-user.html"
     - title: Edit a tenant account
@@ -148,6 +164,8 @@ entries:
         url: "/admin/per-site-delivery-of-platform-services-messages.html"
       - title: Troubleshoot platform services
         url: "/admin/troubleshooting-platform-services.html"
+    - title: Manage S3 Select for tenant accounts
+      url: "/admin/manage-s3-select-for-tenant-accounts.html"
   - title: Configure S3 and Swift client connections
     entries:
     - title: About S3 and Swift client connections
@@ -156,9 +174,10 @@ entries:
       url: "/admin/summary-ip-addresses-and-ports-for-client-connections.html"
     - title: Configure VLAN interfaces
       url: "/admin/configure-vlan-interfaces.html"
-    - title: Manage high availability (HA) groups  
+    - title: Manage high availability groups  
       entries:
-      - title: Manage HA groups
+      - title: Overview
+        pdf-filename: Overview of managing high availability (HA) groups
         url: "/admin/managing-high-availability-groups.html"
       - title: How are HA groups used
         url: "/admin/how-ha-groups-are-used.html"
@@ -168,7 +187,8 @@ entries:
         url: "/admin/configure-high-availability-group.html"
     - title: Manage load balancing
       entries:
-      - title: Manage load balancing
+      - title: Overview
+        pdf-filename: Overview of managing load balancing
         url: "/admin/managing-load-balancing.html"
       - title: How load balancing works - Load Balancer service
         url: "/admin/how-load-balancing-works-load-balancer-service.html"
@@ -176,11 +196,6 @@ entries:
         url: "/admin/configuring-load-balancer-endpoints.html"
       - title: How load balancing works - CLB service
         url: "/admin/how-load-balancing-works-clb-service.html"
-    - title: Manage untrusted Client Networks
-      url: "/admin/managing-untrusted-client-networks.html"
-      entries:
-      - title: Specify a node&#8217;s Client Network is untrusted
-        url: "/admin/specifying-node-client-network-is-untrusted.html"
     - title: Configure S3 API endpoint domain names
       url: "/admin/configuring-s3-api-endpoint-domain-names.html"
     - title: Enable HTTP for client communications
@@ -189,8 +204,6 @@ entries:
       url: "/admin/controlling-which-client-operations-are-permitted.html"
   - title: Manage networks and connections
     entries:
-    - title: Manage networks and connections
-      url: "/admin/managing-storagegrid-networks-and-connections.html"
     - title: Guidelines for StorageGRID networks
       url: "/admin/guidelines-for-storagegrid-networks.html"
     - title: View IP addresses
@@ -199,10 +212,6 @@ entries:
       url: "/admin/supported-ciphers-for-outgoing-tls-connections.html"
     - title: Change network transfer encryption
       url: "/admin/changing-network-transfer-encryption.html"
-    - title: Configure Storage proxy settings
-      url: "/admin/configuring-storage-proxy-settings.html"
-    - title: Configure Admin proxy settings
-      url: "/admin/configuring-admin-proxy-settings.html"
     - title: Manage traffic classification policies
       entries:
       - title: Manage traffic classification policies

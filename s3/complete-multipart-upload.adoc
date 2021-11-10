@@ -51,7 +51,7 @@ NOTE: When versioning is enabled for a bucket, completing a multipart upload alw
 
 If the bucket where the multipart upload occurs is configured for a platform service, multipart upload succeeds even if the associated replication or notification action fails.
 
-If this occurs, an alarm is raised in the Grid Manager on Total Events (SMTT). The Last Event message displays "`Failed to publish notifications for bucket-nameobject key`" for the last object whose notification failed. (To see this message, select *Nodes* > *_Storage Node_* > *Events*. View Last Event at the top of the table.) Event messages are also listed in `/var/local/log/bycast-err.log`.
+If this occurs, an alarm is raised in the Grid Manager on Total Events (SMTT). The Last Event message displays "`Failed to publish notifications for bucket-nameobject key`" for the last object whose notification failed. (To see this message, select *NODES* > *_Storage Node_* > *Events*. View Last Event at the top of the table.) Event messages are also listed in `/var/local/log/bycast-err.log`.
 
 A tenant can trigger the failed replication or notification by updating the object's metadata or tags. A tenant can resubmit the existing values to avoid making unwanted changes.
 

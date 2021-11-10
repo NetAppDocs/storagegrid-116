@@ -12,26 +12,26 @@ summary: 'You can view detailed information about an alert that is currently aff
 You can view detailed information about an alert that is currently affecting your StorageGRID system or an alert that has been resolved. The details include recommended corrective actions, the time the alert was triggered, and the current value of the metrics related to this alert. Optionally, you can silence a current alert or update the alert rule.
 
 .What you'll need
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 
 .Steps
 . Do one of the following, based on whether you want to view a current or resolved alert:
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Column header| Description
 
 a|
-*Current alert*
+Current alert
 a|
 * From the Health panel on the Dashboard, click the *Current alerts* link. This link appears only if at least one alert is currently active. This link is hidden if there are no current alerts or if all current alerts have been silenced.
-* Select *Alerts* > *Current*.
-* From the *Nodes* page, select the *Overview* tab for a node that has an alert icon. Then, in the Alerts section, click the alert name.
+* Select *ALERTS* > *Current*.
+* From the *NODES* page, select the *Overview* tab for a node that has an alert icon. Then, in the Alerts section, click the alert name.
 a|
-*Resolved alert*
+Resolved alert
 a|
 * From the Health panel on the Dashboard, click the *Recently resolved alerts* link. (This link appears only if one or more alerts were triggered in the past week and are now resolved. This link is hidden if no alerts were triggered and resolved in the last week.)
-* Select *Alerts* > *Resolved*.
+* Select *ALERTS* > *Resolved*.
 |===
 
 . As required, expand a group of alerts and then select the alert you want to view.
@@ -46,7 +46,7 @@ image::../media/alerts_page_details_modal.png[Alerts Page Details Modal]
 
 . Review the alert details.
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Information| Description
 a|
@@ -116,6 +116,6 @@ IMPORTANT: Be careful when deciding to edit an alert rule. If you change trigger
 
 .Related information
 
-xref:managing-alerts.adoc[Silencing alert notifications]
+* xref:silencing-alert-notifications.adoc[Silence alert notifications]
 
-xref:managing-alerts.adoc[Editing an alert rule]
+* xref:editing-alert-rules.adoc[Edit alert rules]

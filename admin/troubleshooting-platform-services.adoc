@@ -47,7 +47,7 @@ Some platform services issues might cause client operations on the S3 bucket to 
 
 To check the status of services:
 
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *_site_* > *_Storage Node_* > *SSM* > *Services*.
 
 == Recoverable and unrecoverable endpoint errors
@@ -62,9 +62,9 @@ If StorageGRID encounters a recoverable error, the platform service request will
 
 Other errors are unrecoverable. For example, an unrecoverable error occurs if the endpoint is deleted.
 
-If StorageGRID encounters an unrecoverable endpoint error, the Total Events (SMTT) alarm is triggered in the Grid Manager. To view the Total Events alarm:
+If StorageGRID encounters an unrecoverable endpoint error, the Total Events (SMTT) legacy alarm is triggered in the Grid Manager. To view the Total Events legacy alarm:
 
-. Select *Nodes*.
+. Select *NODES*.
 . Select *_site_* > *_grid node_* > *Events*.
 . View Last Event at the top of the table.
 +
@@ -81,7 +81,7 @@ The tenant can resubmit the existing values to avoid making unwanted changes.
 
 If the destination encounters an issue that prevents it from accepting platform services messages, the client operation on the bucket succeeds, but the platform services message is not delivered. For example, this error might happen if credentials are updated on the destination such that StorageGRID can no longer authenticate to the destination service.
 
-If platform services messages cannot be delivered because of an unrecoverable error, the Total Events (SMTT) alarm is triggered in the Grid Manager.
+If platform services messages cannot be delivered because of an unrecoverable error, the Total Events (SMTT) legacy alarm is triggered in the Grid Manager.
 
 == Slower performance for platform service requests
 
@@ -95,7 +95,7 @@ CloudMirror requests are more likely to be affected by the performance of the de
 
 To view the request failure rate for platform services:
 
-. Select *Nodes*.
+. Select *NODES*.
 . Select *_site_* > *Platform Services*.
 . View the Request Failure Rate chart.
 +
@@ -119,6 +119,6 @@ xref:../tenant/index.adoc[Use a tenant account]
 
 .Related information
 
-xref:../monitor/index.adoc[Monitor & troubleshoot]
+xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 xref:configuring-storage-proxy-settings.adoc[Configuring Storage proxy settings]

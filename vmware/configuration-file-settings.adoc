@@ -25,7 +25,7 @@ Global parameters are applied to all grid nodes, unless they are overridden by s
 [source]
 [subs="specialcharacters,quotes"]
 ----
-OVFTOOL_ARGUMENTS = --powerOn --noSSLVerify --diskMode=thin --datastore='_datastore_name_'
+OVFTOOL_ARGUMENTS = --powerOn --noSSLVerify --diskMode=eagerZeroedThick --datastore='_datastore_name_'
 ----
 +
 You can use the `--powerOffTarget` and `--overwrite` options to shut down and replace existing virtual machines.

@@ -26,14 +26,14 @@ IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID applia
 
 . Access SANtricity System Manager using one of these methods:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
- ** Use the Grid Manager and select *Nodes* > `*_appliance Storage Node_*` > *SANtricity System Manager*
+ ** Use the Grid Manager and select *NODES* > `*_appliance Storage Node_*` > *SANtricity System Manager*
 +
 NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: +
 `*https://_Storage_Controller_IP_*`
 
 . Enter the SANtricity System Manager administrator username and password, if required.
 . Verify the drive firmware version currently installed in the storage appliance:
- .. From SANtricity System Manager, select *Support* > *Upgrade Center*.
+ .. From SANtricity System Manager, select *SUPPORT* > *Upgrade Center*.
  .. Under Drive Firmware upgrade, select *Begin Upgrade*.
 +
 The Upgrade Drive Firmware displays the drive firmware files currently installed.
@@ -171,7 +171,7 @@ Contact technical support to resolve this issue.
 +
 image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
-It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *Nodes* tab should display a normal status image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] for the appliance node, indicating that no alerts are active and the node is connected to the grid.
+It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The Nodes page should display a normal status (no icons to the left of the node name) for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
 image::../media/node_rejoin_grid_confirmation.png[Appliance node rejoined grid]
 

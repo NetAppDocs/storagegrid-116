@@ -39,7 +39,7 @@ When clients save objects to StorageGRID, the objects are evaluated against the 
 
 . If the filters for the first rule in the policy match an object, the object is ingested according to that rule's ingest behavior and stored according to that rule's placement instructions.
 . If the filters for the first rule do not match the object, the object is evaluated against each subsequent rule in the policy until a match is made.
-. If no rules match an object, the ingest behavior and placement instructions for the default rule in the policy are applied. The default rule is the last rule in a policy and cannot use any filters.
+. If no rules match an object, the ingest behavior and placement instructions for the default rule in the policy are applied. The default rule is the last rule in a policy and cannot use any filters. It must apply to all tenants, all buckets, and all object versions.
 
 == Example ILM policy
 

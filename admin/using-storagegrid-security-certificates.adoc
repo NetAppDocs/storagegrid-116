@@ -117,7 +117,7 @@ You can:
 --
 <<Load balancer endpoint certificate,Load balancer endpoint certificates>>, that you upload or generate, secure the connections between S3 and Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. 
 
-The load balancer endpoint table has a row for each configured load balancer endpoint and indicates whether the S3 and Swift API certificate is being used for the endpoint instead of a custom certificate, along with the certificate expiration date.
+The load balancer endpoint table has a row for each configured load balancer endpoint and indicates whether the global S3 and Swift API certificate or a custom load balancer endpoint certificate is being used for the endpoint. The expiration date for each certificate also displays.
 
 You can:
 
@@ -163,8 +163,8 @@ You can:
 * xref:kms-adding.adoc[Upload key management server (KMS) server and client certificates]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate for S3, C2S S3, or Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
-* xref:../monitor/managing-alerts.adoc#setting-up-email-notifications-for-alerts[Specify an email alert notification certificate]
-* xref:../audit/configuring-syslog-server.adoc#attach-certificate[Specify an external syslog server certificate]
+* xref:../monitor/set-up-email-alert-notifications.adoc[Specify an email alert notification certificate]
+* xref:../audit/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
 // TBD - Update configuring-syslog-server.adoc#attach-certificate link based on new subsection title.
 
 --
@@ -324,7 +324,7 @@ Server
 a|
 Authenticates the connection between identity federation services, such as Active Directory Federation Services (AD FS), and StorageGRID that are used for single sign-on (SSO) requests.
 a|
-*CONFIGURATION* > *Access Control* > *Single sign-on*
+*CONFIGURATION* > *Access control* > *Single sign-on*
 a|
 xref:configuring-sso.adoc[Configure single sign-on]
 a|
@@ -345,7 +345,7 @@ Authenticates the connection between an SMTP email server and StorageGRID that i
 a|
 *ALERTS* > *Email setup*
 a|
-xref:../monitor/managing-alerts.adoc#setting-up-email-notifications-for-alerts[Set up email notifications for alerts]
+xref:../monitor/set-up-email-alert-notifications.adoc[Set up email notifications for alerts]
 a|
 |===
 
@@ -359,7 +359,7 @@ a|
 Authenticates the connection between an external syslog server that logs events and StorageGRID.
 
 a|
-*CONFIGURATION* > *Monitoring* > *Audit messages* and then select *Configure external syslog server*
+*CONFIGURATION* > *Monitoring* > *Audit and syslog server* and then select *Configure external syslog server*
 a|
 
 xref:../audit/configuring-syslog-server.adoc[Using a syslog server certificate]

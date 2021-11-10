@@ -11,13 +11,13 @@ summary: 'Storage Nodes manage and store object data and metadata. Each StorageG
 [.lead]
 Storage Nodes manage and store object data and metadata. Each StorageGRID system must have at least three Storage Nodes. If you have multiple sites, each site within your StorageGRID system must also have three Storage Nodes.
 
-A Storage Node includes the services and processes required to store, move, verify, and retrieve object data and metadata on disk. You can view detailed information about the Storage Nodes on the *Nodes* page.
+A Storage Node includes the services and processes required to store, move, verify, and retrieve object data and metadata on disk. You can view detailed information about the Storage Nodes on the *NODES* page.
 
 == What is the ADC service?
 
 The Administrative Domain Controller (ADC) service authenticates grid nodes and their connections with each other. The ADC service is hosted on each of the first three Storage Nodes at a site.
 
-The ADC service maintains topology information including the location and availability of services. When a grid node requires information from another grid node or an action to be performed by another grid node, it contacts an ADC service to find the best grid node to process its request. In addition, the ADC service retains a copy of the StorageGRID deployment's configuration bundles, allowing any grid node to retrieve current configuration information.You can view ADC information for a Storage Node on the Grid Topology page (*Support* > *Grid Topology*).
+The ADC service maintains topology information including the location and availability of services. When a grid node requires information from another grid node or an action to be performed by another grid node, it contacts an ADC service to find the best grid node to process its request. In addition, the ADC service retains a copy of the StorageGRID deployment's configuration bundles, allowing any grid node to retrieve current configuration information.You can view ADC information for a Storage Node on the Grid Topology page (*SUPPORT* > *Grid topology*).
 
 To facilitate distributed and islanded operations, each ADC service synchronizes certificates, configuration bundles, and information about services and topology with the other ADC services in the StorageGRID system.
 
@@ -79,7 +79,7 @@ You can use the Diagnostics page to obtain additional information on the current
 
 === ILM activity
 
-Information lifecycle management (ILM) metrics allow you to monitor the rate at which objects are evaluated for ILM implementation. You can view these metrics on the Dashboard or at *Nodes* > *_Storage Node_* > *ILM*.
+Information lifecycle management (ILM) metrics allow you to monitor the rate at which objects are evaluated for ILM implementation. You can view these metrics on the Dashboard or at *NODES* > *_Storage Node_* > *ILM*.
 
 === Object stores
 

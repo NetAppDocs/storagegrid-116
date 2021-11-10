@@ -14,12 +14,12 @@ StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog tr
 == Kathy's what's new changes
 
 === Support for multiple VLAN interfaces
-You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *VLAN interfaces*).
+You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *Network* > *VLAN interfaces*).
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
 
-=== Updates to HA groups
+=== Updates to high availability (HA) groups
 The user interface for creating an HA group was revised.
 
 A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
@@ -28,7 +28,7 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
 
-=== Updates to load balance endpoints
+=== Updates to load balancer endpoints
 
 The user interface for creating a load balancer endpoint was revised.
 
@@ -45,7 +45,7 @@ A new *Check for software updates* check box was added to the AutoSupport page (
 The Grid Manager user interface has been redesigned.
 
 * New sidebar
-* New menu structure
+* New menu structure. CONFIGURATION menu reorganized with new section for Security.
 * New Nodes page
 * New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
@@ -53,12 +53,21 @@ The Grid Manager user interface has been redesigned.
 
 The following new alerts were added for StorageGRID 11.6:
 
+* Audit logs are being added to the in-memory queue
+* Cassandra table corruption
 * EC rebalance failure
 * EC repair failure
+* External syslog CA certificate expiration
+* External syslog client certificate expiration
+* External syslog server certificate expiration
+* External syslog server forwarding error
 * Identity federation synchronization failure for a tenant
+* Logs are being added to the on-disk queue
+* Object existence check failed
+* Object existence check stalled
 
 .Learn more
-* xref:../monitor/index.adoc[Monitor & troubleshoot]
+* xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 === Changes to the ORLM audit message
 A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BUID field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
@@ -87,10 +96,14 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 === Updates to Tenant Accounts permission
 Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
 
-.Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+=== New "Estimated time to completion" chart for EC rebalance and EC repair jobs
+You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
 
+=== Diagnostics page sorted by severity
+The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
 
+=== Parallel S3 multipart downloads 
+//get information from Raptor team
 
 == Kevin's what's new changes
 
@@ -108,10 +121,25 @@ Security certificate information and access has been consolidated in a single lo
 .Learn more
 * xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates] 
 
+=== Default bucket retention period for S3 Object Lock
+
+If the S3 Object Lock default retention mode is enabled for a bucket, you can specify a default retention period for each object that you add to the bucket.
+
+.Learn more
+* xref:../s3/using-s3-object-lock.adoc[Using S3 Object Lock] 
+
+=== Google Cloud Platform (GCP) support
+
+You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the Cloud Mirror platform service.
+
+.Learn more
+* xref:..tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
+* xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
+
 == Lisa's what's new changes
 
 === Object existence check added to maintenance tasks
-The foreground verification feature was renamed to object existence check. This feature has been redesigned to reduce runtime by at least three times. The redesign also allows for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
+The foreground verification feature has been renamed to object existence check. This feature has been redesigned to reduce runtime by at least three times. The redesign also allows for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
 
 === Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
@@ -126,7 +154,20 @@ If you are installing or upgrading to StorageGRID 11.6, the maximum allowed meta
 
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
 
+== S3 Select feature added
+
+S3 tenants can now issue S3 Select requests to perform SQL queries on individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data.
+
+Learn more:
+
+xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
+
+xref:../s3/use-s3-select.adoc[Use S3 Select]
+
 == Paul's what's new changes
+
+=== Ability to change node console passwords
+You now can use the Grid Manager to change the node console passwords used to access nodes (*CONFIGURATION* > *Security* > *Grid passwords*). 
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]

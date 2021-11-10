@@ -2,19 +2,18 @@
 permalink: monitor/troubleshooting-metadata-issues.html
 sidebar: sidebar
 keywords:
-summary: 'There are several tasks you can perform to help determine the source of metadata problems.'
+summary: 'You can perform several tasks to help determine the source of metadata problems.'
 ---
-
-= Troubleshooting metadata issues
+= Troubleshoot metadata issues
 :experimental:
 :icons: font
 :imagesdir: ../media/
 
 
 [.lead]
-There are several tasks you can perform to help determine the source of metadata problems.
+You can perform several tasks to help determine the source of metadata problems.
 
-== Troubleshooting the Low metadata storage alert
+== Troubleshoot the Low metadata storage alert
 
 If the *Low metadata storage* alert is triggered, you must add new Storage Nodes.
 
@@ -27,6 +26,8 @@ StorageGRID reserves a certain amount of space on volume 0 of each Storage Node 
 image::../media/metadata_allowed_space_volume_0.png[Metadata Allowed Space Volume 0]
 
 If object metadata consumes more than 100% of the space allowed for metadata, database operations cannot run efficiently and errors will occur.
+
+You can xref:monitoring-object-metadata-capacity-for-each-storage-node.adoc[Monitor object metadata capacity for each Storage Node] to help you anticipate errors and correct them before they occur.
 
 StorageGRID uses the following Prometheus metric to measure how full the allowed metadata space is:
 
@@ -50,22 +51,16 @@ image::../media/cdlp_dashboard_alarm.gif[Metadata Dashboard Alarm]
 IMPORTANT: If the size of volume 0 is smaller than the Metadata Reserved Space storage option (for example, in a non-production environment), the calculation for the *Low metadata storage* alert might be inaccurate.
 
 .Steps
-. Select *Alerts* > *Current*.
+. Select *ALERTS* > *Current*.
 . From the table of alerts, expand the *Low metadata storage* alert group, if required, and select the specific alert you want to view.
 . Review the details in the alert dialog box.
 . If a major or critical *Low metadata storage* alert has been triggered, perform an expansion to add Storage Nodes immediately.
 +
-NOTE: Because StorageGRID keeps complete copies of all object metadata at each site, the metadata capacity of the entire grid is limited by the metadata capacity of the smallest site. If you need to add metadata capacity to one site, you should also expand any other sites by the same number of Storage Nodes.
+NOTE: Because StorageGRID keeps complete copies of all object metadata at each site, the metadata capacity of the entire grid is limited by the metadata capacity of the smallest site. If you need to add metadata capacity to one site, you should also xref:../expand/index.adoc[expand any other sites] by the same number of Storage Nodes.
 +
 After you perform the expansion, StorageGRID redistributes the existing object metadata to the new nodes, which increases the overall metadata capacity of the grid. No user action is required. The *Low metadata storage* alert is cleared.
 
-.Related information
-
-xref:monitoring-object-metadata-capacity-for-each-storage-node.adoc[Monitoring object metadata capacity for each Storage Node]
-
-xref:../expand/index.adoc[Expand your grid]
-
-== Troubleshooting the Services: Status - Cassandra (SVST) alarm
+== Troubleshoot the Services: Status - Cassandra (SVST) alarm
 
 The Services: Status - Cassandra (SVST) alarm indicates that you might need to rebuild the Cassandra database for a Storage Node. Cassandra is used as the metadata store for StorageGRID.
 
@@ -84,7 +79,7 @@ xref:running-diagnostics.adoc[Running diagnostics]
 IMPORTANT: If two or more of the Cassandra database services are down for more than 15 days, contact technical support, and do not proceed with the steps below.
 
 .Steps
-. Select *Support* > *Tools* > *Grid Topology*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
 . Select *_Site_* > *_Storage Node_* > *SSM* > *Services* > *Alarms* > *Main* to display alarms.
 +
 This example shows that the SVST alarm was triggered.
@@ -112,7 +107,7 @@ IMPORTANT: If two or more of the Cassandra database services are down, contact t
 You can determine how long Cassandra has been down by charting it or by reviewing the servermanager.log file.
 
 . To chart Cassandra:
- .. Select *Support* > *Tools* > *Grid Topology*. Then select *_Site_* > *_Storage Node_* > *SSM* > *Services* > *Reports* > *Charts*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*. Then select *_Site_* > *_Storage Node_* > *SSM* > *Services* > *Reports* > *Charts*.
  .. Select *Attribute* > *Service: Status - Cassandra*.
  .. For *Start Date*, enter a date that is at least 16 days before the current date. For *End Date*, enter the current date.
  .. Click *Update*.
@@ -154,9 +149,9 @@ For instructions, see "`Recovering from a single Storage Node down more than 15 
 
 .Related information
 
-xref:../maintain/index.adoc[Maintain & recover]
+xref:../maintain/index.adoc[Recover and maintain]
 
-== Troubleshooting Cassandra Out of Memory errors (SMTT alarm)
+== Troubleshoot Cassandra Out of Memory errors (SMTT alarm)
 
 A Total Events (SMTT) alarm is triggered when the Cassandra database has an out-of-memory error. If this error occurs, contact technical support to work through the issue.
 
@@ -164,10 +159,10 @@ A Total Events (SMTT) alarm is triggered when the Cassandra database has an out-
 If an out-of-memory error occurs for the Cassandra database, a heap dump is created, a Total Events (SMTT) alarm is triggered, and the Cassandra Heap Out Of Memory Errors count is incremented by one.
 
 .Steps
-. To view the event, select *Nodes* > *_grid node_* > *Events*.
+. To view the event, select *SUPPORT* > *Tools* > *Grid topology* > *Configuration*.
 . Verify that the Cassandra Heap Out Of Memory Errors count is 1 or greater.
 +
-You can use the Diagnostics page to obtain additional information on the current state of your grid.
+You can use the *SUPPORT* > *Tools* > *Diagnostics* page to obtain additional information on the current state of your grid.
 +
 xref:running-diagnostics.adoc[Running diagnostics]
 
@@ -176,10 +171,6 @@ xref:running-diagnostics.adoc[Running diagnostics]
 +
 This file can be as large as 24 GB, so you should remove it to free up space.
 
-. Once the issue is resolved, click *Reset event counts*.
+. After the issue is resolved, select the *Reset* check box for the Cassandra Heap Out Of Memory Errors count. Then select *Apply Changes*.
 +
 NOTE: To reset event counts, you must have the Grid Topology Page Configuration permission.
-
-.Related information
-
-xref:resetting-event-counts.adoc[Resetting event counts]

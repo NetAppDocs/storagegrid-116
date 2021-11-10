@@ -1,0 +1,63 @@
+---
+permalink: s3/select-object-content.html
+sidebar: sidebar
+keywords: 
+summary: 'You can use the S3 SELECT Object content request to filter the contents of an S3 object based on a simple SQL statement.'
+---
+= SELECT Object content
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the S3 SELECT Object content request to filter the contents of an S3 object based on a simple SQL statement.
+
+For more information see the xref:https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html[AWS documentation for SelectObjectContent^]
+
+.What you'll need
+
+* The tenant account has the S3 Select permission.
+* You have `s3:GetObject` permission for the object you want to query.
+* The object you want to query is in CSV format, or is a GZIP or BZIP2 compressed file containing a CSV formatted file. 
+* Your SQL expression has a maximum length of 256 KB.
+* Any record in the input or results has a maximum length of 1 MiB.
+
+== Request syntax example
+
+----
+POST /{Key+}?select&select-type=2 HTTP/1.1
+Host: Bucket.s3.abc-company.com
+x-amz-expected-bucket-owner: ExpectedBucketOwner
+<?xml version="1.0" encoding="UTF-8"?>
+<SelectObjectContentRequest xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <Expression>string</Expression>
+   <ExpressionType>string</ExpressionType>
+   <RequestProgress>
+      <Enabled>boolean</Enabled>
+   </RequestProgress>
+   <InputSerialization>
+      <CompressionType>GZIP</CompressionType>
+      <CSV>
+         <AllowQuotedRecordDelimiter>boolean</AllowQuotedRecordDelimiter>
+         <Comments>string</Comments>
+         <FieldDelimiter>\n</FieldDelimiter>
+         <FileHeaderInfo>USE</FileHeaderInfo>
+         <QuoteCharacter>\t</QuoteCharacter>
+         <QuoteEscapeCharacter>e</QuoteEscapeCharacter>
+         <RecordDelimiter>r</RecordDelimiter>
+      </CSV>
+   </InputSerialization>
+   <OutputSerialization>
+      <CSV>
+         <FieldDelimiter>string</FieldDelimiter>
+         <QuoteCharacter>string</QuoteCharacter>
+         <QuoteEscapeCharacter>string</QuoteEscapeCharacter>
+         <QuoteFields>string</QuoteFields>
+         <RecordDelimiter>string</RecordDelimiter>
+      </CSV>
+   </OutputSerialization>
+   <ScanRange>
+      <End>long</End>
+      <Start>long</Start>
+   </ScanRange>
+</SelectObjectContentRequest>
+----

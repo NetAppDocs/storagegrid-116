@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, locate, identify, find, replace, replacing, replacement 
 summary: 'If you are unsure which Fibre Channel host bus adapter \(HBA\) to replace, complete this procedure to identify it.'
 ---
-= Verifying the Fibre Channel HBA to replace
+= Verify the Fibre Channel HBA to replace
 :icons: font
 :imagesdir: ../media/
 
@@ -21,13 +21,13 @@ NOTE: If the serial number of the storage appliance containing the Fibre Channel
 
 .Steps
 
-. From the Grid Manager, select *Nodes*.
+. From the Grid Manager, select *NODES*.
 . From the table on the Nodes page, select an appliance Storage Node.
 . Select the *Hardware* tab.
 +
 Check the *Storage appliance chassis serial number* and the *Compute controller serial number* in the StorageGRID Appliance section. See if one of these serial numbers matches the serial number of the storage appliance where you are replacing the Fibre Channel HBA. If either serial number matches, you have found the correct appliance.
 +
-image::../media/sg6060_sg_mgr_appliance_section_for_fibre_channel_hca.png[Appliance section for Fibre Channel HCA]
+image::../media/nodes_page_hardware_tab_for_appliance_verify_HBA.png[Appliance section for Fibre Channel HCA]
 
  ** If the StorageGRID Appliance section does not display, the node selected is not a StorageGRID appliance. Select a different node from the tree view.
  ** If the Appliance Model is not SG6060, select a different node from the tree view.
@@ -37,7 +37,7 @@ image::../media/sg6060_sg_mgr_appliance_section_for_fibre_channel_hca.png[Applia
 +
 You can use this IP address to turn on the compute controller identify LED, to help you locate the appliance in the data center.
 +
-xref:turning-controller-identify-led-on-and-off.adoc[Turning the controller identify LED on and off]
+xref:turning-controller-identify-led-on-and-off.adoc[Turn the controller identify LED on and off]
 
 .Related information
 

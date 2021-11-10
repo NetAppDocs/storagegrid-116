@@ -40,7 +40,7 @@ mybucket/f8e3-image3132.jpg
 
 == Recommendations for "`range reads`"
 
-If the *Compress Stored Objects* option is selected (*Configuration* > *Grid Options*), S3 client applications should avoid performing GET Object operations that specify a range of bytes be returned. These "`range read`" operations are inefficient because StorageGRID must effectively uncompress the objects to access the requested bytes. GET Object operations that request a small range of bytes from a very large object are especially inefficient; for example, it is very inefficient to read a 10 MB range from a 50 GB compressed object.
+If the *Compress Stored Objects* option is selected (*CONFIGURATION* > *System* > *Grid options*), S3 client applications should avoid performing GET Object operations that specify a range of bytes be returned. These "`range read`" operations are inefficient because StorageGRID must effectively uncompress the objects to access the requested bytes. GET Object operations that request a small range of bytes from a very large object are especially inefficient; for example, it is very inefficient to read a 10 MB range from a 50 GB compressed object.
 
 If ranges are read from compressed objects, client requests can time out.
 
@@ -48,8 +48,8 @@ NOTE: If you need to compress objects and your client application must use range
 
 .Related information
 
-xref:consistency-controls.adoc[Consistency controls]
+* xref:consistency-controls.adoc[Consistency controls]
 
-xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket consistency request]
+* xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket consistency request]
 
-xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../admin/index.adoc[Administer StorageGRID]
