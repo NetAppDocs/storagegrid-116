@@ -120,6 +120,8 @@ You can:
 
 The load balancer endpoint table has a row for each configured load balancer endpoint and indicates whether the global S3 and Swift API certificate or a custom load balancer endpoint certificate is being used for the endpoint. The expiration date for each certificate also displays.
 
+NOTE: Changes to an endpoint certificate can take up to 15 minutes to be applied to all nodes.
+
 You can:
 
 * xref:configuring-load-balancer-endpoints.adoc[Select an endpoint name to open a browser tab with information about the load balancer endpoint, including its certificate details.]
@@ -356,7 +358,7 @@ a|
 a|
 Server
 a|
-Authenticates the TLS or RELP/TLS connection between an external syslog server that logs events and StorageGRID.
+Authenticates the TLS or RELP/TLS connection between an external syslog server that logs events in StorageGRID.
 
 *Note:* An external syslog server certificate is not required for TCP, RELP/TCP, and UDP connections to an external syslog server.
 
