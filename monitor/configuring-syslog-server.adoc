@@ -50,7 +50,6 @@ image::../media/audit-message-configure-syslog-server.png[Configure external sys
 
 === Enter syslog server address information
 The Configure external syslog server page appears: 
-//banner always there?
 
 image::../media/enter-syslog-info.png[Enter syslog info]
 
@@ -74,7 +73,6 @@ Using a certificate secures the connections between your grid and the external s
 //get description
 * *Client certificate*: The certificate file in PEM encoding.
 * *Client private key*: The custom server certificate private key file.
-//other extensions?
 
 +
 NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 bits or larger.
@@ -117,7 +115,7 @@ NOTE: If you use a client certificate you must also use a client private key.
 ** raft.log
 ** hagroups.log 
 
-. Use the dropdowns to select the severity and facility (type of message) for the category of information you want to send. 
+. Use the dropdowns to select the severity and facility (type of message) for the category of audit information you want to send. 
 
 Audit logs
 //add tables and finish
@@ -137,8 +135,6 @@ Otherwise, enter the severity value you want to use for all severity event messa
 •	6 - Informational: Informational messages
 •	7 - Debug: Debug-level messages
 
-
-
 . Select *Continue*.
 
 === Send test messages
@@ -152,7 +148,7 @@ IMPORTANT: Do not use the syslog server configuration until you confirm that the
  +
  Test results continuously appear on the page until you stop the test. While the test is in progress, your audit messages continue to be sent to your previously configured destinations. 
 
- . If you received any errors, correct them and select *send test messages* again. See xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server] to help you resolve errors.
+ . If you received any errors, correct them and select *Send test messages* again. See xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server] to help you resolve errors.
 
 //when does this warning appear: One or more external syslog servers have already been configured using the Grid Management API. Use the syslog-export API if you need to make changes. Any settings on this page will override all API customizations. 
 

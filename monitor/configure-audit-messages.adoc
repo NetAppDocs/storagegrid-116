@@ -56,6 +56,8 @@ By default, this level is set to Normal.
 
 NOTE: These defaults apply if you initially installed StorageGRID using version 10.3 or later. If you have upgraded from an earlier version of StorageGRID, the default for all categories is set to Normal.
 
+//still true?
+
 NOTE: During upgrades, audit level configurations will not be effective immediately.
 
 .Steps
@@ -94,6 +96,8 @@ The messages included for any particular level include those that would be logge
 //Optional? how many headers can be added? why use headers? Such? 
 +
 NOTE: Audit protocol headers apply to S3 and Swift requests only.
+
+//Still true?
 +
 When such HTTP headers are found in a request, they are included in the audit message under the field HTRH.
 +
@@ -135,6 +139,7 @@ You can specify where security event logs, application logs, and audit message l
 
 |Local nodes only
 |No audit messages are sent to an Admin Node or remote syslog server. Audit messages and other logs are saved only on the nodes that generated them. StorageGRID periodically removes these logs to free up space.
+//how often?
 
 |===
 NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
@@ -142,6 +147,7 @@ NOTE: Audit information generated on every local node is stored in `/var/local/l
 . Click *Save*. 
 
 A green banner appears notifying you that your audit configuration has been saved successfully. 
+//audit messages with the new configuration and destination are sent immediately
 
 .Related information
 
