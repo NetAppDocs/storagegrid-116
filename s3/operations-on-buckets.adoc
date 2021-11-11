@@ -258,6 +258,8 @@ PUT Object Lock Configuration
 a|
 This operation configures or removes the bucket default retention mode and default retention period.
 
+If the default retention period is modified, the retain-until-date of existing object versions remains the same and is not recalculated using the new default retention period.
+
 See <<PUT Object Lock Configuration>> for detailed information.
 |===
 
