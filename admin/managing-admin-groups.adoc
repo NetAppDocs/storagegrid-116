@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing-admin-groups.html
 sidebar: sidebar
-keywords: what is admin group, user permissions
+keywords: what are admin groups, user permissions
 summary: 'You can create admin groups to manage the security permissions for one or more admin users. Users must belong to a group to be granted access to the StorageGRID system.'
 ---
 = Manage admin groups
@@ -82,11 +82,16 @@ NOTE: If a user belongs to multiple groups and any group is set to *Read-only*, 
 +
 You must assign at least one permission to each group; otherwise, users belonging to the group will not be able to sign in to StorageGRID.
 
-. Select *Create group*.
-+
-The new group is created. If this is a local group, you can now xref:managing-local-users.adoc[add one or more users]. If this is a federated group, the identity source manages which users belong to the group.
+. If you are creating a local group, select *Continue*. If you are creating a federated group, select *Create group* and *Finish*.
 
-. Select *Finish*.
+=== Add users (local groups only)
+
+. Optionally, select one or more local users for this group.
++
+If you have not yet created local users, you can save the group without adding users. You can then select this group on the Users page. See 
+xref:managing-admin-groups.adoc[Manage users] for details.
+
+. Select *Create group* and *Finish*.
 
 == View and edit admin groups
 
@@ -94,15 +99,19 @@ You can view details for existing groups, modify a group, or duplicate a group.
 
 * To view basic information for all groups, review the table on the Groups page. 
 
-* To view all details for a specific group, select the group's name in the table.
-
-
-* To edit a group, use the *Actions* menu on the Groups page or the details page for a specific group.
+* To view all details for a specific group or to edit a group, use the *Actions* menu or the details page.
 
 +
 [cols="1a, 2a,2a" options="header"]
 |===
 |Task | Actions menu | Details page
+
+|View group details
+
+|.. Select the check box for the group. 
+.. Select *Actions* > *View group details*.
+
+|Select the group name in the table.
 
 
 |Edit display name (local groups only)
@@ -117,18 +126,18 @@ You can view details for existing groups, modify a group, or duplicate a group.
 .. Enter the new name.
 .. Select *Save changes*.
 
-|Edit permissions
+|Edit access mode or permissions
 
 |.. Select the check box for the group. 
-.. Select *Actions* > *View group*.
+.. Select *Actions* > *View group details*.
 .. Optionally, change the group's Access mode.
-.. Select or unselect <<Group permissions>>.
+.. Optionally, select or unselect <<Group permissions>>.
 .. Select *Save changes*.
 
 |.. Select the group name to display the details.
 .. Select the edit icon image:../media/icon_edit_tm.png[Edit icon].
 .. Optionally, change the group's Access mode.
-.. Select or unselect <<Group permissions>>.
+.. Optionally, select or unselect <<Group permissions>>.
 .. Select *Save changes*.
 
 |===
@@ -154,7 +163,7 @@ You can delete an admin group when you want to remove the group from the system,
 
 When creating admin user groups, you select one or more permissions to control access to specific features of the Grid Manager. You can then assign each user to one or more of these admin groups to determine which tasks that user can perform.
 
-You must assign at least one permission to each group; otherwise, users belonging to that group will not be able to sign in to the Grid Manager.
+You must assign at least one permission to each group; otherwise, users belonging to that group will not be able to sign in to the Grid Manager or the Grid Management API.
 
 By default, any user who belongs to a group that has at least one permission can perform the following tasks:
 
@@ -171,9 +180,9 @@ By default, any user who belongs to a group that has at least one permission can
 
 For all permissions, the group's *Access mode* setting determines whether users can change settings and perform operations or whether they can only view the related settings and features. If a user belongs to multiple groups and any group is set to *Read-only*, the user will have read-only access to all selected settings and features.
 
-The following sections describe the permissions you can assign when creating or editing an admin group. Any functionality not explicitly mentioned requires the Root Access permission.
+The following sections describe the permissions you can assign when creating or editing an admin group. Any functionality not explicitly mentioned requires the *Root access* permission.
 
-=== Root Access
+=== Root access
 
 This permission provides access to all grid administration features.
 
@@ -187,7 +196,7 @@ If you want a user to monitor grid topology and acknowledge alarms only, you sho
 
 This permission provides access to the *Change root password* option on the Tenants page, allowing you to control who can change the password for the tenant's local root user. This permission is also used for migrating S3 keys when the S3 key import feature is enabled. Users who do not have this permission cannot see the *Change root password* option.
 
-NOTE: You must assign the Tenant Accounts permission to the group before you can assign this permission.
+NOTE: You must assign the *Tenant accounts* permission to the group before you can assign this permission.
 
 === Grid topology page configuration
 
