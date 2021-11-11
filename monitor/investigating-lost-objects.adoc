@@ -4,8 +4,7 @@ sidebar: sidebar
 keywords: lost objects, investigating, objects
 summary: 'When the *Objects lost* alert is triggered, you must investigate immediately. Collect information about the affected objects and contact technical support.'
 ---
-
-= Investigating lost objects
+= Investigate lost objects
 :experimental:
 :icons: font
 :imagesdir: ../media/
@@ -19,22 +18,20 @@ When the *Objects lost* alert is triggered, you must investigate immediately. Co
 * You must have the `Passwords.txt` file.
 
 .About this task
-The *Objects lost* alert and the LOST alarm indicate that StorageGRID believes that there are no copies of an object in the grid. Data might have been permanently lost.
+The *Objects lost* alert indicates that StorageGRID believes that there are no copies of an object in the grid. Data might have been permanently lost.
 
-Investigate lost object alarms or alerts immediately. You might need to take action to prevent further data loss. In some cases, you might be able to restore a lost object if you take prompt action.
-
-The number of Lost Objects can be seen in the Grid Manager.
+Investigate lost object alerts immediately. You might need to take action to prevent further data loss. In some cases, you might be able to restore a lost object if you take prompt action.
 
 .Steps
 . Select *NODES*.
 . Select *_Storage Node_* > *Objects*.
-. Review the number of Lost Objects shown in the Object Counts table.
+. Review the number of Lost objects shown in the Object counts table.
 +
-This number indicates the total number of objects this grid node detects as missing from the entire StorageGRID system. The value is the sum of the Lost Objects counters of the Data Store component within the LDR and DDS services.
+This number indicates the total number of objects this grid node detects as missing from the entire StorageGRID system. The value is the sum of the Lost objects counters of the Data store component within the LDR and DDS services.
 +
 image::../media/nodes_storage_nodes_objects_page_lost_object.png[Nodes Storage Nodes Object Page lost object]
 
-. From an Admin Node, access the audit log to determine the unique identifier (UUID) of the object that triggered the *Objects lost* alert and the LOST alarm:
+. From an Admin Node, access the audit log to determine the unique identifier (UUID) of the object that triggered the *Objects lost* alert:
  .. Log in to the grid node:
   ... Enter the following command: `ssh admin@grid_node_IP`
   ... Enter the password listed in the `Passwords.txt` file.
@@ -155,10 +152,10 @@ ade 12448208: / > /proc/OBRP/ObjectByUUID 926026C4-00A4-449B-AC72-BCCA72DD1311
 |No object found ("ERROR":"" )
 |If the object is not found, the message "ERROR":"" is returned.
 
-If the object is not found, it is safe to ignore the alarm. The lack of an object indicates that the object was intentionally deleted.
+If the object is not found, you can reset the count of *Objects lost* to clear the alert. The lack of an object indicates that the object was intentionally deleted.
 
 |Locations > 0
-|If there are locations listed in the output, the Lost Objects alarm might be a false positive.
+|If there are locations listed in the output, the *Objects lost* alert might be a false positive.
 
 Confirm that the objects exist. Use the Node ID and filepath listed in the output to confirm that the object file is in the listed location.
 
@@ -166,7 +163,7 @@ Confirm that the objects exist. Use the Node ID and filepath listed in the outpu
 
 xref:troubleshooting-storagegrid-system.adoc[Searching for and restoring potentially lost objects]
 
-If the objects exist, you can reset the count of Lost Objects to clear the alarm and the alert.
+If the objects exist, you can reset the count of *Objects lost* to clear the alert.
 
 
 |Locations = 0

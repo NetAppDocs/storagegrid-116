@@ -21,12 +21,13 @@ Each HA group provides access to the shared services on the selected nodes.
 
 * HA groups that include only Admin Nodes provide highly available connections to the Grid Manager and the Tenant Manager.
 
+* If S3 tenants will use S3 Select, you must select SG100 or SG1000 appliance or VMware-based software nodes for the HA group that will be used in the LB endpoint. HA groups are not required, but are recommended when using S3 Select.
 
 == How do you create an HA group?
 . You select a network interface for one or more Admin Nodes or Gateway Nodes. The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network.
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
-
++
 . You assign one to 10 virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
 
 . You specify one interface to be the Primary interface. The Primary interface is the active interface unless a failure occurs.
