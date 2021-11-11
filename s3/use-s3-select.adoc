@@ -9,11 +9,13 @@ summary: 'StorageGRID supports the following AWS S3 Select clauses, data types, 
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID supports the following AWS S3 Select clauses, data types, operators, and reserved keywords for the xref:select-object-content.adoc[SELECT Object content command].
+StorageGRID supports the following AWS S3 Select clauses, data types, and operators for the xref:select-object-content.adoc[SelectObjectContent command].
 
-For syntax, see xref:select-object-content.adoc[SELECT Object content]. For more information about S3 Select, see the xref:https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html[AWS documentation for S3 Select].
+*NOTE*: Any items not listed are not supported.
 
-Consult xref:manage-s3-select-for-tenant-accounts.adoc[this list of considerations and requirements for using S3 Select].
+For syntax, see xref:select-object-content.adoc[SelectObjectContent]. For more information about S3 Select, see the xref:https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html[AWS documentation for S3 Select^].
+
+Only tenant accounts that have S3 Select enabled can issue SelectObjectContent queries. See the xref:../admin/manage-s3-select-for-tenant-accounts.adoc[considerations and requirements for using S3 Select].
 
 == Clauses
 
@@ -21,8 +23,6 @@ Consult xref:manage-s3-select-for-tenant-accounts.adoc[this list of consideratio
 * FROM clause
 * WHERE clause
 * LIMIT clause
-
-The ScanRange clause is not supported.
 
 == Data types
 
@@ -52,7 +52,7 @@ The ScanRange clause is not supported.
 * <>
 * !=
 * BETWEEN
-* IN – For example: IN ('a', 'b', 'c')
+* IN
 
 === Pattern matching operators
 
@@ -74,14 +74,6 @@ The ScanRange clause is not supported.
 * %
 
 StorageGRID follows the AWS S3 Select operator precedence.
-
-== Reserved keywords
-
-* Column Name
-
-* Column Number
-
-The `missing` keyword is not supported.
 
 == Aggregate functions
 

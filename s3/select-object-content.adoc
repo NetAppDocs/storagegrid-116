@@ -2,16 +2,16 @@
 permalink: s3/select-object-content.html
 sidebar: sidebar
 keywords: 
-summary: 'You can use the S3 SELECT Object content request to filter the contents of an S3 object based on a simple SQL statement.'
+summary: 'You can use the S3 SelectObjectContent request to filter the contents of an S3 object based on a simple SQL statement.'
 ---
-= SELECT Object content
+= SelectObjectContent
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can use the S3 SELECT Object content request to filter the contents of an S3 object based on a simple SQL statement.
+You can use the S3 SelectObjectContent request to filter the contents of an S3 object based on a simple SQL statement.
 
-For more information see the xref:https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html[AWS documentation for SelectObjectContent^]
+For more information see the xref:https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html[AWS documentation for SelectObjectContent^].
 
 .What you'll need
 
@@ -23,6 +23,7 @@ For more information see the xref:https://docs.aws.amazon.com/AmazonS3/latest/AP
 
 == Request syntax example
 
+[source,asciidoc]
 ----
 POST /{Key+}?select&select-type=2 HTTP/1.1
 Host: Bucket.s3.abc-company.com
@@ -64,24 +65,38 @@ x-amz-expected-bucket-owner: ExpectedBucketOwner
 
 == SQL query example
 
-This query gets the state name, 2010 population, 2015 populations, and the percentage of change from census data. Records in the file that are not states are ignored.
+This query gets the state name, 2010 populations, estimated 2015 populations, and the percentage of change from US census data. Records in the file that are not states are ignored.
 
 ----
-SELECT STNAME, CENSUS2010POP, POPESTIMATE2015, CAST((POPESTIMATE2015 - CENSUS2010POP) AS DECIMAL) / CENSUS2010POP * 100.0 FROM S3Object WHERE NAME = STNAME
+SELECT STNAME, CENSUS2010POP, POPESTIMATE2015,
+CAST((POPESTIMATE2015 - CENSUS2010POP) AS DECIMAL) / CENSUS2010POP * 100.0
+FROM S3Object WHERE NAME = STNAME
 ----
 
 The first few lines of the file to be queried, `SUB-EST2020_ALL.csv`, look like this:
 
 ----
-SUMLEV,STATE,COUNTY,PLACE,COUSUB,CONCIT,PRIMGEO_FLAG,FUNCSTAT,NAME,STNAME,CENSUS2010POP,ESTIMATESBASE2010,POPESTIMATE2010,POPESTIMATE2011,POPESTIMATE2012,POPESTIMATE2013,POPESTIMATE2014,POPESTIMATE2015,POPESTIMATE2016,POPESTIMATE2017,POPESTIMATE2018,POPESTIMATE2019,POPESTIMATE042020,POPESTIMATE2020
-040,01,000,00000,00000,00000,0,A,Alabama,Alabama,4779736,4780118,4785514,4799642,4816632,4831586,4843737,4854803,4866824,4877989,4891628,4907965,4920706,4921532
-162,01,000,00124,00000,00000,0,A,Abbeville city,Alabama,2688,2705,2699,2694,2645,2629,2610,2602,2587,2578,2565,2555,2555,2553
-162,01,000,00460,00000,00000,0,A,Adamsville city,Alabama,4522,4487,4481,4474,4453,4430,4399,4371,4335,4304,4285,4254,4224,4211
+SUMLEV,STATE,COUNTY,PLACE,COUSUB,CONCIT,PRIMGEO_FLAG,FUNCSTAT,NAME,STNAME,CENSUS2010POP,
+ESTIMATESBASE2010,POPESTIMATE2010,POPESTIMATE2011,POPESTIMATE2012,POPESTIMATE2013,POPESTIMATE2014,
+POPESTIMATE2015,POPESTIMATE2016,POPESTIMATE2017,POPESTIMATE2018,POPESTIMATE2019,POPESTIMATE042020,POPESTIMATE2020
+040,01,000,00000,00000,00000,0,A,Alabama,Alabama,4779736,4780118,4785514,4799642,4816632,4831586,4843737,4854803,
+4866824,4877989,4891628,4907965,4920706,4921532
+162,01,000,00124,00000,00000,0,A,Abbeville city,Alabama,2688,2705,2699,2694,2645,2629,2610,2602,2587,2578,2565,
+2555,2555,2553
+162,01,000,00460,00000,00000,0,A,Adamsville city,Alabama,4522,4487,4481,4474,4453,4430,4399,4371,4335,4304,
+4285,4254,4224,4211
 162,01,000,00484,00000,00000,0,A,Addison town,Alabama,758,754,751,750,745,744,742,734,734,728,725,723,719,717
 ----
 
 == AWS-CLI usage example
 
 ----
-aws s3api select-object-content --endpoint-url https://10.224.7.44:10443 --no-verify-ssl  --bucket 619c0755-9e38-42e0-a614-05064f74126d --key SUB-EST2020_ALL.csv --expression-type SQL --input-serialization '{"CSV": {"FileHeaderInfo": "USE", "Comments": "#", "QuoteEscapeCharacter": "\"", "RecordDelimiter": "\n", "FieldDelimiter": ",", "QuoteCharacter": "\"", "AllowQuotedRecordDelimiter": false}, "CompressionType": "NONE"}' --output-serialization '{"CSV": {"QuoteFields": "ASNEEDED", "QuoteEscapeCharacter": "#", "RecordDelimiter": "\n", "FieldDelimiter": ",", "QuoteCharacter": "\""}}' --expression "SELECT STNAME, CENSUS2010POP, POPESTIMATE2015, CAST((POPESTIMATE2015 - CENSUS2010POP) AS DECIMAL) / CENSUS2010POP * 100.0 FROM S3Object WHERE NAME = STNAME" changes.csv
+aws s3api select-object-content --endpoint-url https://10.224.7.44:10443 --no-verify-ssl
+--bucket 619c0755-9e38-42e0-a614-05064f74126d --key SUB-EST2020_ALL.csv --expression-type SQL 
+--input-serialization '{"CSV": {"FileHeaderInfo": "USE", "Comments": "#", "QuoteEscapeCharacter": "\"",
+"RecordDelimiter": "\n", "FieldDelimiter": ",", "QuoteCharacter": "\"", "AllowQuotedRecordDelimiter": false},
+"CompressionType": "NONE"}' --output-serialization '{"CSV": {"QuoteFields": "ASNEEDED", "QuoteEscapeCharacter": "#",
+"RecordDelimiter": "\n", "FieldDelimiter": ",", "QuoteCharacter": "\""}}' --expression "SELECT STNAME, CENSUS2010POP,
+POPESTIMATE2015, CAST((POPESTIMATE2015 - CENSUS2010POP) AS DECIMAL) / CENSUS2010POP * 100.0 FROM S3Object
+WHERE NAME = STNAME" changes.csv
 ----

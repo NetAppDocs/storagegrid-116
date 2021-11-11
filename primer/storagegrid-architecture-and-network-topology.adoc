@@ -309,6 +309,10 @@ Manages high availability Virtual IPs on nodes configured on the High Availabili
 +
 Federates user identities from LDAP and Active Directory. The Identity service (idnt) is present on three Storage Nodes at each site.
 
+* *Lambda Arbitrator Service*
++
+Manages S3 Select SelectObjectContent requests.
+
 * *Load Balancer service*
 +
 Provides load balancing of S3 and Swift traffic from clients to Storage Nodes. The Load Balancer service can be configured through the Load Balancer Endpoints configuration page. The Load Balancer service is present on Admin Nodes and Gateway Nodes. This service is also known as the nginx-gw service.
