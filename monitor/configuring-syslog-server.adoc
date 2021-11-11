@@ -21,7 +21,7 @@ If you want to save audit messages and a subset of logs to a location outside of
 
 .About this task
 
-If you want to send audit information to an external syslog server, you must configure it first. Local logs of audit records continue to be generated and stored when an external syslog server is used.
+If you want to send audit information to an external syslog server, you must configure it first. 
 
 Any of these types of logs can be sent to the external syslog server:
 
@@ -37,14 +37,17 @@ Sending audit information to an external syslog server enables you to:
 +
 CAUTION: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
 
++
+NOTE: Local logs of audit records continue to be generated and stored when an external syslog server is used.
+
 .Steps
 
 . Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
-//need update all screens
 
-== [[Access-the-syslog-server-configuration-wizard]]Access the syslog server configuration wizard
+[#Access-the-syslog-server-configuration-wizard]
+== Access the syslog server configuration wizard
 . From the Audit and syslog server page, Select *Configure external syslog server*.
 +
 image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
@@ -77,7 +80,7 @@ Reliable Event Logging Protocol (RELP), extends the functionality of the syslog 
 
 Using certificates helps secure the connections between your grid and the external syslog server. For more information, see xref:../admin/using-storagegrid-security-certificates.adoc[Using StorageGRID security certificates].
 
-When you select TLS or RELP/TLS as the protocol for your audit information, the following options appear:
+When you select *TLS* or *RELP/TLS* as the protocol for your audit information, the following options appear:
 
 * *Server CA certificates*: One or more trusted CA certificates for verifying the  external syslog server (in PEM encoding). If omitted, the default Grid CA certificate will be used. This may be a CA bundle. 
 * *Client certificate*: The client certificate for authentication to the external syslog server (in PEM encoding).
@@ -301,7 +304,7 @@ Test results continuously appear on the page until you stop the test. While the 
 . Check your syslog server to determine if test messages are being received and processed as expected. 
 
 +
-IMPORTANT: The UDP protocol does not allow for as much error detection as is available with the other protocol selections. If you are using UDP, be sure to check your entire log collection infrastructure.
+IMPORTANT: The UDP protocol does not allow for as rigorous error detection as is available with the other protocol selections. If you are using UDP, be sure to check your entire log collection infrastructure.
 
 . Select *Stop and finish*.
 
@@ -314,12 +317,12 @@ Your StorageGRID audit information is not sent to the external syslog server unt
 
 xref:../audit/audit-message-overview.adoc[Audit message overview]
 
-xref:../admin/system-audit-messages.adoc[System audit messages]
+xref:../audit/system-audit-messages.adoc[System audit messages]
 
-xref:../admin/object-storage-audit-messages.adoc[Object storage audit messages]
+xref:../audit/object-storage-audit-messages.adoc[Object storage audit messages]
 
-xref:../admin/management-audit-message.adoc[Management audit message]
+xref:../audit/management-audit-message.adoc[Management audit message]
 
-xref:../admin/client-read-audit-messages.adoc[Client read audit messages]
+xref:../audit/client-read-audit-messages.adoc[Client read audit messages]
 
 xref:../admin/index.adoc[Administer StorageGRID]

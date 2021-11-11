@@ -118,7 +118,8 @@ By default, audit messages are saved on Admin Nodes and logs are saved on the no
 +
 See xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server] to open the syslog server configuration wizard. 
 
-== [[Select-the-destination-for-audit-information]]Select audit information destinations
+[#Select-the-destination-for-audit-information]
+== Select audit information destinations
 You can specify where security event logs, application logs, and audit message logs are sent. 
 
 . Select the destination for audit information from the listed options: 
@@ -140,10 +141,11 @@ You can specify where security event logs, application logs, and audit message l
 |Audit messages are sent to the audit log on the Admin Node and the external syslog server, and saved on the local node. This option is enabled only after you have configured an external syslog server.
 
 |Local nodes only
-|No audit messages are sent to an Admin Node or remote syslog server. Audit messages and other logs are saved only on the nodes that generated them. StorageGRID periodically removes these logs to free up space.
-//how often?
+|No audit messages are sent to an Admin Node or remote syslog server. Audit messages and other logs are saved only on the nodes that generated them. 
 
+*Note*: StorageGRID periodically removes these local logs in a rotation to free up space. When the log file reaches 1 GB, the existing file is saved, and a new log file is started. The rotation limit for the log is 21 files. When the 22nd version of the log file is created, the oldest log file is deleted. On average about 20 GB of log data is stored.
 |===
+
 NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
 
 . Select *Save*.
@@ -168,13 +170,13 @@ New logs are sent to the destinations you selected. Existing logs remain in thei
 
 .Related information
 
-xref:../admin/system-audit-messages.adoc[System audit messages]
+xref:../audit/system-audit-messages.adoc[System audit messages]
 
-xref:../admin/object-storage-audit-messages.adoc[Object storage audit messages]
+xref:../audit/object-storage-audit-messages.adoc[Object storage audit messages]
 
-xref:../admin/management-audit-message.adoc[Management audit message]
+xref:../audit/management-audit-message.adoc[Management audit message]
 
-xref:../admin/client-read-audit-messages.adoc[Client read audit messages]
+xref:../audit/client-read-audit-messages.adoc[Client read audit messages]
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
