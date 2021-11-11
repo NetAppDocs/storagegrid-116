@@ -92,7 +92,7 @@ If background verification finds corrupt fragments of erasure-coded object data,
 
 NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
- .. Select *SUPPORT* > *Tools* > *Grid topology*.
+Relat .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Delete Quarantined Objects*.
  .. Click *Apply Changes*.
@@ -195,12 +195,13 @@ When StorageGRID has had time to achieve metadata consistency for the nodes and 
 ... Look at the *End time* column to determine which jobs were run more than three weeks ago.
 ... For those jobs, scan the Consistency control column for strong-site or strong-global.
 .. Select the check box for each job you want to rerun, then select *Rerun*.
-.. In the Rerun jobs wizard, review the selected nodes and volumes and the consistency control.
-.. When you are ready to rerun the jobs, select *Rerun*.
 +
 image::../media/oec_rerun.png[OEC rerun ]
 +
-The Active job tab appears. All the jobs you selected are rerun as one job at a consistency control of strong-site. A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
+.. In the Rerun jobs wizard, review the selected nodes and volumes and the consistency control.
+.. When you are ready to rerun the jobs, select *Rerun*.
+
+The Active job tab appears. All the jobs you selected are rerun as one job at a consistency control of strong-site. A *Related jobs* field in the Details section lists the job IDs for the original jobs.
 
 .After you finish
 
