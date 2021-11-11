@@ -172,3 +172,45 @@ Include the BEGIN and the END tags in your selection.
  .. On the *Global* tab, select *Management interface certificate*.
 . Configure your management client to use the public certificate you copied. Include the BEGIN and END tags.
 
+== Download or copy the management interface certificate
+
+You can save or copy the management interface certificate contents for use elsewhere.
+
+.Steps
+
+. Select *CONFIGURATION* > *Security* > *Certificates*.
+. On the *Global* tab, select *Management interface certificate*.
+. Select the *Server* or *CA bundle* tab and then download or copy the certificate.
++
+[role="tabbed-block"]
+====
+
+.Download certificate file or CA bundle
+--
+
+Download the certificate or CA bundle `.pem` file. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
+
+. Select *Download certificate* or *Download CA bundle*.
++
+If you are downloading a CA bundle, all the certificates in the CA bundle secondary tabs download as a single file.
+. Specify the certificate file name and download location. Save the file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+
+--
+
+.Copy certificate or CA bundle PEM
+--
+
+Copy the certificate text to paste elsewhere. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
+
+. Select *Copy certificate PEM* or *Copy CA bundle PEM*.
++
+If you are copying a CA bundle, all the certificates in the CA bundle secondary tabs copy together.
+. Paste the copied certificate into a text editor.
+. Save the text file with the extension `.pem`.
++
+For example: `storagegrid_certificate.pem`
+--
+
+====
