@@ -26,6 +26,9 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 *  You have configured any VLAN interfaces you plan to use. See xref:configure-vlan-interfaces.adoc[Configure VLAN interfaces].
 
 * If you are creating an HTTPS endpoint (recommended), you have the information for the server certificate.
++
+NOTE: Changes to an endpoint certificate can take up to 15 minutes to be applied to all nodes.
+
 ** To upload a certificate, you need the server certificate, the certificate private key, and optionally, a CA bundle.
 
 ** To generate a certificate, you need all domain names and IP addresses S3 or Swift clients will use to access the endpoint. You must also know the subject (Distinguished Name).
