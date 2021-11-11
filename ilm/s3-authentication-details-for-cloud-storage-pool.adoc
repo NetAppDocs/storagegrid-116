@@ -35,6 +35,27 @@ NOTE: Do not include the bucket name in this field. You include the bucket name 
  .. Optionally, specify the port that should be used when connecting to the Cloud Storage Pool.
 +
 Leave this field blank to use the default port: port 443 for HTTPS or port 80 for HTTP.
+ .. Select the URL style for the Cloud Storage Pool bucket:
++
+[cols="1a,2a" options="header"]
+|===
+| Option| Description
+a|
+Virtual Hosted-Style
+a|
+Use a virtual hosted-style URL to access the bucket. Virtual hosted-style URLs include the bucket name as part of the domain name, for example `+https://bucket-name.s3.company.com/key-name+`.
+a|
+Path-Style
+a|
+Use a path-style URL to access the bucket. Path-style URLs include the bucket name at the end, for example `+https://s3.company.com/bucket-name/key-name+`.
+
+*Note:* The path-style URL is being deprecated.
+a|
+Auto-Detect
+a|
+Attempt to automatically detect which URL style to use, based on the information provided. For example, if you specify an IP address, StorageGRID will use a path-style URL. Select this option only if you don't know which specific style to use.
+|===
+
 . In the *Authentication* section, select the type of authentication that is required for the Cloud Storage Pool endpoint.
 +
 [cols="1a,2a" options="header"]
