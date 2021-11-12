@@ -14,6 +14,7 @@ The S3 Object Lock feature in StorageGRID 11.5 replaces the Compliance feature t
 If you previously enabled the global Compliance setting, the new global S3 Object Lock setting is enabled automatically when you upgrade to StorageGRID 11.5. Tenant users will no longer be able to create new buckets with Compliance enabled in StorageGRID 11.5; however, as required, tenant users can continue to use and manage any existing legacy Compliant buckets, which includes performing the following tasks:
 
 * Ingesting new objects into an existing bucket that has legacy Compliance enabled.
+* Setting default retention settings at the bucket level.
 * Increasing the retention period of an existing bucket that has legacy Compliance enabled.
 * Changing the auto-delete setting for an existing bucket that has legacy Compliance enabled.
 * Placing a legal hold on an existing bucket that has legacy Compliance enabled.
@@ -56,7 +57,7 @@ Users must set a retention period for the entire bucket. The retention period ap
 a|
 Can a bucket have default settings for retention and legal hold?
 a|
-No. StorageGRID buckets that have S3 Object Lock enabled do not have a default retention period. Instead, you can specify a retain-until-date for each object version.
+Yes. StorageGRID buckets that have S3 Object Lock enabled can have a default retention period that is applied to objects that do not specify their own retention settings.
 a|
 Yes
 a|
