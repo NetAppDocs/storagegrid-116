@@ -42,12 +42,13 @@ NOTE: Local logs of audit records continue to be generated and stored when an ex
 
 .Steps
 
-. Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
-+
-image::../media/audit-messages-main-page.png[Audit messages main page]
 
 [#Access-the-syslog-server-configuration-wizard]
 == Access the syslog server configuration wizard
+
+. Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
++
+image::../media/audit-messages-main-page.png[Audit messages main page]
 . From the Audit and syslog server page, Select *Configure external syslog server*.
 +
 image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
@@ -72,7 +73,6 @@ TLS or RELP/TLS is recommended. You must upload a server certificate to use eith
 NOTE: 
 Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using a protocol with RELP can help prevent the loss of audit information if your external syslog server has to restart. 
 
-
 [start=4]
 . If you selected *UDP*, *TCP*, or *RELP/TCP* select *Continue*.
 [#attach-certificate]
@@ -96,10 +96,11 @@ NOTE: If you use a client certificate you must also use a client private key.
 + 
 A green check appears next to the certificate or key file name, notifying you that it has been uploaded successfully.
 
-[start=3]
-.. Select *Continue*.
+[start=6]
+. Select *Continue*.
 
 === Manage syslog content
+
 After you have entered the host, port, and protocol information for your external syslog server, the *Manage syslog content* page appears: 
 
 image::../media/manage-syslog-content.png[Manage syslog content]
