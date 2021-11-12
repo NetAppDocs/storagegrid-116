@@ -11,9 +11,16 @@ summary: 'The Prometheus service on Admin Nodes collects time series metrics fro
 [.lead]
 The Prometheus service on Admin Nodes collects time series metrics from the services on all nodes. While Prometheus collects more than a thousand metrics, a relatively small number are required to monitor the most critical StorageGRID operations.
 
-The following table lists the most commonly used Prometheus metrics and provides a mapping of each metric to the equivalent attribute (used in the alarm system).
+To obtain the complete list of metrics, use the Grid Management API.
 
-You can refer to this list to better understand the conditions in the default alert rules or to construct the conditions for custom alert rules. For a complete list of metrics, select *Help* > *API Documentation*.
+. From the top of the Grid Manager, select the help icon and select *API Documentation*.
+. Locate the *metrics* operations.
+. Execute the `GET /grid/metric-names` operation.
+. Download the results.
+
+The following table lists the most commonly used Prometheus metrics. You can refer to this list to better understand the conditions in the default alert rules or to construct the conditions for custom alert rules. 
+
+
 
 NOTE: Metrics that include _private_ in their names are intended for internal use only and are subject to change between StorageGRID releases without notice.
 
