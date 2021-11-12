@@ -70,7 +70,7 @@ The S3 Object Lock section appears only if the global S3 Object Lock setting is 
 +
 S3 Object Lock must be enabled for the bucket before an S3 client application can specify retain-until-date and legal hold settings for the objects added to the bucket.
 +
-If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically, and you can specify a default retention mode and default retention period that is applied to each object added to the bucket.
+If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically. You can also specify a default retention mode and default retention period for the bucket that are applied to each object ingested to the bucket that does not specify its own retention settings.
 +
 xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[Using S3 Object Lock default bucket retention]
 +

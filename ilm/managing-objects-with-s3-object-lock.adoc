@@ -15,7 +15,7 @@ As a grid administrator, you can enable S3 Object Lock for your StorageGRID syst
 
 The StorageGRID S3 Object Lock feature is an object-protection solution that is equivalent to S3 Object Lock in Amazon Simple Storage Service (Amazon S3).
 
-As shown in the figure, when the global S3 Object Lock setting is enabled for a StorageGRID system, an S3 tenant account can create buckets with or without S3 Object Lock enabled. If a bucket has S3 Object Lock enabled, S3 client applications can optionally specify retention settings for any object version in that bucket. An object version must have retention settings specified to be protected by S3 Object Lock. You can also specify a default retention mode and default retention period at the bucket level that is applied to each object added to the bucket that does not specify its own retention settings.
+As shown in the figure, when the global S3 Object Lock setting is enabled for a StorageGRID system, an S3 tenant account can create buckets with or without S3 Object Lock enabled. If a bucket has S3 Object Lock enabled, S3 client applications can optionally specify retention settings for any object version in that bucket. An object version must have retention settings specified to be protected by S3 Object Lock. In addition, each bucket that has S3 Object Lock enabled can optionally have a default retention mode and retention period, which apply if objects are added to the bucket without their own retention settings.
 
 image::../media/s3_object_lock_architecture.png[S3 Object Lock Architecture]
 
@@ -29,3 +29,81 @@ If a bucket has S3 Object Lock enabled, the S3 client application can optionally
 For details about object retention settings, go to "`using S3 object lock`" in xref:../s3/s3-rest-api-supported-operations-and-limitations.adoc[S3 REST API supported operations and limitations].
 
 For details about default bucket retention settings, go to xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[Using S3 Object Lock default bucket retention].
+
+== Comparing S3 Object Lock to legacy Compliance
+
+The S3 Object Lock replaces the Compliance feature that was available in earlier StorageGRID versions. Because the  S3 Object Lock feature conforms to Amazon S3 requirements, it deprecates the proprietary StorageGRID Compliance feature, which is now referred to as "`legacy Compliance.`"
+
+If you previously enabled the global Compliance setting, the global S3 Object Lock setting was enabled automatically. Tenant users are no longer be able to create new buckets with Compliance enabled; however, as required, tenant users can continue to use and manage any existing legacy Compliant buckets, which includes performing the following tasks:
+
+* Ingesting new objects into an existing bucket that has legacy Compliance enabled.
+* Increasing the retention period of an existing bucket that has legacy Compliance enabled.
+* Changing the auto-delete setting for an existing bucket that has legacy Compliance enabled.
+* Placing a legal hold on an existing bucket that has legacy Compliance enabled.
+* Lifting a legal hold.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5^]
+
+If you used the legacy Compliance feature in a previous version of StorageGRID, refer to the following table to learn how it compares to the S3 Object Lock feature in StorageGRID.
+
+[cols="1a,1a,1a" options="header"]
+|===
+|  | S3 Object Lock (new)| Compliance (legacy)
+a|
+How is the feature enabled globally?
+a|
+From the Grid Manager, select *CONFIGURATION* > *System* > *S3 Object Lock*.
+a|
+No longer supported.
+
+*Note:* If you previously enabled the global Compliance setting,the global S3 Object Lock setting will be enabled automatically when you upgrade to StorageGRID 11.5.
+
+a|
+How is the feature enabled for a bucket?
+a|
+Users must enable S3 Object Lock when creating a new bucket using the Tenant Manager, the Tenant Management API, or the S3 REST API.
+a|
+Users can no longer create new buckets with Compliance enabled; however, they can continue to add new objects to existing Compliant buckets.
+a|
+Is bucket versioning supported?
+a|
+Yes. Bucket versioning is required and is enabled automatically when S3 Object Lock is enabled for the bucket.
+a|
+No. The legacy Compliance feature does not allow bucket versioning.
+a|
+How is object retention set?
+a|
+Users can set a retain-until-date for each object version.
+a|
+Users must set a retention period for the entire bucket. The retention period applies to all objects in the bucket.
+a|
+Can a bucket have default settings for retention and legal hold?
+a|
+Yes. StorageGRID buckets that have S3 Object Lock enabled can have a default retention period that is applied to objects that do not specify their own retention settings.
+a|
+Yes
+a|
+Can the retention period be changed?
+a|
+The retain-until-date for an object version can be increased but never decreased.
+a|
+The bucket's retention period can be increased but never decreased.
+a|
+Where is legal hold controlled?
+a|
+Users can place a legal hold or lift a legal hold for any object version in the bucket.
+a|
+A legal hold is placed on the bucket and affects all objects in the bucket.
+a|
+When can objects be deleted?
+a|
+An object version can be deleted after the retain-until-date is reached, assuming the object is not under legal hold.
+a|
+An object can be deleted after the retention period expires, assuming the bucket is not under legal hold. Objects can be deleted automatically or manually.
+a|
+Is bucket lifecycle configuration supported?
+a|
+Yes
+a|
+No
+|===
