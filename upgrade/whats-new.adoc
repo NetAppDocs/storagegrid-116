@@ -93,6 +93,11 @@ You can now view the estimated time to completion and the completion percentage 
 === Diagnostics page sorted by severity
 The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
 
+=== Prometheus storage no longer limited to 31 days
+Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
+
+When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
+
 === Parallel S3 multipart downloads 
 //get information from Raptor team
 
