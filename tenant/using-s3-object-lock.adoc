@@ -26,6 +26,10 @@ If a bucket has S3 Object Lock enabled, the S3 client application can optionally
 * *Retain-until-date*: If an object version's retain-until-date is in the future, the object can be retrieved, but it cannot be modified or deleted. As required, an object's retain-until-date can be increased, but this date cannot be decreased.
 * *Legal hold*: Applying a legal hold to an object version immediately locks that object. For example, you might need to put a legal hold on an object that is related to an investigation or legal dispute. A legal hold has no expiration date, but remains in place until it is explicitly removed. Legal holds are independent of the retain-until-date.
 
+You can also specify a default retention mode and default retention period for the bucket. These are applied to each object added to the bucket that does not specify its own retention settings.
++
+xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[Using S3 Object Lock default bucket retention]
+
 For details on these settings, go to "`using S3 object lock`" in xref:../s3/s3-rest-api-supported-operations-and-limitations.adoc[S3 REST API supported operations and limitations].
 
 == Managing legacy Compliant buckets
