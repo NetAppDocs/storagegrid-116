@@ -2,14 +2,14 @@
 permalink: audit/spos-s3-post.html
 sidebar: sidebar
 keywords: storagegrid, audit, message, SPOS, S3 POST
-summary: 'When an S3 client issues a POST Object restore request, a request is made to restore an object from AWS Glacier storage to a Cloud Storage Pool. This message is issued by the server if the transaction is successful.'
+summary: 'When an S3 client issues a POST Object request, this message is issued by the server if the transaction is successful.'
 ---
 = SPOS: S3 POST
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-When an S3 client issues a POST Object restore request, a request is made to restore an object from AWS Glacier storage to a Cloud Storage Pool. This message is issued by the server if the transaction is successful.
+When an S3 client issues a POST Object request, this message is issued by the server if the transaction is successful.
 
 [options="header"]
 |===
@@ -86,6 +86,8 @@ a|
 S3 Subresource
 a|
 The bucket or object subresource being operated on, if applicable.
+
+Set to "`select`" for an S3 Select operation.
 a|
 SACC
 a|
