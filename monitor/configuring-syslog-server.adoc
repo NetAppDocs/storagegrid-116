@@ -38,7 +38,7 @@ Sending audit information to an external syslog server enables you to:
 CAUTION: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
 
 +
-NOTE: Local logs of audit records continue to be generated and stored when an external syslog server is used.
+NOTE: Local logs of audit records (`localaudit.log`) continue to be generated and stored when an external syslog server is used.
 
 .Steps
 
@@ -49,16 +49,13 @@ NOTE: Local logs of audit records continue to be generated and stored when an ex
 . Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
-. From the Audit and syslog server page, Select *Configure external syslog server*.
-+
-image::../media/audit-message-configure-syslog-server.png[Configure external syslog server]
+. From the Audit and syslog server page, select *Configure external syslog server*.
 
 === Enter syslog server address information
-The Configure external syslog server page appears: 
 
 image::../media/enter-syslog-info.png[Enter syslog info]
 
-. Enter a valid fully qualified domain name or an IPv4 or IPv6 address for the external syslog server in the Host field.
+. Enter a valid fully qualified domain name or an IPv4 or IPv6 address for the external syslog server in the *Host* field.
 . Enter the destination port on the external syslog server (must be an integer between 1 and 65535). The default port is 514. 
 . Select the protocol used to send audit information to the external syslog server.  
 * *TCP*
@@ -68,30 +65,34 @@ image::../media/enter-syslog-info.png[Enter syslog info]
 * *UDP*
 
 +
-TLS or RELP/TLS is recommended. You must upload a server certificate to use either of these two options. 
+TLS or RELP/TLS is recommended. You must upload a server certificate to use either of these options. 
 
-NOTE: 
-Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using a protocol with RELP can help prevent the loss of audit information if your external syslog server has to restart. 
++
+NOTE: Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using RELP can help prevent the loss of audit information if your external syslog server has to restart. 
 
 [start=4]
-. If you selected *UDP*, *TCP*, or *RELP/TCP* select *Continue*.
+. If you selected *UDP*, *TCP*, or *RELP/TCP*, select *Continue*.
 [#attach-certificate]
 . If you selected *TLS* or *RELP/TLS*, you must attach one or more server certificates. 
 
++
 Using certificates helps secure the connections between your grid and the external syslog server. For more information, see xref:../admin/using-storagegrid-security-certificates.adoc[Using StorageGRID security certificates].
 
-When you select *TLS* or *RELP/TLS* as the protocol for your audit information, the following options appear:
+. If you selected *TLS* or *RELP/TLS*, select one of the following options:
 
-* *Server CA certificates*: One or more trusted CA certificates for verifying the  external syslog server (in PEM encoding). If omitted, the default Grid CA certificate will be used. This may be a CA bundle. 
+* *Server CA certificates*: One or more trusted CA certificates for verifying the  external syslog server (in PEM encoding). If omitted, the default Grid CA certificate will be used. The file you upload here might be a CA bundle. 
 * *Client certificate*: The client certificate for authentication to the external syslog server (in PEM encoding).
 * *Client private key*: Private key for the client certificate (in PEM encoding); if encrypted, the key must use traditional format (cannot use PKCS#8 format).
 
-.. Select *Browse* for the certificate or key you want to use. 
++
+NOTE: You need to have the correct server and client certifications if you plan to use  TLS or RELP/TLS.
+
 +
 NOTE: If you use a client certificate you must also use a client private key. 
 
+.. Select *Browse* for the certificate or key you want to use. 
 .. Select the certificate file or key file.
-.. select *Open* to upload the file.
+.. Select *Open* to upload the file.
 
 + 
 A green check appears next to the certificate or key file name, notifying you that it has been uploaded successfully.
@@ -101,38 +102,35 @@ A green check appears next to the certificate or key file name, notifying you th
 
 === Manage syslog content
 
-After you have entered the host, port, and protocol information for your external syslog server, the *Manage syslog content* page appears: 
-
 image::../media/manage-syslog-content.png[Manage syslog content]
 
 . Select each type of audit information you want to send to the external syslog server.
 
 +
-* *Send Audit logs*: StorageGRID events and system activities
+* *Send audit logs*: StorageGRID events and system activities
 
 +
-* *Send Security events*: Security events such as when an unauthorized user attempts to sign in or a user signs in as root
+* *Send security events*: Security events such as when an unauthorized user attempts to sign in or a user signs in as root
 
 +
-* *Send Application logs*: Log files useful for troubleshooting including:
+* *Send application logs*: Log files useful for troubleshooting including:
 
 ** bycast-err.log
 ** bycast.log
 ** jaeger.log
-** nms.log (Admin nodes only)
+** nms.log (Admin Nodes only)
 ** prometheus.log
 ** raft.log
 ** hagroups.log 
 
-. Use the dropdowns to select the severity and facility (type of message) for the category of audit information you want to send. 
+. Use the drop-down menus to select the severity and facility (type of message) for the category of audit information you want to send. 
 
 NOTE: For more information on StorageGRID software logs, see xref:../monitor/storagegrid-software-logs.adoc#[StorageGRID software logs].
 
-+
 .. For *Severity*, select Passthrough if you want each message sent to the external syslog to have the same severity value as it does in the local syslog. 
 
 +
-Otherwise, enter the severity value between 0 and 7.
+Otherwise, select the severity value between 0 and 7.
 
 +
 [options="header"]
@@ -170,11 +168,10 @@ a|
 Debug: Debug-level messages
 |===
 
-+
 .. For *Facility*, select Passthrough if you want each message sent to the external syslog to have the same facility value as it does in the local syslog. 
 
 +
-Otherwise, enter the facility value between 0 and 23.
+Otherwise, select the facility value between 0 and 23.
 
 +
 [options="header"]
@@ -278,18 +275,18 @@ a|
 a|local7
 |===
 
+[start=3]
 . Select *Continue*.
 
 === Send test messages
-After you manage the syslog content, the *Send test messages* page appears.
 
 image::../media/send-test-messages.png[Send test messages]
 
-This page enables you to request that all nodes in your grid send test messages to the external syslog server. You should use these test messages to help you validate your entire log collection infrastructure before you commit to sending data to the external syslog server.
+Before starting to use an external syslog server, you should request that all nodes in your grid send test messages to the external syslog server. You should use these test messages to help you validate your entire log collection infrastructure before you commit to sending data to the external syslog server.
 
 CAUTION: Do not use the external syslog server configuration until you confirm that the external syslog server received a test message from each node in your grid and that the message was processed as expected.
 
-. If you are certain your external syslog server is configured properly and can receive audit information from all the nodes in your grid, select *Skip and finish*. 
+. If you do not want to send test messages and you are certain your external syslog server is configured properly and can receive audit information from all the nodes in your grid, select *Skip and finish*. 
 
 +
 A green banner appears indicating your configuration has been saved successfully. 
@@ -300,21 +297,74 @@ A green banner appears indicating your configuration has been saved successfully
 +
 Test results continuously appear on the page until you stop the test. While the test is in progress, your audit messages continue to be sent to your previously configured destinations. 
 
-. If you received any errors, correct them and select *Send test messages* again. See xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server] to help you resolve errors.
+. If you receive any errors, correct them and select *Send test messages* again. See xref:../monitor/troubleshooting-syslog-server.adoc[Troubleshooting the external syslog server] to help you resolve errors.
 
 [start=3]
 . Wait until you see a green banner indicating all nodes have passed testing. 
 . Check your syslog server to determine if test messages are being received and processed as expected. 
 
 +
-IMPORTANT: The UDP protocol does not allow for as rigorous error detection as is available with the other protocol selections. If you are using UDP, be sure to check your entire log collection infrastructure.
+IMPORTANT: If you are using UDP, check your entire log collection infrastructure. The UDP protocol does not allow for as rigorous error detection as the other
+protocols.
 
 . Select *Stop and finish*.
 
 +
 You are returned to the *Audit and syslog server* page. A green banner appears notifying you that your syslog server configuration has been saved successfully. 
 
-Your StorageGRID audit information is not sent to the external syslog server until you select a destination that includes the external syslog server. See xref:../monitor/configure-audit-messages.adoc#[Configure audit messages and log destinations] to send your audit information to your newly configured external syslog server. 
+Your StorageGRID audit information is not sent to the external syslog server until you select a destination that includes the external syslog server. 
+
+== Select audit information destinations
+You can specify where security event logs, application logs, and audit message logs are sent. 
+
+NOTE: For more information on StorageGRID software logs, see xref:../monitor/storagegrid-software-logs.adoc#[StorageGRID software logs].
+
+. On the Audit and syslog server page, select the destination for audit information from the listed options: 
+
++
+[cols="1a,2a" options="header"]
+
+|===
+| Option| Description
+
+|Default (Admin nodes/local nodes)
+|Audit messages are sent to the audit log on the Admin Node and audit messages are stored on the nodes where they are generated. 
+
+|External syslog server
+|Audit messages are sent to an external syslog server and saved on the local node. This option is enabled only after you have configured an external syslog server.
+
+|Admin Node and external syslog server
+|Audit messages are sent to the audit log on the Admin Node and the external syslog server, and saved on the local node. This option is enabled only after you have configured an external syslog server.
+
+|Local nodes only
+|No audit messages are sent to an Admin Node or remote syslog server. Audit messages and other logs are saved only on the nodes that generated them. 
+
+*Note*: StorageGRID periodically removes these local logs in a rotation to free up space. When the log file reaches 1 GB, the existing file is saved, and a new log file is started. The rotation limit for the log is 21 files. When the 22nd version of the log file is created, the oldest log file is deleted. On average about 20 GB of log data is stored.
+|===
+
+NOTE: Audit information generated on every local node is stored in `/var/local/log/localaudit.log`
+
+[start=2]
+. Select *Save*.
+
++
+A warning message appears: 
+
++
+CAUTION: Change the log destination?
+
+. If you selected either *External syslog server* or *Admin Nodes and external syslog server* as the destination for audit information, an additional warning appears:
+
+CAUTION: If you also updated the syslog server configuration, confirm that the external syslog server can receive test StorageGRID messages. If the test messages cannot be delivered and you use this configuration, you might lose important messages regarding StorageGRID events and activities.
+
+[start=4]
+. Confirm that you want to change the destination for audit information by selecting *OK*.
+
++
+A green banner appears notifying you that your audit configuration has been saved successfully. 
+
++
+New logs are sent to the destinations you selected. Existing logs remain in their current location.
 
 .Related information
 
