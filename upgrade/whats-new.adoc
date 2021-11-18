@@ -93,6 +93,17 @@ You can now view the estimated time to completion and the completion percentage 
 === Diagnostics page sorted by severity
 The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
 
+=== Prometheus storage no longer limited to 31 days
+Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
+
+When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
+
+=== New option for replicated data repairs
+
+You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
+
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting – All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
+
 === Parallel S3 multipart downloads 
 //get information from Raptor team
 
