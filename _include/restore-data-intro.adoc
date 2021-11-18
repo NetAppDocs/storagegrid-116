@@ -1,0 +1,71 @@
+//This is the shared introduction for restoring object data in the Storage Node maintenance procedures//
+
+.What you'll need
+
+* You must have confirmed that the recovered Storage Node has a Connection State of *Connected* image:../media/icon_alert_green_checkmark.png[icon alert green checkmark] on the *NODES* > *Overview* tab in the Grid Manager.
+
+.About this task
+
+Object data can be restored from other Storage Nodes, an Archive Node, or a Cloud Storage Pool, assuming that the grid's ILM rules were configured such that object copies are available.
+
+Note the following:
+
+* If an ILM rule was configured to store only one replicated copy and that copy existed on a storage volume that failed, you will not be able to recover the object.
+
+* If the only remaining copy of an object is in a Cloud Storage Pool, StorageGRID must issue multiple requests to the Cloud Storage Pool endpoint to restore object data. Before performing this procedure, contact technical support for help in estimating the recovery time frame and the associated costs.
+
+* If the only remaining copy of an object is on an Archive Node, object data is retrieved from the Archive Node. Restoring object data to a Storage Node from an Archive Node takes longer than restoring copies from other Storage Nodes because of the latency associated with retrievals from external archival storage systems. 
+
+
+== About the `repair-data` script
+
+To restore object data, you run the `repair-data` script. This script begins the process of restoring object data and works with ILM scanning to ensure that ILM rules are met. 
+
+Select *Replicated data* or *Erasure-coded (EC) data* below to learn the different options for the `repair-data` script, based on whether you are restoring replicated data or erasure-coded data. If you need to restore both types of data, you must run both sets of commands.
+
+NOTE: For more information about the `repair-data` script, enter `repair-data --help` from the command line of the primary Admin Node.
+
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.Replicated data
+--
+Two commands are available for restoring replicated data, based on whether you need to repair the entire node or only certain volumes on the node:
+
+`repair-data start-replicated-node-repair`
+
+`repair-data start-replicated-volume-repair`
+
+You can track repairs of replicated data with this command:
+
+`repair-data show-replicated-repair-status`
+
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, use *Awaiting – All*, *Repairs Attempted (XRPA)*, and *Scan Period -- Estimated (XSCM)* as described below.
+
+--
+.Erasure coded (EC) data
+--
+
+Two commands are available for restoring erasure-coded data, based on whether you need to repair the entire node or only certain volumes on the node:
+
+`repair-data start-ec-node-repair`
+
+`repair-data start-ec-volume-repair`
+
+Repairs of erasure-coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available. 
+
+You can track repairs of erasure-coded data with this command:
+
+`repair-data show-ec-repair-status`
+
+NOTE: The EC repair job temporarily reserves a large amount of storage. Storage alerts might be triggered, but will resolve when the repair is complete. If there is not enough storage for the reservation, the EC repair job will fail. Storage reservations are released when the EC repair job completes, whether the job failed or succeeded.
+
+--
+====
+
+// end tabbed area
+
+
