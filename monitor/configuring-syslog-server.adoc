@@ -49,7 +49,7 @@ NOTE: Local logs of audit records (`localaudit.log`) continue to be generated an
 . Select *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
 +
 image::../media/audit-messages-main-page.png[Audit messages main page]
-. From the Audit and syslog server page, select *Configure external syslog server*.
+. From the Audit and syslog server page, select *Configure external syslog server*. If you have previously configured an external syslog server, select *Edit external syslog server*. 
 
 === Enter syslog server address information
 
@@ -171,7 +171,39 @@ Debug: Debug-level messages
 .. For *Facility*, select Passthrough if you want each message sent to the external syslog to have the same facility value as it does in the local syslog. 
 
 +
-Otherwise, select the facility value between 0 and 23.
+Passthrough values for the application logs are: 
+
++
+[options="header"]
+|===
+| Application log| Passthrough value
+a|
+bycast.log
+a|
+user,daemon
+a|
+jaeger.log
+a|
+local2
+a|
+nms.log
+a|
+local3
+a|
+prometheus.log
+a|
+local4
+a|
+raft.log
+a|
+local5
+a|
+hagroups.log
+a|local6
+|===
+
++
+If you do not want to use the passthrough value, select the facility value between 0 and 23.
 
 +
 [options="header"]
@@ -369,6 +401,8 @@ New logs are sent to the destinations you selected. Existing logs remain in thei
 .Related information
 
 xref:../audit/audit-message-overview.adoc[Audit message overview]
+
+xref:../monitor/configure-audit-messages.adoc[Configre audit messages and log destinations]
 
 xref:../audit/system-audit-messages.adoc[System audit messages]
 
