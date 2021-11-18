@@ -40,8 +40,8 @@ From the Alerts menu, you can do the following:
 * Review current alerts
 * Review resolved alerts
 * Configure silences to suppress alert notifications
-* Configure the email server for alert notifications
 * Define alert rules for conditions that trigger alerts
+* Configure the email server for alert notifications
 
 .Learn more
 
@@ -97,8 +97,7 @@ image::../media/ilm_menu_and_page.png[ILM Menu and Page]
 
 == Configuration menu
 
-
-The Configuration menu allows you to specify network settings, system settings, monitoring options, and access control options.
+The Configuration menu allows you to specify network settings, security settings, system settings, monitoring options, and access control options.
 
 image::../media/configuration_menu.png[Configuration Menu]
 
@@ -120,34 +119,35 @@ image::../media/configuration_menu.png[Configuration Menu]
 
 == Maintenance menu
 
+The Maintenance menu allows you to perform maintenance tasks, system maintenance, and network maintenance.
 
-The Maintenance menu allows you to perform maintenance tasks, network tasks, and system tasks.
+image::../media/maintenance_menu.png[Maintenance Menu and Page]
 
-image::../media/maintenance_menu_and_page.png[Maintenance Menu and Page]
-
-=== Maintenance Tasks
+=== Tasks
 
 Maintenance tasks include:
 
 * Decommission operations to remove unused grid nodes and sites.
 * Expansion operations to add new grid nodes and sites.
 * Recovery operations to replace a failed node and restore data.
+* Object existence check to verify the existence (although not the correctness) of object data.
+
+=== System
+
+System maintenance tasks you can perform include:
+
+* Reviewing details for the current StorageGRID license or uploading a new license.
+* Generating a Recovery Package.
+* Performing StorageGRID software updates, including software upgrades, hotfixes, and updates to the SANtricity OS software on selected appliances.
 
 === Network
 
-Network tasks you can perform from the Maintenance menu include:
+Network maintenance tasks you can perform include:
 
 * Editing information about DNS servers.
 * Configuring the subnets that are used on the Grid Network.
 * Editing information about NTP servers.
 
-=== System
-
-System tasks you can perform from the Maintenance menu include:
-
-* Reviewing details for the current StorageGRID license or uploading a new license.
-* Generating a Recovery Package.
-* Performing StorageGRID software updates, including software upgrades, hotfixes, and updates to the SANtricity OS software on selected appliances.
 
 .Learn more
 
@@ -180,7 +180,7 @@ From the Tools section of the Support menu, you can:
 
 * Enable AutoSupport.
 * Perform a set of diagnostic checks on the current state of the grid.
-* Access the Grid Topology tree to view detailed information about grid nodes, services, and attributes.
+* Access the grid topology tree to view detailed information about grid nodes, services, and attributes.
 * Retrieve log files and system data.
 * Review detailed metrics and charts.
 +
@@ -188,7 +188,7 @@ IMPORTANT: The tools available from the *Metrics* option are intended for use by
 
 === Alarms (legacy)
 
-From the Alarms (legacy) section of the Support menu, you can review current, historical, and global alarms, and you can set up email notifications for legacy alarms and AutoSupport.
+From the Alarms (legacy) section of the Support menu, you can review current, historical, and global alarms, set up custom events, and set up email notifications for legacy alarms and AutoSupport.
 
 .Learn more
 
