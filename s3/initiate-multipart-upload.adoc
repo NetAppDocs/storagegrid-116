@@ -58,13 +58,11 @@ The value for `creation-time` is evaluated as seconds since January 1, 1970.
 NOTE: Adding `creation-time` as user-defined metadata is not allowed if you are adding an object to a bucket that has legacy Compliance enabled. An error will be returned.
 
 * S3 Object Lock request headers:
-+ 
-NOTE: If S3 object lock is enabled at the bucket level and a default retention mode and default retention period are specified, these default values are used to calculate the retain-until-date when new object versions ingest to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`. +
-If the default retention period is modified after ingest of an object version, the retain-until-date of the object version remains the same and is not recalculated using the new default retention period. 
-
  ** `x-amz-object-lock-mode`
  ** `x-amz-object-lock-retain-until-date`
  ** `x-amz-object-lock-legal-hold`
++
+If a request is made without these headers, the bucket default retention settings are used to calculate the object version retain-until-date.
 +
 xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
 

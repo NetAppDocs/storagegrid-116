@@ -144,9 +144,7 @@ This operation creates a new bucket. By creating the bucket, you become the buck
 * You can include the `x-amz-bucket-object-lock-enabled` request header to create a bucket with S3 Object Lock enabled.
 +
 You must enable S3 Object Lock when you create the bucket. You cannot add or disable S3 Object Lock after a bucket is created. S3 Object Lock requires bucket versioning, which is enabled automatically when you create the bucket.
-+ 
-If S3 object lock is enabled at the bucket level and a default retention mode and default retention period are specified, these default values are used to calculate the retain-until-date when new object versions ingest to the bucket that do not specify their own `x-amz-object-lock-mode` and `x-amz-object-lock-retain-until-date`. +
-If the default retention period is modified after ingest of an object version, the retain-until-date of the object version remains the same and is not recalculated using the new default retention period. 
+ 
 +
 xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
 
@@ -257,6 +255,8 @@ a|
 PUT Object Lock Configuration
 a|
 This operation configures or removes the bucket default retention mode and default retention period.
+
+If the default retention period is modified, the retain-until-date of existing object versions remains the same and is not recalculated using the new default retention period.
 
 See <<PUT Object Lock Configuration>> for detailed information.
 |===

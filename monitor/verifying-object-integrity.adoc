@@ -11,7 +11,7 @@ summary: 'The StorageGRID system verifies the integrity of object data on Storag
 [.lead]
 The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.
 
-There are two verification processes: background verification and object existence check. They work together to ensure data integrity. Background verification runs automatically, and continuously checks the correctness of object data. Object existence check can be triggered by a user to more quickly verify the existence (although not the correctness) of objects.
+There are two verification processes: background verification and object existence check (formerly called foreground verification). They work together to ensure data integrity. Background verification runs automatically, and continuously checks the correctness of object data. Object existence check can be triggered by a user to more quickly verify the existence (although not the correctness) of objects.
 
 == What is background verification?
 
@@ -92,7 +92,7 @@ If background verification finds corrupt fragments of erasure-coded object data,
 
 NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
- .. Select *SUPPORT* > *Tools* > *Grid topology*.
+Relat .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Delete Quarantined Objects*.
  .. Click *Apply Changes*.
@@ -108,7 +108,6 @@ Object existence check reads the metadata for every object stored in StorageGRID
 * *Replicated copies*: If a copy of replicated object data is missing, StorageGRID automatically attempts to replace the copy from a copy stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because another copy is missing. A new copy is generated and placed to satisfy the system’s active ILM policy. This new copy might not be placed in the same location where the missing copy was stored.
 * *Erasure-coded fragments*: If a fragment of an erasure-coded object is missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), ILM attempts to find another copy of the object, which it can use to generate a new erasure-coded fragment.
 
-[[run_oec]]
 === Run object existence check
 
 You create and run one object existence check job at a time. When you create a job, you select the  Storage Nodes and volumes you want to verify. You also select the consistency control for the job.
@@ -140,9 +139,6 @@ An object existence check job can take days or weeks to complete, depending on t
 You can search by node name or site. 
 +
 You cannot select nodes that are not connected to the grid.
-+
-image::../media/oec_select_nodes.png[OEC select nodes]
-
 .	Select *Continue*.
 . Select one or more volumes for each node in the list.
 +
@@ -165,8 +161,9 @@ An Object existence check job is generated and runs until one of the following o
 +
 * The job completes.
 * You pause or cancel the job. You can resume a job that you have paused, but you cannot resume a job that you have canceled.
-* The job stalls. If a job stalls, the *Object existence check has stalled* alert is triggered. Follow the corrective actions specified for the alert.
-* The job fails. You must follow the corrective actions provided before you can resume the job. 
+* The job stalls. The *Object existence check has stalled* alert is triggered. Follow the corrective actions specified for the alert.
+* The job fails. The *Object existence check has failed* alert is triggered. Follow the corrective actions specified for the alert.
+* A "`Service unavailable`" or an "`Internal server error`" message appears. After one minute, refresh the page to continue monitoring the job.
 
 +
 NOTE: As needed, you can navigate away from the Object existence check page and return to continue monitoring the job.
@@ -195,11 +192,13 @@ When StorageGRID has had time to achieve metadata consistency for the nodes and 
 ... Look at the *End time* column to determine which jobs were run more than three weeks ago.
 ... For those jobs, scan the Consistency control column for strong-site or strong-global.
 .. Select the check box for each job you want to rerun, then select *Rerun*.
-.. In the Rerun jobs wizard, review the selected nodes and volumes and the consistency control.
-.. When you are ready to rerun the jobs, select *Rerun job*.
-
 +
-The Active job tab appears. All the jobs you selected are rerun as one job at a consistency control of strong-site. A *Linked jobs* field in the Details section lists the job IDs for the original jobs.
+image::../media/oec_rerun.png[OEC rerun ]
++
+.. In the Rerun jobs wizard, review the selected nodes and volumes and the consistency control.
+.. When you are ready to rerun the jobs, select *Rerun*.
+
+The Active job tab appears. All the jobs you selected are rerun as one job at a consistency control of strong-site. A *Related jobs* field in the Details section lists the job IDs for the original jobs.
 
 .After you finish
 
