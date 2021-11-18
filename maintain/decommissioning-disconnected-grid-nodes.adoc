@@ -21,6 +21,8 @@ You might need to decommission a node that is not currently connected to the gri
 * The *Decommission Possible* column for the disconnected node or nodes you want to decommission includes a green check mark.
 * You must have the provisioning passphrase.
 
+.About this task
+
 You can identify disconnected nodes by looking for Unknown (blue) or Administratively Down (gray) icons in the *Health* column. In the example, the Storage Node named DC1-S4 is disconnected; all of the other nodes are connected.
 
 image::../media/decommission_nodes_page_one_disconnected.png[Decommission Nodes page with one node disconnected]
@@ -103,7 +105,7 @@ IMPORTANT: Do not perform this step until the nodes have shut down automatically
 
 include::../_include/restore-data-monitor.adoc[]
 
-== After you finish
+.After you finish
 
 As soon as the disconnected nodes have been decommissioned and all data repair jobs have been completed, you can decommission any connected grid nodes as required.
 
