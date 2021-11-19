@@ -81,6 +81,7 @@ You can:
 * xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#restore-the-default-management-interface-certificate[Restore the default management interface certificate.]
 * xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc#restore-the-default-s3-and-swift-api-certificate[Restore the default S3 and Swift API certificate.]
 * xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#use-a-script-to-generate-a-new-self-signed-management-interface-certificate[Use a script to generate a new self-signed management interface certificate.]
+* Copy or download the xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#download-or-copy-the-management-interface-certificate[management interface certificate] or xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc#download-or-copy-the-s3-and-swift-api-certificate[S3 and Swift API certificate].
 
 --
 
@@ -118,6 +119,8 @@ You can:
 <<Load balancer endpoint certificate,Load balancer endpoint certificates>>, that you upload or generate, secure the connections between S3 and Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. 
 
 The load balancer endpoint table has a row for each configured load balancer endpoint and indicates whether the global S3 and Swift API certificate or a custom load balancer endpoint certificate is being used for the endpoint. The expiration date for each certificate also displays.
+
+NOTE: Changes to an endpoint certificate can take up to 15 minutes to be applied to all nodes.
 
 You can:
 
@@ -164,8 +167,7 @@ You can:
 * xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate for S3, C2S S3, or Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
 * xref:../monitor/set-up-email-alert-notifications.adoc[Specify an email alert notification certificate]
-* xref:../audit/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
-// TBD - Update configuring-syslog-server.adoc#attach-certificate link based on new subsection title.
+* xref:../monitor/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
 
 --
 
@@ -281,7 +283,8 @@ Authenticates the connection from the StorageGRID platform service to an S3 stor
 a|
 *Tenant Manager* > *STORAGE (S3)* > *Platform services endpoints*
 a|
-xref:../tenant/index.adoc[Use a tenant account]
+xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
+xref:../tenant/editing-platform-services-endpoint.adoc[Edit a platform services endpoint]
 
 |===
 
@@ -356,13 +359,15 @@ a|
 a|
 Server
 a|
-Authenticates the connection between an external syslog server that logs events and StorageGRID.
+Authenticates the TLS or RELP/TLS connection between an external syslog server that logs events in StorageGRID.
+
+*Note:* An external syslog server certificate is not required for TCP, RELP/TCP, and UDP connections to an external syslog server.
 
 a|
 *CONFIGURATION* > *Monitoring* > *Audit and syslog server* and then select *Configure external syslog server*
 a|
 
-xref:../audit/configuring-syslog-server.adoc[Using a syslog server certificate]
+xref:../monitor/configuring-syslog-server.adoc[Using a syslog server certificate]
 
 |===
 

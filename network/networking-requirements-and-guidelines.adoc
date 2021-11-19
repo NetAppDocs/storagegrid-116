@@ -27,7 +27,7 @@ At least one NTP server must be reachable by the primary Admin Node.
 * *AutoSupport*: Outbound TCP connection from the Admin Nodes to eithersupport.netapp.com or a customer-configured proxy.
 * *External key management server*: Outbound TCP connection from each appliance node with node encryption enabled.
 * Inbound TCP connections from S3 and Swift clients.
-* Outbound requests from StorageGRID platform services such as Cloud Mirror replication or from Cloud Storage Pools.
+* Outbound requests from StorageGRID platform services such as CloudMirror replication or from Cloud Storage Pools.
 
 If StorageGRID is unable to make contact with any of the provisioned NTP or DNS servers using the default routing rules, it will automatically attempt contact on all networks (Grid, Admin, and Client) as long as the IP addresses of the DNS and NTP servers are specified. If the NTP or DNS servers can be reached on any network, StorageGRID will automatically create additional routing rules to ensure that network is used for all future attempts to connect to it.
 

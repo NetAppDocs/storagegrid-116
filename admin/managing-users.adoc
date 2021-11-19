@@ -1,0 +1,149 @@
+---
+permalink: admin/managing-users.html
+sidebar: sidebar
+keywords: how to manage local users
+summary: 'You can view local and federated users. You can also create local users and assign them to local admin groups to determine which Grid Manager features these users can access.'
+---
+= Manage users
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can view local and federated users. You can also create local users and assign them to local admin groups to determine which Grid Manager features these users can access.
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+* You have specific access permissions.
+
+
+== Create a local user
+
+You can create one or more local users and assign each user to one or more local groups. The group's permissions control which Grid Manager and Grid Management API features the user can access.
+
+You can create local users only. Use the external identity source to manage federated users and groups.
+
+The Grid Manager includes one predefined local user, named "`root.`" You cannot remove the root user.
+
+NOTE: If single sign-on (SSO) is enabled, local users cannot sign in to StorageGRID.
+
+=== Access the wizard
+
+. Select *CONFIGURATION* > *Access control* > *Admin users*.
+. Select *Create user*.
+
+=== Enter user credentials
+. Enter the user's full name, a unique username, and a password.
+. Optionally, select *Yes* if this user should not have access to the Grid Manager or Grid Management API.
+. Select *Continue*.
+
+=== Assign to groups
+
+. Optionally, assign the user to one or more groups to determine the user's permissions.
++
+If you have not yet created groups, you can save the user without selecting groups. You can add this user to a group on the Groups page. 
++
+If a user belongs to multiple groups, the permissions are cumulative. See 
+xref:managing-admin-groups.adoc[Manage admin groups] for details.
+
+. Select *Create user* and select *Finish*.
+
+
+== View and edit local users
+
+You can view details for existing local and federated users. You can modify a local user to change the user's full name, password, or group membership. You can also temporarily prevent a user from accessing the Grid Manager and the Grid Management API.
+
+You can edit local users only. Use the external identity source to manage federated users.
+
+* To view basic information for all local and federated users, review the table on the Users page. 
+
+* To view all details for a specific user, edit a local user, or change a local user's password, use the *Actions* menu or the details page. 
++
+Any edits are applied the next time the user signs out and then signs back in to the Grid Manager.
++
+NOTE: Local users can change their own passwords using the *Change Password* option in the Grid Manager banner. 
+
++
+[cols="1a,2a,2a" options="header"]
+|===
+|Task | Actions menu | Details page
+
+|View user details
+
+|.. Select the check box for the user. 
+.. Select *Actions* > *View user details*.
+
+|Select the user's name in the table.
+
+
+|Edit full name (local users only)
+
+|.. Select the check box for the user. 
+.. Select *Actions* > *Edit full name*.
+.. Enter the new name.
+.. Select *Save changes*.
+
+|.. Select the user's name to display the details.
+.. Select the edit icon image:../media/icon_edit_tm.png[Edit icon].
+.. Enter the new name.
+.. Select *Save changes*.
+
+|Deny or allow StorageGRID access
+
+|.. Select the check box for the user. 
+.. Select *Actions* > *View user details*.
+.. Select the Access tab.
+.. Select *Yes* to prevent the user from signing in to the Grid Manager or the Grid Management API, or select *No* to allow the user to sign in.
+.. Select *Save changes*.
+
+|.. Select the user's name to display the details.
+.. Select the Access tab.
+.. Select *Yes* to prevent the user from signing in to the Grid Manager or the Grid Management API, or select *No* to allow the user to sign in.
+.. Select *Save changes*.
+
+|Change password (local users only)
+
+|.. Select the check box for the user. 
+.. Select *Actions* > *View user details*.
+.. Select the Password tab.
+.. Enter a new password.
+.. Select *Change Password*.
+
+|.. Select the user's name to display the details.
+.. Select the Password tab.
+.. Enter a new password.
+.. Select *Change Password*.
+
+|Change groups (local users only)
+
+|.. Select the check box for the user. 
+.. Select *Actions* > *View user details*.
+.. Select the Groups tab.
+.. Optionally, select the link after a group name to view the group's details in a new browser tab.
+.. Select *Edit groups* to select different groups.
+.. Select *Save changes*.
+
+|.. Select the user's name to display the details.
+.. Select the Groups tab.
+.. Optionally, select the link after a group name to view the group's details in a new browser tab.
+.. Select *Edit groups* to select different groups.
+.. Select *Save changes*.
+|===
+
+== Duplicate a user
+You can duplicate an existing user to create a new user with the same permissions.
+
+. Select the check box for the user. 
+. Select *Actions* > *Duplicate user*.
+. Complete the Duplicate user wizard.
+
+== Delete a user
+
+You can delete a local user to permanently remove that user from the system.
+
+NOTE: You cannot delete the root user.
+
+. From the Users page, select the check box for each user you want to remove. 
+. Select *Actions* > *Delete user*.
+. Select *Delete user*.
