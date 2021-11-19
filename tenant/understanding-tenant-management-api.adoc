@@ -18,7 +18,7 @@ To access the Swagger documentation for the Tenant Management API:
 .Steps
 
 . Sign in to the Tenant Manager.
-. Select *Help* > *API Documentation* from the Tenant Manager header.
+. From the top of the Tenant Manager, select the help icon and select *API Documentation*.
 
 == API operations
 
@@ -63,7 +63,7 @@ Setting the consistency level used for containers
 * *identity-source* -- Operations to configure an external identity source and to manually synchronize federated group and user information.
 * *regions* -- Operations to determine which regions have been configured for the StorageGRID system.
 * *s3* -- Operations to manage S3 access keys for tenant users.
-* *s3-object-lock* -- Operations to determine how global S3 Object Lock (compliance) is configured for the StorageGRID system.
+* *s3-object-lock* -- Operations on global S3 Object Lock settings, used to support regulatory compliance.
 * *users* -- Operations to view and manage tenant users.
 
 == Operation details
@@ -72,23 +72,23 @@ When you expand each API operation, you can see its HTTP action, endpoint URL, a
 
 image::../media/tenant_api_swagger_example.gif[example showing GET groups operation in Swagger API]
 
-== Issuing API requests
+== Issue API requests
 
 IMPORTANT: Any API operations you perform using the API Docs webpage are live operations. Be careful not to create, update, or delete configuration data or other data by mistake.
 
 .Steps
-. Click the HTTP action to see the request details.
+. Select the HTTP action to see the request details.
 . Determine if the request requires additional parameters, such as a group or user ID. Then, obtain these values. You might need to issue a different API request first to get the information you need.
-. Determine if you need to modify the example request body. If so, you can click *Model* to learn the requirements for each field.
-. Click *Try it out*.
+. Determine if you need to modify the example request body. If so, you can select *Model* to learn the requirements for each field.
+. Select *Try it out*.
 . Provide any required parameters, or modify the request body as required.
-. Click *Execute*.
+. Select *Execute*.
 . Review the response code to determine if the request was successful.
 
 .Related information
 
-xref:tenant-management-api-versioning.adoc[Tenant Manangement API versioning]
+* xref:tenant-management-api-versioning.adoc[Tenant Manangement API versioning]
 
-xref:protecting-against-cross-site-request-forgery-csrf.adoc[Protect against Cross-Site Request Forgery (CSRF)]
+* xref:protecting-against-cross-site-request-forgery-csrf.adoc[Protect against Cross-Site Request Forgery (CSRF)]
 
-xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../admin/index.adoc[Administer StorageGRID]

@@ -32,6 +32,7 @@ xref:specifying-urn-for-platform-services-endpoint.adoc[Specifying the URN for a
  ** Authentication credentials (if required):
   *** Access Key: Access key ID and secret access key
   *** Basic HTTP: Username and password
+  *** CAP (C2S Access Portal): Temporary credentials URL, server and client certificates, client keys, and an optional client private key passphrase.
  ** Security certificate (if using a custom CA certificate)
 
 .Steps
@@ -86,7 +87,7 @@ NOTE: If the endpoint is used for the CloudMirror replication service, do not in
 NOTE: You cannot change an endpoint's URN after the endpoint has been created.
 
 . Select *Continue*.
-. Select a value for *Authentication type*, and then enter the required credentials.
+. Select a value for *Authentication type*, and then enter or upload the required credentials.
 +
 image::../media/endpoint_create_authentication_type.png[Create Endpoint - Authentication Type]
 +
@@ -110,6 +111,16 @@ The credentials that you supply must have write permissions for the destination 
 |
 * Username
 * Password
+
+
+|CAP (C2S Access Portal)
+|Uses certificates and keys to authenticate connections to the destination.
+|
+* Temporary credentials URL
+* Server CA certificate (PEM file upload)
+* Client certificate (PEM file upload)
+* Client private key (PEM file upload, OpenSSL encrypted format or unencrypted private key format)
+* Client private key passphrase (optional)
 |===
 
 . Select *Continue*.

@@ -69,8 +69,14 @@ The following new alerts were added for StorageGRID 11.6:
 .Learn more
 * xref:../monitor/index.adoc[Monitor and troubleshoot]
 
-=== Changes to the ORLM audit message
-A new BUID field was added to the *ORLM: Object Rules Met* audit message. The BUID field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
+=== Changes to the audit messages
+* A new *BUID* field was added to the ORLM: Object Rules Met audit message. The *BUID* field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
+
+* A new *SGRP* field was added to the following audit messages. The *SGRP*  field is present only if an object was deleted at a different site than where it was ingested.
+** IDEL: ILM Initiated Delete
+** OVWR: Object Overwrite
+** SDEL: S3 DELETE
+** WDEL: Swift DELETE
 
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
@@ -92,6 +98,17 @@ You can now view the estimated time to completion and the completion percentage 
 
 === Diagnostics page sorted by severity
 The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
+
+=== Prometheus storage no longer limited to 31 days
+Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
+
+When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
+
+=== New option for replicated data repairs
+
+You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
+
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting – All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
 
 === Parallel S3 multipart downloads 
 //get information from Raptor team
@@ -121,11 +138,19 @@ If the S3 Object Lock default retention mode is enabled for a bucket, you can sp
 
 === Google Cloud Platform (GCP) support
 
-You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the Cloud Mirror platform service.
+You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service.
 
 .Learn more
-* xref:..tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
+* xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
+
+=== AWS Commercial Cloud Services (C2S) support for CloudMirror
+
+You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror replication.
+
+.Learn more
+* xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
+
 
 == Lisa's what's new changes
 
@@ -149,6 +174,8 @@ NOTE: If you have not already done so, and if your Storage Nodes have enough RAM
 
 S3 tenants can now use S3 Select to issue SelectObjectContent requests to individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. Only certain tenant accounts can use S3 Select, and the grid administrator must enable this feature for a tenant.
 
+xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] for S3 Select operations have also been added.
+
 Learn more:
 
 xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
@@ -158,10 +185,24 @@ xref:../s3/use-s3-select.adoc[Use S3 Select]
 == Paul's what's new changes
 
 === Ability to change node console passwords
-You now can use the Grid Manager to change the node console passwords used to access nodes (*CONFIGURATION* > *Security* > *Grid passwords*). 
+You now can use the Grid Manager to change the node console passwords. These passwords are used to log in to a node as “admin” using SSH, or to the root user on a VM/physical console connection. (*CONFIGURATION* > *Access control* > *Grid passwords*). 
 
 .Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../admin/change-node-console-password.adoc[Change node console passwords]
+
+=== Add an external syslog server and change log destinations
+You now can use the Grid Manager to add an external syslog server to store and manage system logs, security logs and application logs collected from the nodes in your grid. Additionally, you can configure StorageGRID to send test messages to a newly configured external syslog server to help you validate your log collection infrastructure. You also can now change the destinations of your audit information. (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). 
+
+.Learn more
+* xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
+
+=== Ability to pause the SANtricity upgrade process and skip some nodes
+While you are performing a SANtricity OS upgrade, you can now pause the upgrade and skip upgrading some nodes so you can finish the upgrade at a later time. (*MAINTENANCE* > *System* > *Software update*). 
+
+.Learn more
+* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG5600)]
+* xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG5700)]
+* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG6000]
 
 == StorageGRID documentation changes
 
