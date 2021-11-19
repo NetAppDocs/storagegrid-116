@@ -21,6 +21,8 @@ You might need to decommission a node that is not currently connected to the gri
 * The *Decommission Possible* column for the disconnected node or nodes you want to decommission includes a green check mark.
 * You must have the provisioning passphrase.
 
+.About this task
+
 You can identify disconnected nodes by looking for Unknown (blue) or Administratively Down (gray) icons in the *Health* column. In the example, the Storage Node named DC1-S4 is disconnected; all of the other nodes are connected.
 
 image::../media/decommission_nodes_page_one_disconnected.png[Decommission Nodes page with one node disconnected]
@@ -99,40 +101,23 @@ image::../media/decommission_nodes_data_repair.png[screenshot showing that repai
 +
 IMPORTANT: Do not perform this step until the nodes have shut down automatically.
 
-. If you are decommissioning a Storage Node, monitor the status of the data repair jobs that are automatically started during the decommissioning process.
- .. Select *SUPPORT* > *Tools* > *Grid topology*.
- .. Select *StorageGRID deployment* at the top of the Grid Topology tree.
- .. On the Overview tab, locate the ILM Activity section.
- .. Use a combination of the following attributes to determine, as well as possible, if replicated repairs are complete.
-+
-NOTE: Cassandra inconsistencies might be present, and failed repairs are not tracked.
+. If you are decommissioning a Storage Node, monitor the status of the *replicated data* and *erasure-coded (EC) data* repair jobs that are automatically started during the decommissioning process.
 
-  *** *Repairs Attempted (XRPA)*: Use this attribute to track the progress of replicated repairs. This attribute increases each time a Storage Node tries to repair a high-risk object. When this attribute does not increase for a period longer than the current scan period (provided by the *Scan Period -- Estimated* attribute), it means that ILM scanning found no high-risk objects that need to be repaired on any nodes.
-+
-NOTE: High-risk objects are objects that are at risk of being completely lost. This does not include objects that do not satisfy their ILM configuration.
+include::../_include/restore-data-monitor.adoc[]
 
-  *** *Scan Period -- Estimated (XSCM)*: Use this attribute to estimate when a policy change will be applied to previously ingested objects. If the *Repairs Attempted* attribute does not increase for a period longer than the current scan period, it is probable that replicated repairs are done. Note that the scan period can change. The *Scan Period -- Estimated (XSCM)* attribute applies to the entire grid and is the maximum of all node scan periods. You can query the *Scan Period -- Estimated* attribute history for the grid to determine an appropriate time frame.
+.After you finish
 
- .. Use the following commands to track or restart repairs:
-  *** Use the `repair-data show-ec-repair-status` command to track repairs of erasure coded data.
-  *** Use the `repair-data start-ec-node-repair` command with the `--repair-id` option to restart a failed repair.
-See xref:checking-data-repair-jobs.adoc[Check data repair jobs].
-. Continue to track the status of EC data repairs until all repair jobs have completed successfully.
-+
 As soon as the disconnected nodes have been decommissioned and all data repair jobs have been completed, you can decommission any connected grid nodes as required.
 
-Complete these steps after you complete the decommission procedure:
+Then, complete these steps after you complete the decommission procedure:
 
 * Ensure that the drives of the decommissioned grid node are wiped clean. Use a commercially available data wiping tool or service to permanently and securely remove data from the drives.
 * If you decommissioned an appliance node and the data on the appliance was protected using node encryption, use the StorageGRID Appliance Installer to clear the key management server configuration (Clear KMS). You must clear the KMS configuration if you want to add the appliance to another grid.
-+
-xref:../sg100-1000/index.adoc[SG100 & SG1000 services appliances]
-+
-xref:../sg5600/index.adoc[SG5600 storage appliances]
-+
-xref:../sg5700/index.adoc[SG5700 storage appliances]
-+
-xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+** xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
+** xref:../sg5600/index.adoc[SG5600 storage appliances]
+** xref:../sg5700/index.adoc[SG5700 storage appliances]
+** xref:../sg6000/index.adoc[SG6000 storage appliances]
 
 .Related information
 

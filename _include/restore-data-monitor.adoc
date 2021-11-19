@@ -1,0 +1,69 @@
+//This is the shared Monitor repairs instruction for restoring object data in the Storage Node maintenance procedures. This file is also included in the Decommission disconnected nodes procedure//
+
+//unlike the related restoring Includes, this file doesn't include a title because of the differences between the restoring object data and decommission disconnected nodes procedure//
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.Replicated data
+--
+
+* To determine if repairs are complete:
+. Select *NODES* > *_Storage Node being repaired_* > *ILM*.
+. Review the attributes in the Evaluation section. When repairs are complete, the *Awaiting - All* attribute indicates 0 objects.
+
+* To monitor the repair in more detail:
+. Select *SUPPORT* > *Tools* > *Grid topology*.
+. Select *_grid_* > *_Storage Node being repaired_* > *LDR* > *Data Store*.
+. Use a combination of the following attributes to determine, as well as possible, if replicated repairs are complete.
++
+NOTE: Cassandra inconsistencies might be present, and failed repairs are not tracked.
+
+  ** *Repairs Attempted (XRPA)*: Use this attribute to track the progress of replicated repairs. This attribute increases each time a Storage Node tries to repair a high-risk object. When this attribute does not increase for a period longer than the current scan period (provided by the *Scan Period -- Estimated* attribute), it means that ILM scanning found no high-risk objects that need to be repaired on any nodes.
++
+NOTE: High-risk objects are objects that are at risk of being completely lost. This does not include objects that do not satisfy their ILM configuration.
+
+  ** *Scan Period -- Estimated (XSCM)*: Use this attribute to estimate when a policy change will be applied to previously ingested objects. If the *Repairs Attempted* attribute does not increase for a period longer than the current scan period, it is probable that replicated repairs are done. Note that the scan period can change. The *Scan Period -- Estimated (XSCM)* attribute applies to the entire grid and is the maximum of all node scan periods. You can query the *Scan Period -- Estimated* attribute history for the grid to determine an appropriate time frame.
+  
+* Optionally, to get an estimated percent completion for the replicated repair, add the `show-replicated-repair-status` option to the repair-data command.
++
+`repair-data show-replicated-repair-status`
++
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, use *Awaiting – All*, *Repairs Attempted (XRPA)*, and *Scan Period -- Estimated (XSCM)* as described above.
+
+--
+.Erasure coded (EC) data
+--
+
+To monitor the repair of erasure-coded data and retry any requests that might have failed:
+
+. Determine the status of erasure-coded data repairs:
+
+** Select *SUPPORT* > *Tools* > *Metrics* to view the estimated time to completion and the completion percentage for the current job. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
+ 
+** Use this command to see the status of a specific `repair-data` operation:
++
+`repair-data show-ec-repair-status --repair-id repair ID`
+
+** Use this command to list all repairs:
++
+`repair-data show-ec-repair-status`
++
+The output lists information, including `repair ID`, for all previously and currently running repairs.
+
+. If the output shows that the repair operation failed, use the `--repair-id` option to retry the repair.
++
+This command retries a failed node repair, using the repair ID 6949309319275667690:
++
+`repair-data start-ec-node-repair --repair-id 6949309319275667690`
++
+This command retries a failed volume repair, using the repair ID 6949309319275667690:
++
+`repair-data start-ec-volume-repair --repair-id 6949309319275667690`
+
+--
+====
+
+// end tabbed area
