@@ -123,17 +123,19 @@ If you select this setting, copy the text of the custom certificate and and past
 +
 image::../media/sso_status_sandbox_mode_azure.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
 
-.. Copy the federation metadata URL from the SAML Signing Certificate section and paste it in the *Federation metadata URL* field.
-+
-To access this URL, select the enterprise application and open the Single sign-on page.
+.. Follow the steps in xref:../admin/creating-enterprise-application-azure.adoc[Creating enterprise applications in Azure] to create an enterprise application for each Admin Node listed in the table.
 
-.. Select *Save*.
+.. Copy the federation metadata URL for the enterprise application in Azure and paste it into the corresponding *Federation metadata URL* field in StorageGRID.
+
+.. After you have copied and pasted a federation metadata URL for all Admin Nodes, select *Save*.
 +
 A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
-.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the relying party trust.
+.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. 
+
+You must upload the SAML metadata for each Admin Node into the corresponding Azure enterprise application.
 
 NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
 

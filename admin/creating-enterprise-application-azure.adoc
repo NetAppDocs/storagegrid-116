@@ -1,0 +1,103 @@
+---
+permalink: admin/creating-enterprise-application-azure.html
+sidebar: sidebar
+keywords:
+summary: 'You use Azure AD to create an enterprise application for each Admin Node in your system.'
+---
+= Create enterprise applications in Azure
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You use Azure AD to create an enterprise application for each Admin Node in your system.
+
+.What you'll need
+
+* You have configured single sign-on for StorageGRID and you selected *Azure* as the SSO type.
+
+* *Sandbox mode* is selected on the Single sign-on page in Grid Manager. See xref:../admin/using-sandbox-mode.adoc[Using Sandbox mode].
+
+* You have know the *Enterprise application name* for each Admin Node in your system. You can find these values in the Admin Nodes detail table on the StorageGRID Single Sign-on page.
++
+NOTE: You must create an enterprise application for each Admin Node in your StorageGRID system. Having an enterprise application for each Admin Node ensures that users can securely sign in to and out of any Admin Node.
+
+* You have experience creating enterprise applications in Azure Active Directory.
+
+* You have the documentation for Microsoft Azure. The Azure documentation provides detailed step-by-step instructions and explanations.
+
+* You have an Azure account with an active subscription.
+
+* You have one of the following roles: Global Administrator, Cloud Application Administrator, Application Administrator, or owner of the service principal.
+
+
+== Access Azure
+
+. Log into the https://portal.azure.com[Azure Portal^].
+
+. Navigate to https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade[Azure Active Directory^].
+
+. Select https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview/menuId/[Enterprise applications^].
+
+== Create enterprise applications and save StorageGRID SSO configuration
+
+In order to save the SSO configuration for Azure in StorageGRID, you must use Azure to create an enterprise application for each Admin Node. You will copy the federation metadata URL from Azure and paste it into the *Federation metadata URL* field on the StorageGRID Single Sign-on page. 
+
+. Repeat the following steps for each Admin Node.
+
+.. In the Azure Enterprise applications pane, select *New application*.
+
+.. Select *Create your own application*.
+
+.. For the name, enter the *Enterprise application name* you copied from the Admin Nodes detail table on the StorageGRID Single Sign-on page.
+
+.. Leave the *Integrate any other application you don't find in the gallery (Non-gallery)* radio button selected.
+
+.. Select *Create*.
+
+.. Select the *Get started* link in the *2. Set up single sign on* box, or select the *Single sign-on* link in the left margin.
+
+.. Select the *SAML* box.
+
+.. Copy the *App Federation Metadata Url*, which you can find under *Step 3 SAML Signing Certificate*. 
+
+.. Go to the StorageGRID Single Sign-on page, and paste the URL into the *Federation metadata URL* field for the corresponding Enterprise application name.
+
+. After you have pasted the federation metadata URL for each Admin Node, select *Save* on the StorageGRID Single Sign-on page.
+
+== Download SAML metadata for every Admin Node
+You must download a SAML metadata file for each Admin Node in your StorageGRID system. Repeat these steps for each Admin Node:
+ 
+. Sign in to StorageGRID from the Admin Node.
+. Select *CONFIGURATION* > *Access control* > *Single sign-on*.
+. Select the button to download the SAML metadata for that Admin Node. 
+
+== Update enterprise applications
+
+After downloading a SAML metadata file for each StorageGRID Admin Node, perform the following steps in Azure:
+
+. Return to the Azure Portal.
+. Repeat these steps for each enterprise application:
++
+NOTE: You might need to refresh the Enterprise applications page to see applications you previously added in the list.
+
+.. Go to the Properties page for the enterprise application.
+.. Set *Assignment required* to *No* (unless you want to separately configure assignments).
+.. Go to the Single sign-on page.
+.. Complete the SAML configuration.
+.. Select the *Upload metadata file* button and select the SAML metadata file you downloaded for the corresponding Admin Node. 
+.. After the file loads, select *Save* and then select *X* to close the pane. You are returned to the Set up Single Sign-On with SAML page. 
+
+== Test SSO for each enterprise application
+
+If you configured Azure from the same computer you use for StorageGRID, the Azure Portal user will be the user that signs in to StorageGRID. 
+
+. To avoid sign in issues, do one or both of the following:
+
+** Ensure that the Azure Portal user is also an authorized StorageGRID user (a user in a federated group that has been imported into StorageGRID).
+** Log out of the Azure Portal before attempting to sign in to StorageGRID. 
+
+. Select *Test this application* to sign in to StorageGRID using SSO.
+
+. Repeat the previous step from each Admin Node to test SSO for each enterprise application.
+
+
