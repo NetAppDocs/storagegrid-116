@@ -2,32 +2,37 @@
 permalink: admin/manage-s3-select-for-tenant-accounts.html
 sidebar: sidebar
 keywords: 
-summary: 'S3 tenants can issue S3 Select requests to perform SQL queries on individual objects.'
+summary: 'You can allow certain S3 tenants to use S3 Select to issue SelectObjectContent requests on individual objects.'
 ---
 = Manage S3 Select for tenant accounts
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-S3 tenants can issue S3 Select requests to perform SQL queries on individual objects.
+You can allow certain S3 tenants to use S3 Select to issue SelectObjectContent requests on individual objects. 
 
 S3 Select provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data.
 
 == What is S3 Select?
 
-S3 Select allows tenants to use SQL statements to filter and retrieve only the data needed from an object. The StorageGRID implementation of S3 Select includes a subset of S3 Select commands and features.
+S3 Select allows S3 clients to use SelectObjectContent requests to filter and retrieve only the data needed from an object. The StorageGRID implementation of S3 Select includes a subset of S3 Select commands and features.
 
 == Considerations and requirements for using S3 Select
 
 StorageGRID requires the following for S3 Select queries:
 
-* Object format must be CSV, or GZIP or BZIP2 compressed files containing a CSV formatted file.
+* The object you want to query is in CSV format, or is a GZIP or BZIP2 compressed file containing a CSV formatted file.
 * Tenants must be granted S3 Select ability by the grid administrator. Select *Allow S3 Select* when xref:creating-tenant-account.adoc[creating a tenant] or xref:editing-tenant-account.adoc[editing a tenant].
-* The SQL query must be sent to a xref:managing-load-balancing.adoc[StorageGRID load balancer endpoint]. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
-+
-Queries through the deprecated CLB service are not supported.
-+
+* The SelectObjectContent request must be sent to a xref:managing-load-balancing.adoc[StorageGRID load balancer endpoint]. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
+
+Note the following limitations:
+
 * Bare-metal load balancer nodes are not supported.
-* SQL queries cannot be sent directly to Storage Nodes.
+* Queries cannot be sent directly to Storage Nodes.
+* Queries sent through the deprecated CLB service are not supported.
+
+IMPORTANT: SelectObjectContent requests can decrease load-balancer performance for all S3 clients and all tenants. Enable this feature only when required and only for trusted tenants.
 
 See the xref:../s3/use-s3-select.adoc[instructions for using S3 Select].
+
+To view xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] for S3 Select operations over time, select *SUPPORT* > *Tools* > *Metrics* in the Grid Manager.

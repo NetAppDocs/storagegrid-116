@@ -1,0 +1,62 @@
+---
+permalink: admin/deactivate-features-from-api.html
+sidebar: sidebar
+keywords: deactivate features from api
+summary: 'You can use the Grid Management API to completely deactivate certain features in the StorageGRID system. When a feature is deactivated, no one can be assigned permissions to perform the tasks related to that feature.'
+---
+= Deactivate features with the API
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use the Grid Management API to completely deactivate certain features in the StorageGRID system. When a feature is deactivated, no one can be assigned permissions to perform the tasks related to that feature.
+
+.About this task
+The Deactivated Features system allows you to prevent access to certain features in the StorageGRID system. Deactivating a feature is the only way to prevent the root user or users who belong to admin groups with *Root access* permission from being able to use that feature.
+
+To understand how this functionality might be useful, consider the following scenario:
+
+_Company A is a service provider who leases the storage capacity of their StorageGRID system by creating tenant accounts. To protect the security of their leaseholders' objects, Company A wants to ensure that its own employees can never access any tenant account after the account has been deployed._
+
+_Company A can accomplish this goal by using the Deactivate Features system in the Grid Management API. By completely deactivating the *Change tenant root password* feature in the Grid Manager (both the UI and the API), Company A can ensure that no Admin user--including the root user and users belonging to groups with the *Root access* permission--can change the password for any tenant account's root user._
+
+
+.Steps
+
+. Access the Swagger documentation for the Grid Management API.
+. Locate the Deactivate Features endpoint.
+. To deactivate a feature, such as Change tenant root password, send a body to the API like this:
++
+`{ "grid": {"changeTenantRootPassword": true} }`
++
+When the request is complete, the Change tenant root password feature is disabled. The *Change tenant root password* management permission no longer appears in the user interface, and any API request that attempts to change the root password for a tenant will fail with "`403 Forbidden.`"
+
+== Reactivate deactivated features
+
+By default, you can use the Grid Management API to reactivate a feature that has been deactivated. However, if you want to prevent deactivated features from ever being reactivated, you can deactivate the *activateFeatures* feature itself.
+
+CAUTION: The *activateFeatures* feature cannot be reactivated. If you decide to deactivate this feature, be aware that you will permanently lose the ability to reactivate any other deactivated features. You must contact technical support to restore any lost functionality.
+
+.Steps
+
+. Access the Swagger documentation for the Grid Management API.
+. Locate the Deactivate Features endpoint.
+. To reactivate all features, send a body to the API like this:
++
+`{ "grid": null }`
++
+When this request is complete, all features, including the Change tenant root password feature, are reactivated. The *Change tenant root password* management permission now appears in the user interface, and any API request that attempts to change the root password for a tenant will succeed, assuming the user has the *Root access* or *Change tenant root password* management permission.
+
+
+[NOTE]
+====
+The previous example causes _all_ deactivated features to be reactivated. If other features have been deactivated that should remain deactivated, you must explicitly specify them in the PUT request. For example, to reactivate the Change tenant root password feature and continue to deactivate the Alarm acknowledgment feature, send this PUT request:
+
+`{ "grid": { "alarmAcknowledgment": true } }`
+
+====
+
+
+.Related information
+
+* xref:using-grid-management-api.adoc[Using the Grid Management API]

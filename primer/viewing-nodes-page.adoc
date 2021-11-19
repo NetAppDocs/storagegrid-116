@@ -33,7 +33,7 @@ If there is an active alert for a node, one of the following icons appears next 
 
 * *Major* image:../media/icon_alert_orange_major.png[Icon Alert Orange Major]: An abnormal condition exists that is either affecting current operations or approaching the threshold for a critical alert. You should investigate major alerts and address any underlying issues to ensure that the abnormal condition does not stop the normal operation of a StorageGRID node or service.
 
-* *Minor* image:../media/icon_alert_yellow_miinor.png[Icon Alert Yellow Minor]: The system is operating normally, but an abnormal condition exists that could affect the system's ability to operate if it continues. You should monitor and resolve minor alerts that do not clear on their own to ensure they do not result in a more serious problem.
+* *Minor* image:../media/icon_alert_yellow_minor.png[Icon Alert Yellow Minor]: The system is operating normally, but an abnormal condition exists that could affect the system's ability to operate if it continues. You should monitor and resolve minor alerts that do not clear on their own to ensure they do not result in a more serious problem.
 
 == Details for a system, site, or node
 
@@ -117,7 +117,7 @@ The metrics collected by Prometheus are used in a number of places in the Grid M
 image::../media/nodes_page_network_traffic_graph.png[Prometheus graph]
 
 * *Alerts*: Alerts are triggered at specific severity levels when alert rule conditions that use Prometheus metrics evaluate as true.
-* *Grid Management API*: You can use Prometheus metrics in custom alert rules or with external automation tools to monitor your StorageGRID system. A complete list of Prometheus metrics is available from the Grid Management API (*Help* > *API Documentation* > *Metrics*). While more than a thousand metrics are available, only a relatively small number are required to monitor the most critical StorageGRID operations.
+* *Grid Management API*: You can use Prometheus metrics in custom alert rules or with external automation tools to monitor your StorageGRID system. A complete list of Prometheus metrics is available from the Grid Management API. (From the top of the Grid Manager, select the help icon and select *API Documentation* > *metrics*.) While more than a thousand metrics are available, only a relatively small number are required to monitor the most critical StorageGRID operations.
 +
 NOTE: Metrics that include _private_ in their names are intended for internal use only and are subject to change between StorageGRID releases without notice.
 

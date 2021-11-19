@@ -1,0 +1,117 @@
+//This is the shared instruction for restoring object data in the Storage Node maintenance procedures//
+
+== Find hostname for Storage Node
+
+. Log in to the primary Admin Node:
+.. Enter the following command: `ssh admin@_primary_Admin_Node_IP_`
+.. Enter the password listed in the `Passwords.txt` file.
+.. Enter the following command to switch to root: `su -`
+.. Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+
+. Use the `/etc/hosts` file to find the hostname of the Storage Node for the restored storage volumes. To see a list of all nodes in the grid, enter the following: `cat /etc/hosts`.
+
+== Repair data if all volumes have failed
+
+If all storage volumes have failed, repair the entire node. Follow the instructions for *replicated data*, *erasure-coded (EC) data*, or both, based on whether you use replicated data, erasure-coded (EC) data, or both.
+
+If only some volumes have failed, go to <<Repair data if only some volumes have failed>>.
+
+IMPORTANT: You cannot run `repair-data` operations for more than one node at the same time. To recover multiple nodes, contact technical support.
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.Replicated data
+--
+
+If your grid includes replicated data, use the `repair-data start-replicated-node-repair` command with the `--nodes` option to repair the entire Storage Node.
+
+This command repairs the replicated data on a Storage Node named SG-DC-SN3:
+
+`repair-data start-replicated-node-repair --nodes SG-DC-SN3`
+
+NOTE: As object data is restored, the *Objects Lost* alert is triggered if the StorageGRID system cannot locate replicated object data. Alerts might be triggered on Storage Nodes throughout the system. You should determine the cause of the loss and if recovery is possible. See xref:../monitor/index.adoc[Monitor and troubleshoot].
+
+--
+.Erasure coded (EC) data
+--
+
+If your grid contains erasure-coded data, use the `repair-data start-ec-node-repair` command with the `--nodes` option to repair the entire Storage Node.
+
+This command repairs the erasure-coded data on a Storage Node named SG-DC-SN3:
+
+`repair-data start-ec-node-repair --nodes SG-DC-SN3`
+
+The operation returns a unique `repair ID` that identifies this `repair_data` operation. Use this `repair ID` to track the progress and result of the `repair_data` operation. No other feedback is returned as the recovery process completes.
+
+NOTE: Repairs of erasure-coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available.
+
+--
+====
+
+// end tabbed area
+
+== Repair data if only some volumes have failed
+
+If only some of the volumes have failed, repair the affected volumes. Follow the instructions for *replicated data*, *erasure-coded (EC) data*, or both, based on whether you use replicated data, erasure-coded (EC) data, or both.
+
+If all volumes have failed, go to <<Repair data if all volumes have failed>>.
+
+Enter the volume IDs in hexadecimal. For example, `0000` is the first volume and `000F` is the sixteenth volume. You can specify one volume, a range of volumes, or multiple volumes that are not in a sequence.
+
+All the volumes must be on the same Storage Node. If you need to restore volumes for more than one Storage Node, contact technical support.
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.Replicated data
+--
+
+If your grid contains replicated data, use the `start-replicated-volume-repair` command with the `--nodes` option to identify the node. Then add either the `--volumes` or `--volume-range` option, as shown in the following examples.
+
+*Single volume*: This command restores replicated data to volume `0002` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volumes 0002`
+
+*Range of volumes*: This command restores replicated data to all volumes in the range `0003` to `0009` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volume-range 0003-0009`
+
+*Multiple volumes not in a sequence*: This command restores replicated data to volumes `0001`, `0005`, and `0008` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volumes 0001,0005,0008`
+
+NOTE: As object data is restored, the *Objects Lost* alert is triggered if the StorageGRID system cannot locate replicated object data. Alerts might be triggered on Storage Nodes throughout the system. You should determine the cause of the loss and if recovery is possible. See the instructions for monitoring and troubleshooting StorageGRID.
+
+--
+.Erasure coded (EC) data
+--
+
+If your grid contains erasure-coded data, use the `start-ec-volume-repair` command with the `--nodes` option to identify the node. Then add either the `--volumes` or `--volume-range` option, as shown in the following examples.
+
+*Single volume*: This command restores erasure-coded data to volume `0007` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volumes 0007`
+
+*Range of volumes*: This command restores erasure-coded data to all volumes in the range `0004` to `0006` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volume-range 0004-0006`
+
+*Multiple volumes not in a sequence*: This command restores erasure-coded data to volumes `000A`, `000C`, and `000E` on a Storage Node named SG-DC-SN3:
+
+`repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volumes 000A,000C,000E`
+
+The `repair-data` operation returns a unique `repair ID` that identifies this `repair_data` operation. Use this `repair ID` to track the progress and result of the `repair_data` operation. No other feedback is returned as the recovery process completes.
+
+NOTE: Repairs of erasure-coded data can begin while some Storage Nodes are offline. Repair will complete after all nodes are available.
+--
+====
+
+// end tabbed area
+
