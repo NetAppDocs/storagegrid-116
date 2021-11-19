@@ -115,8 +115,8 @@ image::../media/manage-syslog-content.png[Manage syslog content]
 +
 * *Send application logs*: Log files useful for troubleshooting including:
 
-** bycast-err.log
 ** bycast.log
+** bycast-err.log
 ** jaeger.log
 ** nms.log (Admin Nodes only)
 ** prometheus.log
@@ -171,7 +171,7 @@ Debug: Debug-level messages
 .. For *Facility*, select Passthrough if you want each message sent to the external syslog to have the same facility value as it does in the local syslog. 
 
 +
-Passthrough values for the application logs are: 
+Facility passthrough values you can use to select for the records that comprise the application logs on the external syslog server are: 
 
 +
 [options="header"]
@@ -180,7 +180,11 @@ Passthrough values for the application logs are:
 a|
 bycast.log
 a|
-user,daemon
+user or daemon
+a|
+bycast-err.log
+a|
+user, daemon, local3, or local4
 a|
 jaeger.log
 a|
@@ -402,7 +406,7 @@ New logs are sent to the destinations you selected. Existing logs remain in thei
 
 xref:../audit/audit-message-overview.adoc[Audit message overview]
 
-xref:../monitor/configure-audit-messages.adoc[Configre audit messages and log destinations]
+xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
 
 xref:../audit/system-audit-messages.adoc[System audit messages]
 
