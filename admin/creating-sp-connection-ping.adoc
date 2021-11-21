@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords:
 summary: 'You use PingFederate to create a service provider (SP) connection for each Admin Node in your system. To speed the process, you will import the SAML metadata from StorageGRID.'
 ---
-= Create SP connections in PingFederate
+= Create service provider (SP) connections in PingFederate
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You use PingFederate to create a service provider (SP) connection for each Admin Node in your system. To speed the process, you will import the SAML metadata from StorageGRID.
+You use PingFederate to create a service provider (SP) connection for each Admin Node in your system. To speed up the process, you will import the SAML metadata from StorageGRID.
 
 .What you'll need
 
@@ -58,16 +58,16 @@ If you haven't already, create an IdP adapter instance.
 . Go to *Authentication* > *Integration* > *IdP Adapters*.
 . Select *Create New Instance*.
 . On the Type tab, select *HTML Form IdP Adapter*.
-. On the IdP Adapter tab, select *Add a new row to 'Credential validators'*.
+. On the IdP Adapter tab, select *Add a new row to 'Credential Validators'*.
 . Select the <<password-validator, password credential validator>> you created.
 . On the Adapter Attributes tab, select the *username* attribute for *Pseudonym*.
 . Select *Save*.
 
-=== Create signing certificate
-If you haven't already, create a signing certificate.
+=== Create or import signing certificate[[signing-certificate]]
+If you haven't already, create or import the signing certificate.
 
-. Go to *Security* > *Signing & Decryption Keys & Certificates* > *Create New*.
-. Create a signing certificate for your domain name and country.
+. Go to *Security* > *Signing & Decryption Keys & Certificates*. 
+. Create or import the signing certificate.
 
 == Create an SP connection in PingFederate
 
@@ -76,9 +76,9 @@ When you create an SP connection in PingFederate, you import the SAML metadata y
 
 [IMPORTANT] 
 ====
-You must create an SP connection for each Admin Node in your StorageGRID system, so that users can securely sign in to and out of any node. Use these instructions to create the first SP connection. Then, use *Select Action > Copy* to create a copy of the initial SP connection for each additional Admin Node. Simply enter the new Connection ID for the copy, so the new metadata can be used. 
+You must create an SP connection for each Admin Node in your StorageGRID system, so that users can securely sign in to and out of any node. Use these instructions to create the first SP connection. Then, use *Select Action > Copy* to create a copy of the initial SP connection for each additional Admin Node. Simply enter the new Connection ID and Connection Name for the copy, so the new metadata can be used. 
 
-All SP connections use identical settings, with the exception of the Partner's Entity ID and Base URL.
+The SP connections for different Admin Nodes use identical settings, with the exception of the Partner's Entity ID, Base URL, Connection ID, Connection Name, Signature Verification, and SLO Response URL.
 ====
 
 === Choose SP connection type
@@ -101,7 +101,7 @@ The Partner's Entity ID and the Connection Name are set to the StorageGRID SP co
 
 . From the Browser SSO tab, select *Configure Browser SSO*.
 
-. On the SAML profiles tab, select the *SP-initiated SSO* and *SP-initial SLO* options.
+. On the SAML profiles tab, select the *SP-initiated SSO*, *SP-initial SLO*, *IdP-initiated SSO*, and *IdP-initiated SLO* options.
 
 . Select *Next*.
 
@@ -132,9 +132,7 @@ The Partner's Entity ID and the Connection Name are set to the StorageGRID SP co
 
 . On the Attribute Contract Fulfillment tab, select *LDAP (attribute)* from the Source drop-down and select *objectGUID* from the Value drop-down.
 
-. Review and then save the attribute source. For example:
-+
-image::../media/sso_ping_sp_connection_attribute_source.png[SP Connection for Ping Federate-Attribute Sources]
+. Review and then save the attribute source. 
 
 .	On the Failsave Attribute Source tab, select *Abort the SSO Transaction*.
 
@@ -152,7 +150,7 @@ image::../media/sso_ping_sp_connection_attribute_source.png[SP Connection for Pi
 
 . On the Allowable SAML Bindings tab, unselect *ARTIFACT* and *SOAP*. Only *POST* and *REDIRECT* are required.
 
-. On the Signature Policy tab, select *Always Sign Assertion*.
+. On the Signature Policy tab, leave the *Require Authn Requests to be Signed* and *Always Sign Assertion* check boxes selected.
 
 . On the Encryption Policy tab, select *None*.
 
@@ -166,9 +164,9 @@ image::../media/sso_ping_sp_connection_attribute_source.png[SP Connection for Pi
 . From the SP Connection tab, select *Credentials*. 
 . From the Credentials tab, select *Configure Credentials*.
 
-. Select *Done* to save the credentials.
+. Select the <<signing-certificate, signing certificate>> you created or imported.
 
-. On the Signature Verifications Settings tab, select *Manage Signature Verification Settings*.
+. Select *Next* to go to *Manage Signature Verification Settings*.
 
 .. On the Trust Model tab, select *Unanchored*.
 .. On the Signature Verification Certificate tab, review the signing certificate information, which was imported from the StorageGRID SAML metadata. 

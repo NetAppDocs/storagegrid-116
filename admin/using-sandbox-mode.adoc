@@ -115,7 +115,7 @@ If you select this setting, copy the text of the custom certificate and and past
 
 ** *Do not use TLS*: Do not use a TLS certificate to secure the connection.
 
-.. In the Enterprise Application section, specify the unique *Enterprise application name* you will use for StorageGRID when you configure an enterprise application in Azure.
+.. In the Enterprise Application section, specify an *Enterprise application name* for StorageGRID. This value controls the name you use for each enterprise application in Azure AD.
 
 * For example, if your grid has only one Admin Node and you do not anticipate adding more Admin Nodes in the future, enter `SG` or `StorageGRID`.
 
@@ -123,21 +123,15 @@ If you select this setting, copy the text of the custom certificate and and past
 +
 image::../media/sso_status_sandbox_mode_azure.png[Single Sign-on, Sandbox mode enabled, Relying party identifiers shown for several Admin Nodes]
 
-.. Follow the steps in xref:../admin/creating-enterprise-application-azure.adoc[Creating enterprise applications in Azure] to create an enterprise application for each Admin Node listed in the table.
+.. Follow the steps in xref:../admin/creating-enterprise-application-azure.adoc[Creating enterprise applications in Azure AD] to create an enterprise application for each Admin Node listed in the table.
 
-.. Copy the federation metadata URL for the enterprise application in Azure and paste it into the corresponding *Federation metadata URL* field in StorageGRID.
+.. Copy the federation metadata URL for each enterprise application from Azure and paste it into the corresponding *Federation metadata URL* field in StorageGRID.
 
 .. After you have copied and pasted a federation metadata URL for all Admin Nodes, select *Save*.
 +
 A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
-
-.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. 
-
-You must upload the SAML metadata for each Admin Node into the corresponding Azure enterprise application.
-
-NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
 
 --
 .PingFederate
@@ -175,19 +169,14 @@ A green check mark appears on the *Save* button for a few seconds.
 +
 image::../media/save_button_green_checkmark.gif[Save Button with a green checkmark]
 
-.. Select the button to download the SAML metadata for the Admin Node you are currently signed in to. You can import this metadata when you create the service provider (SP) connection for each Admin Node.
-
-NOTE: To obtain SAML metadata for any other Admin Nodes, you must sign into each node, return to this page, and download the associated SAML metadata.
-
-
 --
 ====
 
 // end tabbed area
 
-== Configure relying party trusts, enterprise applications, or SP connections
+== Configure relying party trusts (AD FS), enterprise applications (Azure AD), or SP connections (PingFederate)
 
-When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions for configuring a relying party trust (AD FS), enterprise application (Azure), or service provider connection (PingFederate) for each Admin Node and for testing the single sign-in (SSO) and single logout (SLO) processes.
+When the configuration is saved, the Sandbox mode confirmation notice appears. This notice confirms that sandbox mode is now enabled and provides overview instructions.
 
 StorageGRID can remain in sandbox mode as long as required. However, when *Sandbox Mode* is selected on the Single Sign-on page, SSO is disabled for all StorageGRID users. Only local users can sign in.
 
@@ -209,41 +198,33 @@ You must create one trust for each Admin Node shown in the table.
 +
 For detailed instructions, go to xref:../admin/creating-relying-party-trusts-in-ad-fs.adoc[Create relying party trusts in AD FS].
 
-. Select the link in the Sandbox mode notification to go to your identity provider's sign-on page.
-+
-image::../media/sso_sandbox_mode_enabled_adfs.png[Single Sign-on, Sandbox mode notification for AD FS]
-
-. From this page, sign in to each relying party trust you created for StorageGRID.
-+
-For detailed instructions, go to xref:../admin/testing-relying-party-trusts.adoc[Test relying party trusts].
-+
-If the SSO operation is successful, StorageGRID displays a page with a success message. Otherwise, an error message is displayed.
-
-. When you have confirmed SSO for each of the relying party trusts and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
+. Go to xref:../admin/testing-relying-party-trusts.adoc[Test relying party trusts].
 
 --
 
 .Azure 
 --
 
-. Go to the Azure portal. 
+. Select the button to download and save the SAML metadata for the Admin Node you are currently signed in to. 
 
-. Create one or more enterprise applications for StorageGRID. Use the Enterprise application name for each Admin Node (shown in the table on the StorageGRID Single Sign-on page) and the SAML metadata you downloaded for that Admin Node.
-+
-You must create one enterprise application for each Admin Node shown in the table.
+. Repeat these steps for any other Admin Nodes in your grid:
+.. Sign in to the node.
+.. Select *CONFIGURATION* > *Access control* > *Single sign-on*.
+.. Download and save the SAML metadata for that node.
 
-. For each enterprise application you created, go to the Single sign-on page in the Azure portal.
-
-. Test the settings for each application. 
-+
-You can sign in as the current user or as someone else. StorageGRID displays a success or error message for each test.
-
-. When you have confirmed SSO for each of the enterprise applications and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
+. Follow the steps in xref:../admin/creating-enterprise-application-azure.adoc[Creating enterprise applications in Azure AD] to upload the SAML metadata file for each Admin Node into its corresponding Azure enterprise application.
 
 --
 
 .PingFederate
 --
+
+. Select the button to download and save the SAML metadata for the Admin Node you are currently signed in to. 
+
+. Repeat these steps for any other Admin Nodes in your grid:
+.. Sign in to the node.
+.. Select *CONFIGURATION* > *Access control* > *Single sign-on*.
+.. Download and save the SAML metadata for that node.
 
 . Go to PingFederate.
 
@@ -251,17 +232,91 @@ You can sign in as the current user or as someone else. StorageGRID displays a s
 +
 You must create one SP connection for each Admin Node shown in the table.
 
-. Select and test one link at a time from the Sandbox mode notification.
-+
-image::../media/sso_sandbox_mode_enabled_ping.png[Single Sign-on, Sandbox mode notification for Ping Federate]
-+
-StorageGRID displays a success or error message for each test.
-
-. When you have confirmed SSO for each SP connection and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
-
 
 --
 
 ====
 
 // end tabbed area
+
+== Test SSO connections
+
+Before you enforce the use of single sign-on for your entire StorageGRID system, confirm that single sign-on and single logout are correctly configured for each Admin Node.
+
+// start tabbed area
+
+[role="tabbed-block"]
+====
+
+.AD FS
+--
+. From the StorageGRID Single Sign-on page, locate the link in the Sandbox mode message. 
++
+The URL is derived from the value you entered in the *Federation service name* field.
++
+image::../media/sso_sandbox_mode_url.gif[URL for identity provider sign-on page]
+
+. Select the link, or copy and paste the URL into a browser, to access your identity provider's sign-on page.
+. To confirm you can use SSO to sign in to StorageGRID, select *Sign in to one of the following sites*, select the relying party identifier for your primary Admin Node, and select *Sign in*.
++
+image::../media/sso_sandbox_mode_testing.gif[Testing relying party trusts in SSO Sandbox Mode]
+
+. Enter your federated username and password.
+ ** If the SSO sign-in and logout operations are successful, a success message appears.
++
+image::../media/sso_sandbox_mode_sign_in_success.gif[SSO authentication and logout test success message]
+
+ ** If the SSO operation is unsuccessful, an error message appears. Fix the issue, clear the browser's cookies, and try again.
+. Repeat the previous steps to confirm you can sign in to any other Admin Nodes.
++
+. When you have confirmed SSO sign-in and logout operations for each relying party trust and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
+
+--
+.Azure
+--
+
+If you are accessing Azure from the same computer you use to access StorageGRID, the Azure Portal user will be the user that signs in to StorageGRID. To avoid sign-in issues, ensure that the Azure Portal user is also an authorized StorageGRID user (a user in a federated group that has been imported into StorageGRID) or log out of the Azure Portal before attempting to sign in to StorageGRID. 
+
+Repeat these steps for each enterprise application you created.
+
+. Go to the Single sign-on page in the Azure portal.
+
+. Select *Test this application*. 
+
+. Enter the credentials of a federated user.
+
+** If the SSO sign-in and logout operations are successful, a success message appears.
++
+image::../media/sso_sandbox_mode_sign_in_success.gif[SSO authentication and logout test success message]
+
+** If the SSO operation is unsuccessful, an error message appears. Fix the issue, clear the browser's cookies, and try again.
+
++
+. When you have confirmed SSO is successful for each enterprise application and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
+
+
+--
+.PingFederate 
+--
+
+. From the StorageGRID Single Sign-on page, select the first link in the Sandbox mode message. 
++
+Select and test one link at a time.
++
+image::../media/sso_sandbox_mode_enabled_ping.png[Single Sign-on, Sandbox mode notification for Ping Federate]
+
+.  Enter the credentials of a federated user. 
+
+ ** If the SSO sign-in and logout operations are successful, a success message appears.
++
+image::../media/sso_sandbox_mode_sign_in_success.gif[SSO authentication and logout test success message]
+
+** If the SSO operation is unsuccessful, an error message appears. Fix the issue, clear the browser's cookies, and try again.
+
+. Select the next link to test the SP connections for any other Admin Nodes in your grid.
+
+. When you have confirmed SSO is successful for each SP connection and you are ready to enforce the use of SSO for StorageGRID, go to xref:../admin/enabling-single-sign-on.adoc[Enable single sign-on].
+
+--
+====
+
