@@ -15,7 +15,7 @@ You must use Active Directory Federation Services (AD FS) to create a relying pa
 
 * You have configured single sign-on for StorageGRID and you selected *AD FS* as the SSO type.
 
-* *Sandbox mode* is selected on the Single sign-on page in Grid Manager. See xref:../admin/using-sandbox-mode.adoc[Using Sandbox mode].
+* *Sandbox mode* is selected on the Single sign-on page in Grid Manager. See xref:../admin/using-sandbox-mode.adoc[Use Sandbox mode].
 
 * You know the fully qualified domain name (or the IP address) and the relying party identifier for each Admin Node in your system. You can find these values in the Admin Nodes detail table on the StorageGRID Single Sign-on page.
 +
@@ -80,7 +80,7 @@ For example, *ObjectGUID to Name ID*.
 +
 If the metadata is missing, confirm that the Federation metadata address is correct, or simply enter the values manually.
 . Repeat these steps to configure a relying party trust for all of the Admin Nodes in your StorageGRID system.
-. When you are done, return to StorageGRID and xref:testing-relying-party-trusts.adoc[test all relying party trusts] to confirm they are configured correctly.
+. When you are done, return to StorageGRID and test all relying party trusts to confirm they are configured correctly. See xref:using-sandbox-mode..adoc[Use Sandbox mode] for instructions.
 
 == Creating a relying party trust by importing federation metadata
 
@@ -122,13 +122,11 @@ For example, *ObjectGUID to Name ID*.
 +
 If the metadata is missing, confirm that the Federation metadata address is correct, or simply enter the values manually.
 . Repeat these steps to configure a relying party trust for all of the Admin Nodes in your StorageGRID system.
-. When you are done, return to StorageGRID and xref:testing-relying-party-trusts.adoc[test all relying party trusts] to confirm they are configured correctly.
+. When you are done, return to StorageGRID and test all relying party trusts to confirm they are configured correctly. See xref:using-sandbox-mode..adoc[Use Sandbox mode] for instructions.
 
 == Create a relying party trust manually
 
-
 If you choose not to import the data for the relying part trusts, you can enter the values manually.
-
 
 .Steps
 
@@ -182,16 +180,17 @@ For example, *ObjectGUID to Name ID*.
 +
 For `_Admin_Node_FQDN_`, enter the Admin Node's fully qualified domain name. (If necessary, you can use the node's IP address instead. However, if you enter an IP address here, be aware that you must update or recreate this relying party trust if that IP address ever changes.)
 
- .. Select *OK*.
+.. Select *OK*.
 
 . On the *Signature* tab, specify the signature certificate for this relying party trust:
- .. Add the custom certificate:
-  *** If you have the custom management certificate you uploaded to StorageGRID, select that certificate.
-  *** If you do not have the custom certificate, log in to the Admin Node, go the `/var/local/mgmt-api` directory of the Admin Node, and add the `custom-server.crt` certificate file.
+.. Add the custom certificate:
+*** If you have the custom management certificate you uploaded to StorageGRID, select that certificate.
+*** If you do not have the custom certificate, log in to the Admin Node, go the `/var/local/mgmt-api` directory of the Admin Node, and add the `custom-server.crt` certificate file.
 +
 *Note:* Using the Admin Node's default certificate (`server.crt`) is not recommended. If the Admin Node fails, the default certificate will be regenerated when you recover the node, and you will need to update the relying party trust.
- .. Select *Apply*, and select *OK*.
+.. Select *Apply*, and select *OK*.
 +
 The Relying Party properties are saved and closed.
+
 . Repeat these steps to configure a relying party trust for all of the Admin Nodes in your StorageGRID system.
-. When you are done, return to StorageGRID and xref:testing-relying-party-trusts.adoc[test all relying party trusts] to confirm they are configured correctly.
+. When you are done, return to StorageGRID and test all relying party trusts to confirm they are configured correctly. See xref:using-sandbox-mode..adoc[Use Sandbox mode] for instructions.
