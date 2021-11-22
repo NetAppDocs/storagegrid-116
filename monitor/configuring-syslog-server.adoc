@@ -32,10 +32,10 @@ Any of these types of logs can be sent to the external syslog server:
 Sending audit information to an external syslog server enables you to:
 
 * Collect and manage audit information such as audit messages, application logs, and security events more efficiently
-* Reduce network traffic on your admin nodes because audit information is transferred directly from the various storage nodes to the external syslog server, without having to go through an Admin Node
+* Reduce network traffic on your Admin Nodes because audit information is transferred directly from the various storage nodes to the external syslog server, without having to go through an Admin Node
 
 +
-CAUTION: When using an external syslog server, single logs greater than 8K are truncated at the end of the message. 
+CAUTION: When logs are sent to an external syslog server, single logs greater than 8K are truncated at the end of the message. 
 
 +
 NOTE: Local logs of audit records (`localaudit.log`) continue to be generated and stored when an external syslog server is used.
@@ -97,7 +97,7 @@ NOTE: If you use a client certificate you must also use a client private key.
 + 
 A green check appears next to the certificate or key file name, notifying you that it has been uploaded successfully.
 
-[start=6]
+[start=7]
 . Select *Continue*.
 
 === Manage syslog content
@@ -171,7 +171,7 @@ Debug: Debug-level messages
 .. For *Facility*, select Passthrough if you want each message sent to the external syslog to have the same facility value as it does in the local syslog. 
 
 +
-Facility passthrough values you can use to select for the records that comprise the application logs on the external syslog server are: 
+The following are facility passthrough values you can use to select for records that comprise the application logs on the external syslog server: 
 
 +
 [options="header"]
