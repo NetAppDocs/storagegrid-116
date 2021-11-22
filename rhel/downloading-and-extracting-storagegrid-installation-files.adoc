@@ -39,42 +39,7 @@ The files you need depend on your planned grid topology and how you will deploy 
 +
 NOTE: The paths listed in the table are relative to the top-level directory installed by the extracted installation archive
 
-[cols="1a,2a" options="header" subs="specialcharacters,quotes"]
-|===
-| Path and file name| Description
-
-m|./rpms/README
-|A text file that describes all of the files contained in the StorageGRID download file.
-
-m|./rpms/NLF000000.txt
-|A free license that does not provide any support entitlement for the product.
-
-m|./rpms/StorageGRID-Webscale-Images-_version_-SHA.rpm
-|RPM package for installing the StorageGRID node images on your RHEL or CentOS hosts.
-
-m|./rpms/StorageGRID-Webscale-Service-_version_-SHA.rpm
-|RPM package for installing the StorageGRID host service on your RHEL or CentOS hosts.
-
-h|Deployment scripting tool h|Description
-
-m|./rpms/configure-storagegrid.py
-|A Python script used to automate the configuration of a StorageGRID system.
-
-m|./rpms/configure-sga.py
-|A Python script used to automate the configuration of StorageGRID appliances.
-
-m|./rpms/configure-storagegrid.sample.json
-|A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|./rpms/storagegrid-ssoauth.py
-|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|./rpms/configure-storagegrid.blank.json
-|A blank configuration file for use with the `configure-storagegrid.py` script.
-
-m|./rpms/extras/ansible
-|Example Ansible role and playbook for configuring RHEL or CentOS hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
-|===
+include::../_include/installation-files-rhel.adoc[]
 
 .Related information
 

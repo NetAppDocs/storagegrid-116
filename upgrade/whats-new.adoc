@@ -170,7 +170,7 @@ If you are installing or upgrading to StorageGRID 11.6, the maximum allowed meta
 
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
 
-== S3 Select feature added
+=== S3 Select feature added
 
 S3 tenants can now use S3 Select to issue SelectObjectContent requests to individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. Only certain tenant accounts can use S3 Select, and the grid administrator must enable this feature for a tenant.
 
@@ -181,6 +181,10 @@ Learn more:
 xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
 
 xref:../s3/use-s3-select.adoc[Use S3 Select]
+
+=== API schemas provided
+
+The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
 
 == Paul's what's new changes
 

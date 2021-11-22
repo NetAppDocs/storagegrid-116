@@ -61,145 +61,17 @@ m|StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip
 +
 The paths listed in the step for each platform are relative to the top-level directory installed by the archive file.
 
-. If you are recovering a VMware system, select the appropriate files.
-+
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-m|./vsphere/README
-|A text file that describes all of the files contained in the StorageGRID download file.
-
-m|./vsphere/NLF000000.txt
-|A free license that does not provide any support entitlement for the product.
-
-m|./vsphere/NetApp-SG-_version_-SHA.vmdk
-|The virtual machine disk file that is used as a template for creating grid node virtual machines.
-
-m|./vsphere/vsphere-primary-admin.ovf
-
-./vsphere/vsphere-primary-admin.mf
-|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
-
-m|./vsphere/vsphere-non-primary-admin.ovf
-
-./vsphere/vsphere-non-primary-admin.mf
-|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
-
-m|/vsphere/vsphere-archive.ovf
-
-./vsphere/vsphere-archive.mf
-|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
-
-m|./vsphere/vsphere-gateway.ovf
-
-./vsphere/vsphere-gateway.mf
-|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
-
-m|./vsphere/vsphere-storage.ovf
-
-./vsphere/vsphere-storage.mf
-|The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
-
-h|Deployment scripting tool h|Description
-
-m|./vsphere/deploy-vsphere-ovftool.sh
-|A Bash shell script used to automate the deployment of virtual grid nodes.
-
-m|./vsphere/deploy-vsphere-ovftool-sample.ini
-|A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
-
-m|./vsphere/configure-storagegrid.py
-|A Python script used to automate the configuration of a StorageGRID system.
-
-m|./vsphere/configure-sga.py
-|A Python script used to automate the configuration of StorageGRID appliances.
-
-m|./vsphere/storagegrid-ssoauth.py
-|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|./vsphere/configure-storagegrid.sample.json
-|A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|./vsphere/configure-storagegrid.blank.json
-|A blank configuration file for use with the `configure-storagegrid.py` script.
-|===
-
 . If you are recovering a Red Hat Enterprise Linux or CentOS system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-m|./rpms/README
-|A text file that describes all of the files contained in the StorageGRID download file.
+include::../_include/installation-files-rhel.adoc[]
 
-m|./rpms/NLF000000.txt
-|A free license that does not provide any support entitlement for the product.
-
-m|./rpms/StorageGRID-Webscale-Images-_version_-SHA.rpm
-|RPM package for installing the StorageGRID node images on your RHEL or CentOS hosts.
-
-m|./rpms/StorageGRID-Webscale-Service-_version_-SHA.rpm
-|RPM package for installing the StorageGRID host service on your RHEL or CentOS hosts.
-
-h|Deployment scripting tool h|Description
-
-m|./rpms/configure-storagegrid.py
-|A Python script used to automate the configuration of a StorageGRID system.
-
-m|./rpms/configure-sga.py
-|A Python script used to automate the configuration of StorageGRID appliances.
-
-m|./rpms/configure-storagegrid.sample.json
-|A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|./rpms/storagegrid-ssoauth.py
-|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|./rpms/configure-storagegrid.blank.json
-|A blank configuration file for use with the `configure-storagegrid.py` script.
-
-m|./rpms/extras/ansible
-|Example Ansible role and playbook for configuring RHEL or CentOS hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
-|===
 . If you are recovering an Ubuntu or Debian system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-m|./debs/README
-|A text file that describes all of the files contained in the StorageGRID download file.
+include::../_include/installation-files-ubuntu.adoc[]
 
-m|./debs/NLF000000.txt
-|A non-production NetApp License File that you can use for testing and proof of concept deployments.
-
-m|./debs/storagegrid-webscale-images-_version_-SHA.deb
-|DEB package for installing the StorageGRID node images on Ubuntu or Debian hosts.
-
-m|./debs/storagegrid-webscale-images-_version_-SHA.deb.md5
-|MD5 checksum for the file `/debs/storagegrid-webscale-images-version-SHA.deb`
-
-m|./debs/storagegrid-webscale-service-_version_-SHA.deb
-|DEB package for installing the StorageGRID host service on Ubuntu or Debian hosts.
-
-h|Deployment scripting tool h|Description
-
-m|./debs/configure-storagegrid.py
-|A Python script used to automate the configuration of a StorageGRID system.
-
-m|./debs/configure-sga.py
-|A Python script used to automate the configuration of StorageGRID appliances.
-m|./debs/storagegrid-ssoauth.py
-|An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|./debs/configure-storagegrid.sample.json
-|A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|./debs/configure-storagegrid.blank.json
-|A blank configuration file for use with the `configure-storagegrid.py` script.
-
-m|./debs/extras/ansible
-|Example Ansible role and playbook for configuring Ubuntu or Debian hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
-|===
+. If you are recovering a VMware system, select the appropriate files.
++
+include::../_include/installation-files-vmware.adoc[]
 
 . If you are recovering a StorageGRID appliance-based system, select the appropriate files.
 +
