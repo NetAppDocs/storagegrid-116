@@ -827,6 +827,15 @@ The disk queue for audit messages is full.
 
 xref:../audit/index.adoc[Review audit logs]
 
+a|Legacy CLB load balancer activity detected
+a|Some clients might be connecting to the deprecated CLB load balancer service using the default S3 and Swift API certificate.
+
+. To simplify future upgrades, Install a custom S3 and Swift API certificate on the *Global* tab of the *Certificates* page. Then, ensure that all S3 or Swift clients who connect to the legacy CLB have the new certificate.
+. Create one or more load balancer endpoints. Then, direct all existing S3 and Swift clients to these endpoints. Contact technical support if you need to remap the client port.
+
+Other activity might trigger this alert, including port scans. To determine if the deprecated CLB service is currently in use, view  the `storagegrid_private_clb_http_connection_established_successful` Prometheus metric.
+
+As required, silence or disable this alert rule if the CLB service is no longer in use.
 
 a|Logs are being added to the on-disk queue
 a|Node cannot forward logs to the external syslog server and the on-disk queue is filling up.
