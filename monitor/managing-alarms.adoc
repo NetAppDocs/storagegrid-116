@@ -13,14 +13,6 @@ The StorageGRID alarm system is the legacy system used to identify trouble spots
 
 NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
 
-.Related information
-
-xref:alarms-reference.adoc[Alarms reference (legacy system)]
-
-xref:viewing-legacy-alarms.adoc[View legacy alarms]
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
 == Alarm classes (legacy system)
 
 A legacy alarm can belong to one of two mutually exclusive alarm classes.
@@ -28,16 +20,6 @@ A legacy alarm can belong to one of two mutually exclusive alarm classes.
 * Default alarms are provided with each StorageGRID system and cannot be modified. However, you can disable Default alarms or override them by defining Global Custom alarms.
 
 * Global Custom alarms monitor the status of all services of a given type in the StorageGRID system. You can create a Global Custom alarm to override a Default alarm. You can also create a new Global Custom alarm. This can be useful for monitoring any customized conditions of your StorageGRID system.
-
-.Related information
-
-xref:managing-alarms.adoc[Viewing Default alarms (legacy system)]
-
-xref:managing-alarms.adoc[Disabling a Default alarm (legacy system)]
-
-xref:managing-alarms.adoc[Creating Global Custom alarms (legacy system)]
-
-xref:managing-alarms.adoc[Disabling Global Custom alarms (legacy system)]
 
 == Alarm triggering logic (legacy system)
 
@@ -51,17 +33,17 @@ A legacy alarm is triggered when a StorageGRID attribute reaches a threshold val
 |Notice
 |The node is connected to the grid, but an unusual condition exists that does not affect normal operations.
 
-|image:../media/icon_alarm_light_orange_minor.gif[light orange diamond icon]
+|image:../media/icon_alert_yellow_minor.png[light orange diamond icon]
 |Light Orange
 |Minor
 |The node is connected to the grid, but an abnormal condition exists that could affect operation in the future. You should investigate to prevent escalation.
 
-|image:../media/icon_alarm_orange_major.gif[dark orange diamond icon]
+|image:../media/icon_alert_orange_major.png[dark orange diamond icon]
 |Dark Orange
 |Major
 |The node is connected to the grid, but an abnormal condition exists that currently affects operation. This requires prompt attention to prevent escalation.
 
-|image:../media/icon_alarm_red_critical.gif[red x icon]
+|image:../media/icon_alert_red_critical.png[red x icon]
 |Red
 |Critical
 |The node is connected to the grid, but an abnormal condition exists that has stopped normal operations. You should address the issue immediately.
@@ -190,10 +172,6 @@ Any acknowledged alarms are shown.
 +
 image::../media/current_alarms_page_show_acknowledged.png[Current Alarms Page Show Acknowledged]
 
-.Related information
-
-xref:alarms-reference.adoc[Alarms reference (legacy system)]
-
 == Viewing Default alarms (legacy system)
 
 You can view the list of all Default legacy alarms.
@@ -241,10 +219,6 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 The alarms are listed in reverse chronological order.
  .. To return to the alarms history request form, click *History*.
 
-.Related information
-
-xref:alarms-reference.adoc[Alarms reference (legacy system)]
-
 == Create Global Custom alarms (legacy system)
 
 You might have used Global Custom alarms for the legacy system to address specific monitoring requirements. Global Custom alarms might have alarm levels that override Default alarms, or they might monitor attributes that do not have a Default alarm.
@@ -262,7 +236,7 @@ IMPORTANT: Be very careful if you change alarm settings. For example, if you inc
 .Steps
 . Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
 . Add a new row to the Global Custom alarms table:
- ** To add a new alarm, click *Edit*image:../media/icon_nms_edit.gif[edit icon] (if this is the first entry) or *Insert*image:../media/icon_nms_insert.gif[insert icon].
+ ** To add a new alarm, click *Edit* image:../media/icon_nms_edit.gif[edit icon] (if this is the first entry) or *Insert* image:../media/icon_nms_insert.gif[insert icon].
 +
 image::../media/global_custom_alarms.gif[Global Alarms page]
 
@@ -273,7 +247,7 @@ image::../media/global_custom_alarms.gif[Global Alarms page]
 Specify four characters or use wildcards (for example, A??? or AB*). Asterisks (*) represent multiple characters, and question marks (?) represent a single character.
 
   ... Click the arrow image:../media/icon_nms_right_arrow.gif[right arrow icon], or press *Enter*.
-  ... In the list of results, click *Copy*image:../media/icon_nms_copy.gif[copy icon] next to the alarm you want to modify.
+  ... In the list of results, click *Copy* image:../media/icon_nms_copy.gif[copy icon] next to the alarm you want to modify.
 +
 The Default alarm is copied to the Global Custom alarms table.
 . Make any necessary changes to the Global Custom alarms settings:
@@ -289,7 +263,7 @@ a|
 Attribute
 a|
 Select the name and code of the attribute being monitored from the list of all attributes applicable to the selected service or component.
-To display information about the attribute, click *Info*image:../media/icon_nms_info.gif[information icon] next to the attribute's name.
+To display information about the attribute, click *Info* image:../media/icon_nms_info.gif[information icon] next to the attribute's name.
 a|
 Severity
 a|
@@ -337,10 +311,6 @@ image:../media/icon_nms_copy.gif[copy icon] Copy a row
 |===
 
 . Click *Apply Changes*.
-
-.Related information
-
-xref:managing-alarms.adoc[Configuring email server settings for alarms (legacy system)]
 
 == Disable alarms (legacy system)
 
@@ -397,7 +367,7 @@ Disabling an alarm for an attribute that currently has an alarm triggered does n
 
 .Steps
 . Select *SUPPORT* > *Alarms (legacy)* > *Global alarms*.
-. In the Global Custom Alarms table, click *Edit*image:../media/icon_nms_edit.gif[edit icon] next to the alarm you want to disable.
+. In the Global Custom Alarms table, click *Edit* image:../media/icon_nms_edit.gif[edit icon] next to the alarm you want to disable.
 . Unselect the *Enabled* check box.
 +
 image::../media/disable_global_custom_alarm.gif[Global Alarms page]
@@ -428,19 +398,11 @@ When you are logged in as root, the prompt changes from `$` to `#`.
 +
 The alarm is cleared.
 
-.Related information
-
-xref:managing-alarms.adoc[Disabling alarms (legacy system)]
-
 == Configure notifications for alarms (legacy system)
 
-StorageGRID system can automatically send email and SNMP notifications when an alarm is triggered or a service state changes.
+StorageGRID system can automatically send email and xref:using-snmp-monitoring.adoc[SNMP notifications] when an alarm is triggered or a service state changes.
 
 By default, alarm email notifications are not sent. For email notifications, you must configure the email server and specify the email recipients. For SNMP notifications, you must configure the SNMP agent.
-
-.Related information
-
-xref:using-snmp-monitoring.adoc[Using SNMP monitoring]
 
 === Types of alarm notifications (legacy system)
 
@@ -465,10 +427,6 @@ A service state notification is sent when a service (for example, the LDR servic
 * Administratively Down
 
 A mailing list receives all notifications related to changes in the selected state.
-
-.Related information
-
-xref:managing-alarms.adoc[Configuring email notifications for alarms (legacy system)]
 
 === Configure email server settings for alarms (legacy system)
 
@@ -527,10 +485,6 @@ You can enter a single email address or a comma-delineated list of email address
 +
 The SMTP mail server settings are saved. If you entered information for a test email, that email is sent. Test emails are sent to the mail server immediately and are not sent through the notifications queue. In a system with multiple Admin Nodes, each Admin Node sends an email. Receipt of the test email confirms that your SMTP mail server settings are correct and that the NMS service is successfully connecting to the mail server. A connection problem between the NMS service and the mail server triggers the legacy MINS (NMS Notification Status) alarm at the Minor severity level.
 
-.Related information
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
 === Create alarm email templates (legacy system)
 
 Email templates let you customize the header, footer, and subject line of a legacy alarm email notification. You can use email templates to send unique notifications that contain the same body text to different mailing lists.
@@ -547,8 +501,7 @@ Different mailing lists might require different contact information. Templates d
 .Steps
 . Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Templates*.
-. Click *Edit*
-image:../media/icon_nms_edit.gif[edit icon] (or *Insert* image:../media/icon_nms_insert.gif[insert icon] if this is not the first template).
+. Click *Edit* image:../media/icon_nms_edit.gif[edit icon] (or *Insert* image:../media/icon_nms_insert.gif[insert icon] if this is not the first template).
 +
 image::../media/edit_email_templates.gif[Email Template page]
 
@@ -594,7 +547,7 @@ Use these settings to define the mailing lists used for legacy alarm email notif
 .Steps
 . Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Lists*.
-. Click *Edit*image:../media/icon_nms_edit.gif[edit icon] (or *Insert*image:../media/icon_nms_insert.gif[insert icon] if this is not the first mailing list).
+. Click *Edit* image:../media/icon_nms_edit.gif[edit icon] (or *Insert*image:../media/icon_nms_insert.gif[insert icon] if this is not the first mailing list).
 +
 image::../media/email_lists_page.gif[Email Lists page]
 
@@ -625,10 +578,6 @@ Optionally, select an email template to add a unique header, footer, and subject
 +
 A new mailing list is created.
 
-.Related information
-
-xref:managing-alarms.adoc[Creating alarm email templates (legacy system)]
-
 === Configure email notifications for alarms (legacy system)
 
 In order to receive email notifications for the legacy alarm system, recipients must be a member of a mailing list and that list must be added to the Notifications page. Notifications are configured to send email to recipients only when an alarm with a specified severity level is triggered or when a service state changes. Thus, recipients only receive the notifications they need to receive.
@@ -653,12 +602,6 @@ If an email address (or list) belongs to multiple mailing lists, only one email 
 +
 Notifications will be sent to the mailing list when alarms with the selected alarm severity level or service state are triggered or changed.
 
-.Related information
-
-xref:managing-alarms.adoc[Creating mailing lists for alarm notifications (legacy system)]
-
-xref:managing-alarms.adoc[Types of alarm notifications (legacy system)]
-
 === Suppress alarm notifications for a mailing list (legacy system)
 
 You can suppress alarm notifications for a mailing list when you no longer want the mailing list to receive notifications about alarms. For example, you might want to suppress notifications about legacy alarms after you have transitioned to using alert email notifications.
@@ -674,7 +617,7 @@ NOTE: While the legacy alarm system continues to be supported, the alert system 
 .Steps
 . Select *SUPPORT* > *Alarms (legacy)* > *Legacy email setup*.
 . From the Email menu, select *Notifications*.
-. Click *Edit*image:../media/icon_nms_edit.gif[Edit icon] next to the mailing list for which you want to suppress notifications.
+. Click *Edit* image:../media/icon_nms_edit.gif[Edit icon] next to the mailing list for which you want to suppress notifications.
 . Under Suppress, select the check box next to the mailing list you want to suppress, or select *Suppress* at the top of the column to suppress all mailing lists.
 . Click *Apply Changes*.
 +
@@ -709,3 +652,5 @@ image::../media/all_notifications_suppressed.gif[Notifications page with all ema
 .Related information
 
 xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:alarms-reference.adoc[Alarms reference (legacy system)]
