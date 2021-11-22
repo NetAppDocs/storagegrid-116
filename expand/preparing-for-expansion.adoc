@@ -22,7 +22,7 @@ Before you perform an expansion operation, you must gather the materials listed 
 |StorageGRID installation archive
 |If you are adding new grid nodes or a new site, you must download and extract the StorageGRID installation archive. You must use the same version that is currently running on the grid.
 
-For details, see the instructions for xref:downloading-and-extracting-storagegrid-installation-files.adoc[downloading and extracting the StorageGRID installation files].
+For details, see the instructions for <<download-and-extract-install-files,downloading and extracting the StorageGRID installation files>>.
 
 *Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
@@ -50,6 +50,7 @@ For details, see the instructions for xref:downloading-and-extracting-storagegri
 
 |===
 
+.[[download-and-extract-install-files]]
 == Download and extract the StorageGRID installation files
 
 Before you can add new grid nodes or a new site, you must download the appropriate StorageGRID installation archive and extract the files.
@@ -79,21 +80,15 @@ Use the `.zip` file if you are running Windows on the service laptop.
 
 |Red Hat Enterprise Linux or CentOS
 m|
-StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip
-
-StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz
+include::../_include/installation-archives-rhel.adoc[]
 
 |Ubuntu or Debian and Appliance
 m|
-StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip
-
-StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz
+include::../_include/installation-archives-ubuntu.adoc[]
 
 |VMware
 m|
-StorageGRID-Webscale-_version_-VMware-_uniqueID_.zip
-
-StorageGRID-Webscale-_version_-VMware-_uniqueID_.tgz
+include::../_include/installation-archives-vmware.adoc[]
 
 |OpenStack/other Hypervisor
 |To expand an existing deployment on OpenStack, you must deploy a virtual machine running one of the supported Linux distributions listed above and follow the appropriate instructions for Linux.
@@ -107,32 +102,22 @@ The paths listed in the step for each platform are relative to the top-level dir
 
 . If you are expanding a Red Hat Enterprise Linux or CentOS system, select the appropriate files.
 +
-
 include::../_include/installation-files-rhel.adoc[]
 
+[start=9]
 . If you are expanding an Ubuntu or Debian system, select the appropriate files.
 +
 include::../_include/installation-files-ubuntu.adoc[]
 
+[start=10]
 . If you are expanding a VMware system, select the appropriate files.
 +
 include::../_include/installation-files-vmware.adoc[]
 
+[start=11]
 . If you are expanding a StorageGRID appliance-based system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-
-m|./debs/storagegrid-webscale-images-version-SHA.deb
-|
-DEB package for installing the StorageGRID node images on your appliances.
-
-m|./debs/storagegrid-webscale-images-version-SHA.deb.md5
-|
-Checksum of the DEB installation package used by the StorageGRID Appliance Installer to validate that the package is intact after upload.
-|===
-NOTE: For appliance installation, these files are only required if you need to avoid network traffic. The appliance can download the required files from the primary Admin Node.
+include::../_include/installation-files-appliance.adoc[]
 
 == Verify hardware and networking
 
@@ -145,6 +130,3 @@ You must also verify network connectivity between servers at the site, and confi
 If you are performing an expansion activity that includes adding a new subnet, you must xref:updating-subnets-for-grid-network.adoc[add the new Grid subnet] before you start the expansion procedure.
 
 Do not use network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. As required, however, you can use NAT between external clients and grid nodes, such as to provide a public IP address for a Gateway Node. Using NAT to bridge a public network segment is supported only when you employ a tunneling application that is transparent to all nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses.
-
-
-
