@@ -64,7 +64,7 @@ xref:how-grid-nodes-discover-primary-admin-node.adoc[How grid nodes discover the
 |O
 |Comma-separated list of subnets in CIDR notation to which this node should communicate via the Admin Network gateway.
 
-Example: 172.16.0.0/21,172.17.0.0/21
+Example: `172.16.0.0/21,172.17.0.0/21`
 
 |ADMIN_NETWORK_GATEWAY
 |O (*R*)
@@ -74,10 +74,9 @@ Example: 172.16.0.0/21,172.17.0.0/21
 
 Examples:
 
-----
-1.1.1.1
-10.224.4.81
-----
+`1.1.1.1`
+
+`10.224.4.81`
 
 |ADMIN_NETWORK_IP
 |O
@@ -85,10 +84,9 @@ Examples:
 
 Examples:
 
-----
-1.1.1.1
-10.224.4.81
-----
+`1.1.1.1`
+
+`10.224.4.81`
 
 |ADMIN_NETWORK_MAC
 |O
@@ -98,7 +96,7 @@ This field is optional. If omitted, a MAC address will be generated automaticall
 
 Must be 6 pairs of hexadecimal digits separated by colons.
 
-Example: b2:9c:02:c2:27:10
+Example: `b2:9c:02:c2:27:10`
 
 |ADMIN_NETWORK_MASK
 |O
@@ -106,10 +104,9 @@ Example: b2:9c:02:c2:27:10
 
 Examples:
 
-----
-255.255.255.0
-255.255.248.0
-----
+`255.255.255.0`
+
+`255.255.248.0`
 
 |ADMIN_NETWORK_MTU
 |O
@@ -121,10 +118,9 @@ If you want to use jumbo frames, set the MTU to a value suitable for jumbo frame
 
 Examples:
 
-----
-1500
-8192
-----
+`1500`
+
+`8192`
 
 |ADMIN_NETWORK_TARGET
 |BP
@@ -136,10 +132,9 @@ Examples:
 
 Examples:
 
-----
-bond0.1002
-ens256
-----
+`bond0.1002`
+
+`ens256`
 
 |ADMIN_NETWORK_TARGET_TYPE
 |O
@@ -171,11 +166,11 @@ This key is only required when NODE_TYPE = VM_Admin_Node; do not specify it for 
 
 Examples:
 
-----
-/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0
-/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd
-/dev/mapper/sgws-adm1-audit-logs
-----
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-adm1-audit-logs`
 
 |
 BLOCK_DEVICE_RANGEDB_000
@@ -218,11 +213,11 @@ Only BLOCK_DEVICE_RANGEDB_000 is required; the rest are optional. The block devi
 
 Examples:
 
-----
-/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0
-/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd
-/dev/mapper/sgws-sn1-rangedb-000
-----
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-sn1-rangedb-000`
 
 |BLOCK_DEVICE_TABLES
 |*R*
@@ -230,11 +225,11 @@ Examples:
 
 Examples:
 
-----
-/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0
-/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd
-/dev/mapper/sgws-adm1-tables
-----
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-adm1-tables`
 
 |BLOCK_DEVICE_VAR_LOCAL
 |*R*
@@ -242,11 +237,11 @@ Examples:
 
 Examples:
 
-----
-/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0
-/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd
-/dev/mapper/sgws-sn1-var-local
-----
+`/dev/disk/by-path/pci-0000:03:00.0-scsi-0:0:0:0`
+
+`/dev/disk/by-id/wwn-0x600a09800059d6df000060d757b475fd`
+
+`/dev/mapper/sgws-sn1-var-local`
 
 |CLIENT_NETWORK_CONFIG
 |O
@@ -258,10 +253,9 @@ Examples:
 
 Examples:
 
-----
-1.1.1.1
-10.224.4.81
-----
+`1.1.1.1`
+
+`10.224.4.81`
 
 |CLIENT_NETWORK_IP
 |O
@@ -269,10 +263,9 @@ Examples:
 
 Examples:
 
-----
-1.1.1.1
-10.224.4.81
-----
+`1.1.1.1`
+
+`10.224.4.81`
 
 |CLIENT_NETWORK_MAC
 |O
@@ -282,7 +275,7 @@ This field is optional. If omitted, a MAC address will be generated automaticall
 
 Must be 6 pairs of hexadecimal digits separated by colons.
 
-Example: b2:9c:02:c2:27:20
+Example: `b2:9c:02:c2:27:20`
 
 |CLIENT_NETWORK_MASK
 |O
@@ -290,10 +283,9 @@ Example: b2:9c:02:c2:27:20
 
 Examples:
 
-----
-255.255.255.0
-255.255.248.0
-----
+`255.255.255.0`
+
+`255.255.248.0`
 
 |CLIENT_NETWORK_MTU
 |O
@@ -305,10 +297,9 @@ If you want to use jumbo frames, set the MTU to a value suitable for jumbo frame
 
 Examples:
 
-----
-1500
-8192
-----
+`1500`
+
+`8192`
 
 |CLIENT_NETWORK_TARGET
 |BP
@@ -320,10 +311,9 @@ Examples:
 
 Examples:
 
-----
-bond0.1003
-ens423
-----
+`bond0.1003`
+
+`ens423`
 
 |CLIENT_NETWORK_TARGET_TYPE
 |O
@@ -361,10 +351,9 @@ If the Grid Network is a single subnet with no gateway, use either the standard 
 
 Examples:
 
-----
-1.1.1.1
-10.224.4.81
-----
+`1.1.1.1`
+
+`10.224.4.81`
 
 |GRID_NETWORK_MAC
 |O
@@ -374,7 +363,7 @@ This field is optional. If omitted, a MAC address will be generated automaticall
 
 Must be 6 pairs of hexadecimal digits separated by colons.
 
-Example: b2:9c:02:c2:27:30
+Example: `b2:9c:02:c2:27:30`
 
 |GRID_NETWORK_MASK
 |O
@@ -382,10 +371,9 @@ Example: b2:9c:02:c2:27:30
 
 Examples:
 
-----
-255.255.255.0
-255.255.248.0
-----
+`255.255.255.0`
+
+`255.255.248.0`
 
 |GRID_NETWORK_MTU
 |O
@@ -410,10 +398,9 @@ Examples:
 
 Examples:
 
-----
-bond0.1001
-ens192
-----
+`bond0.1001`
+
+`ens192`
 
 |GRID_NETWORK_TARGET_TYPE
 |O
@@ -443,10 +430,9 @@ The format for this field is `<number><unit>`, where `<unit>` can be `b`, `k`, `
 
 Examples:
 
-----
-24g
-38654705664b
-----
+`24g`
+
+`38654705664b`
 
 *Note*: If you want to use this option, you must enable kernel support for memory cgroups.
 
@@ -471,9 +457,7 @@ The format used is: `<network type>/<protocol>/<default port used by grid node>/
 
 For example:
 
-----
-PORT_REMAP = client/tcp/18082/443
-----
+`PORT_REMAP = client/tcp/18082/443`
 
 |PORT_REMAP_INBOUND
 |O
@@ -485,9 +469,7 @@ The format used is: `<network type>/<protocol:>/<remapped port >/<default port u
 
 For example:
 
-----
-PORT_REMAP_INBOUND = grid/tcp/3022/22
-----
+`PORT_REMAP_INBOUND = grid/tcp/3022/22`
 |===
 
 .Related information
