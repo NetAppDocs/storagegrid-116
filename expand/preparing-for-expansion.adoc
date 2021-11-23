@@ -27,11 +27,14 @@ For details, see the instructions for <<download-and-extract-install-files,downl
 *Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
 |Service laptop
-|The service laptop must meet the following requirements:
+|The service laptop must have the following:
 
 * Network port
 * SSH client (for example, PuTTY)
 * xref:../admin/web-browser-requirements.adoc[Supported web browser]
+
+|`Passwords.txt` file
+|Contains the passwords required to access grid nodes on the command line. Included in the Recovery Package.
 
 |Provisioning passphrase
 |The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the `Passwords.txt` file.
@@ -46,7 +49,7 @@ For details, see the instructions for <<download-and-extract-install-files,downl
 ** xref:../vmware/index.adoc[Install VMware]
 
 |Current documentation for your platform
-|For supported versions, see the https://mysupport.netapp.com/matrix[Interoperability Matrix].
+|For supported versions, see the https://mysupport.netapp.com/matrix[Interoperability Matrix^].
 
 |===
 
@@ -82,7 +85,7 @@ Use the `.zip` file if you are running Windows on the service laptop.
 m|
 include::../_include/installation-archives-rhel.adoc[]
 
-|Ubuntu or Debian and Appliance
+|Ubuntu or Debian or Appliances
 m|
 include::../_include/installation-archives-ubuntu.adoc[]
 
