@@ -2,78 +2,112 @@
 permalink: upgrade/determine-if-storage-watermark-overrides-are-in-use.html
 sidebar: sidebar
 keywords: upgrade, storage volume watermarks
-summary: 'After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks.'
+summary: 'After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks. Then, if optimized watermarks are not being used, you can optionally switch to the optimized settings.'
 ---
-= Determine if storage watermark overrides are in use
+= Determine if optimized storage watermarks are in use
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks.
+After upgrading to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks. Then, if optimized watermarks are not being used, you can optionally switch to the optimized settings.
 
-When StorageGRID optimizes the watermarks, it uses different values for every storage volume in every Storage Node, based on the size of the Storage Node and the relative size of the volume.
+.What you'll need
 
-If optimized watermarks are not being used, you can optionally switch to the optimized settings.  
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 
-== View the storage watermark overrides
+* You have the Root Access permission.
+
+.About this task
+
+Optimized watermarks are used for all new and most upgraded StorageGRID 11.6 systems. The exception is an upgraded system in which non-default watermark values had been in use.
+
+If you recently upgraded to StorageGRID 11.6, you can determine if your system is using optimized values for the three storage volume watermarks. Then, if optimized watermarks are not being used, you can optionally switch to the optimized settings.
+
+== View current storage watermarks
 
 You can view the current storage watermark settings in the Grid Manager.
 
-.What you'll need
-
-* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-
-* You have the Root Access permission.
-
 .Steps
 
-. Select *CONFIGURATION* > *System* > *Storage options*.
-
-. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides. 
+. Select *CONFIGURATION* > *System* > *Storage options*. 
+. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides.
 +
-image::../media/storage_watermarks.png[Watermarks]
+image::../media/storage-volume-watermark-overrides.png[Storage volume watermark overrides]
 
-** If the watermark overrides are set to 0, the values of these watermarks are optimized for every storage volume on every Storage Node. This is the default and recommended setting.
-
-** If the watermark overrides are set to any non-0 value, optimized watermark values are not used. Instead, these three settings determine the watermark values used by all storage volumes on all Storage Nodes. Using non-optimized watermark settings is not recommended.
-
-. If the watermark overrides are set to any non-0 value, go to <<View the calculated storage watermarks>> to optionally start using the optimized watermark settings. 
+* If the watermark overrides are set to *0*, the watermarks are optimized for every storage volume on every Storage Node. 
 +
-IMPORTANT: Do not start using the new optimized values until you ensure that the change will not cause any Storage Node to become read-only, as described below.
+This is the default and recommended setting. Do not update these values or unexpected errors might occur. 
 
-NOTE: If you set these values manually, the Hard Read-Only Watermark must be less than the Soft Read-Only Watermark, which must be less than the Read-Write Watermark.
+* If the watermark overrides are set to a non-0 value, optimized watermarks are not used. Instead, these settings determine the watermarks used by all storage volumes on all Storage Nodes. Using non-optimized watermark settings is not recommended.
+
+. If the overrides are not *0*, go to <<Determine if you can use watermark overrides>> to determine if you can or should adjust the settings.
+
+== Determine if you can use watermark overrides
+
+If the watermark overrides are not *0*, you might want to use the optimized values instead.
+ 
+IMPORTANT: Do not change the watermark settings until you check the *Available* values for each object store. If there is not enough available space, Storage Nodes might become read-only as soon as you change these values.
+
+. <<View current storage watermarks>> and note the current setting for the *Storage Volume Soft Read-Only Watermark Override*.
+
+. Select *NODES* to go to the Nodes page.
+
+. For each online Storage Node, select *_Storage Node_* > *Storage* and look at the Object Stores table.
+
+. Compare the *Available* value for each object store (volume) to the current setting of the *Storage Volume Soft Read-Only Watermark*.
+
+. If at least one volume has more space available than the current watermark setting:
+
+.. Go back to *CONFIGURATION* > *System* > *Storage options*.
+.. Select *Configuration* from the Storage Options menu.
+.. Change the *Storage Volume Soft Read-Only Watermark Override* to 0.
+.. Select *Apply Changes*.
+
+. If no volume has more space available than the system-wide watermark setting, perform an expansion, if possible. Either add storage volumes to an existing node or add new Storage Nodes.
+
+NOTE: The *Low read-only watermark override* is triggered when the Storage Volume Soft Read-Only Watermark Override is less than the minimum optimized watermark for a Storage Node. If you need to use the current overrides for the storage volume watermarks, silence or disable the *Low read-only watermark override* alert.
+
+
 
 == View the calculated storage watermarks
 
-If the watermark overrides are set to any non-0 value, you must ensure that no Storage Nodes will become read-only if you start using the optimized values instead. 
+StorageGRID uses two Prometheus metrics to show the optimized values it has calculated for the Storage Volume Soft Read-Only Watermark:
 
-StorageGRID uses two Prometheus metrics to show the optimized values it has calculated for the Storage Volume Soft Read-Only Watermark: 
+* For a given Storage Node, the following metric shows the minimum optimized value of the Soft Read-Only Watermark for all storage volumes on that node:
++
+`storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark` 
 
-* For a given Storage Node, the `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark` metric shows the minimum optimized value for all storage volumes on that node.
+* For a given Storage Node, the following metric shows the maximum optimized value of the Soft Read-Only Watermark for all storage volumes on that node: 
++
+`storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
++
+NOTE: StorageGRID derives optimized values for the Hard Read-Only Watermark and the Read-Write Watermark using the two metrics above. The other watermarks do not have their own Prometheus metrics.
 
-* For a given Storage Node, the `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark` metric shows the maximum optimized value for all storage volumes on that node.
 
-The optimized minimum and maximum values for the Storage Volume Hard Read-Only Watermark and the Storage Volume Read-Write Watermark are calculated using the two metrics above. The minimum and maximum values for these other watermarks do not have their own metrics.
-
-Whether these optimized values are actually used depends on the setting of the three Watermark Overrides on the *CONFIGURATION* > *System* > *Storage options* page. All Watermark Overrides must be 0 if you want StorageGRID to use the optimized values.
+You can view the minimum and maximum values for all Storage Nodes.
 
 .What you'll need
-
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-
-* You have the Root Access permission.
+* You have the Root access permission.
 
 .Steps
 
-. Select *SUPPORT* > *Metrics*.
+. Select *SUPPORT* > *Tools* > *Metrics*.
+. In the Prometheus section, select the link to access the Prometheus user interface.
+. Enter the following Prometheus metric: 
++
+`storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
 
-. Select the link in the *Prometheus* section to access the Prometheus user interface. 
+. Select *Execute*.
 
-. Search the list for the following metrics:
+. In the results, look at the last column to find the optimized watermark setting.
++
+This example shows four Storage Nodes in a data center. The recommended minimum soft read-only watermark for the appliance Storage Node is 100,000,000,000 bytes (93.13 GB). As you might expect, the optimize watermark value for an appliance storage volume is much larger than the optimized watermark value for a volume in a small, software-based Storage Node.
++
+image::../media/storage_volume_prometheus_chart.png[Example minimum optimized soft read-only watermark settings for a node]
 
-** `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
-** `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
+. To see the recommended maximum soft read-only watermark, execute the following Prometheus expression: 
++
+`storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
 
-. Enter the metric into an expression, and select *Execute*.
 
-. View the results.

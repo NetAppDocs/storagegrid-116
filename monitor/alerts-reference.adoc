@@ -923,6 +923,28 @@ xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Low object data
 xref:../expand/index.adoc[Expand your grid]
 
 a|
+Low read-only watermark override
+a|
+The Storage Volume Soft Read-Only Watermark Override is less than the minimum optimized watermark for a Storage Node.
+
+. Select *NODES* to go to the Nodes page.
+. For each online Storage Node, select *_Storage Node_* > *Storage* and look at the Object Stores table.
+
+. Compare the Available value for each object store (volume) to the `storagegrid_storage_volume_custom_soft_readonly_watermark` (this is the system-wide watermark setting).
+
+. If at least one volume has more space available than the system-wide watermark setting:
+
+.. Select *CONFIGURATION* > *Storage options*.
+.. Select *Configuration*.
+.. Set the *Storage Volume Soft Read-Only Watermark Override* to 0.
+
+. If no volume has more space available than the system-wide watermark setting, perform an expansion, if possible. Either add storage volumes to an existing node or add new Storage Nodes.
+
+. If you need to use the current overrides for the storage volume watermarks, silence or disable this alert.
+
+
+
+a|
 Low root disk capacity
 a|
 The space available for the root disk is low.
