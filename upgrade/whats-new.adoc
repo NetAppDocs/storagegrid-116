@@ -57,6 +57,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Cassandra table corruption
 * EC rebalance failure
 * EC repair failure
+* Expiration of global server certificate for S3 and Swift API
 * External syslog CA certificate expiration
 * External syslog client certificate expiration
 * External syslog server certificate expiration
@@ -153,6 +154,15 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 .Learn more
 * xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
 
+=== Security certificates renamed
+
+The following security certificates were renamed:
+* The Management Interface Server Certificate is now the Management interface certificate.
+* The Object Storage API Service Endpoints Server Certificate (also called the Storage API Server Certificate) is now the S3 and Swift API certificate.
+* The Internal CA Certificate, System CA Certificate, CA Certificate, and Default CA certificate are now the Grid CA certificate.
+
+.Learn more
+* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
 
 == Lisa's what's new changes
 
