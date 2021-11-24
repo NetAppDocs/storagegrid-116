@@ -73,13 +73,7 @@ If you haven't already, create or import the signing certificate.
 
 When you create an SP connection in PingFederate, you import the SAML metadata you downloaded from StorageGRID for the Admin Node. The metadata file contains many of the specific values you need.
 
-
-[IMPORTANT] 
-====
-You must create an SP connection for each Admin Node in your StorageGRID system, so that users can securely sign in to and out of any node. Use these instructions to create the first SP connection. Then, use *Select Action > Copy* to create a copy of the initial SP connection for each additional Admin Node. Simply enter the new Connection ID and Connection Name for the copy, so the new metadata can be used. 
-
-The SP connections for different Admin Nodes use identical settings, with the exception of the Partner's Entity ID, Base URL, Connection ID, Connection Name, Signature Verification, and SLO Response URL.
-====
+IMPORTANT: You must create an SP connection for each Admin Node in your StorageGRID system, so that users can securely sign in to and out of any node. Use these instructions to create the first SP connection. Then, go to <<Create additional SP connections>> to create any additional connections you need.
 
 === Choose SP connection type
 
@@ -173,5 +167,26 @@ The Partner's Entity ID and the Connection Name are set to the StorageGRID SP co
 
 . Review the summary screens and select *Save* to save the SP connection.
 
+=== Create additional SP connections
+
+You can copy the first SP connection to create the SP connections you need for each Admin Node in your grid. 
+
+NOTE: The SP connections for different Admin Nodes use identical settings, with the exception of the Partner's Entity ID, Base URL, Connection ID, Connection Name, Signature Verification, and SLO Response URL.
+
+. Select *Action* > *Copy* to create a copy of the initial SP connection for each additional Admin Node. 
+
+. Enter the new Connection ID and Connection Name for the copy, so the new metadata can be used. 
+
+. Choose the metadata file corresponding to the Admin Node:
+
+.. Select *Action* > *Update with Metadata*.
+.. Select *Next*.
+.. Select *Save*.
+
+. Resolve the error due to the unused attribute:
+.. Select the new connection.
+.. Select *Configure Browser SSO > Configure Assertion Creation > Attribute Contract*.
+.. Delete the entry for *urn:oid*.
+.. Select *Save*.
 
 
