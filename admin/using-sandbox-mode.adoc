@@ -184,7 +184,7 @@ When the configuration is saved, the Sandbox mode confirmation notice appears. T
 
 StorageGRID can remain in sandbox mode as long as required. However, when *Sandbox Mode* is selected on the Single Sign-on page, SSO is disabled for all StorageGRID users. Only local users can sign in.
 
-To configure relying party trusts, enterprise applications, or SP connections, follow these steps, based on the SSO provider.
+Follow these steps to configure relying party trusts (AD FS), complete enterprise applications (Azure), or configure SP connections (PingFederate).
 
 // start tabbed area
 
@@ -207,9 +207,9 @@ For instructions, go to xref:../admin/creating-relying-party-trusts-in-ad-fs.ado
 .Azure 
 --
 
-. Select the button to download and save the SAML metadata for the Admin Node you are currently signed in to. 
+. From the Single sign-on page for the Admin Node you are currently signed in to, select the button to download and save the SAML metadata. 
 
-. Repeat these steps for any other Admin Nodes in your grid:
+. Then, for any other Admin Nodes in your grid, repeat these steps:
 .. Sign in to the node.
 .. Select *CONFIGURATION* > *Access control* > *Single sign-on*.
 .. Download and save the SAML metadata for that node.
