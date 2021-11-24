@@ -11,3 +11,15 @@ summary: 'Some features were removed or deprecated in StorageGRID 11.6. You must
 [.lead]
 Some features were removed or deprecated in StorageGRID 11.6. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
 
+== Alarm system and alarm-based APIs deprecated
+
+As of the StorageGRID 11.6 release, the legacy alarm system is deprecated. The user interface and APIs for the legacy alarm system will be removed in a future release. Customers should fully transition to the alert system after upgrading to StorageGRID 11.6.
+
+The 11.6 release deprecates all alarm-based APIs. The following APIs are affected by this change:
+
+* `GET /grid/alarms`: Fully deprecated
+
+* `GET /grid/health/topology`: Fully deprecated
+
+* `GET /grid/health`: `alarm-counts` section of the response is deprecated
+
