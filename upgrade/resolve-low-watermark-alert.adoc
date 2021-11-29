@@ -15,13 +15,13 @@ As described in  xref:../upgrade/whats-new.adoc[What's new in StorageGRID 11.6],
 
 * More than 90% of Storage Nodes would become read-only if optimized watermarks were applied. StorageGRID will not change watermark settings if doing so would make the system unable to accept new data.
 
-* A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. However, StorageGRID might trigger the *Low read-only watermark override* alert if custom watermark settings are too aggressive.
+* A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. However, StorageGRID might trigger the *Low read-only watermark override* alert if custom watermark settings are too small.
 
 == About the Low read-only watermark override alert
 
-If you use custom values for storage volume watermarks, the *Low read-only watermark override* alert might be triggered for one or more Storage Nodes during the StorageGRID 11.6 upgrade. This alert is triggered if StorageGRID determines that a custom setting for the *Storage Volume Soft Read-Only Watermark* is less than the minimum optimized setting it would use for any storage volume in the Storage Node. 
+If you use custom values for storage volume watermarks, the *Low read-only watermark override* alert might be triggered for one or more Storage Nodes after the StorageGRID 11.6 upgrade. This alert is triggered if StorageGRID determines that a custom setting for the *Storage Volume Soft Read-Only Watermark* is less than the minimum optimized setting it would use for any storage volume in the Storage Node. 
 
-The *Low read-only watermark override* alert indicates that a custom watermark setting is too aggressive &mdash; if you continue to use the custom setting, a Storage Node might run critically low on space before it can safely transition to the soft read-only state.  
+The *Low read-only watermark override* alert indicates that a custom watermark setting is too small &mdash; if you continue to use the custom setting, a Storage Node might run critically low on space before it can safely transition to the read-only state. Some storage volumes might become inaccessible (automatically unmounted) when the node reaches capacity. 
 
 For example, suppose you previously set the *Storage Volume Soft Read-Only Watermark* to 5 GB, instead of using the default value of 10 GB. Now suppose that during the 11.6 upgrade, StorageGRID calculated the following optimized values for the four storage volumes in Storage Node A:
 
@@ -42,7 +42,7 @@ For example, suppose you previously set the *Storage Volume Soft Read-Only Water
 
 |===
 
-Because your custom watermark (5 GB) is less than the minimum optimized value for all volumes in the Storage Node (11 GB), the alert is triggered for Storage Node A. If you continue using the custom setting, the node might run critically low on space before it can safely transition to the soft read-only state.
+Because your custom watermark (5 GB) is smaller than the minimum optimized value for all volumes in the Storage Node (11 GB), the alert is triggered for Storage Node A. If you continue using the custom setting, the node might run critically low on space before it can safely transition to the read-only state.
 
 == How to resolve the alert
 
@@ -56,7 +56,7 @@ Follow these steps if one or more *Low read-only watermark override* alerts are 
 
 * You have the Root Access permission.
 
-.Steps
+=== View current watermark override settings
 
 . Select *CONFIGURATION* > *System* > *Storage options*.
 
@@ -68,15 +68,39 @@ image::../media/storage-volume-watermark-overrides.png[Storage volume watermark 
 +
 This is the default and recommended setting. You can skip the rest of this procedure. You should not update these values.
 
-* If the *Storage Volume Soft Read-Only Watermark Override* is a non-0 value, custom watermarks are being used. Using custom (non-optimized) watermark settings is not recommended. Go to the next step to determine if you can or should adjust the settings.
+* If the *Storage Volume Soft Read-Only Watermark Override* is a non-0 value, custom watermarks are being used. Using custom (non-optimized) watermark settings is not recommended. Use the instructions in the next sections to determine if you can or should adjust the settings.
+
+=== View optimized storage watermarks
+
+StorageGRID uses two Prometheus metrics to show the optimized values it has calculated for the *Storage Volume Soft Read-Only Watermark*. You can view the minimum and maximum optimized values for each Storage Node in your grid.
+
+. Select *SUPPORT* > *Tools* > *Metrics*.
+
+. In the Prometheus section, select the link to access the Prometheus user interface.
+
+. To see the recommended minimum soft read-only watermark, enter the following Prometheus metric, and select *Execute*:
++
+`storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
++
+The last column shows the minimum optimized value of the Soft Read-Only Watermark for all storage volumes on each Storage Node. If this value is greater than a custom setting for the *Storage Volume Soft Read-Only Watermark*, the *Low read-only watermark override* alert is triggered for the Storage Node.
+
+. To see the recommended maximum soft read-only watermark, enter the following Prometheus metric, and select *Execute*: 
++
+`storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
++
+The last column shows the maximum optimized value of the Soft Read-Only Watermark for all storage volumes on each Storage Node. 
+
+. Note the highest optimized value for all Storage Nodes in your grid.
+
+=== Determine if you can use optimized watermarks
 
 . Select *NODES* to go to the Nodes page.
 
 . For each online Storage Node, select *_Storage Node_* > *Storage* and scroll down to the Object Stores table.
 
-. Compare the *Available* value for each object store (volume) to the current setting of the *Storage Volume Soft Read-Only Watermark Override*.
+. Compare the *Available* value for each object store (volume) to the the highest optimized watermark for all Storage Nodes in your grid.
 
-. If at least one volume has more space available than the current setting:
+. If at least one volume has more space available than the highest optimized value, you can use the optimized watermarks.
 
 .. Go back to *CONFIGURATION* > *System* > *Storage options*.
 .. Select *Configuration* from the Storage Options menu.
@@ -85,9 +109,9 @@ This is the default and recommended setting. You can skip the rest of this proce
 +
 Optimized storage volume watermark settings are now in effect.
 
-. If no volume has more space available than the *Storage Volume Soft Read-Only Watermark Override*, xref:../expand/index.adoc[expand your grid] as soon as possible. Either add storage volumes to an existing node or add new Storage Nodes.
+. If no volume has more space available than the highest optimized value for all Storage Nodes in your grid, xref:../expand/index.adoc[expand your grid] as soon as possible. Either add storage volumes to an existing node or add new Storage Nodes.
 +
-NOTE:  If you need to continue using custom values for the storage volume watermarks, you can xref:../monitor/silencing-alert-notifications.adoc[silence] or xref:../monitor/disabling-alert-rules.adoc[disable] the *Low read-only watermark override* alert.
+NOTE: If you need to continue using custom values for the storage volume watermarks, you can xref:../monitor/silencing-alert-notifications.adoc[silence] or xref:../monitor/disabling-alert-rules.adoc[disable] the *Low read-only watermark override* alert. However, be aware that using smaller-than-recommended values for storage volume watermarks can cause some storage volumes to become inaccessible (automatically unmounted) when the node reaches capacity. 
 
 .Related information
 * xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
