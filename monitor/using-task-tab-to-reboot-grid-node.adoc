@@ -19,8 +19,6 @@ The Task tab allows you to reboot the selected node. The Task tab is shown for a
 .About this task
 You can use the Task tab to reboot a node. For appliance nodes, you can also use the Task tab to place the appliance into maintenance mode.
 
-image::../media/maintenance_mode.png[Maintenance Mode button for appliance]
-
 * Rebooting a grid node from the Task tab issues the reboot command on the target node. When you reboot a node, the node shuts down and restarts. All services are restarted automatically.
 +
 If you plan to reboot a Storage Node, note the following:
@@ -32,24 +30,7 @@ If you plan to reboot a Storage Node, note the following:
 +
 NOTE: Putting an appliance into maintenance mode might make the appliance unavailable for remote access.
 
-.Steps
-. Select *NODES*.
-. Select the grid node you want to reboot.
-. Select the *Tasks* tab.
-. Select *Reboot*.
-+
-A confirmation dialog box appears.
-+
-image::../media/nodes_tasks_reboot.png[Nodes > Tasks > Reboot button]
-+
-NOTE: If you are rebooting the primary Admin Node, the confirmation dialog box reminds you that your browser's connection to the Grid Manager will be lost temporarily when services are stopped.
-
-. Enter the provisioning passphrase, and click *OK*.
-. Wait for the node to reboot.
-+
-It might take some time for services to shut down.
-+
-When the node is rebooting, the gray icon (Administratively Down) appears on the left side of the Nodes page. When all services have started again, the icon changes back to its original color.
+include::../_include/rebooting-grid-node-from-grid-manager-steps.adoc[] 
 
 .Related information
 
