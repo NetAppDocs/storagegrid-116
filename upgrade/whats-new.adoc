@@ -84,7 +84,7 @@ The following new alerts were added for StorageGRID 11.6:
 
 === Storage volume watermarks now optimized
 
-In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative size of the volume.
+In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
 
 Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems, unless either of the following is true:
 
@@ -92,7 +92,7 @@ Optimized watermarks are automatically applied to all new and most upgraded Stor
 
 * A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. 
 
-If you use custom watermarks, the *Low read-only watermark override* alert might be triggered when you upgrade. This alert lets you know if your custom watermark settings are too aggressive. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details. 
+If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrade. This alert lets you know if your custom watermark settings are too aggressive. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details. 
 
 As part of this change, two Prometheus metrics were added:
 
