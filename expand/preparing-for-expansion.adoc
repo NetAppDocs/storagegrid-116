@@ -18,96 +18,43 @@ Before you perform an expansion operation, you must gather the materials listed 
 [cols="1a,2a" options="header"]
 |===
 | Item| Notes
-a|
-StorageGRID installation archive
 
-a|
-If you are adding new grid nodes or a new site, you must download and extract the StorageGRID installation archive. You must use the same version that is currently running on the grid.
+|StorageGRID installation archive
+|If you are adding new grid nodes or a new site, you must download and extract the StorageGRID installation archive. You must use the same version that is currently running on the grid.
 
-For details, see the instructions for xref:downloading-and-extracting-storagegrid-installation-files.adoc[downloading and extracting the StorageGRID installation files].
+For details, see the instructions for <<download-and-extract-install-files,downloading and extracting the StorageGRID installation files>>.
 
 *Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
-a|
-Service laptop
-a|
-The service laptop must meet the following requirements:
+|Service laptop
+|The service laptop must have the following:
 
 * Network port
 * SSH client (for example, PuTTY)
 * xref:../admin/web-browser-requirements.adoc[Supported web browser]
 
-a|
-Provisioning passphrase
-a|
-The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the `Passwords.txt` file.
+|`Passwords.txt` file
+|Contains the passwords required to access grid nodes on the command line. Included in the Recovery Package.
 
-a|
-StorageGRID documentation
-a|
+|Provisioning passphrase
+|The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the `Passwords.txt` file.
 
-* _Administering StorageGRID_
-* _StorageGRID Release Notes_
+|StorageGRID documentation
+|
+* xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../release-notes/index.adoc[Release notes]
 * Installation instructions for your platform
+** xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+** xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+** xref:../vmware/index.adoc[Install VMware]
 
-a|
-Current documentation for your platform
-a|
-For supported versions, see the Interoperability Matrix.
+|Current documentation for your platform
+|For supported versions, see the https://mysupport.netapp.com/matrix[Interoperability Matrix^].
 
 |===
-.Related information
 
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:../release-notes/index.adoc[Release notes]
-
-xref:../vmware/index.adoc[Install VMware]
-
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
-
-=== Web browser requirements
-
-
-You must use a supported web browser.
-
-[cols="1a,1a" options="header"]
-|===
-| Web browser| Minimum supported version
-a|
-Google Chrome
-a|
-87
-a|
-Microsoft Edge
-a|
-87
-a|
-Mozilla Firefox
-a|
-84
-|===
-You should set the browser window to a recommended width.
-
-[cols="1a,1a" options="header"]
-|===
-| Browser width| Pixels
-a|
-Minimum
-a|
-1024
-a|
-Optimum
-a|
-1280
-|===
-
+.[[download-and-extract-install-files]]
 == Download and extract the StorageGRID installation files
-
 
 Before you can add new grid nodes or a new site, you must download the appropriate StorageGRID installation archive and extract the files.
 
@@ -130,35 +77,24 @@ The version shown in the installation archive file must match the version of the
 +
 Use the `.zip` file if you are running Windows on the service laptop.
 +
-[cols="1a,1a" options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Platform| Installation archive
-a|
-VMware
+
+|Red Hat Enterprise Linux or CentOS
 m|
-StorageGRID-Webscale-_version_-VMware-_uniqueID_.zip
+include::../_include/installation-archives-rhel.adoc[]
 
-StorageGRID-Webscale-_version_-VMware-_uniqueID_.tgz
-
-a|
-Red Hat Enterprise Linux or CentOS
+|Ubuntu or Debian or Appliances
 m|
+include::../_include/installation-archives-ubuntu.adoc[]
 
-StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip
-
-StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz
-
-a|
-Ubuntu or Debian and Appliance
-
+|VMware
 m|
-StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip
+include::../_include/installation-archives-vmware.adoc[]
 
-StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz
-
-a|
-OpenStack/other Hypervisor
-a|To expand an existing deployment on OpenStack, you must deploy a virtual machine running one of the supported Linux distributions listed above and follow the appropriate instructions for Linux.
+|OpenStack/other Hypervisor
+|To expand an existing deployment on OpenStack, you must deploy a virtual machine running one of the supported Linux distributions listed above and follow the appropriate instructions for Linux.
 
 |===
 
@@ -167,239 +103,33 @@ a|To expand an existing deployment on OpenStack, you must deploy a virtual machi
 +
 The paths listed in the step for each platform are relative to the top-level directory installed by the archive file.
 
-. If you are expanding a VMware system, select the appropriate files.
-+
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-
-m|./vsphere/README
-a| A text file that describes all of the files contained in the StorageGRID download file.
-
-m|./vsphere/NLF000000.txt
-a|A free license that does not provide any support entitlement for the product.
-
-m|./vsphere/NetApp-SG-_version_-SHA.vmdk
-a|The virtual machine disk file that is used as a template for creating grid node virtual machines.
-
-m|./vsphere/vsphere-primary-admin.ovf
-
-./vsphere/vsphere-primary-admin.mf
-a|The Open Virtualization Format template file (`.ovf`) and manifest file (`.mf`) for deploying the primary Admin Node.
-
-m|./vsphere/vsphere-non-primary-admin.ovf
-
-./vsphere/vsphere-non-primary-admin.mf
-
-a|The template file (`.ovf`) and manifest file (`.mf`) for deploying non-primary Admin Nodes.
-
-m|./vsphere/vsphere-archive.ovf
-
-./vsphere/vsphere-archive.mf
-
-a|The template file (`.ovf`) and manifest file (`.mf`) for deploying Archive Nodes.
-
-m|./vsphere/vsphere-gateway.ovf
-
-./vsphere/vsphere-gateway.mf
-
-a|The template file (`.ovf`) and manifest file (`.mf`) for deploying Gateway Nodes.
-
-m|./vsphere/vsphere-storage.ovf
-
-./vsphere/vsphere-storage.mf
-
-a| The template file (`.ovf`) and manifest file (`.mf`) for deploying virtual machine-based Storage Nodes.
-
-h|Deployment scripting tool
-h|Description
-
-m|
-./vsphere/deploy-vsphere-ovftool.sh
-a|
-A Bash shell script used to automate the deployment of virtual grid nodes.
-m|
-./vsphere/deploy-vsphere-ovftool-sample.ini
-a|
-A sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
-m|
-./vsphere/configure-storagegrid.py
-a|
-A Python script used to automate the configuration of a StorageGRID system.
-m|
-./vsphere/configure-sga.py
-a|
-A Python script used to automate the configuration of StorageGRID appliances.
-m|
-./vsphere/storagegrid-ssoauth.py
-a|
-An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-m|
-./vsphere/configure-storagegrid.sample.json
-a|
-A sample configuration file for use with the `configure-storagegrid.py` script.
-m|
-./vsphere/configure-storagegrid.blank.json
-a|
-A blank configuration file for use with the `configure-storagegrid.py` script.
-|===
-
 . If you are expanding a Red Hat Enterprise Linux or CentOS system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-m|
-./rpms/README
-a|
-A text file that describes all of the files contained in the StorageGRID download file.
-m|
-./rpms/NLF000000.txt
-a|
-A free license that does not provide any support entitlement for the product.
-m|
-./rpms/StorageGRID-Webscale-Images-version-SHA.rpm
-a|
-RPM package for installing the StorageGRID node images on your RHEL or CentOS hosts.
-m|
-./rpms/StorageGRID-Webscale-Service-version-SHA.rpm
-a|
-RPM package for installing the StorageGRID host service on your RHEL or CentOS hosts.
+include::../_include/installation-files-rhel.adoc[]
 
-h|
-Deployment scripting tool
-h|
-Description
-
-m|
-./rpms/configure-storagegrid.py
-a|
-A Python script used to automate the configuration of a StorageGRID system.
-
-m|
-./rpms/configure-sga.py
-a|
-A Python script used to automate the configuration of StorageGRID appliances.
-
-m|
-./rpms/configure-storagegrid.sample.json
-a|
-A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|
-./rpms/storagegrid-ssoauth.py
-a|
-An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|
-./rpms/configure-storagegrid.blank.json
-a|
-A blank configuration file for use with the `configure-storagegrid.py` script.
-
-m|
-./rpms/extras/ansible
-a|
-Example Ansible role and playbook for configuring RHEL or CentOS hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
-|===
-
+[start=9]
 . If you are expanding an Ubuntu or Debian system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
+include::../_include/installation-files-ubuntu.adoc[]
 
-m|
-./debs/README
-a|
-A text file that describes all of the files contained in the StorageGRID download file.
+[start=10]
+. If you are expanding a VMware system, select the appropriate files.
++
+include::../_include/installation-files-vmware.adoc[]
 
-m|
-./debs/NLF000000.txt
-a|
-A non-production NetApp License File that you can use for testing and proof of concept deployments.
-
-m|
-./debs/storagegrid-webscale-images-version-SHA.deb
-a|
-DEB package for installing the StorageGRID node images on Ubuntu or Debian hosts.
-
-m|
-./debs/storagegrid-webscale-images-version-SHA.deb.md5
-a|
-MD5 checksum for the file `/debs/storagegrid-webscale-images-version-SHA.deb`.
-
-m|
-./debs/storagegrid-webscale-service-version-SHA.deb
-a|
-DEB package for installing the StorageGRID host service on Ubuntu or Debian hosts.
-
-
-h|Deployment scripting tool
-h|Description
-
-m|
-./debs/configure-storagegrid.py
-a|
-A Python script used to automate the configuration of a StorageGRID system.
-
-m|
-./debs/configure-sga.py
-a|
-A Python script used to automate the configuration of StorageGRID appliances.
-
-m|
-./debs/storagegrid-ssoauth.py
-a|
-An example Python script that you can use to sign in to the Grid Management API when single sign-on is enabled.
-
-m|
-./debs/configure-storagegrid.sample.json
-a|
-A sample configuration file for use with the `configure-storagegrid.py` script.
-
-m|
-./debs/configure-storagegrid.blank.json
-a|
-A blank configuration file for use with the `configure-storagegrid.py` script.
-
-m|
-./debs/extras/ansible
-a|
-Example Ansible role and playbook for configuring Ubuntu or Debian hosts for StorageGRID container deployment. You can customize the role or playbook as necessary.
-|===
-
+[start=11]
 . If you are expanding a StorageGRID appliance-based system, select the appropriate files.
 +
-[cols="1a,1a" options="header"]
-|===
-| Path and file name| Description
-
-m|
-./debs/storagegrid-webscale-images-version-SHA.deb
-a|
-DEB package for installing the StorageGRID node images on your appliances.
-
-m|
-./debs/storagegrid-webscale-images-version-SHA.deb.md5
-a|
-Checksum of the DEB installation package used by the StorageGRID Appliance Installer to validate that the package is intact after upload.
-|===
-NOTE: For appliance installation, these files are only required if you need to avoid network traffic. The appliance can download the required files from the primary Admin Node.
+include::../_include/installation-files-appliance.adoc[]
 
 == Verify hardware and networking
 
 Before you begin the expansion of your StorageGRID system, you must ensure that you have installed and configured the necessary hardware to support the new grid nodes or new site.
 
-For information about supported versions, see the Interoperability Matrix.
+For information about supported versions, see the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^].
 
 You must also verify network connectivity between servers at the site, and confirm that the primary Admin Node can communicate with all expansion servers that are intended to host the StorageGRID system.
 
-If you are performing an expansion activity that includes adding a new subnet, you must add the new Grid subnet before you start the expansion procedure.
+If you are performing an expansion activity that includes adding a new subnet, you must xref:updating-subnets-for-grid-network.adoc[add the new Grid subnet] before you start the expansion procedure.
 
 Do not use network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. As required, however, you can use NAT between external clients and grid nodes, such as to provide a public IP address for a Gateway Node. Using NAT to bridge a public network segment is supported only when you employ a tunneling application that is transparent to all nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses.
-
-*Related information*
-
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
-
-xref:updating-subnets-for-grid-network.adoc[Update subnets for the Grid Network]

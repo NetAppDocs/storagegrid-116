@@ -66,12 +66,15 @@ The following new alerts were added for StorageGRID 11.6:
 * Cassandra table corruption
 * EC rebalance failure
 * EC repair failure
+* Expiration of global server certificate for S3 and Swift API
 * External syslog CA certificate expiration
 * External syslog client certificate expiration
 * External syslog server certificate expiration
 * External syslog server forwarding error
 * Identity federation synchronization failure for a tenant
+* Legacy CLB load balancer activity detected
 * Logs are being added to the on-disk queue
+* Low tmp directory free space
 * Object existence check failed
 * Object existence check stalled
 
@@ -160,13 +163,22 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 .Learn more
 * xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
 
+=== Security certificates renamed
+
+The following security certificates were renamed:
+* The Management Interface Server Certificate is now the Management interface certificate.
+* The Object Storage API Service Endpoints Server Certificate (also called the Storage API Server Certificate) is now the S3 and Swift API certificate.
+* The Internal CA Certificate, System CA Certificate, CA Certificate, and Default CA certificate are now the Grid CA certificate.
+
+.Learn more
+* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
 
 == Lisa's what's new changes
 
-=== Object existence check added to maintenance tasks
+== Object existence check added to maintenance tasks
 The foreground verification feature has been renamed to object existence check. This feature has been redesigned to reduce runtime by at least three times. The redesign also allows for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
 
-=== Enhancements to the Grid Manager 
+== Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
 
 The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
@@ -190,6 +202,22 @@ Learn more:
 xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
 
 xref:../s3/use-s3-select.adoc[Use S3 Select]
+
+== API schemas provided
+
+The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
+
+== Change in format for BLOCK_DEVICE_RANGEDB in bare metal node configuration file
+
+For bare metal deployments, the format for the BLOCK_DEVICE_RANGEDB key in the node configuration file should contain three digits instead of two. For example, instead of BLOCK_DEVICE_RANGEDB_00, specify BLOCK_DEVICE_RANGEDB_000.
+
+For compatibility with existing deployments, two-digit keys are still supported for upgraded nodes.
+
+.Learn more
+
+xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
+
+xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
 
 == Paul's what's new changes
 
