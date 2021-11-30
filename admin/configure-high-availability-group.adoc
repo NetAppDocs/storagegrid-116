@@ -36,12 +36,10 @@ An interface must be for a Gateway Node or an Admin Node to be included in an HA
 
 . Select *Create*.
 
-
 === Enter details for the HA group
 
 . Provide a unique name for the HA group.
 +
-
 image::../media/ha-group-create-wizard.png[HA Groups create wizard]
 
 . Optionally, enter a description for the HA group.
@@ -68,6 +66,10 @@ NOTE: After creating a VLAN interface, wait up to 5 minutes for the new interfac
 
 * If the HA group is for HA protection of S3 or Swift client traffic, select interfaces on either Admin Nodes or Gateway Nodes.
 
+* You cannot select an interface if its subnet value or gateway conflicts with another selected interface.
+
+* You cannot select an interface if it does not have a static IP address.
+
 * If the HA group is for HA protection of the deprecated CLB service, select interfaces on Gateway Nodes only.
 
 * If you select interfaces on different types of nodes, an informational note appears. You are reminded that if a failover occurs, services provided by the previously active node might not be available on the newly active node. For example, a failover Gateway Node would not be able to provide HA protection of Admin Node services.
@@ -82,7 +84,6 @@ Drag and drop rows to change the values in the *Failover order* column.
 +
 image::../media/ha_group_determine_failover.png[HA Groups determine failover order]
 +
-
 IMPORTANT: If the HA group provides access to the Grid Manager, you must select an interface on the primary Admin Node to be the Primary interface. Some maintenance procedures can only be performed from the primary Admin Node.
 +
 The first interface in the list is the Primary interface. The Primary interface is the active interface unless a failure occurs.
@@ -93,7 +94,7 @@ If the HA group includes more than one interface and the Primary interface fails
 
 === Enter IP addresses
 
-. Specify the address of the VIP subnet, followed by a slash and the subnet length (0-32).
+. In the *Subnet CIDR* field, specify the VIP subnet in CIDR notation &mdash; an IPv4 address followed by a slash and the subnet length (0-32).
 +
 The network address must not have any host bits set. For example, `192.16.0.0/22`.
 +
@@ -101,11 +102,11 @@ NOTE: If you use a 32-bit prefix, the VIP network address also serves as the gat
 +
 image::../media/ha_group_select_virtual_ips.png[HA Groups enter VIPs]
 
-. Optionally, if any S3, Swift, administrative or tenant clients will access these VIPs from a different subnet, enter the gateway address. The gateway address must be within the VIP subnet.
+. Optionally, if any S3, Swift, administrative or tenant clients will access these VIP addresses from a different subnet, enter the *Gateway IP address*. The gateway address must be within the VIP subnet.
 +
 Client and admin users will use this gateway to access the virtual IP addresses.
 
-. Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses. All VIPs must be within the VIP subnet.
+. Enter one or more *virtual IP addresses* for the HA group. You can add up to 10 IP addresses. All VIPs must be within the VIP subnet.
 +
 You must provide at least one IPv4 address. Optionally, you can specify additional IPv4 and IPv6 addresses.
 
@@ -129,7 +130,7 @@ For example, you might need to edit an HA group if you want to remove the node a
 +
 The High availability groups page shows all existing HA groups.
 +
-image::../media/ha_groups_page_with_three_groups.png[HA Groups page with three groups]
+image::../media/ha_groups_page_with_groups.png[HA Groups page with groups]
 
 . Select the check box for the HA group you want to edit. 
 

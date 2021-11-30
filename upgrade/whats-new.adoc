@@ -2,14 +2,14 @@
 permalink: upgrade/whats-new.html
 sidebar: sidebar
 keywords: what is new in StorageGRID 11.6
-summary: 'StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
+summary: 'StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
+StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
 
 == Kathy's what's new changes
 
@@ -26,15 +26,13 @@ As part of this change, you can now add one or more extra interfaces to a node b
 * *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
 * xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
 
-
 === Updates to high availability (HA) groups
-The user interface for creating an HA group was revised.
+The user interface for creating an HA group has been enhanced.
 
-A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
-
-* Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
-
-* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including a virtual LAN (VLAN).
+* The new *Create a high availability group* wizard guides you through the process of entering details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
+* In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
+* You can now specify a failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
+* If any S3, Swift, administrative or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
 
 .Learn more
 
@@ -42,15 +40,23 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 === Updates to load balancer endpoints
 
-The user interface for creating a load balancer endpoint was revised.
+The user interface for creating a load balancer endpoint has been enhanced. 
+
+* The new *Create a load balancer endpoint* wizard guides you through the process of entering details, selecting a binding mode, and attaching certificates.
+* You now select the client type (S3 or Swift) when you first create the endpoint, instead of adding this detail after the endpoint is created.
+* You can now use the global *StorageGRID S3 and Swift certificate* for a load balancer endpoint instead of uploading or generating a separate certificate. 
++ 
+NOTE: This global certificate was previously known as the *Object Storage API Service Endpoints Server Certificate* and was used for connections to the deprecated CLB service and to Storage Nodes. If you want to use the global certificate for a load balancer endpoint, you must upload a custom certificate on the S3 and Swift API certificate page.
 
 .Learn more
 
 * xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
+
 === Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
 
 * You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
-* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. 
+* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid.
+* Step-by-step instructions describe how to create Azure AD enterprise applications and PingFederate service provider (SP) connections to StorageGRID Admin Nodes.
 
 .Learn more
 * xref:../admin/using-identity-federation.adoc[Use identity federation]

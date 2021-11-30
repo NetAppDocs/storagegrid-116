@@ -21,10 +21,11 @@ Each HA group provides access to the shared services on the selected nodes.
 
 * HA groups that include only Admin Nodes provide highly available connections to the Grid Manager and the Tenant Manager.
 
-* If S3 tenants will use S3 Select, you must select SG100 or SG1000 appliance or VMware-based software nodes for the HA group that will be used in the LB endpoint. HA groups are not required, but are recommended when using S3 Select.
+* An HA group that includes only SG100 or SG1000 appliance or VMware-based software nodes can provide highly available connections for xref:../admin/manage-s3-select-for-tenant-accounts.adoc[S3 tenants that use S3 Select].
+ HA groups are recommended when using S3 Select, but not required.
 
 == How do you create an HA group?
-. You select a network interface for one or more Admin Nodes or Gateway Nodes. The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network.
+. You select a network interface for one or more Admin Nodes or Gateway Nodes. You can use a Grid Network (eth0) interface, Client Network (eth2) interface, VLAN interface, or an access interface you have added to the node. 
 +
 NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP address.
 +
