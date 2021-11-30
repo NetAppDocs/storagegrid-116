@@ -209,7 +209,9 @@ BLOCK_DEVICE_RANGEDB_015
 
 Only BLOCK_DEVICE_RANGEDB_000 is required; the rest are optional. The block device specified for BLOCK_DEVICE_RANGEDB_000 must be at least 4 TB; the others can be smaller.
 
-*Note*: Do not leave gaps. If you specify BLOCK_DEVICE_RANGEDB_005, you must also specify BLOCK_DEVICE_RANGEDB_004.
+Do not leave gaps. If you specify BLOCK_DEVICE_RANGEDB_005, you must also specify BLOCK_DEVICE_RANGEDB_004.
+
+*Note*: For compatibility with existing deployments, two-digit keys are supported for upgraded nodes.
 
 Examples:
 
