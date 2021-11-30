@@ -418,9 +418,19 @@ Set the value of the key to "true" to cause the StorageGRID container to use the
 
 *Best practice:* In networks where promiscuous mode would be required, use the GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC key instead.
 
-For more details on MAC cloning, see the considerations and recommendations for MAC address cloning.
+For more details, see the xref:considerations-and-recommendations-for-mac-address-cloning.adoc[Considerations and recommendations for MAC address cloning].
 
-xref:considerations-and-recommendations-for-mac-address-cloning.adoc[Considerations and recommendations for MAC address cloning]
+a|INTERFACES_TARGET_nnnn
+a|O
+a|Name and optional description for an extra interface you want to add to this node. You can add multiple extra interfaces to each node.
+
+For _nnnn_, specify a unique number for each INTERFACES_TARGET entry you are adding.
+
+For the value, specify the name of the physical interface on the bare-metal host. Then, optionally, add a comma and provide a description of the interface, which is displayed on the VLAN interfaces page and the HA groups page. 
+
+For example: `INTERFACES_TARGET_01=ens256, Trunk`
+
+If you add a trunk interface, you must configure a VLAN interface in StorageGRID. If you add an access interface, you can add the interface directly to an HA group; you do not need to configure a VLAN interface. 
 
 |MAXIMUM_RAM
 |O
