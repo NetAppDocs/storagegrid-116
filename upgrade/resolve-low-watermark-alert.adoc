@@ -56,19 +56,22 @@ Follow these steps if one or more *Low read-only watermark override* alerts are 
 
 * You have the Root Access permission.
 
-=== View current watermark override settings
+=== View current watermark settings
 
-. Select *CONFIGURATION* > *System* > *Storage options*.
+You can view the current storage watermark settings in the Grid Manager.
 
-. In the Storage Watermarks section, note the current setting of the *Storage Volume Soft Read-Only Watermark Override*.
+.Steps
+
+. Select *CONFIGURATION* > *System* > *Storage options*. 
+. In the Storage Watermarks section, look at the settings for the three storage volume watermark overrides.
 +
 image::../media/storage-volume-watermark-overrides.png[Storage volume watermark overrides]
 
-* If the *Storage Volume Soft Read-Only Watermark Override* is *0*, the watermarks are optimized for every storage volume on every Storage Node. 
+* If the watermark overrides are *0*, all three watermarks are optimized for every storage volume on every Storage Node, based on the size of the Storage Node and the relative capacity of the volume.  
 +
-This is the default and recommended setting. You can skip the rest of this procedure. You should not update these values.
+This is the default and recommended setting. You should not update these values. As required, you can optionally <<View optimized storage watermarks>>.
 
-* If the *Storage Volume Soft Read-Only Watermark Override* is a non-0 value, custom watermarks are being used. Using custom (non-optimized) watermark settings is not recommended. Use the instructions in the next sections to determine if you can or should adjust the settings.
+* If the watermark overrides are non-0 values, custom (non-optimized) watermarks are being used. Using custom watermark settings is not recommended. Use the instructions in the next sections to determine if you can or should adjust the settings.
 
 === View optimized storage watermarks
 
@@ -82,7 +85,7 @@ StorageGRID uses two Prometheus metrics to show the optimized values it has calc
 +
 `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
 +
-The last column shows the minimum optimized value of the Soft Read-Only Watermark for all storage volumes on each Storage Node. If this value is greater than a custom setting for the *Storage Volume Soft Read-Only Watermark*, the *Low read-only watermark override* alert is triggered for the Storage Node.
+The last column shows the minimum optimized value of the Soft Read-Only Watermark for all storage volumes on each Storage Node. If this value is greater than the custom setting for the *Storage Volume Soft Read-Only Watermark*, the *Low read-only watermark override* alert is triggered for the Storage Node.
 
 . To see the recommended maximum soft read-only watermark, enter the following Prometheus metric, and select *Execute*: 
 +
