@@ -34,7 +34,7 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
 
-* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
+* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including a virtual LAN (VLAN).
 
 .Learn more
 
@@ -47,6 +47,14 @@ The user interface for creating a load balancer endpoint was revised.
 .Learn more
 
 * xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
+=== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
+
+* You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
+* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. 
+
+.Learn more
+* xref:../admin/using-identity-federation.adoc[Use identity federation]
+* xref:../admin/configuring-sso.adoc[Configure single sign-on]
 
 === New upgrade process
 
@@ -63,7 +71,7 @@ The Grid Manager user interface has been redesigned.
 * New sidebar
 * New menu structure. CONFIGURATION menu reorganized with new section for Security.
 * New Nodes page
-* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
 === New alerts
 
@@ -81,6 +89,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Identity federation synchronization failure for a tenant
 * Legacy CLB load balancer activity detected
 * Logs are being added to the on-disk queue
+* Low read-only watermark override
 * Low tmp directory free space
 * Object existence check failed
 * Object existence check stalled
@@ -99,6 +108,26 @@ The following new alerts were added for StorageGRID 11.6:
 
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
+
+=== Storage volume watermarks now optimized
+
+In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
+
+Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems, unless either of the following is true:
+
+* More than 90% of Storage Nodes would become read-only if optimized watermarks were applied. StorageGRID will not change watermark settings if doing so would make the system unable to accept new data.
+
+* A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. 
+
+If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrade. This alert lets you know if your custom watermark settings are too small. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details. 
+
+As part of this change, two Prometheus metrics were added:
+
+* `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
+* `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
+
+.Learn more
+* xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
 
 == Changes to S3 REST API support
 
@@ -223,6 +252,7 @@ For compatibility with existing deployments, two-digit keys are still supported 
 .Learn more
 
 xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
+
 xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
 
 == Paul's what's new changes
