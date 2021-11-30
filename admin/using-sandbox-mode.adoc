@@ -276,9 +276,6 @@ image::../media/sso_sandbox_mode_sign_in_success.gif[SSO authentication and logo
 .Azure
 --
 
-If you are accessing Azure from the same computer you use to access StorageGRID, the Azure Portal user will be the user that signs in to StorageGRID. To avoid sign-in issues, ensure that the Azure Portal user is also an authorized StorageGRID user (a user in a federated group that has been imported into StorageGRID) or log out of the Azure Portal before attempting to sign in to StorageGRID. 
-
-
 . Go to the Single sign-on page in the Azure portal.
 
 . Select *Test this application*. 
@@ -331,5 +328,8 @@ IMPORTANT: When SSO is enabled, all users must use SSO to access the Grid Manage
 . Review the warning message, and select *OK*.
 +
 Single sign-on is now enabled.
+
+IMPORTANT: If you are using the Azure Portal and you access StorageGRID from the same computer you use to access Azure, ensure that the Azure Portal user is also an authorized StorageGRID user (a user in a federated group that has been imported into StorageGRID) or log out of the Azure Portal before attempting to sign in to StorageGRID. 
+
 
 
