@@ -15,7 +15,14 @@ You can configure high availability (HA) groups to provide highly available acce
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Root Access permission.
-* If you plan to use a VLAN interface in an HA group, you have already created the VLAN interface. See xref:../admin/configure-vlan-interfaces.adoc[Configure VLAN interfaces].
+* If you plan to use a VLAN interface in an HA group, you have created the VLAN interface. See xref:../admin/configure-vlan-interfaces.adoc[Configure VLAN interfaces].
+* If you plan to use an access interface for a node in an HA group, you have created the interface (can do this before or after you install the node).
+
+** *VMware (before or after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
+** *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
+** *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
+** *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
+
 
 == Create a high availability group
 

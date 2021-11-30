@@ -1,7 +1,7 @@
 ---
 permalink: maintain/linux-adding-trunk-or-access-interfaces-to-node.html
 sidebar: sidebar
-keywords: Linux, add extra interface to node
+keywords: add extra interface to node, trunk interface, access interface
 summary: 'You can add extra trunk or access interfaces to a Linux node after it has been installed. The interfaces you add are displayed on the VLAN interfaces page and the HA groups page.'
 ---
 = Linux: Add trunk or access interfaces to a node
@@ -27,7 +27,7 @@ IMPORTANT: Do not attempt to add interfaces to a node while a software upgrade, 
 
 .About this task
 
-Use these steps to add one or more extra interfaces to a Linux node after the node has been displayed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a high availability (HA) group.
+Use these steps to add one or more extra interfaces to a Linux node after the node has been installed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a high availability (HA) group.
 
 If you add a trunk interface, you must configure a VLAN interface in StorageGRID. If you add an access interface, you can add the interface directly to an HA group; you do not need to configure a VLAN interface. 
 
@@ -56,13 +56,13 @@ IMPORTANT: Do not specify any other network parameters, or a validation error wi
 
 . Run the following command to validate your changes to the node configuration file:
 +
-`sudo storagegrid node validate <node-name>`
+`sudo storagegrid node validate _node-name_`
 +
 Address any errors or warnings before proceeding to the next step.
 
 . Run the following command to update the node's configuration:
 +
-`sudo storagegrid node reload <node-name>`
+`sudo storagegrid node reload _node-name_`
 
 .After you finish
 

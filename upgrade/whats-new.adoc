@@ -14,10 +14,18 @@ StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog tr
 == Kathy's what's new changes
 
 === Support for multiple VLAN interfaces
-You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *Network* > *VLAN interfaces*).
+
+You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
+
+As part of this change, you can now add one or more extra interfaces to a node before or after the node is installed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a high availability (HA) group.
 
 .Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+* *VMware (before or after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
+* *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
+* *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
+* *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
+* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
+
 
 === Updates to high availability (HA) groups
 The user interface for creating an HA group was revised.
@@ -28,9 +36,17 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
 
+.Learn more
+
+*  xref:../admin/configure-high-availability-group.html[configure high availability groups]
+
 === Updates to load balancer endpoints
 
 The user interface for creating a load balancer endpoint was revised.
+
+.Learn more
+
+* xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
 
 === New upgrade process
 
