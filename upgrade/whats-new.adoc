@@ -26,11 +26,20 @@ A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address 
 
 * Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
 
-* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
+* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including a virtual LAN (VLAN).
 
 === Updates to load balancer endpoints
 
 The user interface for creating a load balancer endpoint was revised.
+
+=== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
+
+* You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
+* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. 
+
+.Learn more
+* xref:../admin/using-identity-federation.adoc[Use identity federation]
+* xref:../admin/configuring-sso.adoc[Configure single sign-on]
 
 === New upgrade process
 
