@@ -5,7 +5,7 @@ keywords: how to use s3 console
 summary: 'You can use S3 Console to view the objects in an S3 bucket. S3 Console is experimental and has not been fully tested.'
 
 ---
-= Use identity federation
+= Use S3 Console (Experimental)
 :icons: font
 :imagesdir: ../media/
 
@@ -21,11 +21,20 @@ You can use this experimental tool primarily to view the objects in an S3 bucket
 
 The experimental S3 Console tool is not intended for bulk management of objects or for use in a production environment. Instead, use S3 Console when you need to perform these functions for a small number of objects, such as when you are uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
 
-Before signing in to S3 Console:
+.What you'll need
 
-* You must create a bucket.
-* You can optionally export a CSV file containing the user's access key and secret key, then import that file when signing in.
+* You are signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Manage Your Own S3 Credentials permission.
+* You have created a bucket.
+* If you do not already have an access key and secret key for the user, you have created a key and downloaded the .csv file from the My access keys page.
 
-You can access S3 Console from the Tenant Manager Buckets page or Bucket details page.
+.Steps
 
+. Select *Buckets*.
+. Select *Experimental S3 Console*. You can also access this link from the bucket details page.
++
 image::../media/buckets_page_s3_console.png[S3 Console]
++
+. On the Experimental S3 Console sign-in page, select *Upload access keys*.
+. Browse to and select the .csv file containing the key.
+. Select *Sign in*.
