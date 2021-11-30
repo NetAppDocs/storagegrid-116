@@ -13,7 +13,7 @@ Storage Nodes manage and store object data and metadata. Each StorageGRID system
 
 A Storage Node includes the services and processes required to store, move, verify, and retrieve object data and metadata on disk. You can view detailed information about the Storage Nodes on the *NODES* page.
 
-== What the ADC service is
+== What is the ADC service?
 
 The Administrative Domain Controller (ADC) service authenticates grid nodes and their connections with each other. The ADC service is hosted on each of the first three Storage Nodes at a site.
 
@@ -25,7 +25,7 @@ In general, all grid nodes maintain a connection to at least one ADC service. Th
 
 The connection of each grid node lets the ADC service gather topology information. This grid node information includes the CPU load, available disk space (if it has storage), supported services, and the grid node's site ID. Other services ask the ADC service for topology information through topology queries. The ADC service responds to each query with the latest information received from the StorageGRID system.
 
-== What the DDS service is
+== What is the DDS service?
 
 Hosted by a Storage Node, the Distributed Data Store (DDS) service interfaces with the Cassandra database to perform background tasks on the object metadata stored in the StorageGRID system.
 
@@ -51,7 +51,7 @@ You can use the Diagnostics page to obtain additional information on the current
 
 StorageGRID guarantees read-after-write consistency for newly created objects. Any GET operation following a successfully completed PUT operation will be able to read the newly written data. Overwrites of existing objects, metadata updates, and deletes remain eventually consistent.
 
-== What the LDR service is
+== What is the LDR service?
 
 Hosted by each Storage Node, the Local Distribution Router (LDR) service handles content transport for the StorageGRID system. Content transport encompasses many tasks including data storage, routing, and request handling. The LDR service does the majority of the StorageGRID system's hard work by handling data transfer loads and data traffic functions.
 

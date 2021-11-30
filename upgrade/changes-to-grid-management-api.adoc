@@ -18,6 +18,16 @@ You can now access the Swagger docs for the private API from the Grid Manager. T
 
 StorageGRID private APIs are subject to change without notice. StorageGRID private endpoints also ignore the API version of the request. 
 
+== Alarm-based APIs deprecated
+
+The 11.6 release deprecates all alarm-based APIs. The following APIs are affected by this change:
+
+* `GET /grid/alarms`: Fully deprecated
+
+* `GET /grid/health/topology`: Fully deprecated
+
+* `GET /grid/health`: The `alarm-counts` section of the response is deprecated
+
 == Can import S3 access keys
 You can now use the Grid Management API to import S3 access keys for tenant users. For example, you can migrate access keys from another S3 provider to StorageGRID or use this feature to keep user credentials the same between grids.
 
