@@ -1,0 +1,31 @@
+---
+permalink: tenant/use-s3-console.html
+sidebar: sidebar
+keywords: how to use s3 console
+summary: 'You can use S3 Console to view the objects in an S3 bucket. S3 Console is experimental and has not been fully tested.'
+
+---
+= Use identity federation
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use S3 Console to view the objects in an S3 bucket. S3 Console is experimental and has not been fully tested.
+
+You can use this experimental tool primarily to view the objects in an S3 bucket. You can also do the following:
+
+* Add and delete objects and object versions
+* Rename objects
+* Move and copy objects between buckets
+* Manage object tags
+
+The experimental S3 Console tool is not intended for bulk management of objects or for use in a production environment. Instead, use S3 Console when you need to perform these functions for a small number of objects, such as when you are uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+
+Before signing in to S3 Console:
+
+* You must create a bucket.
+* You can optionally export a CSV file containing the user's access key and secret key, then import that file when signing in.
+
+You can access S3 Console from the Tenant Manager Buckets page or Bucket details page.
+
+image::../media/buckets_page_s3_console.png[S3 Console]
