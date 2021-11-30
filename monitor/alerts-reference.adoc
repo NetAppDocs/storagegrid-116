@@ -654,9 +654,9 @@ High latency for metadata queries
 a|
 The average time for Cassandra metadata queries is too long.
 
-An increase in query latency can be caused by a hardware change, such as replacing a disk, or a workload change, such as a sudden increase in ingests.
+An increase in query latency can be caused by a hardware change, such as replacing a disk; a workload change, such as a sudden increase in ingests; or a network change, such as a communication problem between nodes and sites.
 
-. Determine if there were any hardware or workload changes around the time the query latency increased.
+. Determine if there were any hardware, workload, or network changes around the time the query latency increased.
 . If you are unable to resolve the problem, contact technical support.
 
 a|
@@ -827,6 +827,15 @@ The disk queue for audit messages is full.
 
 xref:../audit/index.adoc[Review audit logs]
 
+a|Legacy CLB load balancer activity detected
+a|Some clients might be connecting to the deprecated CLB load balancer service using the default S3 and Swift API certificate.
+
+. To simplify future upgrades, Install a custom S3 and Swift API certificate on the *Global* tab of the *Certificates* page. Then, ensure that all S3 or Swift clients who connect to the legacy CLB have the new certificate.
+. Create one or more load balancer endpoints. Then, direct all existing S3 and Swift clients to these endpoints. Contact technical support if you need to remap the client port.
+
+Other activity might trigger this alert, including port scans. To determine if the deprecated CLB service is currently in use, view  the `storagegrid_private_clb_http_connection_established_successful` Prometheus metric.
+
+As required, silence or disable this alert rule if the CLB service is no longer in use.
 
 a|Logs are being added to the on-disk queue
 a|Node cannot forward logs to the external syslog server and the on-disk queue is filling up.
@@ -956,6 +965,12 @@ a|
 Low system data capacity
 a|
 The space available for StorageGRID system data on the `/var/local` file system is low.
+
+. Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
+. Contact technical support if the available space continues to decrease.
+
+a|Low tmp directory free space
+a|The space available in the /tmp directory is low.
 
 . Monitor this alert to see if the issue resolves on its own and the disk space becomes available again.
 . Contact technical support if the available space continues to decrease.

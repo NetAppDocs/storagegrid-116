@@ -15,9 +15,16 @@ Before performing maintenance procedures, you must ensure you have the necessary
 |===
 | Item| Notes
 |StorageGRID installation archive
-|If you need to recover a grid node, you need the StorageGRID installation archive for your platform.
+|If you need to recover a grid node, you need to <<download-and-extract-install-files-recover,download the StorageGRID installation files>> for your platform.
 
 *Note:* You do not need to download files if you are recovering failed storage volumes on a Storage Node.
+
+|Service laptop
+|The service laptop must have the following:
+
+* Network port
+* SSH client (for example, PuTTY)
+* xref:../admin/web-browser-requirements.adoc[Supported web browser]
 
 |Recovery Package `.zip` file
 |Obtain a copy of the most recent Recovery Package `.zip` file:
@@ -36,15 +43,75 @@ If you cannot access the Grid Manager, you can find encrypted copies of the Reco
 |The passphrase is created and documented when the StorageGRID system is first installed. The provisioning passphrase is not in the `Passwords.txt` file.
 
 |Current documentation for your platform
-|For the current supported versions of your platform, see the Interoperability Matrix Tool.
+|Go to the platform vendor's website for documentation.
 
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
-
-Go to the platform vendor's website for documentation.
+For the current supported versions of your platform, see the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^].
 
 |===
-.Related information
 
-xref:downloading-and-extracting-storagegrid-installation-files.adoc[Download and extract StorageGRID installation files]
+.[[download-and-extract-install-files-recover]]
+== Download and extract StorageGRID installation files
 
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
+Download the software and extract the files, unless you are xref:recovering-from-storage-node-failures.adoc[recovering failed storage volumes on a Storage Node].
+
+You must use the version of StorageGRID that is currently running on the grid.
+
+.Steps
+
+. Determine which version of the software is currently installed. From the top of the Grid Manager, select the help icon and select *About*.
+. Go to the https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads page for StorageGRID].
+. Select the version of StorageGRID that is currently running on the grid.
++
+StorageGRID software versions have this format: `11.x.y`.
+
+. Sign in with the username and password for your NetApp account.
+. Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
+. In the *Install StorageGRID* column of the download page, select the `.tgz` or `.zip` file for your platform.
++
+The version shown in the installation archive file must match the version of the software that is currently installed.
++
+Use the `.zip` file if you are running Windows.
++
+[cols="1a,2a" options="header"]
+|===
+| Platform| Installation archive
+
+|Red Hat Enterprise Linux or CentOS
+m|
+include::../_include/installation-archives-rhel.adoc[]
+
+|Ubuntu or Debian or Appliances
+m|
+include::../_include/installation-archives-ubuntu.adoc[]
+
+|VMware
+m|
+include::../_include/installation-archives-vmware.adoc[]
+
+|OpenStack or other hypervisor
+|NetApp-provided virtual machine disk files and scripts for OpenStack are no longer supported for recovery operations. If you need to recover a node running in an OpenStack deployment, download the files for your Linux operating system. Then, follow the procedure for replacing a Linux node.
+|===
+
+. Download and extract the archive file.
+. Follow the appropriate step for your platform to choose the files you need, based on your platform and which grid nodes you need to recover.
++
+The paths listed in the step for each platform are relative to the top-level directory installed by the archive file.
+
+. If you are recovering a xref:../rhel/index.adoc[Red Hat Enterprise Linux or CentOS system], select the appropriate files.
++
+include::../_include/installation-files-rhel.adoc[]
+
+[start=10]
+. If you are recovering an xref:../ubuntu/index.adoc[Ubuntu or Debian system], select the appropriate files.
++
+include::../_include/installation-files-ubuntu.adoc[]
+
+[start=11]
+. If you are recovering a xref:../vmware/index.adoc[VMware system], select the appropriate files.
++
+include::../_include/installation-files-vmware.adoc[]
+
+[start=12]
+. If you are recovering a StorageGRID appliance-based system, select the appropriate files.
++
+include::../_include/installation-files-appliance.adoc[]
