@@ -2,14 +2,14 @@
 permalink: upgrade/resolve-low-watermark-alert.html
 sidebar: sidebar
 keywords: optimized storage volume watermarks
-summary: 'If you use custom values for storage volume watermarks, you might need to resolve the *Low read-only watermark override* alert, which can be triggered after an StorageGRID 11.6 upgrade. As needed, you can update your system to start using the optimized values. '
+summary: 'If you use custom values for storage volume watermarks, you might need to resolve the *Low read-only watermark override* alert, which can be triggered after a StorageGRID 11.6 upgrade. As needed, you can update your system to start using the optimized values. '
 ---
 = Resolve Low read-only watermark override alerts
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-If you use custom values for storage volume watermarks, you might need to resolve the *Low read-only watermark override* alert, which can be triggered after an StorageGRID 11.6 upgrade. As needed, you can update your system to start using the optimized values.
+If you use custom values for storage volume watermarks, you might need to resolve the *Low read-only watermark override* alert, which can be triggered after a StorageGRID 11.6 upgrade. As needed, you can update your system to start using the optimized values.
 
 As described in  xref:../upgrade/whats-new.adoc[What's new in StorageGRID 11.6], optimized read-only and read-write watermarks are automatically applied to all storage volumes when you upgrade to StorageGRID 11.6, unless either of the following is true:
 
@@ -114,7 +114,7 @@ Optimized storage volume watermark settings are now in effect.
 
 . If no volume has more space available than the highest optimized value for all Storage Nodes in your grid, xref:../expand/index.adoc[expand your grid] as soon as possible. Either add storage volumes to an existing node or add new Storage Nodes.
 +
-NOTE: If you need to continue using custom values for the storage volume watermarks, you can xref:../monitor/silencing-alert-notifications.adoc[silence] or xref:../monitor/disabling-alert-rules.adoc[disable] the *Low read-only watermark override* alert. However, be aware that using smaller-than-recommended values for storage volume watermarks can cause some storage volumes to become inaccessible (automatically unmounted) when the node reaches capacity. 
+NOTE: If you need to continue using custom values for the storage volume watermarks, you can xref:../monitor/silencing-alert-notifications.adoc[silence] or xref:../monitor/disabling-alert-rules.adoc[disable] the *Low read-only watermark override* alert. However, be aware that using smaller-than-recommended values for storage volume watermarks might cause some storage volumes to become inaccessible (automatically unmounted) when the node reaches capacity. 
 
 .Related information
 * xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
