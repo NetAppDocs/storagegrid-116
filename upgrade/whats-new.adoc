@@ -122,7 +122,7 @@ In previous releases, the settings for the *Storage Volume Soft Read-Only Waterm
 
 Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems, unless either of the following is true:
 
-* More than 90% of Storage Nodes would become read-only if optimized watermarks were applied. StorageGRID will not change watermark settings if doing so would make the system unable to accept new data.
+* The system would be unable to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
 
 * A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. 
 
@@ -261,6 +261,16 @@ For compatibility with existing deployments, two-digit keys are still supported 
 xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
 
 xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
+
+== Experimental S3 Console
+
+An experimental S3 Console has been added to allow tenants to view the objects in an S3 bucket. This experimental console has not been fully tested.
+
+In addition to viewing objects, an S3 tenant can also add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. The experimental S3 Console is not intended for bulk management of objects or for use in a production environment. Instead, tenants should use S3 Console when performing these functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+
+.Learn more
+
+xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console]
 
 == Paul's what's new changes
 
