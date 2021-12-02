@@ -1,0 +1,41 @@
+---
+permalink: rhel/installing-podman.html
+sidebar: sidebar
+keywords: 
+summary: 'The StorageGRID system runs on Red Hat Enterprise Linux or as a collection of containers. Before you can install StorageGRID, you must install either Docker or Podman. Use this procedure to install Podman'
+---
+= Install Podman
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The StorageGRID system runs on Red Hat Enterprise Linux as a collection of containers. Before you can install StorageGRID, you must install either Docker or Podman. Use this procedure to install Podman. To install Docker, see xref:installing-docker.adoc[Install Docker].
+
+NOTE: Podman is not supported on CentOS.
+
+.Steps
+
+. Install Podman and Podman-docker by following the instructions for your Linux distribution.
++
+NOTE: You must also install the Podman-docker package when you install Podman.
+
+. Confirm you have installed the expected version of Podman and Podman-docker by entering the following:
++
+----
+sudo docker version
+----
+NOTE: the Podman-docker package allows you to use Docker commands.
++
+The Client and Server versions must be 3.2.3 or later.
++
+----
+Version: 3.2.3
+API Version: 3.2.3
+Go Version: go1.15.7
+Built: Tue Jul 27 03:29:39 2021
+OS/Arch: linux/amd64
+----
+
+.Related information
+
+xref:configuring-host-storage.adoc[Configuring host storage]
