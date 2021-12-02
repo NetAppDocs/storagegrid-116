@@ -19,6 +19,8 @@ The rotation limit for `bycast-err.log` is seven files.
 
 NOTE: If a log file has been compressed, you must not uncompress it to the same location in which it was written. Uncompressing the file to the same location can interfere with the log rotation scripts.
 
+Optionally, you can change the destination of audit logs and send audit information to an external syslog server. Local logs of audit records continue to be generated and stored when an external syslog server is configured. See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations].
+
 .Related information
 
 xref:collecting-log-files-and-system-data.adoc[Collecting log files and system data]

@@ -1,7 +1,7 @@
 ---
 permalink: admin/configure-vlan-interfaces.html
 sidebar: sidebar
-keywords: how to configure vlan interfaces, vlan interfaces
+keywords: how to configure vlan interfaces, vlan interfaces, trunk interface
 summary: 'You can create virtual LAN \(VLAN\) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.'
 ---
 = Configure VLAN interfaces
@@ -11,33 +11,47 @@ summary: 'You can create virtual LAN \(VLAN\) interfaces for Admin Nodes and Gat
 [.lead]
 You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
 
-.What you'll need
+== Considerations for VLAN interfaces
 
-* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission.
-* The VLANs have already been configured in the network, and you know their VLAN IDs.
+* You must select at least one parent interface for each VLAN interface.
 
-== Create a VLAN interface
+* A parent interface must be configured as a trunk interface at the switch.
 
-Your StorageGRID network administrator might have configured one or more VLANs to segregate the client or admin traffic belonging to different applications or tenants. Each VLAN is identified by a numeric ID or tag. For example, your network might use VLAN 100 for FabricPool traffic and VLAN 200 for an archive application. 
+* A parent interface can be the Grid Network (eth0), the Client Network (eth2), or an additional trunk interface for the VM or bare-metal host (for example, ens236).
 
-You can use the Grid Manager to create VLAN interfaces that allow clients on a specific VLAN to access StorageGRID. When you create VLAN interfaces, you select one or more parent interfaces for each VLAN.
+* Additional trunk interfaces can be added to a Gateway Node or an Admin Node before or after node installation. See the following for details:
 
-=== Considerations for parent interfaces
+** *VMware (before or after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
+** *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
+** *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
+** *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
 
-* You must select at least one StorageGRID parent interface for each VLAN interface.
 
-* Parent interfaces must be configured as a trunk interface at the switch.
-
-* Parent interfaces must be on a Gateway Node or an Admin Node. These nodes contain the Load Balancer service.
-
-* Parent interfaces can be any current interface on the node. For example, a parent interface can be the Grid (eth0), Admin (eth1), or Client Network (eth2) interface, or it can be any other interface attached to the VM or bare-metal host (for example, ens236).
-
-* For each VLAN interface, you can only select one parent interface for a given node. For example, you cannot use both the Grid Network interface and the Admin Network interface on the same Gateway Node as the parent interface for the same VLAN.
+* For each VLAN interface, you can only select one parent interface for a given node. For example, you cannot use both the Grid Network interface and the Client Network interface on the same Gateway Node as the parent interface for the same VLAN.
 
 * If the VLAN interface is for Admin Node traffic, which includes traffic related to the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
 
 * If the VLAN interface is for S3 or Swift client traffic, select interfaces on either Admin Nodes or Gateway Nodes.
+
+
+== Create a VLAN interface
+
+.What you'll need
+
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root Access permission.
+* A trunk interface has been configured in the network and added to the VM or Linux node. You know the name of the trunk interface.
+
+
+* You know the ID of each VLAN that has been configured for the trunk interface. 
+
+.About this task
+
+Your network administrator might have configured one or more trunk interfaces and one or more VLANs to segregate the client or admin traffic belonging to different applications or tenants. Each VLAN is identified by a numeric ID or tag. For example, your network might use VLAN 100 for FabricPool traffic and VLAN 200 for an archive application. 
+
+You can use the Grid Manager to create VLAN interfaces that allow clients to access StorageGRID on a specific VLAN. When you create VLAN interfaces, you specify the VLAN ID and select one or more parent (trunk) interfaces to use.
+
+
 
 === Access the wizard
 

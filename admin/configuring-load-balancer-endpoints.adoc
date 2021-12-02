@@ -19,9 +19,9 @@ Load balancer endpoints determine the ports and network protocols S3 and Swift c
 
 * If you previously remapped a port you intend to use for the load balancer endpoint, you have xref:../maintain/removing-port-remaps.adoc[removed the port remap].
 
-*  You have created any high availability (HA) groups you plan to use. See xref:managing-high-availability-groups.adoc[Manage high availability groups].
+* You have created any high availability (HA) groups you plan to use. HA groups are recommended, but not required. See xref:managing-high-availability-groups.adoc[Manage high availability groups].
 
-* If S3 tenants will use S3 Select, you are configuring an HA group that uses SG100 or SG1000 appliance or VMware-based software nodes for the endpoint. HA groups are not required, but are recommended when using S3 Select.
+* If the load balancer endpoint will be used by xref:../admin/manage-s3-select-for-tenant-accounts.adoc[S3 tenants for S3 Select], it must not use the IP addresses or FQDNs of any bare-metal nodes. Only SG100 or SG1000 appliances and VMware-based software nodes are allowed for the load balancer endpoints used for S3 Select.
 
 *  You have configured any VLAN interfaces you plan to use. See xref:configure-vlan-interfaces.adoc[Configure VLAN interfaces].
 

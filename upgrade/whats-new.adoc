@@ -2,35 +2,66 @@
 permalink: upgrade/whats-new.html
 sidebar: sidebar
 keywords: what is new in StorageGRID 11.6
-summary: 'StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
+summary: 'StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces multi VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
+StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
 
 == Kathy's what's new changes
 
 === Support for multiple VLAN interfaces
-You can now configure VLAN interfaces from the Grid Manager (*CONFIGURATION* > *Network* > *VLAN interfaces*).
+
+You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
+
+As part of this change, you can now add one or more extra interfaces to a node before or after the node is installed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a high availability (HA) group.
 
 .Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
+* *VMware (before or after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
+* *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
+* *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
+* *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
+* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
 
 === Updates to high availability (HA) groups
-The user interface for creating an HA group was revised.
+The user interface for creating an HA group has been enhanced.
 
-A new optional field, *Gateway CIDR*, allows you to specify a subnet IP address and prefix length for each HA group. All virtual IP (VIP) addresses must belong to this subnet. The new field removes these previous limitations for HA groups:
+* The new *Create a high availability group* wizard guides you through the process of entering details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
+* In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
+* You can now specify a failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
+* If any S3, Swift, administrative or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
 
-* Interfaces can now be configured with DHCP. They no longer need to be configured with fixed (static) IP addresses. 
+.Learn more
 
-* Interfaces no longer need to belong to the Grid Network (eth0) or the Client Network (eth2). They can now belong to completely different subnets, including the Admin Network or a virtual LAN (VLAN).
+*  xref:../admin/configure-high-availability-group.html[Configure high availability groups]
 
 === Updates to load balancer endpoints
 
-The user interface for creating a load balancer endpoint was revised.
+The user interface for creating a load balancer endpoint has been enhanced. 
+
+* The new *Create a load balancer endpoint* wizard guides you through the process of entering details, selecting a binding mode, and attaching certificates.
+* You now select the client type (S3 or Swift) when you first create the endpoint, instead of adding this detail after the endpoint is created.
+* You can now use the global *StorageGRID S3 and Swift certificate* for a load balancer endpoint instead of uploading or generating a separate certificate. 
++ 
+NOTE: This global certificate was previously known as the *Object Storage API Service Endpoints Server Certificate* and was used for connections to the deprecated CLB service and to Storage Nodes. If you want to use the global certificate for a load balancer endpoint, you must upload a custom certificate on the S3 and Swift API certificate page.
+
+.Learn more
+
+* xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
+
+
+=== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
+
+* You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
+* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid.
+* Step-by-step instructions describe how to create Azure AD enterprise applications and PingFederate service provider (SP) connections to StorageGRID Admin Nodes.
+
+.Learn more
+* xref:../admin/using-identity-federation.adoc[Use identity federation]
+* xref:../admin/configuring-sso.adoc[Configure single sign-on]
 
 === New upgrade process
 
@@ -47,7 +78,7 @@ The Grid Manager user interface has been redesigned.
 * New sidebar
 * New menu structure. CONFIGURATION menu reorganized with new section for Security.
 * New Nodes page
-* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring HA groups.
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
 === New alerts
 
@@ -57,6 +88,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Cassandra table corruption
 * EC rebalance failure
 * EC repair failure
+* Expiration of global server certificate for S3 and Swift API
 * External syslog CA certificate expiration
 * External syslog client certificate expiration
 * External syslog server certificate expiration
@@ -64,6 +96,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Identity federation synchronization failure for a tenant
 * Legacy CLB load balancer activity detected
 * Logs are being added to the on-disk queue
+* Low read-only watermark override
 * Low tmp directory free space
 * Object existence check failed
 * Object existence check stalled
@@ -82,6 +115,26 @@ The following new alerts were added for StorageGRID 11.6:
 
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
+
+=== Storage volume watermarks now optimized
+
+In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
+
+Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems, unless either of the following is true:
+
+* The system would be unable to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
+
+* A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. 
+
+If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrade. This alert lets you know if your custom watermark settings are too small. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details. 
+
+As part of this change, two Prometheus metrics were added:
+
+* `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
+* `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
+
+.Learn more
+* xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
 
 == Changes to S3 REST API support
 
@@ -153,13 +206,22 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 .Learn more
 * xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
 
+=== Security certificates renamed
+
+The following security certificates were renamed:
+* The Management Interface Server Certificate is now the Management interface certificate.
+* The Object Storage API Service Endpoints Server Certificate (also called the Storage API Server Certificate) is now the S3 and Swift API certificate.
+* The Internal CA Certificate, System CA Certificate, CA Certificate, and Default CA certificate are now the Grid CA certificate.
+
+.Learn more
+* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
 
 == Lisa's what's new changes
 
-=== Object existence check added to maintenance tasks
+== Object existence check added to maintenance tasks
 The foreground verification feature has been renamed to object existence check. This feature has been redesigned to reduce runtime by at least three times. The redesign also allows for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
 
-=== Enhancements to the Grid Manager 
+== Enhancements to the Grid Manager 
 The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
 
 The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
@@ -184,6 +246,32 @@ xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for ten
 
 xref:../s3/use-s3-select.adoc[Use S3 Select]
 
+== API schemas provided
+
+The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
+
+== Change in format for BLOCK_DEVICE_RANGEDB in bare metal node configuration file
+
+For bare metal deployments, the format for the BLOCK_DEVICE_RANGEDB key in the node configuration file should contain three digits instead of two. For example, instead of BLOCK_DEVICE_RANGEDB_00, specify BLOCK_DEVICE_RANGEDB_000.
+
+For compatibility with existing deployments, two-digit keys are still supported for upgraded nodes.
+
+.Learn more
+
+xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
+
+xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
+
+== Experimental S3 Console
+
+An experimental S3 Console has been added to allow tenants to view the objects in an S3 bucket. This experimental console has not been fully tested.
+
+In addition to viewing objects, an S3 tenant can also add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. The experimental S3 Console is not intended for bulk management of objects or for use in a production environment. Instead, tenants should use S3 Console when performing these functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+
+.Learn more
+
+xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console]
+
 == Paul's what's new changes
 
 === Ability to change node console passwords
@@ -193,7 +281,7 @@ You now can use the Grid Manager to change the node console passwords. These pas
 * xref:../admin/change-node-console-password.adoc[Change node console passwords]
 
 === Add an external syslog server and change log destinations
-You now can use the Grid Manager to add an external syslog server to store and manage system logs, security logs and application logs collected from the nodes in your grid. Additionally, you can configure StorageGRID to send test messages to a newly configured external syslog server to help you validate your log collection infrastructure. You also can now change the destinations of your audit information. (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). 
+You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely. After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By being able to configure the destinations of your audit information, you can reduce network traffic on your Admin Nodes. (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*).  
 
 .Learn more
 * xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
