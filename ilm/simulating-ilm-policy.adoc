@@ -40,36 +40,28 @@ The policy in this example has three rules:
 [cols="1a,1a,1a,1a" options="header"]
 |===
 | Rule Name| Filter| Type of Copies| Retention
-a|
-X-men
-a|
 
+|X-men
+|
  ** Tenant A
  ** User metadata (series=x-men)
+|2 copies at two data centers
+|2 years
 
-a|
-2 copies at two data centers
-a|
-2 years
-a|
-PNGs
-a|
-Key ends with .png
-a|
-2 copies at two data centers
-a|
-5 years
-a|
-Two Copies Two Data Centers
-a|
-_None_
-a|
-2 copies at two data centers
-a|
-Forever
+|PNGs
+|Key ends with .png
+|2 copies at two data centers
+|5 years
+
+|Two Copies Two Data Centers
+|_None_
+|2 copies at two data centers
+|Forever
 |===
 +
 image::../media/ilm_policies_viewing_proposed.png[ILM Policies Viewing Proposed]
+
+. Using an S3 or Swift client or the xref:../tenant/use-s3-console.adoc[experimental S3 Console], which is available in Tenant Manager for each tenant, ingest the objects required to test each rule.
 
 . Select *Simulate*.
 +
