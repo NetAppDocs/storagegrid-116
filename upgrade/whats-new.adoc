@@ -17,8 +17,8 @@ The Grid Manager user interface was substantially redesigned to improve the user
 
 * A new sidebar replaces the pull-down menus in the old user interface.
 * All UI pages were reskinned with updated fonts, button styles, and table formats.
-* Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu now includes a *Security* section for the *Certificates*, *Key management server*, *Proxy settings*, and *Untrusted Client Networks* options.
-* A new *Search* field in the header bar allows you to quickly navigate to  entries in the sidebar and to options on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
+* Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu now includes a *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
+* A new *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
 * A new summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
 * New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
@@ -28,7 +28,7 @@ The Grid Manager user interface was substantially redesigned to improve the user
 
 === Updates to high availability (HA) groups
 
-* The new *Create a high availability group* wizard guides you through the process of entering details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
+* The new *Create a high availability group* wizard guides you through the process of entering endpoint details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
 * In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
 * You can now specify the failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
 * If any S3, Swift, administrative or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
@@ -51,7 +51,7 @@ NOTE: This global certificate was previously known as the *Object Storage API Se
 
 === Centralized certificate management
 
-The new Certificates page (*CONFIGURATON* > *Security* > *Certificates*) provides information about all StorageGRID security certificate in a single location. You can manage StorageGRID global, grid CA, and client certificates from the new page or view information about other certificates, such as those used for load balancer endpoints, tenants, and identity federation.
+The new Certificates page (*CONFIGURATON* > *Security* > *Certificates*) consolidates information about all StorageGRID security certificates to a single location. You can manage StorageGRID global, grid CA, and client certificates from the new page or view information about other certificates, such as those used for load balancer endpoints, tenants, and identity federation.
 
 As part of this change, the following global certificates were renamed:
 
@@ -68,9 +68,9 @@ As part of this change, the following global certificates were renamed:
 
 You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
 
-* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing one or more parent interfaces, which can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
+* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
 
-* You can now add extra interfaces to a node before or after a node is installed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
+* You can now add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
 
 .Learn more
 
@@ -88,21 +88,21 @@ You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nod
 == Support for external syslog server and new destinations for logs 
 You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By configuring the destinations of your audit information, you can reduce network traffic on your Admin Nodes.   
 
-Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *Tools* > *Logs*) allow you to specify which types of logs you want to collect, including the application logs frequently needed for troubleshooting, audit logs, logs used for network debugging, and Prometheus database logs.
+Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *Tools* > *Logs*) allow you to specify which types of logs you want to collect, such as the application logs frequently needed for troubleshooting, audit logs, logs used for network debugging, and Prometheus database logs.
 
 .Learn more
 * xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
 * xref:../monitor/collecting-log-files-and-system-data.adoc[Collect log files and system data]
 
-== New upgrade process
+== New upgrade process for future StorageGRID releases
 
 * The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
 
 * After the upgrade to StorageGRID 11.6 completes, you will be able to use the Grid Manager to apply the latest hotfix for a future release at the same time you upgrade to that release.
 +
-NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to apply any required hotfixes at the same time. 
+NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to apply the latest hotfix at the same time you run the upgrade. 
 
-* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases on the Software Upgrade page. You can then select the links to download and install each major version and latest hotfix.
+* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases directly from the Software Upgrade page. You are linked directly to the correct download page for the major version and the recommended hotfix.
 * A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. Checking for available software updates can be disabled if your system does not have WAN access.
 
 * You can now pause a SANtricity OS upgrade and skip upgrading some nodes if you need to finish the upgrade later. 
@@ -241,6 +241,13 @@ IMPORTANT: S3 Console has not been fully tested and is marked as "`experimental.
 .Learn more
 
 * xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console]
+
+=== Delete multiple S3 buckets
+
+Tenant users can now delete more than one S3 bucket at a time. Each bucket that you want to delete must be empty.
+
+.Learn more
+xref:../tenant/deleting-s3-bucket.adoc[Delete S3 buckets]
 
 === Updates to Tenant Accounts permission
 Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
