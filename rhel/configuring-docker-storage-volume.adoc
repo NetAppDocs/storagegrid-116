@@ -13,9 +13,9 @@ Before installing the container engine (Docker or Podman), you might need to for
 
 .About this task
 
-You can skip these steps if you plan to use local storage for the Docker or Podman storage volume and have sufficient space available on the host partition containing `/var/lib` for Docker and `/var/lib/containers` for Podman.
+You can skip these steps if you plan to use local storage for the Docker or Podman storage volume and have sufficient space available on the host partition containing `/var/lib/docker` for Docker and `/var/lib/containers` for Podman.
 
-NOTE: Podman is not supported on CentOS.
+NOTE: Podman is only supported on Red Hat Enterprise Linux (RHEL).
 
 .Steps
 
@@ -31,13 +31,13 @@ sudo mkfs.ext4 container-engine-storage-volume-device
 +
 ----
 sudo mkdir -p /var/lib/docker
-sudo mount docker-storage-volume-device /var/lib/docker
+sudo mount container-storage-volume-device /var/lib/docker
 ----
 * For Podman: 
 +
 ----
 sudo mkdir -p /var/lib/containers
-sudo mount docker-storage-volume-device /var/lib/containers
+sudo mount container-storage-volume-device /var/lib/containers
 ----
 
 . Add an entry for container-storage-volume-device to /etc/fstab.
