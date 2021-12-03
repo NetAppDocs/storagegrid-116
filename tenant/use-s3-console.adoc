@@ -5,7 +5,7 @@ keywords: how to use s3 console
 summary: 'You can use S3 Console to view the objects in an S3 bucket.'
 
 ---
-= Use S3 Console (Experimental)
+= Use the Experimental S3 Console
 :icons: font
 :imagesdir: ../media/
 
@@ -14,30 +14,28 @@ You can use S3 Console to view the objects in an S3 bucket.
 
 You can also use S3 Console to do the following:
 
-* Add and delete objects and object versions
+* Add and delete objects, object versions, and folders
 * Rename objects
-* Move and copy objects between buckets
+* Move and copy objects between buckets and folders
 * Manage object tags
+* View object metadata
+* Download objects
 
-NOTE: S3 Console has not been fully tested and is marked as “`experimental.`” It is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+NOTE: S3 Console has not been fully tested and is marked as “experimental.” It is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
 
 .What you'll need
 
 * You are signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Manage Your Own S3 Credentials permission.
 * You have created a bucket.
-* If you do not already have an access key and secret key for the user, you have xref:creating-your-own-s3-access-keys[created a key and downloaded the .csv file].
+* You know the user's access key ID and secret access key. Optionally, you have a `.csv` file containing this information. See the xref:creating-your-own-s3-access-keys.adoc[instructions for creating access keys].
 
 .Steps
 
 . Select *Buckets*.
-. Select *Experimental S3 Console*. You can also access this link from the bucket details page.
-+
-image::../media/buckets_page_s3_console.png[S3 Console]
-+
-. On the Experimental S3 Console sign-in page, select *Upload access keys*.
-. Browse to and select the .csv file containing the key.
+. Select image:../media/s3_console_link.png[S3 Console link]. You can also access this link from the bucket details page.
+. On the Experimental S3 Console sign-in page, paste the access key ID and secret access key into the fields. Otherwise, select *Upload access keys* and select your `.csv` file.
 . Select *Sign in*.
-. Select a bucket, and then select *Upload* to upload objects to the bucket.
+. Manage objects as needed.
 
-Now you can manage the objects as listed earlier. You can also xref:../ilm/simulating-ilm-policy.adoc[simulate an ILM policy] to ensure it does what you expect.  
+image::../media/s3_console_example.png[S3 Console example]
