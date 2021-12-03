@@ -37,11 +37,11 @@ The first interface in the list is the Primary interface. The Primary interface 
 +
 If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
 
-. Specify the address of the VIP subnet, followed by a slash and the subnet length (0-32).
+. Specify the VIP subnet in CIDR notation &mdash; an IPv4 address followed by a slash and the subnet length (0-32).
 +
 The network address must not have any host bits set. For example, `192.16.0.0/22`.
 
-. Optionally, if the FabricPool client will access these VIPs from a different subnet, enter the gateway address. The gateway address must be within the VIP subnet.
+. Optionally, if the FabricPool client will access these VIPs from a different subnet, enter the gateway IP address. The gateway address must be within the VIP subnet.
 
 . Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses. All VIPs must be within the VIP subnet.
 +

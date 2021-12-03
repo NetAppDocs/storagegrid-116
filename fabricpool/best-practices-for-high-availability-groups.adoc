@@ -19,7 +19,7 @@ Each HA group provides highly available access to the shared services on the ass
 
 To create an HA group, you perform these general steps:
 
-. Select network interfaces for one or more Admin Nodes or Gateway Nodes. You can select the Grid Network interface (eth0), Admin Network interface (eth1), Client Network interface (eth2), or a VLAN interface.
+. Select network interfaces for one or more Admin Nodes or Gateway Nodes. You can select the Grid Network interface (eth0), Client Network interface (eth2), or a VLAN interface.
 +
 IMPORTANT: If you plan to use a VLAN, you must create the VLAN interface before you create the HA group. You can use a VLAN for FabricPool only if StorageGRID is using VLANs for client traffic and the FabricPool VLAN is available on the trunked interface. 
 
@@ -30,7 +30,6 @@ IMPORTANT: If you plan to use a VLAN, you must create the VLAN interface before 
 If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
 
 == Best practices for high availability (HA) groups
-
 
 The best practices for creating a StorageGRID HA group for FabricPool depend on the workload, as follows:
 
