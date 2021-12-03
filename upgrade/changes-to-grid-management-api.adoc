@@ -47,6 +47,13 @@ Three new `grid/account` API operations have been added:
 
 The PATCH method has now been deprecated and will be removed in a future release. As required, perform a PUT operation to replace a resource instead of using a PATCH operation to modify the resource. 
 
+== Additions to `grid/logs/collect` endpoint
+
+Three boolean values have been added to the `grid/logs/collect` endpoint:
+
+* `applicationLogs`: Logs that are frequently needed for troubleshooting. The default is `true`.
+* `auditLogs`: Logs containing the audit messages generated during normal system operation. The default is `true`.
+* `prometheusDatabase`: Time series metrics from the services on all nodes. The default is `false`.
 
 .Related information
 
