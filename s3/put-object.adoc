@@ -11,7 +11,7 @@ summary: 'You can use the S3 PUT Object request to add an object to a bucket.'
 [.lead]
 You can use the S3 PUT Object request to add an object to a bucket.
 
-== Resolving conflicts
+== Resolve conflicts
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
@@ -91,7 +91,7 @@ NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Referen
 +
 If a request is made without these headers, the bucket default retention settings are used to calculate the object version retain-until-date.
 +
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use S3 Object Lock]
 
 * SSE request headers:
  ** `x-amz-server-side-encryption`
@@ -162,8 +162,8 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets]
 
-xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in audit logs]
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Using server-side encryption]
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use server-side encryption]
 
 xref:configuring-tenant-accounts-and-connections.adoc[How client connections can be configured]

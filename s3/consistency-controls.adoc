@@ -49,7 +49,7 @@ a|
 Behaves the same as the "`read-after-new-write`" consistency level, but provides eventual consistency for HEAD and GET operations. Offers higher availability for HEAD and GET operations than "`read-after-new-write`" if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
 |===
 
-== Using the "`read-after-new-write`" and "`available`" consistency controls
+== Use "`read-after-new-write`" and "`available`" consistency controls
 
 When a HEAD or GET operation uses the "`read-after-new-write`" consistency control, StorageGRID performs the lookup in multiple steps, as follows:
 
@@ -60,7 +60,7 @@ If a HEAD or GET operation uses the "`read-after-new-write`" consistency control
 
 Unless you require consistency guarantees similar to Amazon S3, you can prevent these errors for HEAD and GET operations by setting the consistency control to "`available.`" When a HEAD or GET operation uses the "`available`" consistency control, StorageGRID provides eventual consistency only. It does not retry a failed operation until it reaches the "`all`" consistency level, so it does not require that all copies of the object metadata be available.
 
-== Specifying the consistency control for an API operation
+== Specify consistency control for API operation
 
 To set the consistency control for an individual API operation, consistency controls must be supported for the operation, and you must specify the consistency control in the request header. This example sets the consistency control to "`strong-site`" for a GET Object operation.
 
@@ -76,7 +76,7 @@ Consistency-Control: strong-site
 
 NOTE: You must use the same consistency control for both the PUT Object and GET Object operations.
 
-== Specifying the consistency control for a bucket
+== Specify consistency control for bucket
 
 To set the consistency control for bucket, you can use the StorageGRID PUT Bucket consistency request and the GET Bucket consistency request. Or you can use the Tenant Manager or the Tenant Management API.
 

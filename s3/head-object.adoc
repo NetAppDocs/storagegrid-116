@@ -25,7 +25,7 @@ Use all three of these headers if the object is encrypted with a unique key that
 * `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the object.
 * `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the object's encryption key.
 
-IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+IMPORTANT: The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Use server-side encryption.`"
 
 == UTF-8 characters in user metadata
 
@@ -112,7 +112,7 @@ The `expiry-date` indicates when the object in the Cloud Storage Pool will be re
 
 |===
 
-== Multipart or segmented objects in a Cloud Storage Pool
+== Multipart or segmented objects in Cloud Storage Pool
 
 If you uploaded a multipart object or if StorageGRID split a large object into segments, StorageGRID determines whether the object is available in the Cloud Storage Pool by sampling a subset of the object's parts or segments. In some cases, a HEAD Object request might incorrectly return `x-amz-restore: ongoing-request="false"` when some parts of the object have already been transitioned to a non-retrievable state or when some parts of the object have not yet been restored.
 
@@ -122,10 +122,10 @@ If a `versionId` subresource is not specified, the operation fetches the most re
 
 .Related information
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Using server-side encryption]
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use server-side encryption]
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:post-object-restore.adoc[POST Object restore]
 
-xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in audit logs]

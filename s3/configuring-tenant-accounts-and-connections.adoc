@@ -11,7 +11,7 @@ summary: 'Configuring StorageGRID to accept connections from client applications
 [.lead]
 Configuring StorageGRID to accept connections from client applications requires creating one or more tenant accounts and setting up the connections.
 
-== Creating and configuring S3 tenant accounts
+== Create and configure S3 tenant accounts
 
 [.lead]
 An S3 tenant account is required before S3 API clients can store and retrieve objects on StorageGRID. Each tenant account has its own account ID, groups and users, and containers and objects.
@@ -38,7 +38,7 @@ IMPORTANT: S3 tenant users can create and manage S3 buckets with the Tenant Mana
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:../tenant/index.adoc[Use a tenant account]
+xref:../tenant/index.adoc[Use tenant account]
 
 == How client connections can be configured
 
@@ -179,7 +179,7 @@ It is possible to configure a DNS name for the IP address that clients use to co
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-=== Deciding to use HTTPS or HTTP connections
+=== Decide to use HTTPS or HTTP connections
 
 [.lead]
 When client connections are made using a Load Balancer endpoint, connections must be made using the protocol (HTTP or HTTPS) that was specified for that endpoint. To use HTTP for client connections to Storage Nodes or to the CLB service on Gateway Nodes, you must enable its use.
@@ -231,7 +231,7 @@ xref:../admin/index.adoc[Administer StorageGRID]
 
 xref:configuring-security-for-rest-api.adoc[Configuring security for the REST API]
 
-== Testing your S3 REST API configuration
+== Test your S3 REST API configuration
 
 [.lead]
 You can use the Amazon Web Services Command Line Interface (AWS CLI) to test your connection to the system and to verify that you can read and write objects to the system.
