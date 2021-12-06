@@ -2,36 +2,35 @@
 permalink: upgrade/whats-new.html
 sidebar: sidebar
 keywords: what is new in StorageGRID 11.6
-summary: 'StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and user interface enhancements to the Grid Manager.'
+summary: 'StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, certralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces multi-VLAN support, support for S3 Select, syslog transfer, ability to change SSH passwords, and usability enhancements to the Grid Manager.
+StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, certralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.
 
-== Kathy's what's new changes
+== Grid Manager user interface enhancements
 
-=== Support for multiple VLAN interfaces
+The Grid Manager user interface was substantially redesigned to improve the user experience.
 
-You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
-
-As part of this change, you can now add one or more extra interfaces to a node before or after the node is installed. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a high availability (HA) group.
+* A new sidebar replaces the pull-down menus in the old user interface.
+* All UI pages were reskinned with updated fonts, button styles, and table formats.
+* Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu now includes a *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
+* A new *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
+* A new summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
+* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
 
 .Learn more
-* *VMware (before or after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
-* *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
-* *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
-* *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
-* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
+* xref:../admin/index.adoc[Administer StorageGRID]
+* xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 === Updates to high availability (HA) groups
-The user interface for creating an HA group has been enhanced.
 
-* The new *Create a high availability group* wizard guides you through the process of entering details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
+* The new *Create a high availability group* wizard guides you through the process of entering endpoint details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
 * In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
-* You can now specify a failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
+* You can now specify the failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
 * If any S3, Swift, administrative or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
 
 .Learn more
@@ -39,8 +38,6 @@ The user interface for creating an HA group has been enhanced.
 *  xref:../admin/configure-high-availability-group.html[Configure high availability groups]
 
 === Updates to load balancer endpoints
-
-The user interface for creating a load balancer endpoint has been enhanced. 
 
 * The new *Create a load balancer endpoint* wizard guides you through the process of entering details, selecting a binding mode, and attaching certificates.
 * You now select the client type (S3 or Swift) when you first create the endpoint, instead of adding this detail after the endpoint is created.
@@ -52,35 +49,73 @@ NOTE: This global certificate was previously known as the *Object Storage API Se
 
 * xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
 
+=== Centralized certificate management
 
-=== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
+The new Certificates page (*CONFIGURATON* > *Security* > *Certificates*) consolidates information about all StorageGRID security certificates to a single location. You can manage StorageGRID global, grid CA, and client certificates from the new page or view information about other certificates, such as those used for load balancer endpoints, tenants, and identity federation.
+
+As part of this change, the following global certificates were renamed:
+
+* The *Management Interface Server Certificate* is now the *Management interface certificate*.
+
+* The *Object Storage API Service Endpoints Server Certificate* (also called the Storage API Server Certificate) is now the *S3 and Swift API certificate*.
+
+* The *Internal CA Certificate*, *System CA Certificate*, *CA Certificate*, and *Default CA certificate* are now consistently referred to as the *Grid CA certificate*.
+
+.Learn more
+* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
+
+== Support for multiple VLAN interfaces
+
+You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
+
+* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
+
+* You can now add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
+
+.Learn more
+
+* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
+
+== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
 
 * You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
-* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid.
-* Step-by-step instructions describe how to create Azure AD enterprise applications and PingFederate service provider (SP) connections to StorageGRID Admin Nodes.
+* You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. You can then use sandbox mode to configure and test the Azure AD enterprise applications or PingFederate service provider (SP) connections to each StorageGRID Admin Node.
 
 .Learn more
 * xref:../admin/using-identity-federation.adoc[Use identity federation]
 * xref:../admin/configuring-sso.adoc[Configure single sign-on]
 
-=== New upgrade process
+== Support for external syslog server and new destinations for logs 
+You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By configuring the destinations of your audit information, you can reduce network traffic on your Admin Nodes.   
 
-//more text goes here//
-
-A new *Check for software updates* check box was added to the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*). By default, StorageGRID contacts NetApp to determine if software updates are available for your system, but you can disable the check box as required. 
+Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *Tools* > *Logs*) allow you to specify which types of logs you want to collect, such as the application logs frequently needed for troubleshooting, audit logs, logs used for network debugging, and Prometheus database logs.
 
 .Learn more
-* xref:../admin/configure-autosupport-grid-manager.adoc[Configure AutoSupport]
+* xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
+* xref:../monitor/collecting-log-files-and-system-data.adoc[Collect log files and system data]
 
-=== Usability enhancements 
-The Grid Manager user interface has been redesigned.
+== New upgrade process for future StorageGRID releases
 
-* New sidebar
-* New menu structure. CONFIGURATION menu reorganized with new section for Security.
-* New Nodes page
-* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
+* The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
 
-=== New alerts
+* After the upgrade to StorageGRID 11.6 completes, you will be able to use the Grid Manager to apply the latest hotfix for a future release at the same time you upgrade to that release.
++
+NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to apply the latest hotfix at the same time you run the upgrade. 
+
+* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases directly from the Software Upgrade page. You are linked directly to the correct download page for the major version and the recommended hotfix.
+* A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. Checking for available software updates can be disabled if your system does not have WAN access.
+
+* You can now pause a SANtricity OS upgrade and skip upgrading some nodes if you need to finish the upgrade later. 
+
+.Learn more
+
+* xref:../admin/configure-autosupport-grid-manager.adoc#disable-checks-for-software-updates[Configure AutoSupport > Disable checks for software updates]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^]
+* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5600)]
+* xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5700)]
+* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000]
+
+== New alerts
 
 The following new alerts were added for StorageGRID 11.6:
 
@@ -102,9 +137,9 @@ The following new alerts were added for StorageGRID 11.6:
 * Object existence check stalled
 
 .Learn more
-* xref:../monitor/index.adoc[Monitor and troubleshoot]
+* xref:../monitor/alerts-reference.adoc[Alerts reference]
 
-=== Changes to the audit messages
+== Changes to audit messages
 * A new *BUID* field was added to the ORLM: Object Rules Met audit message. The *BUID* field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
 
 * A new *SGRP* field was added to the following audit messages. The *SGRP*  field is present only if an object was deleted at a different site than where it was ingested.
@@ -116,7 +151,7 @@ The following new alerts were added for StorageGRID 11.6:
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
 
-=== Storage volume watermarks now optimized
+== Storage volume watermarks now optimized
 
 In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
 
@@ -136,39 +171,22 @@ As part of this change, two Prometheus metrics were added:
 .Learn more
 * xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
 
-== Changes to S3 REST API support
+== Object metadata allowed space increased
+If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
+
+NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
+
+== Changes to S3 support
 
 === GET object and HEAD object support for multipart objects
 
 Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. Starting in StorageGRID 11.6, you can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
 
-.Learn more
-* xref:../s3/index.adoc[Use S3]
-
-=== Updates to Tenant Accounts permission
-Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
-
-=== New "Estimated time to completion" chart for EC rebalance and EC repair jobs
-You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
-
-=== Diagnostics page sorted by severity
-The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
-
-=== Prometheus storage no longer limited to 31 days
-Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
-
-When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
-
-=== New option for replicated data repairs
-
-You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
-
-IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting – All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
-
 === Parallel S3 multipart downloads 
 //get information from Raptor team
 
-== Kevin's what's new changes
+.Learn more
+* xref:../s3/index.adoc[Use S3]
 
 === Available consistency control now includes GET operations
 
@@ -177,19 +195,12 @@ The Available consistency control behaves the same as the “read-after-new-writ
 .Learn more
 * xref:../s3/index.adoc[Use S3]
 
-=== Access security certificates from single location
-
-Security certificate information and access has been consolidated in a single location in the Grid Manager at *CONFIGURATON* > *Security* > *Certificates*.
-
-.Learn more
-* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates] 
-
 === Default bucket retention period for S3 Object Lock
 
-If the S3 Object Lock default retention mode is enabled for a bucket, you can specify a default retention period for each object that you add to the bucket.
+When using S3 Object Lock, you can now specify a default retention period for the bucket. The default retention period applies to any objects added to the bucket that do not have their own retention settings.
 
 .Learn more
-* xref:../s3/using-s3-object-lock.adoc[Using S3 Object Lock] 
+* xref:../s3/using-s3-object-lock.adoc[Use S3 Object Lock] 
 
 === Google Cloud Platform (GCP) support
 
@@ -206,93 +217,88 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 .Learn more
 * xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
 
-=== Security certificates renamed
+== Enhancements to Tenant Manager
 
-The following security certificates were renamed:
-* The Management Interface Server Certificate is now the Management interface certificate.
-* The Object Storage API Service Endpoints Server Certificate (also called the Storage API Server Certificate) is now the S3 and Swift API certificate.
-* The Internal CA Certificate, System CA Certificate, CA Certificate, and Default CA certificate are now the Grid CA certificate.
-
-.Learn more
-* xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
-
-== Lisa's what's new changes
-
-== Object existence check added to maintenance tasks
-The foreground verification feature has been renamed to object existence check. This feature has been redesigned to reduce runtime by at least three times. The redesign also allows for ease of use without technical support intervention. Object existence check is available from the Grid Manager at *MAINTENANCE > Object existence check*.
-
-== Enhancements to the Grid Manager 
-The appearance and organization of the Grid Manager user interface has been completely redesigned to improve user experience.
-
-The Nodes page has been redesigned to include a summary page that contains a tabular list of all sites and nodes in the grid. The table includes summary information, such as object data used and object metadata used. An alert icon is displayed next to any node that has an active alert.
-
-.Learn more
-* xref:../admin/index.adoc[Administer StorageGRID]
-
-== Object metadata allowed space increased
-If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
-
-NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
-
-== S3 Select feature added
+=== Support for S3 Select
 
 S3 tenants can now use S3 Select to issue SelectObjectContent requests to individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. Only certain tenant accounts can use S3 Select, and the grid administrator must enable this feature for a tenant.
 
-xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] for S3 Select operations have also been added.
+Grafana charts for S3 Select operations have also been added.
 
-Learn more:
+.Learn more:
 
-xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
+* xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
 
-xref:../s3/use-s3-select.adoc[Use S3 Select]
+* xref:../s3/use-s3-select.adoc[Use S3 Select]
+* xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] 
 
-== API schemas provided
+=== Experimental S3 Console
+
+The new *experimental S3 Console*, available as a link from the Buckets page in Tenant Manager, lets S3 tenant users view and manage the objects in their buckets. Users can add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. 
+
+IMPORTANT: S3 Console has not been fully tested and is marked as "`experimental.`" The new application is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+
+.Learn more
+
+* xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console]
+
+=== Delete multiple S3 buckets
+
+Tenant users can now delete more than one S3 bucket at a time. Each bucket that you want to delete must be empty.
+
+.Learn more
+xref:../tenant/deleting-s3-bucket.adoc[Delete S3 buckets]
+
+=== Updates to Tenant Accounts permission
+Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
+
+== Enhancements to maintenance procedures and support tools
+
+=== Can change node console passwords
+You now can use the Grid Manager to change the node console passwords (*CONFIGURATION* > *Access control* > *Grid passwords*). These passwords are used to log in to a node as “admin” using SSH, or to the root user on a VM/physical console connection.  
+
+.Learn more
+* xref:../admin/change-node-console-password.adoc[Change node console passwords]
+
+=== Object existence check replaces foreground verification
+An easy-to-use Object existence check wizard (*MAINTENANCE* > *Tasks* > *Object existence check*) replaces the foreground verification procedure. You can create an object existence check job to verify whether all expected object copies exist. The new procedure reduces runtime by at least three times.
+
+.Learn more
+* xref:../monitor/verifying-object-integrity.html[Verify object integrity]
+
+=== "Estimated time to completion" chart for EC rebalance and EC repair jobs
+You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
+
+=== Estimated percent complete for replicated data repairs
+
+You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
+
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting – All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
+
+=== Diagnostics page sorted by severity
+The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
+
+=== Prometheus storage no longer limited to 31 days
+Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
+
+When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
+
+== Changes for new installations
+
+=== API schemas provided
 
 The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
 
-== Change in format for BLOCK_DEVICE_RANGEDB in bare metal node configuration file
+=== Change in format for BLOCK_DEVICE_RANGEDB in bare metal node configuration file
 
-For bare metal deployments, the format for the BLOCK_DEVICE_RANGEDB key in the node configuration file should contain three digits instead of two. For example, instead of BLOCK_DEVICE_RANGEDB_00, specify BLOCK_DEVICE_RANGEDB_000.
+For bare metal deployments, the format for the `BLOCK_DEVICE_RANGEDB` key in the node configuration file should contain three digits instead of two. For example, instead of `BLOCK_DEVICE_RANGEDB_00`, specify `BLOCK_DEVICE_RANGEDB_000`.
 
 For compatibility with existing deployments, two-digit keys are still supported for upgraded nodes.
 
 .Learn more
 
-xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
-
-xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
-
-== Experimental S3 Console
-
-An experimental S3 Console has been added to allow tenants to view the objects in an S3 bucket. This experimental console has not been fully tested.
-
-In addition to viewing objects, an S3 tenant can also add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. The experimental S3 Console is not intended for bulk management of objects or for use in a production environment. Instead, tenants should use S3 Console when performing these functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
-
-.Learn more
-
-xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console]
-
-== Paul's what's new changes
-
-=== Ability to change node console passwords
-You now can use the Grid Manager to change the node console passwords. These passwords are used to log in to a node as “admin” using SSH, or to the root user on a VM/physical console connection. (*CONFIGURATION* > *Access control* > *Grid passwords*). 
-
-.Learn more
-* xref:../admin/change-node-console-password.adoc[Change node console passwords]
-
-=== Add an external syslog server and change log destinations
-You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely. After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By being able to configure the destinations of your audit information, you can reduce network traffic on your Admin Nodes. (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*).  
-
-.Learn more
-* xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
-
-=== Ability to pause the SANtricity upgrade process and skip some nodes
-While you are performing a SANtricity OS upgrade, you can now pause the upgrade and skip upgrading some nodes so you can finish the upgrade at a later time. (*MAINTENANCE* > *System* > *Software update*). 
-
-.Learn more
-* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG5600)]
-* xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG5700)]
-* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrading SANtricity OS on storage controllers using the grid manager (SG6000]
+* xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
+* xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
 
 == StorageGRID documentation changes
 
