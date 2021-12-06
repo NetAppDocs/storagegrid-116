@@ -4,14 +4,14 @@ sidebar: sidebar
 keywords:
 summary: 'Configuring StorageGRID to accept connections from client applications requires creating one or more tenant accounts and setting up the connections.'
 ---
-= Configuring tenant accounts and connections
+= Configure tenant accounts and connections
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
 Configuring StorageGRID to accept connections from client applications requires creating one or more tenant accounts and setting up the connections.
 
-== Creating and configuring Swift tenant accounts
+== Create and configure Swift tenant accounts
 
 A Swift tenant account is required before Swift API clients can store and retrieve objects on StorageGRID. Each tenant account has its own account ID, groups and users, and containers and objects.
 
@@ -35,7 +35,7 @@ IMPORTANT: Swift users must have the Root Access permission to access the Tenant
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:../tenant/index.adoc[Use a tenant account]
+xref:../tenant/index.adoc[Use tenant account]
 
 xref:supported-swift-api-endpoints.adoc[Supported Swift API endpoints]
 
@@ -168,7 +168,7 @@ For example, if the virtual IP address of the HA group is 192.0.2.6 and the port
 
 It is possible to configure a DNS name for the IP address that clients use to connect to StorageGRID. Contact your local network administrator.
 
-=== Deciding to use HTTPS or HTTP connections
+=== Decide to use HTTPS or HTTP connections
 
 When client connections are made using a Load Balancer endpoint, connections must be made using the protocol (HTTP or HTTPS) that was specified for that endpoint. To use HTTP for client connections to Storage Nodes or to the CLB service on Gateway Nodes, you must enable its use.
 
@@ -184,7 +184,7 @@ If the *Enable HTTP Connection* option is selected, clients must use different p
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-== Testing your connection in the Swift API configuration
+== Test your connection in Swift API configuration
 
 You can use the Swift CLI to test your connection to the StorageGRID system and to verify that you can read and write objects to the system.
 
@@ -255,6 +255,6 @@ delete test_container
 
 .Related information
 
-xref:configuring-tenant-accounts-and-connections.adoc[Creating and configuring Swift tenant accounts]
+xref:configuring-tenant-accounts-and-connections.adoc[Create and configure Swift tenant accounts]
 
-xref:configuring-security-for-rest-api.adoc[Configuring security for the REST API]
+xref:configuring-security-for-rest-api.adoc[Configure security for REST API]
