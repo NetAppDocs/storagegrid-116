@@ -1,0 +1,38 @@
+---
+permalink: upgrade/upgrade-overview.html
+sidebar: sidebar
+keywords: upgrade, software upgrade overview
+summary: 'The Software Upgrade page guides you through the process of uploading the required file and upgrading all of the grid nodes in your StorageGRID system.'
+---
+= Upgrade overview
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The Software Upgrade page guides you through the process of uploading the required file and upgrading all of the grid nodes in your StorageGRID system.
+
+Before starting an upgrade, review the general steps and considerations:
+
+* If any StorageGRID nodes are deployed on Linux hosts, you must xref:linux-installing-rpm-or-deb-package-on-all-hosts.adoc[install the RPM or DEB package on each host] before you start the upgrade.
+
+* You upgrade all grid nodes for all data center sites from the primary Admin Node, using the Grid Manager.
+
+* To detect and resolve issues, you can manually run the upgrade prechecks and resolve any issues before you start the actual upgrade. The same prechecks are performed when you start the upgrade. Precheck failures will stop the upgrade process and some might require technical support involvement to resolve.
+
+* When you start the upgrade, the primary Admin Node is upgraded automatically. You will not be able to access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
+
+* After the primary Admin Node has been upgraded, you must clear your web browser’s cache, sign back in, and return to the StorageGRID Upgrade page.
+
+* You can then select which grid nodes to upgrade next. You can select individual grid nodes, groups of grid nodes, or all grid nodes. You can repeat the process of selecting grid nodes as many times as necessary, until all grid nodes at all sites are upgraded.
+
+* You must upgrade all grid nodes in your StorageGRID system to complete the upgrade. 
+
+* When the upgrade starts on a grid node, the services on that node are stopped. Later, the grid node is rebooted. Do not approve the upgrade for a grid node unless you are sure that node is ready to be stopped and rebooted.
+
+* When all grid nodes have been upgraded, new features are enabled and you can resume operations; however, you must wait to perform a decommission or expansion procedure until the background *Upgrade Database* task and the *Final Upgrade Steps* task have completed.
+
+* You must complete the upgrade on the same hypervisor platform you started with.
+
+.Related information
+
+xref:estimating-time-to-complete-upgrade.adoc[Estimating the time to complete an upgrade]

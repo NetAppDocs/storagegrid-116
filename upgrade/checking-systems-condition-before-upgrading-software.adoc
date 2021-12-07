@@ -1,7 +1,7 @@
 ---
 permalink: upgrade/checking-systems-condition-before-upgrading-software.html
 sidebar: sidebar
-keywords: upgrade, firewall, ports
+keywords: upgrade, grid tasks, firewall, ports
 summary: 'Before upgrading a StorageGRID system, you must verify the system is ready to accommodate the upgrade. You must ensure that the system is running normally and that all grid nodes are operational.'
 ---
 = Check the system's condition
@@ -15,7 +15,7 @@ Before upgrading a StorageGRID system, you must verify the system is ready to ac
 . Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 . Check for and resolve any active alerts.
 +
-For information about specific alerts, see the monitoring and troubleshooting instructions.
+For information about specific alerts, see xref:../monitor/index.adoc[Monitor and troubleshoot].
 
 . Confirm that no conflicting grid tasks are active or pending.
  .. Select *SUPPORT* > *Tools* > *Grid topology*.
@@ -26,14 +26,7 @@ Information lifecycle management evaluation (ILME) tasks are the only grid tasks
  .. If any other grid tasks are active or pending, wait for them to finish or release their lock.
 +
 NOTE: Contact technical support if a task does not finish or release its lock.
+
 . Refer to the lists of internal and external ports in the 11.6 version of the xref:../network/index.adoc[network guidelines], and ensure that all required ports are opened before you upgrade.
 +
 IMPORTANT: If you have opened any custom firewall ports, you are notified during the upgrade precheck. You must contact technical support before proceeding with the upgrade.
-
-.Related information
-
-xref:../monitor/index.adoc[Monitor and troubleshoot]
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:../maintain/index.adoc[Recover and maintain]
