@@ -21,16 +21,19 @@ You can set the "`Available`" consistency control for each container using the P
 
 == Recommendations for object names
 
-You should not use random values as the first four characters of object names. Instead, you should use non-random, non-unique prefixes, such as image.
+For containers that are created in StorageGRID 11.4 or later, restricting object names to meet performance best practices is no longer required. For example, you can now use random values for the first four characters of object names.
 
-If you do need to use random and unique characters in object name prefixes, you should prefix the object names with a directory name. That is, use this format:
+For containers that were created in releases earlier than StorageGRID 11.4, continue to follow these recommendations for object names:
 
+* You should not use random values as the first four characters of object names. This is in contrast to the former AWS recommendation for name prefixes. Instead, you should use non-random, non-unique prefixes, such as `image`.
+* If you do follow the former AWS recommendation to use random and unique characters in name prefixes, you should prefix the object names with a directory name. That is, use this format:
++
 ----
 mycontainer/mydir/f8e3-image3132.jpg
 ----
-
++
 Instead of this format:
-
++
 ----
 mycontainer/f8e3-image3132.jpg
 ----
