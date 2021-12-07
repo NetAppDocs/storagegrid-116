@@ -22,7 +22,7 @@ IMPORTANT: You must download a new copy of the Recovery Package file after you u
 
 . Review the information in the Grid Node Status table. Grid nodes are arranged in sections by type: Admin Nodes, API Gateway Nodes, Storage Nodes, and Archive Nodes.
 +
-image::../media/software_upgrade_start_grid_node_status.gif[screenshot of Upgrade Grid Nodes after Admin Node done]
+image::../media/software_upgrade_start_grid_node_status.png[screenshot of Upgrade Grid Nodes after Admin Node done]
 +
 A grid node can be in one of these stages when this page first appears:
 
@@ -46,19 +46,17 @@ IMPORTANT: When the upgrade starts on a grid node, the services on that node are
 +
 As shown in the example, when the Stage reaches *Stopping services*, the *Remove* button is hidden and you can no longer remove the node.
 +
-image::../media/software_upgrade_two_nodes_queued.gif[screen shot showing Stage is Stopping services]
+image::../media/software_upgrade_two_nodes_queued.png[screen shot showing Stage is Stopping services]
 
-. Wait for each node to proceed through the upgrade stages, which include Queued, Stopping services, Stopping container, Cleaning up Docker images, Upgrading base OS packages, Rebooting, and Starting services.
+. Wait for each node to proceed through the upgrade stages, which include Queued, Stopping services, Stopping container, Cleaning up Docker images, Upgrading base OS packages, Rebooting, Performing steps after reboot, Starting services, and Done.
 +
 NOTE: When an appliance node reaches the Upgrading base OS packages stage, the StorageGRID Appliance Installer software on the appliance is updated. This automated process ensures that the StorageGRID Appliance Installer version remains in sync with the StorageGRID software version.
 +
-When all grid nodes have been upgraded, the *Upgrade Grid Nodes* task is shown as Completed. The remaining upgrade tasks are performed automatically and in the background.
+When all grid nodes have completed the upgrade stages, the *Upgrade Grid Nodes* task is shown as Completed. The remaining upgrade tasks are performed automatically and in the background.
 
 . As soon as the *Enable Features* task is complete (which occurs quickly), you can start using the new features in the upgraded StorageGRID version.
 +
-For example, if you are upgrading to StorageGRID 11.5, you can now enable S3 Object Lock, configure a key management server, or increase the Metadata Reserved Space setting.
-+
-xref:increasing-metadata-reserved-space-setting.adoc[Increasing the Metadata Reserved Space setting]
+For example, if you are upgrading to StorageGRID 11.6, you can configure VLAN interfaces.
 
 . Periodically monitor the progress of the *Upgrade Database* task.
 +
@@ -72,15 +70,14 @@ image::../media/software_upgrade_upgrade_database.png[Software Upgrade Upgrade D
 
 . When the *Upgrade Database* task has completed, wait a few minutes for the *Final Upgrade Steps* task to complete.
 +
-image::../media/software_upgrade_final_upgrade_steps.png[Final Upgrade Steps]
-+
 When the Final Upgrade Steps task has completed, the upgrade is done.
 
 . Confirm that the upgrade completed successfully.
- .. Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
  .. From the top of the Grid Manager, select the help icon and select *About*.
  .. Confirm that the displayed version is what you would expect.
- .. Select *MAINTENANCE* > *System* > *Software update*. Then, select *StorageGRID Upgrade*.
+ .. Select *MAINTENANCE* > *System* > *Software update*. 
+ .. In the *StorageGRID upgrade* section, select *Upgrade*.
  .. Confirm that the green banner shows that the software upgrade was completed on the date and time you expected.
 +
 image::../media/software_upgrade_done.png[Software Upgrade Done]
@@ -91,16 +88,13 @@ image::../media/software_upgrade_done.png[Software Upgrade Done]
 +
 https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^]
 +
-In the StorageGRID 11.5._x.y_ version number:
-
- ** The major release has an _x_ value of 0 (11.5.0).
- ** A minor release, if available, has an _x_ value other than 0 (for example, 11.5.1).
- ** A hotfix, if available, has a _y_ value (for example, 11.5.0.1).
-
-. If available, download and apply the latest hotfix for your StorageGRID version.
+In the StorageGRID 11.6._x.y_ version number:
 +
-See the recovery and maintenance instructions for information about applying hotfixes.
+** The major release has an _x_ value of 0 (11.6.0).
 
-.Related information
+** A hotfix, if one has been applied, has a _y_ value (for example, 11.6.0.*1*).
 
-xref:../maintain/index.adoc[Recover and maintain]
+
+. If available, use the Hotfix page to download and apply the latest hotfix for your StorageGRID version.
++
+See the xref:../maintain/index.adoc[recovery and maintenance instructions] to learn how to apply hotfixes.

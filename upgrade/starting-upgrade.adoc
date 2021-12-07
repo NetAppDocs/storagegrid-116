@@ -16,7 +16,7 @@ You have reviewed all of the considerations and completed all of the planning an
 
 .Steps
 . Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-. Select *MAINTENANCE* > *System* > *Software update*.
+. Select *Maintenance* > *System* > *Software Update*.
 +
 The Software Update page appears.
 
@@ -26,7 +26,7 @@ The StorageGRID Upgrade page appears and shows the date and time of the most rec
 
 . Select the `.upgrade` file you downloaded.
  .. Select *Browse*.
- .. Locate and select the file: `NetApp_StorageGRID_version_Software_uniqueID.upgrade`
+ .. Locate and select the file: `NetApp_StorageGRID_11.6.0_Software_uniqueID.upgrade`
  .. Select *Open*.
 +
 The file is uploaded and validated. When the validation process is done, a green checkmark appears next to the upgrade file name.
@@ -36,7 +36,7 @@ The *Run Prechecks* and *Start Upgrade* buttons become enabled.
 +
 image::../media/storagegrid_upgrade_buttons_enabled.png[StorageGRID Upgrade Buttons Enabled]
 
-. If you want to validate the condition of your system before you start the actual upgrade, select *Run Prechecks*. Then, resolve any precheck errors that are reported.
+. If you want to validate the condition of your system before you start the actual upgrade, select *Run Prechecks*. Wait for the prechecks to complete and resolve any precheck errors that are reported.
 +
 IMPORTANT: If you have opened any custom firewall ports, you are notified during the precheck validation. You must contact technical support before proceeding with the upgrade.
 +
@@ -60,14 +60,24 @@ NOTE: If any precheck errors are reported, resolve them and select *Start Upgrad
 +
 NOTE: While the primary Admin Node is being upgraded, multiple copies of the following error messages appear, which you can ignore.
 +
-image::../media/software_upgrade_problem_connecting_error.png[Software Upgrade Problem Connecting Error]
-+
 image::../media/software_upgrade_503_error.png[Software Upgrade 503 Error]
++
+image::../media/software_upgrade_problem_connecting_error.png[Software Upgrade Problem Connecting Error]
 +
 image::../media/software_upgrade_400_error.png[Software Upgrade 400 Error]
 
-. After the primary Admin Node has been upgraded, clear your web browser's cache, sign back in, and reload the Software Upgrade page.
+. After the primary Admin Node has been upgraded, clear your web browser's cache, sign back in.
 +
 For instructions, see the documentation for your web browser.
 +
 IMPORTANT: You must clear the web browser's cache to remove outdated resources used by the previous version of the software.
++
+The redesigned StorageGRID 11.6 user interface appears, which indicates that the primary Admin Node has been upgraded.
++
+image::../media/grid_manager_dashboard.png[Grid Manager dashboard]
+
+. From the sidebar, select *MAINTENANCE* to open the new Maintenance menu.
+
+. In the *System* section, select  *Software update*.
+
+. In the *StorageGRID Upgrade* section, select *Upgrade*.
