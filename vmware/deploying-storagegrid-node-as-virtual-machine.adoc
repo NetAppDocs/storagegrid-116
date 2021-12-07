@@ -128,11 +128,15 @@ NOTE: Depending on your version of vCenter, the order of the steps will vary for
 
 . Select storage for the virtual machine.
 +
-NOTE: If you are deploying a node as part of recovery operation, perform the instructions in the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
+If you are deploying a node as part of recovery operation, perform the instructions in the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
 +
 When deploying a Storage Node, use 3 or more storage volumes, with each storage volume being 4 TB or larger. You must assign at least 4 TB to volume 0.
 +
-IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs may provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
+
+IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs might provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
++
+
+NOTE: Some StorageGRID installations might use larger, more active storage volumes than typical virtualized workloads. You  might need to tune some hypervisor parameters, for example `MaxAddressableSpaceTB`, to achieve optimal performance. If you encounter poor performance, contact your virtualization support resource to determine whether your environment could benefit from workload-specific configuration tuning.
 
 . Select networks.
 +

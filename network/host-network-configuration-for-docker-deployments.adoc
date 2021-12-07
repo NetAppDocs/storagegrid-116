@@ -37,7 +37,8 @@ The following table provides the minimum bandwidth recommendations for each type
 |Archive |10 Gbps |1 Gbps |10 Gbps
 |===
 
-IMPORTANT: The minimum bandwidth recommendation for LAN and WAN is 10 Gbps for each.
+IMPORTANT: A grid without any client traffic local to a site or between sites (an "idle grid") requires a minimum bandwidth of 25 Mbits/second between each site. 
+ 
 
 NOTE: This table does not include SAN bandwidth, which is required for access to shared storage. If you are using shared storage accessed over Ethernet (iSCSI or FCoE), you should provision separate physical interfaces on each host to provide sufficient SAN bandwidth. To avoid introducing a bottleneck, SAN bandwidth for a given host should roughly match the aggregate Storage Node network bandwidth for all Storage Nodes running on that host.
 
