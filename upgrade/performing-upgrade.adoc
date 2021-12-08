@@ -97,7 +97,7 @@ image::../media/grid_manager_dashboard.png[Grid Manager dashboard]
 
 == Download Recovery Package and upgrade all grid nodes
 
-. After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, xref:obtaining-required-materials-for-software-upgrades.adoc#download-the-Recovery-Package[download a new copy of the Recovery Package].
+. After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, xref:obtaining-required-materials-for-software-upgrade.adoc#Download-the-Recovery-Package[download a new copy of the Recovery Package].
 +
 IMPORTANT: You must download a new copy of the Recovery Package file after you upgrade the software version on the primary Admin Node. The Recovery Package file allows you to restore the system if a failure occurs.
 
@@ -151,7 +151,7 @@ For example, if you are upgrading to StorageGRID 11.6, you can configure VLAN in
 +
 During this task, the Cassandra database is upgraded on each Storage Node.
 +
-NOTE: The *Upgrade Database* task might take days to complete. As this background task runs, you can apply hotfixes or recover nodes. However, you must wait for the *Final Upgrade Steps* task to complete before performing an expansion or decommission procedure.
+NOTE: For some StorageGRID upgrades, the *Upgrade Database* task might take days to complete. As this background task runs, you can apply hotfixes or recover nodes. However, you must wait for the *Final Upgrade Steps* task to complete before performing an expansion or decommission procedure.
 +
 You can review the graph to monitor the progress for each Storage Node.
 +
@@ -169,17 +169,15 @@ When the Final Upgrade Steps task has completed, the upgrade is done.
  .. Confirm that the displayed version is what you would expect.
  .. Select *MAINTENANCE* > *System* > *Software update*. 
  .. In the *StorageGRID upgrade* section, select *Upgrade*.
- .. Confirm that the green banner shows that the software upgrade was completed on the date and time you expected.
+ .. Confirm that the green banner shows that the software upgrade was completed on the date and time you expect.
 +
 image::../media/software_upgrade_done.png[Software Upgrade Done]
 
 . From the StorageGRID Upgrade page, determine if any hotfixes are available for the current StorageGRID version.
 +
-NOTE: If an update path is not shown, your browser might not be able to reach the NetApp Support Site. Or, the *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) might be disabled.
+NOTE: If no Update Path is shown, your browser might not be able to reach the NetApp Support Site. Or, the *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) might be disabled.
 
-. If available, download the hotfix file and use the StorageGRID Hotfix page to apply the latest hotfix for your StorageGRID version.
-+
-See the xref:../maintain/storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure].
+. If a hotfix is available, download the file. Then, use the the xref:../maintain/storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure] to apply the  hotfix.
 
 . Verify that grid operations have returned to normal:
  .. Check that the services are operating normally and that there are no unexpected alerts.
