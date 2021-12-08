@@ -13,9 +13,7 @@ You use VMware vSphere Web Client to deploy each grid node as a virtual machine.
 
 .What you'll need
 
-* You have reviewed the planning and preparation topics, and you understand the requirements for software, CPU and RAM, and storage and performance.
-+
-xref:planning-and-preparation.adoc[Planning and preparation]
+* You have reviewed the section called xref:planning-and-preparation.adoc[plan and prepare for installation], and you understand the requirements for software, CPU and RAM, and storage and performance.
 
 * You are familiar with VMware vSphere Hypervisor and have experience deploying virtual machines in this environment.
 +
@@ -69,9 +67,8 @@ vsphere-storage.mf
 +
 IMPORTANT: In a production deployment, do not run more than one Storage Node on a single virtual machine server. Using a dedicated virtual machine host for each Storage Node provides an isolated failure domain.
 
-* If you are deploying a node as part of an expansion or recovery operation, you have the instructions for expanding a StorageGRID system or the recovery and maintenance instructions.
- ** xref:../expand/index.adoc[Expand your grid]
- ** xref:../maintain/index.adoc[Recover and maintain]
+* If you are deploying a node as part of an expansion or recovery operation, you have the xref:../expand/index.adoc[instructions for expanding a StorageGRID system] or the xref:../maintain/index.adoc[recovery and maintenance instructions].
+
 * If you are deploying a StorageGRID node as a virtual machine with storage assigned from a NetApp AFF system, you have confirmed that the volume does not have a FabricPool tiering policy enabled. For example, if a StorageGRID node is running as an virtual machine on a VMWare host, ensure the volume backing the datastore for the node does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
 +
 IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
@@ -124,15 +121,19 @@ The standard practice is to use the same name for both the virtual machine and t
 . Place the virtual machine in the appropriate vApp or resource pool.
 . If you are deploying the primary Admin Node, read and accept the End User License Agreement.
 +
-NOTE: Depending on your version of vCenter, the order of the steps will vary for accepting the End User License Agreement, specifying the name of the virtual machine, and selecting a datastore
+Depending on your version of vCenter, the order of the steps will vary for accepting the End User License Agreement, specifying the name of the virtual machine, and selecting a datastore.
 
 . Select storage for the virtual machine.
 +
-NOTE: If you are deploying a node as part of recovery operation, perform the instructions in the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
+If you are deploying a node as part of recovery operation, perform the instructions in the <<step_recovery_storage,storage recovery step>> to add new virtual disks, reattach virtual hard disks from the failed grid node, or both.
 +
 When deploying a Storage Node, use 3 or more storage volumes, with each storage volume being 4 TB or larger. You must assign at least 4 TB to volume 0.
 +
-IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs may provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
+
+IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs might provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
++
+
+NOTE: Some StorageGRID installations might use larger, more active storage volumes than typical virtualized workloads. You  might need to tune some hypervisor parameters, for example `MaxAddressableSpaceTB`, to achieve optimal performance. If you encounter poor performance, contact your virtualization support resource to determine whether your environment could benefit from workload-specific configuration tuning.
 
 . Select networks.
 +
@@ -179,16 +180,12 @@ Note the following important guidelines:
   *** The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs may provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
 . If you need to remap the ports used by this node, follow these steps.
 +
-You might need to remap a port if your enterprise networking policies restrict access to one or more ports that are used by StorageGRID. See the networking guidelines for the ports used by StorageGRID.
-+
-xref:../network/index.adoc[Networking guidelines]
+You might need to remap a port if your enterprise networking policies restrict access to one or more ports that are used by StorageGRID. See the xref:../network/index.adoc[metworking guidelines] for the ports used by StorageGRID.
 +
 IMPORTANT: Do not remap the ports used in load balancer endpoints.
 
  .. Select the new VM.
- .. From the Configure tab, select *Settings* > *vApp Options*.
-+
-NOTE: The location of *vApp Options* depends on the version of vCenter.
+ .. From the Configure tab, select *Settings* > *vApp Options*. The location of *vApp Options* depends on the version of vCenter.
 
  .. In the *Properties* table, locate PORT_REMAP_INBOUND and PORT_REMAP.
  .. To symmetrically map both inbound and outbound communications for a port, select *PORT_REMAP*.
