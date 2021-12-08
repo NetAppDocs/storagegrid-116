@@ -106,7 +106,7 @@ The bucket policy has a size limit of 20,480 bytes, and the group policy has a s
 
 .Related information
 
-xref:../tenant/index.adoc[Use a tenant account]
+xref:../tenant/index.adoc[Use tenant account]
 
 == Consistency control settings for policies
 
@@ -118,7 +118,7 @@ In this case, you can either set the `Consistency-Control` header in the PUT Buc
 
 NOTE: If you set the consistency level to *all* to force a new bucket policy to become effective sooner, be sure to set the bucket-level control back to its original value when you are done. Otherwise, all future bucket requests will use the *all* setting.
 
-== Using the ARN in policy statements
+== Use ARN in policy statements
 
 In policy statements, the ARN is used in Principal and Resource elements.
 
@@ -152,7 +152,7 @@ https://www.ietf.org/rfc/rfc2141.txt[RFC 2141 URN Syntax]
 +
 The HTTP request body for the PUT Bucket policy operation must be encoded with charset=UTF-8.
 
-== Specifying resources in a policy
+== Specify resources in a policy
 
 In policy statements, you can use the Resource element to specify the bucket or object for which permissions are allowed or denied.
 
@@ -173,9 +173,9 @@ In policy statements, you can use the Resource element to specify the bucket or 
 
 .Related information
 
-xref:bucket-and-group-access-policies.adoc[Specifying variables in a policy]
+xref:bucket-and-group-access-policies.adoc[Specify variables in policy]
 
-== Specifying principals in a policy
+== Specify principals in a policy
 
 Use the Principal element to identity the user, group, or tenant account that is allowed/denied access to the resource by the policy statement.
 
@@ -228,7 +228,7 @@ For example, suppose Alex leaves the organization and the username `Alex` is del
 
 * The principal value can specify a group/user name that does not yet exist when a bucket policy is created.
 
-== Specifying permissions in a policy
+== Specify permissions in a policy
 
 In a policy, the Action element is used to allow/deny permissions to a resource. There are a set of permissions that you can specify in a policy, which are denoted by the element "Action," or alternatively, "NotAction" for exclusion. Each of these elements maps to specific S3 REST API operations.
 
@@ -647,7 +647,7 @@ a|
 
 |===
 
-== Using the PutOverwriteObject permission
+== Use PutOverwriteObject permission
 
 The s3:PutOverwriteObject permission is a custom StorageGRID permission that applies to operations that create or update objects. The setting of this permission determines whether the client can overwrite an object's data, user-defined metadata, or S3 object tagging.
 
@@ -668,7 +668,7 @@ IMPORTANT: If the current S3 policy allows overwrite, and the PutOverwriteObject
 
 xref:bucket-and-group-access-policies.adoc[S3 group policy examples]
 
-== Specifying conditions in a policy
+== Specify conditions in a policy
 
 Conditions define when a policy will be in effect. Conditions consist of operators and key-value pairs.
 
@@ -843,7 +843,7 @@ Compares to the retain-until-date specified in the PUT Object Retention request 
 
 |===
 
-== Specifying variables in a policy
+== Specify variables in a policy
 
 You can use variables in policies to populate policy information when it is available. You can use policy variables in the `Resource` element and in string comparisons in the `Condition` element.
 
@@ -899,7 +899,7 @@ a|
 Special character. Uses the character as a literal $ character.
 |===
 
-== Creating policies requiring special handling
+== Create policies requiring special handling
 
 Sometimes a policy can grant permissions that are dangerous for security or dangerous for continued operations, such as locking out the root user of the account. The StorageGRID S3 REST API implementation is less restrictive during policy validation than Amazon, but equally strict during policy evaluation.
 
@@ -1023,7 +1023,7 @@ PUT#1 -------> PUT#2 ---X (denied)
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:bucket-and-group-access-policies.adoc[Creating policies requiring special handling]
+xref:bucket-and-group-access-policies.adoc[Create policies requiring special handling]
 
 xref:how-storagegrid-ilm-rules-manage-objects.adoc[How StorageGRID ILM rules manage objects]
 
@@ -1245,7 +1245,7 @@ xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets
 
 Group policies specify the access permissions for the group that the policy is attached to. There is no `Principal` element in the policy since it is implicit. Group policies are configured using the Tenant Manager or the API.
 
-==== Example: Setting the group policy using the Tenant Manager
+==== Example: Set group policy using Tenant Manager
 
 When using the Tenant Manager to add or edit a group, you can select how you want to create the group policy that defines which S3 access permissions members of this group will have, as follows:
 
@@ -1256,7 +1256,7 @@ When using the Tenant Manager to add or edit a group, you can select how you wan
 +
 In this example, members of the group are only permitted to list and access their specific folder (key prefix) in the specified bucket.
 +
-image::../media/tenant_add_group_custom.png[Adding a custom group policy to a tenant group]
+image::../media/tenant_add_group_custom.png[Add custom group policy to tenant group]
 
 ==== Example: Allow group full access to all buckets
 
@@ -1329,8 +1329,8 @@ In this example, members of the group are only permitted to list and access thei
 
 .Related information
 
-xref:../tenant/index.adoc[Use a tenant account]
+xref:../tenant/index.adoc[Use tenant account]
 
-xref:bucket-and-group-access-policies.adoc[Using the PutOverwriteObject permission]
+xref:bucket-and-group-access-policies.adoc[Use PutOverwriteObject permission]
 
 xref:bucket-and-group-access-policies.adoc[Write-once-read-many (WORM) protection]
