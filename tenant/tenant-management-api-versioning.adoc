@@ -42,7 +42,7 @@ Outdated requests are marked as deprecated in the following ways:
 * The response header is "Deprecated: true"
 * The JSON response body includes "deprecated": true
 
-== Determining which API versions are supported in the current release
+== Determine which API versions are supported in current release
 
 Use the following API request to return a list of the supported API major versions:
 
@@ -59,7 +59,7 @@ GET https://{{IP-Address}}/api/versions
 }
 ----
 
-== Specifying an API version for a request
+== Specify API version for request
 
 You can specify the API version using a path parameter (`/api/v3`) or a header (`Api-Version: 3`). If you provide both values, the header value overrides the path value.
 
