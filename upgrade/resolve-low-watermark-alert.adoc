@@ -21,7 +21,7 @@ As described in  xref:../upgrade/whats-new.adoc[What's new in StorageGRID 11.6],
 
 If you use custom values for storage volume watermarks, the *Low read-only watermark override* alert might be triggered for one or more Storage Nodes after the StorageGRID 11.6 upgrade. This alert is triggered if StorageGRID determines that a custom setting for the *Storage Volume Soft Read-Only Watermark* is less than the minimum optimized setting it would use for any storage volume in the Storage Node. 
 
-The *Low read-only watermark override* alert indicates that a custom watermark setting is too small &mdash; if you continue to use the custom setting, a Storage Node might run critically low on space before it can safely transition to the read-only state. Some storage volumes might become inaccessible (automatically unmounted) when the node reaches capacity. 
+The *Low read-only watermark override* alert indicates that a custom watermark setting is too small--if you continue to use the custom setting, a Storage Node might run critically low on space before it can safely transition to the read-only state. Some storage volumes might become inaccessible (automatically unmounted) when the node reaches capacity. 
 
 For example, suppose you previously set the *Storage Volume Soft Read-Only Watermark* to 5 GB, instead of using the default value of 10 GB. Now suppose that during the 11.6 upgrade, StorageGRID calculated the following optimized values for the four storage volumes in Storage Node A:
 
