@@ -23,14 +23,12 @@ The StorageGRID system supports both virtual hosted-style requests and path-styl
 
 == Date handling
 
-[.lead]
 The StorageGRID implementation of the S3 REST API only supports valid HTTP date formats.
 
 The StorageGRID system only supports valid HTTP date formats for any headers that accept date values. The time portion of the date can be specified in Greenwich Mean Time (GMT) format, or in Universal Coordinated Time (UTC) format with no time zone offset (+0000 must be specified). If you include the `x-amz-date` header in your request, it overrides any value specified in the Date request header. When using AWS Signature Version 4, the `x-amz-date` header must be present in the signed request because the date header is not supported.
 
 == Common request headers
 
-[.lead]
 The StorageGRID system supports common request headers defined by the _Simple Storage Service API Reference_, with one exception.
 
 [options="header"]
@@ -53,7 +51,6 @@ Not implemented. Returns `XNotImplemented`.
 
 == Common response headers
 
-[.lead]
 The StorageGRID system supports all of the common response headers defined by the _Simple Storage Service API Reference_, with one exception.
 
 [options="header"]
