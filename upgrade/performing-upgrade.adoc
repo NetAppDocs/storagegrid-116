@@ -39,7 +39,7 @@ image::../media/storagegrid_upgrade_buttons_enabled.png[StorageGRID Upgrade Butt
 
 == Run prechecks
 
-Optionally, you can validate the condition of your system before you start the actual upgrade. Selecting *Run Prechecks* allows you to detect and resolve issues before starting the upgrade. The same prechecks are performed when you select *Start Upgrade*.
+Optionally, you can validate the condition of your system before you start the actual upgrade. Selecting *Run Prechecks* allows you to detect and resolve issues before starting the upgrade. The same prechecks are performed when you start the upgrade. Precheck failures will stop the upgrade process and some might require technical support involvement to resolve.
 
 . Select *Run Prechecks*. 
 . Wait for the prechecks to complete.
@@ -50,7 +50,7 @@ IMPORTANT: If you have opened any custom firewall ports, you are notified during
 
 
 == Start upgrade and update primary Admin Node
-When the upgrade starts, upgrade prechecks are performed, and the primary Admin Node is upgraded, which includes stopping services, upgrading the software, and restarting services. You will not be able to access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
+When the upgrade starts, upgrade prechecks are performed, and the primary Admin Node is upgraded, which includes stopping services, upgrading the software, and restarting services. You cannot access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
 
 . When you are ready to perform the upgrade, select *Start Upgrade*.
 +
@@ -64,17 +64,19 @@ image::../media/software_upgrade_connection_will_be_lost.png[Software Upgrade Co
 +
 NOTE: If any precheck errors are reported, resolve them and select *Start Upgrade* again.
 +
-While the primary Admin Node is being upgraded, multiple copies of the following error messages appear, which you can ignore.
+While the primary Admin Node is being upgraded, multiple copies of two error messages appear, which you can ignore.
 +
 image::../media/software_upgrade_503_error.png[Software Upgrade 503 Error]
 +
 image::../media/software_upgrade_problem_connecting_error.png[Software Upgrade Problem Connecting Error]
 +
+When you see the 400: Bad Request message, you know that the Admin Node upgrade is complete.
++
 image::../media/software_upgrade_400_error.png[Software Upgrade 400 Error]
 
 == Clear browser cache and sign back in
 
-. After the primary Admin Node has been upgraded, clear your web browser's cache and sign back in.
+. After the primary Admin Node has been upgraded , clear your web browser's cache and sign back in.
 +
 For instructions, see the documentation for your web browser.
 +
@@ -90,7 +92,7 @@ image::../media/grid_manager_dashboard.png[Grid Manager dashboard]
 
 . In the *StorageGRID Upgrade* section, select *Upgrade*.
 
-. Review the Upgrade Progress section on the Software Upgrade page, which provides information about each major upgrade task.
+. Review the Upgrade Progress section on the StorageGRID Upgrade page, which provides information about each major upgrade task.
  .. *Start Upgrade Service* is the first upgrade task. During this task, the software file is distributed to the grid nodes, and the upgrade service is started.
  .. When the *Start Upgrade Service* task is complete, the *Upgrade Grid Nodes* task starts.
  .. While the *Upgrade Grid Nodes* task is in progress, the Grid Node Status table appears and shows the upgrade stage for each grid node in your system.
@@ -129,9 +131,7 @@ If the order in which nodes are upgraded is important, approve nodes or groups o
 
  ** Select the top-level *Approve All* button to add all nodes in the grid to the upgrade queue.
 
-. If you need to remove a node or all nodes from the upgrade queue, select *Remove* or *Remove All*.
-+
-As shown in the example, when the Stage reaches *Stopping services*, the *Remove* button is hidden and you can no longer remove the node.
+** Select *Remove* or *Remove All* to remove a node or all nodes from the upgrade queue. You cannot remove a node when its Stage reaches *Stopping services*. The *Remove* button is hidden.
 +
 image::../media/software_upgrade_two_nodes_queued.png[screen shot showing Stage is Stopping services]
 
@@ -147,15 +147,9 @@ When all grid nodes have completed the upgrade stages, the *Upgrade Grid Nodes* 
 +
 For example, if you are upgrading to StorageGRID 11.6, you can configure VLAN interfaces.
 
-. Periodically monitor the progress of the *Upgrade Database* task.
+. During the *Upgrade Database* task, the upgrade process checks each node to verify that the Cassandra database does not need to be updated.
 +
-During this task, the Cassandra database is upgraded on each Storage Node.
-+
-NOTE: For some StorageGRID upgrades, the *Upgrade Database* task might take days to complete. As this background task runs, you can apply hotfixes or recover nodes. However, you must wait for the *Final Upgrade Steps* task to complete before performing an expansion or decommission procedure.
-+
-You can review the graph to monitor the progress for each Storage Node.
-+
-image::../media/software_upgrade_upgrade_database.png[Software Upgrade Upgrade Database]
+NOTE: The upgrade from StorageGRID 11.5 to 11.6 does not require a Cassandra database upgrade; however, the Cassandra service will be stopped and restarted on each Storage Node. For future StorageGRID feature releases, the Cassandra database update step might take several days to complete.
 
 . When the *Upgrade Database* task has completed, wait a few minutes for the *Final Upgrade Steps* task to complete.
 +
@@ -177,7 +171,7 @@ image::../media/software_upgrade_done.png[Software Upgrade Done]
 +
 NOTE: If no Update Path is shown, your browser might not be able to reach the NetApp Support Site. Or, the *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) might be disabled.
 
-. If a hotfix is available, download the file. Then, use the the xref:../maintain/storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure] to apply the  hotfix.
+. If a hotfix is available, download the file. Then, use the xref:../maintain/storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure] to apply the  hotfix.
 
 . Verify that grid operations have returned to normal:
  .. Check that the services are operating normally and that there are no unexpected alerts.
