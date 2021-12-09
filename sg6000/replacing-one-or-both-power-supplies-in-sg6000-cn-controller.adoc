@@ -1,0 +1,69 @@
+---
+permalink: sg6000/replacing-one-or-both-power-supplies-in-sg6000-cn-controller.html
+sidebar: sidebar
+keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, sg6000-cn, power supply, remove, removing, removal, install, installing, installation 
+summary: 'The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power.'
+---
+= Replace one or both power supplies in the SG6000-CN controller
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be of the same wattage. 
+
+.What you'll need
+
+* You have physically located the controller where you are replacing the power supply in the data center.
+
++
+xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
+
+If you are replacing only one power supply:
+
+* You have unpacked the replacement power supply unit and ensured that it is of the same wattage as the power supply unit you are replacing. 
+
+* You have confirmed that the other power supply is installed and running.
+
+If you are replacing both power supplies at the same time: 
+
+* You have unpacked the replacement power supply units and ensured they have the same wattage.
+
+.About this task
+
+The figure shows the two power supply units for the SG6000-CN controller, which are accessible from the back of the controller. Use this procedure to replace one or both of the power supplies. If you are replacing both power supplies, you must first perform a controlled shut down of the appliance. 
+
+image::../media/sg6000_cn_power_supplies.gif[back of SG6000-CN with two power supplies]
+
+.Steps
+
+. If you are replacing only one power supply, go to the <<Unplug_the_power_cord,Unplug the power cord>> step. If you are replacing both power supplies at the same time, do the following:
+
+.. xref:placing-appliance-into-maintenance-mode.adoc[Place the appliance into maintenance mode].
+
+.. xref:shutting-down-sg6000-cn-controller.adoc[Shut down the appliance].
+
+[#Unplug_the_power_cord, start=2]
+. Unplug the power cord from each power supply to be replaced.
+. Lift the cam handle on the first supply to be replaced.
++
+image::../media/sg6000_cn_lift_cam_handle_psu.gif[Lifting the cam handle to remove SG6000-CN PSU]
+
+. Press the blue latch and pull the power supply out.
++
+image::../media/sg6000_cn_remove_power_supply.gif[Removing an SG6000-CN power supply]
+
+. Slide the replacement power supply into the chassis.
+
++
+IMPORTANT: Both of the replacement power supplies must be of the same wattage.
+
++
+Ensure that the blue latch is on the right side when you slide the replacement unit in.
+
++
+image::../media/sg6000_cn_insert_power_supply.gif[Sliding power supply into SG6000-CN]
+
+. Push the cam handle down to secure the replacement power supply.
+. If you are replacing both power supplies, repeat steps 2 though 6 to replace the second power supply. 
+. Attach the power cords to the replaced power supplies, and ensure that the green LED comes on for each replaced unit.
+
