@@ -11,7 +11,7 @@ summary: 'You can use the S3 PUT Object - Copy request to create a copy of an ob
 [.lead]
 You can use the S3 PUT Object - Copy request to create a copy of an object that is already stored in S3. A PUT Object - Copy operation is the same as performing a GET and then a PUT.
 
-== Resolving conflicts
+== Resolve conflicts
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
@@ -55,7 +55,7 @@ You can specify `REPLACE` to overwrite the existing tags when copying the object
 +
 If a request is made without these headers, the bucket default retention settings are used to calculate the object version retain-until-date.
 +
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Using S3 Object Lock]
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use S3 Object Lock]
 
 * SSE request headers:
  ** `x-amz-copy-source​-server-side​-encryption​-customer-algorithm`
@@ -132,8 +132,8 @@ If the source bucket is versioned, you can use the `x-amz-copy-source` header to
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Using server-side encryption]
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use server-side encryption]
 
-xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in the audit logs]
+xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in audit logs]
 
 xref:put-object.adoc[PUT Object]

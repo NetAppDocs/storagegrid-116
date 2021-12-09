@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg6000, storage node, storage appliance StorageGRID, install, information, site, pre-install, preparing, prepare, preinstall, info, preparation
 summary: 'As you install and configure the StorageGRID appliance, you must make decisions and gather information about Ethernet switch ports, IP addresses, and port and network bond modes.'
 ---
-= Gathering installation information (SG6000)
+= Gather installation information (SG6000)
 :icons: font
 :imagesdir: ../media/
 
@@ -15,7 +15,7 @@ As you install and configure the StorageGRID appliance, you must make decisions 
 
 You can use the following tables to record the required information for each network you connect to the appliance. These values are required to install and configure the hardware.
 
-== Information needed to connect to SANtricity System Manager on the storage controllers
+== Information needed to connect to SANtricity System Manager on storage controllers
 
 You must connect both of the storage controllers in the appliance (either the E2800 controllers or the EF570 controllers) to the management network you will use for SANtricity System Manager. The controllers are located in each appliance as follows:
 
@@ -106,7 +106,7 @@ Must be:
 [options="header"]
 |===
 
-== Information needed to connect the SG6000-CN controller to the Admin Network
+== Information needed to connect SG6000-CN controller to Admin Network
 
 The Admin Network for StorageGRID is an optional network, used for system administration and maintenance. The appliance connects to the Admin Network using the following 1-GbE management ports on the SG6000-CN controller.
 
@@ -171,7 +171,7 @@ Admin Network subnets (CIDR)
 a|
 |===
 
-== Information needed to connect and configure the 10/25-GbE ports on the SG6000-CN controller
+== Information needed to connect and configure 10/25-GbE ports on SG6000-CN controller
 
 The four 10/25-GbE ports on the SG6000-CN controller connect to the StorageGRID Grid Network and the optional Client Network.
 
@@ -219,7 +219,7 @@ a|
 
 |===
 
-== Information needed to connect the SG6000-CN controller to the Grid Network
+== Information needed to connect SG6000-CN controller to Grid Network
 
 The Grid Network for StorageGRID is a required network, used for all internal StorageGRID traffic. The appliance connects to the Grid Network using the 10/25-GbE ports on the SG6000-CN controller.
 
@@ -270,7 +270,7 @@ a|
 
 |===
 
-== Information needed to connect the SG6000-CN controller to the Client Network
+== Information needed to connect SG6000-CN controller to Client Network
 
 The Client Network for StorageGRID is an optional network, typically used to provide client protocol access to the grid. The appliance connects to the Client Network using the 10/25-GbE ports on the SG6000-CN controller.
 
@@ -326,7 +326,7 @@ a|
 
 |===
 
-== Information needed to connect the SG6000-CN controller to the BMC management network
+== Information needed to connect SG6000-CN controller to BMC management network
 
 You can access the BMC interface on the SG6000-CN controller using the following 1-GbE management port. This
 port supports remote management of the controller hardware over Ethernet using the Intelligent Platform Management
@@ -359,12 +359,12 @@ a|
 
 .Related information
 
-xref:controllers-in-sg6000-appliances.adoc[Controllers in the SG6000 appliances]
+xref:controllers-in-sg6000-appliances.adoc[Controllers in SG6000 appliances]
 
-xref:reviewing-appliance-network-connections-sg6000.adoc[Reviewing appliance network connections]
+xref:reviewing-appliance-network-connections-sg6000.adoc[Review appliance network connections (SG6000)]
 
-xref:port-bond-modes-for-sg6000-cn-controller.adoc[Port bond modes for the SG6000-CN controller]
+xref:port-bond-modes-for-sg6000-cn-controller.adoc[Port bond modes for SG6000-CN controller]
 
-xref:cabling-appliance-sg6000.adoc[Cabling the appliance (SG6000)]
+xref:cabling-appliance-sg6000.adoc[Cable appliance (SG6000)]
 
-xref:configuring-storagegrid-ip-addresses-sg6000.adoc[Configuring StorageGRID IP addresses]
+xref:configuring-storagegrid-ip-addresses-sg6000.adoc[Configure StorageGRID IP addresses]

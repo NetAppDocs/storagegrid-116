@@ -11,7 +11,7 @@ summary: 'If an error occurs when StorageGRID attempts to communicate with a pla
 [.lead]
 If an error occurs when StorageGRID attempts to communicate with a platform services endpoint, a message is displayed on the Dashboard. On the Platform services endpoints page, the Last error column indicates how long ago the error occurred. No error is displayed if the permissions associated with an endpoint's credentials are incorrect.
 
-== Determining if an error has occurred
+== Determine if error has occurred
 
 If any platform services endpoint errors have occurred within the past 7 days, the Tenant Manager Dashboard displays an alert message. You can go the Platform services endpoints page to see more details about the error.
 
@@ -26,7 +26,7 @@ The same error that appears on the Dashboard also appears at the top of the Plat
 
 image::../media/endpoint_error_on_connection_tab.png[Endpoint Error on Connection Tab]
 
-== Checking if an error is still current
+== Check if error is still current
 
 Some errors might continue to be shown in the *Last error* column even after they are resolved. To see if an error is current or to force the removal of a resolved error from the table:
 
@@ -40,7 +40,7 @@ The endpoint details page appears.
 
 Selecting *Test connection* causes StorageGRID to validate that the platform services endpoint exists and that it can be reached with the current credentials. The connection to the endpoint is validated from one node at each site.
 
-== Resolving endpoint errors
+== Resolve endpoint errors
 
 You can use the *Last error* message on the endpoint details page to help determine what is causing the error. Some errors might require you to edit the endpoint to resolve the issue. For example, a CloudMirroring error can occur if StorageGRID is unable to access the destination S3 bucket because it does not have the correct access permissions or the access key has expired. The message is "`Either the endpoint credentials or the destination access needs to be updated,`" and the details are "`AccessDenied`" or "`InvalidAccessKeyId.`"
 
@@ -65,8 +65,8 @@ xref:../admin/index.adoc[Administer StorageGRID]
 
 .Related information
 
-xref:creating-platform-services-endpoint.adoc[Creating a platform services endpoint]
+xref:creating-platform-services-endpoint.adoc[Create platform services endpoint]
 
-xref:testing-connection-for-platform-services-endpoint.adoc[Testing the connection for a platform services endpoint]
+xref:testing-connection-for-platform-services-endpoint.adoc[Test connection for platform services endpoint]
 
-xref:editing-platform-services-endpoint.adoc[Editing a platform services endpoint]
+xref:editing-platform-services-endpoint.adoc[Edit platform services endpoint]

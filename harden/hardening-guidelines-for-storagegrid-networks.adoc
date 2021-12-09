@@ -11,7 +11,7 @@ summary: 'The StorageGRID system supports up to three network interfaces per gri
 [.lead]
 The StorageGRID system supports up to three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements.
 
-== Guidelines for the Grid Network
+== Guidelines for Grid Network
 
 You must configure a Grid Network for all internal StorageGRID traffic. All grid nodes are on the Grid Network, and they must be able to talk to all other nodes.
 
@@ -22,7 +22,7 @@ When configuring the Grid Network, follow these guidelines:
 * If the StorageGRID deployment spans multiple data centers, use a virtual private network (VPN) or equivalent on the Grid Network to provide additional protection for internal traffic.
 * Some maintenance procedures require secure shell (SSH) access on port 22 between the primary Admin Node and all other grid nodes. Use an external firewall to restrict SSH access to trusted clients.
 
-== Guidelines for the Admin Network
+== Guidelines for Admin Network
 
 The Admin Network is typically used for administrative tasks (trusted employees using the Grid Manager or SSH) and for communicating with other trusted services such as LDAP, DNS, NTP, or KMS (or KMIP server). However, StorageGRID does not enforce this usage internally.
 
@@ -31,7 +31,7 @@ If you are using the Admin Network, follow these guidelines:
 * Block all internal traffic ports on the Admin Network. See the list of internal ports in the installation guide for your platform.
 * If untrusted clients can access the Admin Network, block access to StorageGRID on the Admin Network with an external firewall.
 
-== Guidelines for the Client Network
+== Guidelines for Client Network
 
 The Client Network is typically used for tenants and for communicating with external services, such as the CloudMirror replication service or another platform service. However, StorageGRID does not enforce this usage internally.
 

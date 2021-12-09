@@ -49,3 +49,15 @@ Three new `grid/account` API operations have been added:
 
 The PATCH method has now been deprecated and will be removed in a future release. As required, perform a PUT operation to replace a resource instead of using a PATCH operation to modify the resource. 
 
+== Additions to `grid/logs/collect` endpoint
+
+Four boolean values have been added to the `grid/logs/collect` endpoint:
+
+* `applicationLogs`: Application-specific logs that technical support uses most frequently for troubleshooting. The logs collected are a subset of the available application logs. The default is `true`.
+* `auditLogs`: Logs containing the audit messages generated during normal system operation. The default is `true`.
+* `networkTrace`: Logs used for network debugging. The default is `false`.
+* `prometheusDatabase`: Time series metrics from the services on all nodes. The default is `false`.
+
+.Related information
+
+* xref:../admin/index.adoc[Administer StorageGRID]

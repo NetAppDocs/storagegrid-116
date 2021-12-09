@@ -40,7 +40,7 @@ You have one or more site-specific KMS entries, and you want to use one of them 
 a|
 Edit the site-specific KMS. In the *Manages keys for* field, select *Sites not managed by another KMS (default KMS)*. The site-specific KMS will now be used as the default KMS. It will apply to any sites that do not have a dedicated KMS.
 
-xref:kms-editing.adoc[Editing a key management server (KMS)]
+xref:kms-editing.adoc[Edit a key management server (KMS)]
 
 a|
 You have a default KMS and you add a new site in an expansion. You do not want to use the default KMS for the new site.
@@ -49,7 +49,7 @@ a|
 . If the appliance nodes at the new site have already been encrypted by the default KMS, use the KMS software to copy the current version of the encryption key from the default KMS to a new KMS.
 . Using the Grid Manager, add the new KMS and select the site.
 
-xref:kms-adding.adoc[Adding a key management server (KMS)]
+xref:kms-adding.adoc[Add a key management server (KMS)]
 
 a|
 You want the KMS for a site to use a different server.
@@ -58,6 +58,6 @@ a|
 . If the appliance nodes at the site have already been encrypted by the existing KMS, use the KMS software to copy the current version of the encryption key from the existing KMS to the new KMS.
 . Using the Grid Manager, edit the existing KMS configuration and enter the new host name or IP address.
 
-xref:kms-adding.adoc[Adding a key management server (KMS)]
+xref:kms-adding.adoc[Add a key management server (KMS)]
 
 |===
