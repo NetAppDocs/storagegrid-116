@@ -16,12 +16,11 @@ StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, mul
 The Grid Manager user interface was substantially redesigned to improve the user experience.
 
 * A new sidebar replaces the pull-down menus in the old user interface.
-* All UI pages were reskinned with updated fonts, button styles, and table formats.
-* Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu now includes a *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
-* A new *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
-* A new summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
-* New wizards guide you through complex configurations, including creating a tenant, configuring load balancer endpoints, and configuring high availability (HA) groups.
-* The *SUPPORT* > *Logs* page now allows you to choose which types of logs you want to collect.
+* Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu includes a new *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
+* A *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
+* The summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
+* New wizards guide you through more complex configurations, such as the workflows for admin groups, admin users, tenants, load balancer endpoints, and high availability (HA) groups.
+* All UI pages were restyled with updated fonts, button styles, and table formats.
 
 .Learn more
 * xref:../admin/index.adoc[Administer StorageGRID]
@@ -29,10 +28,10 @@ The Grid Manager user interface was substantially redesigned to improve the user
 
 === Updates to high availability (HA) groups
 
-* The new *Create a high availability group* wizard guides you through the process of entering endpoint details, adding interfaces, determining the failover order, and specifying virtual IP (VIP) addresses.
+* The new *Create a high availability group* wizard guides you through the process of entering endpoint details, adding interfaces, determining the priority order, and specifying virtual IP (VIP) addresses.
 * In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
-* You can now specify the failover order for each interface in the HA group. You can choose the active interface and rank the backup interfaces in priority order.
-* If any S3, Swift, administrative or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
+* You can now specify the priority order for the interfaces in the HA group. You can choose the primary interface and rank each backup interface in order.
+* If any S3, Swift, administrative, or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
 
 .Learn more
 
@@ -89,7 +88,7 @@ You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nod
 == Support for external syslog server and new destinations for logs 
 You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By configuring the destinations of your audit information, you can reduce network traffic on your Admin Nodes.   
 
-Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *Tools* > *Logs*) allow you to specify which types of logs you want to collect, such as the application logs frequently needed for troubleshooting, audit logs, logs used for network debugging, and Prometheus database logs.
+Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *Tools* > *Logs*) allow you to specify which types of logs you want to collect, such as certain application logs, audit logs, logs used for network debugging, and Prometheus database logs.
 
 .Learn more
 * xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
@@ -99,22 +98,22 @@ Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *To
 
 * The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
 
-* After the upgrade to StorageGRID 11.6 completes, you will be able to use the Grid Manager to apply the latest hotfix for a future release at the same time you upgrade to that release.
+* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases directly from the StorageGRID upgrade page. You can select each link to go directly to the correct download page for the major version and the recommended hotfix.
+
+* A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. You can disable the check for available software updates if your system does not have WAN access.
+
+* After the upgrade to StorageGRID 11.6 completes, you will be able to use the Grid Manager to upgrade to a future release and apply any required hotfixes at the same time.
 +
 NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to apply the latest hotfix at the same time you run the upgrade. 
-
-* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases directly from the Software Upgrade page. You are linked directly to the correct download page for the major version and the recommended hotfix.
-* A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. Checking for available software updates can be disabled if your system does not have WAN access.
 
 * You can now pause a SANtricity OS upgrade and skip upgrading some nodes if you need to finish the upgrade later. 
 
 .Learn more
-
 * xref:../admin/configure-autosupport-grid-manager.adoc#disable-checks-for-software-updates[Configure AutoSupport > Disable checks for software updates]
 * https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^]
-* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5600)]
+* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5600.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5600)]
 * xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5700)]
-* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000]
+* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000)]
 
 == New alerts
 
@@ -152,7 +151,7 @@ The following new alerts were added for StorageGRID 11.6:
 .Learn more
 * xref:../audit/index.adoc[Review audit logs]
 
-== Storage volume watermarks now optimized
+== Storage volume watermarks optimized
 
 In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
 
@@ -191,7 +190,7 @@ Previously, StorageGRID did not support the `partNumber` request parameter in GE
 
 === Available consistency control now includes GET operations
 
-The Available consistency control behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The Available consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
+The “Available” consistency control behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The “Available” consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
 
 .Learn more
 * xref:../s3/index.adoc[Use S3]
@@ -250,8 +249,8 @@ Tenant users can now delete more than one S3 bucket at a time. Each bucket that 
 .Learn more
 xref:../tenant/deleting-s3-bucket.adoc[Delete S3 buckets]
 
-=== Updates to Tenant Accounts permission
-Admin users who belong to a group with the Tenant Accounts permission can now view existing traffic classification policies. Previously, users were required to have Root Access permission to view these metrics.
+=== Updates to Tenant accounts permission
+Admin users who belong to a group with the Tenant accounts permission can now view existing traffic classification policies. Previously, users were required to have Root access permission to view these metrics.
 
 == Enhancements to maintenance procedures and support tools
 
@@ -303,4 +302,10 @@ For compatibility with existing deployments, two-digit keys are still supported 
 
 == StorageGRID documentation changes
 
-* The documentation center has been migrated to a GitHub site.
+The StorageGRID 11.6 documentation site uses a new GitHub platform.
+
+* The majority of screenshots have not been updated to show the new Grid Manager page styling but remain functionally correct.
+
+NetApp appreciates feedback on content and encourages users to take advantage of the new “Request doc changes” function available on every page of the product documentation. The documentation platform also offers an embedded content contribution function for GitHub users.
+
+Take a look and contribute to this documentation. You can edit, request a change, or even send feedback. Go to NetApp StorageGRID 11.6 documentation to begin.

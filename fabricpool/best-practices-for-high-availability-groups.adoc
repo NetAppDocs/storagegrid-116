@@ -25,9 +25,9 @@ IMPORTANT: If you plan to use a VLAN, you must create the VLAN interface before 
 
 . Assign one or more virtual IP (VIP) addresses to the group. Clients applications, such as FabricPool, can use any of these VIP addresses to connect to StorageGRID.
 
-. Specify one interface to be the Primary interface and determine the failover order for any Backup interfaces. The Primary interface is the active interface unless a failure occurs.
+. Specify one interface to be the Primary interface and determine the priority order for any Backup interfaces. The Primary interface is the active interface unless a failure occurs.
 
-If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
+If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
 
 == Best practices for high availability (HA) groups
 

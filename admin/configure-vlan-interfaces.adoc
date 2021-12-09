@@ -134,7 +134,7 @@ To avoid any disruptions in client traffic, consider doing one of the following:
 
 * Add a new VLAN interface to the HA group before removing this VLAN interface.
 * Create a new HA group that does not use this VLAN interface. 
-* Edit the HA group. Move the VLAN interface you want to remove to the bottom of the failover list. Wait until communication is established on the new node, remove the interface from the HA group, and then delete the VLAN interface on that node.
+* Edit the HA group. Move the VLAN interface you want to remove to the bottom of the priority list. Wait until communication is established on the new node, remove the interface from the HA group, and then delete the VLAN interface on that node.
 
 .Steps
 
