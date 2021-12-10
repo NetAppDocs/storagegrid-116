@@ -31,24 +31,40 @@ NOTE: You cannot add an interface to an HA group if it has a DHCP-assigned IP ad
 
 . You specify one interface to be the Primary interface. The Primary interface is the active interface unless a failure occurs.
 
-. You determine the failover order for any Backup interfaces.
+. You determine the priority order for any Backup interfaces.
 
 . You assign one to 10 virtual IP (VIP) addresses to the group. Clients applications can use any of these VIP addresses to connect to StorageGRID.
-
 
 For instructions: xref:configure-high-availability-group.adoc[Configure high availability groups].
 
 == What is the active interface?
 
-During normal operation, all of the group's VIP addresses are added to the active interface. When clients connect to any of the VIP addresses, they use the active interface.
+During normal operation, all of the VIP addresses for the HA group are added to the Primary interface, which is the first interface in the priority order. As long as the Primary interface remains available, it is used when clients connect to any VIP address for the group. That is, during normal operation, the Primary interface is the "`active`" interface for the group.
 
-The active interface in an HA group is designated as Primary. All other interfaces are designated as Backup. To view these designations, select *NODES* > *_node_* > *Overview*.
+Similarly, during normal operation, any lower priority interfaces for the HA group act as "`backup`" interfaces. These backup interfaces are not used unless the Primary interface becomes unavailable.
+
+== View the current HA group status of a node
+
+To see if a node is assigned to an HA group and determine its current status, select *NODES* > *_node_*. 
+
+If the *Overview* tab includes an entry for *HA groups*, the node is assigned to the HA groups listed. The value after the group name is the current status of the node in the HA group:
+
+* *Active*: The HA group is currently being hosted on this node.
+* *Backup*: The HA group is not currently using this node; this is a backup interface. 
+* *Stopped*: The HA group cannot be hosted on this node because the High Availability (keepalived) service has been stopped manually.
+* *Fault*: The HA group cannot be hosted on this node because of one or more of the following:
+** The Load Balancer (nginx-gw) service is not running on the node.
+** The node's eth0 or VIP interface is down.
+** The node is down.
+
+In this example, the primary Admin Node has been added to two HA groups. This node is currently the active interface for the Admin clients group and a backup interface for the FabricPool clients group.
 
 image::../media/ha_group_primary_interface.png[HA Group Primary Interface]
 
+
 == What happens when the active interface fails?
 
-If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
+If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on.
 
 Failover can be triggered for any of these reasons:
 

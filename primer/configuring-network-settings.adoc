@@ -27,9 +27,9 @@ When you create an HA group, you select a network interface for one or more node
 
 * HA groups that include interfaces on Admin Nodes only provide highly available connections to the Grid Manager and the Tenant Manager.
 
-The interfaces can belong to the Grid Network (eth0), the Admin Network (eth1), the Client Network (eth2), or a VLAN network. 
+The interfaces can belong to the Grid Network (eth0), the Client Network (eth2), or a VLAN network. 
 
-You can assign up to 10 virtual IP (VIP) addresses to each HA group. When clients connect to any VIP address, they use the active interface, which is designated as Primary. All other interfaces are designated as Backup. If the Primary interface fails, the VIP addresses move to the first Backup interface in the failover order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
+You can assign up to 10 virtual IP (VIP) addresses to each HA group. You specify one interface to be the Primary interface and rank any other interfaces in priority order. The Primary interface is the active interface unless a failure occurs. If the active interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on.
 
 == Link costs
 
