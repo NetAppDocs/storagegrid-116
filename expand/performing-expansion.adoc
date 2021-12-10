@@ -26,9 +26,9 @@ Performing the expansion includes these phases:
 . You configure the expansion by specifying whether you are adding new grid nodes or a new site and approving the grid nodes you want to add.
 . You start the expansion.
 . While the expansion process is running, you download a new Recovery Package file.
-. You monitor the status of the grid configuration tasks, which run automatically. The set of tasks depends on what types of grid nodes are being added and on whether a new site is being added.
+. You monitor the status of the grid configuration stages, which run automatically. The set of stages depends on what types of grid nodes are being added and on whether a new site is being added.
 +
-IMPORTANT: Some tasks might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is relatively empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer. One way to manually monitor the expansion is to run `nodetool status` and to see how much Data Load has moved to the new site. The total Data Load on the new site should be within about 20% of the total at current sites.
+IMPORTANT: Some stages might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer.
 
 .Steps
 . Select *MAINTENANCE* > *Tasks* > *Expansion*.
@@ -37,7 +37,7 @@ The Grid Expansion page appears. The Pending Nodes section lists all nodes that 
 +
 image::../media/grid_expansion_page.png[screenshot showing Grid Expansion page]
 
-. Click *Configure Expansion*.
+. Select *Configure Expansion*.
 +
 The Site Selection dialog box appears.
 +
@@ -46,7 +46,7 @@ image::../media/configure_expansion_dialog.gif[Site Selection Dialog]
 . Select the type of expansion you are starting:
  ** If you are adding a new site, select *New*, and enter the name of the new site.
  ** If you are adding grid nodes to an existing site, select *Existing*.
-. Click *Save*.
+. Select *Save*.
 . Review the *Pending Nodes* list, and confirm that it shows all of the grid nodes you deployed.
 +
 As required, you can hover your cursor over a node's *Grid Network MAC Address* to see details about that node.
@@ -57,7 +57,7 @@ NOTE: If a grid node is missing, confirm that it was deployed successfully.
 
 . From the list of pending nodes, approve the grid nodes for this expansion.
  .. Select the radio button next to the first pending grid node you want to approve.
- .. Click *Approve*.
+ .. Select *Approve*.
 +
 The grid node configuration form appears.
 +
@@ -78,20 +78,20 @@ Learn about the ADC quorum in the recovery and maintenance instructions.
   *** *IPv4 Address (CIDR)*: The CIDR network address for the network interface. For example: 172.16.10.100/24
   *** *Gateway*: The default gateway of the grid node. For example: 172.16.10.1
   *** *Subnets (CIDR)*: One or more subnetworks for the Admin Network.
- .. Click *Save*.
+ .. Select *Save*.
 +
 The approved grid node moves to the Approved Nodes list.
 +
 image::../media/grid_expansion_approved_nodes.png[screenshot showing Approved Nodes]
 
-  *** To modify the properties of an approved grid node, select its radio button, and click *Edit*.
-  *** To move an approved grid node back to the Pending Nodes list, select its radio button, and click *Reset*.
-  *** To permanently remove an approved grid node, power the node off. Then, select its radio button, and click *Remove*.
+  *** To modify the properties of an approved grid node, select its radio button, and select *Edit*.
+  *** To move an approved grid node back to the Pending Nodes list, select its radio button, and select *Reset*.
+  *** To permanently remove an approved grid node, power the node off. Then, select its radio button, and select *Remove*.
 
  .. Repeat these steps for each pending grid node you want to approve.
 +
 NOTE: If possible, you should approve all pending grid notes and perform a single expansion. More time will be required if you perform multiple small expansions.
-. When you have approved all grid nodes, enter the *Provisioning Passphrase*, and click *Expand*.
+. When you have approved all grid nodes, enter the *Provisioning Passphrase*, and select *Expand*.
 +
 After a few minutes, this page updates to display the status of the expansion procedure. When tasks that affect individual grid node are in progress, the Grid Node Status section lists the current status for each grid node.
 +
@@ -105,21 +105,42 @@ NOTE: A site expansion includes an additional task to configure Cassandra for th
 +
 You must download an updated copy of the Recovery Package file as soon as possible after making grid topology changes to the StorageGRID system. The Recovery Package file allows you to restore the system if a failure occurs.
 
- .. Click the download link.
- .. Enter the provisioning passphrase, and click *Start Download*.
+ .. Select the download link.
+ .. Enter the provisioning passphrase, and select *Start Download*.
  .. When the download completes, open the `.zip` file and confirm it includes a `gpt-backup` directory and a `_SAID.zip` file. Then, extract the `_SAID.zip` file, go to the `/GID*_REV*` directory, and confirm you can open the `passwords.txt` file.
  .. Copy the downloaded Recovery Package file (.zip) to two safe, secure, and separate locations.
 +
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
-. If you are adding one or more Storage Nodes, monitor the progress of the "Starting Cassandra and streaming data" stage by reviewing the percentage shown in the status message.
-+
-image::../media/grid_expansion_starting_cassandra.png[Grid Expansion > Starting Cassandra and streaming data]
-+
-This percentage estimates how complete the Cassandra streaming operation is, based on the total amount of Cassandra data available and the amount that has already been written to the new node.
-+
-IMPORTANT: Do not reboot any Storage Nodes during Step 5 (Expanding the Cassandra cluster). The "Starting Cassandra and streaming data" stage might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+. Follow the instructions for adding a Storage Node to an existing site, or adding a new site.
 
+[role="tabbed-block"]
+====
+
+.Add Storage Node to existing site
+--
+
+If you are adding one or more Storage Nodes to an existing site, monitor the progress of the "Starting Cassandra and streaming data" stage by reviewing the percentage shown in the status message.
+
+image::../media/grid_expansion_starting_cassandra.png[Grid Expansion > Starting Cassandra and streaming data]
+
+This percentage estimates how complete the Cassandra streaming operation is, based on the total amount of Cassandra data available and the amount that has already been written to the new node.
+
+IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+
+--
+
+.Add new site
+
+If you are adding a new site, monitor the progress of Cassandra streaming using `nodetool status` and to see how much metadata has been copied to the new site. The total Data Load on the new site should be within about 20% of the total of a current site.
+
+IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+
+--
+
+====
+
+[start=10]
 . Continue monitoring the expansion until all tasks are complete and the *Configure Expansion* button reappears.
 
 .After you finish
