@@ -1,20 +1,22 @@
 ---
 permalink: audit/index.html
 sidebar: sidebar
-keywords: storagegrid, audit, logs, messages, log, message
-summary: 'Learn the StorageGRID system audit logs and see a list of all audit messages.'
+keywords: storagegrid, audit, message, log, structure, content
+summary: 'These instructions contain information about the structure and content of StorageGRID audit messages and audit logs. You can use this information to read and analyze the audit trail of system activity.'
 ---
-= Review audit logs
+= Audit message overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Learn the StorageGRID system audit logs and see a list of all audit messages.
+These instructions contain information about the structure and content of StorageGRID audit messages and audit logs. You can use this information to read and analyze the audit trail of system activity.
 
-* xref:audit-message-overview.adoc[Audit message overview]
+These instructions are for administrators responsible for producing reports of system activity and usage that require analysis of the StorageGRID system's audit messages.
 
-* xref:audit-file-and-message-formats.adoc[Audit log file and message formats]
+You are assumed to have a sound understanding of the nature of audited activities within the StorageGRID system. To use the text log file, you must have access to the configured audit share on the Admin Node.
 
-* xref:audit-messages-and-object-lifecycle.adoc[Audit messages and the object lifecycle]
+For information on configuring audit message levels and using an external syslog server, see xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations].
 
-* xref:audit-messages-main.adoc[Audit messages]
+.Related information
+
+* xref:../admin/index.adoc[Administer StorageGRID]
