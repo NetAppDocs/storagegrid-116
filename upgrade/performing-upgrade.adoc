@@ -22,10 +22,8 @@ You have reviewed all of the considerations and completed all of the planning an
 The Software Update page appears.
 
 . Select *StorageGRID Upgrade*.
-+
-The StorageGRID Upgrade page appears and shows the date and time of the most recently completed upgrade, unless the primary Admin Node has been rebooted or the management API restarted since that upgrade was performed.
 
-. Select the `.upgrade` file you downloaded.
+. On the StorageGRID Upgrade page, select the `.upgrade` file you downloaded.
  .. Select *Browse*.
  .. Locate and select the file: `NetApp_StorageGRID_11.6.0_Software_uniqueID.upgrade`
  .. Select *Open*.
@@ -76,13 +74,13 @@ image::../media/software_upgrade_400_error.png[Software Upgrade 400 Error]
 
 == Clear browser cache and sign back in
 
-. After the primary Admin Node has been upgraded , clear your web browser's cache and sign back in.
+. After the primary Admin Node has been upgraded, clear your web browser's cache and sign back in.
 +
 For instructions, see the documentation for your web browser.
 +
 IMPORTANT: You must clear the web browser's cache to remove outdated resources used by the previous version of the software.
 +
-The redesigned StorageGRID 11.6 user interface appears, which indicates that the primary Admin Node has been upgraded.
+The redesigned Grid Manager interface appears, which indicates that the primary Admin Node has been upgraded.
 +
 image::../media/grid_manager_dashboard.png[Grid Manager dashboard]
 
@@ -144,8 +142,6 @@ NOTE: When an appliance node reaches the Upgrading base OS packages stage, the S
 When all grid nodes have completed the upgrade stages, the *Upgrade Grid Nodes* task is shown as Completed. The remaining upgrade tasks are performed automatically and in the background.
 
 . As soon as the *Enable Features* task is complete (which occurs quickly), optionally start using the new features in the upgraded StorageGRID version.
-+
-For example, if you are upgrading to StorageGRID 11.6, you can configure VLAN interfaces.
 
 . During the *Upgrade Database* task, the upgrade process checks each node to verify that the Cassandra database does not need to be updated.
 +

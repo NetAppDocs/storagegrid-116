@@ -2,14 +2,14 @@
 permalink: upgrade/whats-new.html
 sidebar: sidebar
 keywords: what is new in StorageGRID 11.6
-summary: 'StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, certralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.'
+summary: 'StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, centralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.'
 ---
 = What's new in StorageGRID 11.6
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, certralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.
+StorageGRID 11.6 introduces user interface enhancements to the Grid Manager, multi-VLAN support, centralized certificate management, support for S3 Select, support for using an external syslog server, and usability enhancements to maintenance procedures.
 
 == Grid Manager user interface enhancements
 
@@ -17,7 +17,7 @@ The Grid Manager user interface was substantially redesigned to improve the user
 
 * A new sidebar replaces the pull-down menus in the old user interface.
 * Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu includes a new *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
-* A *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages. For example, you can search for *km* to quickly access the Key Management Server (KMS) page.
+* A *Search* field in the header bar allows you to quickly navigate to Grid Manager pages, including all entries in the sidebar and on the Configuration, Maintenance, and Support landing pages.
 * The summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
 * New wizards guide you through more complex configurations, such as the workflows for admin groups, admin users, tenants, load balancer endpoints, and high availability (HA) groups.
 * All UI pages were restyled with updated fonts, button styles, and table formats.
@@ -64,19 +64,7 @@ As part of this change, the following global certificates were renamed:
 .Learn more
 * xref:../admin/using-storagegrid-security-certificates.adoc[About security certificates]
 
-== Support for multiple VLAN interfaces
-
-You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
-
-* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
-
-* You can now add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
-
-.Learn more
-
-* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
-
-== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
+=== Identity federation support for Azure AD, SSO support for Azure AD and PingFederate 
 
 * You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. 
 * You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. You can then use sandbox mode to configure and test the Azure AD enterprise applications or PingFederate service provider (SP) connections to each StorageGRID Admin Node.
@@ -94,72 +82,32 @@ Related to this functionality, new check boxes on the Logs page (*SUPPORT* > *To
 * xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
 * xref:../monitor/collecting-log-files-and-system-data.adoc[Collect log files and system data]
 
-== New upgrade process for future StorageGRID releases
+== Support for multiple VLAN interfaces
 
-* The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
+You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
 
-* After the upgrade to StorageGRID 11.6 completes, you will be able to view the recommended upgrade path to future StorageGRID releases directly from the StorageGRID upgrade page. You can select each link to go directly to the correct download page for the major version and the recommended hotfix.
+* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
 
-* A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. You can disable the check for available software updates if your system does not have WAN access.
-
-* After the upgrade to StorageGRID 11.6 completes, you will be able to use the Grid Manager to upgrade to a future release and apply any required hotfixes at the same time.
-+
-NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to apply the latest hotfix at the same time you run the upgrade. 
-
-* You can now pause a SANtricity OS upgrade and skip upgrading some nodes if you need to finish the upgrade later. 
+* You can now add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
 
 .Learn more
-* xref:../admin/configure-autosupport-grid-manager.adoc#disable-checks-for-software-updates[Configure AutoSupport > Disable checks for software updates]
-* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^]
-* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5600.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5600)]
-* xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5700)]
-* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000)]
 
-== New alerts
+* xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]
 
-The following new alerts were added for StorageGRID 11.6:
 
-* Audit logs are being added to the in-memory queue
-* Cassandra table corruption
-* EC rebalance failure
-* EC repair failure
-* Expiration of global server certificate for S3 and Swift API
-* External syslog CA certificate expiration
-* External syslog client certificate expiration
-* External syslog server certificate expiration
-* External syslog server forwarding error
-* Identity federation synchronization failure for a tenant
-* Legacy CLB load balancer activity detected
-* Logs are being added to the on-disk queue
-* Low read-only watermark override
-* Low tmp directory free space
-* Object existence check failed
-* Object existence check stalled
+== Performance enhancements 
 
-.Learn more
-* xref:../monitor/alerts-reference.adoc[Alerts reference]
+=== Storage Nodes can support 2 billion objects
+The underlying directory structure on Storage Nodes was optimized for better scalability and performance. Storage Nodes now use additional subdirectories to store up to two billion replicated objects and to maximize performance. Node subdirectories are modified when you upgrade to StorageGRID 11.6, but existing objects are not redistributed to the new directories.
 
-== Changes to audit messages
-* A new *BUID* field was added to the ORLM: Object Rules Met audit message. The *BUID* field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
+=== ILM-driven delete performance increased for high-performance appliances
+The resources and throughput used to perform ILM delete operations now adapt to the size and capability of each StorageGRID appliance node. For SG5600 appliances, the throughput is the same as for StorageGRID 11.5. For SG5700 appliances, small improvements were made to ILM delete performance. For SG6000 appliances, which have more RAM and more CPUs, ILM deletes are now processed much more quickly. The improvements are especially noticeable on all-flash SGF6024 appliances.
 
-* A new *SGRP* field was added to the following audit messages. The *SGRP*  field is present only if an object was deleted at a different site than where it was ingested.
-** IDEL: ILM Initiated Delete
-** OVWR: Object Overwrite
-** SDEL: S3 DELETE
-** WDEL: Swift DELETE
+=== Storage volume watermarks optimized
 
-.Learn more
-* xref:../audit/index.adoc[Review audit logs]
+In previous releases, the settings of the three Storage Volume Watermarks applied to every storage volume on every Storage Node. In StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
 
-== Storage volume watermarks optimized
-
-In previous releases, the settings for the *Storage Volume Soft Read-Only Watermark*, *Storage Volume Hard Read-Only Watermark*, and *Storage Volume Read-Write Watermark* applied to every storage volume on every Storage Node. Starting in StorageGRID 11.6, StorageGRID can optimize these watermarks for each storage volume, based on the size of the Storage Node and the relative capacity of the volume. The optimized watermarks will be larger than the previous default settings.
-
-Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems, unless either of the following is true:
-
-* The system would be unable to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
-
-* A storage volume watermark is set to a custom value (*CONFIGURATION* > *System* > *Storage options*). StorageGRID will not override custom watermark settings with optimized values. 
+Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems. 
 
 If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrade. This alert lets you know if your custom watermark settings are too small. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details. 
 
@@ -171,19 +119,21 @@ As part of this change, two Prometheus metrics were added:
 .Learn more
 * xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volume watermarks?]
 
-== Object metadata allowed space increased
-If you are installing or upgrading to StorageGRID 11.6, the maximum allowed metadata space for Storage Nodes will be increased to 3.96 TB (from 2.64 TB) for higher capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value might allow more object metadata to be stored on each Storage Node if allowed by your xref:../admin/managing-object-metadata-storage.adoc#metadata-reserved-space-setting[Metadata Reserved Space setting].
+=== Maximum allowed metadata space increased
+The maximum allowed metadata space for Storage Nodes was increased to 3.96 TB (from 2.64 TB) for higher-capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value allows more object metadata to be stored on certain Storage Nodes and can increase StorageGRID metadata capacity by up to 50%.
 
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting] up to 8 TB after you install or upgrade.
+
+.Learn more
+* xref:../admin/managing-object-metadata-storage.adoc#allowed-metadata-space[Allowed metadata space]
+
+
 
 == Changes to S3 support
 
 === GET object and HEAD object support for multipart objects
 
-Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. Starting in StorageGRID 11.6, you can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
-
-=== Parallel S3 multipart downloads 
-//get information from Raptor team
+Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. You can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
 
 .Learn more
 * xref:../s3/index.adoc[Use S3]
@@ -219,16 +169,15 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 
 == Enhancements to Tenant Manager
 
-=== Support for S3 Select
+=== Tenants can use S3 Select
 
-S3 tenants can now use S3 Select to issue SelectObjectContent requests to individual objects. This feature provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. Only certain tenant accounts can use S3 Select, and the grid administrator must enable this feature for a tenant.
+You can now optionally allow S3 tenants to issue SelectObjectContent requests to individual objects. S3 Select provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. 
 
-Grafana charts for S3 Select operations have also been added.
+Grafana charts for S3 Select operations were also added.
 
 .Learn more:
 
 * xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
-
 * xref:../s3/use-s3-select.adoc[Use S3 Select]
 * xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] 
 
@@ -236,7 +185,7 @@ Grafana charts for S3 Select operations have also been added.
 
 The new *experimental S3 Console*, available as a link from the Buckets page in Tenant Manager, lets S3 tenant users view and manage the objects in their buckets. Users can add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. 
 
-IMPORTANT: S3 Console has not been fully tested and is marked as "`experimental.`" The new application is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+IMPORTANT: The experimental S3 Console has not been fully tested and is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects or when using proof-of-concept or non-production grids.
 
 .Learn more
 
@@ -273,17 +222,36 @@ You can now view the estimated time to completion and the completion percentage 
 
 You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
 
-IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting – All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
+IMPORTANT: The `show-replicated-repair-status` option is available for technical preview in StorageGRID 11.6. This feature is under development, and the value returned might be incorrect or delayed. To determine if a repair is complete, continue to use *Awaiting - All*, *Repairs Attempted (XRPA*), and *Scan Period — Estimated (XSCM)* as described in the recovery procedures.
 
 === Diagnostics page sorted by severity
-The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity (Caution, Attention, and then Normal). Within each severity, the results are sorted alphabetically.
+The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity and then alphabetically.
 
 === Prometheus storage no longer limited to 31 days
 Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
 
 When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
 
-== Changes for new installations
+== Installation and upgrade enhancements
+
+=== New upgrade process for future StorageGRID releases
+
+* The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
+
+* After the upgrade to StorageGRID 11.6 completes, you can use the Grid Manager to upgrade to a future release and apply a hotfix for that release at the same time. The StorageGRID upgrade page will show the recommended upgrade path and will link directly to the correct download pages.
+
+* A new *Check for software updates* check box on the AutoSupport page (*SUPPORT* > *Tools* > *AutoSupport*) lets you control this functionality. You can disable the check for available software updates if your system does not have WAN access.
++
+NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to upgrade and apply a hotfix at the same time. 
+
+* You can now pause a SANtricity OS upgrade and skip upgrading some nodes if you need to finish the upgrade later. 
+
+.Learn more
+* xref:../admin/configure-autosupport-grid-manager.adoc#disable-checks-for-software-updates[Configure AutoSupport > Disable checks for software updates]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^]
+* xref:../sg5600/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5600.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5600)]
+* xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5700)]
+* xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000)]
 
 === API schemas provided
 
@@ -291,7 +259,7 @@ The API schemas for StorageGRID are now included in the installation archives fo
 
 === Change in format for BLOCK_DEVICE_RANGEDB in bare metal node configuration file
 
-For bare metal deployments, the format for the `BLOCK_DEVICE_RANGEDB` key in the node configuration file should contain three digits instead of two. For example, instead of `BLOCK_DEVICE_RANGEDB_00`, specify `BLOCK_DEVICE_RANGEDB_000`.
+The `BLOCK_DEVICE_RANGEDB` key in the node configuration file for bare-metal deployments should now contain three digits instead of two. That is, instead of `BLOCK_DEVICE_RANGEDB_nn`, you should specify `BLOCK_DEVICE_RANGEDB_nnn`. 
 
 For compatibility with existing deployments, two-digit keys are still supported for upgraded nodes.
 
@@ -299,6 +267,44 @@ For compatibility with existing deployments, two-digit keys are still supported 
 
 * xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
 * xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
+
+== Other changes
+
+=== New alerts
+
+The following new alerts were added for StorageGRID 11.6:
+
+* Audit logs are being added to the in-memory queue
+* Cassandra table corruption
+* EC rebalance failure
+* EC repair failure
+* Expiration of global server certificate for S3 and Swift API
+* External syslog CA certificate expiration
+* External syslog client certificate expiration
+* External syslog server certificate expiration
+* External syslog server forwarding error
+* Identity federation synchronization failure for a tenant
+* Legacy CLB load balancer activity detected
+* Logs are being added to the on-disk queue
+* Low read-only watermark override
+* Low tmp directory free space
+* Object existence check failed
+* Object existence check stalled
+
+.Learn more
+* xref:../monitor/alerts-reference.adoc[Alerts reference]
+
+=== Changes to audit messages
+* A new *BUID* field was added to the ORLM: Object Rules Met audit message. The *BUID* field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
+
+* A new *SGRP* field was added to the following audit messages. The *SGRP*  field is present only if an object was deleted at a different site than where it was ingested.
+** IDEL: ILM Initiated Delete
+** OVWR: Object Overwrite
+** SDEL: S3 DELETE
+** WDEL: Swift DELETE
+
+.Learn more
+* xref:../audit/index.adoc[Review audit logs]
 
 == StorageGRID documentation changes
 

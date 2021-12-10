@@ -29,13 +29,9 @@ The service laptop must have:
 * SSH client (for example, PuTTY)
 
 a|
-Supported web browser
+xref:../admin/web-browser-requirements.adoc[Supported web browser]
 a|
-You must confirm that the web browser on the service laptop is supported for use with StorageGRID 11.6.
-
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
-
-*Note:* Browser support has changed for StorageGRID 11.6. Confirm you are using a supported version.
+Browser support typically changes for each StorageGRID release. Make sure your browser is compatible with the new StorageGRID version.
 
 a|
 Recovery Package (`.zip`) file
@@ -66,11 +62,15 @@ a|
 
 == Download the StorageGRID upgrade files
 
-You must download the following files:
+You must download one or more files, depending on where your nodes are installed.
 
 * *All platforms*: `.upgrade` file
-* *Any node on Red Hat Enterprise Linux or CentOS*: `.upgrade` file and RPM file (`.zip` or `.tgz`)
-* *Any node on Ubuntu or Debian*: `.upgrade` file and DEB file (`.zip` or `.tgz`)`.upgrade` archive for any platform. If any nodes are deployed on Linux hosts, you must also download an RPM or DEB archive, which you will install before you start the upgrade.
+
+If any nodes are deployed on Linux hosts, you must also download an RPM or DEB archive, which you will install before you start the upgrade:
+
+* *Red Hat Enterprise Linux or CentOS*: An additional RPM file (`.zip` or `.tgz`)
+* *Ubuntu or Debian*: An additional DEB file (`.zip` or `.tgz`)
+
 
 .Steps
 . Go to https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^].
