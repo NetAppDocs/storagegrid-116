@@ -936,20 +936,29 @@ Low read-only watermark override
 a|
 The Storage Volume Soft Read-Only Watermark Override is less than the minimum optimized watermark for a Storage Node.
 
-. Select *NODES* to go to the Nodes page.
-. For each online Storage Node, select *_Storage Node_* > *Storage* and look at the Object Stores table.
+. Select *SUPPORT* > *Metrics*, and select the link to access Prometheus.
+. Execute the following:
++
+`storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
++
+The last column is the maximum optimized value of the watermark for all volumes on each node.
 
-. Compare the Available value for each object store (volume) to the `storagegrid_storage_volume_custom_soft_readonly_watermark` (this is the system-wide watermark setting).
+. Note the highest optimized value for each Storage Node in your grid.
 
-. If at least one volume has more space available than the system-wide watermark setting:
+. Go to the *Nodes* page.
 
-.. Select *CONFIGURATION* > *Storage options*.
-.. Select *Configuration*.
-.. Set the *Storage Volume Soft Read-Only Watermark Override* to 0.
+. For each online Storage Node, select *Storage* and go to the Object Stores table.
 
-. If no volume has more space available than the system-wide watermark setting, perform an expansion, if possible. Either add storage volumes to an existing node or add new Storage Nodes.
+. Compare the *Available* value for each object store to the highest optimized value for the node.
 
-. If you need to use the current overrides for the storage volume watermarks, silence or disable this alert.
+. If at least one volume has more space available than the highest optimized value, use the optimized watermarks:
+
+.. Go to *Configuration* > *Storage options* > *Configuration*.
+.. Change all Watermark Overrides to *0*.
+
+. If no volume on any Storage Node has more space available than the highest optimized value for that node, expand your grid. Add storage volumes or add new Storage Nodes.
+
+. To continue using the current overrides, silence or disable the alert.
 
 
 
