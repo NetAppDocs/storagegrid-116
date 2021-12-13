@@ -28,7 +28,7 @@ Performing the expansion includes these phases:
 . While the expansion process is running, you download a new Recovery Package file.
 . You monitor the status of the grid configuration tasks, which run automatically. The set of tasks depends on what types of grid nodes are being added and on whether a new site is being added.
 +
-IMPORTANT: Some tasks might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is relatively empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer. You can look at the "`streamed`" percentage shown during the "`Starting Cassandra and streaming data`" stage to determine how complete the Cassandra streaming operation is.
+IMPORTANT: Some tasks might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is relatively empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer. One way to manually monitor the expansion is to run `nodetool status` and to see how much Data Load has moved to the new site. The total Data Load on the new site should be within about 20% of the total at current sites.
 
 .Steps
 . Select *MAINTENANCE* > *Tasks* > *Expansion*.
@@ -112,13 +112,13 @@ You must download an updated copy of the Recovery Package file as soon as possib
 +
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
-. If you are adding one or more Storage Nodes, monitor the progress of the "`Starting Cassandra and streaming data`" stage by reviewing the percentage shown in the status message.
+. If you are adding one or more Storage Nodes, monitor the progress of the "Starting Cassandra and streaming data" stage by reviewing the percentage shown in the status message.
 +
 image::../media/grid_expansion_starting_cassandra.png[Grid Expansion > Starting Cassandra and streaming data]
 +
 This percentage estimates how complete the Cassandra streaming operation is, based on the total amount of Cassandra data available and the amount that has already been written to the new node.
 +
-IMPORTANT: Do not reboot any Storage Nodes during Step 4 (Starting services on the new grid nodes). The "`Starting Cassandra and streaming data`" stage might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+IMPORTANT: Do not reboot any Storage Nodes during Step 5 (Expanding the Cassandra cluster). The "Starting Cassandra and streaming data" stage might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
 
 . Continue monitoring the expansion until all tasks are complete and the *Configure Expansion* button reappears.
 

@@ -133,7 +133,7 @@ When deploying a Storage Node, use 3 or more storage volumes, with each storage 
 IMPORTANT: The Storage Node .ovf file defines several VMDKs for storage. Unless these VMDKs meet your storage requirements, you should remove them and assign appropriate VMDKs or RDMs for storage before powering up the node. VMDKs are more commonly used in VMware environments and are easier to manage, while RDMs might provide better performance for workloads that use larger object sizes (for example, greater than 100 MB).
 +
 
-NOTE: Some StorageGRID installations might use larger, more active storage volumes than typical virtualized workloads. You  might need to tune some hypervisor parameters, for example `MaxAddressableSpaceTB`, to achieve optimal performance. If you encounter poor performance, contact your virtualization support resource to determine whether your environment could benefit from workload-specific configuration tuning.
+NOTE: Some StorageGRID installations might use larger, more active storage volumes than typical virtualized workloads. You  might need to tune some hypervisor parameters, such as `MaxAddressableSpaceTB`, to achieve optimal performance. If you encounter poor performance, contact your virtualization support resource to determine whether your environment could benefit from workload-specific configuration tuning.
 
 . Select networks.
 +
