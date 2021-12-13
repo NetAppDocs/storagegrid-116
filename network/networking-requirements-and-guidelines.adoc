@@ -29,6 +29,8 @@ At least one NTP server must be reachable by the primary Admin Node.
 * Inbound TCP connections from S3 and Swift clients.
 * Outbound requests from StorageGRID platform services such as CloudMirror replication or from Cloud Storage Pools.
 
+IMPORTANT: A grid without any client traffic local to a site or between sites (an "idle grid") requires a minimum bandwidth of 25 Mbits/second between each site. 
+ 
 If StorageGRID is unable to make contact with any of the provisioned NTP or DNS servers using the default routing rules, it will automatically attempt contact on all networks (Grid, Admin, and Client) as long as the IP addresses of the DNS and NTP servers are specified. If the NTP or DNS servers can be reached on any network, StorageGRID will automatically create additional routing rules to ensure that network is used for all future attempts to connect to it.
 
 IMPORTANT: Although you can use these automatically discovered host routes, in general you should manually configure the DNS and NTP routes to ensure connectivity in case automatic discovery fails.
