@@ -28,7 +28,7 @@ Performing the expansion includes these phases:
 . While the expansion process is running, you download a new Recovery Package file.
 . You monitor the status of the grid configuration stages, which run automatically. The set of stages depends on what types of grid nodes are being added and on whether a new site is being added.
 +
-IMPORTANT: Some stages might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer.
+IMPORTANT: Some stages might take a significant amount of time to run on a large grid. For example, streaming Cassandra to a new Storage Node might take only a few minutes if the Cassandra database is empty. However, if the Cassandra database includes a large amount of object metadata, this stage might take several hours or longer. Do not reboot any Storage Nodes during the either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages.
 
 .Steps
 . Select *MAINTENANCE* > *Tasks* > *Expansion*.
@@ -112,7 +112,7 @@ You must download an updated copy of the Recovery Package file as soon as possib
 +
 IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
 
-. Follow the instructions for adding a Storage Node to an existing site, or adding a new site.
+. Follow the instructions for adding a Storage Node to an existing site or adding a new site.
 
 [role="tabbed-block"]
 ====
@@ -126,7 +126,7 @@ image::../media/grid_expansion_starting_cassandra.png[Grid Expansion > Starting 
 
 This percentage estimates how complete the Cassandra streaming operation is, based on the total amount of Cassandra data available and the amount that has already been written to the new node.
 
-IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take many hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
 
 --
 
@@ -134,7 +134,7 @@ IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cass
 
 If you are adding a new site, monitor the progress of Cassandra streaming using `nodetool status` and to see how much metadata has been copied to the new site. The total Data Load on the new site should be within about 20% of the total of a current site.
 
-IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
+IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take many hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
 
 --
 
