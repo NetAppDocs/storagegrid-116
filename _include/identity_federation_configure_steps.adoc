@@ -15,7 +15,7 @@ Select *Other* to configure values for an LDAP server that uses Oracle Directory
  ** *Group UUID*: The name of the attribute that contains the permanent unique identifier of an LDAP group. This attribute is equivalent to `objectGUID` for Active Directory and `entryUUID` for OpenLDAP. If you are configuring Oracle Directory Server, enter `nsuniqueid`. Each group's value for the specified attribute must be a 32-digit hexadecimal number in either 16-byte or string format, where hyphens are ignored.
 
 
-. For all LDAP service types, enter the required LDAP server and network connection information in the Configure LDAP server section,
+. For all LDAP service types, enter the required LDAP server and network connection information in the Configure LDAP server section.
  ** *Hostname*: The fully qualified domain name (FQDN) or IP address of the LDAP server.
  ** *Port*: The port used to connect to the LDAP server.
 +
@@ -31,6 +31,8 @@ The specified user must have permission to list groups and users and to access t
   *** `objectGUID`, `entryUUID`, or `nsuniqueid`
   *** `cn`
   *** `memberOf` or `isMemberOf`
+  *** *Active Directory*: `objectSid` and `primaryGroupID`
+  *** *Active Directory and Azure*: `userPrincipalName`
 
  ** *Password*: The password associated with the username.
  ** *Group Base DN*: The full path of the distinguished name (DN) for an LDAP subtree you want to search for groups. In the Active Directory example (below), all groups whose Distinguished Name is relative to the base DN (DC=storagegrid,DC=example,DC=com) can be used as federated groups.

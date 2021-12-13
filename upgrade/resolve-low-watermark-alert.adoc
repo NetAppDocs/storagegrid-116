@@ -11,7 +11,7 @@ summary: 'If you use custom values for storage volume watermarks, you might need
 [.lead]
 If you use custom values for storage volume watermarks, you might need to resolve the *Low read-only watermark override* alert, which can be triggered after a StorageGRID 11.6 upgrade. As needed, you can update your system to start using the optimized values.
 
-As described in  xref:../upgrade/whats-new.adoc[What's new in StorageGRID 11.6], optimized read-only and read-write watermarks are automatically applied to all storage volumes when you upgrade to StorageGRID 11.6, unless either of the following is true:
+Optimized read-only and read-write watermarks are automatically applied to all storage volumes when you upgrade to StorageGRID 11.6, unless either of the following is true:
 
 * The system would be unable to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
 

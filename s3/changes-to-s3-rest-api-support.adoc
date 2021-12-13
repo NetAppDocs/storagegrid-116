@@ -17,14 +17,12 @@ You should be aware of changes to the StorageGRID system's support for the S3 RE
 
 |11.6
 |
-
 * Added support for using the `partNumber` request parameter in GET Object and HEAD Object requests.
 * Added support for a default retention mode and a default retention period at the bucket level.
 * Added support for the `s3:object-lock-remaining-retention-days` policy condition key to set the range of allowable retention periods for your bucket.
 
 |11.5
 |
-
 * Added support for managing bucket encryption.
 * Added support for S3 Object Lock and deprecated legacy Compliance requests.
 * Added support for using DELETE Multiple Objects on versioned buckets.
@@ -32,7 +30,6 @@ You should be aware of changes to the StorageGRID system's support for the S3 RE
 
 |11.4
 |
-
 * Added support for DELETE Bucket tagging, GET Bucket tagging, and PUT Bucket tagging. Cost allocation tags are not supported.
 * For buckets created in StorageGRID 11.4, restricting object key names to meet performance best practices is no longer required.
 * Added support for bucket notifications on the `s3:ObjectRestore:Post` event type.
