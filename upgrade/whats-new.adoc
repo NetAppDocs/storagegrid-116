@@ -11,7 +11,7 @@ summary: 'StorageGRID 11.6 introduces enhancements to the Grid Manager, multi-VL
 [.lead]
 StorageGRID 11.6 introduces enhancements to the Grid Manager, multi-VLAN support, support for S3 Select, support for external syslog servers, S3 Object Lock enhancements, and Google Cloud Support for Cloud Storage Pools and CloudMirror.
 
-== User interface enhancements
+== Usability enhancements
 
 The Grid Manager user interface was substantially redesigned to improve the user experience.
 
@@ -24,27 +24,30 @@ The Grid Manager user interface was substantially redesigned to improve the user
 +
 NOTE: Unless there was a functional change, the screenshots in the StorageGRID 11.6 Doc Site were not updated to reflect the new Grid Manager page styling.
 
-.Learn more
+See the following:
+
 * xref:../admin/index.adoc[Administer StorageGRID]
 * xref:../monitor/index.adoc[Monitor and troubleshoot]
 
 
-=== Support for multiple VLAN interfaces
+=== Multiple VLAN interfaces
 
 You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
 
-* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. 
+* The new *Create a VLAN interface* wizard guides you through the process of entering a VLAN ID and choosing a parent interface on one or more nodes. A parent interface can be the Grid Network, the Client Network, or an additional trunk interface for the VM or bare-metal host. See xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces]. 
 
-* You can now add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use VLAN interfaces. Or, you might want to add an access interface to a node for direct use in a high availability (HA) group.
+* You can now add extra trunk or access interfaces to a node. If you add a trunk interface, you must configure a VLAN interface. If you add an access interface, you can add the interface directly to an HA group; you do not need to configure a VLAN interface. See the following:
++
+** <<Installation enhancements>>
+** xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interface to a node]
+** xref:../vmware/collecting-information-about-your-deployment-environment.adoc#client-network-information[Collect information about your deployment environment]
 
-See xref:../admin/configure-vlan-interfaces.html[Configure VLAN interfaces].
 
-
-=== Identity federation support for Azure AD
+=== Can use Azure AD for identity federation
 
 You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. See xref:../admin/using-identity-federation.adoc[Use identity federation].
 
-=== SSO support for Azure AD and PingFederate  
+=== Can use Azure AD and PingFederate for SSO
 You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. You can then use sandbox mode to configure and test the Azure AD enterprise applications or PingFederate service provider (SP) connections to each StorageGRID Admin Node. 
 
 See xref:../admin/configuring-sso.adoc[Configure single sign-on].
@@ -138,15 +141,11 @@ xref:../monitor/reviewing-support-metrics.adoc[Grafana charts]
 
 === S3 Object Lock default bucket retention period 
 
-When using S3 Object Lock, you can now specify a default retention period for the bucket. The default retention period applies to any objects added to the bucket that do not have their own retention settings.
-
-See xref:../s3/using-s3-object-lock.adoc[Use S3 Object Lock].
+When using S3 Object Lock, you can now specify a default retention period for the bucket. The default retention period applies to any objects added to the bucket that do not have their own retention settings. See xref:../s3/using-s3-object-lock.adoc[Use S3 Object Lock].
 
 === Google Cloud Platform support
 
-You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service.
-
-See the following: 
+You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See the following: 
 
 * xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
@@ -163,7 +162,7 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 
 * *Maximum object size for PUT Object is 5 GiB*. To conform to AWS standards, the maximum size for a single PUT Object operation is now 5 GiB instead of 5 TiB. You can use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes). The new *S3 PUT Object size too large* alert is triggered when an S3 client attempts to upload an object that is too large.
 
-See the following: xref:../s3/index.adoc[Use S3]
+See xref:../s3/index.adoc[Use S3]
 
 
 == Performance enhancements 
@@ -207,6 +206,7 @@ IMPORTANT: The `show-replicated-repair-status` option is available for technical
 +
 When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
 
+
 == Installation enhancements
 
 * The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
@@ -214,9 +214,12 @@ When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics 
 * The `BLOCK_DEVICE_RANGEDB` key in the node configuration file for bare-metal deployments should now contain three digits instead of two. That is, instead of `BLOCK_DEVICE_RANGEDB_nn`, you should specify `BLOCK_DEVICE_RANGEDB_nnn`. 
 +
 For compatibility with existing deployments, two-digit keys are still supported for upgraded nodes.
+
+* You can optionally add one or more instances of the new `INTERFACES_TARGET_nnnn` key to the node configuration file for bare-metal deployments. Each key provides the name and description of a physical interface on the bare-metal host, which will be displayed on the VLAN interfaces page and the HA groups page.
 +
 ** xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
 ** xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
+
 
 == Other changes
 
@@ -261,6 +264,6 @@ The look and feel of the StorageGRID 11.6 documentation site has been modified a
 
 NetApp appreciates feedback on content and encourages users to take advantage of the new “Request doc changes” function available on every page of the product documentation. The documentation platform also offers an embedded content contribution function for GitHub users.
 
-Take a look and contribute to this documentation. You can edit, request a change, or even send feedback.
+Take a look and contribute to this documentation. You can edit, request a change, or simply send feedback.
 
 
