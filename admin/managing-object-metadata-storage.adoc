@@ -45,16 +45,16 @@ The amount of space that is reserved for object metadata on a particular Storage
 
 == Metadata Reserved Space setting
 
-The _Metadata Reserved Space_ is a system-wide setting that represents the amount of space that will be reserved for metadata on volume 0 of every Storage Node. As shown in the table, the default value of this setting for StorageGRID 11.5 is based the following:
+The _Metadata Reserved Space_ is a system-wide setting that represents the amount of space that will be reserved for metadata on volume 0 of every Storage Node. As shown in the table, the default value of this setting for StorageGRID 11.6 is based the following:
 
 * The software version you were using when you initially installed StorageGRID.
 * The amount of RAM on each Storage Node.
 
 [cols="1a,1a,1a" options="header"]
 |===
-| Version used for initial StorageGRID installation| Amount of RAM on Storage Nodes| Default Metadata Reserved Space setting for StorageGRID 11.5
+| Version used for initial StorageGRID installation| Amount of RAM on Storage Nodes| Default Metadata Reserved Space setting for StorageGRID 11.6
 
-|11.5
+|11.5/11.6
 |128 GB or more on each Storage Node in the grid
 |8 TB (8,000 GB)
 
@@ -82,7 +82,7 @@ To view the Metadata Reserved Space setting for your StorageGRID system:
 +
 image::../media/metadata_reserved_space_storage_option.png[Metadata Reserved Space Storage Option]
 
-In the screenshot, the *Metadata Reserved Space* value is 8,000 GB (8 TB). This is the default setting for a new StorageGRID 11.5 installation in which each Storage Node has 128 GB or more of RAM.
+In the screenshot, the *Metadata Reserved Space* value is 8,000 GB (8 TB). This is the default setting for a new StorageGRID 11.6 installation in which each Storage Node has 128 GB or more of RAM.
 
 == Actual reserved space for metadata
 
@@ -112,19 +112,18 @@ To view the actual reserved space for metadata on a particular Storage Node:
 +
 image::../media/storage_used_object_metadata_actual_reserved.png[Storage Used - Object Metadata - Actual Reserved]
 
-In the screenshot, the *Actual reserved* value is 8 TB. This screenshot is for a large Storage Node in a new StorageGRID 11.5 installation. Because the system-wide Metadata Reserved Space setting is smaller than volume 0 for this Storage Node, the actual reserved space for this node equals the Metadata Reserved Space setting.
+In the screenshot, the *Actual reserved* value is 8 TB. This screenshot is for a large Storage Node in a new StorageGRID 11.6 installation. Because the system-wide Metadata Reserved Space setting is smaller than volume 0 for this Storage Node, the actual reserved space for this node equals the Metadata Reserved Space setting.
 
 The *Actual reserved* value corresponds to this Prometheus metric:
 
-----
-storagegrid_storage_utilization_metadata_reserved_bytes
-----
+`storagegrid_storage_utilization_metadata_reserved_bytes`
+
 
 == Example for actual reserved metadata space
 
-Suppose you install a new StorageGRID system using version 11.5. For this example, assume that each Storage Node has more than 128 GB of RAM and that volume 0 of Storage Node 1 (SN1) is 6 TB. Based on these values:
+Suppose you install a new StorageGRID system using version 11.6. For this example, assume that each Storage Node has more than 128 GB of RAM and that volume 0 of Storage Node 1 (SN1) is 6 TB. Based on these values:
 
-* The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for a new StorageGRID 11.5 installation if each Storage Node has more than 128 GB RAM.)
+* The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for a new StorageGRID 11.6 installation if each Storage Node has more than 128 GB RAM.)
 * The actual reserved space for metadata for SN1 is 6 TB. (The entire volume is reserved because volume 0 is smaller than the *Metadata Reserved Space* setting.)
 
 == Allowed metadata space
@@ -161,15 +160,14 @@ In the screenshot, the *Allowed* value is 2.64 TB, which is the maximum value fo
 
 The *Allowed* value corresponds to this Prometheus metric:
 
-----
-storagegrid_storage_utilization_metadata_allowed_bytes
-----
+`storagegrid_storage_utilization_metadata_allowed_bytes`
+
 
 == Example for allowed metadata space
 
-Suppose you install a StorageGRID system using version 11.5. For this example, assume that each Storage Node has more than 128 GB of RAM and that volume 0 of Storage Node 1 (SN1) is 6 TB. Based on these values:
+Suppose you install a StorageGRID system using version 11.6. For this example, assume that each Storage Node has more than 128 GB of RAM and that volume 0 of Storage Node 1 (SN1) is 6 TB. Based on these values:
 
-* The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for StorageGRID 11.5 when each Storage Node has more than 128 GB RAM.)
+* The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for StorageGRID 11.6 when each Storage Node has more than 128 GB RAM.)
 * The actual reserved space for metadata for SN1 is 6 TB. (The entire volume is reserved because volume 0 is smaller than the *Metadata Reserved Space* setting.)
 * The allowed space for metadata on SN1 is 2.64 TB. (This is the maximum value for actual reserved space.)
 
