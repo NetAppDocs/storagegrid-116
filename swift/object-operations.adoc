@@ -103,7 +103,7 @@ A successful execution returns the following headers with an "HTTP/1.1 200 OK" r
 
 This operation creates a new object with data and metadata, or replaces an existing object with data and metadata in a StorageGRID system.
 
-StorageGRID supports objects up to 5 TB in size.
+StorageGRID supports objects up to 5 TiB (5,497,558,138,880 bytes) in size.
 
 IMPORTANT: Conflicting client requests, such as a two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when Swift clients begin an operation.
 

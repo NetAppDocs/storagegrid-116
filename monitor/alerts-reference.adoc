@@ -1087,6 +1087,16 @@ Make sure that the majority of the Storage Nodes that have the RSM service at th
 
 See "`Troubleshooting platform services`" in the xref:../admin/index.adoc[instructions for administering StorageGRID].
 
+
+a|S3 PUT Object size too large
+a|An S3 client is attempting to perform a PUT Object operation that does not meet AWS size limits.
+
+. Use the tenant ID shown in the alert details to identify the tenant account.
+. Use the IP address shown in the alert details to identify the specific S3 client.
+. Inform all client users that the maximum PUT Object operation size is 5 GiB.
+. Consider using multipart uploads for objects larger than 5 GiB.
+
+
 a|
 Services appliance link down on Admin Network port 1
 a|

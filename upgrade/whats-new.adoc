@@ -157,9 +157,11 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 
 === Other S3 changes
 
-* *GET support for multipart objects*. Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. You can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
+* *GET Object and HEAD Object support for multipart objects*. Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. You can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
 
 * *Changes to "Available" consistency control*. The “Available” consistency control now behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The “Available” consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
+
+* *Maximum object size for PUT Object is 5 GiB*. To conform to AWS standards, the maximum size for a single PUT Object operation is now 5 GiB instead of 5 TiB. You can use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes). The new *S3 PUT Object size too large* alert is triggered when an S3 client attempts to upload an object that is too large.
 
 See the following: xref:../s3/index.adoc[Use S3]
 
@@ -238,6 +240,7 @@ The following new alerts were added for StorageGRID 11.6:
 * Low tmp directory free space
 * Object existence check failed
 * Object existence check stalled
+* S3 PUT Object size too large
 
 See the xref:../monitor/alerts-reference.adoc[Alerts reference] for details.
 
