@@ -35,6 +35,10 @@ IMPORTANT: Although you can use these automatically discovered host routes, in g
 
 If you are not ready to configure the optional Admin and Client Networks during deployment, you can configure these networks when you approve grid nodes during the configuration steps. Additionally, you can configure these networks after installation has been completed by using the Change IP tool as described in the recovery and maintenance instructions.
 
+== Wide Area Networks (WANs) for multiple sites
+
+When configuring a StorageGRID system with multiple sites, the WAN connection between sites must have a minimum bandwidth of 25 Mbit/second in each direction before accounting for client traffic. Data replication or erasure coding between sites, node or site expansion, node recovery, and other operations or configurations will require additional bandwidth.
+
 == Connections for Admin Nodes and Gateway Nodes
 
 Admin Nodes must always be secured from untrusted clients, such as those on the open internet. You must ensure that no untrusted client can access any Admin Node on the Grid Network, the Admin Network, or the Client Network.
