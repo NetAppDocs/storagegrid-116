@@ -55,6 +55,8 @@ Use a name that will be easy to identify when you configure Erasure Coding profi
 . From the *Site* drop-down list, select a site for this storage pool.
 +
 When you select a site, the number of Storage Nodes and Archive Nodes in the table are automatically updated.
++
+In general, do not use the default All Sites site in any storage pool. ILM rules that use an All Sites storage pool place objects at any available site, giving you less control of object placement. Also, an All Sites storage pool uses the Storage Nodes at a new site immediately, which might not be the behavior you expect. 
 
 . From the *Storage Grade* drop-down list, select the type of storage that will be used if an ILM rule uses this storage pool.
 +
