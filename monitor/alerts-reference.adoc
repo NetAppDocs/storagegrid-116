@@ -936,31 +936,7 @@ Low read-only watermark override
 a|
 The Storage Volume Soft Read-Only Watermark Override is less than the minimum optimized watermark for a Storage Node.
 
-. Select *SUPPORT* > *Metrics*, and select the link to access Prometheus.
-. Execute the following:
-+
-`storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
-+
-The last column is the maximum optimized value of the watermark for all volumes on each node.
-
-. Note the highest optimized value for each Storage Node in your grid.
-
-. Go to the *Nodes* page.
-
-. For each online Storage Node, select *Storage* and go to the Object Stores table.
-
-. Compare the *Available* value for each object store to the highest optimized value for the node.
-
-. If at least one volume has more space available than the highest optimized value, use the optimized watermarks:
-
-.. Go to *Configuration* > *Storage options* > *Configuration*.
-.. Change all Watermark Overrides to *0*.
-
-. If no volume on any Storage Node has more space available than the highest optimized value for that node, expand your grid. Add storage volumes or add new Storage Nodes.
-
-. To continue using the current overrides, silence or disable the alert.
-
-
+To learn how to resolve this alert, go to xref:../monitor/troubleshoot-low-watermark-alert.html[Troubleshoot Low read-only watermark override alerts].
 
 a|
 Low root disk capacity
@@ -1086,6 +1062,16 @@ Too few Storage Nodes with the RSM service are running or available at a site.
 Make sure that the majority of the Storage Nodes that have the RSM service at the affected site are running and in a non-error state.
 
 See "`Troubleshooting platform services`" in the xref:../admin/index.adoc[instructions for administering StorageGRID].
+
+
+a|S3 PUT Object size too large
+a|An S3 client is attempting to perform a PUT Object operation that exceeds S3 size limits.
+
+. Use the tenant ID shown in the alert details to identify the tenant account.
+. Use the IP address shown in the alert details to identify the specific S3 client.
+. Inform all client users that the maximum PUT Object operation size is 5 GiB.
+. Use multipart uploads for objects larger than 5 GiB.
+
 
 a|
 Services appliance link down on Admin Network port 1
