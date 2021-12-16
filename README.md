@@ -1,6 +1,4 @@
-# storagegrid
-
-= StorageGRID documentation
+# StorageGRID documentation
 
 Welcome to the open-source documentation for StorageGRID.
 
