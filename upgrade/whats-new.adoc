@@ -29,8 +29,7 @@ See the following:
 * xref:../admin/index.adoc[Administer StorageGRID]
 * xref:../monitor/index.adoc[Monitor and troubleshoot]
 
-
-=== Multiple VLAN interfaces
+== Multiple VLAN interfaces
 
 You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes. You can use VLAN interfaces in HA groups and load balancer endpoints to isolate and partition client traffic for security, flexibility, and performance.
 
@@ -38,12 +37,12 @@ You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nod
 
 * You can now add extra trunk or access interfaces to a node. If you add a trunk interface, you must configure a VLAN interface. If you add an access interface, you can add the interface directly to an HA group; you do not need to configure a VLAN interface. See the following:
 +
-** <<Installation enhancements>>
-** xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interface to a node]
-** xref:../vmware/collecting-information-about-your-deployment-environment.adoc#client-network-information[Collect information about your deployment environment]
+** *Linux (before installing the node)*: <<Installation enhancements>>
+** *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
+** *VMware (after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
 
 
-=== Can use Azure AD for identity federation
+== Can use Azure AD for identity federation
 
 You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. See xref:../admin/using-identity-federation.adoc[Use identity federation].
 
@@ -52,7 +51,7 @@ You can now select Azure AD or PingFederate as the SSO type when configuring sin
 
 See xref:../admin/configuring-sso.adoc[Configure single sign-on].
 
-=== Centralized certificate management
+== Centralized certificate management
 
 * The new Certificates page (*CONFIGURATION* > *Security* > *Certificates*) consolidates information about all StorageGRID security certificates to a single location. You can manage StorageGRID global, grid CA, and client certificates from the new page or view information about other certificates, such as those used for load balancer endpoints, tenants, and identity federation.
 +
@@ -66,8 +65,7 @@ See xref:../admin/using-storagegrid-security-certificates.adoc[About security ce
 
 ** The *Internal CA Certificate*, *System CA Certificate*, *CA Certificate*, and *Default CA certificate* are now consistently referred to as the *Grid CA certificate*.
  
-
-=== Other Grid Manager enhancements
+== Other Grid Manager enhancements
 
 * *Updates to high availability (HA) groups*. A wizard now guides you through the process of entering endpoint details, adding interfaces, determining the priority order, and specifying virtual IP (VIP) addresses.
 
@@ -88,14 +86,13 @@ NOTE: This global certificate was previously used for connections to the depreca
 +
 See xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
-=== New Tenant Manager features
+== New Tenant Manager features
 
 * *New Experimental S3 Console*. Available as a link from the Buckets page in Tenant Manager, the new experimental S3 Console, lets S3 tenant users view and manage the objects in their buckets. Users can add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. 
 +
 See xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console].
 
 IMPORTANT: The experimental S3 Console has not been fully tested and is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects or when using proof-of-concept or non-production grids.
-
 
 * *Can delete multiple S3 buckets*. Tenant users can now delete more than one S3 bucket at a time. Each bucket that you want to delete must be empty. See xref:../tenant/deleting-s3-bucket.adoc[Delete S3 buckets].
 
@@ -117,7 +114,6 @@ NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to up
 ** xref:../sg5700/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG5700)]
 ** xref:../sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.adoc[Upgrade SANtricity OS on storage controllers using the Grid Manager (SG6000)]
 
-
 == External syslog server support
 * You can now configure an external syslog server if you want to save and manage audit messages and a subset of StorageGRID logs remotely (*CONFIGURATION* > *Monitoring* > *Audit and syslog server*). After an external syslog server is configured, you can save audit messages and certain log files locally, remotely, or both. By configuring the destinations of your audit information, you can reduce network traffic on your Admin Nodes.  
 +
@@ -127,9 +123,7 @@ See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and l
 +
 See xref:../monitor/collecting-log-files-and-system-data.adoc[Collect log files and system data].
 
-== S3 enhancements
-
-=== S3 Select
+== S3 Select
 
 You can now optionally allow S3 tenants to issue SelectObjectContent requests to individual objects. S3 Select provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. See the following:
 
@@ -139,31 +133,30 @@ You can now optionally allow S3 tenants to issue SelectObjectContent requests to
 xref:../monitor/reviewing-support-metrics.adoc[Grafana charts] 
  for S3 Select operations were also added.
 
-=== S3 Object Lock default bucket retention period 
+== S3 Object Lock default bucket retention period 
 
 When using S3 Object Lock, you can now specify a default retention period for the bucket. The default retention period applies to any objects added to the bucket that do not have their own retention settings. See xref:../s3/using-s3-object-lock.adoc[Use S3 Object Lock].
 
-=== Google Cloud Platform support
+== Google Cloud Platform support
 
 You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See the following: 
 
 * xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
 
-=== AWS C2S support 
+== AWS C2S support 
 
 You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror replication. See xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint].
 
-=== Other S3 changes
+== Other S3 changes
 
 * *GET Object and HEAD Object support for multipart objects*. Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. You can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
 
 * *Changes to "Available" consistency control*. The “Available” consistency control now behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The “Available” consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
 
-* *Maximum object size for PUT Object is 5 GiB*. To conform to AWS standards, the maximum size for a single PUT Object operation is now 5 GiB instead of 5 TiB. You can use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes). The new *S3 PUT Object size too large* alert is triggered when an S3 client attempts to upload an object that is too large.
+* *Maximum object size for PUT Object is 5 GiB*. To conform to AWS standards, the maximum size for a single PUT Object operation is now 5 GiB instead of 5 TiB. Use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes). The new *S3 PUT Object size too large* alert is triggered when an S3 client attempts to upload an object that is too large.
 
 See xref:../s3/index.adoc[Use S3]
-
 
 == Performance enhancements 
 
@@ -176,13 +169,12 @@ See xref:../admin/what-storage-volume-watermarks-are.adoc[What are storage volum
 +
 Optimized watermarks are automatically applied to all new and most upgraded StorageGRID 11.6 systems. The optimized watermarks will be larger than the previous default settings.
 +
-If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrade. This alert lets you know if your custom watermark settings are too small. See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts]. 
+If you use custom watermarks, the *Low read-only watermark override* alert might be triggered after you upgrabde. This alert lets you know if your custom watermark settings are too small. See xref:../monitor/troubleshoot-low-watermark-alert.adoc[Troubleshoot Low read-only watermark override alerts]. 
 +
 As part of this change, two Prometheus metrics were added:
 +
 ** `storagegrid_storage_volume_minimum_optimized_soft_readonly_watermark`
 ** `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
-
 
 * *Maximum allowed metadata space increased*. The maximum xref:../admin/managing-object-metadata-storage.adoc#allowed-metadata-space[allowed metadata space] for Storage Nodes was increased to 3.96 TB (from 2.64 TB) for higher-capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value allows more object metadata to be stored on certain Storage Nodes and can increase StorageGRID metadata capacity by up to 50%.
 +

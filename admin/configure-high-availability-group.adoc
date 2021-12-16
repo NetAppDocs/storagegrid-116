@@ -16,12 +16,12 @@ You can configure high availability (HA) groups to provide highly available acce
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Root Access permission.
 * If you plan to use a VLAN interface in an HA group, you have created the VLAN interface. See xref:../admin/configure-vlan-interfaces.adoc[Configure VLAN interfaces].
-* If you plan to use an access interface for a node in an HA group, you have created the interface (can do this before or after you install the node).
+* If you plan to use an access interface for a node in an HA group, you have created the interface:
 
-** *VMware (after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
 ** *Red Hat Enterprise Linux or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
 ** *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
 ** *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
+** *VMware (after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
 
 
 == Create a high availability group
@@ -114,6 +114,8 @@ You must provide at least one IPv4 address. Optionally, you can specify addition
 +
 The HA Group is created, and you can now use the configured virtual IP addresses.
 
+NOTE: Wait up to 15 minutes for changes to an HA group to be applied to all nodes.
+
 === Next steps
 
 If you will use this HA group for load balancing, create a load balancer endpoint to determine the port and network protocol and to attach any required certificates: xref:managing-load-balancing.adoc[Manage load balancing].
@@ -156,9 +158,11 @@ NOTE: If the HA group provides access to the Grid Manager, you must select an in
 
 .. Select *Save* and then select *Finish*.
 
+NOTE: Wait up to 15 minutes for changes to an HA group to be applied to all nodes.
+
 ==  Remove a high availability group
 
-You can remove one or more high availability (HA) groups at a time.
+You can remove one or more high availability (HA) groups at a time. However, you cannot remove an HA group if it is bound to one or more load balancer endpoints.
 
 To prevent client disruptions, update any affected S3 or Swift client applications before you remove an HA group. Update each client to connect using another IP address, for example, the virtual IP address of a different HA group or the IP address that was configured for an interface during installation.
 
