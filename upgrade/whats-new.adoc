@@ -46,7 +46,7 @@ You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nod
 
 You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. See xref:../admin/using-identity-federation.adoc[Use identity federation].
 
-=== Can use Azure AD and PingFederate for SSO
+== Can use Azure AD and PingFederate for SSO
 You can now select Azure AD or PingFederate as the SSO type when configuring single sign-on (SSO) for your grid. You can then use sandbox mode to configure and test the Azure AD enterprise applications or PingFederate service provider (SP) connections to each StorageGRID Admin Node. 
 
 See xref:../admin/configuring-sso.adoc[Configure single sign-on].
@@ -212,10 +212,7 @@ For compatibility with existing deployments, two-digit keys are still supported 
 ** xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
 ** xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
 
-
-== Other changes
-
-=== New alerts
+== New alerts
 
 The following new alerts were added for StorageGRID 11.6:
 
@@ -239,7 +236,7 @@ The following new alerts were added for StorageGRID 11.6:
 
 See the xref:../monitor/alerts-reference.adoc[Alerts reference] for details.
 
-=== Changes to audit messages
+== Changes to audit messages
 * A new *BUID* field was added to the ORLM: Object Rules Met audit message. The *BUID* field shows the bucket ID, which is used for internal operations. The new field appears only if the message status is PRGD.
 
 * A new *SGRP* field was added to the following audit messages. The *SGRP*  field is present only if an object was deleted at a different site than where it was ingested.
@@ -250,7 +247,7 @@ See the xref:../monitor/alerts-reference.adoc[Alerts reference] for details.
 
 See xref:../audit/index.adoc[Review audit logs] for details.
 
-=== StorageGRID documentation changes
+== StorageGRID documentation changes
 
 The look and feel of the StorageGRID 11.6 documentation site has been modified and now uses GitHub as the underlying platform.
 
