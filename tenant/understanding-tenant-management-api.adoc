@@ -11,7 +11,11 @@ summary: 'You can perform system management tasks using the Tenant Management RE
 [.lead]
 You can perform system management tasks using the Tenant Management REST API instead of the Tenant Manager user interface. For example, you might want to use the API to automate operations or to create multiple entities, such as users, more quickly.
 
-The Tenant Management API uses the Swagger open source API platform. Swagger provides an intuitive user interface that allows developers and non-developers to interact with the API. The Swagger user interface provides complete details and documentation for each API operation.
+The Tenant Management API:
+
+* Uses the Swagger open source API platform. Swagger provides an intuitive user interface that allows developers and non-developers to interact with the API. The Swagger user interface provides complete details and documentation for each API operation.
+
+* Uses xref:tenant-management-api-versioning.adoc[versioning to support non-disruptive upgrades].
 
 To access the Swagger documentation for the Tenant Management API:
 
@@ -29,19 +33,14 @@ The Tenant Management API organizes the available API operations into the follow
 +
 The Tenant Management API supports the Bearer Token Authentication Scheme. For a tenant login, you provide a username, password, and accountId in the JSON body of the authentication request (that is, `POST /api/v3/authorize`). If the user is successfully authenticated, a security token is returned. This token must be provided in the header of subsequent API requests ("Authorization: Bearer token").
 +
-See "`Protecting against Cross-Site Request Forgery`" for information on improving authentication security.
+For information about improving authentication security, see xref:protecting-against-cross-site-request-forgery-csrf.adoc[Protecting against Cross-Site Request Forgery].
 +
-NOTE: If single sign-on (SSO) is enabled for the StorageGRID system, you must perform different steps to authenticate. See "`Authenticating in to the API if single sign-on is enabled`" in the instructions for administering StorageGRID.
+NOTE: If single sign-on (SSO) is enabled for the StorageGRID system, you must perform different steps to authenticate. See the xref:../admin/using-grid-management-api.adoc[instructions for using the Grid Management API].
 
 * *config* -- Operations related to the product release and versions of the Tenant Management API. You can list the product release version and the major versions of the API supported by that release.
 * *containers* -- Operations on S3 buckets or Swift containers, as follows:
 +
-[cols="1a,3a" options="header"]
-|===
-| Protocol| Permission allows
-a|
-S3
-a|
+*S3*
 
  ** Creating compliant and non-compliant buckets
  ** Modifying legacy compliance settings
@@ -51,11 +50,8 @@ a|
  ** Managing the configuration settings for platform services, including CloudMirror replication, notifications, and search integration (metadata-notification)
  ** Deleting empty buckets
 
-a|
-Swift
-a|
-Setting the consistency level used for containers
-|===
++
+*Swift*: Setting the consistency level used for containers
 
 * *deactivated-features* -- Operations to view features that might have been deactivated.
 * *endpoints* -- Operations to manage an endpoint. Endpoints allow an S3 bucket to use an external service for StorageGRID CloudMirror replication, notifications, or search integration.
@@ -84,11 +80,3 @@ IMPORTANT: Any API operations you perform using the API Docs webpage are live op
 . Provide any required parameters, or modify the request body as required.
 . Select *Execute*.
 . Review the response code to determine if the request was successful.
-
-.Related information
-
-* xref:tenant-management-api-versioning.adoc[Tenant Manangement API versioning]
-
-* xref:protecting-against-cross-site-request-forgery-csrf.adoc[Protect against Cross-Site Request Forgery (CSRF)]
-
-* xref:../admin/index.adoc[Administer StorageGRID]
