@@ -63,15 +63,15 @@ You can now select Azure AD or PingFederate as the SSO type when configuring sin
  
 == Other Grid Manager enhancements
 
-* *Updates to high availability (HA) groups*. A wizard now guides you through the process of entering endpoint details, adding interfaces, determining the priority order, and specifying virtual IP (VIP) addresses. See xref:../admin/configure-high-availability-group.html[Configure high availability groups].
+* *Updates to high availability (HA) groups*. A wizard now guides you through the process of creating an HA group. See xref:../admin/configure-high-availability-group.html[Configure high availability groups].
 
 ** In addition to selecting interfaces on the Grid Network (eth0) or Client Network (eth2), you can now select VLAN interfaces or any access interfaces you have added to the node.
-** You can now specify the priority order for the interfaces in the HA group. You can choose the primary interface and rank each backup interface in order.
+** You can now specify a priority order for the interfaces. You can choose the primary interface and rank each backup interface in order.
 ** If any S3, Swift, administrative, or tenant clients will access the VIP addresses for the HA group from a different subnet, you can now provide the IP address for the gateway. 
 
 
 
-* *Updates to load balancer endpoints*. A new wizard guides you through the process of entering details, selecting a binding mode, and attaching certificates. See xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
+* *Updates to load balancer endpoints*. A new wizard guides you through the process of creating a load balancer endpoint. See xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
 ** You now select the client type (S3 or Swift) when you first create the endpoint, instead of adding this detail after the endpoint is created.
 ** You can now use the global *StorageGRID S3 and Swift certificate* for a load balancer endpoint instead of uploading or generating a separate certificate. 
@@ -81,7 +81,7 @@ NOTE: This global certificate was previously used for connections to the depreca
 
 == New Tenant Manager features
 
-* *New Experimental S3 Console*. Available as a link from the Buckets page in Tenant Manager, the new experimental S3 Console, lets S3 tenant users view and manage the objects in their buckets. Users can add and delete objects and object versions; rename objects; move and copy objects between buckets; and manage object tags. See xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console].
+* *New Experimental S3 Console*. Available as a link from the Buckets page in Tenant Manager, the new experimental S3 Console lets S3 tenant users view and manage the objects in their buckets. See xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console].
 
 IMPORTANT: The experimental S3 Console has not been fully tested and is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects or when using proof-of-concept or non-production grids.
 
@@ -125,7 +125,7 @@ When using S3 Object Lock, you can now specify a default retention period for th
 
 == Google Cloud Platform support
 
-You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See the following: 
+You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See the following:
 
 * xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
@@ -139,8 +139,8 @@ You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror re
 * *GET Object and HEAD Object support for multipart objects*. Previously, StorageGRID did not support the `partNumber` request parameter in GET Object or HEAD Object requests. You can now issue GET and HEAD requests to retrieve a specific part of a multipart object. GET and HEAD Object also support the `x-amz-mp-parts-count` response element to indicate how many parts an object has.
 
 * *Changes to "Available" consistency control*. The “Available” consistency control now behaves the same as the “read-after-new-write” consistency level, but provides eventual consistency for HEAD and GET operations. The “Available” consistency control offers higher availability for HEAD and GET operations than “read-after-new-write” if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD and GET operations.
-
-See xref:../s3/index.adoc[Use S3]
++
+xref:../s3/index.adoc[Use S3]
 
 == Performance enhancements 
 
@@ -164,8 +164,6 @@ As part of this change, two Prometheus metrics were added:
 +
 NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/manually increase the Metadata Reserved Space setting up to 8 TB after you install or upgrade.
 +
-See the following:
-+
 ** xref:../admin/managing-object-metadata-storage.adoc#allowed-metadata-space[Manage object metadata storage > Allowed metadata space] 
 ** xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[Increase Metadata Reserved Space setting]
 
@@ -173,7 +171,7 @@ See the following:
 
 * *Can change node console passwords*. You now can use the Grid Manager to change node console passwords (*CONFIGURATION* > *Access control* > *Grid passwords*). These passwords are used to log in to a node as “admin” using SSH, or to the root user on a VM/physical console connection. See xref:../admin/change-node-console-password.adoc[Change node console passwords].
 
-* *New Object existence check wizard*. You can now verify object integrity with an easy-to-use Object existence check wizard (*MAINTENANCE* > *Tasks* > *Object existence check*) replaces the foreground verification procedure. You can create an object existence check job to verify whether all expected object copies exist. The new procedure reduces runtime by at least three times. See xref:../monitor/verifying-object-integrity.html[Verify object integrity].
+* *New Object existence check wizard*. You can now verify object integrity with an easy-to-use Object existence check wizard (*MAINTENANCE* > *Tasks* > *Object existence check*) replaces the foreground verification procedure. The new procedure reduces runtime by at least three times. See xref:../monitor/verifying-object-integrity.html[Verify object integrity].
 
 * *"Estimated time to completion" chart for EC rebalance and EC repair jobs*. You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
 
