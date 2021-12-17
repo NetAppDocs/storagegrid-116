@@ -15,7 +15,7 @@ After completing the Linux installation on your hosts, you might need to perform
 
 * You have reviewed the xref:../network/index.adoc[StorageGRID networking guidelines].
 * You have reviewed the information about xref:node-container-migration-requirements.adoc[node container migration requirements].
-* If you are using virtual hosts, you have read the xref:considerations-and-recommendations-for-mac-address-cloning.adoc[considerations and recommendations for MAC address cloning] before configuring the host network.
+* If you are using virtual hosts, you have read the <<mac_address_cloning_rhel,considerations and recommendations for MAC address cloning>> before configuring the host network.
 
 NOTE: If you are using VMs as hosts, you should select VMXNET 3 as the virtual network adapter. The VMware E1000 network adapter has caused connectivity issues with StorageGRID containers deployed on certain distributions of Linux.
 
@@ -35,6 +35,7 @@ NOTE: Do not use bond or bridge devices directly as the container network interf
 
 xref:creating-node-configuration-files.adoc[Creating node configuration files]
 
+.[[mac_address_cloning_rhel]]
 == Considerations and recommendations for MAC address cloning
 
 MAC address cloning causes the Docker container to use the MAC address of the host, and the host to use the MAC address of either an address you specify or a randomly generated one. You should use MAC address cloning to avoid the use of promiscuous mode network configurations.
