@@ -133,7 +133,7 @@ IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cass
 .Add new site
 --
 
-If you are adding a new site, use `nodetool status` to monitor the progress of Cassandra streaming and to see how much metadata has been copied to the new site. The total Data Load on the new site should be within about 20% of the total of a current site.
+If you are adding a new site, use `nodetool status` to monitor the progress of Cassandra streaming and to see how much metadata has been copied to the new site during the "Expanding the Cassandra cluster" stage. The total Data Load on the new site should be within about 20% of the total of a current site.
 
 IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cassandra cluster" or "Starting Cassandra and streaming data" stages. These stages might take many hours to complete for each new Storage Node, especially if existing Storage Nodes contain a large amount of object metadata.
 

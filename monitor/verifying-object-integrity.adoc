@@ -117,7 +117,7 @@ You create and run one object existence check job at a time. When you create a j
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have the Maintenance or Root Access permission.
 * You have ensured that the Storage Nodes you want to check are online. Select *NODES* to view the table of nodes. Ensure that no alert icons appear next to the node name for the nodes you want to check.
-* You have ensured that the following procedures are not running on the nodes you want to check:
+* You have ensured that the following procedures are *not* running on the nodes you want to check:
  ** Grid expansion to add a Storage Node
  ** Storage Node decommission
  ** Recovery of a failed storage volume
@@ -125,7 +125,7 @@ You create and run one object existence check job at a time. When you create a j
  ** EC rebalance
  ** Appliance node clone
 
-While expansion, decommission, recovery, or EC rebalance procedures are in progress, object existence check does not provide useful information.
+Object existence check does not provide useful information while these procedures are in progress.
 
 .About this task
 
