@@ -13,13 +13,8 @@ StorageGRID 11.6 uses version 3 of the Tenant Management API. Version 3 deprecat
 
 IMPORTANT: You can continue to use version 1 and version 2 of the management API with StorageGRID 11.6; however, support for these versions of the API will be removed in a future release of StorageGRID. After upgrading to StorageGRID 11.6, the deprecated v1 and v2 APIs can be deactivated using the `PUT /grid/config/management` API.
 
+To learn more, go to xref:../tenant/understanding-tenant-management-api.adoc[Understand the Tenant Management API].
+
 == PATCH method deprecated
 
 The PATCH method has now been deprecated and will be removed in a future release. As required, perform a PUT operation to replace a resource instead of using a PATCH operation to modify the resource. 
-
-
-.Related information
-
-* xref:../s3/index.adoc[Use S3]
-
-* xref:../tenant/index.adoc[Use a tenant account]

@@ -4,23 +4,24 @@ sidebar: sidebar
 keywords: storagegrid, S3 bucket, tenant, delete bucket, delete s3 bucket, deleting bucket, deleting s3 bucket, s3 object lock
 summary: 'You can use the Tenant Manager to delete an S3 bucket that is empty.'
 ---
-= Delete an S3 bucket
+= Delete S3 bucket
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can use the Tenant Manager to delete an S3 bucket that is empty.
+You can use the Tenant Manager to delete one or more S3 buckets that are empty.
 
 .What you'll need
 
 * You must be signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You must belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
+* The buckets you want to delete are empty.
 
 .About this task
 
-These instructions describe how to delete an S3 bucket using the Tenant Manager. You can also delete S3 buckets using the Tenant Management API or the S3 REST API.
+These instructions describe how to delete an S3 bucket using the Tenant Manager. You can also delete S3 buckets using the xref:understanding-tenant-management-api.adoc[Tenant Management API] or the xref:../s3/s3-rest-api-supported-operations-and-limitations.adoc[S3 REST API].
 
-You cannot delete an S3 bucket if it contains objects or noncurrent object versions. For information about how S3 versioned objects are deleted, see the instructions for managing objects with information lifecycle management.
+You cannot delete an S3 bucket if it contains objects or noncurrent object versions. For information about how S3 versioned objects are deleted, see the xref:../ilm/index.adoc[instructions for managing objects with information lifecycle management].
 
 .Steps
 
@@ -30,26 +31,16 @@ The Buckets page appears and shows all existing S3 buckets.
 +
 image::../media/buckets_table.png[Buckets Table]
 
-. Select the check box for the empty bucket you want to delete.
+. Select the check box for the empty bucket you want to delete. You can select more than one bucket at a time.
 +
 The Actions menu is enabled.
 
-. From the Actions menu, select *Delete empty bucket*.
+. From the Actions menu, select *Delete bucket* (or *Delete buckets* if you have chosen more than one).
 +
 image::../media/delete_bucket_button.png[Delete Buckets Button]
 +
-A confirmation message appears.
+. When the confirmation dialog box appears, select *Yes* to delete all of the buckets you have chosen.
 +
-image::../media/delete_bucket_confirmation_dialog.png[Delete Bucket Confirmation Dialog]
-
-. If you are sure you want to delete the bucket, select *Delete bucket*.
+StorageGRID confirms that each bucket is empty and then deletes each bucket. This operation might take a few minutes.
 +
-StorageGRID confirms that the bucket is empty and then deletes the bucket. This operation might take a few minutes.
-+
-If the bucket is not empty, an error message appears. You must delete all objects before you can delete the bucket.
-+
-image::../media/delete_bucket_not_empty_message.png[Delete Bucket Not Empty Message]
-
-.Related information
-
-xref:../ilm/index.adoc[Manage objects with ILM]
+If a bucket is not empty, an error message appears. You must delete all objects before you can delete a bucket.

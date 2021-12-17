@@ -2,14 +2,14 @@
 permalink: monitor/managing-alerts-and-alarms.html
 sidebar: sidebar
 keywords: how to manage alerts, what are alerts, what are alarms
-summary: 'The StorageGRID alert system is designed to inform you about operational issues that require your attention. As required, you can also use the legacy alarm system to monitor your system.'
+summary: 'The StorageGRID alert system is designed to inform you about operational issues that require your attention. The legacy alarm system is deprecated.'
 ---
 = Manage alerts and alarms: Overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The StorageGRID alert system is designed to inform you about operational issues that require your attention. As required, you can also use the legacy alarm system to monitor your system. 
+The StorageGRID alert system is designed to inform you about operational issues that require your attention. The legacy alarm system is deprecated. 
 
 == Alert system
 
@@ -24,11 +24,12 @@ Alerts are triggered at specific severity levels when alert rule conditions eval
 
 == Legacy alarm system
 
-The alarm system is supported, but is considered to be a legacy system. Like alerts, alarms are triggered at specific severity levels when attributes reach defined threshold values. However, unlike alerts, many alarms are triggered for events that you can safely ignore, which might result in an excessive number of email or SNMP notifications.
+Like alerts, alarms are triggered at specific severity levels when attributes reach defined threshold values. However, unlike alerts, many alarms are triggered for events that you can safely ignore, which might result in an excessive number of email or SNMP notifications.
+
+IMPORTANT: The alarm system is deprecated and will be removed in a future release. If you are still using legacy alarms, you should fully transition to the alert system as soon as possible.
 
 When an alarm is triggered, the following actions occur:
 
-* The count of legacy alarms on the Dashboard is incremented.
 * The alarm appears on the *SUPPORT* > *Alarms (legacy)* > *Current alarms* page.
 * An email notification is sent, assuming you have configured an SMTP server and configured one or more mailing lists.
 * An SNMP notification might be sent, assuming you have configured the StorageGRID SNMP agent. (SNMP notifications are not sent for all alarms or alarm severities.)

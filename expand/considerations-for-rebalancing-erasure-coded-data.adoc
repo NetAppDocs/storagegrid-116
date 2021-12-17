@@ -31,7 +31,7 @@ When the EC rebalance procedure is complete:
 
 When the EC rebalance procedure is running, the performance of ILM operations and S3 and Swift client operations are likely to be impacted. For this reason, you should only perform this procedure in limited cases.
 
-== When not to perform an EC rebalance
+== When not to perform EC rebalance
 
 As an example of when you do not need to perform an EC rebalance, consider the following:
 
@@ -39,23 +39,23 @@ As an example of when you do not need to perform an EC rebalance, consider the f
 * The ILM policy uses a 2+1 erasure-coding rule for all objects larger than 0.2 MB and a 2-copy replication rule for smaller objects.
 * All Storage Nodes have become completely full, and the *Low Object Storage* alert has been triggered at the major severity level. The recommended action is to perform an expansion procedure to add Storage Nodes.
 +
-image::../media/used_space_before_expansion.png[Used Space Before Expansion]
+image::../media/used_space_before_expansion.png[Used space before expansion]
 
 To expand the site in this example, it is recommended that you add three or more new Storage Nodes. StorageGRID requires three Storage Nodes for 2+1 erasure coding so that it can place the two data fragments and the one parity fragment on different nodes.
 
 After you add the three Storage Nodes, the original Storage Nodes remain full, but objects can continue to be ingested into the 2+1 erasure coding scheme on the new nodes. Running the EC rebalance procedure is not recommended for this case: running the procedure will temporarily decrease performance, which might impact client operations.
 
-image::../media/used_space_after_3_node_expansion.png[Used Space After 3-Node Expansion]
+image::../media/used_space_after_3_node_expansion.png[Used space after 3-node expansion]
 
-== When to perform an EC rebalance
+== When to perform EC rebalance
 
 As an example of when you should perform the EC rebalance procedure, consider the same example, but assume that you can only add two Storage Nodes. Because 2+1 erasure coding requires at least three Storage Nodes, the new nodes cannot be used for erasure-coded data.
 
-image::../media/used_space_after_2_node_expansion.png[Used Space After 2-Node Expansion]
+image::../media/used_space_after_2_node_expansion.png[Used space after 2-node expansion]
 
 To resolve this issue and make use of the new Storage Nodes, you can run the EC rebalance procedure. When this procedure runs, StorageGRID redistributes erasure-coded data and parity fragments among all Storage Nodes at the site. In this example, when the EC rebalance procedure is complete, all five nodes are now only 60% full, and objects can continue to be ingested into the 2+1 erasure coding scheme on all Storage Nodes.
 
-image::../media/used_space_after_ec_rebalance.png[Used Space After EC Rebalance]
+image::../media/used_space_after_ec_rebalance.png[Used space aAfter EC rebalance]
 
 == Considerations for EC rebalancing
 
@@ -69,7 +69,7 @@ xref:adding-storage-capacity-for-erasure-coded-objects.adoc[Add storage capacity
 
 * Your S3 and Swift clients can tolerate lower performance for their write and read operations while the EC rebalance procedure is running.
 
-== How the EC rebalance procedure interacts with other maintenance tasks
+== How EC rebalance procedure interacts with other maintenance tasks
 
 You cannot perform certain maintenance procedures at the same time you are running the EC rebalance procedure.
 
@@ -131,7 +131,7 @@ You must terminate the EC rebalance procedure before running other maintenance p
 
 |===
 
-== How the EC rebalance procedure interacts with ILM
+== How EC rebalance procedure interacts with ILM
 
 While the EC rebalance procedure is running, avoid making ILM changes that might change the location of existing erasure-coded objects. For example, do not start using an ILM rule that has a different Erasure Coding profile. If you need to make such ILM changes, you should abort the EC rebalance procedure.
 

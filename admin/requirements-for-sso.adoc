@@ -59,7 +59,7 @@ StorageGRID uses a management interface certificate on each Admin Node to secure
 
 If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts, enterprise applications, or SP connections.
 
-xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configuring a custom server certificate for the Grid Manager and the Tenant Manager]
+xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
 
 NOTE: Using an Admin Node's default server certificate in a relying party trust, enterprise application, or SP connection is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust, enterprise application, or SP connection with the new certificate.
 
@@ -69,4 +69,4 @@ You can access an Admin Node's server certificate by logging in to the command s
 
 Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
 
-xref:controlling-access-through-firewalls.adoc[Controlling access through firewalls]
+xref:controlling-access-through-firewalls.adoc[Control access through firewalls]

@@ -593,7 +593,7 @@ The server certificate used for accessing storage API endpoints is about to expi
 
 . Select *CONFIGURATION* > *Security* > *Certificates*.
 . On the *Global* tab, select *S3 and Swift API certificate*.
-. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
+. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-management-interface-certificate[Upload a new S3 and Swift API certificate.]
 
 a|External syslog CA certificate expiration
 a|The certificate authority (CA) certificate used to sign the external syslog server certificate is about to expire.
@@ -936,22 +936,7 @@ Low read-only watermark override
 a|
 The Storage Volume Soft Read-Only Watermark Override is less than the minimum optimized watermark for a Storage Node.
 
-. Select *NODES* to go to the Nodes page.
-. For each online Storage Node, select *_Storage Node_* > *Storage* and look at the Object Stores table.
-
-. Compare the Available value for each object store (volume) to the `storagegrid_storage_volume_custom_soft_readonly_watermark` (this is the system-wide watermark setting).
-
-. If at least one volume has more space available than the system-wide watermark setting:
-
-.. Select *CONFIGURATION* > *Storage options*.
-.. Select *Configuration*.
-.. Set the *Storage Volume Soft Read-Only Watermark Override* to 0.
-
-. If no volume has more space available than the system-wide watermark setting, perform an expansion, if possible. Either add storage volumes to an existing node or add new Storage Nodes.
-
-. If you need to use the current overrides for the storage volume watermarks, silence or disable this alert.
-
-
+To learn how to resolve this alert, go to xref:../monitor/troubleshoot-low-watermark-alert.html[Troubleshoot Low read-only watermark override alerts].
 
 a|
 Low root disk capacity
@@ -1077,6 +1062,16 @@ Too few Storage Nodes with the RSM service are running or available at a site.
 Make sure that the majority of the Storage Nodes that have the RSM service at the affected site are running and in a non-error state.
 
 See "`Troubleshooting platform services`" in the xref:../admin/index.adoc[instructions for administering StorageGRID].
+
+
+a|S3 PUT Object size too large
+a|An S3 client is attempting to perform a PUT Object operation that exceeds S3 size limits.
+
+. Use the tenant ID shown in the alert details to identify the tenant account.
+. Use the IP address shown in the alert details to identify the specific S3 client.
+. Inform all client users that the maximum PUT Object operation size is 5 GiB.
+. Use multipart uploads for objects larger than 5 GiB.
+
 
 a|
 Services appliance link down on Admin Network port 1

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg5700, storage node, storage appliance, admin node, link configuration, link, configure, configuring, ethernet, port bond mode, port bond, network bond mode, network bond, link speed, vlan tagging, vlan tag
 summary: 'You can change the Ethernet link configuration of the E5700SG controller. You can change the port bond mode, the network bond mode, and the link speed.'
 ---
-= Changing the link configuration of the E5700SG controller
+= Change link configuration of E5700SG controller
 :icons: font
 :imagesdir: ../media/
 
@@ -13,7 +13,7 @@ You can change the Ethernet link configuration of the E5700SG controller. You ca
 
 .What you'll need
 
-xref:placing-appliance-into-maintenance-mode.adoc[Place the E5700SG controller into maintenance mode]. Putting a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access.
+xref:placing-appliance-into-maintenance-mode.adoc[Place E5700SG controller into maintenance mode]. Putting a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access.
 
 .About this task
 
@@ -42,7 +42,7 @@ NOTE: You might lose your connection if you made changes to the network or link 
 +
 If you made changes to the VLAN settings, the subnet for the appliance might have changed. If you need to change the IP addresses for the appliance, follow the xref:configuring-ip-addresses.adoc[Configure IP addresses] instructions.
 +
-xref:setting-ip-configuration-sg5700.adoc[Setting the IP configuration]
+xref:setting-ip-configuration-sg5700.adoc[Set IP configuration]
 
 . From the StorageGRID Appliance Installer, select *Configure Networking* > *Ping Test*.
 . Use the Ping Test tool to check connectivity to IP addresses on any networks that might have been affected by the link configuration changes you made in the  <<change_link_configuration_sg5700,Change link configuration>> step.
@@ -61,4 +61,4 @@ image::../media/nodes_menu.png[Appliance node rejoined grid]
 
 .Related information
 
-xref:configuring-network-links-sg5700.adoc[Configuring network links (SG5700)]
+xref:configuring-network-links-sg5700.adoc[Configure network links (SG5700)]

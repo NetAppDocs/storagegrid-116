@@ -26,9 +26,9 @@ To allow for continued availability, you must ensure that objects are stored red
 
 During the StorageGRID 11.6 upgrade:
 
-* All StorageGRID appliance nodes are automatically upgraded to StorageGRID Appliance Installer firmware version ??.
-* SG6060 and SGF6024 appliances are automatically upgraded to BIOS firmware version 3B03.EX and BMC firmware version BMC ??.
-* SG100 and SG1000 appliances are automatically upgraded to BIOS firmware version 3B08.EC and BMC firmware version ??.
+* All StorageGRID appliance nodes are automatically upgraded to StorageGRID Appliance Installer firmware version 3.6.
+* SG6060 and SGF6024 appliances are automatically upgraded to BIOS firmware version 3B07.EX and BMC firmware version BMC 3.93.07.
+* SG100 and SG1000 appliances are automatically upgraded to BIOS firmware version 3B12.EC and BMC firmware version 4.67.07.
 
 == Alerts might be triggered
 
@@ -39,7 +39,7 @@ For example, you might see the *Unable to communicate with node* alert when serv
 The *ILM placement unachievable* alert might be triggered when Storage Nodes are stopped during the upgrade to StorageGRID 11.6. This alert might persist for 1 day after the upgrade completes.
 
 If you use custom values for the storage volume watermarks, the *Low read-only watermark override* alert might be triggered after the upgrade is complete. 
-See xref:../upgrade/resolve-low-watermark-alert.adoc[Resolve Low read-only watermark override alerts] for details.
+See xref:../monitor/troubleshoot-low-watermark-alert.adoc[Troubleshoot Low read-only watermark override alerts] for details.
 
 After the upgrade completes, you can review any upgrade-related alerts by selecting *Recently resolved alerts* or *Current alerts* from the Grid Manager Dashboard.
 

@@ -17,11 +17,8 @@ Before you begin the software upgrade, you must obtain all required materials so
 a|
 StorageGRID upgrade files
 a|
-You must download the required files to your service laptop:
+<<Download the StorageGRID upgrade files>> to your service laptop.
 
-* *All platforms*: `.upgrade` file
-* *Any node on Red Hat Enterprise Linux or CentOS*: `.upgrade` file and RPM file (`.zip` or `.tgz`)
-* *Any node on Ubuntu or Debian*: `.upgrade` file and DEB file (`.zip` or `.tgz`)
 
 a|
 Service laptop
@@ -32,20 +29,14 @@ The service laptop must have:
 * SSH client (for example, PuTTY)
 
 a|
-Supported web browser
+xref:../admin/web-browser-requirements.adoc[Supported web browser]
 a|
-You must confirm that the web browser on the service laptop is supported for use with StorageGRID 11.6.
-
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
-
-*Note:* Browser support has changed for StorageGRID 11.6. Confirm you are using a supported version.
+Browser support typically changes for each StorageGRID release. Make sure your browser is compatible with the new StorageGRID version.
 
 a|
 Recovery Package (`.zip`) file
 a|
-Before upgrading, you should download the most recent Recovery Package file in case any problems occur during the upgrade.
-
-After you upgrade the primary Admin Node, you must xref:downloading-recovery-package.adoc[download a new copy of the Recovery Package file] and save it in a safe location. The updated Recovery Package file allows you to restore the system if a failure occurs.
+<<Download the Recovery Package>> before upgrading, and save the file in a safe location. The Recovery Package file allows you to restore the system if a failure occurs.
 
 a|
 `Passwords.txt` file
@@ -59,24 +50,91 @@ a|
 Related documentation
 a|
 
-* Release notes for StorageGRID 11.6. Be sure to read these carefully before starting the upgrade.
-* Instructions for administering StorageGRID
-* If you are upgrading a Linux deployment, the StorageGRID installation instructions for your Linux platform.
+* xref:../release-notes/index.adoc[Release notes] for StorageGRID 11.6. Be sure to read these carefully before starting the upgrade.
+* Instructions for xref:../admin/index.adoc[administering StorageGRID].
+* If you are upgrading a Linux deployment, the StorageGRID installation instructions for your Linux platform:
+** xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+** xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
 * Other StorageGRID documentation, as required.
 
 |===
-.Related information
 
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
+== Download the StorageGRID upgrade files
 
-xref:../admin/index.adoc[Administer StorageGRID]
+You must download one or more files, depending on where your nodes are installed.
 
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+* *All platforms*: `.upgrade` file
 
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+If any nodes are deployed on Linux hosts, you must also download an RPM or DEB archive, which you will install before you start the upgrade:
 
-xref:../vmware/index.adoc[Install VMware]
+* *Red Hat Enterprise Linux or CentOS*: An additional RPM file (`.zip` or `.tgz`)
+* *Ubuntu or Debian*: An additional DEB file (`.zip` or `.tgz`)
 
-xref:downloading-storagegrid-upgrade-files.adoc[Downloading the StorageGRID upgrade files]
 
-xref:../release-notes/index.adoc[Release notes]
+.Steps
+. Go to https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^].
+
+. Select the button for downloading the latest release, or select another version from the drop-down menu and select *Go*.
++
+StorageGRID software versions have this format: 11._x.y_. StorageGRID hotfixes have this format: 11._x.y.z_.
+
+. Sign in with the username and password for your NetApp account.
+. If a Caution/MustRead statement appears, read it and select the check box.
++
+This statement appears if there is a required hotfix for the release.
+
+. Read the End User License Agreement, select the check box, and then select *Accept & Continue*.
++
+The downloads page for the version you selected appears. The page contains three columns:
+
+ ** Install StorageGRID
+ ** Upgrade StorageGRID
+ ** Support files for StorageGRID Appliances
+
+. In the *Upgrade StorageGRID* column, select and download the `.upgrade` archive.
++
+Every platform requires the `.upgrade` archive.
+
+. If any nodes are deployed on Linux hosts, also download the RPM or DEB archive in either `.tgz` or `.zip` format.
++
+You must install the RPM or DEB archive on all Linux nodes before you start the upgrade.
++
+NOTE: No additional files are required for the SG100 or SG1000.
++
+NOTE: Select the `.zip` file if you are running Windows on the service laptop.
+
+* Red Hat Enterprise Linux or CentOS +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz`
+
+* Ubuntu or Debian +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz`
+
+== Download the Recovery Package
+
+The Recovery Package file allows you to restore the StorageGRID system if a failure occurs. Download the current Recovery Package file before making grid topology changes to the StorageGRID system or before upgrading software. Then, download a new copy of the Recovery Package after making grid topology changes or after upgrading software.
+
+.What you'll need
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You must have the provisioning passphrase.
+* You must have specific access permissions.
+
+.Steps
+. Select *Maintenance* > *System* > *Recovery Package*.
+. Enter the provisioning passphrase, and select *Start Download*.
++
+The download starts immediately.
+
+. When the download completes:
+ .. Open the `.zip` file.
+ .. Confirm it includes a `gpt-backup` directory and an inner `.zip` file.
+ .. Extract the inner `.zip` file.
+ .. Confirm you can open the `Passwords.txt` file.
+. Copy the downloaded Recovery Package file (`.zip`) to two safe, secure, and separate locations.
++
+IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
+
+
+

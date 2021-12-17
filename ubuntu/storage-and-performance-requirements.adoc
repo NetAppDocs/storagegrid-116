@@ -183,12 +183,10 @@ When you assign space to volume 0 of a new Storage Node, you must ensure there i
 +
 NOTE: If you use only one storage volume for a Storage Node and you assign 4 TB or less to the volume, the Storage Node might enter the Storage Read-Only state on startup and store object metadata only.
 
-* If you are installing a new StorageGRID 11.5 system and each Storage Node has 128 GB or more of RAM, you should assign 8 TB or more to volume 0. Using a larger value for volume 0 can increase the space allowed for metadata on each Storage Node.
+* If you are installing a new StorageGRID 11.6 system and each Storage Node has 128 GB or more of RAM, you should assign 8 TB or more to volume 0. Using a larger value for volume 0 can increase the space allowed for metadata on each Storage Node.
 * When configuring different Storage Nodes for a site, use the same setting for volume 0 if possible. If a site contains Storage Nodes of different sizes, the Storage Node with the smallest volume 0 will determine the metadata capacity of that site.
 
-For details, go to the instructions for administering StorageGRID and search for "`managing object metadata storage.`"
-
-xref:../admin/index.adoc[Administer StorageGRID]
+For details, go to xref:../admin//admin/managing-object-metadata-storage.adoc[Manage object metadata storage].
 
 .Related information
 

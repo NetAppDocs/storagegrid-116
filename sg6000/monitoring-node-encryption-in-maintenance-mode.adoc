@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg6000, storage node, storage appliance, kms, key management server, monitor, monitoring, status, encryption
 summary: 'If you enabled node encryption for the appliance during installation, you can monitor the node-encryption status of each appliance node, including the node-encryption state and key management server \(KMS\) details.'
 ---
-= Monitoring node encryption in maintenance mode
+= Monitor node encryption in maintenance mode (SG6000)
 :icons: font
 :imagesdir: ../media/
 
@@ -29,12 +29,12 @@ The Node Encryption page includes these three sections:
   *** To address issues with the certificates themselves, such as renewing expired certificates, see the information about KMS in the instructions for administering StorageGRID.
   *** If there are unexpected problems connecting to KMS hosts, verify that the domain name system (DNS) servers are correct and that appliance networking is correctly configured.
 +
-xref:checking-dns-server-configuration.adoc[Checking the DNS server configuration]
+xref:checking-dns-server-configuration.adoc[Check DNS server configuration]
 
   *** If you are unable to resolve your certificate issues, contact technical support.
  ** Clear KMS Key disables node encryption for the appliance, removes the association between the appliance and the key management server that was configured for the StorageGRID site, and deletes all data from the appliance. You must clear the KMS key before you can install the appliance into another StorageGRID system.
 +
-xref:clearing-key-management-server-configuration.adoc[Clearing the key management server configuration]
+xref:clearing-key-management-server-configuration.adoc[Clear key management server configuration]
 +
 IMPORTANT: Clearing the KMS configuration deletes data from the appliance, rendering it permanently inaccessible. This data is not recoverable.
 

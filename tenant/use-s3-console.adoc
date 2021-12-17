@@ -1,0 +1,41 @@
+---
+permalink: tenant/use-s3-console.html
+sidebar: sidebar
+keywords: how to use s3 console
+summary: 'You can use S3 Console to view the objects in an S3 bucket.'
+
+---
+= Use Experimental S3 Console
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You can use S3 Console to view the objects in an S3 bucket.
+
+You can also use S3 Console to do the following:
+
+* Add and delete objects, object versions, and folders
+* Rename objects
+* Move and copy objects between buckets and folders
+* Manage object tags
+* View object metadata
+* Download objects
+
+NOTE: S3 Console has not been fully tested and is marked as “experimental.” It is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects, such as when uploading objects to simulate a new ILM policy, troubleshooting ingest issues, or using proof-of-concept or non-production grids.
+
+.What you'll need
+
+* You are signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Manage Your Own S3 Credentials permission.
+* You have created a bucket.
+* You know the user's access key ID and secret access key. Optionally, you have a `.csv` file containing this information. See the xref:creating-your-own-s3-access-keys.adoc[instructions for creating access keys].
+
+.Steps
+
+. Select *Buckets*.
+. Select image:../media/s3_console_link.png[S3 Console link]. You can also access this link from the bucket details page.
+. On the Experimental S3 Console sign-in page, paste the access key ID and secret access key into the fields. Otherwise, select *Upload access keys* and select your `.csv` file.
+. Select *Sign in*.
+. Manage objects as needed.
+
+image::../media/s3_console_example.png[S3 Console example]
