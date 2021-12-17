@@ -2,31 +2,31 @@
 permalink: sg6000/replacing-one-or-both-power-supplies-in-sg6000-cn-controller.html
 sidebar: sidebar
 keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, sg6000-cn, power supply, remove, removing, removal, install, installing, installation 
-summary: 'The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power.'
+summary: 'The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be the same model and wattage.'
 ---
 = Replace one or both power supplies in the SG6000-CN controller
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be of the same wattage. 
+The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be the same model and wattage.
 
 .What you'll need
 
-* You have physically located the controller where you are replacing the power supply in the data center.
+* You have determined the physical location in the data center of the controller with the power supply to be replaced.  
 
 +
 xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
 
 * If you are replacing only one power supply:
 
-** You have unpacked the replacement power supply unit and ensured that it is of the same wattage as the power supply unit you are replacing. 
+** You have unpacked the replacement power supply unit and ensured that it is the same model and wattage as the power supply unit you are replacing. 
 
 ** You have confirmed that the other power supply is installed and running.
 
 * If you are replacing both power supplies at the same time: 
 
-** You have unpacked the replacement power supply units and ensured they have the same wattage.
+** You have unpacked the replacement power supply units and ensured they are the same model and wattage.
 
 .About this task
 
@@ -36,7 +36,7 @@ image::../media/sg6000_cn_power_supplies.gif[back of SG6000-CN with two power su
 
 .Steps
 
-. If you are replacing only one power supply, go to the <<Unplug_the_power_cord,Unplug the power cord>> step. If you are replacing both power supplies at the same time, do the following before unplugging the power cords:
+. If you are replacing only one power supply, you don't need to shut down the appliance. Go to the <<Unplug_the_power_cord,Unplug the power cord>> step. If you are replacing both power supplies at the same time, do the following before unplugging the power cords:
 
 .. xref:placing-appliance-into-maintenance-mode.adoc[Place the appliance into maintenance mode].
 
@@ -52,10 +52,10 @@ image::../media/sg6000_cn_lift_cam_handle_psu.gif[Lifting the cam handle to remo
 +
 image::../media/sg6000_cn_remove_power_supply.gif[Removing an SG6000-CN power supply]
 
-. Slide the replacement power supply into the chassis.
+. With the blue latch on the right, slide the replacement power supply into the chassis.
 
 +
-IMPORTANT: Both power supplies must be of the same wattage.
+IMPORTANT: Both power supplies must be the same model and wattage.
 
 +
 Ensure that the blue latch is on the right side when you slide the replacement unit in.
@@ -66,5 +66,6 @@ image::../media/sg6000_cn_insert_power_supply.gif[Sliding power supply into SG60
 . Push the cam handle down to secure the replacement power supply.
 . If you are replacing both power supplies, repeat steps 2 though 6 to replace the second power supply. 
 . xref:connecting-power-cords-and-applying-power-sg6000.adoc[Connect the power cords to the replaced units and apply power].
+. If you  placed the appliance in maintenance mode, exit maintenance mode. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select *Reboot into StorageGRID*.
 
 
