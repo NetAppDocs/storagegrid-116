@@ -1,15 +1,15 @@
 ---
-permalink: sg6000/replacing-one-or-both-power-supplies-in-sg6000-cn-controller.html
+permalink: sg100-1000/replacing-one-or-more-power-supplies-in-services-appliance.html
 sidebar: sidebar
-keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, sg6000-cn, power supply, remove, removing, removal, install, installing, installation 
-summary: 'The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be the same model and wattage.'
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, Replacing, replace, power supply, remove, removing, removal, install, installing, installation 
+summary: 'The services appliance has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the appliance has redundant power. Both power supplies operating in the controller must be of the same model and wattage.'
 ---
-= Replace one or both power supplies in the SG6000-CN controller
+= Replace one or both power supplies in the services appliance
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-The SG6000-CN controller has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be the same model and wattage.
+The services appliance has two power supplies for redundancy. If one of the power supplies fails, you must replace it as soon as possible to ensure that the compute controller has redundant power. Both power supplies operating in the controller must be the same model and wattage.
 
 .What you'll need
 
@@ -30,9 +30,11 @@ xref:locating-controller-in-data-center.adoc[Locating the controller in a data c
 
 .About this task
 
-The figure shows the two power supply units for the SG6000-CN controller, which are accessible from the back of the controller. Use this procedure to replace one or both of the power supplies. If you are replacing both power supplies, you must first perform a controlled shut down of the appliance. 
+The figure shows the two power supply units for the SG100, which are accessible from the back of the appliance.
 
-image::../media/sg6000_cn_power_supplies.gif[back of SG6000-CN with two power supplies]
+image::../media/sg1000_power_supplies.png[Back of SG100 with Two Power Supplies]
+
+NOTE: The power supplies for the SG1000 are identical.
 
 .Steps
 
@@ -40,7 +42,7 @@ image::../media/sg6000_cn_power_supplies.gif[back of SG6000-CN with two power su
 
 .. xref:placing-appliance-into-maintenance-mode.adoc[Place the appliance into maintenance mode].
 
-.. xref:shutting-down-sg6000-cn-controller.adoc[Shut down the appliance].
+.. xref:shut-down-sg100-and-sg1000.adoc[Shut down the appliance].
 
 [#Unplug_the_power_cord, start=2]
 . Unplug the power cord from each power supply to be replaced.
@@ -65,5 +67,5 @@ image::../media/sg6000_cn_insert_power_supply.gif[Sliding power supply into SG60
 
 . Push the cam handle down to secure the replacement power supply.
 . If you are replacing both power supplies, repeat steps 2 though 6 to replace the second power supply. 
-. xref:connecting-power-cords-and-applying-power-sg6000.adoc[Connect the power cords to the replaced units and apply power].
+. xref:connecting-power-cords-and-applying-power-sg100-and-sg1000.adoc[Connect the power cords to the replaced units and apply power].
 . If you  placed the appliance in maintenance mode, exit maintenance mode. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select *Reboot into StorageGRID*.

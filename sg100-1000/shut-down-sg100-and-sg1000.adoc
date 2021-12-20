@@ -1,0 +1,46 @@
+---
+permalink: sg100-1000/shut-down-sg100-and-sg1000.html
+sidebar: sidebar
+keywords: storagegrid, sg1000, SG100, power off, turn off, shut off, shutdown, shut down, 
+summary: 'Shut down the services appliance to perform hardware maintenance.'
+---
+= Shut down the services appliance
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Shut down the services appliance to perform hardware maintenance.
+
+.What you'll need
+
+* You have physically located the services appliance requiring maintenance in the data center.
++
+xref:locating-controller-in-data-center.adoc[Locating the controller in a data center]
+
+* The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed into maintenance mode].
+
+.About this task
+
+To prevent service interruptions, shut down the services appliance during a scheduled maintenance window when periods of service disruption are normally expected. 
+
+.Steps
+
+. When the appliance has been placed in maintenance mode, shut down the appliance:
++
+CAUTION: You must perform a controlled shut down of the appliance by entering the commands specified below. Shutting down the appliance using the power switch will result in data loss.
+
+ .. Log in to the grid node using PuTTY or another ssh client:
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+ .. Shut down the services appliance: +
+`*shutdown -h now*`
++
+This command might take up to 10 minutes to complete.
+
+. Use one of the following methods to verify that the appliance is powered off:
+ ** Look at the power LED on the front of the appliance and confirm that it is off.
+ ** Check the Power Control page of the BMC interface to confirm the appliance is off. 
