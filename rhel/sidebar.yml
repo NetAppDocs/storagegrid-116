@@ -3,13 +3,13 @@ title: Install Red Hat Enterprise Linux or CentOS
 entries:
   - title: Installation overview
     url: "/rhel/index.html"
-  - title: Plan and prepare for Red Hat Enterprise Linux or CentOS installation
+  - title: Plan and prepare for Red Hat or CentOS installation
     entries:
-    - title: Before you install
+    - title: Before you install (Red Hat or CentOS)
       url: "/rhel/planning-and-preparation.html"
     - title: Required materials
       url: "/rhel/required-materials.html"
-    - title: Download and extract the StorageGRID installation files
+    - title: Download and extract StorageGRID installation files
       url: "/rhel/downloading-and-extracting-storagegrid-installation-files.html"
     - title: CPU and RAM requirements
       url: "/rhel/cpu-and-ram-requirements.html"
@@ -19,47 +19,31 @@ entries:
       url: "/rhel/node-container-migration-requirements.html"
     - title: Deployment tools
       url: "/rhel/deployment-tools.html"
-    - title: Prepare the hosts (Red Hat Enterprise Linux or CentOS)
-      url: "/rhel/preparing-hosts.html"
+    - title: Prepare the hosts (Red Hat or CentOS)
       entries:
       - title: Install Linux
         url: "/rhel/installing-linux.html"
-      - title: Configure the host network (Red Hat Enterprise Linux or CentOS)
+      - title: Configure host network (Red Hat or CentOS)
         url: "/rhel/configuring-host-network.html"
-        entries:
-        - title: Considerations and recommendations for MAC address cloning
-          url: "/rhel/considerations-and-recommendations-for-mac-address-cloning.html"
-        - title: 'Example 1: 1-to-1 mapping to physical or virtual NICs'
-          url: "/rhel/example-1-1-to-1-mapping-to-physical-or-virtual-nics.html"
-        - title: 'Example 2: LACP bond carrying VLANs'
-          url: "/rhel/example-2-lacp-bond-carrying-vlans.html"
       - title: Configure host storage
         url: "/rhel/configuring-host-storage.html"
-      - title: Configure the Docker or Podman storage volume
+      - title: Configure Docker or Podman
         url: "/rhel/configuring-docker-storage-volume.html"
-        entries:
-        - title: Install Docker
-          url: "/rhel/installing-docker.html"
-        - title: Install Podman
-          url: "/rhel/installing-podman.html" 
       - title: Install StorageGRID host services
         url: "/rhel/installing-storagegrid-webscale-host-service.html"
-  - title: Deploy virtual grid nodes (Red Hat Enterprise Linux or CentOS)
-    url: "/rhel/deploying-virtual-grid-nodes.html"
+  - title: Deploy virtual grid nodes (Red Hat or CentOS)
     entries:
-    - title: Create node configuration files for Linux or CentOS deployments
+    - title: Create node configuration files for Red Hat or CentOS deployments
       url: "/rhel/creating-node-configuration-files.html"
-      entries:
-      - title: How grid nodes discover the primary Admin Node
-        url: "/rhel/how-grid-nodes-discover-primary-admin-node.html"
-      - title: Example node configuration files
-        url: "/rhel/example-node-configuration-files.html"
+    - title: How grid nodes discover the primary Admin Node
+      url: "/rhel/how-grid-nodes-discover-primary-admin-node.html"
+    - title: Example node configuration files
+      url: "/rhel/example-node-configuration-files.html"
     - title: Validate the StorageGRID configuration
       url: "/rhel/validating-storagegrid-configuration.html"
     - title: Start the StorageGRID host service
       url: "/rhel/starting-storagegrid-host-service.html"
-  - title: Configure the grid and complete installation (Red Hat Enterprise Linux or CentOS)
-    url: "/rhel/configuring-grid-and-completing-installation.html"
+  - title: Configure the grid and complete installation (Red Hat or CentOS)
     entries:
     - title: Navigate to the Grid Manager
       url: "/rhel/navigating-to-grid-manager.html"
@@ -81,13 +65,8 @@ entries:
       url: "/rhel/reviewing-your-configuration-and-completing-installation.html"
     - title: Post-installation guidelines
       url: "/rhel/post-installation-guidelines.html"
-  - title: Automate the installation (Red Hat Enterprise Linux or CentOS)
+  - title: Automate the installation (Red Hat or CentOS)
     url: "/rhel/automating-installation.html"
-    entries:
-    - title: Automate the installation and configuration of the StorageGRID host service
-      url: "/rhel/automating-installation-and-configuration-of-storagegrid-host-service.html"
-    - title: Automate the configuration of StorageGRID
-      url: "/rhel/automating-configuration-of-storagegrid.html"
   - title: Overview of the installation REST API
     url: "/rhel/overview-of-installation-rest-api.html"
   - title: Where to go next
