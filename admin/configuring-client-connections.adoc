@@ -22,11 +22,11 @@ NOTE: The CLB service is deprecated. Clients configured before the StorageGRID 1
 
 You can optionally configure the following features on your StorageGRID system:
 
-* *VLAN interfaces*: You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes to isolate and partition client and tenant traffic for security, flexibility, and performance. After creating a VLAN interface, you add it to a high availability (HA) group.
+* *VLAN interfaces*: You can create virtual LAN (VLAN) interfaces on Admin Nodes and Gateway Nodes to isolate and partition client and tenant traffic for security, flexibility, and performance. After creating a VLAN interface, you add it to a high availability (HA) group.
 
 * *High availability groups*: You can create an HA group of the interfaces for Gateway Nodes or Admin Nodes to create an active-backup configuration, or you can use round-robin DNS or a third-party load balancer and multiple HA groups to achieve an active-active configuration. Client connections are made using the virtual IP addresses of HA groups.
 
-* *Load Balancer service*: You enable clients to use the Load Balancer service by creating load balancer endpoints for client connections. When creating a load balancer endpoint, you specify a port number, whether the endpoint accepts HTTP or HTTPS connections, the type of client (S3 or Swift) that will use the endpoint, and the certificate to be used for HTTPS connections (if applicable).
+* *Load Balancer service*: You can enable clients to use the Load Balancer service by creating load balancer endpoints for client connections. When creating a load balancer endpoint, you specify a port number, whether the endpoint accepts HTTP or HTTPS connections, the type of client (S3 or Swift) that will use the endpoint, and the certificate to be used for HTTPS connections (if applicable).
 
 * *Untrusted Client Network*: You can make the Client Network more secure by configuring it as untrusted. When the Client Network is untrusted, clients can only connect using load balancer endpoints.
 

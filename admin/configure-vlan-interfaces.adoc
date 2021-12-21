@@ -2,14 +2,14 @@
 permalink: admin/configure-vlan-interfaces.html
 sidebar: sidebar
 keywords: how to configure vlan interfaces, vlan interfaces, trunk interface
-summary: 'You can create virtual LAN \(VLAN\) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.'
+summary: 'You can create virtual LAN \(VLAN\) interfaces on Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.'
 ---
 = Configure VLAN interfaces
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
+You can create virtual LAN (VLAN) interfaces on Admin Nodes and Gateway Nodes and use them in HA groups and load balancer endpoints to isolate and partition traffic for security, flexibility, and performance.
 
 == Considerations for VLAN interfaces
 
@@ -17,7 +17,7 @@ You can create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nodes a
 
 * A parent interface must be configured as a trunk interface at the switch.
 
-* A parent interface can be the Grid Network (eth0), the Client Network (eth2), or an additional trunk interface for the VM or bare-metal host (for example, ens236).
+* A parent interface can be the Grid Network (eth0), the Client Network (eth2), or an additional trunk interface for the VM or bare-metal host (for example, ens256).
 
 * For each VLAN interface, you can select only one parent interface for a given node. For example, you cannot use both the Grid Network interface and the Client Network interface on the same Gateway Node as the parent interface for the same VLAN.
 
@@ -75,7 +75,7 @@ The table lists the available interfaces for all Admin Nodes and Gateway Nodes a
 
 . Select one or more parent interfaces to attach this VLAN to.
 +
-For example, you might want to attach a VLAN to the Client Network (eth2) interface for a Gateway Node and an Admin Node at a site.  
+For example, you might want to attach a VLAN to the Client Network (eth2) interface for a Gateway Node and an Admin Node.  
 +
 image::../media/vlan-create-parent-interfaces.png[VLAN create wizard parent interfaces]
 
