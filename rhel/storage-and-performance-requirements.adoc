@@ -50,7 +50,7 @@ NOTE: These numbers are for each host, not for the entire grid.
 [options="header"]
 |===
 a| LUN purpose| Storage category| Number of LUNs| Minimum size/LUN
-a|Docker storage pool
+a|Container engine storage pool
 a|Container pool
 a|1
 a|Total number of nodes × 100 GB
@@ -66,7 +66,7 @@ a|3 for each Storage Node on this host
 
 *Note:* A software-based Storage Node can have 1 to 16 storage volumes; at least 3 storage volumes are recommended.
 
-a|4,000 GB See <<storage_req_SN,Storage requirements for Storage Nodes>> for more information.
+a|12 TB (4 TB/LUN) See <<storage_req_SN,Storage requirements for Storage Nodes>> for more information.
 
 a|Admin Node audit logs
 a|System data
@@ -131,7 +131,7 @@ a|90 GB
 |Storage Node
 a|Object data
 a|3
-a|4,000 GB
+a|12 TB (4 TB/LUN) 
 
 a|Admin Node
 a|`/var/local` volume
