@@ -13,7 +13,7 @@ You must understand the storage requirements for StorageGRID nodes, so you can p
 
 StorageGRID nodes require three logical categories of storage:
 
-* *Container pool* -- Performance-tier (10K SAS or SSD) storage for the node containers, which will be assigned to the Docker storage driver when you install and configure Docker on the hosts that will support your StorageGRID nodes.
+* *Container pool* -- Performance-tier (10K SAS or SSD) storage for the node containers, which will be assigned to the container engine storage driver when you install and configure the container engine on the hosts that will support your StorageGRID nodes.
 * *System data* -- Performance-tier (10K SAS or SSD) storage for per-node persistent storage of system data and transaction logs, which the StorageGRID host services will consume and map into individual nodes.
 * *Object data* -- Performance-tier (10K SAS or SSD) storage and capacity-tier (NL-SAS/SATA) bulk storage for the persistent storage of object data and object metadata.
 
@@ -119,7 +119,7 @@ Suppose you plan to deploy three nodes on the same host: one Storage Node, one A
 |===
 | Type of node| LUN purpose| Number of LUNs| LUN size
 |Storage Node
-a|Docker storage pool
+a|Container engine storage pool
 a|1
 a|300 GB (100 GB/node)
 
