@@ -64,14 +64,14 @@ Other errors are unrecoverable. For example, an unrecoverable error occurs if th
 
 If StorageGRID encounters an unrecoverable endpoint error, the Total Events (SMTT) legacy alarm is triggered in the Grid Manager. To view the Total Events legacy alarm:
 
-. Select *NODES*.
-. Select *_site_* > *_grid node_* > *Events*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
+. Select *_site_* > *_node_* > *SSM* > *Events*.
 . View Last Event at the top of the table.
 +
 Event messages are also listed in `/var/local/log/bycast-err.log`.
 
 . Follow the guidance provided in the SMTT alarm contents to correct the issue.
-. Click *Reset event counts*.
+. Select the *Configuration* tab to reset event counts.
 . Notify the tenant of the objects whose platform services messages have not been delivered.
 . Instruct the tenant to re-trigger the failed replication or notification by updating the object's metadata or tags.
 +
@@ -97,7 +97,7 @@ To view the request failure rate for platform services:
 
 . Select *NODES*.
 . Select *_site_* > *Platform Services*.
-. View the Request Error Rate chart.
+. View the Request error rate chart.
 +
 image::../media/nodes_page_site_level_platform_services.gif[Nodes Page Site-Level Platform Services]
 

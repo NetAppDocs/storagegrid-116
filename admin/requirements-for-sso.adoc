@@ -57,9 +57,7 @@ NOTE: Windows Server 2016 should be using the https://support.microsoft.com/en-u
 
 By default, StorageGRID uses a management interface certificate on each Admin Node to secure access to the Grid Manager, the Tenant Manager, the Grid Management API, and the Tenant Management API. When you configure relying party trusts (AD FS), enterprise applications (Azure), or service provider connections (PingFederate) for StorageGRID, you use the server certificate as the signature certificate for StorageGRID requests.
 
-If you have not already installed a custom server certificate for the management interface, you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts, enterprise applications, or SP connections.
-
-xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
+If you have not already xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configured a custom certificate for the management interface], you should do so now. When you install a custom server certificate, it is used for all Admin Nodes, and you can use it in all StorageGRID relying party trusts, enterprise applications, or SP connections.
 
 NOTE: Using an Admin Node's default server certificate in a relying party trust, enterprise application, or SP connection is not recommended. If the node fails and you recover it, a new default server certificate is generated. Before you can sign in to the recovered node, you must update the relying party trust, enterprise application, or SP connection with the new certificate.
 
