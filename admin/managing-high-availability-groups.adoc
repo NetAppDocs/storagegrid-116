@@ -64,7 +64,7 @@ image::../media/ha_group_primary_interface.png[HA Group Primary Interface]
 
 == What happens when the active interface fails?
 
-If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on.
+The interface that currently hosts the VIP addresses is the active interface. If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first available backup interface in the priority order. If that interface fails, the VIP addresses move to the next available backup interface, and so on.
 
 Failover can be triggered for any of these reasons:
 
