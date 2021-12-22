@@ -15,10 +15,6 @@ The Complete Multipart Upload operation completes a multipart upload of an objec
 
 Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`" evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
-== Object size
-
-The maximum size for a single PUT Object operation is 5 GiB. Use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB.
-
 == Request headers
 
 The `x-amz-storage-class` request header is supported, and affects how many object copies StorageGRID creates if the matching ILM rule specifies an Ingest Behavior of Dual commit or Balanced.
