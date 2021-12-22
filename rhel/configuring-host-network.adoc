@@ -42,7 +42,7 @@ MAC address cloning causes the container to use the MAC address of the host, and
 
 === Enabling MAC cloning
 
-In certain environments, security can be enhanced through MAC address cloning because it enables you to use a dedicated virtual NIC for the Admin Network, Grid Network, and Client Network. Having the container engine use the MAC address of the dedicated NIC on the host allows you to avoid using promiscuous mode network configurations.
+In certain environments, security can be enhanced through MAC address cloning because it enables you to use a dedicated virtual NIC for the Admin Network, Grid Network, and Client Network. Having the container use the MAC address of the dedicated NIC on the host allows you to avoid using promiscuous mode network configurations.
 
 IMPORTANT: MAC address cloning is intended to be used with virtual server installations and might not function properly with all physical appliance configurations.
 
@@ -56,7 +56,7 @@ There is one key for each network:
 * `GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC`
 * `CLIENT_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC`
 
-Setting the key to "true" causes the container engine to use the MAC address of the host's NIC. Additionally, the host will then use the MAC address of the specified container network. By default, the container address is a randomly generated address, but if you have set one using the `_NETWORK_MAC` node configuration key, that address is used instead. The host and container will always have different MAC addresses.
+Setting the key to "true" causes the container to use the MAC address of the host's NIC. Additionally, the host will then use the MAC address of the specified container network. By default, the container address is a randomly generated address, but if you have set one using the `_NETWORK_MAC` node configuration key, that address is used instead. The host and container will always have different MAC addresses.
 
 IMPORTANT: Enabling MAC cloning on a virtual host without also enabling promiscuous mode on the hypervisor might cause Linux host networking using the host's interface to stop working.
 
