@@ -1,7 +1,7 @@
 ---
 permalink: ilm/s3-authentication-details-for-cloud-storage-pool.html
 sidebar: sidebar
-keywords:
+keywords: cloud storage pool authentication, anonymous authentication, access key, secret access key
 summary: 'When you create a Cloud Storage Pool for S3, you must select the type of authentication that is required for the Cloud Storage Pool endpoint. You can specify Anonymous or enter an Access Key ID and Secret Access Key.'
 ---
 = S3: Specifying authentication details for a Cloud Storage Pool
@@ -12,11 +12,11 @@ summary: 'When you create a Cloud Storage Pool for S3, you must select the type 
 When you create a Cloud Storage Pool for S3, you must select the type of authentication that is required for the Cloud Storage Pool endpoint. You can specify Anonymous or enter an Access Key ID and Secret Access Key.
 
 .What you'll need
-* You must have entered the basic information for the Cloud Storage Pool and specified *Amazon S3* as the provider type.
+* You have entered the basic information for the Cloud Storage Pool and specified *Amazon S3* as the provider type.
 +
 image::../media/cloud_storage_pool_create_s3.png[Cloud Storage Pool Create S3]
 
-* If you are using access key authentication, you must know the Access Key ID and Secret Access Key for the external S3 bucket.
+* If you are using access key authentication, you know the Access Key ID and Secret Access Key for the external S3 bucket.
 
 .Steps
 . In the *Service Endpoint* section, provide the following information:
@@ -102,14 +102,14 @@ Use the default Grid CA certificates installed on the operating system to secure
 a|
 Use custom CA certificate
 a|
-Use a custom CA certificate. Click *Select New*, and upload the PEM-encoded CA certificate.
+Use a custom CA certificate. Select *Select New*, and upload the PEM-encoded CA certificate.
 a|
 Do not verify certificate
 a|
 The certificate used for the TLS connection is not verified.
 |===
 
-. Click *Save*.
+. Select *Save*.
 
 When you save a Cloud Storage Pool, StorageGRID does the following:
 
@@ -124,4 +124,4 @@ See the instructions for troubleshooting Cloud Storage Pools, resolve the issue,
 
 .Related information
 
-xref:troubleshooting-cloud-storage-pools.adoc[Troubleshooting Cloud Storage Pools]
+xref:troubleshooting-cloud-storage-pools.adoc[Troubleshoot Cloud Storage Pools]
