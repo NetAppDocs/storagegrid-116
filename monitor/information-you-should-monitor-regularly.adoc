@@ -11,56 +11,37 @@ summary: 'StorageGRID is a fault-tolerant, distributed storage system that is de
 [.lead]
 StorageGRID is a fault-tolerant, distributed storage system that is designed to continue operating even when errors occur, or when nodes or sites are unavailable. You must proactively monitor system health, workloads, and usage statistics so that you can take action to address potential issues before they affect the grid's efficiency or availability.
 
-A busy system generates large amounts of information. This section provides guidance about the most important information to monitor on an ongoing basis. This section contains the following sub-sections:
+A busy system generates large amounts of information. This section provides guidance about the most important information to monitor on an ongoing basis.
 
-* xref:monitoring-system-health.adoc[Monitoring system health]
-* xref:monitoring-storage-capacity.adoc[Monitoring storage capacity]
-* xref:monitoring-information-lifecycle-management.adoc[Monitoring information lifecycle management]
-* xref:monitoring-performance-networking-and-system-resources.adoc[Monitoring performance, networking, and system resources]
-* xref:monitoring-tenant-activity.adoc[Monitoring tenant activity]
-* xref:monitoring-archival-capacity.adoc[Monitoring archival capacity]
-* xref:monitoring-load-balancing-operations.adoc[Monitoring load balancing operations]
-* xref:applying-hotfixes-or-upgrading-software-if-necessary.adoc[Applying hotfixes or upgrading software if necessary]
-
-[options="header"]
+[cols="2a,1a" options="header"]
 |===
 | What to monitor| Frequency
-a|
-The system health data shown on the Grid Manager DashboardNote if anything has changed from the previous day.
 
-a|
-Daily
-a|
-Rate at which Storage Node object and metadata capacity is being consumed
-a|
-Weekly
-a|
-Information lifecycle management operations
-a|
-Weekly
-a|
-Performance, networking, and system resources:
+|The xref:monitoring-system-health.adoc[system health data] shown on the Grid Manager Dashboard. Note if anything has changed from the previous day.
+|Daily
+
+|Rate at which xref:monitoring-storage-capacity.adoc[Storage Node object and metadata capacity] is being consumed
+|Weekly
+
+|xref:monitoring-information-lifecycle-management.adoc[Information lifecycle management operations]
+|Weekly
+
+|xref:monitoring-performance-networking-and-system-resources.adoc[Performance, networking, and system resources]:
 
 * Query latency
 * Connectivity and networking
 * Node-level resources
+|Weekly
 
-a|
-Weekly
-a|
-Tenant activity
-a|
-Weekly
-a|
-Capacity of the external archival storage system
-a|
-Weekly
-a|
-Load balancing operations
-a|
-After the initial configuration and after any configuration changes
-a|
-Availability of software hotfixes and software upgrades
-a|
-Monthly
+|xref:monitoring-tenant-activity.adoc[Tenant activity]
+|Weekly
+
+|xref:monitoring-archival-capacity.adoc[Capacity of the external archival storage system]
+|Weekly
+
+|xref:monitoring-load-balancing-operations.adoc[Load balancing operations]
+|After the initial configuration and after any configuration changes
+
+|xref:applying-hotfixes-or-upgrading-software-if-necessary.adoc[Availability of software hotfixes and software upgrades]
+|Monthly
 |===
