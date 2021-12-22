@@ -13,14 +13,16 @@ In some cases, you might need to rebalance erasure-coded data after you add new 
 
 .What you'll need
 
-* You must have completed the expansion steps to add the new Storage Nodes.
-* You must have reviewed the considerations for rebalancing erasure-coded data.
+* You have completed the expansion steps to add the new Storage Nodes.
+* You have reviewed the considerations for rebalancing erasure-coded data.
 +
 xref:considerations-for-rebalancing-erasure-coded-data.adoc[Considerations for rebalancing erasure-coded data]
 +
 IMPORTANT: Only perform this procedure if the *Low Object Storage* alert has been triggered for one or more Storage Nodes at a site and you were unable to add the recommended number of new Storage Nodes.
 
-* You must have the `Passwords.txt` file.
+* You understand that replicated object data will not be moved by this procedure and that the EC rebalance procedure does not consider the replicated data usage on each Storage Node when determining where to move erasure-coded data.
+
+* You have the `Passwords.txt` file.
 
 .About this task
 
@@ -107,8 +109,7 @@ For information about specific alerts, see the monitoring and troubleshooting in
 . [[rebalance_succeed]]If the status of the EC rebalance procedure is `Success`, optionally <<review_object_storage,review object storage>> to see the updated details for the site.
 +
 Erasure-coded data should now be more balanced among the Storage Nodes at the site.
-+
-NOTE: Replicated object data is not moved by the EC rebalance procedure.
+
 
 . If you are using erasure coding at more than one site, run this procedure for all other affected sites.
 
