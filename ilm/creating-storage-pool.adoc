@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: create storage pool
 summary: 'You create storage pools to determine where the StorageGRID system stores object data and the type of storage used. Each storage pool includes one or more sites and one or more storage grades.'
 ---
-= Creating a storage pool
+= Create a storage pool
 :icons: font
 :imagesdir: ../media/
 
@@ -26,9 +26,7 @@ Storage pools determine where object data is stored. The number of storage pools
 +
 IMPORTANT: Do not include the default All Sites site in a storage pool that will be used in an Erasure Coding profile. Instead, add a separate entry to the storage pool for each site that will store erasure coded data. See <<entries,this step>> for an example.
 
-* If you have more than one storage grade, do not create a storage pool that includes different storage grades at a single site.
-+
-xref:guidelines-for-creating-storage-pools.adoc[Guidelines for creating storage pools]
+* If you have more than one storage grade, do not create a storage pool that includes different storage grades at a single site. See the xref:guidelines-for-creating-storage-pools.adoc[Guidelines for creating storage pools].
 
 .Steps
 
@@ -78,7 +76,3 @@ To remove an entry, select image:../media/icon_nms_delete_new.gif[delete icon].
 . When you are satisfied with your selections, select *Save*.
 +
 The new storage pool is added to the list.
-
-.Related information
-
-xref:guidelines-for-creating-storage-pools.adoc[Guidelines for creating storage pools]

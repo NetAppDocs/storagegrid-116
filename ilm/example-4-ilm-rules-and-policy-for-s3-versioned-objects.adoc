@@ -19,7 +19,7 @@ NOTE: If you create ILM policies to manage noncurrent object versions, be aware 
 
 .Related information
 
-* xref:how-s3-versioned-objects-are-deleted.adoc[How S3 versioned objects are deleted]
+* xref:how-objects-are-deleted.adoc[How objects are deleted]
 
 * xref:verifying-ilm-policy-with-object-metadata-lookup.adoc[Verify an ILM policy with object metadata lookup]
 
@@ -104,7 +104,3 @@ When you simulate the example policy, you would expect test objects to be evalua
 NOTE: To simulate noncurrent object versions, you must use that version's UUID or CBID. While the object is still current, you can use Object Metadata Lookup to find its UUID and CBID.
 
 * The current object version would be matched by the second rule. When the current object version has been stored for 10 years, the ILM process adds a delete marker as the current version of the object, and it makes the previous object version "`noncurrent.`" The next time ILM evaluation occurs, this noncurrent version is matched by the first rule. As a result, the copy at DC3 is purged and the two copies at DC1 and DC2 are stored for 2 more years.
-
-.Related information
-
-xref:verifying-ilm-policy-with-object-metadata-lookup.adoc[Verify an ILM policy with object metadata lookup]
