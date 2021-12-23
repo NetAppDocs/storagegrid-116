@@ -22,7 +22,7 @@ The EC rebalance procedure:
 * Only moves erasure-coded object data. It does not move replicated object data.
 * Redistributes the data within a site. It does not move data between sites.
 * Redistributes data among all Storage Nodes at a site. It does not redistribute data within storage volumes.
-* Does not evaluate replicated data usage when determining where to move erasure-coded data. That is, the procedure does not consider the replicated data usage on each Storage Node when determining where to move erasure-coded data
+* Does not consider the replicated data usage on each Storage Node when determining where to move erasure-coded data
 
 When the EC rebalance procedure is complete:
 
