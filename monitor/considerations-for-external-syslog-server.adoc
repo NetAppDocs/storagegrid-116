@@ -152,7 +152,7 @@ If you can determine values for P and K, you can estimate the volume of applicat
 
 ----
 Application Log Rate = ((1.1 x P) + (2.5 x (1 - P))) x S3 Operations Rate
-* Application Log Average Size = (P x (220 + K)) + ((1 - P) x (240 + (0.2 x K))) Bytes
+Application Log Average Size = (P x (220 + K)) + ((1 - P) x (240 + (0.2 x K))) Bytes
 ----
 
 So, for example, if your grid is sized for 1000 S3 operations per second, your workload is 50% PUTs, and your S3 accounts, bucket names, and object names average out to 90 bytes, your external syslog server should be sized to support 1800 application logs per second, and will be receiving (and typically storing) application data at a rate of 0.5 MB per second.
@@ -171,7 +171,7 @@ Application Log Average Size = (P x (240 + (0.4 x K))) + ((1 - P) x (185 + (0.9 
 
 So, for example, if your grid is sized for 1000 S3 operations per second, your workload is 50% PUTs, and your S3 accounts, bucket names, and object names average out to 90 bytes, your external syslog server should be sized to support 2250 application logs per second, and will be receiving (and typically storing) application data at a rate of 0.6 MB per second.
 
-For more inforamation on configuring audit message levels and an external syslog server, see the following:
+For more information on configuring audit message levels and an external syslog server, see the following:
 
 * xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server]
 * xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]
