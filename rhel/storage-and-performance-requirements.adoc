@@ -13,7 +13,7 @@ You must understand the storage requirements for StorageGRID nodes, so you can p
 
 StorageGRID nodes require three logical categories of storage:
 
-* *Container pool* -- Performance-tier (10K SAS or SSD) storage for the node containers, which will be assigned to the Docker storage driver when you install and configure Docker on the hosts that will support your StorageGRID nodes.
+* *Container pool* -- Performance-tier (10K SAS or SSD) storage for the node containers, which will be assigned to the container engine storage driver when you install and configure the container engine on the hosts that will support your StorageGRID nodes.
 * *System data* -- Performance-tier (10K SAS or SSD) storage for per-node persistent storage of system data and transaction logs, which the StorageGRID host services will consume and map into individual nodes.
 * *Object data* -- Performance-tier (10K SAS or SSD) storage and capacity-tier (NL-SAS/SATA) bulk storage for the persistent storage of object data and object metadata.
 
@@ -50,7 +50,7 @@ NOTE: These numbers are for each host, not for the entire grid.
 [options="header"]
 |===
 a| LUN purpose| Storage category| Number of LUNs| Minimum size/LUN
-a|Docker storage pool
+a|Container engine storage pool
 a|Container pool
 a|1
 a|Total number of nodes × 100 GB
@@ -66,7 +66,7 @@ a|3 for each Storage Node on this host
 
 *Note:* A software-based Storage Node can have 1 to 16 storage volumes; at least 3 storage volumes are recommended.
 
-a|4,000 GB See <<storage_req_SN,Storage requirements for Storage Nodes>> for more information.
+a|12 TB (4 TB/LUN) See <<storage_req_SN,Storage requirements for Storage Nodes>> for more information.
 
 a|Admin Node audit logs
 a|System data
@@ -119,7 +119,7 @@ Suppose you plan to deploy three nodes on the same host: one Storage Node, one A
 |===
 | Type of node| LUN purpose| Number of LUNs| LUN size
 |Storage Node
-a|Docker storage pool
+a|Container engine storage pool
 a|1
 a|300 GB (100 GB/node)
 
@@ -131,7 +131,7 @@ a|90 GB
 |Storage Node
 a|Object data
 a|3
-a|4,000 GB
+a|12 TB (4 TB/LUN) 
 
 a|Admin Node
 a|`/var/local` volume
