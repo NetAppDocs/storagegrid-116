@@ -15,11 +15,9 @@ When an object is ingested into the StorageGRID system, the LDR service splits t
 
 image::../media/object_segmentation_diagram.gif[Object segmentation workflow]
 
-If your StorageGRID system includes an Archive Node whose Target Type is Cloud Tiering -- Simple Storage Service and the targeted archival storage system is Amazon Web Services (AWS), the Maximum Segment Size must be less than or equal to 4.5 GiB (4,831,838,208 bytes). This upper limit ensures that the AWS PUT limitation of five GBs is not exceeded. Requests to AWS that exceed this value fail.
-
 On retrieval of a segment container, the LDR service assembles the original object from its segments and returns the object to the client.
 
-The container and segments are not necessarily stored on the same Storage Node. Container and segments can be stored on any Storage Node.
+The container and segments are not necessarily stored on the same Storage Node. Container and segments can be stored on any Storage Node within the storage pool specified in the ILM rule. 
 
 Each segment is treated by the StorageGRID system independently and contributes to the count of attributes such as Managed Objects and Stored Objects. For example, if an object stored to the StorageGRID system is split into two segments, the value of Managed Objects increases by three after the ingest is complete, as follows:
 

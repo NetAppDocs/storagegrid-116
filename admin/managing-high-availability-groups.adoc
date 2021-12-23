@@ -41,7 +41,7 @@ For instructions: xref:configure-high-availability-group.adoc[Configure high ava
 
 During normal operation, all of the VIP addresses for the HA group are added to the Primary interface, which is the first interface in the priority order. As long as the Primary interface remains available, it is used when clients connect to any VIP address for the group. That is, during normal operation, the Primary interface is the "`active`" interface for the group.
 
-Similarly, during normal operation, any lower priority interfaces for the HA group act as "`backup`" interfaces. These backup interfaces are not used unless the Primary interface becomes unavailable.
+Similarly, during normal operation, any lower priority interfaces for the HA group act as "`backup`" interfaces. These backup interfaces are not used unless the Primary (currently active) interface becomes unavailable.
 
 == View the current HA group status of a node
 
