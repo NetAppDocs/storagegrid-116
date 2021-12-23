@@ -27,14 +27,16 @@ Depending on the problem, you might want to confirm where object data is being s
 . Type the object's identifier in the *Identifier* field.
 +
 You can enter a UUID, CBID, S3 bucket/object-key, or Swift container/object-name.
+
+. If you want to look up a specific version of the object, enter the version ID (optional).
 +
 image::../media/object_lookup.png[Object Lookup page]
 
-. Click *Look Up*.
+. Select *Look Up*.
 +
 The object metadata lookup results appear. This page lists the following types of information:
 
- ** System metadata, including the object ID (UUID), the object name, the name of the container, the tenant account name or ID, the logical size of the object, the date and time the object was first created, and the date and time the object was last modified.
+ ** System metadata, including the object ID (UUID), the version ID (optional), the object name, the name of the container, the tenant account name or ID, the logical size of the object, the date and time the object was first created, and the date and time the object was last modified.
  ** Any custom user metadata key-value pairs associated with the object.
  ** For S3 objects, any object tag key-value pairs associated with the object.
  ** For replicated object copies, the current storage location of each copy.
