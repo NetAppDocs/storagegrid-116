@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring-custom-server-certificate-for-storage-node-or-clb.html
 sidebar: sidebar
-keywords:
+keywords: global S3 and Swift API certificate
 summary: 'You can replace or restore the server certificate that is used for S3 or Swift client connections to Storage Nodes, the deprecated CLB service on Gateway Nodes, or to load balancer endpoints. The replacement custom server certificate is specific to your organization.'
 ---
 = Configure S3 and Swift API certificates
@@ -17,7 +17,7 @@ By default, every Storage Node is issued a X.509 server certificate signed by th
 
 A single custom server certificate is used for all Storage Nodes, so you must specify the certificate as a wildcard or multi-domain certificate if clients need to verify the hostname when connecting to the storage endpoint. Define the custom certificate such that it matches all Storage Nodes in the grid.
 
-After completing configuration on the server, users might also need to install the Grid CA certificate in the S3 or Swift API client they will use to access the system, depending on the root certificate authority (CA) you are using.
+After completing configuration on the server, you might also need to install the Grid CA certificate in the S3 or Swift API client you will use to access the system, depending on the root certificate authority (CA) you are using.
 
 NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of global server certificate for S3 and Swift API* alert is triggered when the root server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the S3 and Swift API certificate on the Global tab.
 
@@ -104,7 +104,7 @@ You can download or copy the certificate PEM as required.
 
 == Restore the default S3 and Swift API certificate
 
-You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections Storage Node, to the deprecated Connection Load Balancer (CLB) service on a Gateway Node, and load balancer endpoints (optional).
+You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections to Storage Nodes and to the deprecated Connection Load Balancer (CLB) service on Gateway Nodes. However, you cannot use the default S3 and Swift API certificate for a load balancer endpoint.
 
 .Steps
 
@@ -112,11 +112,11 @@ You can revert to using the default S3 and Swift API certificate for S3 and Swif
 . On the *Global* tab, select *S3 and Swift API certificate*.
 . Select *Use default certificate*.
 +
-When you restore the default S3 and Swift API certificate for the object storage API endpoints, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate is used for subsequent new S3 and Swift client connections to a Storage Node, to the deprecated Connection Load Balancer (CLB) service on a Gateway Node, and load balancer endpoints (optional).
+When you restore the default version of the global S3 and Swift API certificate, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate will be used for subsequent new S3 and Swift client connections to Storage Nodes and to the deprecated Connection Load Balancer (CLB) service on Gateway Nodes. 
 
 . Select *OK* to confirm the warning and restore the default S3 and Swift API certificate.
 +
-If you have root access permission and the custom S3 and Swift API certificate was used for load balancer endpoint connections, a list is displayed of load balancer endpoints that will no longer be accessible using the default S3 and Swift API certificate.
+If you have Root access permission and the custom S3 and Swift API certificate was used for load balancer endpoint connections, a list is displayed of load balancer endpoints that will no longer be accessible using the default S3 and Swift API certificate. Go to xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints] to edit or remove the affected endpoints.
 
 . Refresh the page to ensure the web browser is updated.
 

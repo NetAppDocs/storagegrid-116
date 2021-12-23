@@ -17,11 +17,12 @@ For example, if you cannot add the recommended number of Storage Nodes in an exp
 
 EC rebalancing is a StorageGRID procedure that might be required after a Storage Node expansion. The procedure is run as a command-line script from the primary Admin Node. When you run the EC rebalance procedure, StorageGRID redistributes erasure-coded fragments among the existing and the newly expanded Storage Nodes at a site.
 
-When the EC rebalance procedure runs:
+The EC rebalance procedure:
 
-* It only moves erasure-coded object data. It does not move replicated object data.
-* It redistributes the data within a site. It does not move data between sites.
-* It redistributes data among all Storage Nodes at a site. It does not redistribute data within storage volumes.
+* Only moves erasure-coded object data. It does not move replicated object data.
+* Redistributes the data within a site. It does not move data between sites.
+* Redistributes data among all Storage Nodes at a site. It does not redistribute data within storage volumes.
+* Does not evaluate replicated data usage when determining where to move erasure-coded data. That is, the procedure does not consider the replicated data usage on each Storage Node when determining where to move erasure-coded data
 
 When the EC rebalance procedure is complete:
 

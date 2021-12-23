@@ -540,6 +540,19 @@ The StorageGRID node is unable to contact your DHCP server. The DHCP lease for t
 +
 . If you are unable to resolve the problem, contact technical support.
 
+|EC repair stalled
+|A repair job for erasure-coded data has stalled.
+
+. Ensure that there are sufficient available Storage Nodes or volumes to take the place of the failed Storage Node or volume.
+
+. Ensure that there are sufficient available Storage Nodes to satisfy the active ILM policy.
+. Ensure there are no network connectivity issues.
+. After resolving any issues, check if the alert is resolved. To see a more detailed report on the repair progress, run the following command on the primary Admin Node:
++
+`'repair-data show-ec-repair-status --repair-id <ID>'`
++
+. If you are unable to resolve the problem, contact technical support.
+
 
 |Email notification failure
 |The email notification for an alert could not be sent.
@@ -830,7 +843,7 @@ xref:../audit/index.adoc[Review audit logs]
 a|Legacy CLB load balancer activity detected
 a|Some clients might be connecting to the deprecated CLB load balancer service using the default S3 and Swift API certificate.
 
-. To simplify future upgrades, Install a custom S3 and Swift API certificate on the *Global* tab of the *Certificates* page. Then, ensure that all S3 or Swift clients who connect to the legacy CLB have the new certificate.
+. To simplify future upgrades, install a custom S3 and Swift API certificate on the *Global* tab of the *Certificates* page. Then, ensure that all S3 or Swift clients who connect to the legacy CLB have the new certificate.
 . Create one or more load balancer endpoints. Then, direct all existing S3 and Swift clients to these endpoints. Contact technical support if you need to remap the client port.
 
 Other activity might trigger this alert, including port scans. To determine if the deprecated CLB service is currently in use, view  the `storagegrid_private_clb_http_connection_established_successful` Prometheus metric.
@@ -1065,11 +1078,13 @@ See "`Troubleshooting platform services`" in the xref:../admin/index.adoc[instru
 
 
 a|S3 PUT Object size too large
-a|An S3 client is attempting to perform a PUT Object operation that exceeds S3 size limits.
+a|An S3 client is attempting to perform a PUT Object operation that exceeds the S3 size limits.
 
 . Use the tenant ID shown in the alert details to identify the tenant account.
-. Use the IP address shown in the alert details to identify the specific S3 client.
-. Inform all client users that the maximum PUT Object operation size is 5 GiB.
+. Go to *Support* > *Tools* > *Logs*, and collect the Application Logs for the Storage Node shown in the alert details. Specify a time period that is 15 minutes before and after the time of the alert.
+. Extract the downloaded archive, and navigate to the location of `bycast.log` (`/GID<grid_id>_<time_stamp>/<site_node>/<time_stamp>/grid/bycast.log`).
+. Search the contents of `bycast.log` for `"method=PUT"` and identify the IP address of the S3 client by looking at the `clientIP` field.
+. Inform all client users that the maximum PUT Object size is 5 GiB.
 . Use multipart uploads for objects larger than 5 GiB.
 
 

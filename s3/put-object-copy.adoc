@@ -17,7 +17,9 @@ Conflicting client requests, such as two clients writing to the same key, are re
 
 == Object size
 
-The maximum size for a single PUT Object operation is 5 GiB. Use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes).
+The maximum _recommended_ size for a single PUT Object operation is 5 GiB (5,368,709,120 bytes). If you have objects that are larger than 5 GiB, use multipart upload instead. 
+
+IMPORTANT: In StorageGRID 11.6, the maximum _supported_ size for a single PUT Object operation is 5 TiB (5,497,558,138,880 bytes). However, the *S3 PUT Object size too large* alert will be triggered if you attempt to upload an object that exceeds 5 GiB.
 
 == UTF-8 characters in user metadata
 
