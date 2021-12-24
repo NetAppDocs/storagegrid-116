@@ -40,6 +40,7 @@ So, for example, if your grid is sized for 1000 S3 operations per second, your e
 
 If you know more about your workload, more accurate estimations are possible. For audit logs, the most important additional variables are the percentage of S3 operations that are PUTs (vs. GETS), and the average size, in bytes, of the following S3 fields (4-character abbreviations used in the table are audit log field names):
 
+[cols="1a,1a,1a" options="header"]
 |===
 | Code| Field| Description
 a|
@@ -83,6 +84,7 @@ So, for example, if your grid is sized for 1000 S3 operations per second, your w
 === Estimation formulas for non-default audit levels
 The formulas provided for audit logs assume the use of default audit level settings (all categories set to Normal, except Storage, which is set to Error). Detailed formulas for estimating the rate and average size of audit messages for non-default audit level settings are not available. However, the following table can be used to make a rough estimate of the rate; you can use the average size formula provided for audit logs, but be aware that it is likely to result in an over-estimate because the “extra” audit messages are, on average, smaller than the default audit messages.
 
+[cols="1a,1a" options="header"]
 |===
 | Condition| Formula
 a|
@@ -110,6 +112,7 @@ So, for example, if your grid is sized for 1000 S3 operations per second, your e
 
 If you know more about your workload, more accurate estimations are possible. For application logs, the most important additional variables are the data protection strategy (replication vs. erasure coding), the percentage of S3 operations that are PUTs (vs. GETS/other), and the average size, in bytes, of the following S3 fields (4-character abbreviations used in table are audit log field names):
 
+[cols="1a,1a,1a" options="header"]
 |===
 | Code| Field| Description
 a|
