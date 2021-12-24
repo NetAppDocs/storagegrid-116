@@ -37,7 +37,7 @@ You can create virtual LAN (VLAN) interfaces on Admin Nodes and Gateway Nodes an
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission.
+* You have the Root access permission.
 * A trunk interface has been configured in the network and attached to the VM or Linux node. You know the name of the trunk interface.
 * You know the ID of the VLAN you are configuring. 
 
@@ -47,14 +47,11 @@ Your network administrator might have configured one or more trunk interfaces an
 
 You can use the Grid Manager to create VLAN interfaces that allow clients to access StorageGRID on a specific VLAN. When you create VLAN interfaces, you specify the VLAN ID and select parent (trunk) interfaces on one or more nodes.
 
-
-
 === Access the wizard
 
 . Select *CONFIGURATION* > *Network* > *VLAN interfaces*.
 
 . Select *Create*.
-
 
 === Enter details for the VLAN interfaces
 
@@ -94,7 +91,6 @@ image::../media/vlan-create-parent-interfaces.png[VLAN create wizard parent inte
 . Select *Save*.
 
 . Wait up to 5 minutes for the new interface to appear as a selection on the High availability groups page and to be listed in the *Network interfaces* table for the node (*NODES* > *_parent interface node_* > *Network*). 
-
 
 == Edit a VLAN interface
 
@@ -138,7 +134,7 @@ To avoid any disruptions in client traffic, consider doing one of the following:
 
 * Add a new VLAN interface to the HA group before removing this VLAN interface.
 * Create a new HA group that does not use this VLAN interface. 
-* If the VLAN you want to remove is currently the active interface, edit the HA group. Move the VLAN interface you want to remove to the bottom of the priority list. Wait until communication is established on the new primary interface and then remove the old interface from the HA group. Finally, delete the VLAN interface on that node.
+* If the VLAN interface you want to remove is currently the active interface, edit the HA group. Move the VLAN interface you want to remove to the bottom of the priority list. Wait until communication is established on the new primary interface and then remove the old interface from the HA group. Finally, delete the VLAN interface on that node.
 
 .Steps
 

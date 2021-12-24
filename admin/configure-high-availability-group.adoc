@@ -14,7 +14,7 @@ You can configure high availability (HA) groups to provide highly available acce
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission.
+* You have the Root access permission.
 * If you plan to use a VLAN interface in an HA group, you have created the VLAN interface. See xref:../admin/configure-vlan-interfaces.adoc[Configure VLAN interfaces].
 * If you plan to use an access interface for a node in an HA group, you have created the interface:
 
@@ -64,7 +64,7 @@ NOTE: After creating a VLAN interface, wait up to 5 minutes for the new interfac
 
 * If the HA group is for HA protection of Admin Node services, which include the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
 
-* If the HA group is for HA protection of S3 or Swift client traffic, select interfaces on either Admin Nodes or Gateway Nodes.
+* If the HA group is for HA protection of S3 or Swift client traffic, select interfaces on Admin Nodes, Gateway Nodes, or both.
 
 * If the HA group is for HA protection of the deprecated CLB service, select interfaces on Gateway Nodes only.
 
@@ -169,7 +169,7 @@ NOTE: Wait up to 15 minutes for changes to an HA group to be applied to all node
 
 You can remove one or more high availability (HA) groups at a time. However, you cannot remove an HA group if it is bound to one or more load balancer endpoints.
 
-To prevent client disruptions, update any affected S3 or Swift client applications before you remove an HA group. Update each client to connect using another IP address, for example, the virtual IP address of a different HA group or the IP address that was configured on an interface during installation.
+To prevent client disruptions, update any affected S3 or Swift client applications before you remove an HA group. Update each client to connect using another IP address, for example, the virtual IP address of a different HA group or the IP address that was configured for an interface during installation.
 
 .Steps
 

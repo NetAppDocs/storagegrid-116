@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring-storage-proxy-settings.html
 sidebar: sidebar
-keywords:
+keywords: storage proxy, non-transparent proxy, platform service endpoint
 summary: 'If you are using platform services or Cloud Storage Pools, you can configure a non-transparent proxy between Storage Nodes and the external S3 endpoints. For example, you might need a non-transparent proxy to allow platform services messages to be sent to external endpoints, such as an endpoint on the internet.'
 ---
 = Configure Storage proxy settings
@@ -13,8 +13,8 @@ If you are using platform services or Cloud Storage Pools, you can configure a n
 
 .What you'll need
 
-* You must have specific access permissions.
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have specific access permissions.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 
 .About this task
 
@@ -49,10 +49,10 @@ NOTE: Proxy changes can take up to 10 minutes to take effect.
 . Check the settings of your proxy server to ensure that platform service-related messages from StorageGRID will not be blocked.
 
 .After you finish
-If you need to disable a Storage proxy, deselect the *Enable Storage Proxy* check box, and click *Save*.
+If you need to disable a Storage proxy, deselect the *Enable Storage Proxy* check box, and select *Save*.
 
 .Related information
 
-xref:networking-and-ports-for-platform-services.adoc[Network and ports for platform services]
+* xref:networking-and-ports-for-platform-services.adoc[Network and ports for platform services]
 
-xref:../ilm/index.adoc[Manage objects with ILM]
+* xref:../ilm/index.adoc[Manage objects with ILM]

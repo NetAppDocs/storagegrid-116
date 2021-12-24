@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing-traffic-classification-policies.html
 sidebar: sidebar
-keywords: 
+keywords: qos, quality of service, traffic classification, best practices, limit traffic, monitor traffic
 summary: 'To enhance your quality-of-service \(QoS\) offerings, you can create traffic classification policies to identify and monitor different types of network traffic. These policies can assist with traffic limiting and monitoring.'
 ---
 = Manage traffic classification policies
@@ -39,7 +39,7 @@ NOTE: You can create policies to limit aggregate bandwidth or to limit per-reque
 
 == Traffic limiting
 
-When you have created traffic classification policies, traffic is limited according to the type of rules and limits you set. For aggregate or per-request bandwidth limits, the requests stream in or out at the rate you set. StorageGRID can only enforce one speed, so the most specific policy match, by matcher type, is the one enforced. For all other limit types, client requests are delayed by 250 milliseconds and receive a 503 Slow Down response for requests that exceed any matching policy limit.
+When you have created traffic classification policies, traffic can be limited according to the type of rules and limits you set. For aggregate or per-request bandwidth limits, the requests stream in or out at the rate you set. StorageGRID can only enforce one speed, so the most specific policy match, by matcher type, is the one enforced. For all other limit types, client requests are delayed by 250 milliseconds and receive a 503 Slow Down response for requests that exceed any matching policy limit.
 
 In the Grid Manager, you can view traffic charts and verify that the polices are enforcing the traffic limits you expect.
 

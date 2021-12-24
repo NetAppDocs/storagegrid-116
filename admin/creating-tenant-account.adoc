@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating-tenant-account.html
 sidebar: sidebar
-keywords:
+keywords: create tenant, tenant account
 summary: 'You must create at least one tenant account to control access to the storage in your StorageGRID system.'
 ---
 = Create a tenant account
@@ -11,15 +11,15 @@ summary: 'You must create at least one tenant account to control access to the s
 [.lead]
 You must create at least one tenant account to control access to the storage in your StorageGRID system.
 
-When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on (SSO) is enabled for StorageGRID, you also specify which federated group has Root Access permission to configure the tenant account. If StorageGRID is not using single sign-on, you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
+When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on (SSO) is enabled for StorageGRID, you also specify which federated group has Root access permission to configure the tenant account. If StorageGRID is not using single sign-on, you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
 
-The Grid Manager provides a wizard that takes you through the steps for creating a tenant account. The steps vary based on whether a xref:using-identity-federation.adoc[federated identity source] and xref:using-single-sign-on.adoc[single sign-on] are configured and whether the Grid Manager account you use to create the tenant account belongs to an admin group with the Root Access permission.
+The Grid Manager provides a wizard that takes you through the steps for creating a tenant account. The steps vary based on whether a xref:using-identity-federation.adoc[federated identity source] and xref:using-single-sign-on.adoc[single sign-on] are configured and whether the Grid Manager account you use to create the tenant account belongs to an admin group with the Root access permission.
 
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You have specific access permissions.
-* If the tenant account will use the identity source that was configured for the Grid Manager, and you want to grant Root Access permission for the tenant account to a federated group, you must have imported that federated group into the Grid Manager. You do not need to assign any Grid Manager permissions to this admin group. See the xref:managing-admin-groups.adoc[instructions for managing admin groups].
+* If the tenant account will use the identity source that was configured for the Grid Manager, and you want to grant Root access permission for the tenant account to a federated group, you have imported that federated group into the Grid Manager. You do not need to assign any Grid Manager permissions to this admin group. See the xref:managing-admin-groups.adoc[instructions for managing admin groups].
 
 .Steps
 
@@ -72,9 +72,9 @@ If the tenant will use its own identity source, select *Use own identity source*
 .SSO enabled 
 --
 
-When SSO is enabled for StorageGRID, the tenant must use the identity source that was configured for the Grid Manager. No local users can sign in. You specify which federated group has Root Access permission to configure the tenant account.
+When SSO is enabled for StorageGRID, the tenant must use the identity source that was configured for the Grid Manager. No local users can sign in. You specify which federated group has Root access permission to configure the tenant account.
 
-.. Select an existing federated group from the Grid Manager to have the initial Root Access permission for the tenant.
+.. Select an existing federated group from the Grid Manager to have the initial Root access permission for the tenant.
 +
 NOTE: If you have adequate permissions, the existing federated groups from the Grid Manager are listed when you select the field. Otherwise, enter the group's unique name.
 
@@ -103,9 +103,9 @@ NOTE: If you have adequate permissions, the existing federated groups from the G
 |
 ... Do either or both of the following:
 +
-* Select an existing federated group from the Grid Manager that should have the initial Root Access permission for the tenant.
+* Select an existing federated group from the Grid Manager that should have the initial Root access permission for the tenant.
 +
-*Note*: If you have adequate permissions, the existing federated groups from the Grid Manager are listed when you click the field. Otherwise, enter the group's unique name.
+*Note*: If you have adequate permissions, the existing federated groups from the Grid Manager are listed when you select the field. Otherwise, enter the group's unique name.
 +
 * Specify a password for the tenant’s local root user.
 
@@ -131,7 +131,7 @@ The URL for the Tenant Manager has this format:
  ** `_20-digit-account-id_` is the tenant's unique account ID
 
 +
-* If you are accessing the Grid Manager on port 443 but you did not set a password for the local root user, in the Tenants table of the Grid Manager, select *Sign in*, and enter the credentials for a user in the Root Access federated group.
+* If you are accessing the Grid Manager on port 443 but you did not set a password for the local root user, in the Tenants table of the Grid Manager, select *Sign in*, and enter the credentials for a user in the Root access federated group.
 +
 * If you are accessing the Grid Manager on port 443 and you set a password for the local root user:
 
@@ -181,7 +181,7 @@ Each link opens the corresponding page in the Tenant Manager. To complete the pa
 
 .Related information
 
-xref:controlling-access-through-firewalls.adoc[Control access through firewalls]
+* xref:controlling-access-through-firewalls.adoc[Control access through firewalls]
 
-xref:managing-platform-services-for-s3-tenant-accounts.adoc[Manage platform services for S3 tenant accounts]
+* xref:managing-platform-services-for-s3-tenant-accounts.adoc[Manage platform services for S3 tenant accounts]
 
