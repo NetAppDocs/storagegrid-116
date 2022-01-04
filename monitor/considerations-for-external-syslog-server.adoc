@@ -1,0 +1,180 @@
+---
+permalink: monitor/considerations-for-external-syslog-server.html
+sidebar: sidebar
+keywords: syslog server, external syslog server, sizing, sizing syslog server
+summary: 'Use the following guidelines to estimate what capacity your external syslog server will need.'
+---
+= Considerations for external syslog server
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+Use the following guidelines to estimate the size of the external syslog server you need.
+
+== What is an external syslog server?
+An external syslog server is a server outside of StorageGRID you can use to collect system audit information in a single location. Using an external syslog server enables you to configure the destinations of your audit information so you can reduce network traffic on your Admin Nodes and manage the information more efficiently. The types of audit information you can send to the external syslog server include: 
+
+•	Audit logs containing the audit messages generated during normal system operation
+•	Security-related events such as logins and escalations to root
+•	Application logs that might be requested if it is necessary to open a support case to troubleshoot an issue you have encountered
+
+== How to estimate the size of the external syslog server
+Normally, your grid is sized to achieve a required throughput, defined in terms of S3 operations per second, or bytes per second. For example, you may have a requirement that your grid be able to handle 1000 S3 operations per second, or 2000 MB per second of object ingests and retrievals. You should size your external syslog server in accordance with your grid's data requirements.
+
+This section provides some heuristic formulas that help you estimate the rate and average size of log messages of various types that your external syslog server needs to be capable of handling, expressed in terms of the known or desired performance characteristics of the grid (S3 operations per second).
+
+=== Use S3 operations per second in estimation formulas
+If your grid was sized for a throughput expressed in bytes per second, you must convert this sizing into S3 operations per second to use the estimation formulas. To convert grid throughput, you must first determine your average object size, which you can do using the information in existing audit logs and metrics (if any), or by using your knowledge of the applications that will use StorageGRID. For example, if your grid was sized to achieve a throughput of 2000 MB/second, and your average object size is 2 MB, then your grid was sized to be able to handle 2000 MB / 2 MB = 1000 S3 operations/second.
+
+NOTE: The formulas for external syslog server sizing in the following sections do not provide worst-case estimates; instead, they provide common-case estimates. Depending on your configuration and workload, you might see a higher or lower rate of syslog messages or volume of syslog data than the formulas predict. The formulas are meant to be used as guidelines only.
+
+=== Estimation formulas for audit logs
+If you have no information about your S3 workload other than number of S3 operations per second your grid is expected to support, you can estimate the volume of audit logs your external syslog server will have to be able to handle using the following formulas, under the assumption that you leave the Audit Levels set to the default values (all categories set to Normal, except Storage, which is set to Error):
+
+----
+Audit Log Rate = 2 x S3 Operations Rate
+Audit Log Average Size = 800 bytes
+----
+
+So, for example, if your grid is sized for 1000 S3 operations per second, your external syslog server should be sized to support 2000 syslog messages per second, and will be receiving (and typically storing) audit log data at a rate of 1.6 MB per second.
+
+If you know more about your workload, more accurate estimations are possible. For audit logs, the most important additional variables are the percentage of S3 operations that are PUTs (vs. GETS), and the average size, in bytes, of the following S3 fields (4-character abbreviations used in the table are audit log field names):
+
+[cols="1a,1a,1a" options="header"]
+|===
+| Code| Field| Description
+a|
+SACC
+a|S3 tenant account name (request sender)	
+a|The name of the tenant account for the user who sent the request. Empty for anonymous requests.
+a|
+SBAC
+a|
+S3 tenant account name
+(bucket owner)
+a|
+The tenant account name for the bucket owner. Used to identify cross-account or anonymous access.
+a|
+S3BK
+a|
+S3 Bucket	
+a|
+The S3 bucket name.
+a|
+S3KY
+a|
+S3 Key
+a|
+The S3 key name, not including the bucket name. Operations on buckets do not include this field.
+|===
+
+Let's use P to represent the percentage of S3 operations that are PUTs, where 0 ≤ P ≤ 1 (so for a 100% PUT workload, P = 1, and for a 100% GET workload, P = 0).
+
+Let's use K to represent the average size of the sum of the S3 account names, S3 bucket, and S3 key. Suppose the S3 account name is always my-s3-account (13 bytes), buckets have fixed-length names like /my/application/bucket-12345 (28 bytes), and objects have fixed-length keys like 5733a5d7-f069-41ef-8fbd-13247494c69c (36 bytes).  Then K has value 13+13+28+36 = 90.
+
+If you can determine values for P and K, you can estimate the volume of audit logs your external syslog server will have to be able to handle using the following formulas, under the assumption that you leave the Audit Levels set to the defaults (all categories set to Normal, except Storage, which is set to Error):
+
+---- 
+Audit Log Rate = ((2 x P) + (1 - P)) x S3 Operations Rate
+Audit Log Average Size = (570 + K) bytes
+----
+
+So, for example, if your grid is sized for 1000 S3 operations per second, your workload is 50% PUTs, and your S3 accounts, bucket names, and object names average out to 90 bytes, your external syslog server should be sized to support 1500 syslog messages per second, and will be receiving (and typically storing) audit log data at a rate of approximately 1 MB per second.
+
+=== Estimation formulas for non-default audit levels
+The formulas provided for audit logs assume the use of default audit level settings (all categories set to Normal, except Storage, which is set to Error). Detailed formulas for estimating the rate and average size of audit messages for non-default audit level settings are not available. However, the following table can be used to make a rough estimate of the rate; you can use the average size formula provided for audit logs, but be aware that it is likely to result in an over-estimate because the “extra” audit messages are, on average, smaller than the default audit messages.
+
+[cols="1a,1a" options="header"]
+|===
+| Condition| Formula
+a|
+Replication: Audit Levels All Set to Debug or Normal
+a|
+Audit Log Rate = 8 x S3 Operations Rate
+a|
+Erasure Coding: Audit Levels All Set to Debug or Normal
+a|
+Use same formula as for Default settings
+|===
+
+=== Estimation formulas for security events
+Security events are not correlated with S3 operations and typically produce a negligible volume of logs and data. For these reasons, no estimation formulas are provided.
+
+=== Estimation formulas for application logs
+If you have no information about your S3 workload other than the number of S3 operations per second your grid is expected to support, you can estimate the volume of applications logs your external syslog server will have to be able to handle using the following formulas:
+
+----
+Application Log Rate = 3.3 x S3 Operations Rate
+Application Log Average Size = 350 bytes
+----
+
+So, for example, if your grid is sized for 1000 S3 operations per second, your external syslog server should be sized to support 3300 application logs per second, and it will be receiving (and typically storing) application log data at a rate of about 1.2 MB per second.
+
+If you know more about your workload, more accurate estimations are possible. For application logs, the most important additional variables are the data protection strategy (replication vs. erasure coding), the percentage of S3 operations that are PUTs (vs. GETS/other), and the average size, in bytes, of the following S3 fields (4-character abbreviations used in table are audit log field names):
+
+[cols="1a,1a,1a" options="header"]
+|===
+| Code| Field| Description
+a|
+SACC
+a|S3 tenant account name (request sender)	
+a|The name of the tenant account for the user who sent the request. Empty for anonymous requests.
+a|
+SBAC
+a|
+S3 tenant account name
+(bucket owner)
+a|
+The tenant account name for the bucket owner. Used to identify cross-account or anonymous access.
+a|
+S3BK
+a|
+S3 Bucket	
+a|
+The S3 bucket name.
+a|
+S3KY
+a|
+S3 Key
+a|
+The S3 key name, not including the bucket name. Operations on buckets do not include this field.
+|===
+
+== Example sizing estimations
+This section explains example cases of how to use the estimation formulas for grids with the following methods of data protection:
+
+* Replication
+* Erasure Coding
+
+=== If you use replication for data protection
+Let P represent the percentage of S3 operations that are PUTs, where 0 ≤ P ≤ 1 (so for a 100% PUT workload, P = 1, and for a 100% GET workload, P = 0).
+
+Let K represent the average size of the sum of the S3 account names, S3 bucket, and S3 key. Suppose the S3 account name is always my-s3-account (13 bytes), buckets have fixed-length names like /my/application/bucket-12345 (28 bytes), and objects have fixed-length keys like 5733a5d7-f069-41ef-8fbd-13247494c69c (36 bytes).  Then K has value 13+13+28+36 = 90.
+
+If you can determine values for P and K, you can estimate the volume of application logs your external syslog server will have to be able to handle using the following formulas.
+
+----
+Application Log Rate = ((1.1 x P) + (2.5 x (1 - P))) x S3 Operations Rate
+Application Log Average Size = (P x (220 + K)) + ((1 - P) x (240 + (0.2 x K))) Bytes
+----
+
+So, for example, if your grid is sized for 1000 S3 operations per second, your workload is 50% PUTs, and your S3 accounts, bucket names, and object names average out to 90 bytes, your external syslog server should be sized to support 1800 application logs per second, and will be receiving (and typically storing) application data at a rate of 0.5 MB per second.
+
+=== If you use erasure coding for data protection
+Let P represent the percentage of S3 operations that are PUTs, where 0 ≤ P ≤ 1 (so for a 100% PUT workload, P = 1, and for a 100% GET workload, P = 0).
+
+Let K represent the average size of the sum of the S3 account names, S3 bucket, and S3 key. Suppose the S3 account name is always my-s3-account (13 bytes), buckets have fixed-length names like /my/application/bucket-12345 (28 bytes), and objects have fixed-length keys like 5733a5d7-f069-41ef-8fbd-13247494c69c (36 bytes). Then K has value 13+13+28+36 = 90.
+
+If you can determine values for P and K, you can estimate the volume of application logs your external syslog server will have to be able to handle using the following formulas.
+
+----
+Application Log Rate = ((3.2 x P) + (1.3 x (1 - P))) x S3 Operations Rate
+Application Log Average Size = (P x (240 + (0.4 x K))) + ((1 - P) x (185 + (0.9 x K))) Bytes
+----
+
+So, for example, if your grid is sized for 1000 S3 operations per second, your workload is 50% PUTs, and your S3 accounts, bucket names, and object names average out to 90 bytes, your external syslog server should be sized to support 2250 application logs per second, and will be receiving (and typically storing) application data at a rate of 0.6 MB per second.
+
+For more information on configuring audit message levels and an external syslog server, see the following:
+
+* xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server]
+* xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations]

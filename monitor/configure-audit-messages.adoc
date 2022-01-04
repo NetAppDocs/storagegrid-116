@@ -20,7 +20,7 @@ For more information on audit messages, see xref:../audit/index.adoc[Review audi
 
 .About this task
 
-All StorageGRID nodes generate audit messages and logs to track system activity and events. By default, audit information is sent to the audit log on Admin Nodes. You can adjust audit levels to increase or decrease the type and number of audit messages recorded in the audit log. Optionally, you can configure audit information to be sent to a remote syslog server or to be stored temporarily on the originating nodes for manual collection. By being able to configure the destinations of your audit information you can reduce network traffic on your Admin Nodes. 
+All StorageGRID nodes generate audit messages and logs to track system activity and events. By default, audit information is sent to the audit log on Admin Nodes. You can adjust audit levels to increase or decrease the type and number of audit messages recorded in the audit log. Optionally, you can configure audit information to be sent to a remote syslog server or to be stored temporarily on the originating nodes for manual collection. 
 
 == Change audit message levels in the audit log
 
@@ -150,6 +150,8 @@ A green banner appears notifying you that your audit configuration has been save
 New logs are sent to the destinations you selected. Existing logs remain in their current location.
 
 .Related information
+
+xref:../monitor/considerations-for-external-syslog-server.adoc[Considerations for external syslog server]
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
