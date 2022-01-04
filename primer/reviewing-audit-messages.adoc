@@ -20,11 +20,11 @@ During normal system operation, all StorageGRID services generate audit messages
 
 Each Admin Node stores audit messages in text files. The audit share contains the active file (audit.log) as well as compressed audit logs from previous days. Additionally, each node in your grid stores a limited amount of audit messages in a local log file (localaudit.log).
 
-For easy access to audit logs, you can configure client access to the audit share for both NFS and CIFS (deprecated). You can also access audit log files directly from the command line of the Admin Node.
+For easy access to audit logs, you can configure client access to the audit share for both NFS and CIFS (CIFS is deprecated). You can also access audit log files directly from the command line of the Admin Node.
 
 Optionally, you can send audit information stored on Admin Nodes and local nodes to an external syslog server. Using an external syslog server can make it easier to manage your audit information and reduce network traffic. See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations] for more information.
 
-For details on the audit log file, the format of audit messages, the types of audit messages, and the tools available to analyze audit messages, see the instructions for audit messages. To learn how to configure audit client access, see the instructions for administering StorageGRID.
+For details on the audit log file, the format of audit messages, the types of audit messages, and the tools available to analyze audit messages, see the xref:../audit/index.adoc[instructions for audit messages]. To learn how to configure audit client access, see xref:../admin/configuring-audit-client-access.adoc[Configure audit client access].
 
 .Related information
 
