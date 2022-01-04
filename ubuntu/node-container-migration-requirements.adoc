@@ -20,13 +20,13 @@ If you want to use the StorageGRID node migration feature, your deployment must 
 
 If you are using virtual hosts and the underlying hypervisor layer supports VM migration, you might want to use this capability instead of StorageGRID's node migration feature. In this case, you can ignore these additional requirements.
 
-Before performing migration or hypervisor maintenance, shut down the nodes gracefully. See the xref:shutting-down-grid-node.adoc[shut down grid node] instructions.
+Before performing migration or hypervisor maintenance, shut down the nodes gracefully. See the instructions for xref:../maintain/shutting-down-grid-node.adoc[shutting down a grid node].
 
 == VMware Live Migration not supported
 
 OpenStack Live Migration and VMware live vMotion cause the virtual machine clock time to jump and are not supported for grid nodes of any type. Though rare, incorrect clock times can result in loss of data or configuration updates.
 
-Cold migration is supported. In cold migration, you shut down the StorageGRID nodes before migrating them between hosts. See the xref:shutting-down-grid-node.adoc[shut down grid node] instructions.
+Cold migration is supported. In cold migration, you shut down the StorageGRID nodes before migrating them between hosts. See the instructions for xref:../maintain/shutting-down-grid-node.adoc[shutting down a grid node].
 
 == Consistent network interface names
 
@@ -40,7 +40,7 @@ The lefthand side of the arrows corresponds to the traditional interfaces as vie
 
 Now, suppose you want to migrate NodeA to Host2. If Host2 also has interfaces named bond0.1001, bond0.1002, and bond0.1003, the system will allow the move, assuming that the like-named interfaces will provide the same connectivity on Host2 as they do on Host1. If Host2 does not have interfaces with the same names, the move will not be allowed.
 
-There are many ways to achieve consistent network interface naming across multiple hosts; see "`Configuring the host network`" for some examples.
+There are many ways to achieve consistent network interface naming across multiple hosts; see xref:configuring-host-network.adoc[Configuring the host network] for some examples.
 
 == Shared storage
 

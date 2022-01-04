@@ -1,7 +1,7 @@
 ---
 permalink: admin/summary-ip-addresses-and-ports-for-client-connections.html
 sidebar: sidebar
-keywords:
+keywords: ip addresses for client, how to connect to storagegrid, ports, vip
 summary: 'Client applications can connect to StorageGRID using the IP address of a grid node and the port number of a service on that node. If high availability \(HA\) groups are configured, client applications can connect using the virtual IP address of the HA group.'
 ---
 = Summary: IP addresses and ports for client connections
@@ -153,11 +153,11 @@ NOTE: If you are viewing an Admin Node or a Gateway Node and it is the active no
 +
 The Load Balancer Endpoints page appears, showing the list of endpoints that have already been configured.
 
- .. Select an endpoint, and click *Edit endpoint*.
+ .. Select an endpoint, and select *Edit endpoint*.
 +
 The Edit Endpoint window opens and displays additional details about the endpoint.
 
- .. Confirm that the endpoint you have selected is configured for use with the correct protocol (S3 or Swift), then click *Cancel*.
+ .. Confirm that the endpoint you have selected is configured for use with the correct protocol (S3 or Swift), then select *Cancel*.
  .. Note the port number for the endpoint that you want to use for a client connection.
 +
 NOTE: If the port number is 80 or 443, the endpoint is configured only on Gateway Nodes, since those ports are reserved on Admin Nodes. All other ports are configured on both Gateway Nodes and Admin Nodes.

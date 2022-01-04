@@ -47,8 +47,9 @@ See "`Protecting against Cross-Site Request Forgery`" for information on improvi
 * *logs* -- Operations for collecting and downloading log files.
 * *metrics* -- Operations on StorageGRID metrics including instant metric queries at a single point in time and range metric queries over a range of time. The Grid Management API uses the Prometheus systems monitoring tool as the backend data source. For information about constructing Prometheus queries, see the Prometheus web site.
 +
-NOTE: Metrics that include``_private_`` in their names are intended for internal use only. These metrics are subject to change between StorageGRID releases without notice.
+NOTE: Metrics that include ``_private_`` in their names are intended for internal use only. These metrics are subject to change between StorageGRID releases without notice.
 
+* *node-details* -- Operations on node details.
 * *node-health* -- Operations on node health status.
 * *ntp-servers* -- Operations to list or update external Network Time Protocol (NTP) servers.
 * *objects* -- Operations on objects and object metadata.

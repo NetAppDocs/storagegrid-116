@@ -1,10 +1,10 @@
 ---
 permalink: ilm/c2s-s3-authentication-details-for-cloud-storage-pool.html
 sidebar: sidebar
-keywords:
+keywords: cloud storage pool with C2S, commercial cloud services, c2s access portal
 summary: 'To use the Commercial Cloud Services \(C2S\) S3 service as a Cloud Storage Pool, you must configure C2S Access Portal \(CAP\) as the authentication type, so that StorageGRID can request temporary credentials to access the S3 bucket in your C2S account.'
 ---
-= C2S S3: Specifying authentication details for a Cloud Storage Pool
+= C2S S3: Specify authentication details for a Cloud Storage Pool
 :icons: font
 :imagesdir: ../media/
 
@@ -13,12 +13,12 @@ To use the Commercial Cloud Services (C2S) S3 service as a Cloud Storage Pool, y
 
 .What you'll need
 
-* You must have entered the basic information for an Amazon S3 Cloud Storage Pool, including the service endpoint.
-* You must know the complete URL that StorageGRID will use to obtain temporary credentials from the CAP server, including all the required and optional API parameters assigned to your C2S account.
-* You must have a server CA certificate issued by an appropriate Government Certificate Authority (CA). StorageGRID uses this certificate to verify the identity of the CAP server. The server CA certificate must use PEM encoding.
-* You must have a client certificate issued by an appropriate Government Certificate Authority (CA). StorageGRID uses this certificate to identity itself to the CAP server. The client certificate must use PEM encoding and must have been granted access to your C2S account.
-* You must have a PEM-encoded private key for the client certificate.
-* If the private key for the client certificate is encrypted, you must have the passphrase for decrypting it.
+* You have entered the basic information for an Amazon S3 Cloud Storage Pool, including the service endpoint.
+* You know the complete URL that StorageGRID will use to obtain temporary credentials from the CAP server, including all the required and optional API parameters assigned to your C2S account.
+* You have a server CA certificate issued by an appropriate Government Certificate Authority (CA). StorageGRID uses this certificate to verify the identity of the CAP server. The server CA certificate must use PEM encoding.
+* You have a client certificate issued by an appropriate Government Certificate Authority (CA). StorageGRID uses this certificate to identity itself to the CAP server. The client certificate must use PEM encoding and must have been granted access to your C2S account.
+* You have a PEM-encoded private key for the client certificate.
+* If the private key for the client certificate is encrypted, you have the passphrase for decrypting it.
 
 .Steps
 . In the *Authentication* section, select *CAP (C2S Access Portal)* from the *Authentication Type* drop-down.
@@ -54,4 +54,4 @@ See the instructions for troubleshooting Cloud Storage Pools, resolve the issue,
 
 .Related information
 
-xref:troubleshooting-cloud-storage-pools.adoc[Troubleshooting Cloud Storage Pools]
+xref:troubleshooting-cloud-storage-pools.adoc[Troubleshoot Cloud Storage Pools]

@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing-high-availability-groups.html
 sidebar: sidebar
-keywords:
+keywords: manage high availability group, ha groups, admin node, gateway node, active interface, backup interface, priority order
 summary: 'You can group the network interfaces of multiple Admin and Gateway Nodes into a high availability \(HA\) group. If the active interface in the HA group fails, a backup interface can manage the workload.'
 ---
 = Manage high availability (HA) groups: Overview
@@ -41,7 +41,7 @@ For instructions: xref:configure-high-availability-group.adoc[Configure high ava
 
 During normal operation, all of the VIP addresses for the HA group are added to the Primary interface, which is the first interface in the priority order. As long as the Primary interface remains available, it is used when clients connect to any VIP address for the group. That is, during normal operation, the Primary interface is the "`active`" interface for the group.
 
-Similarly, during normal operation, any lower priority interfaces for the HA group act as "`backup`" interfaces. These backup interfaces are not used unless the Primary interface becomes unavailable.
+Similarly, during normal operation, any lower priority interfaces for the HA group act as "`backup`" interfaces. These backup interfaces are not used unless the Primary (currently active) interface becomes unavailable.
 
 == View the current HA group status of a node
 
@@ -64,7 +64,7 @@ image::../media/ha_group_primary_interface.png[HA Group Primary Interface]
 
 == What happens when the active interface fails?
 
-If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on.
+The interface that currently hosts the VIP addresses is the active interface. If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first available backup interface in the priority order. If that interface fails, the VIP addresses move to the next available backup interface, and so on.
 
 Failover can be triggered for any of these reasons:
 

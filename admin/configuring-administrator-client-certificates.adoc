@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring-administrator-client-certificates.html
 sidebar: sidebar
-keywords:
+keywords: client certificates, prometheus
 summary: 'Client certificates allow authorized external clients to access the StorageGRID Prometheus database, providing a secure way for external tools to monitor StorageGRID.'
 ---
 = Configure client certificates
@@ -21,7 +21,7 @@ NOTE: If you are using a key management server (KMS) to protect the data on spec
 
 .What you'll need
 
-* You have Root Access permission.
+* You have Root access permission.
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * To configure a client certificate:
 ** You have the IP address or domain name of the Admin Node.
@@ -204,7 +204,7 @@ Generate the certificate text to paste elsewhere.
  ** *Days valid*: Number of days after creation that the certificate expires.
 . Select *Generate*. 
 
-. Select *Client certificate details* to display the certificate metadata and certificate PEM..
+. Select *Client certificate details* to display the certificate metadata and certificate PEM.
 +
 IMPORTANT: You will not be able to view the certificate private key after you close the dialog. Copy or download the key to a safe location.
 +
@@ -277,8 +277,8 @@ If you no longer need an administrator client certificate, you can remove it.
 
 . Select the certificate you want to remove.
 
-. Select *Remove* and then confirm.
+. Select *Delete* and then confirm.
 
-NOTE: To remove up to 10 certificates, select each certificate to remove on the Client tab and then select *Actions* > *Remove*.
+NOTE: To remove up to 10 certificates, select each certificate to remove on the Client tab and then select *Actions* > *Delete*.
 
 After a certificate is removed, clients that used the certificate must specify a new client certificate to access the StorageGRID Prometheus database.

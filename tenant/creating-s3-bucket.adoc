@@ -17,7 +17,7 @@ You can use the Tenant Manager to create S3 buckets for object data. When you cr
 * You are signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You belong to a user group that has the Manage All Buckets or the Root Access permission. These permissions override the permissions settings in group or bucket policies.
 +
-NOTE: The S3 Object Lock permissions are tied to users, not buckets. The same keys can be used to access all buckets or any combination of buckets as determined by the tenant user's xref:bucket-and-group-access-policies.adoc[bucket or group access policy].
+NOTE: The S3 Object Lock permissions are tied to users, not buckets. The same keys can be used to access all buckets or any combination of buckets as determined by the tenant user's xref:../s3/bucket-and-group-access-policies.adoc[bucket or group access policy].
 
 * If you plan to create a bucket with S3 Object Lock, you have enabled the global S3 Object Lock setting for the StorageGRID system, and you have reviewed the requirements for S3 Object Lock buckets and objects.
 +
@@ -70,10 +70,8 @@ The S3 Object Lock section appears only if the global S3 Object Lock setting is 
 +
 S3 Object Lock must be enabled for the bucket before an S3 client application can specify retain-until-date and legal hold settings for the objects added to the bucket.
 +
-If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically. You can also specify a default retention mode and default retention period for the bucket that are applied to each object ingested to the bucket that does not specify its own retention settings.
-+
-xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[Use S3 Object Lock default bucket retention]
-+
+If you enable S3 Object Lock for a bucket, bucket versioning is enabled automatically. You can also xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[specify a default retention mode and default retention period for the bucket] that are applied to each object ingested to the bucket that does not specify its own retention settings.
+
 . Select *Create bucket*.
 +
 The bucket is created and added to the table on the Buckets page.

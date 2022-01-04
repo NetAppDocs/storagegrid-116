@@ -1,7 +1,7 @@
 ---
 permalink: admin/kms-considerations-and-requirements.html
 sidebar: sidebar
-keywords:
+keywords: Key Management Interoperability Protocol, kmip version, kms requirements, use key management server
 summary: 'Before configuring an external key management server \(KMS\), you must understand the considerations and requirements.'
 ---
 = Considerations and requirements for using a key management server
@@ -61,7 +61,7 @@ Storage Node
 You cannot use the configured KMS for software-based (non-appliance) nodes, including the following:
 
 * Nodes deployed as virtual machines (VMs)
-* Nodes deployed within Docker containers on Linux hosts
+* Nodes deployed within container engines on Linux hosts
 
 Nodes deployed on these other platforms can use encryption outside of StorageGRID at the datastore or disk level.
 

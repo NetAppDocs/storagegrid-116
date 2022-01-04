@@ -1,7 +1,7 @@
 ---
 permalink: admin/troubleshooting-platform-services.html
 sidebar: sidebar
-keywords:
+keywords: troubleshoot platform services, platform services endpoint error
 summary: 'The endpoints used in platform services are created and maintained by tenant users in the Tenant Manager; however, if a tenant has issues configuring or using platform services, you might be able to use the Grid Manager to help resolve the issue.'
 ---
 = Troubleshoot platform services
@@ -64,14 +64,14 @@ Other errors are unrecoverable. For example, an unrecoverable error occurs if th
 
 If StorageGRID encounters an unrecoverable endpoint error, the Total Events (SMTT) legacy alarm is triggered in the Grid Manager. To view the Total Events legacy alarm:
 
-. Select *NODES*.
-. Select *_site_* > *_grid node_* > *Events*.
+. Select *SUPPORT* > *Tools* > *Grid topology*.
+. Select *_site_* > *_node_* > *SSM* > *Events*.
 . View Last Event at the top of the table.
 +
 Event messages are also listed in `/var/local/log/bycast-err.log`.
 
 . Follow the guidance provided in the SMTT alarm contents to correct the issue.
-. Click *Reset event counts*.
+. Select the *Configuration* tab to reset event counts.
 . Notify the tenant of the objects whose platform services messages have not been delivered.
 . Instruct the tenant to re-trigger the failed replication or notification by updating the object's metadata or tags.
 +
@@ -97,7 +97,7 @@ To view the request failure rate for platform services:
 
 . Select *NODES*.
 . Select *_site_* > *Platform Services*.
-. View the Request Failure Rate chart.
+. View the Request error rate chart.
 +
 image::../media/nodes_page_site_level_platform_services.gif[Nodes Page Site-Level Platform Services]
 
@@ -113,12 +113,10 @@ NOTE: If more than one Storage Node that contains the RSM service fails at a sit
 
 == Additional troubleshooting guidance for platform services endpoints
 
-For additional information about troubleshooting platform services endpoints, see the instructions for using tenant accounts.
-
-xref:../tenant/index.adoc[Use a tenant account]
+For additional information about troubleshooting platform services endpoints, see the instructions for xref:../tenant/index.adoc[using a tenant account].
 
 .Related information
 
-xref:../monitor/index.adoc[Monitor and troubleshoot]
+* xref:../monitor/index.adoc[Monitor and troubleshoot]
 
-xref:configuring-storage-proxy-settings.adoc[Configure Storage proxy settings]
+* xref:configuring-storage-proxy-settings.adoc[Configure Storage proxy settings]

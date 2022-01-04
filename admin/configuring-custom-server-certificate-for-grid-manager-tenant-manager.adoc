@@ -1,7 +1,7 @@
 ---
 permalink: admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.html
 sidebar: sidebar
-keywords:
+keywords: custom certificates, grid manager, tenant manager, management interface certificate
 summary: 'You can replace the default StorageGRID server certificate with a single custom server certificate that allows users to access the Grid Manager and the Tenant Manager without encountering security warnings. You can also revert to the default management interface certificate or generate a new one.'
 ---
 = Configure management interface certificates
@@ -18,7 +18,7 @@ Because a single custom management interface certificate is used for all Admin N
 
 You need to complete configuration on the server, and depending on the root certificate authority (CA) you are using, users might also need to install the Grid CA certificate in the web browser they will use to access the Grid Manager and the Tenant Manager.
 
-NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert and the legacy Management Interface Certificate Expiry (MCEP) alarm are both triggered when this server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the management interface certificate on the Global tab.
+NOTE: To ensure that operations are not disrupted by a failed server certificate, the *Expiration of server certificate for Management Interface* alert is triggered when this server certificate is about to expire. As required, you can view when the current certificate expires by selecting *CONFIGURATION* > *Security* > *Certificates* and looking at the Expiration date for the management interface certificate on the Global tab.
 
 [NOTE]
 ====
@@ -128,8 +128,8 @@ If strict hostname validation is required, you can use a script to generate the 
 
 .What you'll need
 
-* You must have specific access permissions.
-* You must have the `Passwords.txt` file.
+* You have specific access permissions.
+* You have the `Passwords.txt` file.
 
 .About this task
 

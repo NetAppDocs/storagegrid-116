@@ -1,10 +1,10 @@
 ---
 permalink: rhel/configuring-docker-storage-volume.html
 sidebar: sidebar
-keywords:
-summary: 'Before installing Docker or Podman, you might need to format the storage volume and mount it.'
+keywords: container engine storage volume, Docker, Podman
+summary: 'Before installing the container engine (Docker or Podman), you might need to format the storage volume and mount it.'
 ---
-= Configure the Docker or Podman storage volume
+= Configure container engine storage volume
 :icons: font
 :imagesdir: ../media/
 
@@ -15,7 +15,7 @@ Before installing the container engine (Docker or Podman), you might need to for
 
 You can skip these steps if you plan to use local storage for the Docker or Podman storage volume and have sufficient space available on the host partition containing `/var/lib/docker` for Docker and `/var/lib/containers` for Podman.
 
-NOTE: Podman is only supported on Red Hat Enterprise Linux (RHEL).
+NOTE: Podman is supported only on Red Hat Enterprise Linux (RHEL).
 
 .Steps
 
@@ -43,3 +43,82 @@ sudo mount container-storage-volume-device /var/lib/containers
 . Add an entry for container-storage-volume-device to /etc/fstab.
 +
 This step ensures that the storage volume will remount automatically after host reboots.
+
+.[[install_Docker]]
+== Install Docker
+
+The StorageGRID system runs on Red Hat Enterprise Linux or CentOS as a collection of containers. If you have chosen to use the Docker container engine, follow these steps to install Docker. Otherwise, <<install_Podman,install Podman>>.
+
+.Steps
+
+. Install Docker by following the instructions for your Linux distribution.
++
+NOTE: If Docker is not included with your Linux distribution, you can download it from the Docker website.
+
+. Ensure Docker has been enabled and started by running the following two commands:
++
+----
+sudo systemctl enable docker
+----
++
+----
+sudo systemctl start docker
+----
+
+. Confirm you have installed the expected version of Docker by entering the following:
++
+----
+sudo docker version
+----
++
+The Client and Server versions must be 1.10.3 or later.
++
+----
+Client:
+  Version: 1.10.3
+  API version: 1.22
+  Package version: docker-common-1.10.3-46.el7.14.x86_64
+  Go version: go1.6.2
+  Git commit: 5206701-unsupported
+  Built: Mon Aug 29 14:00:01 2016
+  OS/Arch: linux/amd64
+
+Server:
+  Version: 1.10.3
+  API version: 1.22
+  Package version: docker-common-1.10.3-46.el7.14.x86_64
+  Go version: go1.6.2
+  Git commit: 5206701-unsupported
+  Built: Mon Aug 29 14:00:01 2016
+  OS/Arch: linux/amd64
+----
+
+.[[install_Podman]]
+== Install Podman
+
+The StorageGRID system runs on Red Hat Enterprise Linux as a collection of containers. If you have chosen to use the Podman container engine, follow these steps to install Podman. Otherwise, <<install_Docker,install Docker>>.
+
+NOTE: Podman is supported only on Red Hat Enterprise Linux (RHEL).
+
+.Steps
+
+. Install Podman and Podman-Docker by following the instructions for your Linux distribution.
++
+NOTE: You must also install the Podman-Docker package when you install Podman.
+
+. Confirm you have installed the expected version of Podman and Podman-Docker by entering the following:
++
+----
+sudo docker version
+----
+NOTE: The Podman-Docker package allows you to use Docker commands.
++
+The Client and Server versions must be 3.2.3 or later.
++
+----
+Version: 3.2.3
+API Version: 3.2.3
+Go Version: go1.15.7
+Built: Tue Jul 27 03:29:39 2021
+OS/Arch: linux/amd64
+----

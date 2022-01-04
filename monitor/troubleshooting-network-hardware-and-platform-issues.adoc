@@ -238,7 +238,7 @@ If a Linux node reports that it is in an orphaned state, you should:
 
 * Check logs for errors and messages.
 * Attempt to start the node again.
-* If necessary, use Docker commands to stop the existing node container.
+* If necessary, use container engine commands to stop the existing node container.
 * Restart the node.
 
 .Steps
@@ -254,9 +254,9 @@ If the node is orphaned, the response is
 Not starting ORPHANED node DC1-S1-172-16-1-172
 ----
 
-. From Linux, stop the Docker container and any controlling storagegrid-node processes:``sudo docker stop --time secondscontainer-name``
+. From Linux, stop the container engine and any controlling storagegrid-node processes. For example:``sudo docker stop --time secondscontainer-name``
 +
-For `seconds`, enter the number of seconds you want to wait for the container to stop (typically 15 minutes or less).
+For `seconds`, enter the number of seconds you want to wait for the container to stop (typically 15 minutes or less). For example:
 +
 ----
 sudo docker stop --time 900 storagegrid-DC1-S1-172-16-1-172

@@ -1,7 +1,7 @@
 ---
 permalink: admin/guidelines-for-storagegrid-networks.html
 sidebar: sidebar
-keywords:
+keywords: admin network, client network, grid network, access interface, trunk interface 
 summary: 'StorageGRID supports up to three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements.'
 ---
 = Guidelines for StorageGRID networks
@@ -13,10 +13,10 @@ You can use the Grid Manager to configure and manage StorageGRID networks and co
 
 See xref:configuring-client-connections.adoc[Configure S3 and Swift client connections] to learn how to connect S3 or Swift clients.
 
-== About StorageGRID networks
-StorageGRID supports up to three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements.
+== Default StorageGRID networks
+By default, StorageGRID supports three network interfaces per grid node, allowing you to configure the networking for each individual grid node to match your security and access requirements. 
 
-NOTE: To modify or add a network for a grid node, see xref:../maintain/index.adoc[Recovery and maintain]. For more information about network topology, see xref:../network/index.adoc[Networking guidelines].
+For more information about network topology, see xref:../network/index.adoc[Networking guidelines].
 
 === Grid Network
 
@@ -59,3 +59,13 @@ eth2
 * The Client Network does not become operational until the grid node has joined the grid
 * The Admin Network can be configured during grid node deployment to allow access to the installation user interface before the grid is fully installed.
 
+== Optional interfaces
+
+Optionally, you can add extra interfaces to a node. For example, you might want to add a trunk interface to an Admin or Gateway Node, so you can use xref:../admin/configure-vlan-interfaces.adoc[VLAN interfaces] to segregate the traffic belonging to different applications or tenants. Or, you might want to add an access interface to use in a xref:../admin/configure-high-availability-group.adoc[high availability (HA) group].
+
+To add trunk or access interfaces, see the following:
+
+* *VMware (after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
+* *RHEL or CentOS (before installing the node)*: xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files]
+** *Ubuntu or Debian (before installing the node)*: xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files]
+* *RHEL, CentOS, Ubuntu, or Debian (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]

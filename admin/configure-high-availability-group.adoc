@@ -14,7 +14,7 @@ You can configure high availability (HA) groups to provide highly available acce
 .What you'll need
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You have the Root Access permission.
+* You have the Root access permission.
 * If you plan to use a VLAN interface in an HA group, you have created the VLAN interface. See xref:../admin/configure-vlan-interfaces.adoc[Configure VLAN interfaces].
 * If you plan to use an access interface for a node in an HA group, you have created the interface:
 
@@ -62,17 +62,22 @@ NOTE: After creating a VLAN interface, wait up to 5 minutes for the new interfac
 
 * You can select only one interface for a node.
 
-* If the HA group is for HA protection of Admin Node services, which include the the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
+* If the HA group is for HA protection of Admin Node services, which include the Grid Manager and the Tenant Manager, select interfaces on Admin Nodes only.
 
-* If the HA group is for HA protection of S3 or Swift client traffic, select interfaces on either Admin Nodes or Gateway Nodes.
-
-* You cannot select an interface if its subnet value or gateway conflicts with another selected interface.
-
-* You cannot select an interface if it does not have a static IP address.
+* If the HA group is for HA protection of S3 or Swift client traffic, select interfaces on Admin Nodes, Gateway Nodes, or both.
 
 * If the HA group is for HA protection of the deprecated CLB service, select interfaces on Gateway Nodes only.
 
-* If you select interfaces on different types of nodes, an informational note appears. You are reminded that if a failover occurs, services provided by the previously active node might not be available on the newly active node. For example, a backup Gateway Node would not be able to provide HA protection of Admin Node services. Similarly, a backup Admin Node would not be able to perform all of the maintenance procedures that the primary Admin Node could provide.
+* If you select interfaces on different types of nodes, an informational note appears. You are reminded that if a failover occurs, services provided by the previously active node might not be available on the newly active node. For example, a backup Gateway Node cannot provide HA protection of Admin Node services. Similarly, a backup Admin Node cannot perform all of the maintenance procedures that the primary Admin Node can provide.
+
+* If you cannot select an interface, its check box is disabled. The tool tip provides more information. 
++
+image::../media/vlan_parent_interface_tooltip.png[VLAN Interface tool tip]
+
+* You cannot select an interface if its subnet value or gateway conflicts with another selected interface. 
+
+* You cannot select a configured interface if it does not have a static IP address.
+
 
 . Select *Continue*.
 
@@ -88,7 +93,7 @@ IMPORTANT: If the HA group provides access to the Grid Manager, you must select 
 +
 The first interface in the list is the Primary interface. The Primary interface is the active interface unless a failure occurs.
 +
-If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
+If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the highest priority interface that is available. If that interface fails, the VIP addresses move to the next highest priority interface that is available, and so on.
 
 . Select *Continue*.
 

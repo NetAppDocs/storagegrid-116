@@ -1,7 +1,7 @@
 ---
 permalink: admin/creating-traffic-classification-policies.html
 sidebar: sidebar
-keywords:
+keywords: traffic classification, network traffic, traffic limits, policy
 summary: 'You create traffic classification policies if you want to monitor, and optionally limit, network traffic by bucket, tenant, IP subnet, or load balancer endpoint. Optionally, you can set limits for a policy based on bandwidth, the number of concurrent requests, or the request rate.'
 ---
 = Create traffic classification policies
@@ -13,10 +13,10 @@ You create traffic classification policies if you want to monitor, and optionall
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Root Access permission.
-* You must have created any load balancer endpoints you want to match.
-* You must have created any tenants you want to match.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Root access permission.
+* You have created any load balancer endpoints you want to match.
+* You have created any tenants you want to match.
 
 .Steps
 
@@ -130,7 +130,7 @@ For example, if you want to create a 40 Gbps bandwidth limit for an SLA tier, cr
 +
 NOTE: To convert megabytes per second to gigabits per second, multiply by eight. For example, 125 MB/s is equivalent to 1,000 Mbps or 1 Gbps.
 
-. When you are finished creating rules and limits, click *Save*.
+. When you are finished creating rules and limits, select *Save*.
 +
 The policy is saved and is listed in the Traffic Classification Policies table.
 +
@@ -140,6 +140,6 @@ S3 and Swift client traffic is now handled according to the traffic classificati
 
 .Related information
 
-xref:managing-load-balancing.adoc[Manage load balancing]
+* xref:managing-load-balancing.adoc[Manage load balancing]
 
-xref:viewing-network-traffic-metrics.adoc[View network traffic metrics]
+* xref:viewing-network-traffic-metrics.adoc[View network traffic metrics]
