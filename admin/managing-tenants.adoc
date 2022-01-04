@@ -1,7 +1,7 @@
 ---
 permalink: admin/managing-tenants.html
 sidebar: sidebar
-keywords: 
+keywords: manage tenants, tenant account, what is a tenant
 summary: 'As a grid administrator, you create and manage the tenant accounts that S3 and Swift clients use to store and retrieve objects, monitor storage usage, and manage the actions that clients are able to perform using your StorageGRID system.'
 ---
 = Manage tenants
@@ -36,7 +36,7 @@ When you create a tenant account, you specify the following information:
 +
 NOTE: A tenant's storage quota represents a logical amount (object size), not a physical amount (size on disk).
 
-* If identity federation is enabled for the StorageGRID system, which federated group has Root Access permission to configure the tenant account.
+* If identity federation is enabled for the StorageGRID system, which federated group has Root access permission to configure the tenant account.
 * If single sign-on (SSO) is not in use for the StorageGRID system, whether the tenant account will use its own identity source or share the grid's identity source, and the initial password for the tenant's local root user.
 
 After a tenant account is created, you can perform the following tasks:
@@ -69,7 +69,7 @@ After a Swift tenant account is created, the tenant's root user can access the T
 * Setting up identity federation (unless the identity source is shared with the grid), and creating local groups and users
 * Monitoring storage usage
 
-IMPORTANT: Swift users must have the Root Access permission to access the Tenant Manager. However, the Root Access permission does not allow users to authenticate into the Swift REST API to create containers and ingest objects. Users must have the Swift Administrator permission to authenticate into the Swift REST API.
+IMPORTANT: Swift users must have the Root access permission to access the Tenant Manager. However, the Root access permission does not allow users to authenticate into the Swift REST API to create containers and ingest objects. Users must have the Swift Administrator permission to authenticate into the Swift REST API.
 
 .Related information
 
