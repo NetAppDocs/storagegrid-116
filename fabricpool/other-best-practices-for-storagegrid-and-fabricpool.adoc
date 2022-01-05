@@ -19,6 +19,11 @@ When configuring StorageGRID, you can optionally enable the global *Stored Objec
 
 When configuring StorageGRID, do not enable the global *Compress Stored Objects* setting (*CONFIGURATION* > *System* > *Grid options*). The data that is tiered from FabricPool to StorageGRID is already compressed. Enabling *Compress Stored Objects* will not further reduce an object's size.
 
+== Consistency level
+
+In FabricPool configurations, the recommended bucket consistency level is "`read-after-new-write.`" The "`available`" consistency level is not recommended. See xref:../tenant/changing-consistency-level.adoc[Changing the consistency level].
+
+
 == FabricPool tiering
 
 If the StorageGRID node uses storage assigned from a NetApp AFF system, confirm that the volume does not have a FabricPool tiering policy enabled. For example, if a StorageGRID node is running on a VMware host, ensure the volume backing the datastore for the StorageGRID node does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
