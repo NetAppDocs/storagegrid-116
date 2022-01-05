@@ -13,7 +13,7 @@ To ensure that adequate space is available for object metadata, you might need t
 
 StorageGRID reserves space for object metadata on volume 0 of each Storage Node. Three copies of all object metadata are maintained at each site, evenly distributed across all Storage Nodes.
 
-You can use the Grid Manager to monitor the metadata capacity of Storage Nodes and to estimate how quickly metadata capacity is being consumed. In addition, the *Low metadata storage* alert is triggered for a Storage Node when the used metadata space reaches certain thresholds. See the instructions for monitoring and troubleshooting StorageGRID for details.
+You can use the Grid Manager to monitor the metadata capacity of Storage Nodes and to estimate how quickly metadata capacity is being consumed. In addition, the *Low metadata storage* alert is triggered for a Storage Node when the used metadata space reaches certain thresholds. See the instructions for xref:../monitor/index.adoc[monitoring and troubleshooting].
 
 Note that a grid's object metadata capacity might be consumed faster than its object storage capacity, depending on how you use the grid. For example, if you typically ingest large numbers of small objects or add large quantities of user metadata or tags to objects, you might need to add Storage Nodes to increase metadata capacity even though sufficient object storage capacity remains.
 
@@ -23,7 +23,7 @@ Before adding Storage Nodes to increase metadata capacity, review the following 
 
 * Assuming sufficient object storage capacity is available, having more space available for object metadata increases the number of objects you can store in your StorageGRID system.
 * You can increase a grid's metadata capacity by adding one or more Storage Nodes to each site.
-* The actual space reserved for object metadata on any given Storage Node depends on the Metadata Reserved Space storage option (system-wide setting), the amount of RAM allocated to the node, and the size of the node's volume 0. See the instructions for administering StorageGRID for more information.
+* The actual space reserved for object metadata on any given Storage Node depends on the Metadata Reserved Space storage option (system-wide setting), the amount of RAM allocated to the node, and the size of the node's volume 0. See the instructions for xref:../admin/index.adoc[administering StorageGRID].
 * You cannot increase metadata capacity by adding storage volumes to existing Storage Nodes, because metadata is stored only on volume 0.
 * You cannot increase metadata capacity by adding a new site.
 * StorageGRID keeps three copies of all object metadata at every site. For this reason, the metadata capacity for your system is limited by the metadata capacity of your smallest site.
@@ -39,8 +39,6 @@ The right side of the figure shows how the existing metadata is redistributed af
 
 image::../media/metadata_space_after_expansion.png[]
 
-*Related information*
 
-xref:../admin/index.adoc[Administer StorageGRID]
 
-xref:../monitor/index.adoc[Monitor and troubleshoot]
+

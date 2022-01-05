@@ -13,9 +13,11 @@ summary: 'If a Storage Node includes fewer than 16 storage volumes, you can incr
 If a Storage Node includes fewer than 16 storage volumes, you can increase its capacity by using VMware vSphere to add volumes.
 
 .What you'll need
-* You must have access to the instructions for installing StorageGRID for VMware deployments.
-* You must have the `Passwords.txt` file.
-* You must have specific access permissions.
+* You have access to the instructions for installing StorageGRID for VMware deployments.
+** xref:../vmware/index.adoc[Install VMware]
+
+* You have the `Passwords.txt` file.
+* You have specific access permissions.
 
 IMPORTANT: Do not attempt to add storage volumes to a Storage Node while a software upgrade, recovery procedure, or another expansion procedure is active.
 
@@ -53,7 +55,7 @@ This script finds any new storage volumes and prompts you to format them.
  .. If any of the volumes have previously been formatted, decide if you want to reformat them.
   *** Enter *y* to reformat.
   *** Enter *n* to skip reformatting.
-The storage volumes are formatted.
+
  .. When asked, enter *y* to stop storage services.
 +
 The storage services are stopped, and the `setup_rangedbs.sh` script runs automatically. After the volumes are ready for use as rangedbs, the services start again.
@@ -74,7 +76,7 @@ The status is updated automatically.
  .. Select *_site_* > *_Storage Node_* > *LDR* > *Storage*.
  .. Select the *Configuration* tab and then the *Main* tab.
  .. If the *Storage State - Desired* drop-down list is set to Read-only or Offline, select *Online*.
- .. Click *Apply Changes*.
+ .. Select *Apply Changes*.
 . To see the new object stores:
  .. Select *NODES* > *_site_* > *_Storage Node_* > *Storage*.
  .. View the details in the *Object Stores* table.
@@ -82,6 +84,4 @@ The status is updated automatically.
 .Result
 You can use the expanded capacity of the Storage Nodes to save object data.
 
-.Related information
 
-xref:../vmware/index.adoc[Install VMware]

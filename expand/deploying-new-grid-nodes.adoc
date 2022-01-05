@@ -19,15 +19,13 @@ You must deploy a virtual machine in VMware vSphere for each VMware node you wan
 
 .Steps
 
-. Deploy the new grid node as a virtual machine and connect it to one or more StorageGRID networks.
+. xref:../vmware/deploying-storagegrid-node-as-virtual-machine.adoc[Deploy the new node as virtual machine] and connect it to one or more StorageGRID networks.
 +
 When you deploy the node, you can optionally remap node ports or increase CPU or memory settings.
-+
-xref:../vmware/deploying-storagegrid-node-as-virtual-machine.adoc[Deploy StorageGRID node as virtual machine]
 
-. After you have deployed all new VMware nodes, return to these instructions to perform the expansion procedure.
-+
-xref:performing-expansion.adoc[Perform expansion]
+. After you have deployed all new VMware nodes, xref:performing-expansion.adoc[perform the expansion procedure].
+
+
 
 == Linux: Deploy grid nodes
 
@@ -36,14 +34,18 @@ You can deploy grid nodes on new Linux hosts or on existing Linux hosts. If you 
 .What you'll need
 
 * You have the instructions for installing StorageGRID for your version of Linux, and you have reviewed the hardware and storage requirements.
+
+** xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+** xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+
 * If you plan to deploy new grid nodes on existing hosts, you have confirmed the existing hosts have enough CPU, RAM, and storage capacity for the additional nodes.
 * You have a plan to minimize failure domains. For example, you should not deploy all Gateway Nodes on a single physical host.
 +
 IMPORTANT: In a production deployment, do not run more than one Storage Node on a single physical or virtual host. Using a dedicated host for each Storage Node provides an isolated failure domain.
 
 * If the StorageGRID node uses storage assigned from a NetApp AFF system, confirm that the volume does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
-+
-IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
 
 .Steps
 
@@ -55,15 +57,9 @@ IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to 
 
 .After you finish
 
-After deploying all new grid nodes, you can perform the expansion.
+After deploying all new grid nodes, you can xref:performing-expansion.adoc[perform the expansion].
 
-*Related information*
 
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-xref:performing-expansion.adoc[Perform expansion]
 
 == Appliances: Deploying Storage, Gateway, or non-primary Admin Nodes
 
@@ -74,17 +70,18 @@ To install the StorageGRID software on an appliance node, you use the StorageGRI
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * You have used the StorageGRID Appliance Installer to complete all of the "`configuring the hardware`" steps in the appliance installation and maintenance instructions.
 +
-Configuring appliance hardware includes the required steps for configuring StorageGRID connections (network links and IP addresses) as well the optional steps for enabling node encryption, changing the RAID mode, and remapping network ports.
-
-* All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
-* The StorageGRID Appliance Installer version on the replacement appliance matches the software version of your StorageGRID system. (If the versions do not match, you must upgrade the StorageGRID Appliance Installer firmware.)
-+
-For instructions, see the appliance installation and maintenance instructions.
-+
 ** xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
 ** xref:../sg5600/index.adoc[SG5600 storage appliances]
 ** xref:../sg5700/index.adoc[SG5700 storage appliances]
 ** xref:../sg6000/index.adoc[SG6000 storage appliances]
+
++
+Configuring appliance hardware includes the required steps for configuring StorageGRID connections (network links and IP addresses) as well the optional steps for enabling node encryption, changing the RAID mode, and remapping network ports.
+
+* All Grid Network subnets listed on the IP Configuration page of the StorageGRID Appliance Installer have been defined in the Grid Network Subnet List on the primary Admin Node.
+
+* The StorageGRID Appliance Installer firmware on the replacement appliance is compatible with the StorageGRID software version currently running on your grid. For example, version 3.6 of the StorageGRID Appliance Installer is compatible with version 11.6 of StorageGRID. (If the versions are not compatible, you must upgrade the StorageGRID Appliance Installer firmware.)
+
 * You have a service laptop with a xref:../admin/web-browser-requirements.adoc[supported web browser].
 * You know one of the IP addresses assigned to the appliance's compute controller. You can use the IP address for any attached StorageGRID network.
 
@@ -139,7 +136,7 @@ a|
 +
 |===
 
-. In the *Node name* field, enter the name you want to use for this appliance node, and click *Save*.
+. In the *Node name* field, enter the name you want to use for this appliance node, and select *Save*.
 +
 The node name is assigned to this appliance node in the StorageGRID system. It is shown on the Nodes page (Overview tab) in the Grid Manager. If required, you can change the name when you approve the node.
 
@@ -147,7 +144,7 @@ The node name is assigned to this appliance node in the StorageGRID system. It i
 +
 If the *Start Installation* button is not enabled, you might need to change the network configuration or port settings. For instructions, see the installation and maintenance instructions for your appliance.
 
-. From the StorageGRID Appliance Installer home page, click *Start Installation*.
+. From the StorageGRID Appliance Installer home page, select *Start Installation*.
 +
 image::../media/appliance_installer_home_start_installation_enabled.gif[This image is described by the surrounding text.]
 +
@@ -157,7 +154,7 @@ The Current state changes to "`Installation is in progress,`" and the Monitor In
 +
 NOTE: If you need to deploy multiple appliance Storage Nodes at one time, you can automate the installation process by using the configure-sga.py appliance installation script.
 
-. If you need to manually access the Monitor Installation page, click *Monitor Installation* from the menu bar.
+. If you need to manually access the Monitor Installation page, select *Monitor Installation* from the menu bar.
 +
 The Monitor Installation page shows the installation progress.
 +
@@ -185,12 +182,3 @@ NOTE: Wait until all nodes you added in this expansion are ready for approval be
 +
 image::../media/monitor_installation_install_sgws.gif[This image is explained by the surrounding text.]
 
-*Related information*
-
-xref:../sg5700/index.adoc[SG5700 storage appliances]
-
-xref:../sg5600/index.adoc[SG5600 storage appliances]
-
-xref:../sg6000/index.adoc[SG6000 storage appliances]
-
-xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]

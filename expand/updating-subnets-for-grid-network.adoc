@@ -15,14 +15,14 @@ StorageGRID maintains a list of the network subnets used to communicate between 
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Maintenance or Root Access permission.
-* You must have the provisioning passphrase.
-* You must have the network addresses, in CIDR notation, of the subnets you want to configure.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Maintenance or Root access permission.
+* You have the provisioning passphrase.
+* You have the network addresses, in CIDR notation, of the subnets you want to configure.
 
 .About this task
 
-If you are performing an expansion activity that includes adding a new subnet, you must add the new Grid subnet before you start the expansion procedure.
+If any of the new nodes has a Grid Network IP address on a subnet not previously used, you must xref:updating-subnets-for-grid-network.adoc[add the new subnet] to the Grid network subnet list before starting the expansion. Otherwise, you will have to cancel the expansion, add the new subnet, and start the procedure again.
 
 .Steps
 
@@ -30,10 +30,10 @@ If you are performing an expansion activity that includes adding a new subnet, y
 +
 image::../media/maintenance_grid_networks_page.gif[This image is explained by the surrounding text.]
 
-. In the Subnets list, click the plus sign to add a new subnet in CIDR notation.
+. In the Subnets list, select the plus sign to add a new subnet in CIDR notation.
 +
 For example, enter 10.96.104.0/22.
 
-. Enter the provisioning passphrase, and click *Save*.
+. Enter the provisioning passphrase, and select *Save*.
 +
 The subnets you have specified are configured automatically for your StorageGRID system.

@@ -11,7 +11,7 @@ summary: 'If your ILM policy includes a rule that makes erasure-coded copies, yo
 [.lead]
 If your ILM policy includes a rule that makes erasure-coded copies, you must plan where to add new storage and when to add new storage. The amount of storage you add and the timing of the addition can affect the grid's usable storage capacity.
 
-The first step in planning a storage expansion is to examine the rules in your ILM policy that create erasure-coded objects. Because StorageGRID creates _k+m_ fragments for every erasure-coded object and stores each fragment on a different Storage Node, you must ensure that at least _k+m_ Storage Nodes have space for new erasure-coded data after the expansion. If the erasure-coding profile provides site-loss protection, you must add storage to each site.
+The first step in planning a storage expansion is to examine the rules in your ILM policy that create erasure-coded objects. Because StorageGRID creates _k+m_ fragments for every erasure-coded object and stores each fragment on a different Storage Node, you must ensure that at least _k+m_ Storage Nodes have space for new erasure-coded data after the expansion. If the erasure-coding profile provides site-loss protection, you must add storage to each site. See xref:../ilm/index.adoc[Manage objects with ILM].
 
 The number of nodes you need to add also depends on how full the existing nodes are when you perform the expansion.
 
@@ -36,12 +36,8 @@ The following examples can help you understand the impact of the erasure-coding 
 
 Similar considerations affect the calculations for an ILM policy that stores both replicated and erasure-coded data and the calculations for a grid that has been previously expanded.
 
-[IMPORTANT]
-====
-The examples in this section represent the best practices for adding storage capacity to a StorageGRID system. If you are unable to add the recommended number of nodes, you might need to run the EC rebalance procedure to allow additional erasure-coded objects to be stored.
+IMPORTANT: The examples in this section represent the best practices for adding storage capacity to a StorageGRID system. If you are unable to add the recommended number of nodes, you might need to run the EC rebalance procedure to allow additional erasure-coded objects to be stored. See xref:considerations-for-rebalancing-erasure-coded-data.adoc[Rebalance erasure-coded data].
 
-xref:considerations-for-rebalancing-erasure-coded-data.adoc[Rebalance erasure-coded data]
-====
 
 == Example 1: Expand one-site grid that uses 2+1 erasure coding
 
@@ -66,7 +62,7 @@ After the expansion is complete, when objects are erasure-coded, all fragments w
 +
 image::../media/used_space_after_3_node_expansion.png[Used Space After 3-Node Expansion]
 +
-NOTE: This expansion adds _k+m_ nodes. Adding four nodes is recommended for redundancy. If you add only _k+m_ expansion Storage Nodes when existing nodes are 100% full, all new objects must be stored on the expansion nodes. If any of the new nodes become unavailable, even temporarily, StorageGRID cannot meet ILM requirements.
+NOTE: This expansion adds _k+m_ nodes. Adding four nodes is recommended for redundancy. If you add only _k+m_ expansion Storage Nodes when existing nodes are 100% full, all new objects are stored on the expansion nodes. If any of the new nodes become unavailable, even temporarily, StorageGRID cannot meet ILM requirements.
 
 * *Add two 100 TB Storage Nodes, when the existing Storage Nodes are 67% full*
 +
@@ -103,7 +99,7 @@ In this example, the 12 existing nodes are 100% full. Because there is no free c
 +
 After the expansion is complete, when objects are erasure-coded, all fragments will be placed on the new nodes.
 +
-NOTE: This expansion adds _k+m_ nodes. Adding 12 nodes (four per site) is recommended for redundancy. If you add only _k+m_ expansion Storage Nodes when existing nodes are 100% full, all new objects must be stored on the expansion nodes. If any of the new nodes become unavailable, even temporarily, StorageGRID cannot meet ILM requirements.
+NOTE: This expansion adds _k+m_ nodes. Adding 12 nodes (four per site) is recommended for redundancy. If you add only _k+m_ expansion Storage Nodes when existing nodes are 100% full, all new objects are stored on the expansion nodes. If any of the new nodes become unavailable, even temporarily, StorageGRID cannot meet ILM requirements.
 
 * *Add six 100 TB Storage Nodes (two per site), when existing nodes are 75% full*
 +
@@ -117,10 +113,3 @@ In this example, the 12 existing nodes are 50% full. Because there are 600 TB of
 +
 Adding 300 TB of storage capacity will allow you to continue 6+3 erasure coding and to eventually balance erasure-coded data across all nodes.
 
-*Related information*
-
-xref:../ilm/index.adoc[Manage objects with ILM]
-
-xref:../monitor/index.adoc[Monitor and troubleshoot]
-
-xref:considerations-for-rebalancing-erasure-coded-data.adoc[Rebalance erasure-coded data]
