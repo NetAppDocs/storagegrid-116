@@ -23,7 +23,7 @@ For details, see the instructions for <<download-and-extract-install-files,downl
 *Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
 |Service laptop
-|The service laptop have the following:
+|The service laptop has the following:
 
 * Network port
 * SSH client (for example, PuTTY)
@@ -128,7 +128,7 @@ Before beginning the expansion of your StorageGRID system, ensure the following:
 
 * The primary Admin Node can communicate with all expansion servers that are intended to host the StorageGRID system.
 
-* If any of the new nodes has a Grid Network IP address on a subnet not previously used, you have already xref:updating-subnets-for-grid-network.adoc[added the new subnet] to the Grid network subnet list. Otherwise, you will have to cancel the expansion, add the new subnet, and start the procedure again.
+* If any of the new nodes has a Grid Network IP address on a subnet not previously used, you have already xref:updating-subnets-for-grid-network.adoc[added the new subnet] to the Grid Network subnet list. Otherwise, you will have to cancel the expansion, add the new subnet, and start the procedure again.
 
 * You are not using network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. Using NAT to bridge the Grid Network across a public network segment is supported only if you use a tunneling application that is transparent to all
 nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses. 

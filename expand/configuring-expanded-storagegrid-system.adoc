@@ -55,8 +55,7 @@ xref:../admin/configuring-sso.adoc[Configure single sign-on].
 +
 NOTE: Audit export through CIFS/Samba has been deprecated and will be removed in a future StorageGRID release.
 
-.. Optionally, change the preferred sender for notifications. You can make the expansion Admin Node the preferred sender. Otherwise, an existing Admin Node configured as the preferred sender continues to send notifications, including AutoSupport messages, SNMP notifications, alert emails, and alarm emails (legacy system). See
-xref:../admin/index.adoc[Administer StorageGRID].
+.. Optionally, change the preferred sender for notifications. You can make the expansion Admin Node the preferred sender. Otherwise, an existing Admin Node configured as the preferred sender continues to send notifications, including AutoSupport messages, SNMP notifications, alert emails, and alarm emails (legacy system). See xref:../admin/index.adoc[Administer StorageGRID].
 
 . If you added an Archive Node, complete the following configuration tasks.
 
@@ -68,20 +67,18 @@ xref:../admin/index.adoc[Administer StorageGRID].
 
 . To check if expansion nodes were added with an untrusted Client Network or to change whether a node's Client Network is untrusted or trusted, go to *CONFIGURATION* > *Network* > *Untrusted Client Network*.
 +
-If the Client Network on the expansion node is untrusted, then connections to the node on the Client Network must be made using a load balancer endpoint. See the instructions for administering StorageGRID for more information.
+If the Client Network on the expansion node is untrusted, then connections to the node on the Client Network must be made using a load balancer endpoint. See xref:../admin/index.adoc[Administer StorageGRID].
 
 . Configure the Domain Name System (DNS).
 +
-If you have been specifying DNS settings separately for each grid node, you must add custom per-node DNS settings for the new nodes. See xref:modifying-dns-configuration-for-single-grid-node.adoc[Modify DNS configuration for single grid node].
+If you have been specifying DNS settings separately for each grid node, you must add custom per-node DNS settings for the new nodes. See xref:../maintain/modifying-dns-configuration-for-single-grid-node.adoc[Modify DNS configuration for single grid node].
 +
 The best practice is for the grid-wide DNS server list to contain some DNS servers that are accessible locally from each site. If you just added a new site, add new DNS servers for the site to the grid-wide DNS configuration.
 +
-IMPORTANT: Provide two to six IPv4 addresses for DNS servers. You should select DNS servers that each site can access locally in the event of network islanding. This is to ensure an islanded site continues to have access to the DNS service. After configuring the grid-wide DNS server list, you can further customize the DNS server list for each node. For details, see the information about modifying the DNS configuration in the recovery and maintenance instructions.
+IMPORTANT: Provide two to six IPv4 addresses for DNS servers. You should select DNS servers that each site can access locally in the event of network islanding. This is to ensure an islanded site continues to have access to the DNS service. After configuring the grid-wide DNS server list, you can further customize the DNS server list for each node. For details, see xref:../maintain/modifying-dns-configuration-for-single-grid-node.adoc[Modify DNS configuration for single grid node]..
 
-. If you added a new site, confirm that Network Time Protocol (NTP) servers are accessible from that site.
+. If you added a new site, confirm that Network Time Protocol (NTP) servers are accessible from that site. See xref:../maintain/configuring-ntp-servers.adoc[Configure NTP servers].
 +
 IMPORTANT: Make sure that at least two nodes at each site can access at least four external NTP sources. If only one node at a site can reach the NTP sources, timing issues will occur if that node goes down. In addition, designating two nodes per site as primary NTP sources ensures accurate timing if a site is isolated from the rest of the grid.
-+
-See xref:../maintain/index.adoc[Recover and maintain].
 
 
