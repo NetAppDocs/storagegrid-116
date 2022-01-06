@@ -2,14 +2,18 @@
 permalink: vmware/automating-grid-node-deployment-in-vmware-vsphere.html
 sidebar: sidebar
 keywords:
-summary: 'You can automate the deployment of StorageGRID grid nodes in VMware vSphere.'
+summary: 'You can use VMware vSphere to automate the deployment of grid nodes. You can also automate the configuration of StorageGRID.'
 ---
-= Automate grid node deployment in VMware vSphere
+= Automate the installation (VMware)
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can automate the deployment of StorageGRID grid nodes in VMware vSphere.
+You can use VMware vSphere to automate the deployment of grid nodes. You can also automate the configuration of StorageGRID.
+
+== Automate grid node deployment
+
+Use VMware vSphere to automate the deployement of grid nodes.
 
 .What you'll need
 
@@ -65,7 +69,7 @@ m|deploy-vsphere-ovftool-sample.ini
 |The sample configuration file for use with the `deploy-vsphere-ovftool.sh` script.
 |===
 
-== Define the configuration file for your deployment
+=== Define the configuration file for your deployment
 
 You specify the information needed to deploy virtual grid nodes for StorageGRID in a configuration file, which is used by the `deploy-vsphere-ovftool.sh` Bash script. You can modify a sample configuration file, so that you do not have to create the file from scratch.
 
@@ -79,7 +83,7 @@ See xref:configuration-file-settings.adoc[Configuration file settings] for infor
 
 . When you have entered and verified all of the necessary information, save and close the file.
 
-== Configuration file settings
+=== Configuration file settings
 
 The `deploy-vsphere-ovftool.ini` configuration file contains the settings that are required to deploy virtual grid nodes.
 
@@ -88,7 +92,7 @@ The configuration file first lists global parameters, and then lists node-specif
 * _Global parameters_ are applied to all grid nodes.
 * _Node-specific parameters_ override global parameters.
 
-=== Global parameters
+==== Global parameters
 
 Global parameters are applied to all grid nodes, unless they are overridden by settings in individual sections. Place the parameters that apply to multiple nodes in the global parameter section, and then override these settings as necessary in the sections for individual nodes.
 
@@ -252,7 +256,7 @@ PORT_REMAP_INBOUND = client/tcp/443/18082
 
 This example takes traffic that is sent to port 443 to pass an internal firewall and directs it to port 18082, where the grid node is listening for S3 requests.
 
-=== Node-specific parameters
+==== Node-specific parameters
 
 Each node is in its own section of the configuration file. Each node requires the following settings:
 
@@ -267,7 +271,7 @@ NOTE: The ADMIN_IP parameter is ignored for the primary Admin Node.
 
 * Any parameters that were not set globally. For example, if a node is attached to the Admin Network and you did not specify ADMIN_NETWORK parameters globally, you must specify them for the node.
 
-==== Primary Admin Node
+.Primary Admin Node
 
 The following additional settings are required for the primary Admin Node:
 
@@ -296,7 +300,7 @@ DISK = INSTANCES=2, CAPACITY=300
 
 NOTE: For Admin nodes, INSTANCES must always equal 2.
 
-==== Storage Node
+.Storage Node
 
 The following additional setting is required for Storage Nodes:
 
@@ -349,7 +353,7 @@ The following additional setting is optional for Storage Nodes:
 DISK = INSTANCES=16, CAPACITY=4096
 ----
 
-==== Archive Node
+.Archive Node
 
 The following additional setting is required for Archive Nodes:
 
@@ -367,7 +371,7 @@ This example entry is for an Archive Node that is on the Grid and Admin Networks
   ADMIN_IP = 10.1.0.2
 ----
 
-==== Gateway Node
+.Gateway Node
 
 The following additional setting is required for Gateway Nodes:
 
@@ -391,7 +395,7 @@ This example entry is for an example Gateway Node on all three networks. In this
   ADMIN_IP = 10.1.0.2
 ----
 
-==== Non-primary Admin Node
+.Non-primary Admin Node
 
 The following additional settings are required for non-primary Admin Nodes:
 
@@ -483,3 +487,80 @@ Deployment Summary
 | DC1-S3                      |        1 | Passed               |
 +-----------------------------+----------+----------------------+
 ----
+
+== Automate the configuration of StorageGRID
+
+After deploying the grid nodes, you can automate the configuration of the StorageGRID system.
+
+.What you'll need
+
+* You know the location of the following files from the installation archive.
+
+[cols="1a,1a" options="header"]
+|===
+| Filename| Description
+m|configure-storagegrid.py
+|Python script used to automate the configuration
+
+m|configure-storagegrid.sample.json
+|Sample configuration file for use with the script
+
+m|configure-storagegrid.blank.json
+|Blank configuration file for use with the script
+|===
+
+* You have created a `configure-storagegrid.json` configuration file. To create this file, you can modify the sample configuration file (`configure-storagegrid.sample.json`) or the blank configuration file (`configure-storagegrid.blank.json`).
+
+You can use the `configure-storagegrid.py` Python script and the `configure-storagegrid.json` configuration file to automate the configuration of your StorageGRID system.
+
+NOTE: You can also configure the system using the Grid Manager or the Installation API.
+
+.Steps
+
+. Log in to the Linux machine you are using to run the Python script.
+. Change to the directory where you extracted the installation archive.
++
+For example:
++
+----
+cd StorageGRID-Webscale-version/platform
+----
++
+where `platform` is debs, rpms, or vsphere.
+
+. Run the Python script and use the configuration file you created.
++
+For example:
++
+----
+./configure-storagegrid.py ./configure-storagegrid.json --start-install
+----
+
+.Result
+
+A Recovery Package .zip file is generated during the configuration process, and it is downloaded to the directory where you are running the installation and configuration process. You must back up the Recovery Package file so that you can recover the StorageGRID system if one or more grid nodes fails. For example, copy it to a secure, backed up network location and to a secure cloud storage location.
+
+IMPORTANT: The Recovery Package file must be secured because it contains encryption keys and passwords that can be used to obtain data from the StorageGRID system.
+
+If you specified that random passwords should be generated, you need to extract the Passwords.txt file and look for the passwords required to access your StorageGRID system.
+
+----
+######################################################################
+##### The StorageGRID "recovery package" has been downloaded as: #####
+#####           ./sgws-recovery-package-994078-rev1.zip          #####
+#####   Safeguard this file as it will be needed in case of a    #####
+#####                 StorageGRID node recovery.                 #####
+######################################################################
+----
+
+Your StorageGRID system is installed and configured when a confirmation message is displayed.
+
+----
+StorageGRID has been configured and installed.
+----
+
+.Related information
+
+xref:navigating-to-grid-manager.adoc[Navigating to the Grid Manager]
+
+xref:overview-of-installation-rest-api.adoc[Overview of the installation REST API]
