@@ -846,12 +846,12 @@ Compares to the retain-until-date specified in the PUT Object Retention request 
 
 You can use variables in policies to populate policy information when it is available. You can use policy variables in the `Resource` element and in string comparisons in the `Condition` element.
 
-In this example, the variable `${aws:username}` is part of the Resource element:
+In this example, the variable `${aws:username}` is part of the Resource element: 
 
-[subs="specialcharacters,quotes"]
 ----
-"Resource": "arn:aws:s3:::_bucket-name/home_/${aws:username}/*"
+"Resource": "arn:aws:s3:::bucket-name/home/${aws:username}/*"
 ----
+
 
 In this example, the variable `${aws:username}` is part of the condition value in the condition block:
 
