@@ -24,7 +24,7 @@ The recommended best practice is to use 2+1 erasure coding within a site for cos
 IMPORTANT: An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. If only one replicated copy of an object exists, that object is lost if a Storage Node fails or has a significant error. You also temporarily lose access to the object during maintenance procedures such as upgrades.
 
 * Do not use an ILM rule that will expire or delete FabricPool cloud tier data. Set the retention period in each ILM rule to "forever" to ensure that FabricPool objects are not deleted by StorageGRID ILM.
-* Do not create rules that will move FabricPool cloud tier data out of the bucket to another location. You cannot use ILM rules to archive FabricPool data to tape using an Archive Node or use a Cloud Storage Pool to move FabricPool data to Glacier.
+* Do not create rules that will move FabricPool cloud tier data out of the bucket to another location. You cannot use ILM rules to archive FabricPool data to tape using an Archive Node or use a Cloud Storage Pool to move FabricPool data to another object store.
 +
 NOTE: Using Cloud Storage Pools with FabricPool is not supported because of the added latency to retrieve an object from the Cloud Storage Pool target.
 

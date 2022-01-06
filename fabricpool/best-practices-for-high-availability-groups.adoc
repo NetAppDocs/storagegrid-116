@@ -2,14 +2,14 @@
 permalink: fabricpool/best-practices-for-high-availability-groups.html
 sidebar: sidebar
 keywords: fabricPool, high availability group, HA group, active-active, active-backup, cloud tier, best practices
-summary: 'Before attaching StorageGRID as a FabricPool cloud tier, you use the StorageGRID Grid Manager to configure a high availability \(HA\) group.'
+summary: 'Before attaching StorageGRID as a FabricPool cloud tier, you should use the StorageGRID Grid Manager to configure a high availability \(HA\) group.'
 ---
 = Best practices for high availability groups
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Before attaching StorageGRID as a FabricPool cloud tier, you use the StorageGRID Grid Manager to configure a high availability (HA) group.
+Before attaching StorageGRID as a FabricPool cloud tier, you should use the StorageGRID Grid Manager to configure a high availability (HA) group.
 
 == What is a high availability (HA) group?
 
@@ -21,13 +21,15 @@ To create an HA group, you perform these general steps:
 
 . Select network interfaces for one or more Admin Nodes or Gateway Nodes. You can select the Grid Network interface (eth0), Client Network interface (eth2), or a VLAN interface.
 +
-IMPORTANT: If you plan to use a VLAN, you must create the VLAN interface before you create the HA group. You can use a VLAN for FabricPool only if StorageGRID is using VLANs for client traffic and the FabricPool VLAN is available on the trunked interface. 
+IMPORTANT: If you plan to use a VLAN interface to segregate FabricPool traffic, a network administrator must first configure a trunk interface and the corresponding VLAN. Each VLAN is identified by a numeric ID or tag. For example, your network might use VLAN 100 for FabricPool traffic.
 
 . Assign one or more virtual IP (VIP) addresses to the group. Clients applications, such as FabricPool, can use any of these VIP addresses to connect to StorageGRID.
 
 . Specify one interface to be the Primary interface and determine the priority order for any Backup interfaces. The Primary interface is the active interface unless a failure occurs.
 
-If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
+If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.  
+
+Similarly, when higher priority interfaces become available again, the VIP addresses are automatically moved to the highest priority interface available. 
 
 == Best practices for high availability (HA) groups
 

@@ -29,19 +29,19 @@ For details about this task, see xref:../admin/managing-high-availability-groups
 +
 Use the column headers to sort the rows, or enter a search term to locate interfaces more quickly.
 
-. Determine the Primary interface and any Backup (failover) interfaces for this HA group.
+. Determine the Primary interface and any backup interfaces for this HA group.
 +
 Drag and drop rows to change the values in the *Priority order* column.
 +
 The first interface in the list is the Primary interface. The Primary interface is the active interface unless a failure occurs.
 +
-If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on.
+If the HA group includes more than one interface and the active interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on. When failures are resolved, the VIP addresses move back to highest priority interface available.
 
-. Specify the VIP subnet in CIDR notation--an IPv4 address followed by a slash and the subnet length (0-32).
+. Specify the VIP subnet in CIDR notation&#8212;an IPv4 address followed by a slash and the subnet length (0-32).
 +
 The network address must not have any host bits set. For example, `192.16.0.0/22`.
 
-. Optionally, if the FabricPool client will access these VIPs from a different subnet, enter the gateway IP address. The gateway address must be within the VIP subnet.
+. Optionally, if the ONTAP IP addresses used to access StorageGRID are not on the same subnet as the StorageGRID VIP IP addresses, enter the StorageGRID VIP local gateway IP address. The local gateway IP address must be within the VIP subnet.
 
 . Enter one or more virtual IP addresses for the HA group. You can add up to 10 IP addresses. All VIPs must be within the VIP subnet.
 +

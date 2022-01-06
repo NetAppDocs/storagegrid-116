@@ -43,9 +43,8 @@ Port
 a|
 The StorageGRID port you want to use for load balancing. This field defaults to 10433, but you can enter any unused external port. If you enter 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.
 
-*Note:* Ports used by other grid services are not permitted. See the list of ports used for internal and external communications:
-
-xref:../network/network-port-reference.adoc[Network port reference]
+*Note:* Ports used by other grid services are not permitted. See the 
+xref:../network/network-port-reference.adoc[Network port reference].
 
 You must provide this same port number to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
 a|
@@ -55,7 +54,9 @@ Select *S3*.
 a|
 Network protocol
 a|
-Must be *HTTPS*.
+Select *HTTPS*.
+
+*Note*: Using *HTTP* is supported but not recommended.
 
 |===
 

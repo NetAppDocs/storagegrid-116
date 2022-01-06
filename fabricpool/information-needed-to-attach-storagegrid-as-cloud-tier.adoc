@@ -9,7 +9,7 @@ summary: 'Before you can attach StorageGRID as an cloud tier for FabricPool, you
 :imagesdir: ../media/
 
 [.lead]
-Before you can attach StorageGRID as an cloud tier for FabricPool, you must perform some configuration steps in StorageGRID and obtain certain values.
+Before you can attach StorageGRID as a cloud tier for FabricPool, you must perform some configuration steps in StorageGRID and obtain certain values.
 
 .About this task
 
@@ -19,8 +19,8 @@ NOTE: The exact field names listed and the process you use to enter the required
 
 For more information, refer to the following:
 
-* https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices for ONTAP 9.8^]
-* https://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center^]
+* https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices in ONTAP 9.9.1^]
+* https://docs.netapp.com/us-en/ontap/index.html[ONTAP 9 Documentation^]
 
 [cols="1a,2a" options="header"]
 |===
@@ -30,7 +30,7 @@ For more information, refer to the following:
 |Any unique and descriptive name. For example, `StorageGRID_Cloud_Tier`.
 
 |Provider type
-|StorageGRID (System Manager) or `SGWS` (CLI).
+|StorageGRID (ONTAP System Manager) or `SGWS` (ONTAP CLI).
 
 |Port
 |The port that FabricPool will use when it connects to StorageGRID. You determine which port number to use when you define the StorageGRID load balancer endpoint.
@@ -48,7 +48,7 @@ Note the following:
 xref:configuring-dns-for-storagegrid-ip-addresses.adoc[Configuring the DNS server for StorageGRID IP addresses]
 
 |Container name
-|The name of the StorageGRID bucket you will use with this ONTAP cluster. For example, `fabricpool-bucket`. You create this bucket in the Tenant Manager.
+|The name of the StorageGRID bucket you will use with this ONTAP cluster. For example, `fabricpool-bucket`. You can create this bucket in the Tenant Manager or, starting with ONTAP 9.10 System Manager, you can create the bucket with the FabricPool setup wizard.
 
 Note the following:
 
