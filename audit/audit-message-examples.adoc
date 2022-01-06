@@ -28,7 +28,6 @@ The audit message contains information about the event being recorded, as well a
 
 To identify which event is recorded by the audit message, look for the ATYP attribute (highlighted below):
 
-[source]
 [subs="specialcharacters,quotes"]
 ----
 2014-07-17T21:17:58.959669
@@ -45,7 +44,6 @@ The value of the ATYP attribute is SPUT. SPUT represents an S3 PUT transaction, 
 
 The following audit message also shows the bucket to which the object is associated:
 
-[source]
 [subs="specialcharacters,quotes"]
 ----
 2014-07-17T21:17:58.959669
@@ -60,7 +58,6 @@ T][ANID(UI32):12872812][AMID(FC32):S3RQ][ATID(UI64):157922414
 
 To discover when the PUT event occurred, note the Universal Coordinated Time (UTC) timestamp at the beginning of the audit message. This value is a human‐readable version of the ATIM attribute of the audit message itself:
 
-[source]
 [subs="specialcharacters,quotes"]
 ----
 *2014-07-17T21:17:58.959669*
