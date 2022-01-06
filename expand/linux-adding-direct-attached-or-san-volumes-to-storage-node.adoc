@@ -14,9 +14,13 @@ If a Storage Node includes fewer than 16 storage volumes, you can increase its c
 
 .What you'll need
 
-* You must have access to the instructions for installing StorageGRID for your Linux platform.
-* You must have the `Passwords.txt` file.
-* You must have specific access permissions.
+* You have access to the instructions for installing StorageGRID for your Linux platform.
+
+** xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+** xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+* You have the `Passwords.txt` file.
+* You have specific access permissions.
 
 IMPORTANT: Do not attempt to add storage volumes to a Storage Node while a software upgrade, recovery procedure, or another expansion procedure is active.
 
@@ -75,7 +79,7 @@ Make sure to start at the next `BLOCK_DEVICE_RANGEDB_nn`. Do not leave a gap.
  ** In the example below, four new block storage volumes have been added to the node: `BLOCK_DEVICE_RANGEDB_04` to `BLOCK_DEVICE_RANGEDB_07`.
 
 +
-[source]
+
 [subs="specialcharacters,quotes"]
 ----
 NODE_TYPE = VM_Storage_Node
@@ -143,7 +147,6 @@ This script finds any new storage volumes and prompts you to format them.
  .. If any of the volumes have previously been formatted, decide if you want to reformat them.
   *** Enter *y* to reformat.
   *** Enter *n* to skip reformatting.
-The storage volumes are formatted.
  .. When asked, enter *y* to stop storage services.
 +
 The storage services are stopped, and the `setup_rangedbs.sh` script runs automatically. After the volumes are ready for use as rangedbs, the services start again.
@@ -173,8 +176,3 @@ The status is updated automatically.
 
 You can now use the expanded capacity of the Storage Nodes to save object data.
 
-.Related information
-
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]

@@ -13,12 +13,12 @@ When you perform the expansion, the new grid nodes are added to your existing St
 
 .What you'll need
 
-* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must have the Maintenance or Root Access permission.
-* You must have the provisioning passphrase.
-* You must have deployed all of the grid nodes that are being added in this expansion.
-* If you are adding Storage Nodes, you must have confirmed that all data-repair operations performed as part of a recovery are complete. See xref:checking-data-repair-jobs.adoc[Check data repair jobs]
-* If you are adding a new site, you must review and update ILM rules before starting the expansion procedure to ensure that object copies are not stored to the new site until after the expansion is complete. For example, if a rule uses the default storage pool (All Storage Nodes), you must create a new storage pool that contains only the existing Storage Nodes and update the ILM rule to use the new storage pool. Otherwise, objects will be copied to the new site as soon as the first node at that site becomes active. See the instructions for managing objects with information lifecycle management.
+* You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+* You have the Maintenance or Root access permission.
+* You have the provisioning passphrase.
+* You have deployed all of the grid nodes that are being added in this expansion.
+* If you are adding Storage Nodes, you have confirmed that all data-repair operations performed as part of a recovery are complete. See xref:../maintain/checking-data-repair-jobs.adoc[Check data repair jobs].
+* If you are adding a new site, you must review and update ILM rules before starting the expansion procedure to ensure that object copies are not stored to the new site until after the expansion is complete. For example, if a rule uses the default storage pool (All Storage Nodes), you must create a new storage pool that contains only the existing Storage Nodes and update the ILM rule to use the new storage pool. Otherwise, objects will be copied to the new site as soon as the first node at that site becomes active. See the instructions for xref:../ilm/index.adoc[managing objects with ILM].
 
 .About this task
 Performing the expansion includes these phases:
@@ -72,8 +72,7 @@ NOTE: Assign the Primary NTP role to at least two nodes at each site. This provi
 
   *** *ADC Service* (Storage Nodes only): Whether this Storage Node will run the Administrative Domain Controller (ADC) service. The ADC service keeps track of the location and availability of grid services. At least three Storage Nodes at each site must include the ADC service. You cannot add the ADC service to a node after it is deployed.
    **** If you are adding this node to replace a Storage Node, select *Yes* if the node you are replacing includes the ADC service. Because you cannot decommission a Storage Node if too few ADC services would remain, this ensures that a new ADC service is available before the old service is removed.
-   **** Otherwise, select *Automatic* to let the system determine whether this node requires the ADC service.
-Learn about the ADC quorum in the recovery and maintenance instructions.
+   **** Otherwise, select *Automatic* to let the system determine whether this node requires the ADC service. Learn about the ADC quorum xref:../maintain/understanding-adc-service-quorum.adoc[here].
  .. As required, modify the settings for the Grid Network, Admin Network, and Client Network.
   *** *IPv4 Address (CIDR)*: The CIDR network address for the network interface. For example: 172.16.10.100/24
   *** *Gateway*: The default gateway of the grid node. For example: 172.16.10.1
@@ -145,12 +144,4 @@ IMPORTANT: Do not reboot any Storage Nodes during either the "Expanding the Cass
 
 .After you finish
 
-Depending on which types of grid nodes you added, you must perform additional integration and configuration steps.
-
-.Related information
-
-xref:../ilm/index.adoc[Manage objects with ILM]
-
-xref:../maintain/index.adoc[Recover and maintain]
-
-xref:configuring-expanded-storagegrid-system.adoc[Configure your expanded StorageGRID system]
+Depending on which types of grid nodes you added, you must perform additional integration and configuration steps. See xref:configuring-expanded-storagegrid-system.adoc[Configuration steps after expansion].
