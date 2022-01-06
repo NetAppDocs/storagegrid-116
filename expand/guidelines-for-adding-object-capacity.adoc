@@ -1,7 +1,7 @@
 ---
 permalink: expand/guidelines-for-adding-object-capacity.html
 sidebar: sidebar
-keywords: adding storage capacity, guidelines
+keywords: adding storage capacity, guidelines, storage volumes, expansion
 summary: 'You can expand the object storage capacity of your StorageGRID system by adding storage volumes to existing Storage Nodes or by adding new Storage Nodes to existing sites. You must add storage capacity in a way that meets the requirements of your information lifecycle management \(ILM\) policy.'
 ---
 = Guidelines for adding object capacity
@@ -15,7 +15,8 @@ You can expand the object storage capacity of your StorageGRID system by adding 
 
 Before adding storage volumes to existing Storage Nodes, review the following guidelines and limitations:
 
-* You must examine your current ILM rules to determine where and when to add storage volumes to increase the storage available for replicated or erasure-coded objects. See the instructions for managing objects with information lifecycle management.
+* You must examine your current ILM rules to determine where and when to add storage volumes to increase the storage available for replicated or erasure-coded objects. See the instructions for xref:../ilm/index.adoc[managing objects with information lifecycle management].
+
 * You cannot increase the metadata capacity of your system by adding storage volumes because object metadata is stored only on volume 0.
 * Each software-based Storage Node can support a maximum of 16 storage volumes. If you need to add capacity beyond that, you must add new Storage Nodes.
 * You can add one or two expansion shelves to each SG6060 appliance. Each expansion shelf adds 16 storage volumes. With both expansion shelves installed, the SG6060 can support a total of 48 storage volumes.
@@ -25,47 +26,31 @@ Before adding storage volumes to existing Storage Nodes, review the following gu
 
 After you have decided to add storage volumes and have determined which Storage Nodes you must expand to satisfy your ILM policy, follow the instructions for your type of Storage Node:
 
-* To add expansion shelves to an SG6060 storage appliance, see the instructions for SG6000 appliance installation and maintenance.
-+
-xref:../sg6000/index.adoc[SG6000 storage appliances]
+* To add one or two expansion shelves to an SG6060 storage appliance, go to xref:../sg6000/adding-expansion-shelf-to-deployed-sg6060.adoc[Add expansion shelf to deployed SG6060].
 
-* For a software-based node, follow the instructions for adding storage volumes to Storage Nodes.
-+
-xref:adding-storage-volumes-to-storage-nodes.adoc[Adding storage volumes to Storage Nodes]
+* For a software-based node, follow the instructions for 
+xref:adding-storage-volumes-to-storage-nodes.adoc[adding storage volumes to Storage Nodes].
 
 == Guidelines for adding Storage Nodes
 
 Before adding Storage Nodes to existing sites, review the following guidelines and limitations:
 
-* You must examine your current ILM rules to determine where and when to add Storage Nodes to increase the storage available for replicated or erasure-coded objects.
+* You must examine your current ILM rules to determine where and when to add Storage Nodes to increase the storage available for replicated or erasure-coded objects. See the instructions for xref:../ilm/index.adoc[managing objects with information lifecycle management].
+
 * You should not add more than 10 Storage Nodes in a single expansion procedure.
 * You can add Storage Nodes to more than one site in a single expansion procedure.
 * You can add Storage Nodes and other types of nodes in a single expansion procedure.
-* Before starting the expansion procedure, you must confirm that all data-repair operations performed as part of a recovery are complete. See xref:checking-data-repair-jobs.adoc[Check data repair jobs].
+* Before starting the expansion procedure, you must confirm that all data-repair operations performed as part of a recovery are complete. See xref:../maintain/checking-data-repair-jobs.adoc[Check data repair jobs]. 
 * If you need to remove Storage Nodes before or after performing an expansion, you should not decommission more than 10 Storage Nodes in a single Decommission Node procedure.
 
 == Guidelines for ADC service on Storage Nodes
 
 When configuring the expansion, you must choose whether to include the Administrative Domain Controller (ADC) service on each new Storage Node. The ADC service keeps track of the location and availability of grid services.
 
-* The StorageGRID system requires a quorum of ADC services to be available at each site and at all times.
-+
-NOTE: Learn about the ADC quorum in the recovery and maintenance instructions.
+* The StorageGRID system requires a xref:../maintain/understanding-adc-service-quorum.adoc[quorum of ADC services] to be available at each site and at all times.
 
 * At least three Storage Nodes at each site must include the ADC service.
 * Adding the ADC service to every Storage Node is not recommended. Including too many ADC services can cause slowdowns due to the increased amount of communication between nodes.
 * A single grid should not have more than 48 Storage Nodes with the ADC service. This is equivalent to 16 sites with three ADC services at each site.
 * In general, when you select the *ADC Service* setting for a new node, you should select *Automatic*. Select *Yes* only if the new node will replace another Storage Node that includes the ADC service. Because you cannot decommission a Storage Node if too few ADC services would remain, this ensures that a new ADC service is available before the old service is removed.
 * You cannot add the ADC service to a node after it is deployed.
-
-*Related information*
-
-xref:../ilm/index.adoc[Manage objects with ILM]
-
-xref:../sg6000/index.adoc[SG6000 storage appliances]
-
-xref:adding-storage-volumes-to-storage-nodes.adoc[Adding storage volumes to Storage Nodes]
-
-xref:../maintain/index.adoc[Recover and maintain]
-
-xref:performing-expansion.adoc[Performing expansion]

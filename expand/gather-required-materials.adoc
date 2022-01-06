@@ -1,19 +1,15 @@
 ---
-permalink: expand/preparing-for-expansion.html
+permalink: expand/gather-required-materials.html
 sidebar: sidebar
-keywords: expand, expansion, planning
-summary: 'You must prepare for the StorageGRID expansion by obtaining required materials and installing and configuring any new hardware and networks.'
+keywords: expand, expansion, planning, storagrid files
+summary: 'Before performing an expansion operation, gather the materials and install and configure any new hardware and networks.'
 ---
-= Prepare for expansion
+= Gather required materials
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You must prepare for the StorageGRID expansion by obtaining required materials and installing and configuring any new hardware and networks.
-
-== Gather required materials
-
-Before you perform an expansion operation, you must gather the materials listed in the following table.
+Before performing an expansion operation, gather the materials and install and configure any new hardware and networks.
 
 [cols="1a,2a" options="header"]
 |===
@@ -27,7 +23,7 @@ For details, see the instructions for <<download-and-extract-install-files,downl
 *Note:* You do not need to download files if you are adding new storage volumes to existing Storage Nodes or installing a new StorageGRID appliance.
 
 |Service laptop
-|The service laptop must have the following:
+|The service laptop has the following:
 
 * Network port
 * SSH client (for example, PuTTY)
@@ -124,12 +120,17 @@ include::../_include/installation-files-appliance.adoc[]
 
 == Verify hardware and networking
 
-Before you begin the expansion of your StorageGRID system, you must ensure that you have installed and configured the necessary hardware to support the new grid nodes or new site.
+Before beginning the expansion of your StorageGRID system, ensure the following:
 
-For information about supported versions, see the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^].
+*  The hardware needed to support the new grid nodes or new site has been installed and configured.
 
-You must also verify network connectivity between servers at the site, and confirm that the primary Admin Node can communicate with all expansion servers that are intended to host the StorageGRID system.
+* All new nodes have bidirectional communication paths to all existing and new nodes (a requirement for the Grid Network).
 
-If you are performing an expansion activity that includes adding a new subnet, you must xref:updating-subnets-for-grid-network.adoc[add the new Grid subnet] before you start the expansion procedure.
+* The primary Admin Node can communicate with all expansion servers that are intended to host the StorageGRID system.
 
-Do not use network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. As required, however, you can use NAT between external clients and grid nodes, such as to provide a public IP address for a Gateway Node. Using NAT to bridge a public network segment is supported only when you employ a tunneling application that is transparent to all nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses.
+* If any of the new nodes has a Grid Network IP address on a subnet not previously used, you have already xref:updating-subnets-for-grid-network.adoc[added the new subnet] to the Grid Network subnet list. Otherwise, you will have to cancel the expansion, add the new subnet, and start the procedure again.
+
+* You are not using network address translation (NAT) on the Grid Network between grid nodes or between StorageGRID sites. When you use private IPv4 addresses for the Grid Network, those addresses must be directly routable from every grid node at every site. Using NAT to bridge the Grid Network across a public network segment is supported only if you use a tunneling application that is transparent to all
+nodes in the grid, meaning the grid nodes require no knowledge of public IP addresses. 
++
+This NAT restriction is specific to grid nodes and the Grid Network. As required, you can use NAT between external clients and grid nodes, such as to provide a public IP address for a Gateway Node. 

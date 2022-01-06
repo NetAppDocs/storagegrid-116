@@ -20,6 +20,17 @@ If there is only one Admin Node and the audit log cannot be copied from the fail
 
 You must recover an Admin Node as soon as possible to restore logging functionality.
 
+[NOTE]  
+====
+By default, audit information is sent to the audit log on Admin Nodes. You can skip these steps if either of the following applies:
+
+* You configured an external syslog server and audit logs are now being sent to the syslog server instead of to Admin Nodes.
+* You explicitly specified that audit messages should be saved only on the local nodes that generated them. 
+
+See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations] for details.
+====
+
+.Steps
 . Log in to the recovered Admin Node:
  .. Enter the following command: `ssh admin@recovery_Admin_Node_IP`
  .. Enter the password listed in the `Passwords.txt` file.

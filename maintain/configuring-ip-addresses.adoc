@@ -23,7 +23,7 @@ IMPORTANT: The IP change procedure can be a disruptive procedure. Parts of the g
 
 The IP address assigned to eth0 is always the grid node's Grid Network IP address. The IP address assigned to eth1 is always the grid node's Admin Network IP address. The IP address assigned to eth2 is always the grid node's Client Network IP address.
 
-Note that on some platforms, such as StorageGRID appliances, eth0, eth1, and eth2 might be aggregate interfaces composed of subordinate bridges or bonds of physical or VLAN interfaces. On these platforms, the *SSM* > *Resources* tab might show the Grid, Admin, and Client network IP address assigned to other interfaces in addition to eth0, eth1, or eth2.
+Note that on some platforms, such as StorageGRID appliances, eth0, eth1, and eth2 might be aggregate interfaces composed of subordinate bridges or bonds of physical or VLAN interfaces. On these platforms, the *SSM* > *Resources* tab might show the Grid, Admin, and Client Network IP address assigned to other interfaces in addition to eth0, eth1, or eth2.
 
 *DHCP*
 
@@ -31,7 +31,7 @@ You can only set up DHCP during the deployment phase. You cannot set up DHCP dur
 
 *High availability (HA) groups*
 
-* You cannot change the Client network IP address outside the subnet of an HA group configured on the Client network interface.
-* You cannot change the Client network IP address to the value of an existing virtual IP address assigned by an HA group configured on the Client network interface.
-* You cannot change the Grid network IP address outside the subnet of an HA group configured on the Grid network interface.
-* You cannot change the Grid network IP address to the value of an existing virtual IP address assigned by an HA group configured on the Grid network interface.
+* You cannot change the Client Network IP address outside the subnet of an HA group configured on the Client Network interface.
+* You cannot change the Client Network IP address to the value of an existing virtual IP address assigned by an HA group configured on the Client Network interface.
+* You cannot change the Grid Network IP address outside the subnet of an HA group configured on the Grid Network interface.
+* You cannot change the Grid Network IP address to the value of an existing virtual IP address assigned by an HA group configured on the Grid Network interface.
