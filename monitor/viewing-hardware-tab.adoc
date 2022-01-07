@@ -270,7 +270,7 @@ xref:../sg5600/index.adoc[SG5600 storage appliances]
 
 == View information about appliance Admin Nodes and Gateway Nodes
 
-The Nodes page lists information about service health and all computational, disk device, and network resources for each services appliance that is used for an Admin Node or a Gateway Node. You can also see memory, storage hardware, network resources, network interfaces, network addresses, and receive and transmit data.
+The Nodes page lists information about service health and all computational, disk device, and network resources for each services appliance that is used as an Admin Node or a Gateway Node. You can also see memory, storage hardware, network resources, network interfaces, network addresses, and receive and transmit data.
 
 .Steps
 . From the Nodes page, select an appliance Admin Node or an appliance Gateway Node.
@@ -281,7 +281,7 @@ The Node information section of the Overview tab displays summary information fo
  ** *adllb* and *adlli*: Shown if active/backup bonding is used for the Admin Network interface
  ** *eth*: The Grid Network, Admin Network, or Client Network.
  ** *hic*: One of the physical 10, 25, or 100 GbE ports on the appliance. These ports can be bonded together and connected to the StorageGRID Grid Network (eth0) and Client Network (eth2).
- ** *mtc*: One of the physical 1 GbE ports on the appliance, which can be bonded or aliased and connected to the StorageGRID Admin Network (eth1).
+ ** *mtc*: One of the physical 1-GbE ports on the appliance.  One or more mtc interfaces are bonded to form the Admin Network interface (eth1). You can leave other mtc interfaces available for temporary local connectivity for a technician in the data center.
 
 +
 image::../media/nodes_page_overview_tab_services_appliance.png[Nodes page Overview tab for services appliance]
@@ -311,7 +311,9 @@ image::../media/nodes_page_hardware_tab_services_appliance.png[Nodes page Hardwa
 |The type of drives in the appliance, such as HDD (hard disk drive) or SSD (solid state drive).
 
 |Storage data drive size
-|The total capacity including all data drives in the appliance.
+|The effective size of one data drive.
+
+*Note*: For nodes with expansion shelves, use the Data drive size values for each shelf instead. Effective drive size might differ by shelf.
 
 |Storage RAID mode
 |The RAID mode for the appliance.
