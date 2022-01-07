@@ -15,10 +15,18 @@ Use these instructions to expand the capacity or capabilities of your StorageGRI
 
 These instructions describe how to perform a StorageGRID expansion to add storage volumes to Storage Nodes, new grid nodes to an existing site, or an entire new site. 
 
-The number, type, and location of the nodes you will add depends on the reason for the expansion. For example, you might want to increase storage capacity, add metadata capacity, add redundancy or new capabilities, or add a new site. 
+These instructions are for technical personnel who are responsible for configuring and supporting the StorageGRID system after it has been installed.
 
-These instructions are for technical personnel who will be configuring and supporting a StorageGRID system after it has been installed.
+== Overview of expansion procedure
 
-== Before you begin
+The reason you are performing the expansion determines how many new nodes of each type you must add and the location of those new nodes. For example, there are different node requirements if you are performing an expansion to increase storage capacity, add metadata capacity, or add redundancy or new capabilities. 
 
-* You have a general understanding of the StorageGRID system. 
+As shown in the workflow diagram, the steps for performing an expansion depend on whether you are adding storage volumes to a Storage Node, adding new nodes to an existing site, or adding a new site. In all cases, you can perform the expansion without interrupting the operation of your current system.
+
+The steps for adding nodes also depend on whether you are adding StorageGRID appliances or hosts running VMware or Linux.
+
+NOTE: "`Linux`" refers to a Red Hat® Enterprise Linux®, Ubuntu®, CentOS, or Debian® deployment. Use the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool (IMT)^] to get a list of supported versions.
+
+image::../media/expansion_workflow.png[flowchart showing overview of expansion process]
+
+

@@ -78,5 +78,6 @@ NOTE: Failover might not be triggered by network failures external to the node t
 
 The failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.
 
-When the failure is resolved, the VIP addresses are automatically moved back to the primary interface.
+When failure is resolved and a higher priority interface becomes available again, the VIP addresses are automatically moved to the highest priority interface that is available.
+
 
