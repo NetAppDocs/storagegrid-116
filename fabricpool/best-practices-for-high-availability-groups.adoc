@@ -27,9 +27,9 @@ IMPORTANT: If you plan to use a VLAN interface to segregate FabricPool traffic, 
 
 . Specify one interface to be the Primary interface and determine the priority order for any Backup interfaces. The Primary interface is the active interface unless a failure occurs.
 
-If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first Backup interface in the priority order. If that interface fails, the VIP addresses move to the next Backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.  
+If the HA group includes more than one interface and the Primary interface fails, the VIP addresses move to the first backup interface in the priority order. If that interface fails, the VIP addresses move to the next backup interface, and so on. This failover process generally takes only a few seconds and is fast enough that client applications should experience little impact and can rely on normal retry behaviors to continue operation.  
 
-Similarly, when higher priority interfaces become available again, the VIP addresses are automatically moved to the highest priority interface available. 
+When the failure is resolved and a higher priority interface becomes available again, the VIP addresses are automatically moved to the highest priority interface that is available.
 
 == Best practices for high availability (HA) groups
 
