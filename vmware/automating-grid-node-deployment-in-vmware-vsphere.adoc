@@ -98,7 +98,6 @@ Global parameters are applied to all grid nodes, unless they are overridden by s
 
 * *OVFTOOL_ARGUMENTS*: You can specify OVFTOOL_ARGUMENTS as global settings, or you can apply arguments individually to specific nodes. For example:
 +
-[source]
 [subs="specialcharacters,quotes"]
 ----
 OVFTOOL_ARGUMENTS = --powerOn --noSSLVerify --diskMode=eagerZeroedThick --datastore='_datastore_name_'
@@ -110,7 +109,6 @@ IMPORTANT: You should deploy nodes to different datastores and specify OVFTOOL_A
 
 * *SOURCE*: The path to the StorageGRID virtual machine template (`.vmdk`) file and the `.ovf` and `.mf` files for individual grid nodes. This defaults to the current directory.
 +
-[source]
 [subs="specialcharacters,quotes"]
 ----
 SOURCE = /downloads/StorageGRID-Webscale-_version_/vsphere
@@ -232,7 +230,7 @@ IMPORTANT: Do not remap the ports you are planning to use to configure load bala
 +
 NOTE: If only PORT_REMAP is set, the mapping that you specify is used for both inbound and outbound communications. If PORT_REMAP_INBOUND is also specified, PORT_REMAP applies only to outbound communications.
 
-The format used is: `_network type_/_protocol/_default port used by grid node_/_new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
+The format used is: `_network type/protocol/default port used by grid node/new port_`, where network type is grid, admin, or client, and protocol is tcp or udp.
 
 For example:
 

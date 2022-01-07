@@ -674,7 +674,6 @@ Conditions define when a policy will be in effect. Conditions consist of operato
 
 Conditions use key-value pairs for evaluation. A Condition element can contain multiple conditions, and each condition can contain multiple key-value pairs. The condition block uses the following format:
 
-[source]
 [subs="specialcharacters,quotes"]
 ----
 Condition: {
@@ -847,13 +846,12 @@ Compares to the retain-until-date specified in the PUT Object Retention request 
 
 You can use variables in policies to populate policy information when it is available. You can use policy variables in the `Resource` element and in string comparisons in the `Condition` element.
 
-In this example, the variable `${aws:username}` is part of the Resource element:
+In this example, the variable `${aws:username}` is part of the Resource element: 
 
-[source]
-[subs="specialcharacters,quotes"]
 ----
-"Resource": "arn:aws:s3:::_bucket-name/home_/${aws:username}/*"
+"Resource": "arn:aws:s3:::bucket-name/home/${aws:username}/*"
 ----
+
 
 In this example, the variable `${aws:username}` is part of the condition value in the condition block:
 
@@ -1039,7 +1037,6 @@ Bucket policies specify the access permissions for the bucket that the policy is
 
 A bucket policy can be configured using the AWS CLI as per the following command:
 
-[source]
 [subs="specialcharacters,quotes"]
 ----
 > aws s3api put-bucket-policy --bucket examplebucket --policy _file://policy.json_
