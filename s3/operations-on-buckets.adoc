@@ -220,7 +220,7 @@ PUT Bucket replication
 a|
 This operation configures StorageGRID CloudMirror replication for the bucket using the replication configuration XML provided in the request body. For CloudMirror replication, you should be aware of the following implementation details:
 
-* StorageGRID only supports V1 of the replication configuration. This means that StorageGRID does not support the use of the `Filter` element for rules, and follows V1 conventions for deletion of object versions. See the Amazon Simple Storage Service (S3) documentation on replication configuration for details.
+* StorageGRID only supports V1 of the replication configuration. This means that StorageGRID does not support the use of the `Filter` element for rules, and follows V1 conventions for deletion of object versions. For details, see the https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html[Amazon S3 documentation on replication configuration].
 * Bucket replication can be configured on versioned or unversioned buckets.
 * You can specify a different destination bucket in each rule of the replication configuration XML. A source bucket can replicate to more than one destination bucket.
 * Destination buckets must be specified as the URN of StorageGRID endpoints as specified in the Tenant Manager or the Tenant Management API.
