@@ -1,7 +1,7 @@
 ---
 permalink: fabricpool/other-best-practices-for-storagegrid-and-fabricpool.html
 sidebar: sidebar
-keywords: fabricPool, best practices, encryption, compressions, tiering, AFF
+keywords: fabricPool, best practices, encryption, compressions, tiering, AFF, consistency
 summary: 'When configuring a StorageGRID system for use with FabricPool, you should avoid setting global options that might affect how your data is saved.'
 ---
 = Other best practices for StorageGRID and FabricPool
@@ -21,8 +21,7 @@ When configuring StorageGRID, do not enable the global *Compress Stored Objects*
 
 == Consistency level
 
-In FabricPool configurations, the recommended bucket consistency level is "`read-after-new-write.`" The "`available`" consistency level is not recommended. See xref:../tenant/changing-consistency-level.adoc[Changing the consistency level].
-
+For FabricPool buckets, the recommended bucket consistency level is "`read-after-new-write.`" The "`available`" consistency level is not recommended. See xref:../tenant/changing-consistency-level.adoc[Change the consistency level].
 
 == FabricPool tiering
 
