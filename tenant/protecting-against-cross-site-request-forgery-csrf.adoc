@@ -33,6 +33,6 @@ If the cookie is present, all requests that can modify the state of the system (
 * The `X-Csrf-Token` header, with the value of the header set to the value of the CSRF token cookie.
 * For endpoints that accept a form-encoded body: A `csrfToken` form-encoded request body parameter.
 
-See the online API documentation for additional examples and details.
+To configure CSRF protection, use the xref:../admin/using-grid-management-api.adoc[Grid Management API] or xref:../tenant/understanding-tenant-management-api.adoc[Tenant Management API].
 
 NOTE: Requests that have a CSRF token cookie set will also enforce the `"Content-Type: application/json"` header for any request that expects a JSON request body as an additional protection against CSRF attacks.
