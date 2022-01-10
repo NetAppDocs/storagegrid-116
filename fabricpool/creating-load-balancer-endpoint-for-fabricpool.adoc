@@ -2,14 +2,14 @@
 permalink: fabricpool/creating-load-balancer-endpoint-for-fabricpool.html
 sidebar: sidebar
 keywords: fabricPool, load balancer, endpoint, load balancing, create, creating, certificate
-summary: 'When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.'
+summary: 'When configuring StorageGRID for use with FabricPool, you must configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.'
 ---
 = Create a load balancer endpoint for FabricPool
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-When configuring StorageGRID for use with FabricPool, you configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.
+When configuring StorageGRID for use with FabricPool, you must configure a load balancer endpoint and upload the load balancer endpoint certificate, which is used to secure the connection between ONTAP and StorageGRID.
 
 .What you'll need
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
@@ -43,9 +43,8 @@ Port
 a|
 The StorageGRID port you want to use for load balancing. This field defaults to 10433, but you can enter any unused external port. If you enter 80 or 443, the endpoint is configured only on Gateway Nodes, since these ports are reserved on Admin Nodes.
 
-*Note:* Ports used by other grid services are not permitted. See the list of ports used for internal and external communications:
-
-xref:../network/network-port-reference.adoc[Network port reference]
+*Note:* Ports used by other grid services are not permitted. See the 
+xref:../network/network-port-reference.adoc[Network port reference].
 
 You must provide this same port number to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
 a|
@@ -55,7 +54,9 @@ Select *S3*.
 a|
 Network protocol
 a|
-Must be *HTTPS*.
+Select *HTTPS*.
+
+*Note*: Using *HTTP* is supported but not recommended.
 
 |===
 

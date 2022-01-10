@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: how to configure storagegrid for fabricpool, using fabricpool with storagegrid,
 summary: 'If you use NetApp ONTAP software, you can use NetApp FabricPool to tier inactive, or cold, data to a NetApp StorageGRID object storage system.'
 ---
-=  Overview
+=  Configure StorageGRID for FabricPool: Overview
 :icons: font
 :imagesdir: ../media/
 
@@ -19,29 +19,28 @@ Use these instructions to:
 * Learn how to obtain the information you provide to ONTAP when you attach StorageGRID as a FabricPool cloud tier.
 * Learn the best practices for configuring the StorageGRID information lifecycle management (ILM) policy, a StorageGRID traffic classification policy, and other StorageGRID options for a FabricPool workload.
 
+== Configuration workflow
+
 image::../media/fabricpool_storagegrid_workflow.png[FabricPool StorageGRID Workflow]
 
 == Before you start
 * Decide which FabricPool volume tiering policy you will use to tier inactive ONTAP data to StorageGRID.
 * Plan and install a StorageGRID system to meet your storage capacity and performance needs.
 * Become familiar with StorageGRID system software, including the Grid Manager and the Tenant Manager.
-+
-You can learn more here:
-+
-** https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices for ONTAP 9.8^]
-** https://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center^]
+* Review these additional resources, which provide details about using and configuring FabricPool:
 
-
+** https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf[TR-4598: FabricPool Best Practices in ONTAP 9.9.1^]
+** https://docs.netapp.com/us-en/ontap/index.html[ONTAP 9 Documentation^]
 
 == What is FabricPool?
 
-FabricPool is an ONTAP hybrid storage solution that uses a high-performance flash aggregate as the performance tier and an object store as the cloud tier. Data in a FabricPool is stored in a tier based on whether it is frequently accessed or not. Using a FabricPool helps you reduce storage cost without compromising performance, efficiency, or protection.
+FabricPool is an ONTAP hybrid storage solution that uses a high-performance flash aggregate as the performance tier and an object store as the cloud tier. Data is stored either on the primary storage media or in the object datastore based on whether it is accessed frequently or not. Using FabricPool-enabled aggregates helps you reduce storage cost without compromising performance, efficiency, or protection.
 
-No architectural changes are required, and you can continue managing your database and application environment from the central ONTAP storage system.
+No architectural changes are required, and you can continue managing your data and application environment from the central ONTAP storage system.
 
 == What is StorageGRID?
 
-StorageGRID is a storage architecture that manages data as objects, as opposed to other storage architectures such as file or block storage. Objects are kept inside a single container (such as a bucket) and are not nested as files inside a directory inside other directories. Although object storage generally provides lower performance than file or block storage, it is significantly more scalable. StorageGRID buckets can hold petabytes of data.
+StorageGRID is a storage architecture that manages data as objects, as opposed to other storage architectures such as file or block storage. Objects are kept inside a single container (such as a bucket) and are not nested as files inside a directory inside other directories. Although object storage generally provides lower performance than file or block storage, it is significantly more scalable. StorageGRID buckets can hold petabytes of data and billions of objects.
 
 == Why use StorageGRID as a FabricPool cloud tier?
 FabricPool can tier ONTAP data to a number of object store providers, including StorageGRID. Unlike public clouds that might set a maximum number of supported input/output operations per second (IOPS) at the bucket or container level, StorageGRID performance scales with the number of nodes in a system. Using StorageGRID as a FabricPool cloud tier allows you to keep your cold data in your own private cloud for highest performance and complete control over your data.
