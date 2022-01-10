@@ -13,7 +13,7 @@ The StorageGRID system supports a maximum of 1,000 buckets for each S3 tenant ac
 
 Bucket name restrictions follow the AWS US Standard region restrictions, but you should further restrict them to DNS naming conventions in order to support S3 virtual hosted-style requests.
 
-https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html[Amazon Web Services (AWS) Documentation: Bucket Restrictions and Limitations]
+https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html[Amazon Web Services (AWS) Documentation: Bucket Restrictions and Limitations^]
 
 xref:configuring-tenant-accounts-and-connections.adoc[Endpoint domain names for S3 request]
 
@@ -220,7 +220,7 @@ PUT Bucket replication
 a|
 This operation configures StorageGRID CloudMirror replication for the bucket using the replication configuration XML provided in the request body. For CloudMirror replication, you should be aware of the following implementation details:
 
-* StorageGRID only supports V1 of the replication configuration. This means that StorageGRID does not support the use of the `Filter` element for rules, and follows V1 conventions for deletion of object versions. See the Amazon documentation on replication configuration for details.
+* StorageGRID only supports V1 of the replication configuration. This means that StorageGRID does not support the use of the `Filter` element for rules, and follows V1 conventions for deletion of object versions. For details, see the https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html[Amazon S3 documentation on replication configuration].
 * Bucket replication can be configured on versioned or unversioned buckets.
 * You can specify a different destination bucket in each rule of the replication configuration XML. A source bucket can replicate to more than one destination bucket.
 * Destination buckets must be specified as the URN of StorageGRID endpoints as specified in the Tenant Manager or the Tenant Management API.
@@ -285,7 +285,7 @@ You can create an S3 lifecycle configuration to control when specific objects ar
 
 The simple example in this section illustrates how an S3 lifecycle configuration can control when certain objects are deleted (expired) from specific S3 buckets. The example in this section is for illustration purposes only. For complete details on creating S3 lifecycle configurations, see the section on object lifecycle management in the _Amazon Simple Storage Service Developer Guide_. Note that StorageGRID only supports Expiration actions; it does not support Transition actions.
 
-https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html[Amazon Simple Storage Service Developer Guide: Object lifecycle management]
+https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html[Amazon Simple Storage Service Developer Guide: Object lifecycle management^]
 
 === What lifecycle configuration is
 

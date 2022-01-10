@@ -19,10 +19,10 @@ You can create new groups more quickly by duplicating an existing group.
 .Steps
 . Select *ACCESS MANAGEMENT* > *Groups*.
 . Select the check box for the group you want to duplicate.
-. Select *Duplicate group*. For additional details on creating a group, see the instructions for creating groups for an S3 tenant or for a Swift tenant.
+. Select *Duplicate group*. For additional details on creating a group, see the instructions for creating groups for xref:creating-groups-for-s3-tenant.adoc[an S3 tenant] or for xref:creating-groups-for-swift-tenant.adoc[a Swift tenant].
 . Select the *Local group* tab to create a local group, or select the *Federated group* tab to import a group from the previously configured identity source.
 +
-If single sign-on (SSO) is enabled for your StorageGRID system, users belonging to local groups will not be able to sign in to the Tenant Manager, although they can use client applications to manage the tenant's resources, based on group permissions.
+If single sign-on (SSO) is enabled for your StorageGRID system, users belonging to local groups will not be able to sign in to the Tenant Manager, although they can use client applications to manage the tenant's resources, xref:tenant-management-permissions.adoc[based on group permissions].
 
 . Enter the group's name.
  ** *Local group*: Enter both a display name and a unique name. You can edit the display name later.
@@ -32,11 +32,3 @@ If single sign-on (SSO) is enabled for your StorageGRID system, users belonging 
 . Select *Continue*.
 . As needed, if you are duplicating a group for an S3 tenant, optionally select a different policy from the *Add S3 policy* radio buttons. If you selected a custom policy, update the JSON string as required.
 . Select *Create group*.
-
-.Related information
-
-xref:creating-groups-for-s3-tenant.adoc[Create groups for S3 tenant]
-
-xref:creating-groups-for-swift-tenant.adoc[Create groups for Swift tenant]
-
-xref:tenant-management-permissions.adoc[Tenant management permissions]
