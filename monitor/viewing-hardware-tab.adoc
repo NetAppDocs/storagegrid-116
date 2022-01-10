@@ -35,7 +35,7 @@ The Node information section of the Overview tab displays summary information fo
 
  ** *eth*: The Grid Network, Admin Network, or Client Network.
  ** *hic*: One of the physical 10, 25, or 100 GbE ports on the appliance. These ports can be bonded together and connected to the StorageGRID Grid Network (eth0) and Client Network (eth2).
- ** *mtc*: One of the physical 1 GbE ports on the appliance, which can be bonded or aliased and connected to the StorageGRID Admin Network (eth1).
+ ** *mtc*: One of the physical 1 GbE ports on the appliance.  One or more mtc interfaces are bonded to form the StorageGRID Admin Network interface (eth1). You can leave other mtc interfaces available for temporary local connectivity for a technician in the data center.
 +
 image::../media/nodes_page_overview_tab_extended.png[Nodes Page Overview Extended]
 +
@@ -104,7 +104,9 @@ If the status is "`needs attention,`" first check the storage controller using S
 |The type of drives in the appliance, such as HDD (hard disk drive) or SSD (solid state drive).
 
 |Storage data drive size
-|The total capacity including all data drives in the appliance.
+|The effective size of one data drive.
+
+*Note*: For nodes with expansion shelves, use the <<shelf_data_drive_size,Data drive size for each shelf>> instead. Effective drive size might differ by shelf.
 
 |Storage RAID mode
 |The RAID mode configured for the appliance.
@@ -135,7 +137,7 @@ This field is not displayed for appliance models that do not contain a BMC.
 +
 [cols="1a,2a" options="header"]
 |===
-| Column in the Storage Shelves table| Description
+| Column in the Storage shelves table| Description
 
 
 |Shelf chassis serial number
@@ -171,7 +173,7 @@ This field is not displayed for appliance models that do not contain a BMC.
 |Data drives
 |The number of drives in the storage shelf that are used for data storage.
 
-|Data drive size
+|[[shelf_data_drive_size]]Data drive size
 |The effective size of one data drive in the storage shelf.
 
 |Cache drives
@@ -312,8 +314,6 @@ image::../media/nodes_page_hardware_tab_services_appliance.png[Nodes page Hardwa
 
 |Storage data drive size
 |The effective size of one data drive.
-
-*Note*: For nodes with expansion shelves, use the Data drive size values for each shelf instead. Effective drive size might differ by shelf.
 
 |Storage RAID mode
 |The RAID mode for the appliance.
