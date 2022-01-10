@@ -1,0 +1,81 @@
+---
+permalink: s3/get-bucket-consistency-request.html
+sidebar: sidebar
+keywords:S3 REST API, S3 operations, 
+GET bucket consistency request
+summary: 'The GET Bucket consistency request allows you to determine the consistency level being applied to a particular bucket.'
+---
+= GET Bucket consistency request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The GET Bucket consistency request allows you to determine the consistency level being applied to a particular bucket.
+
+The GET Bucket consistency request allows you to determine the consistency level being applied to a particular bucket.
+
+The default consistency controls are set to guarantee read-after-write for newly created objects.
+
+You have the s3:GetBucketConsistency permission, or be account root, to complete this operation.
+
+== Request example
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+GET /bucket?x-ntap-sg-consistency HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+== Response
+
+In the response XML, `<Consistency>` will return one of the following values:
+
+[options="header"]
+|===
+| Consistency control| Description
+a|
+all
+a|
+All nodes receive the data immediately, or the request will fail.
+a|
+strong-global
+a|
+Guarantees read-after-write consistency for all client requests across all sites.
+a|
+strong-site
+a|
+Guarantees read-after-write consistency for all client requests within a site.
+a|
+read-after-new-write
+a|
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+
+a|
+available (eventual consistency for HEAD operations)
+a|
+Behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations. Offers higher availability for HEAD operations than "`read-after-new-write`" if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD operations only.
+|===
+
+== Response example
+
+----
+HTTP/1.1 200 OK
+Date: Fri, 18 Sep 2020 01:02:18 GMT
+Connection: CLOSE
+Server: StorageGRID/11.5.0
+x-amz-request-id: 12345
+Content-Length: 127
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Consistency xmlns="http://s3.storagegrid.com/doc/2015-02-01/">read-after-new-write</Consistency>
+----
+
+.Related information
+
+xref:consistency-controls.adoc[Consistency controls]

@@ -1,0 +1,71 @@
+---
+permalink: s3/get-storage-usage-request.html
+sidebar: sidebar
+keywords:S3 REST API, S3 operations, 
+GET storage usage request
+summary: 'The GET Storage Usage request tells you the total amount of storage in use by an account, and for each bucket associated with the account.'
+---
+= GET Storage Usage request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The GET Storage Usage request tells you the total amount of storage in use by an account, and for each bucket associated with the account.
+
+The amount of storage used by an account and its buckets can be obtained by a modified GET Service request with the `x-ntap-sg-usage` query parameter. Bucket storage usage is tracked separately from the PUT and DELETE requests processed by the system. There might be some delay before the usage values match the expected values based on the processing of requests, particularly if the system is under heavy load.
+
+By default, StorageGRID attempts to retrieve usage information using strong-global consistency. If strong-global consistency cannot be achieved, StorageGRID attempts to retrieve the usage information at a strong-site consistency.
+
+You have the s3:ListAllMyBuckets permission, or be account root, to complete this operation.
+
+===Request example
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+GET /?x-ntap-sg-usage HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+== Response example
+
+This example shows an account that has four objects and 12 bytes of data in two buckets. Each bucket contains two objects and six bytes of data.
+
+----
+HTTP/1.1 200 OK
+Date: Sat, 29 Nov 2015 00:49:05 GMT
+Connection: KEEP-ALIVE
+Server: StorageGRID/10.2.0
+x-amz-request-id: 727237123
+Content-Length: 427
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<UsageResult xmlns="http://s3.storagegrid.com/doc/2015-02-01">
+<CalculationTime>2014-11-19T05:30:11.000000Z</CalculationTime>
+<ObjectCount>4</ObjectCount>
+<DataBytes>12</DataBytes>
+<Buckets>
+<Bucket>
+<Name>bucket1</Name>
+<ObjectCount>2</ObjectCount>
+<DataBytes>6</DataBytes>
+</Bucket>
+<Bucket>
+<Name>bucket2</Name>
+<ObjectCount>2</ObjectCount>
+<DataBytes>6</DataBytes>
+</Bucket>
+</Buckets>
+</UsageResult>
+----
+
+== Versioning
+
+Every object version stored will contribute to the `ObjectCount` and `DataBytes` values in the response. Delete markers are not added to the `ObjectCount` total.
+
+.Related information
+
+xref:consistency-controls.adoc[Consistency controls]

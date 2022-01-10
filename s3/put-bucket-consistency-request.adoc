@@ -1,0 +1,66 @@
+---
+permalink: s3/put-bucket-consistency-request.html
+sidebar: sidebar
+keywords:S3 REST API, S3 operations, 
+PUT bucket consistency request
+summary: 'The PUT Bucket consistency request allows you to specify the consistency level to apply to operations performed on a bucket.'
+---
+= PUT Bucket consistency request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+
+The PUT Bucket consistency request allows you to specify the consistency level to apply to operations performed on a bucket.
+
+The default consistency controls are set to guarantee read-after-write for newly created objects.
+
+You have the s3:PutBucketConsistency permission, or be account root, to complete this operation.
+
+== Request
+
+The `x-ntap-sg-consistency` parameter must contain one of the following values:
+
+[options="header"]
+|===
+| Consistency control| Description
+a|
+all
+a|
+All nodes receive the data immediately, or the request will fail.
+a|
+strong-global
+a|
+Guarantees read-after-write consistency for all client requests across all sites.
+a|
+strong-site
+a|
+Guarantees read-after-write consistency for all client requests within a site.
+a|
+read-after-new-write
+a|
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+
+*Note:* If your application uses HEAD requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
+
+a|
+available (eventual consistency for HEAD operations)
+a|
+Behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations. Offers higher availability for HEAD operations than "`read-after-new-write`" if Storage Nodes are unavailable. Differs from Amazon S3 consistency guarantees for HEAD operations only.
+|===
+*Note:* In general, you should use the "`read-after-new-write`" consistency control value. If requests are not working correctly, change the application client behavior if possible. Or, configure the client to specify the consistency control for each API request. Set the consistency control at the bucket level only as a last resort.
+
+== Request example
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /bucket?x-ntap-sg-consistency=strong-global HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+.Related information
+
+xref:consistency-controls.adoc[Consistency controls]
