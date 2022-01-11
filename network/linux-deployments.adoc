@@ -1,7 +1,7 @@
 ---
 permalink: network/linux-deployments.html
 sidebar: sidebar
-keywords:
+keywords: linux network, container engine, red hat enterprise linux rhel network, ubuntu network
 summary: 'For efficiency, reliability, and security, the StorageGRID system runs on Linux as a collection of container engines. Container engine-related network configuration is not required in a StorageGRID system.'
 ---
 = Linux deployments
@@ -15,10 +15,4 @@ Use a non-bond device, such as a VLAN or virtual Ethernet (veth) pair, for the c
 
 IMPORTANT: Do not use bond or bridge devices directly as the container network interface. Doing so could prevent node start-up because of a kernel issue with the use of macvlan with bond and bridge devices in the container namespace.
 
-See the installation instructions for Red Hat Enterprise Linux/CentOS or Ubuntu/Debian deployments.
-
-.Related information
-
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+See the installation instructions for xref:../rhel/index.adoc[Red Hat Enterprise Linux or CentOS] or xref:../ubuntu/index.adoc[Ubuntu or Debian] deployments.

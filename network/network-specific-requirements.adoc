@@ -39,6 +39,8 @@ NOTE: The Grid Network must be directly routable between each node. Network addr
 
 * If the Grid Network consists of multiple subnets, add them to the Grid Network Subnet List (GNSL). Static routes are created on all nodes for each subnet in the GNSL.
 
+*  If the Grid Network interface is configured as a trunk to support VLAN interfaces, the trunk native VLAN must be the VLAN used for Grid Network traffic.  All grid nodes must be accessible over the trunk native VLAN.
+
 == Admin Network
 
 The Admin Network is optional. If you plan to configure an Admin Network, follow these requirements and guidelines.
@@ -53,10 +55,9 @@ NOTE: You must define at least one subnet on the Admin Network to enable inbound
 
 The Client Network is optional. If you plan to configure a Client Network, note the following considerations.
 
-The Client Network is designed to support traffic from S3 and Swift clients. If configured, the Client Network gateway becomes the node's default gateway.
+* The Client Network is designed to support traffic from S3 and Swift clients. If configured, the Client Network gateway becomes the node's default gateway.
 
-If you use a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured load balancer endpoints. See the information about managing load balancing and managing untrusted Client Networks in the instructions for administering StorageGRID.
+* If you use a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured load balancer endpoints. See xref:../admin/managing-high-availability-groups.adoc[Manage high availability groups] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
-.Related information
+* If the Client Network interface is configured as a trunk at the interface to support VLAN interfaces, consider whether configuring the Client Network interface (eth2) is necessary. If configured, Client Network traffic will flow over the trunk native VLAN, as configured in the switch.
 
-xref:../admin/index.adoc[Administer StorageGRID]
