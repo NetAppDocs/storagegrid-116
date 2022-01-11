@@ -1,7 +1,7 @@
 ---
 permalink: s3/storagegrid-s3-rest-api-operations.html
 sidebar: sidebar
-keywords:S3 REST API, S3 operations
+keywords: S3 REST API, S3 operations
 summary: 'There are operations added on to the S3 REST API that are specific to StorageGRID system.'
 ---
 = StorageGRID S3 REST API operations
@@ -15,47 +15,47 @@ There are operations added on to the S3 REST API that are specific to StorageGRI
 
 The following lists the S3 REST API added operations:
 
-* GET Bucket consistency request
+* xref:../s3/get-bucket-consistency-request.adoc[GET Bucket consistency request]
 
 +
 The GET Bucket consistency request allows you to determine the consistency level being applied to a particular bucket.
 
-* PUT Bucket consistency request
+* xref:../s3/put-bucket-consistency-request.adoc[PUT Bucket consistency request]
 
 +
 The PUT Bucket consistency request allows you to specify the consistency level to apply to operations performed on a bucket.
 
-* GET Bucket last access time request
+* xref:../s3/get-bucket-last-access-time-request.adoc[GET Bucket last access time request]
 
 +
 The GET Bucket last access time request allows you to determine if last access time updates are enabled or disabled for individual buckets.
 
-* PUT Bucket last access time request
+* xref:../s3/put-bucket-last-access-time-request.adoc[PUT Bucket last access time request]
 
 +
 The PUT Bucket last access time request allows you to enable or disable last access time updates for individual buckets. Disabling last access time updates improves performance, and is the default setting for all buckets created with version 10.3.0, or later.
 
-* DELETE Bucket metadata notification configuration request
+* xref:../s3/delete-bucket-metadata-notification-configuration-request.adoc[DELETE Bucket metadata notification configuration request]
 
 +
 The DELETE Bucket metadata notification configuration request allows you to disable the search integration service for individual buckets by deleting the configuration XML.
 
-* GET Bucket metadata notification configuration request
+* xref:../s3/get-bucket-metadata-notification-configuration-request.adoc[GET Bucket metadata notification configuration request]
 
 +
 The GET Bucket metadata notification configuration request allows you to retrieve the configuration XML used to configure search integration for individual buckets.
 
-* PUT Bucket metadata notification configuration request
+* xref:../s3/put-bucket-metadata-notification-configuration-request.adoc[PUT Bucket metadata notification configuration request]
 
 +
 The PUT Bucket metadata notification configuration request allows you to enable the search integration service for individual buckets. The metadata notification configuration XML that you supply in the request body specifies the objects whose metadata is sent to the destination search index.
 
-* GET Storage Usage request
+* xref:../s3/get-storage-usage-request.adoc[GET Storage Usage request]
 
 +
 The GET Storage Usage request tells you the total amount of storage in use by an account, and for each bucket associated with the account.
 
-* Deprecated bucket requests for legacy Compliance
+* xref:../s3/deprecated-bucket-requests-for-legacy-compliance.adoc[Deprecated Bucket requests for legacy Compliance]
 
 +
 You might need to use the StorageGRID S3 REST API to manage buckets that were created using the legacy Compliance feature.
