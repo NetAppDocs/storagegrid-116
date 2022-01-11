@@ -718,7 +718,8 @@ If you previously enabled the global Compliance setting, the global S3 Object Lo
 
 * https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
 
-=== Deprecated: PUT Bucket request modifications for compliance
+[[deprecated-put-bucket-request-modifications-for-compliance]]
+=== Deprecated: PUT Bucket with compliance settings
 
 The SGCompliance XML element is deprecated. Previously, you could include this StorageGRID custom element in the optional XML request body of PUT Bucket requests to create a Compliant bucket.
 
@@ -743,6 +744,7 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:../tenant/index.adoc[Use tenant account]
 
+[[deprecated-get-bucket-compliance-request]]
 === Deprecated: GET Bucket compliance request
 
 The GET Bucket compliance request is deprecated. However, you can continue to use this request to determine the compliance settings currently in effect for an existing legacy Compliant bucket.
@@ -823,6 +825,7 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 
 xref:../tenant/index.adoc[Use tenant account]
 
+[[deprecated-put-bucket-compliance-request]]
 === Deprecated: PUT Bucket compliance request
 
 The PUT Bucket compliance request is deprecated. However, you can continue to use this request to modify the compliance settings for an existing legacy Compliant bucket. For example, you can place an existing bucket on legal hold or increase its retention period.
