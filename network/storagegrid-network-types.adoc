@@ -44,8 +44,7 @@ You can configure networking in the following ways:
 
 The Grid Network is mandatory and can manage all grid traffic. The Admin and Client Networks can be included at the time of installation or added later to adapt to changes in requirements. Although the Admin Network and Client Network are optional, when you use these networks to handle administrative and client traffic, the Grid Network can be made isolated and secure.
 
-Internal ports are only accessible over the Grid Network. External ports are accessible from all network types. This flexibility provides multiple options for designing a StorageGRID deployment and setting up external IP and port filtering in switches and firewalls. For more information about internal and external ports, see the xref:network-port-reference.adoc[Network port reference].
-
+Internal ports are only accessible over the Grid Network. External ports are accessible from all network types. This flexibility provides multiple options for designing a StorageGRID deployment and setting up external IP and port filtering in switches and firewalls. See xref:..network/internal-grid-node-communications.adoc[internal grid node communications] and xref:../network/external-communications.adoc[external communications].
 
 == Network interfaces
 
@@ -137,7 +136,7 @@ The Client Network is optional. When configured, it is used to provide access to
 
 You can choose which grid nodes should have the Client Network enabled on them. All nodes do not have to be on the same Client Network, and nodes will never communicate with each other over the Client Network. The Client Network does not become operational until grid installation is complete.
 
-For added security, you can specify that a node's Client Network interface be untrusted so that the Client Network will be more restrictive of which connections are allowed. If a node's Client Network interface is untrusted, the interface accepts outbound connections such as those used by CloudMirror replication, but only accepts inbound connections on ports that have been explicitly configured as load balancer endpoints. See xref:../admin/managing-untrusted-client-network.adoc[Manage untrusted Client Networks] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
+For added security, you can specify that a node's Client Network interface be untrusted so that the Client Network will be more restrictive of which connections are allowed. If a node's Client Network interface is untrusted, the interface accepts outbound connections such as those used by CloudMirror replication, but only accepts inbound connections on ports that have been explicitly configured as load balancer endpoints. See xref:../admin/managing-untrusted-client-networks.adoc[Manage untrusted Client Networks] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
 When you use a Client Network, client traffic does not need to travel across the Grid Network. Grid Network traffic can be separated onto a secure, non-routable network. The following node types are often configured with a Client Network:
 
