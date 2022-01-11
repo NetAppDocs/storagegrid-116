@@ -24,7 +24,7 @@ CloudMirror replication copies objects from a source bucket to a destination buc
 
 NOTE: Replication is not supported for source or destination buckets with S3 Object Lock enabled.
 
-For general information on bucket replication and how to configure it, see the Amazon documentation on cross-region replication (CRR). For information on how StorageGRID implements the S3 bucket replication configuration API, see the instructions for implementing S3 client applications.
+For general information on bucket replication and how to configure it, see the Amazon Simple Storage Service (S3) documentation on cross-region replication (CRR). For information on how StorageGRID implements the S3 bucket replication configuration API, see the xref:../s3/index.adoc[instructions for implementing S3 client applications].
 
 If you enable CloudMirror replication on a bucket that contains objects, new objects added to the bucket are replicated, but the existing objects in the bucket are not. You must update existing objects to trigger replication.
 
