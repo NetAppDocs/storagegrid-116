@@ -27,13 +27,13 @@ Admin traffic
 a|
 The traffic used for system administration and maintenance.
 a|
-Admin Network (optional), VLAN networks (optional)
+Admin Network (optional), <<Optional VLAN networks,VLAN networks (optional)>>
 a|
 Client traffic
 a|
 The traffic that travels between external client applications and the grid, including all object storage requests from S3 and Swift clients.
 a|
-Client Network (optional), VLAN networks (optional)
+Client Network (optional), <<Optional VLAN networks,VLAN networks (optional)>>
 |===
 You can configure networking in the following ways:
 
@@ -88,7 +88,7 @@ You can only configure one IP address/mask/gateway combination for each of the t
 
 === High availability groups
 
-High availability (HA) groups provide the ability to add virtual IP (VIP) addresses to the Grid or Client Network interface. For more information, see xref:../admin/managing-high-availability-groups.adoc[Manage high-availability groups]. 
+High availability (HA) groups provide the ability to add virtual IP (VIP) addresses to the Grid or Client Network interface. For more information, see xref:../admin/managing-high-availability-groups.adoc[Manage high availability groups]. 
 
 
 == Grid Network
@@ -114,7 +114,12 @@ The Admin Network is optional. When configured, it can be used for system admini
 
 You can choose which grid nodes should have the Admin Network enabled on them.
 
-By using an Admin Network, administrative and maintenance traffic does not need to travel across the Grid Network. Typical uses of the Admin Network include access to the Grid Manager user interface; access to critical services such as NTP, DNS, external key management (KMS), and Lightweight Directory Access Protocol (LDAP); access to audit logs on Admin Nodes; and Secure Shell Protocol (SSH) access for maintenance and support.
+When you use the Admin Network, administrative and maintenance traffic does not need to travel across the Grid Network. Typical uses of the Admin Network include the following: 
+
+* Access to the Grid Manager and Tenant Manager user interfaces.
+* Access to critical services such as NTP servers, DNS servers, external key management servers (KMS), and Lightweight Directory Access Protocol (LDAP) servers.
+* Access to audit logs on Admin Nodes.
+* Secure Shell Protocol (SSH) access for maintenance and support.
 
 The Admin Network is never used for internal grid traffic. An Admin Network gateway is provided and allows the Admin Network to communicate with multiple external subnets. However, the Admin Network gateway is never used as the node default gateway.
 
@@ -129,7 +134,7 @@ The Client Network is optional. When configured, it is used to provide access to
 
 You can choose which grid nodes should have the Client Network enabled on them. All nodes do not have to be on the same Client Network, and nodes will never communicate with each other over the Client Network. The Client Network does not become operational until grid installation is complete.
 
-For added security, you can specify that a node's Client Network interface be untrusted so that the Client Network will be more restrictive of which connections are allowed. If a node's Client Network interface is untrusted, the interface accepts outbound connections such as those used by CloudMirror replication, but only accepts inbound connections on ports that have been explicitly configured as load balancer endpoints. See xref:..admin/managing-untrusted-client-network.adoc[Manage untrusted Client Networks] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
+For added security, you can specify that a node's Client Network interface be untrusted so that the Client Network will be more restrictive of which connections are allowed. If a node's Client Network interface is untrusted, the interface accepts outbound connections such as those used by CloudMirror replication, but only accepts inbound connections on ports that have been explicitly configured as load balancer endpoints. See xref:../admin/managing-untrusted-client-network.adoc[Manage untrusted Client Networks] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
 When you use a Client Network, client traffic does not need to travel across the Grid Network. Grid Network traffic can be separated onto a secure, non-routable network. The following node types are often configured with a Client Network:
 
@@ -160,7 +165,7 @@ VLAN interfaces are only used in HA groups and are assigned VIP addresses on the
 
 .Related information
 
-* xref:networking-requirements-and-guidelines.adoc[Networking requirements and guidelines]
+* xref:networking-requirements-and-guidelines.adoc[Networking requirements]
 
 
 

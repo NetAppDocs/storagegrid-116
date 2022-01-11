@@ -57,7 +57,7 @@ The Client Network is optional. If you plan to configure a Client Network, note 
 
 * The Client Network is designed to support traffic from S3 and Swift clients. If configured, the Client Network gateway becomes the node's default gateway.
 
-* If you use a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured load balancer endpoints. See xref:../admin/managing-high-availability-groups.adoc[Manage high availability groups] and xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
+* If you use a Client Network, you can help secure StorageGRID from hostile attacks by accepting inbound client traffic only on explicitly configured load balancer endpoints. See xref:../admin/configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints].
 
 * If the Client Network interface is configured as a trunk at the interface to support VLAN interfaces, consider whether configuring the Client Network interface (eth2) is necessary. If configured, Client Network traffic will flow over the trunk native VLAN, as configured in the switch.
 

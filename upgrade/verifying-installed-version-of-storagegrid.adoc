@@ -11,10 +11,24 @@ summary: 'Before starting the upgrade, you must verify that the previous version
 [.lead]
 Before starting the upgrade, you must verify that the previous version of StorageGRID is currently installed with the latest available hotfix applied.
 
+== About this task
+
+Before you upgrade to StorageGRID 11.6, your grid must have StorageGRID 11.5 installed. If you are still using a previous version of StorageGRID, you must install all previous upgrade files along with their latest hotfixes (strongly recommended) until your grid's current version is StorageGRID 11.5._x.y_.
+
+One possible upgrade path is shown in the <<example>>.
+
+NetApp strongly recommends that you apply the latest hotfix for each StorageGRID version before upgrading to the next version. For details, see the release notes for the hotfix.
+
+
+Note that you can run a script to update from 11.3.0.13+ to 11.4.0._y_ in one step and from 11.4.0.7+ to 11.5.0._y_ in one step. See https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^].
+
+
 .Steps
 
 . Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
 . From the top of the Grid Manager, select *Help* > *About*.
+
 . Verify that *Version* is 11.5._x.y_.
 +
 In the StorageGRID 11.5._x.y_ version number:
@@ -22,25 +36,15 @@ In the StorageGRID 11.5._x.y_ version number:
  ** The *major release* has an _x_ value of 0 (11.5.0).
  ** A *hotfix*, if one has been applied, has a _y_ value (for example, 11.5.0.1).
 
-. If *Version* is not 11.5._x.y_, upgrade to version 11.5, one release at a time, using the upgrade instructions for each release. One possible upgrade path is shown in the example.
-+
-[IMPORTANT]
-====
-If you have an earlier version, you must upgrade to StorageGRID 11.5 before upgrading to StorageGRID 11.6. You must also apply the latest hotfix for each StorageGRID version before upgrading to the next version.
+. If *Version* is not 11.5._x.y_, go to https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^] to download the files for each previous release, including the latest hotfix for each release.
 
-You can run a script to update from 11.3.0.13+ to 11.4.0._y_ in one step and from 11.4.0.7+ to 11.5.0._y_ in one step. See https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^].
-====
-
-. When you are at StorageGRID 11.5, go to https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab[NetApp Downloads: StorageGRID^] and see if any hotfixes are available for your StorageGRID 11.5._x_ version.
-
-. Verify that your StorageGRID 11.5._x_ version has the latest hotfix applied.
-. If necessary, download and apply the latest StorageGRID 11.5._x.y_ hotfix for your StorageGRID 11.5._x_ version.
+. Obtain the the upgrade instructions for each release you downloaded. Then, perform the software upgrade procedure for that release, and apply the latest hotfix for that release (strongly recommended).
 +
 See the xref:../maintain/storagegrid-hotfix-procedure.adoc[StorageGRID hotfix procedure].
 
-== Example: Preparing to upgrade to StorageGRID 11.6 from version 11.3.0.8
+== [[example]]Example: Upgrade to StorageGRID 11.6 from version 11.3.0.8
 
-The following example shows the upgrade steps to prepare for an upgrade from StorageGRID version 11.3.0.8 to version 11.6. Before you can upgrade to StorageGRID 11.6, your system must have a StorageGRID 11.5 version installed with the latest hotfix.
+The following example shows the upgrade steps to upgrade from StorageGRID version 11.3.0.8 to version 11.6. 
 
 IMPORTANT: Optionally, you can run a script to combine steps 2 and 3 (update from 11.3.0.13+ to 11.4.0._y_) and to combine steps 4 and 5 (update from 11.4.0.7+ to 11.5.0._y_). See https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_run_combined_major_upgrade_and_hotfix_script_for_StorageGRID[NetApp Knowledge Base: How to run combined major upgrade and hotfix script for StorageGRID^].
 
@@ -51,6 +55,7 @@ Download and install software in the following sequence to prepare your system f
 . Apply the latest StorageGRID 11.4.0._y_ hotfix.
 . Upgrade to the StorageGRID 11.5.0 major release.
 . Apply the latest StorageGRID 11.5.0._y_ hotfix.
+. Upgrade to the StorageGRID 11.6.0 major release.
 
 
 
