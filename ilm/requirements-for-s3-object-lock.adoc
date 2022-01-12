@@ -63,7 +63,7 @@ image::../media/compliant_bucket.png[Example Compliant Bucket]
 * If you plan to use S3 Object Lock, you must enable S3 Object Lock when you create the bucket. You cannot enable S3 Object Lock for an existing bucket.
 * Bucket versioning is required with S3 Object Lock. When S3 Object Lock is enabled for a bucket, StorageGRID automatically enables versioning for that bucket.
 * After you create a bucket with S3 Object Lock enabled, you cannot disable S3 Object Lock or suspend versioning for that bucket.
-* Optionally, you can configure default retention for a bucket. When an object version is uploaded, the default retention is applied to the object version. You can override this default when uploading the object version by specifying a retention mode and retain-until-date for the bucket.
+* Optionally, you can configure default retention for a bucket. When an object version is uploaded, the default retention is applied to the object version. You can override the bucket default by specifying a retention mode and retain-until-date in the request to upload an object version.
 * Bucket lifecycle configuration is supported for S3 Object Lifecycle buckets.
 * CloudMirror replication is not supported for buckets with S3 Object Lock enabled.
 
