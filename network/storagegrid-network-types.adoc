@@ -27,13 +27,13 @@ Admin traffic
 a|
 The traffic used for system administration and maintenance.
 a|
-Admin Network (optional), <<Optional VLAN networks,VLAN networks (optional)>>
+Admin Network (optional), <<Optional VLAN networks,VLAN network (optional)>>
 a|
 Client traffic
 a|
 The traffic that travels between external client applications and the grid, including all object storage requests from S3 and Swift clients.
 a|
-Client Network (optional), <<Optional VLAN networks,VLAN networks (optional)>>
+Client Network (optional), <<Optional VLAN networks,VLAN network (optional)>>
 |===
 You can configure networking in the following ways:
 
@@ -44,7 +44,7 @@ You can configure networking in the following ways:
 
 The Grid Network is mandatory and can manage all grid traffic. The Admin and Client Networks can be included at the time of installation or added later to adapt to changes in requirements. Although the Admin Network and Client Network are optional, when you use these networks to handle administrative and client traffic, the Grid Network can be made isolated and secure.
 
-Internal ports are only accessible over the Grid Network. External ports are accessible from all network types. This flexibility provides multiple options for designing a StorageGRID deployment and setting up external IP and port filtering in switches and firewalls. See xref:..network/internal-grid-node-communications.adoc[internal grid node communications] and xref:../network/external-communications.adoc[external communications].
+Internal ports are only accessible over the Grid Network. External ports are accessible from all network types. This flexibility provides multiple options for designing a StorageGRID deployment and setting up external IP and port filtering in switches and firewalls. See xref:../network/internal-grid-node-communications.adoc[internal grid node communications] and xref:../network/external-communications.adoc[external communications].
 
 == Network interfaces
 
@@ -157,7 +157,7 @@ To support the use VLANs, you must configure one or more interfaces on a node as
 
 If eth0 is configured as a trunk, Grid Network traffic flows over the trunk native interface, as configured on the switch. Similarly, if eth2 is configured as a trunk, and the Client Network is also configured on the same node, the Client Network uses the trunk port's native VLAN as configured on the switch.
 
-Only inbound admin traffic, such as used for SSH, Grid Manager, or Tenant Manager traffic, is supported over VLAN networks. Outbound traffic, such as used for NTP, DNS, LDAP, KMS, and Cloud Storage Pools is not supported over VLAN networks.
+Only inbound admin traffic, such as used for SSH, Grid Manager, or Tenant Manager traffic, is supported over VLAN networks. Outbound traffic, such as used for NTP, DNS, LDAP, KMS, and Cloud Storage Pools, is not supported over VLAN networks.
 
 IMPORTANT: VLAN interfaces can be added to Admin Nodes and Gateway Nodes only. You cannot use a VLAN interface for client or admin access to Storage Nodes or Archive Nodes.
 
