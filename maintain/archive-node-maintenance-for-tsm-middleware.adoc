@@ -52,7 +52,7 @@ A retrieval can also fail if the object is temporarily unavailable. In this case
 
 If the StorageGRID system is configured to use an ILM rule that creates a single object copy and that copy cannot be retrieved, the object is lost and cannot be recovered. However, you must still follow the procedure to determine if the object is permanently unavailable to "`clean up`" the StorageGRID system, to cancel the Archive Node's request, and to purge metadata for the lost object.
 
-[#determining_objects_permanently_unavailable]
+[[determining_objects_permanently_unavailable]]
 === Determining if objects are permanently unavailable
 
 You can determine if objects are permanently unavailable by making a request using the TSM administrative console.
