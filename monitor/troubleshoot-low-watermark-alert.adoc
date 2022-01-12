@@ -15,17 +15,17 @@ In previous releases, the three xref:../admin/what-storage-volume-watermarks-are
 
 When you upgrade to StorageGRID 11.6, optimized read-only and read-write watermarks are automatically applied to all storage volumes, unless either of the following is true:
 
-* Your system is close to capacity and it would not be able to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
+* Your system is close to capacity and would not be able to accept new data if optimized watermarks were applied. StorageGRID will not change watermark settings in this case.
 
-* A storage volume watermark was previously set to a custom value. StorageGRID will not override custom watermark settings with optimized values. However, StorageGRID might trigger the *Low read-only watermark override* alert if a custom value for the Storage Volume Soft Read-Only Watermark is too small.
+* You previously set any of the storage volume watermarks to a custom value. StorageGRID will not override custom watermark settings with optimized values. However, StorageGRID might trigger the *Low read-only watermark override* alert if your custom value for the Storage Volume Soft Read-Only Watermark is too small.
 
 == Understand the alert
 
 If you use custom values for storage volume watermarks, the *Low read-only watermark override* alert might be triggered for one or more Storage Nodes. 
 
-Each instance of the alert indicates that the value of the *Storage Volume Soft Read-Only Watermark* is smaller than the minimum optimized value for that Storage Node. If you continue to use the custom setting, the Storage Node might run critically low on space before it can safely transition to the read-only state. Some storage volumes might become inaccessible (automatically unmounted) when the node reaches capacity. 
+Each instance of the alert indicates that the custom value of the *Storage Volume Soft Read-Only Watermark* is smaller than the minimum optimized value for that Storage Node. If you continue to use the custom setting, the Storage Node might run critically low on space before it can safely transition to the read-only state. Some storage volumes might become inaccessible (automatically unmounted) when the node reaches capacity. 
 
-For example, suppose you previously set the *Storage Volume Soft Read-Only Watermark* to 5 GB, instead of using the default value of 10 GB. Now suppose that StorageGRID has calculated the following optimized values for the four storage volumes in Storage Node A:
+For example, suppose you previously set the *Storage Volume Soft Read-Only Watermark* to 5 GB. Now suppose that StorageGRID has calculated the following optimized values for the four storage volumes in Storage Node A:
 
 [cols="1a,1a"]
 |===
@@ -48,7 +48,7 @@ The *Low read-only watermark override* alert is triggered for Storage Node A bec
 
 == Resolve the alert
 
-Follow these steps if one or more *Low read-only watermark override* alerts have been triggered.
+Follow these steps if one or more *Low read-only watermark override* alerts have been triggered. You can also use these instructions if you currently use custom watermark settings and want to start using optimized settings even if no alerts have been triggered.
 
 .What you'll need
 
@@ -69,10 +69,12 @@ You can resolve the *Low read-only watermark override* alert by updating custom 
 . For each site in the grid, expand the list of nodes.
 
 . Review the percentage values shown in the *Object data used* column for each Storage Node at every site. 
-
-. If none of the Storage Nodes are close to full (for example, all *Object data used* values are less than 80%), go to <<Use optimized watermarks>> to start using the override settings.
 +
-NOTE: There are some exceptions to this general rule. For example, if ILM rules use Strict ingest behavior or if specific storage pools are close to full, perform the steps in <<View optimized storage watermarks>> and <<Determine if you can use optimized watermarks>>.
+image::../media/nodes_page_object_data_used_with_alert.png[Nodes page showing object data used for 3 SNs]
+
+. If none of the Storage Nodes are close to full (for example, all *Object data used* values are less than 80%),  you can start using the override settings. Go to <<Use optimized watermarks>>.
++
+NOTE: There are some exceptions to this general rule. For example, if ILM rules use Strict ingest behavior or if specific storage pools are close to full, you should first perform the steps in <<View optimized storage watermarks>> and <<Determine if you can use optimized watermarks>>.
 
 . If one more more Storage Nodes are close to full, perform the steps in <<View optimized storage watermarks>> and <<Determine if you can use optimized watermarks>>.
 
@@ -105,7 +107,7 @@ The last column shows the maximum optimized value of the Soft Read-Only Watermar
 . Repeat these steps for each online Storage Node:
 .. Select *_Storage Node_* > *Storage*.
 .. Scroll down to the Object Stores table.
-.. Compare the *Available* value for each object store (volume) to the <<maximum_optimized_value,maximum optimized watermark>> for that Storage Node.
+.. Compare the *Available* value for each object store (volume) to the <<maximum_optimized_value,maximum optimized watermark>> you noted for that Storage Node.
 
 . If at least one volume on every online Storage Node has more space available than maximum optimized watermark for that node, go to <<Use optimized watermarks>> to start using the optimized watermarks. 
 +
