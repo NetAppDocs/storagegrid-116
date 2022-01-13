@@ -113,12 +113,21 @@ image::../media/manage-syslog-content.png[Manage syslog content]
 +
 If you select *Passthrough* for severity and facility, the information sent to the remote syslog server will receive the same severity and facility as it did when logged locally onto the node. Setting facility and severity can help you aggregate the logs in customizable ways for easier analysis. 
 
++
 NOTE: For more information on StorageGRID software logs, see xref:../monitor/storagegrid-software-logs.adoc#[StorageGRID software logs].
 
-.. For *Severity*, select *Passthrough* if you want each message sent to the external syslog to have the same severity value as it does in the local syslog. 
+.. For *Severity*, select *Passthrough* if you want each message sent to the external syslog to have the same severity value as it does in the local syslog.
 
 +
-Otherwise, select the severity value between 0 and 7.
+For audit logs, if you select *Passthrough* the severity is 'info.'
+
++
+For security events, if you select *Passthrough*, the facility is 'xxxx'
+
++
+For application logs, if you select *Passthrough*, the severities vary between 'info' and 'notice,' depending on what the issue is. For example, adding an NTP server and configuring an HA group gives a value of 'info,' while intentionally stopping the ssm or rsm service gives a value of 'notice.'
+
+.. If you do not want to use the passthrough value, select the severity value between 0 and 7.
 
 +
 [cols="1a,3a" options="header"]
@@ -152,7 +161,13 @@ Otherwise, select the severity value between 0 and 7.
 .. For *Facility*, select *Passthrough* if you want each message sent to the external syslog to have the same facility value as it does in the local syslog. 
 
 +
-When you select *Passthrough*, the application logs sent to the external syslog server have the following facility values: 
+For audit logs, if you select *Passthrough* the facility sent to the external syslog server is 'local7.'
+
++
+For security events, if you select *Passthrough*, the facility sent to the external syslog server is 'xxxx'
+
++
+For application logs, if you select *Passthrough*, the application logs sent to the external syslog server have the following facility values: 
 
 +
 [cols="1a,2a" options="header"]
@@ -182,7 +197,7 @@ When you select *Passthrough*, the application logs sent to the external syslog 
 |===
 
 +
-If you do not want to use the passthrough value, select the facility value between 0 and 23.
+.. If you do not want to use the passthrough value, select the facility value between 0 and 23.
 
 +
 [cols="1a,3a" options="header"]
