@@ -11,7 +11,7 @@ summary: 'The following table lists all default StorageGRID alerts. As required,
 [.lead]
 The following table lists all default StorageGRID alerts. As required, you can create custom alert rules to fit your system management approach.
 
-See information about the commonly used Prometheus metrics to learn about the metrics used in some of these alerts.
+See the information about xref:commonly-used-prometheus-metrics.adoc[commonly used Prometheus metrics] to learn about the metrics used in some of these alerts.
 
 [cols="1a,2a" options="header"]
 |===
@@ -1264,8 +1264,4 @@ A file was found in replicated object storage that could not be identified as a 
 . After resolving any storage issues, perform an xref:verifying-object-integrity.adoc[object existence check] to determine if any replicated copies, as defined by your ILM policy, are missing.
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
-
 |===
-*Related information*
-
-xref:commonly-used-prometheus-metrics.adoc[Commonly used Prometheus metrics]
