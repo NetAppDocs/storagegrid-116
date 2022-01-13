@@ -27,7 +27,7 @@ For example, suppose each volume in a Storage Node has a Soft Read-Only Watermar
 
 The *Storage Volume Hard Read-Only Watermark* is the next watermark to indicate that a node's usable space for object data is becoming full. 
 
-If the free space on a volume is less than that volume's Hard Read-Only Watermark, writes to the volume will fail. Writes to other volumes can continue, however, until the free space on those volumes is above their Hard Read-Only Watermarks.
+If the free space on a volume is less than that volume's Hard Read-Only Watermark, writes to the volume will fail. Writes to other volumes can continue, however, until the free space on those volumes is less than their Hard Read-Only Watermarks.
 
 For example, suppose each volume in a Storage Node has a Hard Read-Only Watermark of 5 GB. As soon as each volume has less than 5 GB of free space, the Storage Node no longer accepts any write requests.
 
