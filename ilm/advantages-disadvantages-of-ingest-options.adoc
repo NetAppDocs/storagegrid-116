@@ -55,7 +55,8 @@ Here is a brief summary of the consistency controls that are available in Storag
 * *read-after-new-write*: Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees.
 * *available* (eventual consistency for HEAD operations): Behaves the same as the "`read-after-new-write`" consistency level, but only provides eventual consistency for HEAD operations.
 
-NOTE: Before selecting a consistency level, read the full description of these settings in the instructions for creating an S3 or Swift client application. You should understand the benefits and limitations before changing the default value.
+NOTE: Before selecting a consistency level, read the full description of these settings in the instructions for creating xref:../s3/index.adoc[S3]
+ or xref:../swift/index.adoc[Swift] client applications. You should understand the benefits and limitations before changing the default value.
 
 == Example of how the consistency control and ILM rule can interact
 
@@ -74,14 +75,6 @@ The inter-relationship between consistency levels and ILM rules can be complex. 
 
 .Related information
 
-* xref:what-replication-is.adoc[What replication is]
-
-* xref:what-erasure-coding-is.adoc[What erasure coding is]
-
-* xref:what-erasure-coding-schemes-are.adoc[What erasure-coding schemes are]
-
 * xref:example-5-ilm-rules-and-policy-for-strict-ingest-behavior.adoc[Example 5: ILM rules and policy for Strict ingest behavior]
 
-* xref:../s3/index.adoc[Use S3]
 
-* xref:../swift/index.adoc[Use Swift]

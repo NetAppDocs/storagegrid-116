@@ -100,15 +100,13 @@ The output is updated immediately if the status of a service changes.
 
 . Confirm that the Apache web server is running: `# service apache2 status`
 
-[#use_Lumberjack_to_collect_logs, start=9]
-. Use Lumberjack to collect logs: `# /usr/local/sbin/lumberjack.rb`
+. [[use_Lumberjack_to_collect_logs, start=9]]Use Lumberjack to collect logs: `# /usr/local/sbin/lumberjack.rb`
 +
 If the failed authentication happened in the past, you can use the --start and --end Lumberjack script options to specify the appropriate time range. Use lumberjack -h for details on these options.
 +
 The output to the terminal indicates where the log archive has been copied.
 
-[#review_logs, start=10]
-. Review the following logs:
+. [[review_logs, start=10]]Review the following logs:
  ** `/var/local/log/bycast.log`
  ** `/var/local/log/bycast-err.log`
  ** `/var/local/log/nms.log`

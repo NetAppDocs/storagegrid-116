@@ -1,0 +1,270 @@
+---
+permalink: s3/put-bucket-metadata-notification-configuration-request.html
+sidebar: sidebar
+keywords: S3 REST API, S3 operations, PUT bucket metadata notification configuration request
+summary: 'The PUT Bucket metadata notification configuration request allows you to enable the search integration service for individual buckets. The metadata notification configuration XML that you supply in the request body specifies the objects whose metadata is sent to the destination search index.'
+---
+= PUT Bucket metadata notification configuration request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The PUT Bucket metadata notification configuration request allows you to enable the search integration service for individual buckets. The metadata notification configuration XML that you supply in the request body specifies the objects whose metadata is sent to the destination search index.
+
+You have the s3:PutBucketMetadataNotification permission for a bucket, or be account root, to complete this operation.
+
+== Request
+
+The request must include the metadata notification configuration in the request body. Each metadata notification configuration includes one or more rules. Each rule specifies the objects that it applies to, and the destination where StorageGRID should send object metadata.
+
+Objects can be filtered on the prefix of the object name. For example, you could send metadata for objects with the prefix `/images` to one destination, and objects with the prefix `/videos` to another.
+
+Configurations that have overlapping prefixes are not valid, and are rejected when they are submitted. For example, a configuration that included one rule for for objects with the prefix `test` and a second rule for objects with the prefix `test2` would not be allowed.
+
+Destinations must be specified using the URN of a StorageGRID endpoint. The endpoint must exist when the metadata notification configuration is submitted, or the request fails as a `400 Bad Request`. The error message states: `Unable to save the metadata notification (search) policy. The specified endpoint URN does not exist: _URN_.`
+
+----
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>rule-status</Status>
+        <Prefix>key-prefix</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype</Urn>
+        </Destination>
+    </Rule>
+    <Rule>
+        <ID>Rule-2</ID>
+         ...
+    </Rule>
+     ...
+</MetadataNotificationConfiguration>
+----
+
+The table describes the elements in the metadata notification configuration XML.
+
+[options="header"]
+|===
+| Name| Description| Required
+a|
+MetadataNotificationConfiguration
+a|
+Container tag for rules used to specify the objects and destination for metadata notifications.
+
+Contains one or more Rule elements.
+
+a|
+Yes
+a|
+Rule
+a|
+Container tag for a rule that identifies the objects whose metadata should be added to a specified index.
+
+Rules with overlapping prefixes are rejected.
+
+Included in the MetadataNotificationConfiguration element.
+
+a|
+Yes
+a|
+ID
+a|
+Unique identifier for the rule.
+
+Included in the Rule element.
+
+a|
+No
+a|
+Status
+a|
+Status can be 'Enabled' or 'Disabled'. No action is taken for rules that are disabled.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Prefix
+a|
+Objects that match the prefix are affected by the rule, and their metadata is sent to the specified destination.
+
+To match all objects, specify an empty prefix.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Destination
+a|
+Container tag for the destination of a rule.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Urn
+a|
+URN of the destination where object metadata is sent. Must be the URN of a StorageGRID endpoint with the following properties:
+
+* `es` must be the third element.
+* The URN must end with the index and type where the metadata is stored, in the form `domain-name/myindex/mytype`.
+
+Endpoints are configured using the Tenant Manager or Tenant Management API. They take the following form:
+
+* `arn:aws:es:region:account-ID:domain/mydomain/myindex/mytype`
+* `urn:mysite:es:::mydomain/myindex/mytype`
+
+The endpoint must be configured before the configuration XML is submitted, or configuration will fail with a 404 error.
+
+Urn is included in the Destination element.
+
+a|
+Yes
+|===
+
+== Request examples
+
+This example shows enabling search integration for a bucket. In this example, object metadata for all objects is sent to the same destination.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /test1?x-ntap-sg-metadata-notification HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>Enabled</Status>
+        <Prefix></Prefix>
+        <Destination>
+           <Urn>urn:sgws:es:::sgws-notifications/test1/all</Urn>
+        </Destination>
+    </Rule>
+</MetadataNotificationConfiguration>
+----
+
+In this example, object metadata for objects that match the prefix `/images` is sent to one destination, while object metadata for objects that match the prefix `/videos` is sent to a second destination.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /graphics?x-ntap-sg-metadata-notification HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Images-rule</ID>
+        <Status>Enabled</Status>
+        <Prefix>/images</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:us-east-1:3333333:domain/es-domain/graphics/imagetype</Urn>
+        </Destination>
+    </Rule>
+    <Rule>
+        <ID>Videos-rule</ID>
+        <Status>Enabled</Status>
+        <Prefix>/videos</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:us-west-1:22222222:domain/es-domain/graphics/videotype</Urn>
+        </Destination>
+    </Rule>
+</MetadataNotificationConfiguration>
+----
+
+== JSON generated by the search integration service
+
+When you enable the search integration service for a bucket, a JSON document is generated and sent to the destination endpoint each time object metadata or tags are added, updated, or deleted.
+
+This example shows an example of the JSON that could be generated when an object with the key `SGWS/Tagging.txt` is created in a bucket named `test`. The `test` bucket is not versioned, so the `versionId` tag is empty.
+
+----
+{
+  "bucket": "test",
+  "key": "SGWS/Tagging.txt",
+  "versionId": "",
+  "accountId": "86928401983529626822",
+  "size": 38,
+  "md5": "3d6c7634a85436eee06d43415012855",
+  "region":"us-east-1"
+  "metadata": {
+    "age": "25"
+  },
+  "tags": {
+    "color": "yellow"
+  }
+}
+----
+
+== Object metadata included in metadata notifications
+
+The table lists all the fields that are included in the JSON document that is sent to the destination endpoint when search integration is enabled.
+
+The document name includes the bucket name, object name, and version ID if present.
+
+[options="header"]
+|===
+| Type| Item name| Description
+a|
+Bucket and object information
+a|
+bucket
+a|
+Name of the bucket
+a|
+Bucket and object information
+a|
+key
+a|
+Object key name
+a|
+Bucket and object information
+a|
+versionID
+a|
+Object version, for objects in versioned buckets
+a|
+Bucket and object information
+a|
+region
+a|
+Bucket region, for example `us-east-1`
+a|
+System metadata
+a|
+size
+a|
+Object size (in bytes) as visible to an HTTP client
+a|
+System metadata
+a|
+md5
+a|
+Object hash
+a|
+User metadata
+a|
+metadata
+`_key:value_`
+a|
+All user metadata for the object, as key-value pairs
+a|
+Tags
+a|
+tags
+`_key:value_`
+a|
+All object tags defined for the object, as key-value pairs
+|===
+*Note:* For tags and user metadata, StorageGRID passes dates and numbers to Elasticsearch as strings or as S3 event notifications. To configure Elasticsearch to interpret these strings as dates or numbers, follow the Elasticsearch instructions for dynamic field mapping and for mapping date formats. You must enable the dynamic field mappings on the index before you configure the search integration service. After a document is indexed, you cannot edit the document's field types in the index.
+
+.Related information
+
+xref:../tenant/index.adoc[Use tenant account]

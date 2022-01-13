@@ -1,0 +1,51 @@
+---
+permalink: s3/put-bucket-last-access-time-request.html
+sidebar: sidebar
+keywords: S3 REST API, S3 operations, put bucket last access time request
+summary: 'The GET Bucket last access time request allows you to determine if last access time updates are enabled or disabled for individual buckets.'
+---
+= PUT Bucket last access time request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The PUT Bucket last access time request allows you to enable or disable last access time updates for individual buckets. Disabling last access time updates improves performance, and is the default setting for all buckets created with version 10.3.0, or later.
+
+You have the s3:PutBucketLastAccessTime permission for a bucket, or be account root, to complete this operation.
+
+NOTE: Starting with StorageGRID version 10.3, updates to last access time are disabled by default for all new buckets. If you have buckets that were created using an earlier version of StorageGRID and you want to match the new default behavior, you must explicitly disable last access time updates for each of those earlier buckets. You can enable or disable updates to last access time using the PUT Bucket last access time request, the *S3* > *Buckets* > *Change Last Access Setting* check box in the Tenant Manager, or the Tenant Management API.
+
+If last access time updates are disabled for a bucket, the following behavior is applied to operations on the bucket:
+
+* GET Object, GET Object ACL, GET Object Tagging, and HEAD Object requests do not update last access time. The object is not added to queues for information lifecycle management (ILM) evaluation.
+* PUT Object - Copy and PUT Object Tagging requests that update only the metadata also update last access time. The object is added to queues for ILM evaluation.
+* If updates to last access time are disabled for the source bucket, PUT Object - Copy requests do not update last access time for the source bucket. The object that was copied is not added to queues for ILM evaluation for the source bucket. However, for the destination, PUT Object - Copy requests always update last access time. The copy of the object is added to queues for ILM evaluation.
+* Complete Multipart Upload requests update last access time. The completed object is added to queues for ILM evaluation.
+
+== Request examples
+
+This example enables last access time for a bucket.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /bucket?x-ntap-sg-lastaccesstime=enabled HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+This example disables last access time for a bucket.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+PUT /bucket?x-ntap-sg-lastaccesstime=disabled HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+.Related information
+
+xref:../tenant/index.adoc[Use tenant account]
