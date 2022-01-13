@@ -2,7 +2,7 @@
 permalink: monitor/configuring-syslog-server.html
 sidebar: sidebar
 keywords: audit messages, syslog server, configure external syslog server
-summary: 'Use this procedure to configure an external syslog server.'
+summary: 'If you want to save audit logs, application logs, and security event logs to a location outside of your grid, use this procedure to configure an external syslog server.'
 ---
 = Configure an external syslog server
 :icons: font
@@ -35,8 +35,7 @@ NOTE: To maximize the options for full data recovery in the event of a failure o
 +
 NOTE: If the configuration options available in this procedure are not flexible enough to meet your requirements, additional configuration options can be applied using the private API `audit-destinations` endpoints. For example, it is possible to use different syslog servers for different groups of nodes.
 
-
-[#Access-the-syslog-server-configuration-wizard]
+[[Access-the-syslog-server-configuration-wizard]]
 == Access the syslog server configuration wizard
 
 .Steps
@@ -64,8 +63,7 @@ NOTE: Reliable Event Logging Protocol (RELP), extends the functionality of the s
 
 [start=4]
 . Select *Continue*.
-[#attach-certificate]
-. If you selected *TLS* or *RELP/TLS*, upload the following certificates:
+. [[attach-certificate]]If you selected *TLS* or *RELP/TLS*, upload the following certificates:
 
 +
 Using certificates helps secure the connections between your grid and the external syslog server. For more information, see xref:../admin/using-storagegrid-security-certificates.adoc[Using StorageGRID security certificates].

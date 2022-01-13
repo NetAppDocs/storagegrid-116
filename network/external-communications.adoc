@@ -11,13 +11,37 @@ summary: 'Clients need to communicate with grid nodes to ingest and retrieve con
 [.lead]
 Clients need to communicate with grid nodes to ingest and retrieve content. The ports used depends on the object storage protocols chosen. These ports need to be accessible to the client.
 
-If enterprise networking policies restrict access to any of the ports, you can use load balancer endpoints to allow access on user-defined ports. The untrusted Client Networks feature can be used to allow access only on load balancer endpoint ports.
+== Restricted access to ports
 
-NOTE: To use systems and protocols such as SMTP, DNS, SSH, or DHCP, you must remap ports when deploying nodes. However, you should not remap balancer endpoints. For information about port remapping, see the installation instructions for your platform.
+If enterprise networking policies restrict access to any of the ports, you can use xref:../admin/configuring-load-balancer-endpoints.adoc[load balancer endpoints] to allow access on user-defined ports. You can then use xref:../admin/managing-untrusted-client-networks.adoc[untrusted Client Networks] to allow access only on load balancer endpoint ports.
+
+== Port remapping
+
+To use systems and protocols such as SMTP, DNS, SSH, or DHCP, you must remap ports when deploying nodes. However, you should not remap load balancer endpoints. For information about port remapping, see the installation instructions for your platform:
+
+.Software-based nodes
+
+* xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+* xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+* xref:../vmware/index.adoc[Install VMware]
+
+.Appliance nodes
+
+* xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
+
+* xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+* xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+* xref:../sg5600/index.adoc[SG5600 storage appliances]
+
+== Ports used for external communications
 
 The following table shows the ports used for traffic into the nodes.
 
-NOTE: This list does not include ports that might be configured as load balancer endpoints. For more information, see the instructions for configuring load balancer endpoints.
+NOTE: This list does not include ports that might be configured as xref:../admin/configuring-load-balancer-endpoints.adoc[load balancer endpoints].
 
 [cols="1a,1a,1a,1a,1a,2a" options="header"]
 |===
@@ -448,20 +472,4 @@ Storage Nodes
 |
 Swift client traffic directly to Storage Nodes (HTTP).
 |===
-.Related information
 
-xref:internal-grid-node-communications.adoc[Internal grid node communications]
-
-xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-xref:../vmware/index.adoc[Install VMware]
-
-xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
-
-xref:../sg6000/index.adoc[SG6000 storage appliances]
-
-xref:../sg5700/index.adoc[SG5700 storage appliances]
-
-xref:../sg5600/index.adoc[SG5600 storage appliances]
