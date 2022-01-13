@@ -53,6 +53,7 @@ In contrast, search integration requests are sent when objects are deleted becau
 
 == Considerations for using CloudMirror replication service
 
+[cols="1a,3a" options="header"]
 |===
 | Consideration| Details
 a|
@@ -100,7 +101,7 @@ The CloudMirror service does not support objects that are encrypted with SSE-C. 
 a|
 Bucket with S3 Object Lock enabled
 a|
-If the destination S3 bucket for CloudMirror replication has S3 Object Lock enabled, the replication operation will fail with an AccessDenied error.
+If the destination S3 bucket for CloudMirror replication has S3 Object Lock enabled, the attempt to configure bucket replication (PUT Bucket replication) will fail with an AccessDenied error.
 
 |===
 .Related information

@@ -37,26 +37,10 @@ This column is not displayed if the global S3 Object lock setting is disabled. T
  ** Date Created: The date and time the bucket was created.
 
 +
-IMPORTANT: The Object Count and Space Used values displayed are estimates. These estimates are affected by the timing of ingests, network connectivity, and node status.
+IMPORTANT: The Object Count and Space Used values displayed are estimates. These estimates are affected by the timing of ingests, network connectivity, and node status. If buckets have versioning enabled, deleted object versions are included in the object count.
 
 . To view and manage the settings for a bucket, select the bucket name.
 +
-The bucket details page allows you to view and edit the settings for bucket options, bucket access, and platform services.
+The bucket details page allows you to view and edit the settings for bucket options, bucket access, and xref:what-platform-services-are.adoc[platform services].
 +
 image::../media/bucket_details_page.png[Bucket Details Page]
-
-See the instructions for configuring each setting or platform service:
-
-xref:changing-consistency-level.adoc[Change consistency level]
-
-xref:enabling-or-disabling-last-access-time-updates.adoc[Enable or disable last access time updates]
-
-xref:changing-bucket-versioning.adoc[Change object versioning for bucket]
-
-xref:configuring-cross-origin-resource-sharing-cors.adoc[Configure Cross-Origin Resource Sharing (CORS)]
-
-xref:configuring-cloudmirror-replication.adoc[Configure CloudMirror replication]
-
-xref:configuring-event-notifications.adoc[Configure event notifications]
-
-xref:configuring-search-integration-service.adoc[Configure search integration service]

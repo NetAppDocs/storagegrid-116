@@ -44,10 +44,9 @@ sudo mount container-storage-volume-device /var/lib/containers
 +
 This step ensures that the storage volume will remount automatically after host reboots.
 
-.[[install_Docker]]
 == Install Docker
 
-The StorageGRID system runs on Red Hat Enterprise Linux or CentOS as a collection of containers. If you have chosen to use the Docker container engine, follow these steps to install Docker. Otherwise, <<install_Podman,install Podman>>.
+The StorageGRID system runs on Red Hat Enterprise Linux or CentOS as a collection of containers. If you have chosen to use the Docker container engine, follow these steps to install Docker. Otherwise, <<Install Podman,install Podman>>.
 
 .Steps
 
@@ -71,7 +70,7 @@ sudo systemctl start docker
 sudo docker version
 ----
 +
-The Client and Server versions must be 1.10.3 or later.
+The Client and Server versions must be 1.11.0 or later.
 +
 ----
 Client:
@@ -93,16 +92,16 @@ Server:
   OS/Arch: linux/amd64
 ----
 
-.[[install_Podman]]
 == Install Podman
 
-The StorageGRID system runs on Red Hat Enterprise Linux as a collection of containers. If you have chosen to use the Podman container engine, follow these steps to install Podman. Otherwise, <<install_Docker,install Docker>>.
+The StorageGRID system runs on Red Hat Enterprise Linux as a collection of containers. If you have chosen to use the Podman container engine, follow these steps to install Podman. Otherwise, <<Install Docker,install Docker>>.
 
 NOTE: Podman is supported only on Red Hat Enterprise Linux (RHEL).
 
 .Steps
 
 . Install Podman and Podman-Docker by following the instructions for your Linux distribution.
+
 +
 NOTE: You must also install the Podman-Docker package when you install Podman.
 
