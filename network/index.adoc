@@ -1,24 +1,60 @@
 ---
 permalink: network/index.html
 sidebar: sidebar
-keywords:
-summary: 'Learn about StorageGRID architecture and networking topologies. Become familiar with the requirements for network configuration and provisioning.'
+keywords: storagegrid, network, networking, ethernet, subnet, routing
+summary: 'Use these guidelines to learn about StorageGRID architecture and networking topologies and to learn the requirements for network configuration and provisioning.'
 ---
-= Networking guidelines
+= Networking guidelines: Overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Learn about StorageGRID architecture and networking topologies. Become familiar with the requirements for network configuration and provisioning.
+Use these guidelines to learn about StorageGRID architecture and networking topologies and to learn the requirements for network configuration and provisioning.
 
-* xref:storagegrid-networking-overview.adoc[StorageGRID networking overview]
+== About these instructions
 
-* xref:networking-requirements-and-guidelines.adoc[Networking requirements and guidelines]
+These guidelines provide information you can use to create the StorageGRID networking infrastructure before deploying and configuring StorageGRID nodes. Use these guidelines to help ensure that communication can occur among all the nodes in the grid and between the grid and external clients and services.
 
-* xref:deployment-specific-networking-requirements.adoc[Deployment-specific networking considerations]
+External clients and external services need to connect to StorageGRID networks to perform functions such as the following:
 
-* xref:network-installation-and-provisioning.adoc[Network installation and provisioning]
+* Store and retrieve object data
+* Receive email notifications
+* Access the StorageGRID management interface (the Grid Manager and Tenant Manager)
+* Access the audit share (optional)
+* Provide services such as:
+ ** Network Time Protocol (NTP)
+ ** Domain Name System (DNS)
+ ** Key Management Server (KMS)
 
-* xref:post-installation-guidelines.adoc[Post-installation guidelines]
+StorageGRID networking must be configured appropriately to handle the traffic for these functions and more.
 
-* xref:network-port-reference.adoc[Network port reference]
+== Before you begin
+Configuring the networking for a StorageGRID system requires a high level of experience with Ethernet switching, TCP/IP networking, subnets, network routing, and firewalls.
+
+Before you configure networking, become familiar with StorageGRID architecture as described in the xref:../primer/index.adoc[Grid primer].
+
+After you determine which StorageGRID networks you want to use and how those networks will be configured, you can install and configure the StorageGRID nodes by following the appropriate instructions.
+
+.Install software-based nodes
+
+* xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+* xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+* xref:../vmware/index.adoc[Install VMware]
+
+.Install appliance nodes
+
+* xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
+
+* xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+* xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+* xref:../sg5600/index.adoc[SG5600 storage appliances]
+
+.Configure and administer StorageGRID software
+
+* xref:../admin/index.adoc[Administer StorageGRID]
+
+* xref:../release-notes/index.adoc[Release notes]
