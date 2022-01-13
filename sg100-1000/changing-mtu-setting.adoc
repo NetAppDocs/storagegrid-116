@@ -11,6 +11,31 @@ summary: 'You can change the MTU setting that you assigned when you configured I
 [.lead]
 You can change the MTU setting that you assigned when you configured IP addresses for the appliance node.
 
+.About this task
+
+IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
+
+IMPORTANT: For the best network performance, all nodes should be configured with similar MTU values on their Grid Network interfaces. The *Grid Network MTU mismatch* alert is triggered if there is a significant difference in MTU settings for the Grid Network on individual nodes. The MTU values do not have to be the same for all network types.
+
+To change the MTU setting without rebooting the appliance node, <<Change the MTU setting using the Change IP tool,use the Change IP tool>>.
+
+If the Client or Admin Network was not configured in the StorageGRID Appliance Installer during the initial installation, <<Change the MTU setting using maintenance mode,change the MTU setting using maintenance mode>>.
+
+== Change the MTU setting using the Change IP tool
+
+.What you'll need
+
+You must have the `Passwords.txt` file to use the Change IP tool.
+
+.Steps
+
+Access the Change IP tool and update the MTU settings as described in xref:../maintain/changing-nodes-network-configuration[Change node network configuration].
+
+
+== Change the MTU setting using maintenance mode
+
+Change the MTU setting using maintenance mode if you are unable to access these settings using the Change IP tool.
+
 .What you'll need
 
 The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed maintenance mode].
@@ -21,10 +46,6 @@ The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed 
 . Make the desired changes to the MTU settings for the Grid Network, Admin Network, and Client Network.
 +
 image::../media/grid_network_static.png[Grid Network IP]
-+
-IMPORTANT: The MTU value of the network must match the value configured on the switch port the node is connected to. Otherwise, network performance issues or packet loss might occur.
-+
-IMPORTANT: For the best network performance, all nodes should be configured with similar MTU values on their Grid Network interfaces. The *Grid Network MTU mismatch* alert is triggered if there is a significant difference in MTU settings for the Grid Network on individual nodes. The MTU values do not have to be the same for all network types.
 
 . When you are satisfied with the settings, select *Save*.
 . Reboot the node. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
@@ -36,7 +57,6 @@ image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The *NODES* page should display a normal status (no icon) for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
 image::../media/nodes_menu.png[Appliance node rejoined grid]
-
 
 .Related information
 
