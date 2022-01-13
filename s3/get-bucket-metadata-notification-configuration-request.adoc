@@ -1,0 +1,162 @@
+---
+permalink: s3/get-bucket-metadata-notification-configuration-request.html
+sidebar: sidebar
+keywords: S3 REST API, S3 operations, GET bucket metadata notification configuration request
+summary: 'The GET Bucket metadata notification configuration request allows you to retrieve the configuration XML used to configure search integration for individual buckets.'
+---
+= GET Bucket metadata notification configuration request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The GET Bucket metadata notification configuration request allows you to retrieve the configuration XML used to configure search integration for individual buckets.
+
+You have the s3:GetBucketMetadataNotification permission, or be account root, to complete this operation.
+
+== Request example
+
+This request retrieves the metadata notification configuration for the bucket named `bucket`.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+GET /bucket?x-ntap-sg-metadata-notification HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+== Response
+
+The response body includes the metadata notification configuration for the bucket. The metadata notification configuration lets you determine how the bucket is configured for search integration. That is, it allows you to determine which objects are indexed, and which endpoints their object metadata is being sent to.
+
+----
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>rule-status</Status>
+        <Prefix>key-prefix</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:_region:account-ID_:domain/_mydomain/myindex/mytype_</Urn>
+        </Destination>
+    </Rule>
+    <Rule>
+        <ID>Rule-2</ID>
+         ...
+    </Rule>
+     ...
+</MetadataNotificationConfiguration>
+----
+
+Each metadata notification configuration includes one or more rules. Each rule specifies the objects that it applies to and the destination where StorageGRID should send object metadata. Destinations must be specified using the URN of a StorageGRID endpoint.
+
+[options="header"]
+|===
+| Name| Description| Required
+a|
+MetadataNotificationConfiguration
+a|
+Container tag for rules used to specify the objects and destination for metadata notifications.
+
+Contains one or more Rule elements.
+
+a|
+Yes
+a|
+Rule
+a|
+Container tag for a rule that identifies the objects whose metadata should be added to a specified index.
+
+Rules with overlapping prefixes are rejected.
+
+Included in the MetadataNotificationConfiguration element.
+
+a|
+Yes
+a|
+ID
+a|
+Unique identifier for the rule.
+
+Included in the Rule element.
+
+a|
+No
+a|
+Status
+a|
+Status can be 'Enabled' or 'Disabled'. No action is taken for rules that are disabled.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Prefix
+a|
+Objects that match the prefix are affected by the rule, and their metadata is sent to the specified destination.
+
+To match all objects, specify an empty prefix.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Destination
+a|
+Container tag for the destination of a rule.
+
+Included in the Rule element.
+
+a|
+Yes
+a|
+Urn
+a|
+URN of the destination where object metadata is sent. Must be the URN of a StorageGRID endpoint with the following properties:
+
+* `es` must be the third element.
+* The URN must end with the index and type where the metadata is stored, in the form `domain-name/myindex/mytype`.
+
+Endpoints are configured using the Tenant Manager or Tenant Management API. They take the following form:
+
+* `arn:aws:es:_region:account-ID_:domain/mydomain/myindex/mytype`
+* `urn:mysite:es:::mydomain/myindex/mytype`
+
+The endpoint must be configured before the configuration XML is submitted, or configuration will fail with a 404 error.
+
+Urn is included in the Destination element.
+
+a|
+Yes
+|===
+
+== Response example
+
+The XML included between the  `<MetadataNotificationConfiguration></MetadataNotificationConfiguration>` tags shows how integration with a search integration endpoint is configured for the bucket. In this example, object metadata is being sent to an Elasticsearch index named `current` and type named `2017` that is hosted in an AWS domain named `records`.
+
+----
+HTTP/1.1 200 OK
+Date: Thu, 20 Jul 2017 18:24:05 GMT
+Connection: KEEP-ALIVE
+Server: StorageGRID/11.0.0
+x-amz-request-id: 3832973499
+Content-Length: 264
+Content-Type: application/xml
+
+<MetadataNotificationConfiguration>
+    <Rule>
+        <ID>Rule-1</ID>
+        <Status>Enabled</Status>
+        <Prefix>2017</Prefix>
+        <Destination>
+           <Urn>arn:aws:es:us-east-1:3333333:domain/records/current/2017</Urn>
+        </Destination>
+    </Rule>
+</MetadataNotificationConfiguration>
+----
+
+.Related information
+
+xref:../tenant/index.adoc[Use tenant account]
