@@ -89,13 +89,13 @@ If background verification finds corrupt fragments of erasure-coded object data,
  .. Select *Reset Corrupt Object Count*.
  .. Click *Apply Changes*.
 . If you are confident that quarantined objects are not required, you can delete them.
-
++
 NOTE: If the *Objects lost* alert or the LOST (Lost Objects) legacy alarm was triggered, technical support might want to access quarantined objects to help debug the underlying issue or to attempt data recovery.
 
-Relat .. Select *SUPPORT* > *Tools* > *Grid topology*.
+ .. Select *SUPPORT* > *Tools* > *Grid topology*.
  .. Select *_Storage Node_* > *LDR* > *Verification* > *Configuration*.
  .. Select *Delete Quarantined Objects*.
- .. Click *Apply Changes*.
+ .. Select *Apply Changes*.
 
 == What is object existence check?
 
@@ -142,7 +142,7 @@ You can search by node name or site.
 +
 You cannot select nodes that are not connected to the grid.
 .	Select *Continue*.
-. Select one or more volumes for each node in the list.
+. Select one or more volumes for each node in the list. You can search for volumes using the storage volume number or node name.
 +
 To select all volumes for each node you selected, select the *Storage volume* check box in the column header.
 .	Select *Continue*.
@@ -157,7 +157,7 @@ The consistency control determines how many copies of object metadata are used f
 For more information about consistency control, see the descriptions in the wizard.
 +
 . Select *Continue*.
-.	Review and verify your selections. Select *Previous* to go to a previous step in the wizard to update your selections. 
+.	Review and verify your selections. You can select *Previous* to go to a previous step in the wizard to update your selections. 
 +
 An Object existence check job is generated and runs until one of the following occurs:
 +
