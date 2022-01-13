@@ -78,11 +78,11 @@ NOTE: This global certificate was previously used for connections to the depreca
 
 == New Tenant Manager features
 
-* *New Experimental S3 Console*. Available as a link from the Buckets page in Tenant Manager, the new experimental S3 Console lets S3 tenant users view and manage the objects in their buckets. See xref:../tenant/use-s3-console.adoc[Use the Experimental S3 Console].
+* *New Experimental S3 Console*. Available as a link from the Buckets page in Tenant Manager, the new experimental S3 Console lets S3 tenant users view and manage the objects in their buckets. See xref:../tenant/use-s3-console.adoc[Use Experimental S3 Console].
 
 IMPORTANT: The experimental S3 Console has not been fully tested and is not intended for bulk management of objects or for use in a production environment. Tenants should only use S3 Console when performing functions for a small number of objects or when using proof-of-concept or non-production grids.
 
-* *Can delete multiple S3 buckets*. Tenant users can now delete more than one S3 bucket at a time. Each bucket that you want to delete must be empty. See xref:../tenant/deleting-s3-bucket.adoc[Delete S3 buckets].
+* *Can delete multiple S3 buckets*. Tenant users can now delete more than one S3 bucket at a time. Each bucket that you want to delete must be empty. See xref:../tenant/deleting-s3-bucket.adoc[Delete S3 bucket].
 
 * *Updates to Tenant accounts permission*. Admin users who belong to a group with the Tenant accounts permission can now view existing traffic classification policies. Previously, users were required to have Root access permission to view these metrics.
 
@@ -109,10 +109,7 @@ NOTE: For the upgrade to StorageGRID 11.6, you can optionally use a script to up
 
 == S3 Select
 
-You can now optionally allow S3 tenants to issue SelectObjectContent requests to individual objects. S3 Select provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. See the following:
-
-* xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts]
-* xref:../s3/use-s3-select.adoc[Use S3 Select]
+You can now optionally allow S3 tenants to issue SelectObjectContent requests to individual objects. S3 Select provides an efficient way to search through large amounts of data without having to deploy a database and associated resources to enable searches. It also reduces the cost and latency of retrieving data. See xref:../admin/manage-s3-select-for-tenant-accounts.adoc[Manage S3 Select for tenant accounts] and xref:../s3/use-s3-select.adoc[Use S3 Select].
 
 Grafana charts for S3 Select operations were also added. See xref:../monitor/reviewing-support-metrics.adoc[Review support metrics].
 
@@ -122,14 +119,11 @@ When using S3 Object Lock, you can now specify a default retention period for th
 
 == Google Cloud Platform support
 
-You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See the following:
-
-* xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint]
-* xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool] 
+You can now use the Google Cloud Platform (GCP) as an endpoint for Cloud Storage Pools and the CloudMirror platform service. See xref:../tenant/specifying-urn-for-platform-services-endpoint.adoc[Specify the URN for a platform services endpoint] and xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool].
 
 == AWS C2S support 
 
-You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror replication. See xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint].
+You can now use AWS Commercial Cloud Services (C2S) endpoints for CloudMirror replication. See xref:../tenant/creating-platform-services-endpoint.adoc[Create platform services endpoint].
 
 == Other S3 changes
 
@@ -159,7 +153,7 @@ As part of this change, two Prometheus metrics were added:
 
 * *Maximum allowed metadata space increased*. The maximum allowed metadata space for Storage Nodes was increased to 3.96 TB (from 2.64 TB) for higher-capacity nodes, which are nodes with an actual reserved space for metadata of more than 4 TB. This new value allows more object metadata to be stored on certain Storage Nodes and can increase StorageGRID metadata capacity by up to 50%.
 +
-NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/manually increase the Metadata Reserved Space setting up to 8 TB after you install or upgrade.
+NOTE: If you have not already done so, and if your Storage Nodes have enough RAM and sufficient space on volume 0, you can xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[manually increase the Metadata Reserved Space setting up to 8 TB after you install or upgrade].
 +
 ** xref:../admin/managing-object-metadata-storage.adoc#allowed-metadata-space[Manage object metadata storage > Allowed metadata space] 
 ** xref:../upgrade/increasing-metadata-reserved-space-setting.adoc[Increase Metadata Reserved Space setting]
@@ -168,9 +162,9 @@ NOTE: If you have not already done so, and if your Storage Nodes have enough RAM
 
 * *Can change node console passwords*. You now can use the Grid Manager to change node console passwords (*CONFIGURATION* > *Access control* > *Grid passwords*). These passwords are used to log in to a node as “admin” using SSH, or to the root user on a VM/physical console connection. See xref:../admin/change-node-console-password.adoc[Change node console passwords].
 
-* *New Object existence check wizard*. You can now verify object integrity with an easy-to-use Object existence check wizard (*MAINTENANCE* > *Tasks* > *Object existence check*) replaces the foreground verification procedure. The new procedure reduces runtime by at least three times. See xref:../monitor/verifying-object-integrity.html[Verify object integrity].
+* *New Object existence check wizard*. You can now verify object integrity with an easy-to-use Object existence check wizard (*MAINTENANCE* > *Tasks* > *Object existence check*), which replaces the foreground verification procedure. The new procedure reduces runtime by at least three times. See xref:../monitor/verifying-object-integrity.html[Verify object integrity].
 
-* *"Estimated time to completion" chart for EC rebalance and EC repair jobs*. You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job. Select *SUPPORT* > *Tools* > *Metrics*. Then, select *EC Overview* in the Grafana section. Look at the *Grid EC Job Estimated Time to Completion* and *Grid EC Job Percentage Completed* dashboards.
+* *"Estimated time to completion" chart for EC rebalance and EC repair jobs*. You can now view the estimated time to completion and the completion percentage for a current EC rebalance or EC repair job.
 
 * *Estimated percent complete for replicated data repairs*. You can now add the `show-replicated-repair-status` option to the `repair-data` command to see an estimated percent completion for a replicated repair. 
 +
@@ -188,7 +182,7 @@ When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics 
 
 * You now have the option to use Podman as a container during the installation of Red Hat Enterprise Linux. Previously, StorageGRID only supported a Docker container.
 
-* The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
+* The API schemas for StorageGRID are now included in the installation archives for the RedHat Enterprise Linux/CentOS, Ubuntu/Debian, and VMware platforms. After extracting the archive, you can find the schemas in the `/extras/api-schemas` folder.
 
 * The `BLOCK_DEVICE_RANGEDB` key in the node configuration file for bare-metal deployments should now contain three digits instead of two. That is, instead of `BLOCK_DEVICE_RANGEDB_nn`, you should specify `BLOCK_DEVICE_RANGEDB_nnn`.  
 +

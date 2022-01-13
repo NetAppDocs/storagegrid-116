@@ -19,7 +19,7 @@ image::../media/upgrade_workflow.png[Flowchart of the software upgrade steps]
 
 . Optionally run upgrade prechecks to detect and resolve any issues before you start the actual upgrade. 
 
-. Start the upgrade, which upgrades the primary Admin Node automatically. You cannot access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
+. Start the upgrade, which runs prechecks and upgrades the primary Admin Node automatically. You cannot access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
 
 . After the primary Admin Node has been upgraded, clear your web browser’s cache, sign back in, and return to the StorageGRID Upgrade page.
 
@@ -32,8 +32,6 @@ IMPORTANT: Do not approve the upgrade for a grid node unless you are sure that n
 . Resume operations. When all grid nodes have been upgraded, new features are enabled and you can resume operations. You must wait to perform a decommission or expansion procedure until the background *Upgrade Database* task and the *Final Upgrade Steps* task have completed.
 
 . When the upgrade is complete, confirm the software version and apply any hotfixes.
-
-NOTE: You must complete the upgrade on the same hypervisor platform you started with.
 
 .Related information
 
