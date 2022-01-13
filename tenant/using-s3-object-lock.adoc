@@ -61,13 +61,13 @@ image::../media/compliant_bucket.png[Example Compliant Bucket]
 * If you plan to use S3 Object Lock, you must enable S3 Object Lock when you create the bucket. You cannot enable S3 Object Lock for an existing bucket.
 * Bucket versioning is required with S3 Object Lock. When S3 Object Lock is enabled for a bucket, StorageGRID automatically enables versioning for that bucket.
 * After you create a bucket with S3 Object Lock enabled, you cannot disable S3 Object Lock or suspend versioning for that bucket.
-* An StorageGRID bucket that has S3 Object Lock enabled does not have a default retention period. Instead, the S3 client application can optionally specify a retention date and legal hold setting for each object version that is added to that bucket.
+* Optionally, you can configure default retention for a bucket. When an object version is uploaded, the default retention is applied to the object version. You can override the bucket default by specifying a retention mode and retain-until-date in the request to upload an object version.
 * Bucket lifecycle configuration is supported for S3 Object Lifecycle buckets.
 * CloudMirror replication is not supported for buckets with S3 Object Lock enabled.
 
 === Requirements for objects in buckets with S3 Object Lock enabled
 
-* The S3 client application must specify retention settings for each object that needs to be protected by S3 Object Lock.
+* To protect an object version, the S3 client application must either configure bucket default retention, or specify retention settings in each upload request.
 * You can increase the retain-until-date for an object version, but you can never decrease this value.
 * If you are notified of a pending legal action or regulatory investigation, you can preserve relevant information by placing a legal hold on an object version. When an object version is under a legal hold, that object cannot be deleted from StorageGRID, even if it has reached its retain-until-date. As soon as the legal hold is lifted,the object version can be deleted if the retain-until-date has been reached.
 * S3 Object Lock requires the use of versioned buckets. Retention settings apply to individual object versions. An object version can have both a retain-until-date and a legal hold setting, one but not the other, or neither. Specifying a retain-until-date or a legal hold setting for an object protects only the version specified in the request. You can create new versions of the object, while the previous version of the object remains locked.
