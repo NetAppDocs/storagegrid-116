@@ -39,10 +39,13 @@ Platform services give tenants the ability to use external storage resources, no
 
 == Recommendations for using platform services
 
-Before using platform services, you must be aware of the following recommendations:
+Before using platform services, be aware of the following recommendations:
 
-* You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
 * If an S3 bucket in the StorageGRID system has both versioning and CloudMirror replication enabled, you should also enable S3 bucket versioning for the destination endpoint. This allows CloudMirror replication to generate similar object versions on the endpoint.
+* You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
+* The pending storage limit is 500 KB, which is shared among existing tenants.
++
+New tenants are allowed to temporarily exceed the limit so that newly created tenants are not unfairly penalized.
 
 .Related information
 
