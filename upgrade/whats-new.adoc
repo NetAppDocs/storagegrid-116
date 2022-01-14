@@ -18,7 +18,7 @@ The Grid Manager user interface was substantially redesigned to improve the user
 * A new sidebar replaces the pull-down menus in the old user interface.
 * Several menus were reorganized to keep related options together. For example, the *CONFIGURATION* menu includes a new *Security* section for the Certificates, Key management server, Proxy settings, and Untrusted Client Networks options.
 * A *Search* field in the header bar allows you to quickly navigate to Grid Manager pages.
-* The summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used. Alert icons are displayed next to any nodes with active alerts.
+* The summary table on the *Nodes* page provides high-level information for all sites and nodes, such as object data used and object metadata used, and includes a new search field. Alert icons are displayed next to any nodes with active alerts.
 * New wizards guide you through more complex configurations, such as the workflows for admin groups, admin users, tenants, load balancer endpoints, and high availability (HA) groups.
 * All UI pages were restyled with updated fonts, button styles, and table formats.
 +
@@ -88,7 +88,7 @@ IMPORTANT: The experimental S3 Console has not been fully tested and is not inte
 
 == New upgrade and hotfix process
 
-* The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update*).
+* The *StorageGRID Upgrade* page was redesigned (*MAINTENANCE* > *System* > *Software update* > *StorageGRID upgrade*.
 
 * After the upgrade to StorageGRID 11.6 completes, you can use the Grid Manager to upgrade to a future release and apply a hotfix for that release at the same time. The StorageGRID upgrade page will show the recommended upgrade path and will link directly to the correct download pages.
 
@@ -172,10 +172,13 @@ IMPORTANT: The `show-replicated-repair-status` option is available for technical
 
 * The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity and then alphabetically.
 
+* Prometheus and Grafana were updated to newer versions with modified user interface and charts. As part of this change, some metrics were renamed:
+** The `node_network_up` metrics are now named `node_network_info`.
+** For all `node_network_` metrics (from the netclass collector), the `interface` label name was changed to `device`.
+
 * Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
 +
 When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
-
 
 
 == Installation enhancements
@@ -190,7 +193,7 @@ For compatibility with existing deployments, two-digit keys are still supported 
 
 * You can optionally add one or more instances of the new `INTERFACES_TARGET_nnnn` key to the node configuration file for bare-metal deployments. Each key provides the name and description of a physical interface on the bare-metal host, which will be displayed on the VLAN interfaces page and the HA groups page.
 +
-** xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for Linux or CentOS deployments]
+** xref:../rhel/creating-node-configuration-files.adoc[Create node configuration files for RedHat Enterprise Linux or CentOS deployments]
 ** xref:../ubuntu/creating-node-configuration-files.adoc[Create node configuration files for Ubuntu or Debian deployments]
 
 == New alerts
