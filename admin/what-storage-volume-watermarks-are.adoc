@@ -27,7 +27,7 @@ For example, suppose each volume in a Storage Node has a Soft Read-Only Watermar
 
 The *Storage Volume Hard Read-Only Watermark* is the next watermark to indicate that a node's usable space for object data is becoming full. 
 
-If the free space on a volume is less than that volume's Hard Read-Only Watermark, writes to the volume will fail. Writes to other volumes can continue, however, until the free space on those volumes is above their Hard Read-Only Watermarks.
+If the free space on a volume is less than that volume's Hard Read-Only Watermark, writes to the volume will fail. Writes to other volumes can continue, however, until the free space on those volumes is less than their Hard Read-Only Watermarks.
 
 For example, suppose each volume in a Storage Node has a Hard Read-Only Watermark of 5 GB. As soon as each volume has less than 5 GB of free space, the Storage Node no longer accepts any write requests.
 
@@ -51,7 +51,7 @@ You can view the current watermark settings and the system-optimized values. If 
 
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 
-* You have the Root Access permission.
+* You have the Root access permission.
 
 === View current watermark settings
 
@@ -68,7 +68,7 @@ image::../media/storage-volume-watermark-overrides.png[Storage volume watermark 
 +
 This is the default and recommended setting. You should not update these values. As required, you can optionally <<View optimized storage watermarks>>.
 
-* If the watermark overrides are non-0 values, custom (non-optimized) watermarks are being used. Using custom watermark settings is not recommended. Use the instructions in the next sections to determine if you can or should adjust the settings.
+* If the watermark overrides are non-0 values, custom (non-optimized) watermarks are being used. Using custom watermark settings is not recommended. Use the instructions for xref:../monitor/troubleshoot-low-watermark-alert.adoc[troubleshooting Low read-only watermark override alerts] to determine if you can or should adjust the settings.
 
 === View optimized storage watermarks
 
@@ -89,26 +89,3 @@ The last column shows the minimum optimized value of the Soft Read-Only Watermar
 `storagegrid_storage_volume_maximum_optimized_soft_readonly_watermark`
 +
 The last column shows the maximum optimized value of the Soft Read-Only Watermark for all storage volumes on each Storage Node. 
-
-. Note the highest optimized value for all Storage Nodes in your grid.
-
-=== Determine if you can use optimized watermarks
-
-. Select *NODES* to go to the Nodes page.
-
-. For each online Storage Node, select *_Storage Node_* > *Storage* and scroll down to the Object Stores table.
-
-. Compare the *Available* value for each object store (volume) to the the highest optimized watermark for all Storage Nodes in your grid.
-
-. If at least one volume has more space available than the highest optimized value, you can use the optimized watermarks.
-
-.. Go back to *CONFIGURATION* > *System* > *Storage options*.
-.. Select *Configuration* from the Storage Options menu.
-.. Change all three Watermark Overrides to 0.
-.. Select *Apply Changes*.
-+
-Optimized storage volume watermark settings are now in effect for each storage volume, based on the size of the Storage Node and the relative capacity of the volume.
-
-. If no volume has more space available than the highest optimized value for all Storage Nodes in your grid, xref:../expand/index.adoc[expand your grid] as soon as possible. Either add storage volumes to an existing node or add new Storage Nodes.
-+
-NOTE: If you need to continue using custom values for the storage volume watermarks, you can xref:../monitor/silencing-alert-notifications.adoc[silence] or xref:../monitor/disabling-alert-rules.adoc[disable] the *Low read-only watermark override* alert. However, be aware that the same custom watermark values are applied to every storage volume on every Storage Node. Using smaller-than-recommended values for storage volume watermarks might cause some storage volumes to become inaccessible (automatically unmounted) when the node reaches capacity. 
