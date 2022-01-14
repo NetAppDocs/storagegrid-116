@@ -16,10 +16,6 @@ The time required to complete a StorageGRID upgrade depends on a variety of fact
 
 The table summarizes the main upgrade tasks and lists the approximate time required for each task. The steps after the table provide instructions you can use to estimate the upgrade time for your system.
 
-IMPORTANT: During the upgrade from StorageGRID 11.5 to 11.6, Cassandra database tables on Storage Nodes will be upgraded. The *Upgrade Database* task occurs in the background, but might require an extensive amount of time to complete. While the database is being upgraded, you can safely use new features, apply hotfixes, and perform node recovery operations. However, you might be prevented from performing other maintenance procedures.
-
-NOTE: If an expansion is urgently required, perform the expansion before upgrading to 11.6.
-
 [cols="1a,1a,1a,a" options="header"]
 |===
 | Upgrade task| Description| Approximate time required| During this task
@@ -45,9 +41,9 @@ NOTE: If an expansion is urgently required, perform the expansion before upgradi
 * Do not change the grid configuration.
 * Do not change the audit level configuration.
 * Do not update the ILM configuration.
-* Do not perform another maintenance procedure, such as hotfix, decommission, or expansion.
+* You are prevented from performing other maintenance procedures, such as hotfix, decommission, or expansion.
 +
-*Note:* If you need to perform a recovery procedure, contact technical support.
+*Note:* If you need to perform a recovery, contact technical support.
 
 |Enable Features
 |The new features for the new version are enabled.
@@ -56,7 +52,7 @@ NOTE: If an expansion is urgently required, perform the expansion before upgradi
 * Do not change the grid configuration.
 * Do not change the audit level configuration.
 * Do not update the ILM configuration.
-* Do not perform another maintenance procedure.
+* You cannot perform another maintenance procedure.
 
 |Upgrade Database
 |The upgrade process checks each node to verify that the Cassandra database does not need to be updated.

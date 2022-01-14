@@ -2,14 +2,14 @@
 permalink: upgrade/performing-upgrade.html
 sidebar: sidebar
 keywords: upgrade, how to perform a software upgrade
-summary: 'When you are ready to perform the upgrade, you select the downloaded file and enter the provisioning passphrase. As an option, you can run the upgrade prechecks before performing the actual upgrade.'
+summary: 'When you are ready to perform the upgrade, you select the .upgrade archive and enter the provisioning passphrase. As an option, you can run the upgrade prechecks before performing the actual upgrade.'
 ---
 = Perform the upgrade
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-When you are ready to perform the upgrade, you select the downloaded file and enter the provisioning passphrase. As an option, you can run the upgrade prechecks before performing the actual upgrade.
+When you are ready to perform the upgrade, you select the `.upgrade` archive and enter the provisioning passphrase. As an option, you can run the upgrade prechecks before performing the actual upgrade.
 
 .What you'll need
 You have reviewed all of the considerations and completed all of the planning and preparation steps.
@@ -23,7 +23,7 @@ The Software Update page appears.
 
 . Select *StorageGRID Upgrade*.
 
-. On the StorageGRID Upgrade page, select the `.upgrade` file you downloaded.
+. On the StorageGRID Upgrade page, select the `.upgrade` archive.
  .. Select *Browse*.
  .. Locate and select the file: `NetApp_StorageGRID_11.6.0_Software_uniqueID.upgrade`
  .. Select *Open*.
@@ -45,8 +45,6 @@ Optionally, you can validate the condition of your system before you start the a
 +
 IMPORTANT: If you have opened any custom firewall ports, you are notified during the precheck validation. You must contact technical support before proceeding with the upgrade.
 
-
-
 == Start upgrade and update primary Admin Node
 When the upgrade starts, upgrade prechecks are performed, and the primary Admin Node is upgraded, which includes stopping services, upgrading the software, and restarting services. You cannot access the Grid Manager while the primary Admin Node is being upgraded. Audit logs will also be unavailable. This upgrade can take up to 30 minutes.
 
@@ -62,13 +60,13 @@ image::../media/software_upgrade_connection_will_be_lost.png[Software Upgrade Co
 +
 NOTE: If any precheck errors are reported, resolve them and select *Start Upgrade* again.
 +
-While the primary Admin Node is being upgraded, multiple copies of two error messages appear, which you can ignore.
+While the primary Admin Node is being upgraded, multiple *503: Service Unavailable* and *Problem connecting to the server* messages appear, which you can ignore.
 +
 image::../media/software_upgrade_503_error.png[Software Upgrade 503 Error]
 +
 image::../media/software_upgrade_problem_connecting_error.png[Software Upgrade Problem Connecting Error]
-+
-When you see the 400: Bad Request message, you know that the Admin Node upgrade is complete.
+
+. When you see the *400: Bad Request* message, go to the next step. The Admin Node upgrade is complete.
 +
 image::../media/software_upgrade_400_error.png[Software Upgrade 400 Error]
 
@@ -97,7 +95,7 @@ image::../media/grid_manager_dashboard.png[Grid Manager dashboard]
 
 == Download Recovery Package and upgrade all grid nodes
 
-. After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, xref:obtaining-required-materials-for-software-upgrade.adoc#Download-the-Recovery-Package[download a new copy of the Recovery Package].
+. After the grid nodes appear in the Grid Node Status table, but before approving any grid nodes, xref:obtaining-required-materials-for-software-upgrade.adoc#download-the-recovery-package[download a new copy of the Recovery Package].
 +
 IMPORTANT: You must download a new copy of the Recovery Package file after you upgrade the software version on the primary Admin Node. The Recovery Package file allows you to restore the system if a failure occurs.
 
@@ -115,7 +113,7 @@ A grid node can be in one of these stages when this page first appears:
 
 . Approve the grid nodes you are ready to add to the upgrade queue. 
 +
-IMPORTANT: Do not approve the upgrade for a node unless you are sure that node is ready to be stopped and rebooted. When the upgrade starts on a grid node, the services on that node are stopped. Later, the grid node is rebooted. These operations might cause service interruptions for clients that are communicating with the node. 
+IMPORTANT: When the upgrade starts on a grid node, the services on that node are stopped. Later, the grid node is rebooted. To avoid service interruptions for client applications that are communicating with the node, do not approve the upgrade for a node unless you are sure that node is ready to be stopped and rebooted. As required, schedule a maintenance window or notify customers. 
 +
 You must upgrade all grid nodes in your StorageGRID system, but you can customize the upgrade sequence. You can approve individual grid nodes, groups of grid nodes, or all grid nodes.
 +
