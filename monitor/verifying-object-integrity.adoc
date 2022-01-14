@@ -184,6 +184,9 @@ image::../media/oec_active.png[OEC active job]
 *	If Missing object copies detected is zero, then no issues were found. No action is required.
 *	If Missing object copies detected is greater than zero and the *Objects lost* alert has not been triggered, then all missing copies were repaired by the system. Verify that any hardware issues have been corrected to prevent future damage to object copies.
 * If Missing object copies detected is greater than zero and the *Objects lost* alert has been triggered, then data integrity could be affected. Contact technical support.
+* You can investigate lost object copies by using grep to extract the LLST audit messages: `grep LLST audit_file_name`.
++
+This procedure is similar to the one for xref:investigate-lost-objects.adoc[investigating lost objects], although for object copies you search for `LLST` instead of `OLST`.
 
 .	If you selected the strong-site or strong-global consistency control for the job, wait approximately three weeks for metadata consistency and then rerun the job on the same volumes again.
 +
