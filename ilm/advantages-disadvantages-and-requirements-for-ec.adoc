@@ -38,7 +38,7 @@ Erasure coding is best suited for the following requirements:
 
 * Objects larger than 1 MB in size.
 +
-IMPORTANT: Due to the overhead of managing the number of fragments associated with an erasure-coded copy, do not use erasure coding for objects 200 KB or smaller.
+IMPORTANT: Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
 
 * Long-term or cold storage for infrequently retrieved content.
 * High data availability and reliability.
