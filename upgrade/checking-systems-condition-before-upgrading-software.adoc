@@ -15,7 +15,7 @@ Before upgrading a StorageGRID system, you must verify the system is ready to ac
 . Sign in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
 . Check for and resolve any active alerts.
 +
-For information about specific alerts, see xref:../monitor/alerts-reference.adoc[alerts reference].
+For information about specific alerts, see the xref:../monitor/alerts-reference.adoc[Alerts reference].
 
 . Confirm that no conflicting grid tasks are active or pending.
  .. Select *SUPPORT* > *Tools* > *Grid topology*.
@@ -27,6 +27,6 @@ Information lifecycle management evaluation (ILME) tasks are the only grid tasks
 +
 NOTE: Contact technical support if a task does not finish or release its lock.
 
-. Refer to the lists of internal and external ports in the 11.6 version of the xref:../network/index.adoc[networking guidelines], and ensure that all required ports are opened before you upgrade.
+. Refer to xref:internal-grid-node-communications.adoc[Internal grid node communications] and xref:external-communications.adoc[External communications] to ensure that all required ports for StorageGRID 11.6 are opened before you upgrade.
 +
 IMPORTANT: If you have opened any custom firewall ports, you are notified during the upgrade precheck. You must contact technical support before proceeding with the upgrade.
