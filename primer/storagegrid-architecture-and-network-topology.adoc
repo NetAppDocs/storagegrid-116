@@ -11,7 +11,7 @@ summary: 'A StorageGRID system consists of multiple types of grid nodes at one o
 [.lead]
 A StorageGRID system consists of multiple types of grid nodes at one or more data center sites.
 
-For additional information about StorageGRID network topology, requirements, and grid communications, see the xref:../network/index.adoc[Networking guidelines].
+For additional information about StorageGRID network topology, requirements, and grid communications, see the xref:../network/index.adoc[Networking guidelines]. 
 
 == Deployment topologies
 
@@ -64,6 +64,8 @@ Admin Nodes can also be used to load balance S3 and Swift client traffic.
 * *Gateway Nodes (optional)* provide a load-balancing interface that client applications can use to connect to StorageGRID. A load balancer seamlessly directs clients to an optimal Storage Node, so that the failure of nodes or even an entire site is transparent. You can use a combination of Gateway Nodes and Admin Nodes for load balancing, or you can implement a third-party HTTP load balancer.
 * *Archive Nodes (optional)* provide an interface through which object data can be archived to tape.
 
+To learn more, see xref:../admin/index.adoc[Administer StorageGRID].
+
 === Software-based nodes
 
 Software-based grid nodes can be deployed in the following ways:
@@ -75,7 +77,15 @@ Software-based grid nodes can be deployed in the following ways:
  ** Ubuntu
  ** Debian
 
-Use the NetApp Interoperability Matrix Tool to get a list of supported versions.
+See the following for more information:
+
+* xref:../vmware/index.adoc[Install VMware]
+
+* xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
+
+* xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
+
+Use the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^] to get a list of supported versions.
 
 === StorageGRID appliance nodes
 
@@ -94,7 +104,18 @@ Four types of StorageGRID appliances are available:
  ** *SG5612*: a 2U enclosure that includes 12 NL-SAS drives and integrated storage and compute controllers.
  ** *SG5660*: a 4U enclosure that includes 60 NL-SAS drives and integrated storage and compute controllers.
 
-See the NetApp Hardware Universe for complete specifications.
+See the following for more information:
+
+* https://hwu.netapp.com[NetApp Hardware Universe^] 
+
+* xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
+
+* xref:../sg6000/index.adoc[SG6000 storage appliances]
+
+* xref:../sg5700/index.adoc[SG5700 storage appliances]
+
+* xref:../sg5600/index.adoc[SG5600 storage appliances]
+
 
 === Primary services for Admin Nodes
 
@@ -357,24 +378,4 @@ Monitors hardware conditions and reports to the NMS service. An instance of the 
 +
 Performs trace collection to gather information for use by technical support. The trace collector service uses open source Jaeger software and is present on Admin Nodes.
 
-.Related information
 
-* https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^]
-
-* https://hwu.netapp.com[NetApp Hardware Universe^]
-
-* xref:../vmware/index.adoc[Install VMware]
-
-* xref:../rhel/index.adoc[Install Red Hat Enterprise Linux or CentOS]
-
-* xref:../ubuntu/index.adoc[Install Ubuntu or Debian]
-
-* xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
-
-* xref:../sg6000/index.adoc[SG6000 storage appliances]
-
-* xref:../sg5700/index.adoc[SG5700 storage appliances]
-
-* xref:../sg5600/index.adoc[SG5600 storage appliances]
-
-* xref:../admin/index.adoc[Administer StorageGRID]
