@@ -13,7 +13,10 @@ You can change the Ethernet link configuration of the E5600SG controller. You ca
 
 .What you'll need
 
-* You must xref:placing-appliance-into-maintenance-mode.adoc[place the E5600SG controller into maintenance mode]. Placing the controller into maintenance mode interrupts the connection to the E2700 controller. Putting a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access.
+xref:placing-appliance-into-maintenance-mode.adoc[Place the E5600SG controller into maintenance mode]. 
+
+NOTE: In rare instances, placing a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access. +
+To minimize the risk of remote access loss, make sure that you can access the BMC interface before placing the appliance into maintenance mode. If the appliance cannot be reached over the network while in maintenance mode, connect to the appliance BMC interface, log in to the appliance firmware command line, and run the `sudo sgabootd reset` command. This command exits maintenance mode, returns the appliance to service, and restores network connectivity.
 
 .About this task
 
