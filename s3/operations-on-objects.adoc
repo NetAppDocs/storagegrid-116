@@ -94,6 +94,10 @@ If the `versionId` query parameter is not specified in the request, the operatio
 |PUT Object tagging
 |Uses the `tagging` subresource to add a set of tags to an existing object. Implemented with all Amazon S3 REST API behavior
 
+*Object tag limits*
+
+You can add tags to new objects when you upload them, or you can add them to existing objects. Both StorageGRID and Amazon S3 support up to 10 tags for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 Unicode characters in length and tag values can be up to 256 Unicode characters in length. Key and values are case sensitive.
+
 *Tag updates and ingest behavior*
 
 When you use PUT Object tagging to update an object's tags, StorageGRID does not re-ingest the object. This means that the option for Ingest Behavior specified in the matching ILM rule is not used. Any changes to object placement that are triggered by the update are made when ILM is re-evaluated by normal background ILM processes.
