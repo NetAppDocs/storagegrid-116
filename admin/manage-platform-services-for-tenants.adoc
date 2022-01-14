@@ -43,9 +43,7 @@ Before using platform services, be aware of the following recommendations:
 
 * If an S3 bucket in the StorageGRID system has both versioning and CloudMirror replication enabled, you should also enable S3 bucket versioning for the destination endpoint. This allows CloudMirror replication to generate similar object versions on the endpoint.
 * You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
-* The pending storage limit is 500 KB, which is shared among existing tenants.
-+
-New tenants are allowed to temporarily exceed the limit so that newly created tenants are not unfairly penalized.
+* Requests to an endpoint that cannot be completed will be queued to a maximum of 500,000 requests. This limit is equally shared among active tenants. New tenants are allowed to temporarily exceed this 500,000 limit so that newly created tenants are not unfairly penalized.
 
 .Related information
 
