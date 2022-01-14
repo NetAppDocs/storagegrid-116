@@ -172,9 +172,9 @@ IMPORTANT: The `show-replicated-repair-status` option is available for technical
 
 * The results on the Diagnostics page (*SUPPORT* > *Tools* > *Diagnostics*) are now sorted by severity and then alphabetically.
 
-* Prometheus and Grafana were updated to newer versions with modified user interface and charts. As part of this change, some metrics were renamed:
-** The `node_network_up` metrics are now named `node_network_info`.
-** For all `node_network_` metrics (from the netclass collector), the `interface` label name was changed to `device`.
+* Prometheus and Grafana were updated to newer versions with modified interfaces and charts. As part of this change, the labels in some metrics were changed.
+** If you have custom queries that used the labels from `node_network_up`, you should now use the labels from `node_network_info` instead. 
+** If you also used the label name `interface` from any of the `node_network` metrics, you should now use the the `device` label instead.
 
 * Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
 +
