@@ -24,7 +24,7 @@ A KMS can be set up in Grid Manager before or after the appliance is installed i
 * If a KMS is set up before installing the appliance, KMS-controlled encryption begins when you enable node encryption on the appliance and add it to a StorageGRID site where KMS is configured.
 * If a KMS is not set up before you install the appliance, KMS-controlled encryption is performed on each appliance that has node encryption enabled as soon as a KMS is configured and available for the site that contains the appliance node.
 
-IMPORTANT: Any data that exists before an appliance that has node encryption enabled connects to the configured KMS is encrypted with a temporary key that is not secure. The appliance is not protected from removal or theft until the key is set to a value provided by the KMS.
+IMPORTANT: Data that exists prior to connecting to the KMS on an appliance that has node encryption enabled is encrypted with a temporary key that is not secure. The appliance is not protected from removal or theft until the key is set to a value provided by the KMS.
 
 Without the KMS key needed to decrypt the disk, data on the appliance cannot be retrieved and is effectively lost. This is the case whenever the decryption key cannot be retrieved from the KMS. The key becomes inaccessible if a customer clears the KMS configuration, a KMS key expires, connection to the KMS is lost, or the appliance is removed from the StorageGRID system where its KMS keys are installed.
 
@@ -45,7 +45,7 @@ image::../media/kms_fde_enabled.png[KMS FDE enabled]
 
 . Select *Enable node encryption*.
 +
-You can unselect *Enable node encryption* without risk of data loss until you select *Save* and the appliance node accesses the KMS encryption keys in your StorageGRID system and begins disk encryption. You are not able to disable node encryption after the appliance is installed.
+Prior to appliance installation you can unselect *Enable node encryption* without risk of data loss. When the installation begins the appliance node accesses the KMS encryption keys in your StorageGRID system and begins disk encryption. You are not able to disable node encryption after the appliance is installed.
 +
 IMPORTANT: After you add an appliance that has node encryption enabled to a StorageGRID site that has a KMS, you cannot stop using KMS encryption for the node.
 
