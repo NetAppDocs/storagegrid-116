@@ -26,9 +26,9 @@ If a bucket has S3 Object Lock enabled, the S3 client application can optionally
 * *Retain-until-date*: If an object version's retain-until-date is in the future, the object can be retrieved, but it cannot be modified or deleted. As required, an object's retain-until-date can be increased, but this date cannot be decreased.
 * *Legal hold*: Applying a legal hold to an object version immediately locks that object. For example, you might need to put a legal hold on an object that is related to an investigation or legal dispute. A legal hold has no expiration date, but remains in place until it is explicitly removed. Legal holds are independent of the retain-until-date.
 
-For details about object retention settings, go to "`using S3 object lock`" in xref:../s3/s3-rest-api-supported-operations-and-limitations.adoc[S3 REST API supported operations and limitations].
+For details about object retention settings, go to xref:../s3/using-s3-object-lock.adoc[Use S3 Object Lock].
 
-For details about default bucket retention settings, go to xref:../s3/operations-on-buckets.adoc#using-s3-object-lock-default-bucket-retention[Using S3 Object Lock default bucket retention].
+For details about default bucket retention settings, go to xref:../s3/use-s3-object-lock-default-bucket-retention[Use S3 Object Lock default bucket retention].
 
 == Comparing S3 Object Lock to legacy Compliance
 
@@ -42,7 +42,7 @@ If you previously enabled the global Compliance setting, the global S3 Object Lo
 * Placing a legal hold on an existing bucket that has legacy Compliance enabled.
 * Lifting a legal hold.
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5^]
+See https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5^] for instructions.
 
 If you used the legacy Compliance feature in a previous version of StorageGRID, refer to the following table to learn how it compares to the S3 Object Lock feature in StorageGRID.
 
@@ -56,7 +56,7 @@ From the Grid Manager, select *CONFIGURATION* > *System* > *S3 Object Lock*.
 a|
 No longer supported.
 
-*Note:* If you previously enabled the global Compliance setting,the global S3 Object Lock setting will be enabled automatically when you upgrade to StorageGRID 11.5.
+*Note:* If you previously enabled the global Compliance setting,the global S3 Object Lock setting was enabled automatically when you upgraded to StorageGRID 11.5.
 
 a|
 How is the feature enabled for a bucket?
