@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding-cloudmirror-replication-service.html
 sidebar: sidebar
-keywords: storagegrid, tenant, cloudmirror, cloudmirror replication, replication
+keywords: cloudmirror replication
 summary: 'You can enable CloudMirror replication for an S3 bucket if you want StorageGRID to replicate specified objects added to the bucket to one or more destination buckets.'
 ---
 = CloudMirror replication service
@@ -30,7 +30,3 @@ NOTE: The custom header used to mark a replica is `x-ntap-sg-replica`. This mark
 The uniqueness and ordering of events in the destination bucket are not guaranteed. More than one identical copy of a source object might be delivered to the destination as a result of operations taken to guarantee delivery success. In rare cases, when the same object is updated simultaneously from two or more different StorageGRID sites, the ordering of operations on the destination bucket might not match the ordering of events on the source bucket.
 
 CloudMirror replication is typically configured to use an external S3 bucket as a destination. However, you can also configure replication to use another StorageGRID deployment or any S3-compatible service.
-
-.Related information
-
-xref:configuring-cloudmirror-replication.adoc[Configure CloudMirror replication]

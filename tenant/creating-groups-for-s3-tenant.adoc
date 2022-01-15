@@ -1,7 +1,7 @@
 ---
 permalink: tenant/creating-groups-for-s3-tenant.html
 sidebar: sidebar
-keywords: StorageGRID, S3 tenant groups, S3 groups, S3 local group, S3 federated group, tenant groups, groups, local group, federated group, tenant manager, creating S3 groups, create S3 groups
+keywords: how to create S3 tenant groups
 summary: 'You can manage permissions for S3 user groups by importing federated groups or creating local groups.'
 ---
 = Create groups for an S3 tenant
@@ -13,8 +13,10 @@ You can manage permissions for S3 user groups by importing federated groups or c
 
 .What you'll need
 * You must be signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must belong to a user group that has the Root Access permission.
+* You must belong to a user group that has the Root Access permission. See xref:tenant-management-permissions.adoc[Tenant management permissions].
 * If you plan to import a federated group, you have configured identity federation and the federated group already exists in the configured identity source.
+
+For information about S3, see xref:../s3/index.adoc[Use S3].
 
 .Steps
 . Select *ACCESS MANAGEMENT* > *Groups*.
@@ -63,9 +65,3 @@ Optionally, you can save the group without adding users. You can add users to th
 . Select *Finish*.
 +
 The group you created appears in the list of groups. Changes might take up to 15 minutes to take effect because of caching.
-
-.Related information
-
-xref:tenant-management-permissions.adoc[Tenant management permissions]
-
-xref:../s3/index.adoc[Use S3]

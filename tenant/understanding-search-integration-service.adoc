@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding-search-integration-service.html
 sidebar: sidebar
-keywords: storagegrid, tenant, search integration, search integration service
+keywords: how to understand search integration service
 summary: 'You can enable search integration for an S3 bucket if you want to use an external search and data analysis service for your object metadata.'
 ---
 = Understand search integration service
@@ -30,11 +30,9 @@ After you add metadata notification configuration XML to a bucket, notifications
 * Configure the search integration service immediately after creating the bucket and before adding any objects.
 * Perform an action on all objects already in the bucket that will trigger a metadata notification message to be sent to the destination.
 
-The StorageGRID search integration service supports an Elasticsearch cluster as a destination. As with the other platform services, the destination is specified in the endpoint whose URN is used in the configuration XML for the service. Use the _Interoperability Matrix Tool_ to determine the supported versions of Elasticsearch.
+The StorageGRID search integration service supports an Elasticsearch cluster as a destination. As with the other platform services, the destination is specified in the endpoint whose URN is used in the configuration XML for the service. Use the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool] to determine the supported versions of Elasticsearch.
 
 .Related information
-
-https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool]
 
 xref:configuration-xml-for-search-configuration.adoc[Configuration XML for search integration]
 
