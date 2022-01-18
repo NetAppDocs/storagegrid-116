@@ -11,6 +11,8 @@ summary: 'If necessary, you can pause the decommission procedure for a Storage N
 [.lead]
 If necessary, you can pause the decommission procedure for a Storage Node during certain stages. You must pause decommissioning on a Storage Node before you can start a second maintenance procedure. After the other procedure is finished, you can resume decommissioning.
 
+Pausing decommissioning allows you to start a second maintenance procedure while certain phases of the process, such as ILM evaluation (data migration), continue in the background. The Pause button is enabled only when the ILM evaluation or erasure-coded data decommissioning phases are reached. These phases, and the phases that occur after them, continue to run while decommissioning is paused.
+
 .What you'll need
 
 * You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
