@@ -1,7 +1,7 @@
 ---
 permalink: maintain/considerations-for-removing-site.html
 sidebar: sidebar
-keywords: storagegrid, remove site, removing site
+keywords: how to remove site
 summary: 'Before using the site decommission procedure to remove a site, you must review the considerations.'
 ---
 = Considerations for removing a site
@@ -49,7 +49,7 @@ Before removing a connected or disconnected site, you must be aware of the follo
  ** You cannot create ILM rules that refer to the site being decommissioned. You also cannot edit an existing ILM rule to refer to the site.
  ** You cannot perform other maintenance procedures, such as expansion or upgrade.
 +
-NOTE: If you need to perform another maintenance procedure during a connected site decommission, you can xref:pausing-and-resuming-decommission-process-for-storage-nodes.adoc[pause the procedure while the Storage Nodes are being removed]. Pausing decommissioning allows you to start a second maintenance procedure while certain stages of the process, such as ILM evaluation (data migration), continue in the background. The *Pause* button is enabled during the "`Decommissioning Replicated and Erasure Coded Data`" stage.
+NOTE: If you need to perform another maintenance procedure during a connected site decommission, you can xref:pausing-and-resuming-decommission-process-for-storage-nodes.adoc[pause the procedure while the Storage Nodes are being removed]. The *Pause* button is enabled only when the ILM evaluation or erasure-coded data decommissioning stages are reached; however, ILM evaluation (data migration) will continue to run in the background. After the second maintenance procedure is complete, you can resume decommissioning.
 
  ** If you need to recover any node after starting the site decommission procedure, you must contact support.
 * You cannot decommission more than one site at a time.

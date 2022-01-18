@@ -1,7 +1,7 @@
 ---
 permalink: maintain/decommission-procedure.html
 sidebar: sidebar
-keywords: storagegrid, decommission
+keywords: how to decommission
 summary: 'You can perform a decommission procedure to permanently remove grid nodes or an entire site from the StorageGRID system.'
 ---
 = Decommission procedure
@@ -21,7 +21,7 @@ IMPORTANT: Before performing a disconnected site decommission, you must contact 
 
 If a site contains a mixture of connected (image:../media/icon_alert_green_checkmark.png[Icon Alert Green Checkmark]) and disconnected nodes (image:../media/icon_alarm_gray_administratively_down.png[Icon Alarm Gray Administratively Down] or image:../media/icon_alarm_blue_unknown.png[Icon Alarm Blue Unknown]), you must bring all offline nodes back online.
 
-NOTE: If necessary, you can xref:pausing-and-resuming-decommission-process-for-storage-nodes.adoc[pause the decommission procedure while the Storage Nodes are being removed]. Pausing decommissioning allows you to start a second maintenance procedure while certain stages of the process, such as ILM evaluation (data migration), continue in the background. The *Pause* button is enabled during the "`Decommissioning Replicated and Erasure Coded Data`" stage.
+NOTE: If you need to perform a second maintenance procedure, you can xref:pausing-and-resuming-decommission-process-for-storage-nodes.adoc[pause the decommission procedure while the Storage Nodes are being removed]. The *Pause* button is enabled only when the ILM evaluation or erasure-coded data decommissioning stages are reached; however, ILM evaluation (data migration) will continue to run in the background. After the second maintenance procedure is complete, you can resume decommissioning.
 
 .Related information
 
