@@ -45,7 +45,7 @@ NOTE: If your grid includes only one site, you are prevented from using the All 
 * You cannot create a storage pool that includes both Storage Nodes and Archive Nodes. Archived copies require a storage pool that only includes Archive Nodes.
 * When using a storage pool that includes Archive Nodes, you should also maintain at least one replicated or erasure-coded copy on a storage pool that includes Storage Nodes.
 * If the global S3 Object Lock setting is enabled and you are creating a compliant ILM rule, you cannot use a storage pool that includes Archive Nodes. See the instructions for managing objects with S3 Object Lock.
-* If an Archive Node's Target Type is Cloud Tiering - Simple Storage Service (S3), the Archive Node must be in its own storage pool. See the instructions for administering StorageGRID.
+* If an Archive Node's Target Type is Cloud Tiering - Simple Storage Service (S3), the Archive Node must be in its own storage pool. See xref:../admin/index.adoc[Administer StorageGRID].
 
 .Related information
 
@@ -57,8 +57,5 @@ NOTE: If your grid includes only one site, you are prevented from using the All 
 
 * xref:using-multiple-storage-pools-for-cross-site-replication.adoc[Use multiple storage pools for cross-site replication]
 
-* xref:using-storage-pool-as-temporary-location-deprecated.adoc[Use a storage pool as a temporary location (deprecated)]
 
-* xref:managing-objects-with-s3-object-lock.adoc[Manage objects with S3 Object Lock]
 
-* xref:../admin/index.adoc[Administer StorageGRID]
