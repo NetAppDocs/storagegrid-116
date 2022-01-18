@@ -42,3 +42,5 @@ If a server that is hosting more than one grid node fails, you can recover the n
 == IP addresses for recovered nodes
 
 Do not attempt to recover a node using an IP address that is currently assigned to any other node. When you deploy the new node, use the failed node's current IP address or an unused IP address.
+
+If you use a new IP address to deploy the new node and then recover the node, the new IP address will continue to be used for the recovered node. If you want to revert to the original IP address, use the Change IP tool after the recovery is complete.

@@ -17,8 +17,10 @@ When you deploy a StorageGRID appliance as a Storage Node, you can connect it to
 
 * *Grid Network for StorageGRID*: The Grid Network is used for all internal StorageGRID traffic. It provides connectivity between all nodes in the grid, across all sites and subnets. The Grid Network is required.
 * *Admin Network for StorageGRID*: The Admin Network is a closed network used for system administration and maintenance. The Admin Network is typically a private network and does not need to be routable between sites. The Admin Network is optional.
-* *Client Network forStorageGRID*: The Client Network is an open network used to provide access to client applications, including S3 and Swift. The Client Network provides client protocol access to the grid, so the Grid Network can be isolated and secured. The Client Network is optional.
-* *Management network for SANtricity Storage Manager*: The E2700 controller connects to the management network where SANtricity Storage Manager is installed, allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
+* *Client Network for StorageGRID*: The Client Network is an open network used to provide access to client applications, including S3 and Swift. The Client Network provides client protocol access to the grid, so the Grid Network can be isolated and secured. The Client Network is optional.
+* *Management network for SANtricity Storage Manager* (optional): The E2700 controller connects to the management network where SANtricity Storage Manager is installed, allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
++
+If the optional SANtricity Storage Manager network is not connected, you might be unable to use some SANtricity features.
 
 NOTE: For detailed information about StorageGRID networks, see the _Grid Primer_.
 
