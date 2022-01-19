@@ -1,7 +1,7 @@
 ---
 permalink: monitor/troubleshooting-metadata-issues.html
 sidebar: sidebar
-keywords:
+keywords: how to troubleshoot metadata issues
 summary: 'You can perform several tasks to help determine the source of metadata problems.'
 ---
 = Troubleshoot metadata issues
@@ -27,7 +27,7 @@ image::../media/metadata_allowed_space_volume_0.png[Metadata Allowed Space Volum
 
 If object metadata consumes more than 100% of the space allowed for metadata, database operations cannot run efficiently and errors will occur.
 
-You can xref:monitoring-object-metadata-capacity-for-each-storage-node.adoc[Monitor object metadata capacity for each Storage Node] to help you anticipate errors and correct them before they occur.
+You can xref:monitoring-storage-capacity.adoc#monitoring-object-metadata-capacity-for-each-storage-node[monitor object metadata capacity for each Storage Node] to help you anticipate errors and correct them before they occur.
 
 StorageGRID uses the following Prometheus metric to measure how full the allowed metadata space is:
 
@@ -142,13 +142,8 @@ There can be more than one entry for Cassandra; you must locate the most recent 
 
  .. If Cassandra has been down for longer than 15 days, you must rebuild the Cassandra database.
 +
-For instructions, see "`Recovering from a single Storage Node down more than 15 days`" in the recovery and maintenance instructions.
-
+For instructions, see xref:../maintain/recovering-storage-node-that-has-been-down-more-than-15-days.adoc[Recovering Storage Node down more than 15 days].
  .. Contact technical support if alarms do not clear after Cassandra is rebuilt.
-
-.Related information
-
-xref:../maintain/index.adoc[Recover and maintain]
 
 == Troubleshoot Cassandra Out of Memory errors (SMTT alarm)
 
