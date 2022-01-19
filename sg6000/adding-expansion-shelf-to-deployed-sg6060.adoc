@@ -127,7 +127,7 @@ For example, use SANtricity System Manager to resolve any storage hardware issue
 +
 NOTE: If the new expansion shelves have not been detected, verify that they are properly cabled and powered up.
 
-. Click *Start Expansion* to configure the expansion shelves and make them available for object storage.
+. [[start_expansion]]Click *Start Expansion* to configure the expansion shelves and make them available for object storage.
 . Monitor the progress of the expansion shelf configuration.
 +
 Progress bars appear on the web page, just as they do during initial installation.
@@ -136,7 +136,7 @@ image::../media/monitor_expansion_for_new_appliance_shelf.png[Monitor Expansion 
 +
 When configuration is complete, the appliance automatically reboots to exit maintenance mode and rejoin the grid. This process can take up to 20 minutes.
 +
-NOTE: If the appliance does not rejoin the grid, go to the StorageGRID Appliance Installer Home page, select *Advanced* > *Reboot Controller*, and then select *Reboot into Maintenance Mode*.
+NOTE: To retry the expansion shelf configuration if it fails, go to the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select *Reboot into Maintenance Mode*. After the node reboots, retry the <<start_expansion,expansion shelf configuration>>.
 +
 When the reboot is complete, the *Tasks* tab looks like the following screenshot:
 +
