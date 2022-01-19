@@ -1,7 +1,7 @@
 ---
 permalink: tenant/configuring-platform-services-endpoints.html
 sidebar: sidebar
-keywords: storagegrid, tenant, platform services endpoint, endpoint, cloudmirror endpoint, notification endpoint, search integration service endpoint
+keywords: how to configure platform services endpoint
 summary: 'Before you can configure a platform service for a bucket, you must configure at least one endpoint to be the destination for the platform service.'
 ---
 = Configure platform services endpoints
@@ -17,7 +17,7 @@ Access to platform services is enabled on a per-tenant basis by a StorageGRID ad
 
 When you create a platform services endpoint, you specify the information that StorageGRID needs to access the external destination.
 
-For example, if you want to replicate objects from a StorageGRID bucket to an S3 bucket, you create a platform services endpoint that includes the information and credentials StorageGRID needs to access the destination bucket on AWS.
+For example, if you want to replicate objects from a StorageGRID bucket to an AWS S3 bucket, you create a platform services endpoint that includes the information and credentials StorageGRID needs to access the destination bucket on AWS.
 
 Each type of platform service requires its own endpoint, so you must configure at least one endpoint for each platform service you plan to use. After defining a platform services endpoint, you use the endpoint's URN as the destination in the configuration XML used to enable the service.
 

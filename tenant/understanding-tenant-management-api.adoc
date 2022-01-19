@@ -1,7 +1,7 @@
 ---
 permalink: tenant/understanding-tenant-management-api.html
 sidebar: sidebar
-keywords: StorageGRID, tenant management api, tenant api
+keywords: how to understand tenant management api
 summary: 'You can perform system management tasks using the Tenant Management REST API instead of the Tenant Manager user interface. For example, you might want to use the API to automate operations or to create multiple entities, such as users, more quickly.'
 ---
 = Understand Tenant Management API
@@ -42,16 +42,16 @@ NOTE: If single sign-on (SSO) is enabled for the StorageGRID system, you must pe
 +
 *S3*
 
- ** Creating compliant and non-compliant buckets
- ** Modifying legacy compliance settings
- ** Setting the consistency control for operations performed on objects
- ** Creating, updating, and deleting a bucket's CORS configuration
- ** Enabling and disabling last access time updates for objects
- ** Managing the configuration settings for platform services, including CloudMirror replication, notifications, and search integration (metadata-notification)
- ** Deleting empty buckets
+ ** Create bucket (with and without S3 Object Lock enabled)
+ ** Modify bucket default retention (for buckets with S3 Object Lock enabled)
+ ** Set the consistency control for operations performed on objects
+ ** Create, update, and delete a bucket's CORS configuration
+ ** Enable and disable last access time updates for objects
+ ** Manage the configuration settings for platform services, including CloudMirror replication, notifications, and search integration (metadata-notification)
+ ** Delete empty buckets
 
 +
-*Swift*: Setting the consistency level used for containers
+*Swift*: Set the consistency level used for containers
 
 * *deactivated-features* -- Operations to view features that might have been deactivated.
 * *endpoints* -- Operations to manage an endpoint. Endpoints allow an S3 bucket to use an external service for StorageGRID CloudMirror replication, notifications, or search integration.

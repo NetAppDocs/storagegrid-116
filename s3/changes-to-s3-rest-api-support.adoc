@@ -18,8 +18,8 @@ You should be aware of changes to the StorageGRID system's support for the S3 RE
 |11.6
 |
 * Added support for using the `partNumber` request parameter in GET Object and HEAD Object requests.
-* Added support for a default retention mode and a default retention period at the bucket level.
-* Added support for the `s3:object-lock-remaining-retention-days` policy condition key to set the range of allowable retention periods for your bucket.
+* Added support for a default retention mode and a default retention period at the bucket level for S3 Object Lock.
+* Added support for the `s3:object-lock-remaining-retention-days` policy condition key to set the range of allowable retention periods for your objects.
 * The maximum _recommended_ size for a single PUT Object operation is now 5 GiB (5,368,709,120 bytes). If you have objects that are larger than 5 GiB, use multipart upload instead. 
 
 IMPORTANT: In StorageGRID 11.6, the maximum _supported_ size for a single PUT Object operation remains 5 TiB (5,497,558,138,880 bytes). However, the *S3 PUT Object size too large* alert will be triggered if you attempt to upload an object that exceeds 5 GiB.

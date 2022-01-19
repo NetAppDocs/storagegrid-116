@@ -44,7 +44,7 @@ image::../media/policy_6_active_policy.png[Example ILM Policy 6 Active Policy]
 
 In this ILM policy, objects belonging to Tenant A are protected by 2+1 erasure coding at a single site, while objects belonging to all other tenants are protected across two sites using 2-copy replication.
 
-NOTE: The first rule in this example uses an advanced filter to ensure that erasure coding is not used for small objects. Any of Tenant A's objects that are smaller than 200 KB will be protected by the second rule, which uses replication.
+NOTE: The first rule in this example uses an advanced filter to ensure that erasure coding is not used for small objects. Any of Tenant A's objects that are smaller than 1 MB will be protected by the second rule, which uses replication.
 
 === Rule 1: One-site erasure coding for Tenant A
 

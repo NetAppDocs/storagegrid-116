@@ -1,0 +1,90 @@
+---
+permalink: s3/deprecated-get-bucket-compliance-request.html
+sidebar: sidebar
+keywords: S3 REST API, S3 operations, deprecated GET compliance requests
+summary: 'The GET Bucket compliance request is deprecated. However, you can continue to use this request to determine the compliance settings currently in effect for an existing legacy Compliant bucket.'
+---
+= Deprecated: GET Bucket compliance request
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The GET Bucket compliance request is deprecated. However, you can continue to use this request to determine the compliance settings currently in effect for an existing legacy Compliant bucket.
+
+IMPORTANT: The StorageGRID Compliance feature that was available in previous StorageGRID versions is deprecated and has been replaced by S3 Object Lock.
+
+xref:s3-rest-api-supported-operations-and-limitations.adoc[Use S3 Object Lock]
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/StorageGRID/How_to_manage_legacy_Compliant_buckets_in_StorageGRID_11.5[NetApp Knowledge Base: How to manage legacy Compliant buckets in StorageGRID 11.5]
+
+You have the s3:GetBucketCompliance permission, or be account root, to complete this operation.
+
+== Request example
+
+This example request allows you to determine the compliance settings for the bucket named `mybucket`.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+GET /mybucket/?x-ntap-sg-compliance HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+
+== Response example
+
+In the response XML, `<SGCompliance>` lists the compliance settings in effect for the bucket. This example response shows the compliance settings for a bucket in which each object will be retained for one year (525,600 minutes), starting from when the object is ingested into the grid. There is currently no legal hold on this bucket. Each object will be automatically deleted after one year.
+
+[source]
+[subs="specialcharacters,quotes"]
+----
+HTTP/1.1 200 OK
+Date: _date_
+Connection: _connection_
+Server: StorageGRID/11.1.0
+x-amz-request-id: _request ID_
+Content-Length: _length_
+Content-Type: application/xml
+
+<SGCompliance>
+  <RetentionPeriodMinutes>525600</RetentionPeriodMinutes>
+  <LegalHold>false</LegalHold>
+  <AutoDelete>true</AutoDelete>
+</SGCompliance>
+----
+
+[options="header"]
+|===
+| Name| Description
+a|
+RetentionPeriodMinutes
+a|
+The length of the retention period for objects added to this bucket, in minutes. The retention period starts when the object is ingested into the grid.
+a|
+LegalHold
+a|
+
+* True: This bucket is currently under a legal hold. Objects in this bucket cannot be deleted until the legal hold is lifted, even if their retention period has expired.
+* False: This bucket is not currently under a legal hold. Objects in this bucket can be deleted when their retention period expires.
+
+a|
+AutoDelete
+a|
+
+* True: The objects in this bucket will be deleted automatically when their retention period expires, unless the bucket is under a legal hold.
+* False: The objects in this bucket will not be deleted automatically when the retention period expires. You must delete these objects manually if you need to delete them.
+
+|===
+
+== Error responses
+
+If the bucket was not created to be compliant, the HTTP status code for the response is `404 Not Found`, with an S3 error code of `XNoSuchBucketCompliance`.
+
+.Related information
+
+xref:../ilm/index.adoc[Manage objects with ILM]
+
+xref:../tenant/index.adoc[Use tenant account]

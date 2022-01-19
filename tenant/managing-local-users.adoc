@@ -14,7 +14,7 @@ You can create local users and assign them to local groups to determine which fe
 .What you'll need
 
 * You must be signed in to the Tenant Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
-* You must belong to a read-write user group that has the Root Access permission.
+* You must belong to a read-write user group that has the Root Access permission. See xref:tenant-management-permissions.adoc[Tenant management permissions].
 
 NOTE: If single sign-on (SSO) is enabled for your StorageGRID system, local users will not be able to sign in to the Tenant Manager or the Tenant Management API, although they can use S3 or Swift client applications to access the tenant's resources, based on group permissions.
 
@@ -108,7 +108,3 @@ Using the Tenant Manager, you can delete local users, but not federated users. Y
 . In the confirmation dialog box, select *Delete user* to confirm you want to delete the user from the system.
 +
 Changes might take up to 15 minutes to take effect because of caching.
-
-.Related information
-
-xref:tenant-management-permissions.adoc[Tenant management permissions]

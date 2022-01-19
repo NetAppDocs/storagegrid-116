@@ -1,7 +1,7 @@
 ---
 permalink: ubuntu/configuring-host-network.html
 sidebar: sidebar
-keywords:
+keywords: how to configure ubuntu or debian host network
 summary: 'After completing the Linux installation on your hosts, you might need to perform some additional configuration to prepare a set of network interfaces on each host that are suitable for mapping into the StorageGRID nodes you will deploy later.'
 ---
 = Configure the host network (Ubuntu or Debian)
@@ -34,11 +34,11 @@ NOTE: Do not use bond or bridge devices directly as the container network interf
 .[[mac_address_cloning_ubuntu]]
 == Considerations and recommendations for MAC address cloning
 
-MAC address cloning causes the Docker container to use the MAC address of the host, and the host to use the MAC address of either an address you specify or a randomly generated one. You should use MAC address cloning to avoid the use of promiscuous mode network configurations.
+MAC address cloning causes the container to use the MAC address of the host, and the host to use the MAC address of either an address you specify or a randomly generated one. You should use MAC address cloning to avoid the use of promiscuous mode network configurations.
 
 === Enabling MAC cloning
 
-In certain environments, security can be enhanced through MAC address cloning because it enables you to use a dedicated virtual NIC for the Admin Network, Grid Network, and Client Network. Having the Docker container use the MAC address of the dedicated NIC on the host allows you to avoid using promiscuous mode network configurations.
+In certain environments, security can be enhanced through MAC address cloning because it enables you to use a dedicated virtual NIC for the Admin Network, Grid Network, and Client Network. Having the container use the MAC address of the dedicated NIC on the host allows you to avoid using promiscuous mode network configurations.
 
 IMPORTANT: MAC address cloning is intended to be used with virtual server installations and might not function properly with all physical appliance configurations.
 
@@ -52,7 +52,7 @@ There is one key for each network:
 * `GRID_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC`
 * `CLIENT_NETWORK_TARGET_TYPE_INTERFACE_CLONE_MAC`
 
-Setting the key to "true" causes the Docker container to use the MAC address of the host's NIC. Additionally, the host will then use the MAC address of the specified container network. By default, the container address is a randomly generated address, but if you have set one using the `_NETWORK_MAC` node configuration key, that address is used instead. The host and container will always have different MAC addresses.
+Setting the key to "true" causes the container to use the MAC address of the host's NIC. Additionally, the host will then use the MAC address of the specified container network. By default, the container address is a randomly generated address, but if you have set one using the `_NETWORK_MAC` node configuration key, that address is used instead. The host and container will always have different MAC addresses.
 
 IMPORTANT: Enabling MAC cloning on a virtual host without also enabling promiscuous mode on the hypervisor might cause Linux host networking using the host's interface to stop working.
 

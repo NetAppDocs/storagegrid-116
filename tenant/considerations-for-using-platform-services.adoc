@@ -1,7 +1,7 @@
 ---
 permalink: tenant/considerations-for-using-platform-services.html
 sidebar: sidebar
-keywords: storagegrid, tenant, platform services considerations, cloudmirror considerations
+keywords: considerations for using platform services
 summary: 'Before implementing platform services, review the recommendations and considerations for using these services.'
 ---
 = Considerations for using platform services
@@ -10,6 +10,8 @@ summary: 'Before implementing platform services, review the recommendations and 
 
 [.lead]
 Before implementing platform services, review the recommendations and considerations for using these services.
+
+For information about S3, see xref:../s3/index.adoc[Use S3].
 
 == Considerations for using platform services
 
@@ -101,9 +103,6 @@ The CloudMirror service does not support objects that are encrypted with SSE-C. 
 a|
 Bucket with S3 Object Lock enabled
 a|
-If the destination S3 bucket for CloudMirror replication has S3 Object Lock enabled, the replication operation will fail with an AccessDenied error.
+If the destination S3 bucket for CloudMirror replication has S3 Object Lock enabled, the attempt to configure bucket replication (PUT Bucket replication) will fail with an AccessDenied error.
 
 |===
-.Related information
-
-xref:../s3/index.adoc[Use S3]

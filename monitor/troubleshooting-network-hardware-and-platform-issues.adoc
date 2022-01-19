@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'There are several tasks you can perform to help determine the source of issues related to StorageGRID network, hardware, and platform issues.'
 ---
-= Troubleshooting network, hardware, and platform issues
+= Troubleshoot network, hardware, and platform issues
 :icons: font
 :imagesdir: ../media/
 
@@ -85,11 +85,11 @@ The differences in MTU settings could indicate that some, but not all, eth0 netw
  ** Navigate to `_primary Admin Node IP address_/metrics/graph` and enter the following query: `node_network_mtu_bytes{interface='eth0'}`
 . Modify the MTU settings as necessary to ensure they are the same for the Grid Network interface (eth0) on all nodes.
  ** For appliance nodes, see the installation and maintenance instructions for your appliance.
- ** For Linux- and VMware-based nodes, use the following command: `+/usr/sbin/change-mtu.py [-h] [-n node] mtu network [network...]+`
+ ** For Linux- and VMware-based nodes, use the following command: `+/usr/sbin/change-ip.py [-h] [-n node] mtu network [network...]+`
 +
-*Example*: `change-mtu.py -n node 1500 grid admin`
+*Example*: `change-ip.py -n node 1500 grid admin`
 +
-*Note*: On Linux-based nodes, if the desired MTU value for the network in the container exceeds the value already configured on the host interface, you must first configure the host interface to have the desired MTU value, and then use the `change-mtu.py` script to change the MTU value of the network in the container.
+*Note*: On Linux-based nodes, if the desired MTU value for the network in the container exceeds the value already configured on the host interface, you must first configure the host interface to have the desired MTU value, and then use the `change-ip.py` script to change the MTU value of the network in the container.
 +
 Use the following arguments for modifying the MTU on Linux- or VMware-based nodes.
 +

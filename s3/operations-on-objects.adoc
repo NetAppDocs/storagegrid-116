@@ -19,7 +19,7 @@ The following conditions apply to all object operations:
  ** PUT Object legal hold
  ** PUT Object retention
  ** SELECT Object content
-* Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`"evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
+* Conflicting client requests, such as two clients writing to the same key, are resolved on a "latest-wins" basis. The timing for the "latest-wins"evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 * All objects in a StorageGRID bucket are owned by the bucket owner, including objects created by an anonymous user, or by another account.
 * Data objects ingested to the StorageGRID system through Swift cannot be accessed through S3.
 
@@ -94,6 +94,10 @@ If the `versionId` query parameter is not specified in the request, the operatio
 |PUT Object tagging
 |Uses the `tagging` subresource to add a set of tags to an existing object. Implemented with all Amazon S3 REST API behavior
 
+*Object tag limits*
+
+You can add tags to new objects when you upload them, or you can add them to existing objects. Both StorageGRID and Amazon S3 support up to 10 tags for each object. Tags associated with an object must have unique tag keys. A tag key can be up to 128 Unicode characters in length and tag values can be up to 256 Unicode characters in length. Key and values are case sensitive.
+
 *Tag updates and ingest behavior*
 
 When you use PUT Object tagging to update an object's tags, StorageGRID does not re-ingest the object. This means that the option for Ingest Behavior specified in the matching ILM rule is not used. Any changes to object placement that are triggered by the update are made when ILM is re-evaluated by normal background ILM processes.
@@ -102,7 +106,7 @@ This means that if the ILM rule uses the Strict option for ingest behavior, no a
 
 *Resolving conflicts*
 
-Conflicting client requests, such as two clients writing to the same key, are resolved on a "`latest-wins`" basis. The timing for the "`latest-wins`"evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
+Conflicting client requests, such as two clients writing to the same key, are resolved on a "latest-wins" basis. The timing for the "latest-wins"evaluation is based on when the StorageGRID system completes a given request, and not on when S3 clients begin an operation.
 
 *Versioning*
 

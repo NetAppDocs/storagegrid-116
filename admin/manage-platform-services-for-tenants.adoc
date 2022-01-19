@@ -1,14 +1,18 @@
 ---
-permalink: admin/what-platform-services-are.html
+permalink: admin/manage-platform-services-for-tenants.html
 sidebar: sidebar
 keywords: platform service, cloudmirror replication, event notification, search integration service
-summary: 'Platform services include CloudMirror replication, event notifications, and the search integration service.'
+summary: 'If you enable platform services for S3 tenant accounts, you must configure your grid so that tenants can access the external resources necessary to use these services.'
 ---
-= What platform services are
+= Manage platform services for S3 tenant accounts
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
+If you enable platform services for S3 tenant accounts, you must configure your grid so that tenants can access the external resources necessary to use these services.
+
+== What are platform services?
+
 Platform services include CloudMirror replication, event notifications, and the search integration service.
 
 These services allow tenants to use the following functionality with their S3 buckets:
@@ -35,10 +39,11 @@ Platform services give tenants the ability to use external storage resources, no
 
 == Recommendations for using platform services
 
-Before using platform services, you must be aware of the following recommendations:
+Before using platform services, be aware of the following recommendations:
 
-* You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
 * If an S3 bucket in the StorageGRID system has both versioning and CloudMirror replication enabled, you should also enable S3 bucket versioning for the destination endpoint. This allows CloudMirror replication to generate similar object versions on the endpoint.
+* You should not use more than 100 active tenants with S3 requests requiring CloudMirror replication, notifications, and search integration. Having more than 100 active tenants can result in slower S3 client performance.
+* Requests to an endpoint that cannot be completed will be queued to a maximum of 500,000 requests. This limit is equally shared among active tenants. New tenants are allowed to temporarily exceed this 500,000 limit so that newly created tenants are not unfairly penalized.
 
 .Related information
 

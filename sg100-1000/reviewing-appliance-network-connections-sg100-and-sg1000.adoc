@@ -16,7 +16,9 @@ When you deploy a StorageGRID appliance as a node in a StorageGRID system, you c
 * *Grid Network for StorageGRID*: The Grid Network is used for all internal StorageGRID traffic. It provides connectivity between all nodes in the grid, across all sites and subnets. The Grid Network is required.
 * *Admin Network for StorageGRID*: The Admin Network is a closed network used for system administration and maintenance. The Admin Network is typically a private network and does not need to be routable between sites. The Admin Network is optional.
 * *Client Network for StorageGRID:* The Client Network is an open network used to provide access to client applications, including S3 and Swift. The Client Network provides client protocol access to the grid, so the Grid Network can be isolated and secured. You can configure the Client Network so that the appliance can be accessed over this network using only the ports you choose to open. The Client Network is optional.
-* *BMC management network for the services appliance:* This network provides access to the baseboard management controller in the SG100 and SG1000, appliances allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
+* *BMC management network for the services appliance* (optional): This network provides access to the baseboard management controller in the SG100 and SG1000, appliances allowing you to monitor and manage the hardware components in the appliance. This management network can be the same as the Admin Network for StorageGRID, or it can be an independent management network.
++
+If the optional BMC management network is not connected, some support and maintenance procedures will be more difficult to perform. You can leave the BMC management network unconnected except when needed for support purposes.
 
 .Related information
 

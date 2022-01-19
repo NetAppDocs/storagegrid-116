@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:
 summary: 'It might be possible to find and restore objects that have triggered a Lost Objects (LOST) alarm and a *Object lost* alert and that you have identified as potentially lost.'
 ---
-= Searching for and restoring potentially lost objects
+= Search for and restore potentially lost objects
 :experimental:
 :icons: font
 :imagesdir: ../media/
@@ -96,8 +96,7 @@ ls '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6'
   *** If the object path is not found, the object is lost and cannot be restored using this procedure. Contact technical support.
   *** If the object path is found, continue with step <<restore_the_object_to_StorageGRID,Restore the object to StorageGRID>>. You can attempt to restore the found object back to StorageGRID.
 
-[#restore_the_object_to_StorageGRID, start=3]
-. If the object path was found, attempt to restore the object to StorageGRID:
+. [[restore_the_object_to_StorageGRID, start=3]]If the object path was found, attempt to restore the object to StorageGRID:
  .. From the same Storage Node, change the ownership of the object file so that it can be managed by StorageGRID. Enter: `chown ldr-user:bycast 'file_path_of_object'`
  .. Telnet to localhost 1402 to access the LDR console. Enter: `telnet 0 1402`
  .. Enter: `cd /proc/STOR`
@@ -126,8 +125,7 @@ Renamed '/var/local/rangedb/1/p/17/11/00rH0%DkRs&LgA%#3tN6' to '/var/local/range
 +
 Continue with step <<verify_that_new_locations_were_created,Verify that new locations were created>>
 
-[#verify_that_new_locations_were_created, start=4]
-. If the object was successfully restored to StorageGRID, verify that new locations were created.
+. [[verify_that_new_locations_were_created, start=4]]If the object was successfully restored to StorageGRID, verify that new locations were created.
  .. Enter: `cd /proc/OBRP`
  .. Enter: `ObjectByUUID UUID_value`
 
