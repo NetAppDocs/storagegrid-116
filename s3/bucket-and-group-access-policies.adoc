@@ -241,7 +241,7 @@ NOTE: A DELETE is performed when a PUT is used to overwrite an existing value.
 
 === Permissions that apply to buckets
 
-[options="header"]
+[options="header",cols="35,35,30"]
 |===
 | Permissions| S3 REST API operations| Custom for StorageGRID
 a|
@@ -449,7 +449,8 @@ a|
 a|
 s3:PutBucketObjectLockConfiguration
 a|
-PUT Bucket with the `x-amz-bucket-object-lock-enabled: true` request header (also requires the s3:CreateBucket permission)
+* PUT Bucket with the `x-amz-bucket-object-lock-enabled: true` request header (also requires the s3:CreateBucket permission)
+* PUT Object Lock Configuration
 a|
 
 a|
@@ -496,7 +497,7 @@ a|
 
 === Permissions that apply to objects
 
-[options="header"]
+[options="header",cols="35,35,30"]
 |===
 | Permissions| S3 REST API operations| Custom for StorageGRID
 a|

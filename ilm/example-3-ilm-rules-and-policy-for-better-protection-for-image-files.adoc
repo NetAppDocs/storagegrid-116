@@ -2,21 +2,50 @@
 permalink: ilm/example-3-ilm-rules-and-policy-for-better-protection-for-image-files.html
 sidebar: sidebar
 keywords: example ILM rule, information lifecycle rule examples
-summary: 'You can use the following example rules and policy to ensure that images larger than 200 KB are erasure coded and that three copies are made of smaller images.'
+summary: 'You can use the following example rules and policy to ensure that images larger than 1 MB are erasure coded and that two copies are made of smaller images.'
 ---
 = Example 3: ILM rules and policy for better protection for image files
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can use the following example rules and policy to ensure that images larger than 200 KB are erasure coded and that three copies are made of smaller images.
+You can use the following example rules and policy to ensure that images larger than 1 MB are erasure coded and that two copies are made of smaller images.
 
 CAUTION: The following ILM rules and policy are only examples. There are many ways to configure ILM rules. Before activating a new policy, simulate the proposed policy to confirm it will work as intended to protect content from loss.
 
-== ILM rule 1 for example 3: Use EC for image files larger than 200 KB
+== ILM rule 1 for example 3: Use EC for image files larger than 1 MB
 
+This example ILM rule uses advanced filtering to erasure code all image files larger than 1 MB.
 
-This example ILM rule uses advanced filtering to erasure code all image files larger than 200 KB.
+IMPORTANT: Erasure coding is best suited for objects greater than 1 MB. Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
+
+[cols="1a,2a" options="header"]
+|===
+| Rule definition| Example value
+
+|Rule Name
+|EC image files > 1 MB
+
+|Reference Time
+|Ingest Time
+
+|Advanced Filtering for Object Size
+|Object Size (MB) greater than 1.0
+
+|Advanced Filtering for User Metadata
+|User Metadata type equals image
+
+|Content Placement
+|Create a 2+1 erasure-coded copy using three sites
+|===
+
+image::../media/policy_3_rule_1_ec_images_adv_filtering.png[ILM rule 1 for example 3: Use EC for image files larger than 1 MB]
+
+Because this rule is configured as the first rule in the policy, the erasure-coding placement instruction only applies to images that are greater than 1 MB.
+
+== ILM rule 2 for example 3: Create 2 replicated copies for all remaining image files
+
+This example ILM rule uses advanced filtering to specify that smaller image files be replicated. Because the first rule in the policy has already matched image files greater than 1 MB, this rule applies to image files that are 1 MB or smaller.
 
 [cols="1a,2a" options="header"]
 |===
@@ -24,42 +53,7 @@ This example ILM rule uses advanced filtering to erasure code all image files la
 a|
 Rule Name
 a|
-EC image files > 200 KB
-a|
-Reference Time
-a|
-Ingest Time
-a|
-Advanced Filtering for User Metadata
-a|
-User Metadata type equals image files
-a|
-Advanced Filtering for Object Size
-a|
-Object Size (MB) greater than 0.2
-a|
-Content Placement
-a|
-Create a 2+1 erasure-coded copy using three sites
-|===
-
-image::../media/policy_3_rule_1_ec_images_adv_filtering.gif[ILM rule 1 for example 3: Use EC for image files larger than 200 KB]
-
-Because this rule is configured as the first rule in the policy, the erasure-coding placement instruction only applies to images that are larger than 200 KB.
-
-image::../media/policy_2_rule_1_ec_objects_placements.png[ILM rule 1 for example 3: Use EC for image files larger than 200 KB]
-
-== ILM rule 2 for example 3: Replicate 3 copies for all remaining image files
-
-This example ILM rule uses advanced filtering to specify that image files be replicated.
-
-[cols="1a,2a" options="header"]
-|===
-| Rule definition| Example value
-a|
-Rule Name
-a|
-3 copies for image files
+2 copies for image files
 a|
 Reference Time
 a|
@@ -71,23 +65,18 @@ User Metadata type equals image files
 a|
 Content Placement
 a|
-Create 3 replicated copies in all Storage Nodes
+Create 2 replicated copies in two Storage Pools
 |===
 
-image::../media/policy_3_rule_2_copies_for_images_adv_filtering.gif[ILM rule 2 for example 3: Replicate 3 copies for all remaining image files]
 
-Because the first rule in the policy has already matched image files larger than 200 KB, these placement instructions only apply to image files 200 KB or smaller.
 
-image::../media/policy_3_rule_2_copies_for_images_placements.png[ILM rule 2 for example 3: Replicate 3 copies for all remaining image files]
 
 == ILM policy for example 3: Better protection for image files
 
-In this example, the ILM policy uses three ILM rules to create a policy that erasure codes image files larger than 200 KB (0.2 MB), creates replicated copies for image files 200 KB or smaller, and makes two replicated copies for any non-image files.
+This example ILM policy includes three rules:
 
-This example ILM policy includes rules that perform the following:
+* The first rule erasure codes all image files larger than 1 MB.
+* The second rule creates two copies of any remaining image files (that is, images that are 1 MB or smaller).
+* The default rule applies to all remaining objects (that is, any non-image files).
 
-* Erasure code all image files larger than 200 KB.
-* Create three copies of any remaining image files (that is, images that are 200 KB or smaller).
-* Apply the default rule to any remaining objects (that is, all non-image files).
-
-image::../media/policy_3_configured_policy.gif[ILM policy for example 3: Better protection for image files]
+image::../media/policy_3_configured_policy.png[ILM policy for example 3: Better protection for image files]

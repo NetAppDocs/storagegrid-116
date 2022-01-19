@@ -41,7 +41,9 @@ If *matches all* is selected (default), the rule applies to all S3 buckets or Sw
 +
 If you do not configure advanced filtering, the rule applies to all objects that match the basic filters.
 +
-NOTE: If this rule will create erasure-coded copies, select *Advanced filtering*. Then, add the *Object Size (MB)* advanced filter and set it to *greater than 0.2*. The size filter ensures that objects that are 2 MB or smaller will not be erasure coded.
+If this rule will create erasure-coded copies, add the *Object Size (MB)* advanced filter and set it to *greater than 1*. The size filter ensures that objects that are 1 MB or smaller will not be erasure coded.
++
+IMPORTANT: Erasure coding is best suited for objects greater than 1 MB. Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
 
 . Select *Next*.
 +
@@ -49,7 +51,7 @@ Step 2 (Define Placements) appears.
 
 .Related information
 
-* xref:what-ilm-rule-is.adoc[What an rule ILM is]
+* xref:what-ilm-rule-is.adoc[What an ILM rule is]
 
 * xref:using-advanced-filters-in-ilm-rules.adoc[Use advanced filters in ILM rules]
 

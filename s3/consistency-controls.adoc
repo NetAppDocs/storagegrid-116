@@ -110,7 +110,7 @@ When a client stores an object to the grid, StorageGRID makes both object copies
 
 The object is fully protected against loss at the time of the ingest successful message. For example, if the local site is lost shortly after ingest, copies of both the object data and the object metadata still exist at the remote site. The object is fully retrievable.
 
-If you instead used the same ILM rule and the "`strong-site`" consistency level, the client might receive a success message after object data is replicated to the remote sitqe but before object metadata is distributed there. In this case, the level of protection of object metadata does not match the level of protection for object data. If the local site is lost shortly after ingest, object metadata is lost. The object cannot be retrieved.
+If you instead used the same ILM rule and the "`strong-site`" consistency level, the client might receive a success message after object data is replicated to the remote site but before object metadata is distributed there. In this case, the level of protection of object metadata does not match the level of protection for object data. If the local site is lost shortly after ingest, object metadata is lost. The object cannot be retrieved.
 
 The inter-relationship between consistency levels and ILM rules can be complex. Contact NetApp if you require assistance.
 
