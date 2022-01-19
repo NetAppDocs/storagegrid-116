@@ -63,7 +63,7 @@ Using certificates helps secure the connections between your grid and the extern
 All protocol options require support by, and configuration of, the external syslog server. You must choose an option that is compatible with the external syslog server.
 
 +
-NOTE: Reliable Event Logging Protocol (RELP), extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using RELP can help prevent the loss of audit information if your external syslog server has to restart. 
+NOTE: Reliable Event Logging Protocol (RELP) extends the functionality of the syslog protocol to provide reliable delivery of event messages. Using RELP can help prevent the loss of audit information if your external syslog server has to restart. 
 
 [start=4]
 . Select *Continue*.
@@ -343,7 +343,7 @@ NOTE: For more information on StorageGRID software logs, see xref:../monitor/sto
 |Audit information is sent to an external syslog server and saved on the local node. The type of information sent depends upon how you configured the external syslog server. This option is enabled only after you have configured an external syslog server.
 
 |Admin Node and external syslog server
-|Audit messages are sent to the audit log audit log (`audit.log`) on the Admin Node, and audit information is sent to the external syslog server and saved on the local node. The type of information sent depends upon how you configured the external syslog server. This option is enabled only after you have configured an external syslog server.
+|Audit messages are sent to the audit log (`audit.log`) on the Admin Node, and audit information is sent to the external syslog server and saved on the local node. The type of information sent depends upon how you configured the external syslog server. This option is enabled only after you have configured an external syslog server.
 
 |Local nodes only
 |No audit information is sent to an Admin Node or remote syslog server. Audit information is saved only on the nodes that generated it. 
