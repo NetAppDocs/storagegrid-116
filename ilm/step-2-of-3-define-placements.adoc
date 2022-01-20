@@ -77,23 +77,20 @@ NOTE: The *ILM placement unachievable* alert is triggered to indicate that the I
 +
 image::../media/ilm_rule_with_multiple_storage_pools.png[Placement instructions for multiple storage pools]
 
- .. Select the number of copies you want to make.
+.. Select the number of copies you want to make.
 +
-[IMPORTANT]
-====
 A warning appears if you change the number of copies to 1. An ILM rule that creates only one replicated copy for any time period puts data at risk of permanent loss. See xref:why-you-should-not-use-single-copy-replication.adoc[Why you should not use single-copy replication].
-
++
 image::../media/ilm_create_ilm_rule_warning_for_1_copy.png[Create ILM Rule Page 2 Warning for 1 Copy]
-
++
 To avoid these risks, do one or more of the following:
 
-  *** Increase the number of copies for the time period.
-  *** Select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
-  *** Select *erasure coded* for Type, instead of *replicated*.
+*** Increase the number of copies for the time period.
+*** Select the plus sign icon image:../media/icon_plus_sign_black_on_white.gif[plus sign black on white] to create additional copies during the time period. Then, select a different storage pool or a Cloud Storage Pool.
+*** Select *erasure coded* for Type, instead of *replicated*.
 You can safely ignore this warning if this rule already creates multiple copies for all time periods.
-====
 
- .. If you specified only one storage pool, ignore the *Temporary location* field.
+.. If you specified only one storage pool, ignore the *Temporary location* field.
 +
 NOTE: Temporary locations are deprecated and will be removed in a future release. See xref:using-storage-pool-as-temporary-location-deprecated.adoc[Use a storage pool as a temporary location (deprecated)].
 
@@ -106,10 +103,7 @@ image::../media/ilm_rule_warning_for_ec_size.png[ILM Rule Warning for EC Size]
 +
 IMPORTANT: Erasure coding is best suited for objects greater than 1 MB. Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
 
- .. If the object size warning appeared, follow these steps to clear it:
-  ... Select *Back* to return to Step 1.
-  ... Select *Advanced filtering*.
-  ... Set the Object Size (MB) filter to any values greater than 0.2.
+ .. If the object size warning appeared, select *Back* to return to Step 1. Then, select *Advanced filtering* and set the Object Size (MB) filter to any value greater than 0.2.
  .. Select the storage location.
 +
 The storage location for an erasure-coded copy includes the name of the storage pool, followed by the name of the Erasure Coding profile.
@@ -146,10 +140,6 @@ image::../media/ilm_rule_cloud_storage_pool_error_overlapping_dates.png[ILM Rule
   *** You can store an object in a Cloud Storage Pool at the same time that object is being stored as replicated or erasure coded copies in StorageGRID. However, as this example shows, you must include more than one line in the placement instruction for the time period, so you can specify the number and types of copies for each location.
 +
 image::../media/ilm_cloud_storage_pool_multiple_locations.png[ILM rule > Cloud Storage Pool and other location]
-
-
-
-
 
 . Select *Refresh* to update the Retention Diagram and to confirm your placement instructions.
 +
