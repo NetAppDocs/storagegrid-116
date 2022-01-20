@@ -1,7 +1,7 @@
 ---
 permalink: monitor/collecting-log-files-and-system-data.html
 sidebar: sidebar
-keywords: log files, system data, collecting data, log, logs
+keywords: how to collect system data, how to collect logs
 summary: 'You can use the Grid Manager to retrieve log files and system data \(including configuration data\) for your StorageGRID system.'
 ---
 = Collect log files and system data
@@ -17,7 +17,7 @@ You can use the Grid Manager to retrieve log files and system data (including co
 * You must have the provisioning passphrase.
 
 .About this task
-You can use the Grid Manager to gather log files, system data, and configuration data from any grid node for the time period that you select. Data is collected and archived in a .tar.gz file that you can then download to your local computer.
+You can use the Grid Manager to gather xref:logs-files-reference.adoc[log files], system data, and configuration data from any grid node for the time period that you select. Data is collected and archived in a .tar.gz file that you can then download to your local computer.
 
 Optionally, you can change the destination of audit logs and send audit information to an external syslog server. Local logs of audit records continue to be generated and stored when an external syslog server is configured. See xref:../monitor/configure-audit-messages.adoc[Configure audit messages and log destinations].
 
@@ -62,7 +62,3 @@ The _.tar.gz_ file contains all log files from all grid nodes where log collecti
 You can re-download the log file archive package later if you need to.
 
 Optionally, you can select *Delete* to remove the log file archive package and free up disk space. The current log file archive package is automatically removed the next time you collect log files.
-
-.Related information
-
-xref:logs-files-reference.adoc[Log files reference]

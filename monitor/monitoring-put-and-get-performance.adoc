@@ -19,7 +19,7 @@ When performing tests of PUT and GET operations, use the following guidelines:
 * Use object sizes comparable to the objects that you typically ingest into your grid.
 * Perform operations against both local and remote sites.
 
-Messages in the audit log indicate the total time required to run certain operations. For example, to determine the total processing time for an S3 GET request, you can review the value of the TIME attribute in the SGET audit message. You can also find the TIME attribute in the audit messages for the following operations:
+Messages in the xref:../audit/index.adoc[audit log] indicate the total time required to run certain operations. For example, to determine the total processing time for an S3 GET request, you can review the value of the TIME attribute in the SGET audit message. You can also find the TIME attribute in the audit messages for the following operations:
 
 * *S3*: DELETE, GET, HEAD, Metadata Updated, POST, PUT
 * *Swift*: DELETE, GET, HEAD, PUT
@@ -27,7 +27,3 @@ Messages in the audit log indicate the total time required to run certain operat
 When analyzing results, look at the average time required to satisfy a request, as well as the overall throughput that you can achieve. Repeat the same tests regularly and record the results, so that you can identify trends that may require investigation.
 
 * You can https://github.com/s3tester[download S3tester from github].
-
-.Related information
-
-xref:../audit/index.adoc[Review audit logs]

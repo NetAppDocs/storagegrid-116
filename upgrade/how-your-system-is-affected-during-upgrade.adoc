@@ -50,13 +50,16 @@ Be aware that a large number of SNMP notifications might be generated when grid 
 
 == Configuration changes are restricted
 
+NOTE: The list of restricted configuration changes can change from release to release. When upgrading to another StorageGRID release, refer to the list in the appropriate upgrade instructions.
+
 Until the *Enable New Feature* task completes:
 
 * Do not make any grid configuration changes.
-* Do not change the audit level configuration.
+* Do not change the audit level configuration or configure an external syslog server.
 * Do not enable or disable any new features.
 * Do not update the ILM configuration. Otherwise, you might experience inconsistent and unexpected ILM behavior.
 * Do not apply a hotfix or recover a grid node.
+* You cannot manage HA groups, VLAN interfaces, or load balancer endpoints while you are upgrading to StorageGRID 11.6.
 
 Until the *Final Upgrade Steps* task completes:
 

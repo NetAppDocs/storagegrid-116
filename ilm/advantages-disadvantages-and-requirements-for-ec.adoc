@@ -36,9 +36,9 @@ When compared to replication, erasure coding has the following disadvantages:
 
 Erasure coding is best suited for the following requirements:
 
-* Objects larger than 1 MB in size.
+* Objects greater than 1 MB in size.
 +
-IMPORTANT: Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
+IMPORTANT: Erasure coding is best suited for objects greater than 1 MB. Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
 
 * Long-term or cold storage for infrequently retrieved content.
 * High data availability and reliability.
