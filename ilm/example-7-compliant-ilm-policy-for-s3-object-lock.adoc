@@ -212,7 +212,7 @@ To create an ILM policy that will effectively protect all objects in your system
 
 In this example, the ILM policy includes three ILM rules, in the following order:
 
-. A compliant rule that uses erasure coding to protect objects larger than 1 MB in a specific bucket with S3 Object Lock enabled. The objects are stored on Storage Nodes from day 0 to forever.
+. A compliant rule that uses erasure coding to protect objects greater than 1 MB in a specific bucket with S3 Object Lock enabled. The objects are stored on Storage Nodes from day 0 to forever.
 . A non-compliant rule that creates two replicated object copies on Storage Nodes for a year and then moves one object copy to a Cloud Storage Pool forever. This rule does not apply to buckets with S3 Object Lock enabled because it uses a Cloud Storage Pool.
 . The default compliant rule that creates two replicated object copies on Storage Nodes from day 0 to forever.
 
@@ -222,7 +222,7 @@ image::../media/compliant_policy.png[Example Compliant Policy]
 
 After you have added rules in your proposed policy, chosen a default compliant rule, and arranged the other rules, you should simulate the policy by testing objects from the bucket with S3 Object Lock enabled and from other buckets. For example, when you simulate the example policy, you would expect test objects to be evaluated as follows:
 
-* The first rule will only match test objects that are larger than 1 MB in the bucket bank-records for the Bank of ABC tenant.
+* The first rule will only match test objects that are greater than 1 MB in the bucket bank-records for the Bank of ABC tenant.
 * The second rule will match all objects in all non-compliant buckets for all other tenant accounts.
 * The default rule will match these objects:
  ** Objects 1 MB or smaller in the bucket bank-records for the Bank of ABC tenant.

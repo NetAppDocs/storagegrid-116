@@ -1,0 +1,35 @@
+---
+permalink: audit/ecmc-missing-erasure-coded-data-fragment.html
+sidebar: sidebar
+keywords: storagegrid, audit, message, ECMC, Missing Erasure Coded Data Fragment
+summary: 'This audit message indicates that the system has detected a missing erasure-coded data fragment.'
+---
+= ECMC: Missing Erasure Coded Data Fragment
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+This audit message indicates that the system has detected a missing erasure-coded data fragment.
+
+[options="header"]
+|===
+| Code| Field| Description
+a|
+VCMC
+a|
+VCS ID
+a|
+The name of the VCS that contains the missing chunk.
+a|
+MCID
+a|
+Chunk ID
+a|
+The identifier of the missing erasure-coded fragment.
+a|
+RSLT
+a|
+Result
+a|
+This field has the value 'NONE'. RSLT is a mandatory message field, but is not relevant for this particular message. 'NONE' is used rather than 'SUCS' so that this message is not filtered.
+|===
