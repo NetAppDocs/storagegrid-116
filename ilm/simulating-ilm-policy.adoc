@@ -90,8 +90,8 @@ This example shows how to verify rules when simulating a proposed policy.
 In this example, the *Example ILM policy* is being simulated against the ingested objects in two buckets. The policy includes three rules, as follows:
 
 * The first rule, *Two copies, two years for bucket-a*, applies only to objects in bucket-a.
-* The second rule, menu:EC objects[1 MB], applies to all buckets but filters on objects greater than 1 MB.
-* The third rule is the default rule. It does not include any filters and does not use the Noncurrent reference time.
+* The second rule, *EC objects > 1 MB*, applies to all buckets but filters on objects greater than 1 MB.
+* The third rule, *Two copies, two data centers*, is the default rule. It does not include any filters and does not use the Noncurrent reference time.
 
 image::../media/saved_policy_for_simulation.png[Saved Policy for Simulation]
 
