@@ -31,8 +31,8 @@ The specified user must have permission to list groups and users and to access t
   *** `objectGUID`, `entryUUID`, or `nsuniqueid`
   *** `cn`
   *** `memberOf` or `isMemberOf`
-  *** *Active Directory*: `objectSid` and `primaryGroupID`
-  *** *Active Directory and Azure*: `userPrincipalName`
+  *** *Active Directory*: `objectSid`, `primaryGroupID`, `userAccountControl`, and `userPrincipalName`
+  *** *Azure*: `accountEnabled` and `userPrincipalName`
 
  ** *Password*: The password associated with the username.
  ** *Group Base DN*: The full path of the distinguished name (DN) for an LDAP subtree you want to search for groups. In the Active Directory example (below), all groups whose Distinguished Name is relative to the base DN (DC=storagegrid,DC=example,DC=com) can be used as federated groups.

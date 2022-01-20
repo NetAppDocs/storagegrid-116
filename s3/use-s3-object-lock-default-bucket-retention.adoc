@@ -20,7 +20,7 @@ If a bucket has S3 Object Lock enabled, you can specify a default retention mode
 
 == GET Object Lock Configuration
 
-The GET Object Lock Configuration request allows you to determine if default retention mode is enabled for a bucket and see the default retention period being applied to the bucket.
+The GET Object Lock Configuration request allows you to determine if Object Lock is enabled for a bucket and, if it is enabled, see if there is a default retention mode and retention period configured for the bucket.
 
 When new object versions are ingested to the bucket, the default retention mode is applied if `x-amz-object-lock-mode` is not specified. The default retention period is used to calculate the retain-until-date if `x-amz-object-lock-retain-until-date` is not specified.
 
@@ -71,7 +71,7 @@ If the default retention period is modified after ingest of an object version, t
 
 You must have the s3:PutBucketObjectLockConfiguration permission, or be account root, to complete this operation.
 
-The `content-MD5` request header must be specified in PUT request.
+The `Content-MD5` request header must be specified in the PUT request.
 
 === Request example
 
