@@ -1,0 +1,64 @@
+---
+permalink: monitor/monitoring-storage-capacity-for-each-storage-node.html
+sidebar: sidebar
+keywords: monitor node storage capacity
+summary: 'You must monitor the total usable space for each Storage Node to ensure that the node has enough space for new object data.'
+---
+= Monitor storage capacity for each Storage Node
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+You must monitor the total usable space for each Storage Node to ensure that the node has enough space for new object data.
+
+.What you'll need
+* You must be signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
+
+.About this task
+Usable space is the amount of storage space available to store objects. The total usable space for a Storage Node is calculated by adding together the available space on all object stores within the node.
+
+image::../media/calculating_watermarks.gif[Conceptual drawing for Total usable space]
+
+.Steps
+. Select *NODES* > *_Storage Node_* > *Storage*.
++
+The graphs and tables for the node appear.
+
+. Hover your cursor over the Storage used - object data graph.
++
+The following values are shown:
+
+ ** *Used (%)*: The percentage of the Total usable space that has been used for object data.
+ ** *Used*: The amount of the Total usable space that has been used for object data.
+ ** *Replicated data*: An estimate of the amount of replicated object data on this node, site, or grid.
+ ** *Erasure-coded data*: An estimate of the amount of erasure-coded object data on this node, site, or grid.
+ ** *Total*: The total amount of usable space on this node, site, or grid.
+The Used value is the `storagegrid_storage_utilization_data_bytes` metric.
+
++
+image::../media/nodes_page_storage_used_object_data.png[Nodes Page Storage Used Object Data]
+
+. Review the Available values in the Volumes and Object stores tables, below the graphs.
++
+NOTE: To view graphs of these values, click the chart icons image:../media/icon_chart_new_for_11_5.png[Chart Icon] in the Available columns.
++
+image::../media/nodes_page_storage_tables.png[Object stores tables]
+
+. Monitor the values over time to estimate the rate at which usable storage space is being consumed.
+. To maintain normal system operations, add Storage Nodes, add storage volumes, or archive object data before usable space is consumed.
++
+When planning the timing of an expansion, consider how long it will take to procure and install additional storage.
++
+NOTE: If your ILM policy uses erasure coding, you might prefer to expand when existing Storage Nodes are approximately 70% full to reduce the number of nodes that must be added.
++
+For more information on planning a storage expansion, see the instructions for expanding StorageGRID.
++
+The *Low object data storage* alert is triggered when insufficient space remains for storing object data on a Storage Node.
+
+.Related information
+
+xref:../admin/index.adoc[Administer StorageGRID]
+
+xref:troubleshooting-storagegrid-system.adoc[Troubleshoot the Low object data storage alert]
+
+xref:../expand/index.adoc[Expand your grid]
