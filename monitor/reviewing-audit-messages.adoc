@@ -1,7 +1,7 @@
 ---
 permalink: monitor/reviewing-audit-messages.html
 sidebar: sidebar
-keywords: review audit messages, view audit messages
+keywords: how to review audit messages, how to view audit messages
 summary: 'Audit messages can help you get a better understanding of the detailed operations of your StorageGRID system. You can use audit logs to troubleshoot issues and to evaluate performance.'
 ---
 = Review audit messages
@@ -18,7 +18,7 @@ During normal system operation, all StorageGRID services generate audit messages
 * Client read and write audit messages are logged when an S3 or Swift client application makes a request to create, modify, or retrieve an object.
 * Management audit messages log user requests to the Management API.
 
-Each Admin Node stores audit messages in text files. The audit share contains the active file (audit.log) as well as compressed audit logs from previous days. Each node in the grid also stores a copy of the audit information generated on the node. 
+Each Admin Node stores audit messages in text files. The audit share contains the active file (audit.log) as well as compressed audit logs from previous days. Each node in the grid also stores a copy of the audit information generated on the node.
 
 For easy access to audit logs, you can configure client access to the audit share for both NFS and CIFS (CIFS is deprecated). You can also access audit log files directly from the command line of the Admin Node.
 
