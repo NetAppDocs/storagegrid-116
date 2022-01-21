@@ -1,19 +1,31 @@
 ---
 permalink: harden/index.html
 sidebar: sidebar
-keywords:
-summary: 'Learn the system settings, best practices, and recommendations for protecting a StorageGRID system from security threats.'
+keywords: Hardening guidelines, system, security
+summary: 'System hardening is the process of eliminating as many security risks as possible from a StorageGRID system.'
 ---
-= System hardening
+= System hardening: Overview
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Learn the system settings, best practices, and recommendations for protecting a StorageGRID system from security threats.
+System hardening is the process of eliminating as many security risks as possible from a StorageGRID system.
 
-* xref:hardening-storagegrid-system.adoc[Harden StorageGRID system]
-* xref:hardening-guidelines-for-software-upgrades.adoc[Hardening guidelines for software upgrades]
-* xref:hardening-guidelines-for-storagegrid-networks.adoc[Hardening guidelines for StorageGRID networks]
-* xref:hardening-guidelines-for-storagegrid-nodes.adoc[Hardening guidelines for StorageGRID nodes]
-* xref:hardening-guideline-for-server-certificates.adoc[Hardening guidelines for server certificates]
-* xref:other-hardening-guidelines.adoc[Other hardening guidelines]]
+This document provides an overview of the hardening guidelines that are specific to StorageGRID. These guidelines are a supplement to industry-standard best practices for system hardening. For example, these guidelines assume that you use strong passwords for StorageGRID, use HTTPS instead of HTTP, and enable certificate-based authentication where available.
+
+As you install and configure StorageGRID, you can use these guidelines to help you meet any prescribed security objectives for information system confidentiality, integrity, and availability.
+
+StorageGRID follows the _NetApp Vulnerability Handling Policy_. Reported vulnerabilities are verified and addressed according to the product security incident response process.
+
+== General considerations for hardening StorageGRID systems
+
+When hardening a StorageGRID system, you must consider the following:
+
+* Which of the three StorageGRID networks you have implemented. All StorageGRID systems must use the Grid Network, but you might also be using the Admin Network, the Client Network, or both. Each network has different security considerations.
+* The type of platforms you use for the individual nodes in your StorageGRID system. StorageGRID nodes can be deployed on VMware virtual machines, within a container engine on Linux hosts, or as dedicated hardware appliances. Each type of platform has its own set of hardening best practices.
+* How trusted the tenant accounts are. If you are a service provider with untrusted tenant accounts, you will have different security concerns than if you only use trusted, in-house tenants.
+* Which security requirements and conventions are followed by your organization. You might need to comply with specific regulatory or corporate requirements.
+
+.Related information
+
+https://security.netapp.com/policy/[Vulnerability Handling Policy^]
