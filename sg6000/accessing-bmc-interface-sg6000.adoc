@@ -28,6 +28,11 @@ For `_BMC_Port_IP_`, use the DHCP or static IP address for the BMC management po
 +
 The BMC sign-in page appears.
 
++
+NOTE: If you haven't yet configured `BMC_Port_IP` follow the instructions in xref:configuring-bmc-interface-sg6000.adoc[Configure BMC interface (SG6000)].  If you are unable to follow that procedure due to a hardware problem, and have not yet configured a BMC IP address, you might still be able to access the BMC. By default, the BMC obtains an IP address using DHCP. If DHCP is enabled on the BMC network, your network administrator can provide the IP address assigned to the BMC MAC, which is printed on the label on the front of the SG6000-CN controller.
+
+If DHCP is not enabled on the BMC network, the BMC will not respond after a few minutes and assign itself the default static IP `192.168.0.120`.  You might need to connect your laptop directly to the BMC port, and change the networking setting to assign your laptop an IP such as `192.168.0.200/24`, in order to browse to `192.168.0.120`.
+
 . Enter the root username and password, using the password you set when you changed the default root password: +
 `*root*` +
 `*_password_*`
