@@ -28,12 +28,12 @@ The table summarizes the main upgrade tasks and lists the approximate time requi
 
 |Upgrade Grid Nodes (primary Admin Node)
 |The primary Admin Node is stopped, upgraded, and restarted.
-|30 to 60 minutes, with SG100 and SG1000 appliance nodes requiring the most time.
+|30 minutes to 1 hour, with SG100 and SG1000 appliance nodes requiring the most time.
 |You cannot access the primary Admin Node. Connection errors are reported, which you can ignore.
 
 |Upgrade Grid Nodes (all other nodes)
 |The software on all other grid nodes is upgraded, in the order in which you approve the nodes. Every node in your system will be brought down one at a time for several minutes each.
-|15 to 60 minutes per node, with appliance nodes requiring the most time
+|15 minutes to 1 hour per node, with appliance nodes requiring the most time
 
 *Note:* For appliance nodes, the StorageGRID Appliance Installer is automatically updated to the latest release.
 
@@ -71,16 +71,28 @@ For future StorageGRID feature releases, the Cassandra database update step migh
 .Steps
 
 . Estimate the time required to upgrade all grid nodes.
- .. Multiply the number of nodes in your StorageGRID system by 30 minutes/node (average).
+ .. Multiply the number of nodes in your StorageGRID system by 1 hour/node.
++
+As a general rule, appliance nodes take longer to upgrade than software-based nodes.
+ 
  .. Add 1 hour to this time to account for the time required to download the `.upgrade` file, run precheck validations, and complete the final upgrade steps.
 . If you have Linux nodes, add 15 minutes for each node to account for the time required to download and install the RPM or DEB package.
 . Calculate the total estimated time for the upgrade by adding the results of steps 1 and 2.
 
-== Example: Estimating the time to upgrade from StorageGRID 11.5 to 11.6
+== Example: Estimated time to upgrade to StorageGRID 11.6
 
 Suppose your system has 14 grid nodes, of which 8 are Linux nodes.
 
-. Multiply 14 by 30 minutes/node and add 1 hour. The estimated time to upgrade all nodes is 8 hours.
-. Multiple 8 by 15 minutes/node to account for the time to install the RPM or DEB package on the Linux nodes. The estimated time for this step is 2 hours.
+. Multiply 14 by 1 hour/node.
 
-. Add the values together. You should allow 10 hours to complete the upgrade of your system to StorageGRID 11.6.0.
+. Add 1 hour to account for the download, precheck, and final steps.
++
+The estimated time to upgrade all nodes is 15 hours.
+
+. Multiple 8 by 15 minutes/node to account for the time to install the RPM or DEB package on the Linux nodes.
++
+The estimated time for this step is 2 hours.
+
+. Add the values together.
++
+You should allow up to 17 hours to complete the upgrade of your system to StorageGRID 11.6.0.
