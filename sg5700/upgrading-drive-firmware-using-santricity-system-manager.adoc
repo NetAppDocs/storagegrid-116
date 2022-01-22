@@ -26,9 +26,7 @@ IMPORTANT: Do not upgrade the drive firmware on more than one StorageGRID applia
 
 . Access SANtricity System Manager using one of these methods:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
- ** Use the Grid Manager and select *NODES* > `*_appliance Storage Node_*` > *SANtricity System Manager*
-+
-NOTE: If these options are not available or the SANtricity System Manager login page does not appear, access SANtricity System Manager by browsing to the storage controller IP: +
+ ** Use SANtricity System Manager by browsing to the storage controller IP: +
 `*https://_Storage_Controller_IP_*`
 
 . Enter the SANtricity System Manager administrator username and password, if required.
@@ -85,6 +83,8 @@ The selected firmware for the drive appears in *Proposed Firmware*. If you must 
  .. Select *Offline (parallel)* upgrade.
 +
 You can use the offline upgrade method because the appliance is in maintenance mode, where I/O activity is stopped for all drives and all volumes.
++
+CAUTION: Do not proceed unless you are certain that the appliance is in maintenance mode. Failure to place the appliance into maintenance mode prior to initiating an offline drive firmware update might cause data loss. 
 
  .. In the first column of the table, select the drive or drives you want to upgrade.
 +
