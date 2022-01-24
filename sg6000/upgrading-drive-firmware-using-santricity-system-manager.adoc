@@ -165,11 +165,16 @@ Contact technical support to resolve this issue.
  ** *More than 4 critical MEL entries in the last 7 days*
 +
 Contact technical support to resolve this issue.
-. Once the upgrade operation has completed, reboot the appliance. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
- ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
- ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. (This option is available only when the controller is in maintenance mode.) Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
+. If this procedure completed successfully and you have additional procedures to perform while the node is in maintenance mode, perform them now. When you are done, or if you experienced any failures and want to start over, select *Advanced* > *Reboot Controller*, and then select one of these options:
+
++
+* Select *Reboot into StorageGRID*
++
+* Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode.  Select this option if you experienced any failures during the procedure and want to start over.  After the node finishes rebooting into maintenance mode, restart from the appropriate step in the procedure that failed.
+
 +
 image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
+
 +
 It can take up to 20 minutes for the appliance to reboot and rejoin the grid. To confirm that the reboot is complete and that the node has rejoined the grid, go back to the Grid Manager. The Nodes page should display a normal status (no icons to the left of the node name) for the appliance node, indicating that no alerts are active and the node is connected to the grid.
 +
