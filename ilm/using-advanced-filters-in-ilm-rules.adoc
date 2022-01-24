@@ -71,7 +71,7 @@ Time and date the object was last retrieved (read or viewed).
 
 *Note:* If you plan to use last access time as an advanced filter, Last Access Time updates must be enabled for the S3 bucket or Swift container.
 
-xref:using-last-access-time-in-ilm-rules.adoc[Using Last Access Time in ILM rules]
+xref:using-last-access-time-in-ilm-rules.adoc[Use Last Access Time in ILM rules]
 
 a|
 Location Constraint (S3 only)
@@ -86,7 +86,7 @@ The region where an S3 bucket was created. Use *ILM* > *Regions* to define the r
 
 *Note:* A value of us-east-1 will match objects in buckets created in the us-east-1 region as well as objects in buckets that have no region specified.
 
-xref:configuring-regions-optional-and-s3-only.adoc[Configuring regions (optional and S3 only)]
+xref:configuring-regions-optional-and-s3-only.adoc[Configure regions (optional and S3 only)]
 
 a|
 Object Size (MB)
@@ -103,9 +103,9 @@ a|
 a|
 The object's size in MB.
 
-To filter on object sizes smaller than 1 MB, type in a decimal value. For example, set the *Object Size (MB)* advanced filter to *greater than 0.2* for any rule that makes erasure-coded copies. This setting ensures that erasure coding is not used for objects 200 KB or smaller.
+Erasure coding is best suited for objects greater than 1 MB. Do not use erasure coding for objects smaller than 200 KB to avoid the overhead of managing very small erasure-coded fragments.
 
-*Note:* Your browser type and locale settings control whether you need to use a period or a comma as the decimal separator.
+*Note:* To filter on object sizes smaller than 1 MB, type in a decimal value.  Your browser type and locale settings control whether you need to use a period or a comma as the decimal separator.
 
 a|
 User Metadata
@@ -167,9 +167,3 @@ image::../media/advanced_filtering_size_between.gif[Advanced Filtering example f
 Using multiple entries allows you to have precise control over which objects are matched. In the following example, the rule applies to objects that have a Brand A or Brand B as the value of the camera_type user metadata. However, the rule only applies to those Brand B objects that are smaller than 10 MB.
 
 image::../media/advanced_filtering_multiple_rows.gif[Advanced Filtering example for user metadata]
-
-.Related information
-
-* xref:using-last-access-time-in-ilm-rules.adoc[Use Last Access Time in ILM rules]
-
-* xref:configuring-regions-optional-and-s3-only.adoc[Configure regions (optional and S3 only)]

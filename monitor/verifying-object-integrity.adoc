@@ -1,7 +1,7 @@
 ---
 permalink: monitor/verifying-object-integrity.html
 sidebar: sidebar
-keywords:
+keywords: how to verify object integrity, object existence check, background verification
 summary: 'The StorageGRID system verifies the integrity of object data on Storage Nodes, checking for both corrupt and missing objects.'
 ---
 = Verify object integrity
@@ -103,7 +103,7 @@ Object existence check verifies whether all expected replicated copies of object
 
 Unlike background verification, which occurs automatically, you must manually start an object existence check job.
 
-Object existence check reads the metadata for every object stored in StorageGRID and verifies the existence of both replicated object copies and erasure-coded object fragments. Any missing data is handled as follows: 
+Object existence check reads the metadata for every object stored in StorageGRID and verifies the existence of both replicated object copies and erasure-coded object fragments. Any missing data is handled as follows:
 
 * *Replicated copies*: If a copy of replicated object data is missing, StorageGRID automatically attempts to replace the copy from a copy stored elsewhere in the system. The Storage Node runs an existing copy through an ILM evaluation, which will determine that the current ILM policy is no longer being met for this object because another copy is missing. A new copy is generated and placed to satisfy the system’s active ILM policy. This new copy might not be placed in the same location where the missing copy was stored.
 * *Erasure-coded fragments*: If a fragment of an erasure-coded object is missing, StorageGRID automatically attempts to rebuild the missing fragment in place on the same Storage Node using the remaining fragments. If the missing fragment cannot be rebuilt (because too many fragments have been lost), ILM attempts to find another copy of the object, which it can use to generate a new erasure-coded fragment.
@@ -138,7 +138,7 @@ An object existence check job can take days or weeks to complete, depending on t
 . Select *Create job*. The Create an object existence check job wizard appears.
 .	Select the nodes containing the volumes you want to verify. To select all online nodes, select the *Node name* check box in the column header.
 +
-You can search by node name or site. 
+You can search by node name or site.
 +
 You cannot select nodes that are not connected to the grid.
 .	Select *Continue*.
@@ -157,7 +157,7 @@ The consistency control determines how many copies of object metadata are used f
 For more information about consistency control, see the descriptions in the wizard.
 +
 . Select *Continue*.
-.	Review and verify your selections. You can select *Previous* to go to a previous step in the wizard to update your selections. 
+.	Review and verify your selections. You can select *Previous* to go to a previous step in the wizard to update your selections.
 +
 An Object existence check job is generated and runs until one of the following occurs:
 +

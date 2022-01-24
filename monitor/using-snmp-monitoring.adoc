@@ -33,6 +33,9 @@ Informs are supported in SNMPv2c and SNMPv3.
 Trap and inform notifications are sent in the following cases:
 
 * A default or custom alert is triggered at any severity level. To suppress SNMP notifications for an alert, you must configure a silence for the alert. Alert notifications are sent by whichever Admin Node is configured to be the preferred sender.
++
+Each alert is mapped to one of three trap types based the on severity level of the alert: activeMinorAlert, activeMajorAlert, and activeCriticalAlert. For descriptions of the alerts that can trigger these traps, see the xref:alerts-reference.adoc[Alerts reference].
+
 * Certain alarms (legacy system) are triggered at specified severity levels or higher.
 +
 NOTE: SNMP notifications are not sent for every alarm or every alarm severity.

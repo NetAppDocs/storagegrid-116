@@ -1,15 +1,17 @@
 ---
 permalink: monitor/viewing-specific-alert.html
 sidebar: sidebar
-keywords:
-summary: 'You can view detailed information about an alert that is currently affecting your StorageGRID system or an alert that has been resolved. The details include recommended corrective actions, the time the alert was triggered, and the current value of the metrics related to this alert. Optionally, you can silence a current alert or update the alert rule.'
+keywords: how to view a specific alert
+summary: 'You can view detailed information about an alert that is currently affecting your StorageGRID system or an alert that has been resolved. The details include recommended corrective actions, the time the alert was triggered, and the current value of the metrics related to this alert.'
 ---
 = View a specific alert
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-You can view detailed information about an alert that is currently affecting your StorageGRID system or an alert that has been resolved. The details include recommended corrective actions, the time the alert was triggered, and the current value of the metrics related to this alert. Optionally, you can silence a current alert or update the alert rule.
+You can view detailed information about an alert that is currently affecting your StorageGRID system or an alert that has been resolved. The details include recommended corrective actions, the time the alert was triggered, and the current value of the metrics related to this alert.
+
+Optionally, you can xref:silencing-alert-notifications.adoc[silence a current alert] or xref:editing-alert-rules.adoc[update the alert rule].
 
 .What you'll need
 * You are signed in to the Grid Manager using a xref:../admin/web-browser-requirements.adoc[supported web browser].
@@ -113,9 +115,3 @@ You must have the Manage Alerts or Root access permission to edit an alert rule.
 IMPORTANT: Be careful when deciding to edit an alert rule. If you change trigger values, you might not detect an underlying problem until it prevents a critical operation from completing.
 
 . To close the alert details, click *Close*.
-
-.Related information
-
-* xref:silencing-alert-notifications.adoc[Silence alert notifications]
-
-* xref:editing-alert-rules.adoc[Edit alert rules]

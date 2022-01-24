@@ -11,7 +11,7 @@ summary: 'The StorageGRID alarm system is the legacy system used to identify tro
 [.lead]
 The StorageGRID alarm system is the legacy system used to identify trouble spots that sometimes occur during normal operation.
 
-NOTE: While the legacy alarm system continues to be supported, the alert system offers significant benefits and is easier to use.
+NOTE: While the xref:alarms-reference.adoc[legacy alarm system] continues to be supported, the xref:alerts-reference.adoc[alert system] offers significant benefits and is easier to use.
 
 == Alarm classes (legacy system)
 
@@ -439,7 +439,7 @@ If you want StorageGRID to send email notifications when a legacy alarm is trigg
 .About this task
 Use these settings to define the SMTP server used for legacy alarm email notifications and AutoSupport email messages. These settings are not used for alert notifications.
 
-NOTE: If you use SMTP as the protocol for AutoSupport messages, you might have already configured an SMTP mail server. The same SMTP server is used for alarm email notifications, so you can skip this procedure. See the instructions for administering StorageGRID.
+NOTE: If you use SMTP as the protocol for AutoSupport messages, you might have already configured an SMTP mail server. The same SMTP server is used for alarm email notifications, so you can skip this procedure. See the xref:../admin/index.adoc[instructions for administering StorageGRID].
 
 SMTP is the only protocol supported for sending email.
 
@@ -648,9 +648,3 @@ image::../media/suppress_all_notifications.gif[Display Options > Notifications S
 The Notifications page (*Configuration* > *Notifications*) displays the following message:
 +
 image::../media/all_notifications_suppressed.gif[Notifications page with all email notifications suppressed]
-
-.Related information
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:alarms-reference.adoc[Alarms reference (legacy system)]

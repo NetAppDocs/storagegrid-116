@@ -1,7 +1,7 @@
 ---
 permalink: s3/s3-rest-api-supported-operations-and-limitations.html
 sidebar: sidebar
-keywords:
+keywords: s3 rest api supported operations, s3 rest api limitations
 summary: 'The StorageGRID system implements the Simple Storage Service API (API Version 2006-03-01) with support for most operations, and with some limitations. You need to understand the implementation details when you are integrating S3 REST API client applications.'
 ---
 = S3 REST API supported operations and limitations
@@ -13,14 +13,6 @@ The StorageGRID system implements the Simple Storage Service API (API Version 20
 
 The StorageGRID system supports both virtual hosted-style requests and path-style requests.
 
-* xref:authenticating-requests.adoc[Authenticate requests]
-* xref:operations-on-the-service.adoc[Operations on the service]
-* xref:operations-on-buckets.adoc[Operations on buckets]
-* xref:custom-operations-on-buckets.adoc[Custom operations on buckets]
-* xref:operations-on-objects.adoc[Operations on objects]
-* xref:operations-for-multipart-uploads.adoc[Operations for multipart uploads]
-* xref:error-responses.adoc[Error responses]
-
 == Date handling
 
 The StorageGRID implementation of the S3 REST API only supports valid HTTP date formats.
@@ -29,7 +21,7 @@ The StorageGRID system only supports valid HTTP date formats for any headers tha
 
 == Common request headers
 
-The StorageGRID system supports common request headers defined by the _Simple Storage Service API Reference_, with one exception.
+The StorageGRID system supports common request headers defined by the http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference^], with one exception.
 
 [options="header"]
 |===
@@ -61,6 +53,3 @@ x-amz-id-2
 a|
 Not used
 |===
-.Related information
-
-http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html[Amazon Web Services (AWS) Documentation: Amazon Simple Storage Service API Reference]

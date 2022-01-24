@@ -19,7 +19,7 @@ Tenant users have three primary ways to control how long their objects are store
  ** An object version that is under a legal hold cannot be deleted by any method.
  ** Before an object version's retain-until-date is reached, that version cannot be deleted by any method.
  ** Objects in buckets with S3 Object Lock enabled are retained by ILM "`forever.`" However, after its retain-until-date is reached, an object version can be deleted by a client request or the expiration of the bucket lifecycle. See xref:managing-objects-with-s3-object-lock.adoc[Manage objects with S3 Object Lock].
-* S3 tenant users can add a lifecycle configuration to their buckets that specifies an Expiration action. If a bucket lifecycle exists, StorageGRID stores an object until the date or number of days specified in the Expiration action are met, unless the client deletes the object first. See * xref:../s3/index.adoc[Use S3].
+* S3 tenant users can add a lifecycle configuration to their buckets that specifies an Expiration action. If a bucket lifecycle exists, StorageGRID stores an object until the date or number of days specified in the Expiration action are met, unless the client deletes the object first. See xref:../s3/create-s3-lifecycle-configuration.adoc[Create S3 lifecycle configuration].
 * An S3 or Swift client can issue a delete object request. StorageGRID always prioritizes client delete requests over S3 bucket lifecycle or ILM when determining whether to delete or retain an object.
 
 == How grid administrators control object retention
