@@ -49,7 +49,7 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 Read-after-new-write (Default)
 a|
-Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Matches Amazon S3 consistency guarantees.
+Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability, and data protection guarantees. Most closely matches Amazon S3 consistency guarantees.
 
 *Note:* If your application attempts HEAD or GET operations on keys that do not exist, set the Consistency Level to *Available*, unless you require Amazon S3 consistency guarantees. Otherwise, a high number of 500 Internal Server errors can result if one or more Storage Nodes are unavailable.
 a|
