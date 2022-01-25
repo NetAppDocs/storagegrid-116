@@ -232,11 +232,13 @@ Contains the Standard Error (stderr) stream of the corresponding services. There
 |Admin Nodes
 |===
 
-== Metrics collection and other non-log files
+== Contents of log file collection archive
+
+The log file collection contains the logs that are documented on this web page and additional files that contain metrics and debug command output.
 
 [cols="1a,3a" options="header"]
 |===
-| Metric or file name| Description
+| Archive location| Description
 
 m|audit
 |Audit messages generated during normal system operation.
@@ -247,6 +249,9 @@ m|base-os-logs
 m|bundles
 |Global configuration information (bundles).
 
+m|cassandra
+|Cassandra database information and Reaper repair logs.
+
 m|ec
 |VCSs information on the current node and EC group information by profile ID.
 
@@ -255,6 +260,9 @@ m|grid
 
 m|grid.xml
 |Grid configuration file shared across all nodes.
+
+m|hagroups
+|High availability groups metrics and logs.
 
 m|install
 |`Gdu-server` and install logs.
@@ -266,7 +274,10 @@ m|Lambda-arbitrator
 |Logs related to the S3 Select proxy request.
 
 m|Metrics
-|Services log for Grafana, Jaeger, node exporter, and Prometheus.
+|Service logs for Grafana, Jaeger, node exporter, and Prometheus.
+
+m|miscd
+|Miscd access and error logs.
 
 m|mysql
 |The mariaDB database configuration and related logs.
@@ -278,7 +289,7 @@ m|nginx
 |Load balancer configuration files and logs. Also includes Grid Manager and Tenant Manager traffic logs.
 
 m|nginx-gw
-|Load Balancer configuration files and logs.
+|Load balancer configuration files and logs.
 
 m|ntp
 |NTP configuration file and logs.
