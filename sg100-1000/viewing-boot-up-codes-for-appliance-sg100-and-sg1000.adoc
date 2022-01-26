@@ -66,8 +66,11 @@ a|
 . If you are using SOL, perform these steps:
  .. Connect to the IPMI SOL using the BMC IP address and login credentials.
 +
-`ipmitool -I lanplus -H 10.224.3.91 -U root -P calvin sol activate`
+NOTE: If you haven't changed the BMC root account password, the factory-default value might be "calvin".
 
++
+`ipmitool -I lanplus -H _BMC_Port_IP_ -U root -P _Password_ sol activate`
+[start=2]
  .. View the codes on the virtual serial terminal.
 . Use the table to look up the codes for your appliance.
 +
