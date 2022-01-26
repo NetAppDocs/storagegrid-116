@@ -30,8 +30,6 @@ NOTE: If you are replacing the controller before installing StorageGRID software
 . If the SG6000-CN controller is functioning sufficiently to allow for a controlled shutdown, shut down the SG6000-CN controller.
 +
 xref:shutting-down-sg6000-cn-controller.adoc[Shut down SG6000-CN controller]
-+
-The green Cache Active LED on the back of the E2800 controller is on when cached data needs to be written to the drives. You must wait for this LED to turn off.
 
 . Use one of two methods to verify that the power for the SG6000-CN controller is off:
  ** The power indicator LED on the front of the controller is off.
@@ -60,6 +58,9 @@ IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step o
 . From the Grid Manager, select *NODES*, and verify that the BMC IP address for the node controller is correct.
 +
 If the node controller IP address is not valid or is not in the expected range, reconfigure the IP address as described in the recovery and maintenance instructions.
+
++
+NOTE: If you applied additional customization during the original installation, such as setting SNMP trap destinations or email notifications, you should record and validate the configuration and reapply it if necessary.
 +
 xref:../maintain/index.adoc[Recover and maintain]
 
