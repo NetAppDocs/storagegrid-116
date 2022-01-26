@@ -53,7 +53,7 @@ NOTE: Any nodes imported with the `--force` flag will require additional recover
 
 . For grid nodes that do not have a `/var/local` volume, recreate the node's configuration file to restore it to the host.
 +
-Follow the guidelines in "`Creating node configuration files`" in the installation instructions.
+Follow the guidelines in "`Create node configuration files`" in the installation instructions.
 +
 IMPORTANT: When you re-create the configuration file for a node, you must use the same name for the replacement node that was used for the node you are recovering. For Linux deployments, ensure that the configuration file name contains the node name. You should use the same network interfaces, block device mappings, and IP addresses when possible. This practice minimizes the amount of data that needs to be copied to the node during recovery, which could make the recovery significantly faster (in some cases, minutes rather than weeks).
 +
