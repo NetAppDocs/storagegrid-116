@@ -39,7 +39,7 @@ Guarantees read-after-write consistency for all client requests within a site.
 a|
 read-after-new-write
 a|
-(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Matches Amazon S3 consistency guarantees.
+(Default) Provides read-after-write consistency for new objects and eventual consistency for object updates. Offers high availability and data protection guarantees. Most closely matches Amazon S3 consistency guarantees.
 
 *Note:* If your application uses HEAD or GET requests on objects that do not exist, you might receive a high number of 500 Internal Server errors if one or more Storage Nodes are unavailable. To prevent these errors, set the consistency control to "`available`" unless you require consistency guarantees similar to Amazon S3.
 
@@ -118,6 +118,6 @@ The inter-relationship between consistency levels and ILM rules can be complex. 
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:storagegrid-s3-rest-api-operations.adoc[GET Bucket consistency request]
+xref:get-bucket-consistency-request.adoc[GET Bucket consistency request]
 
-xref:storagegrid-s3-rest-api-operations.adoc[PUT Bucket consistency request]
+xref:put-bucket-consistency-request.adoc[PUT Bucket consistency request]

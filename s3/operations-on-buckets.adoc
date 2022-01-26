@@ -125,6 +125,11 @@ a|
 HEAD Bucket
 a|
 This operation determines if a bucket exists and you have permission to access it.
+
+This operation returns:
+
+* `x-ntap-sg-bucket-id`: The UUID of the bucket in UUID format.
+* `x-ntap-sg-trace-id`: The unique trace ID of the associated request.
 a|
 PUT Bucket
 a|
@@ -265,7 +270,7 @@ http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html[Amazon Web Services (AWS
 
 xref:consistency-controls.adoc[Consistency controls]
 
-xref:storagegrid-s3-rest-api-operations.adoc[GET Bucket last access time request]
+xref:get-bucket-last-access-time-request.adoc[GET Bucket last access time request]
 
 xref:bucket-and-group-access-policies.adoc[Bucket and group access policies]
 

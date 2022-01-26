@@ -92,7 +92,7 @@ NOTE: An ILM rule cannot use both a *User Defined Creation Time* for the Referen
 +
 If a request is made without these headers, the bucket default retention settings are used to calculate the object version retain-until-date.
 +
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Use S3 Object Lock]
+xref:using-s3-object-lock.adoc[Use S3 Object Lock]
 
 * SSE request headers:
  ** `x-amz-server-side-encryption`
@@ -100,7 +100,7 @@ xref:s3-rest-api-supported-operations-and-limitations.adoc[Use S3 Object Lock]
  ** `x-amz-server-side-encryption-customer-key`
  ** `x-amz-server-side-encryption-customer-algorithm`
 +
-xref:s3-rest-api-supported-operations-and-limitations.adoc[s3-rest-api-supported-operations-and-limitations]
+See <<Request headers for server-side encryption>>
 
 == Unsupported request headers
 
@@ -147,7 +147,7 @@ You can use the following request headers to encrypt an object with server-side 
  ** `x-amz-server-side-encryption-customer-key`: Specify your encryption key for the new object.
  ** `x-amz-server-side-encryption-customer-key-MD5`: Specify the MD5 digest of the new object's encryption key.
 
-*Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Using server-side encryption.`"
+*Attention:* The encryption keys you provide are never stored. If you lose an encryption key, you lose the corresponding object. Before using customer-provided keys to secure object data, review the considerations in "`Use server-side encryption.`"
 
 *Note:* If an object is encrypted with SSE or SSE-C, any bucket-level or grid-level encryption settings are ignored.
 
@@ -161,10 +161,10 @@ If versioning is suspended, the object version is stored with a null `versionId`
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets]
+xref:operations-on-buckets.adoc[Operations on buckets]
 
 xref:s3-operations-tracked-in-audit-logs.adoc[S3 operations tracked in audit logs]
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Use server-side encryption]
+xref:using-server-side-encryption.adoc[Use server-side encryption]
 
 xref:configuring-tenant-accounts-and-connections.adoc[How client connections can be configured]
