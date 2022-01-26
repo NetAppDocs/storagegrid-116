@@ -173,7 +173,7 @@ In policy statements, you can use the Resource element to specify the bucket or 
 
 .Related information
 
-xref:bucket-and-group-access-policies.adoc[Specify variables in policy]
+<<Specify variables in a policy>>
 
 == Specify principals in a policy
 
@@ -667,7 +667,7 @@ IMPORTANT: If the current S3 policy allows overwrite, and the PutOverwriteObject
 
 .Related information
 
-xref:bucket-and-group-access-policies.adoc[S3 group policy examples]
+<<S3 group policy examples>>
 
 == Specify conditions in a policy
 
@@ -1022,11 +1022,11 @@ PUT#1 -------> PUT#2 ---X (denied)
 
 xref:../ilm/index.adoc[Manage objects with ILM]
 
-xref:bucket-and-group-access-policies.adoc[Create policies requiring special handling]
+<<Create policies requiring special handling>>
 
 xref:how-storagegrid-ilm-rules-manage-objects.adoc[How StorageGRID ILM rules manage objects]
 
-xref:bucket-and-group-access-policies.adoc[S3 group policy examples]
+<<S3 group policy examples>>
 
 == S3 policy examples
 
@@ -1237,7 +1237,7 @@ In this example, the `Deny` Effect for PutOverwriteObject and DeleteObject ensur
 
 .Related information
 
-xref:s3-rest-api-supported-operations-and-limitations.adoc[Operations on buckets]
+xref:operations-on-buckets.adoc[Operations on buckets]
 
 === S3 group policy examples
 
@@ -1328,7 +1328,3 @@ In this example, members of the group are only permitted to list and access thei
 .Related information
 
 xref:../tenant/index.adoc[Use tenant account]
-
-xref:bucket-and-group-access-policies.adoc[Use PutOverwriteObject permission]
-
-xref:bucket-and-group-access-policies.adoc[Write-once-read-many (WORM) protection]
