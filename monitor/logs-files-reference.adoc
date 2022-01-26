@@ -20,6 +20,13 @@ The logs are categorized as follows:
 
 IMPORTANT: The details provided for each log type are for reference only. The logs are intended for advanced troubleshooting by technical support. Advanced techniques that involve reconstructing the problem history using the audit logs and the application log files are beyond the scope of these instructions.
 
+To access the logs, you can collect log files and system data (*SUPPORT* > *Tools* > *Logs*). Or, if the primary Admin Node is unavailable or unable to reach a specific node, you can access the logs for each grid node as follows:
+
+. Enter the following command: `ssh admin@grid_node_IP`
+. Enter the password listed in the `Passwords.txt` file.
+. Enter the following command to switch to root: `su -`
+. Enter the password listed in the `Passwords.txt` file.
+
 The StorageGRID log file archive contains the logs described for each category and additional files that contain metrics and debug command output.
 
 [cols="1a,3a" options="header"]
@@ -107,14 +114,6 @@ m|sockets-data
 m|system-commands.txt
 |Output of StorageGRID container commands. Contains system information, such as networking and disk usage.
 |===
-
-To access these logs, you can collect log files and system data (*SUPPORT* > *Tools* > *Logs*). Or, if the primary Admin Node is unavailable or unable to reach a specific node, you can access the logs for each grid node, as follows:
-
-. Enter the following command: `ssh admin@grid_node_IP`
-. Enter the password listed in the `Passwords.txt` file.
-. Enter the following command to switch to root: `su -`
-. Enter the password listed in the `Passwords.txt` file.
-
 
 .Related information
 
