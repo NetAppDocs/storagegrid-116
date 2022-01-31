@@ -31,9 +31,8 @@ Tenants can specify a different port when they create or edit an endpoint.
 
 NOTE: If a StorageGRID deployment is used as the destination for CloudMirror replication, replication messages might be received on a port other than 80 or 443. Ensure that the port being used for S3 by the destination StorageGRID deployment is specified in the endpoint.
 
-If you use a non-transparent proxy server, you must also configure Storage proxy settings to allow messages to be sent to external endpoints, such as an endpoint on the internet.
+If you use a non-transparent proxy server, you must also xref:configuring-storage-proxy-settings.adoc[configure Storage proxy settings] to allow messages to be sent to external endpoints, such as an endpoint on the internet.
 
 .Related information
 
-* xref:configuring-storage-proxy-settings.adoc[Configure Storage proxy settings]
 * xref:../tenant/index.adoc[Use a tenant account]

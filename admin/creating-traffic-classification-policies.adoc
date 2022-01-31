@@ -58,7 +58,7 @@ image::../media/traffic_classification_policy_create_matching_rule.png[Create Ma
 The regular expression is unanchored. Use the {caret} anchor to match at the beginning of the bucket name, and use the $ anchor to match at the end of the name.
 
   *** CIDR: Enter an IPv4 subnet, in CIDR notation, that matches the desired subnet.
-  *** Endpoint: Select an endpoint from the list of existing endpoints. These are the load balancer endpoints you defined on the Load Balancer Endpoints page.
+  *** Endpoint: Select an endpoint from the list of existing endpoints. These are the load balancer endpoints you defined on the Load Balancer Endpoints page. See xref:managing-load-balancing.adoc[Manage load balancing].
   *** Tenant: Select a tenant from the list of existing tenants. Tenant matching is based on the ownership of the bucket being accessed. Anonymous access to a bucket matches the tenant that owns the bucket.
  .. If you want to match all network traffic _except_ traffic consistent with the Type and Match Value just defined, select the *Inverse* check box. Otherwise, leave the check box unselected.
 +
@@ -136,10 +136,4 @@ The policy is saved and is listed in the Traffic Classification Policies table.
 +
 image::../media/traffic_classification_policies_main_screen_w_examples.png[Traffic Policy Example]
 +
-S3 and Swift client traffic is now handled according to the traffic classification policies. You can view traffic charts and verify that the polices are enforcing the traffic limits you expect.
-
-.Related information
-
-* xref:managing-load-balancing.adoc[Manage load balancing]
-
-* xref:viewing-network-traffic-metrics.adoc[View network traffic metrics]
+S3 and Swift client traffic is now handled according to the traffic classification policies. You can view traffic charts and verify that the polices are enforcing the traffic limits you expect. See xref:viewing-network-traffic-metrics.adoc[View network traffic metrics].

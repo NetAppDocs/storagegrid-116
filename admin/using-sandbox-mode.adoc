@@ -22,13 +22,13 @@ You can use sandbox mode to configure and test single sign-on (SSO) before enabl
 |===
 |Configured LDAP service type |Options for SSO identity provider
 
-|AD FS
-|* AD FS
-* Azure AD
+|Active Directory
+|* Active Directory
+* Azure
 * PingFederate
 
-|Azure AD
-|Azure AD
+|Azure
+|Azure
 
 |===
 
@@ -36,7 +36,7 @@ You can use sandbox mode to configure and test single sign-on (SSO) before enabl
 
 When SSO is enabled and a user attempts to sign in to an Admin Node, StorageGRID sends an authentication request to the SSO identity provider. In turn, the SSO identity provider sends an authentication response back to StorageGRID, indicating whether the authentication request was successful. For successful requests:
 
-* The response from AD FS or PingFederate includes a universally unique identifier (UUID) for the user. 
+* The response from Active Directory or PingFederate includes a universally unique identifier (UUID) for the user. 
 * The response from Azure includes a User Principal Name (UPN).
 
 To allow StorageGRID (the service provider) and the SSO identity provider to communicate securely about user authentication requests, you must configure certain settings in StorageGRID. Next, you must use the SSO identity provider's software to create a relying party trust (AD FS), Enterprise Application (Azure) or Service Provider (PingFederate) for each Admin Node. Finally, you must return to StorageGRID to enable SSO.
