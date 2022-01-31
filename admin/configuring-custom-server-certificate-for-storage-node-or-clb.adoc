@@ -9,7 +9,7 @@ summary: 'You can replace or restore the server certificate that is used for S3 
 :imagesdir: ../media/
 
 [.lead]
-You can replace or restore the server certificate that is used for S3 or Swift client connections to Storage Nodes, the deprecated CLB service on Gateway Nodes, or to load balancer endpoints. The replacement custom server certificate is specific to your organization.
+You can replace or restore the server certificate that is used for S3 or Swift client connections to Storage Nodes, the deprecated Connection Load Balancer (CLB) service on Gateway Nodes, or to load balancer endpoints. The replacement custom server certificate is specific to your organization.
 
 .About this task
 
@@ -39,8 +39,8 @@ You can upload or generate a custom S3 and Swift API certificate.
 --
 Upload the required server certificate files.
 
-. Select *Upload certificate*.
-. Upload the required server certificate files:
+.. Select *Upload certificate*.
+.. Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (PEM encoded).
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
@@ -48,7 +48,7 @@ NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 
 
  ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority. The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
-. Select the certificate details to display the metadata and PEM for each custom S3 and Swift API certificate that was uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
+.. Select the certificate details to display the metadata and PEM for each custom S3 and Swift API certificate that was uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
 +
 * Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
 +
@@ -57,7 +57,8 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Save*. +
+.. Select *Save*.
++
 The custom server certificate is used for subsequent new S3 and Swift client connections.
 
 --
@@ -67,16 +68,16 @@ The custom server certificate is used for subsequent new S3 and Swift client con
 
 Generate the server certificate files. 
 
-. Select *Generate certificate*.
-. Specify the certificate information:
+.. Select *Generate certificate*.
+.. Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
  ** *IP*: One or more IP addresses to include in the certificate.
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
 
-. Select *Generate*. 
+.. Select *Generate*. 
 
-. Select *Certificate Details* to display the metadata and PEM for the custom S3 and Swift API certificate that was generated.
+.. Select *Certificate Details* to display the metadata and PEM for the custom S3 and Swift API certificate that was generated.
 +
 * Select *Download certificate* to save the certificate file.
 +
@@ -85,7 +86,8 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
-. Select *Save*. +
+.. Select *Save*.
++
 The custom server certificate is used for subsequent new S3 and Swift client connections.
 
 --
@@ -104,7 +106,7 @@ You can download or copy the certificate PEM as required.
 
 == Restore the default S3 and Swift API certificate
 
-You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections to Storage Nodes and to the deprecated Connection Load Balancer (CLB) service on Gateway Nodes. However, you cannot use the default S3 and Swift API certificate for a load balancer endpoint.
+You can revert to using the default S3 and Swift API certificate for S3 and Swift client connections to Storage Nodes and to the deprecated CLB service on Gateway Nodes. However, you cannot use the default S3 and Swift API certificate for a load balancer endpoint.
 
 .Steps
 
@@ -112,7 +114,7 @@ You can revert to using the default S3 and Swift API certificate for S3 and Swif
 . On the *Global* tab, select *S3 and Swift API certificate*.
 . Select *Use default certificate*.
 +
-When you restore the default version of the global S3 and Swift API certificate, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate will be used for subsequent new S3 and Swift client connections to Storage Nodes and to the deprecated Connection Load Balancer (CLB) service on Gateway Nodes. 
+When you restore the default version of the global S3 and Swift API certificate, the custom server certificate files you configured are deleted and cannot be recovered from the system. The default S3 and Swift API certificate will be used for subsequent new S3 and Swift client connections to Storage Nodes and to the deprecated CLB service on Gateway Nodes. 
 
 . Select *OK* to confirm the warning and restore the default S3 and Swift API certificate.
 +
@@ -138,10 +140,10 @@ You can save or copy the S3 and Swift API certificate contents for use elsewhere
 
 Download the certificate or CA bundle `.pem` file. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
 
-. Select *Download certificate* or *Download CA bundle*.
+.. Select *Download certificate* or *Download CA bundle*.
 +
 If you are downloading a CA bundle, all the certificates in the CA bundle secondary tabs download as a single file.
-. Specify the certificate file name and download location. Save the file with the extension `.pem`.
+.. Specify the certificate file name and download location. Save the file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
 
@@ -152,11 +154,11 @@ For example: `storagegrid_certificate.pem`
 
 Copy the certificate text to paste elsewhere. If you are using an optional CA bundle, each certificate in the bundle displays on its own sub-tab.
 
-. Select *Copy certificate PEM* or *Copy CA bundle PEM*.
+.. Select *Copy certificate PEM* or *Copy CA bundle PEM*.
 +
 If you are copying a CA bundle, all the certificates in the CA bundle secondary tabs copy together.
-. Paste the copied certificate into a text editor.
-. Save the text file with the extension `.pem`.
+.. Paste the copied certificate into a text editor.
+.. Save the text file with the extension `.pem`.
 +
 For example: `storagegrid_certificate.pem`
 --

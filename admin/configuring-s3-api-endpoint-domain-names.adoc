@@ -55,7 +55,7 @@ image::../media/configure_endpoint_domain_names.png[screenshot of the Endpoint D
 +
 If this list is empty, support for S3 virtual hosted-style requests is disabled.
 
-. Click *Save*.
+. Select *Save*.
 . Ensure that the server certificates that clients use match the required endpoint domain names.
  ** For clients that use the Load Balancer service, update the certificate associated with the load balancer endpoint that the client connects to.
  ** For clients that connect directly to Storage Nodes or that use the CLB service on Gateway Nodes, update the custom server certificate for the grid.
@@ -73,6 +73,6 @@ Now, when clients use the endpoint `bucket.s3.company.com`, the DNS server resol
 
 * xref:creating-high-availability-group.adoc[Create a high availability group]
 
-* xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to the Storage Node or the CLB service]
+* xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure S3 and Swift API certificates]
 
 * xref:configuring-load-balancer-endpoints.adoc[Configure load balancer endpoints]
