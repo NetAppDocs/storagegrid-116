@@ -87,8 +87,7 @@ Options:
 
 |===
 
-== SG6060: E2800 storage controllers
-
+== SG6060 and SG6060X: E2800 series storage controllers
 * Two controllers for failover support.
 * Manage the storage of data on the drives.
 * Function as standard E-Series controllers in a duplex configuration.
@@ -96,8 +95,28 @@ Options:
 * Include SANtricity System Manager for monitoring storage hardware and for managing alerts, the AutoSupport feature, and the Drive Security feature.
 * Connect to the SG6000-CN controller and provide access to the storage.
 
-This figure shows the connectors on the back of each of the E2800 controllers.
+The SG6060 and SG6060X use E2800 series storage controllers:
 
+[options="header"]
+|===
+|Appliance|Controller
+a|
+SG6060
+a|
+Two E2800A storage controllers
+a|
+SG6060X
+a|
+Two E2800B storage controllers
+|===
+
+The E2800A and the E2800B storage controllers are identical in specifications and function except for the location of the interconnect ports. 
+
+CAUTION: Do not use an E2800A and an E2800B in the same appliance.
+
+The following figures show the connectors on the back of each of the E2800 series controllers. 
+
+*E2800A storage controller*
 image::../media/e2800_controller_with_callouts.gif[Connectors on E2800 controller]
 
 [options="header"]
@@ -109,9 +128,9 @@ a|
 Interconnect ports 1 and 2
 a|
 16-Gb/s FC optical SFPa|
-Connect each of the E2800 controllers to the SG6000-CN controller.
+Connect each of the E2800A controllers to the SG6000-CN controller.
 
-There are four connections to the SG6000-CN controller (two from each E2800).
+There are four connections to the SG6000-CN controller (two from each E2800A).
 a|
 2
 a|
@@ -151,6 +170,15 @@ a|
 a|
 Connect the ports to the drive expansion ports on the IOMs in the expansion shelf.
 |===
+
+//*E2800B storage controller*
+//add table. change modeL numbers in table. 
+
+
+
+
+
+
 
 == SGF6024: EF570 storage controllers
 
