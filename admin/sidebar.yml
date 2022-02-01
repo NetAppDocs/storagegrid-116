@@ -313,51 +313,40 @@ entries:
         - title: Change IP address of NFS audit client
           url: "/admin/changing-ip-address-of-nfs-audit-client.html"
   - title: Manage Archive Nodes
-    url: "/admin/managing-archive-nodes.html"
     entries:
     - title: What an Archive Node is
-      url: "/admin/what-archive-node-is.html"
+      url: "/admin/what-archive-node-is.html" 
+    - title: Archive to the cloud through S3 API
+      url: "/admin/archiving-to-cloud-through-s3-api.html"
       entries:
-      - title: What the ARC service is
-        url: "/admin/what-arc-service-is.html"
-    - title: Configure Archive Node connections to archival storage
-      url: "/admin/configuring-archive-node-connections-to-archival-storage.html"
+      - title: Configure connection settings for S3 API
+        url: "/admin/configuring-connection-settings-for-s3-api.html"
+      - title: Modify connection settings for S3 API
+        url: "/admin/modifying-connection-settings-for-s3-api.html"
+      - title: Modify Cloud Tiering Service state
+        url: "/admin/modifying-cloud-tiering-service-state.html"
+      - title: Reset Store Failure Count for S3 API connection
+        url: "/admin/resetting-store-failure-count-for-s3-api-connection.html"
+      - title: Migrate objects from Cloud Tiering - S3 to Cloud Storage Pool
+        url: "/admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html"
+    - title: Archive to tape through TSM middleware
+      url: "/admin/archiving-to-tape-through-tsm-middleware.html"
       entries:
-      - title: Archive to the cloud through S3 API
-        url: "/admin/archiving-to-cloud-through-s3-api.html"
-        entries:
-        - title: Configure connection settings for S3 API
-          url: "/admin/configuring-connection-settings-for-s3-api.html"
-        - title: Modify connection settings for S3 API
-          url: "/admin/modifying-connection-settings-for-s3-api.html"
-        - title: Modify Cloud Tiering Service state
-          url: "/admin/modifying-cloud-tiering-service-state.html"
-        - title: Reset Store Failure Count for S3 API connection
-          url: "/admin/resetting-store-failure-count-for-s3-api-connection.html"
-        - title: Migrate objects from Cloud Tiering - S3 to Cloud Storage Pool
-          url: "/admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html"
-      - title: Archive to tape through TSM middleware
-        url: "/admin/archiving-to-tape-through-tsm-middleware.html"
-        entries:
-        - title: Configure connections to TSM middleware
-          url: "/admin/configuring-connections-to-tsm-middleware.html"
-        - title: Optimize Archive Node for TSM middleware sessions
-          url: "/admin/optimizing-archive-node-for-tsm-middleware-sessions.html"
-        - title: Configure archive state and counters for TSM
-          url: "/admin/configuring-archive-store-for-tsm-middleware-connection.html"
-        - title: Manage Archive Node when TSM server reaches capacity
-          url: "/admin/managing-archive-node-when-tsm-server-reaches-capacity.html"
-          entries:
-          - title: Set Archive Node to read-only if TSM middleware reaches capacity
-            url: "/admin/setting-archive-node-to-read-only-if-tsm-middleware-reaches-capacity.html"
-      - title: Configure Archive Node retrieve settings
-        url: "/admin/configuring-archive-node-retrieve-settings.html"
-      - title: Configure Archive Node replication
-        url: "/admin/configuring-archive-node-replication.html"
+      - title: Configure connections to TSM middleware
+        url: "/admin/configuring-connections-to-tsm-middleware.html"
+      - title: Optimize Archive Node for TSM middleware sessions
+        url: "/admin/optimizing-archive-node-for-tsm-middleware-sessions.html"
+      - title: Configure archive state and counters for TSM
+        url: "/admin/configuring-archive-store-for-tsm-middleware-connection.html"
+      - title: Manage Archive Node when TSM server reaches capacity
+        url: "/admin/managing-archive-node-when-tsm-server-reaches-capacity.html"
+    - title: Configure Archive Node retrieve settings
+      url: "/admin/configuring-archive-node-retrieve-settings.html"
+    - title: Configure Archive Node replication
+      url: "/admin/configuring-archive-node-replication.html"
     - title: Set Custom alarms for the Archive Node
       url: "/admin/setting-custom-alarms-for-archive-node.html"
     - title: Integrate Tivoli Storage Manager
-      url: "/admin/integrating-tivoli-storage-manager.html"
       entries:
       - title: Archive Node configuration and operation
         url: "/admin/archive-node-configuration-and-operation.html"
@@ -386,7 +375,5 @@ entries:
       url: "/admin/determining-ilm-policy-for-migrated-data.html"
     - title: Impact of migration on operations
       url: "/admin/impact-of-migration-on-operations.html"
-    - title: Schedule data migration
+    - title: Schedule and monitor data migration
       url: "/admin/scheduling-data-migration.html"
-    - title: Monitor data migration
-      url: "/admin/monitoring-data-migration.html"
