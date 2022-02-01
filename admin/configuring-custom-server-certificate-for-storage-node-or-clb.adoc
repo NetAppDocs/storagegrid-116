@@ -39,8 +39,8 @@ You can upload or generate a custom S3 and Swift API certificate.
 --
 Upload the required server certificate files.
 
-.. Select *Upload certificate*.
-.. Upload the required server certificate files:
+. Select *Upload certificate*.
+. Upload the required server certificate files:
  ** *Server certificate*: The custom server certificate file (PEM encoded).
  ** *Certificate private key*: The custom server certificate private key file (`.key`).
 +
@@ -48,7 +48,7 @@ NOTE: EC private keys must be 224 bits or larger. RSA private keys must be 2048 
 
  ** *CA bundle*: A single optional file containing the certificates from each intermediate issuing certificate authority. The file should contain each of the PEM-encoded CA certificate files, concatenated in certificate chain order.
 
-.. Select the certificate details to display the metadata and PEM for each custom S3 and Swift API certificate that was uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
+. Select the certificate details to display the metadata and PEM for each custom S3 and Swift API certificate that was uploaded. If you uploaded an optional CA bundle, each certificate displays on its own tab.
 +
 * Select *Download certificate* to save the certificate file or select *Download CA bundle* to save the certificate bundle.
 +
@@ -57,7 +57,7 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* or *Copy CA bundle PEM* to copy the certificate contents for pasting elsewhere.
 
-.. Select *Save*.
+. Select *Save*.
 +
 The custom server certificate is used for subsequent new S3 and Swift client connections.
 
@@ -68,16 +68,16 @@ The custom server certificate is used for subsequent new S3 and Swift client con
 
 Generate the server certificate files. 
 
-.. Select *Generate certificate*.
-.. Specify the certificate information:
+. Select *Generate certificate*.
+. Specify the certificate information:
  ** *Domain name*: One or more fully qualified domain names to include in the certificate. Use an * as a wildcard to represent multiple domain names.
  ** *IP*: One or more IP addresses to include in the certificate.
  ** *Subject*: X.509 subject or distinguished name (DN) of the certificate owner.
  ** *Days valid*: Number of days after creation that the certificate expires.
 
-.. Select *Generate*. 
+. Select *Generate*. 
 
-.. Select *Certificate Details* to display the metadata and PEM for the custom S3 and Swift API certificate that was generated.
+. Select *Certificate Details* to display the metadata and PEM for the custom S3 and Swift API certificate that was generated.
 +
 * Select *Download certificate* to save the certificate file.
 +
@@ -86,7 +86,7 @@ Specify the certificate file name and download location. Save the file with the 
 For example: `storagegrid_certificate.pem`
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
-.. Select *Save*.
+. Select *Save*.
 +
 The custom server certificate is used for subsequent new S3 and Swift client connections.
 
