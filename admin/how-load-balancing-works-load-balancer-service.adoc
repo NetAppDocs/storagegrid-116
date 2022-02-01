@@ -22,7 +22,7 @@ Each load balancer endpoint specifies a port, a network protocol (HTTP or HTTPS)
 
 Clients can access any of the endpoints you configure on any node running the Load Balancer service, with two exceptions: ports 80 and 443 are reserved on Admin Nodes, so endpoints configured on these ports support load balancing operations only on Gateway Nodes.
 
-If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:removing-port-remaps.adoc[Remove port remaps].
+If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:..\maintain\removing-port-remaps.adoc[Remove port remaps].
 
 NOTE: The CLB service is deprecated.
 
