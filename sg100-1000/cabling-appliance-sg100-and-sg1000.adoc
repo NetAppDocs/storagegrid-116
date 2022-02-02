@@ -33,59 +33,37 @@ image::../media/sg100_connections.png[SG100 rear connectors]
 
 image::../media/sg1000_connections.png[SG1000 port connections]
 
-[options="header"]
+[cols="1a,2a,2a,3a" options="header"]
 |===
 |  | Port| Type of port| Function
-a|
-1
-a|
-BMC management port on the appliance
+|1
+|BMC management port on the appliance
+|1-GbE (RJ-45)
+|Connects to the network where you access the BMC interface.
 
-a|
-1-GbE (RJ-45)
-
-a|
-Connects to the network where you access the BMC interface.
-
-a|
-2
-a|
-Four network ports on the appliance
-a|
-
+|2
+|Four network ports on the appliance
+|
 * For the SG100: 10/25-GbE
 * For the SG1000: 10/25/40/100-GbE
+|Connect to the Grid Network and the Client Network for StorageGRID.
 
-a|
-Connect to the Grid Network and the Client Network for StorageGRID.
-
-a|
-3
-a|
-Admin Network port on the appliance (labelled P1 in the figures)
-a|
-1-GbE (RJ-45)
+|3
+|Admin Network port on the appliance (labelled P1 in the figures)
+|1-GbE (RJ-45)
 
 *Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
+|Connects the appliance to the Admin Network for StorageGRID.
 
-a|
-Connects the appliance to the Admin Network for StorageGRID.
-
-a|
-3
-a|
-Rightmost RJ-45 port on the appliance
-a|
-1-GbE (RJ-45)
+|
+|Rightmost RJ-45 port on the appliance
+|1-GbE (RJ-45)
 
 *Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
-
-a|
-
+|
 * Can be bonded with management port 1 if you want a redundant connection to the Admin Network.
 * Can be left disconnected and available for temporary local access (IP 169.254.0.1).
 * During installation, can be used to connect the appliance to a service laptop if DHCP-assigned IP addresses are not available.
-
 |===
 
 .Steps
@@ -98,61 +76,45 @@ Although this connection is optional, it is recommended to facilitate support.
 +
 NOTE: The four network ports must use the same link speed. See the following tables for the equipment required based on your hardware and link speed.
 +
-[options="header"]
+[cols="2a,2a" options="header"]
 |===
 | SG100 link speed (GbE)| Required equipment
-a|
-10
-a|
-SFP+ transceiver
-a|
-25
-a|
-SFP28 transceiver
-|===
-+
-[options="header"]
-|===
-| SG1000 link speed (GbE)| Required equipment
-a|
-10
-a|
-QSA and SFP+ transceiver
-a|
-25
-a|
-QSA and SFP28 transceiver
-a|
-40
-a|
-QSFP+ transceiver
-a|
-100
-a|
-QFSP28 transceiver
+|10
+|SFP+ transceiver
+
+|25
+|SFP28 transceiver
+
+h| SG1000 link speed (GbE) h| Required equipment
+|10
+|QSA and SFP+ transceiver
+
+|25
+|QSA and SFP28 transceiver
+
+|40
+|QSFP+ transceiver
+
+|100
+|QFSP28 transceiver
 |===
 
  ** If you plan to use Fixed port bond mode (default), connect the ports to the StorageGRID Grid and Client Networks, as shown in the table.
 +
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Port| Connects to...
-a|
-Port 1
-a|
-Client Network (optional)
-a|
-Port 2
-a|
-Grid Network
-a|
-Port 3
-a|
-Client Network (optional)
-a|
-Port 4
-a|
-Grid Network
+|Port 1
+|Client Network (optional)
+
+|Port 2
+|Grid Network
+
+|Port 3
+|Client Network (optional)
+
+|Port 4
+|Grid Network
 |===
 
  ** If you plan to use the Aggregate port bond mode, connect one or more of the network ports to one or more switches. You should connect at least two of the four ports to avoid having a single point of failure. If you use more than one switch for a single LACP bond, the switches must support MLAG or equivalent.

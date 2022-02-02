@@ -33,7 +33,7 @@ NOTE: Once the node is deployed, you can no longer use the StorageGRID Appliance
 * If the appliance has been deployed as a node in your StorageGRID system, use the SANtricity System Manager tab on the Nodes page in Grid Manager.
 * If you cannot use the StorageGRID Appliance Installer or Grid Manager, you can access SANtricity System Manager directly using a web browser connected to the management port.
 
-This procedure includes steps for your initial access to SANtricity System Manager. If you have already set up SANtricity System Manager, go to the  <<config_hardware_alerts_sg6000,configure hardware alerts>> step.
+This procedure includes steps for your initial access to SANtricity System Manager. If you have already set up SANtricity System Manager, go to the  <<config_hardware_alerts_sg6000,configure hardware alerts step>>.
 
 NOTE: Using either the Grid Manager or the StorageGRID Appliance Installer enables you to access SANtricity System Manager without having to configure or connect the management port of the appliance.
 
@@ -48,9 +48,7 @@ You can use SANtricity System Manager to configure the following settings:
 * Email alerts, SNMP alerts, or syslog alerts for the components in the storage controller shelf
 * E-Series AutoSupport settings for the components in the storage controller shelf.
 +
-For additional details on E-Series AutoSupport, see the E-Series documentation center.
-+
-http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site^]
+For additional details on E-Series AutoSupport, see the http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Documentation Site^].
 
 * Drive Security keys, which are needed to unlock secured drives (this step is required if the Drive Security feature is enabled)
 * Administrator password for accessing SANtricity System Manager
@@ -60,24 +58,19 @@ http://mysupport.netapp.com/info/web/ECMP1658252.html[NetApp E-Series Systems Do
 . Do one of the following:
  ** Use the StorageGRID Appliance Installer and select *Advanced* > *SANtricity System Manager*
  ** Use the Grid Manager and select *NODES* > `*_appliance Storage Node_*` > *SANtricity System Manager*
+
 +
-NOTE: If these options are not available or the login page does not appear, you must use the IP address of the storage controller. Access SANtricity System Manager by browsing to the storage controller IP: +
-`*https://_Storage_Controller_IP_*`
-+
-The login page for SANtricity System Manager appears.
+NOTE: If these options are not available or the login page does not appear, you must use the xref:setting-ip-addresses-for-storage-controllers-using-storagegrid-appliance-installer.adoc[IP addresses for the storage controllers]. Access SANtricity System Manager by browsing to the storage controller IP.
+
 . Set or enter the administrator password.
 +
-NOTE: SANtricity System Manager uses a single administrator password that is shared among all users.
-+
-The Set Up wizard appears.
+SANtricity System Manager uses a single administrator password that is shared among all users.
 +
 image::../media/san_setup_wizard.gif[Screen shot showing Cancel button for Set Up wizard]
 
 . Select *Cancel* to close the wizard.
 +
 IMPORTANT: Do not complete the Set Up wizard for a StorageGRID appliance.
-+
-The SANtricity System Manager home page appears.
 +
 image::../media/sam_home_page.gif[Screen shot of SANtricity System Manager home page]
 
@@ -90,9 +83,8 @@ image::../media/sam_home_page.gif[Screen shot of SANtricity System Manager home 
  .. Use the *SUPPORT* > *Support Center* section of the online help to learn about the AutoSupport feature.
  .. Follow the "`How To`" instructions to manage AutoSupport.
 +
-For specific instructions on configuring a StorageGrid proxy for sending E-Series AutoSupport messages without using the management port, go to the instructions for administering StorageGRID and search for "proxy settings for E-Series AutoSupport."
-+
-xref:../admin/index.adoc[Administer StorageGRID]
+For specific instructions on configuring a StorageGrid proxy for sending E-Series AutoSupport messages without using the management port, go to the xref:..admin/configuring-storage-proxy-settings.adoc[instructions for configuring storage proxy settings].
+
 . If the Drive Security feature is enabled for the appliance, create and manage the security key.
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Settings* > *System* > *Security key management* section of the online help to learn about Drive Security.
@@ -101,9 +93,3 @@ xref:../admin/index.adoc[Administer StorageGRID]
  .. Select *Help* to access the online help for SANtricity System Manager.
  .. Use the *Home* > *Storage array administration* section of the online help to learn about the administrator password.
  .. Follow the "`How To`" instructions to change the password.
-
-.Related information
-
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
-
-xref:setting-ip-addresses-for-storage-controllers-using-storagegrid-appliance-installer.adoc[Set IP addresses for the storage controllers using the StorageGRID Appliance Installer]
