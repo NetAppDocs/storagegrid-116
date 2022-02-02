@@ -2,7 +2,7 @@ section: admin
 title: Administer StorageGRID
 entries:
   - title: Overview
-    pdf-filename: Administer a StorageGRID
+    pdf-filename: Administer a StorageGRID System
     url: "/admin/index.html"
   - title: Get started with StorageGRID
     entries:
@@ -20,11 +20,11 @@ entries:
       url: "/admin/viewing-storagegrid-license-information.html"
     - title: Update StorageGRID license information
       url: "/admin/updating-storagegrid-license-information.html"
-    - title: Use the Grid Management API
-      url: "/admin/using-grid-management-api.html"
+    - title: Use the API     
       entries:
-      - title: Issue API requests
-        url: "/admin/issuing-api-requests.html"
+      - title: Use the Grid Management API
+        pdf-filename: Grid Management API
+        url: "/admin/using-grid-management-api.html"
       - title: Grid Management API operations
         url: "/admin/grid-management-api-operations.html"        
       - title: Grid Management API versioning
@@ -57,27 +57,24 @@ entries:
       url: "/admin/managing-users.html"
     - title: Use single sign-on (SSO)
       entries:
-      - title: How single sign-on works
-        url: "/admin/how-sso-works.html"
-      - title: Requirements for using single sign-on
-        url: "/admin/requirements-for-sso.html"
       - title: Configure single sign-on
         url: "/admin/configuring-sso.html"
-        entries:
-        - title: Confirm federated users can sign in
-          url: "/admin/confirming-federated-users-can-sign-in.html"
-        - title: Use sandbox mode
-          url: "/admin/using-sandbox-mode.html"
-        - title: Create relying party trusts in AD FS
-          url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
-        - title: Create enterprise applications in Azure
-          url: "/admin/creating-enterprise-application-azure.html"          
-        - title: Create SP connections in PingFederate
-          url: "/admin/creating-sp-connection-ping.html"
-        - title: Disable single sign-on
-          url: "/admin/disabling-single-sign-on.html"
-        - title: Temporarily disable and reenable single sign-on for one Admin Node
-          url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
+      - title: Requirements for using single sign-on
+        url: "/admin/requirements-for-sso.html"
+      - title: Confirm federated users can sign in
+        url: "/admin/confirming-federated-users-can-sign-in.html"
+      - title: Use sandbox mode
+        url: "/admin/using-sandbox-mode.html"
+      - title: Create relying party trusts in AD FS
+        url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
+      - title: Create enterprise applications in Azure
+        url: "/admin/creating-enterprise-application-azure.html"          
+      - title: Create SP connections in PingFederate
+        url: "/admin/creating-sp-connection-ping.html"
+      - title: Disable single sign-on
+        url: "/admin/disabling-single-sign-on.html"
+      - title: Temporarily disable and reenable single sign-on for one Admin Node
+        url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
   - title: Manage security settings
     entries:      
     - title: Manage certificates
@@ -115,13 +112,6 @@ entries:
         url: "/admin/kms-configuring-storagegrid-as-client.html"
       - title: Add a key management server (KMS)
         url: "/admin/kms-adding.html"
-        entries:
-        - title: 'Step 1: Enter KMS Details'
-          url: "/admin/kms-adding-enter-kms-details.html"
-        - title: 'Step 2: Upload Server Certificate'
-          url: "/admin/kms-adding-upload-server-certificate.html"
-        - title: 'Step 3: Upload Client Certificates'
-          url: "/admin/kms-adding-upload-client-certificates.html"
       - title: View KMS details
         url: "/admin/kms-viewing-details.html"
       - title: View encrypted nodes
