@@ -102,57 +102,8 @@ The E2800 storage controller has the following specifications:
 The following figures show the connectors on the back of the E2800A and E2800B controllers.
 
 *Connectors on the back of the E2800A*
+
 image::../media/e2800_controller_with_callouts.gif[Connectors on E2800A controller]
-
-[options="header"]
-|===
-|  | Port| Type| Use
-a|
-1
-a|
-Interconnect ports 1 and 2
-a|
-16Gb/s FC optical SFPa|
-Connect the E2800 controller to the E5700SG controller.
-a|
-2
-a|
-Management ports 1 and 2
-a|
-1-Gb (RJ-45) Ethernet
-a|
-
-* Port 1 Options:
-** Connect to a management network to enable direct TCP/IP access to SANtricity System Manager
-** Leave unwired to save a switch port and IP address.  Access SANtricity System Manager using the Grid Manager or Storage Grid Appliance Installer UIs.  
-
-*Note*: some optional SANtricity functionality, such as NTP sync for accurate log timestamps, is not available when you choose to leave Port 1 unwired.
-
-*Note*: StorageGRID 11.5 or greater, and SANtricity 11.70 or greater, are required when you leave Port 1 unwired.
-
-* Port 2 is reserved for technical support use.
-
-a|
-3
-a|
-Diagnostic and support ports
-a|
-
-* RJ-45 serial port
-* Micro USB serial port
-* USB port
-
-a|
-Reserved for technical support use.
-a|
-4
-a|
-Drive expansion ports.
-a|
-12Gb/s SAS
-a|
-Not used. StorageGRID appliances do not support expansion drive shelves.
-|===
 
 *Connectors on the back of the E2800B*
 
