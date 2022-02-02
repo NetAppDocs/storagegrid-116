@@ -16,7 +16,7 @@ When you deploy a services appliance as a Gateway Node or non-primary Admin Node
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * Network links, IP addresses, and port remapping (if necessary) have been configured for the appliance using the StorageGRID Appliance Installer.
 +
-IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:removing-port-remaps.adoc[Remove port remaps].
+IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:../maintain/removing-port-remaps.adoc[Remove port remaps].
 +
 NOTE: The CLB service is deprecated.
 
@@ -106,7 +106,3 @@ The Current state changes to "`Installation is in progress,`" and the Monitor In
 NOTE: If you need to access the Monitor Installation page manually, click *Monitor Installation* from the menu bar.
 
 . If your grid includes multiple appliance nodes, repeat the previous steps for each appliance.
-
-.Related information
-
-xref:deploying-services-appliance-as-primary-admin-node.adoc[Deploy services appliance as primary Admin Node]

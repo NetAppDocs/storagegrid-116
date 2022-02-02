@@ -16,7 +16,7 @@ When you deploy a services appliance as a primary Admin Node, you use the Storag
 * The appliance has been installed in a rack or cabinet, connected to your networks, and powered on.
 * Network links, IP addresses, and port remapping (if necessary) have been configured for the appliance using the StorageGRID Appliance Installer.
 +
-IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:removing-port-remaps.adoc[Remove port remaps].
+IMPORTANT: If you have remapped any ports, you cannot use the same ports to configure load balancer endpoints. You can create endpoints using remapped ports, but those endpoints will be remapped to the original CLB ports and service, not the Load Balancer service. Follow the steps in xref:../maintain/removing-port-remaps.adoc[Remove port remaps].
 +
 See xref:../admin/how-load-balancing-works-clb-service.adoc[How load balancing works - CLB service (deprecated)] for more information on the CLB service.
 +
@@ -61,9 +61,7 @@ image::../media/appliance_installer_upload_sg_software.png[Appliance Installer -
  .. Select *Home* to return to the Home page.
 . Confirm that the current state is "`Ready to start installation of primary Admin Node name with software version x.y`" and that the *Start Installation* button is enabled.
 +
-NOTE: If you are deploying the Admin Node appliance as a node cloning target, stop the deployment process here and continue the node cloning procedure in recovery and maintenance.
-+
-xref:../maintain/index.adoc[Recover and maintain]
+NOTE: If you are deploying the Admin Node appliance as a node cloning target, stop the deployment process here and continue the node cloning procedure by following the xref:../maintain/index.adoc[Recover and maintain] instructions.
 
 . From the StorageGRID Appliance Installer home page, click *Start Installation*.
 +
@@ -72,7 +70,3 @@ image::../media/appliance_installer_home_start_installation_enabled_primary_an.p
 The Current state changes to "`Installation is in progress,`" and the Monitor Installation page is displayed.
 +
 NOTE: If you need to access the Monitor Installation page manually, click *Monitor Installation* from the menu bar.
-
-.Related information
-
-xref:deploying-services-appliance-as-gateway-or-non-primary-admin-node.adoc[Deploy services appliance as Gateway or non-primary Admin Node]
