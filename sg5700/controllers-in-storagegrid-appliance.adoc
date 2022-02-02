@@ -4,12 +4,12 @@ sidebar: sidebar
 keywords: storagegrid, sg5700, storage node, storage appliance, controllers, controller, e5700sg, e2800, ports, port, connectors, connector
 summary: 'Both the SG5712 and SG5760 models of the StorageGRID appliance include an E5700SG controller and an E2800 controller. You should review the diagrams to learn the differences between the controllers.'
 ---
-= Controllers in StorageGRID appliance
+= Controllers in the StorageGRID 5700 appliance
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Both the SG5712 and SG5760 models of the StorageGRID appliance include an E5700SG controller and an E2800 controller. You should review the diagrams to learn the differences between the controllers.
+Both the 12-drive SG5712 and SG5712X and the 60-drive SG5760 and SG5760X models of the StorageGRID appliance include an E5700SG controller and an E-Series E2800 storage controller. You should review the diagrams to learn the differences between the controllers.
 
 == E5700SG controller
 
@@ -86,7 +86,11 @@ Options:
 
 |===
 
-== E2800 controller
+== E2800 storage controller
+
+There are two versions of the E2800 storage controller: E2800A and E2800B. The two controller versions have identical specifications and function except for the location of the interconnect ports. 
+
+The E2800 storage controller has the following specifications: 
 
 * Operates as the storage controller for the appliance.
 * Manages the storage of data on the drives.
@@ -95,9 +99,64 @@ Options:
 * Includes SANtricity System Manager for monitoring appliance hardware and for managing alerts, the AutoSupport feature, and the Drive Security feature.
 * Connects to the E5700SG controller and operates as the target.
 
-This figure shows the connectors on the back of the E2800 controller.
+The following figures show the connectors on the back of the E2800A and E2800B controllers.
 
-image::../media/e2800_controller_with_callouts.gif[Connectors on E2800 controller]
+*Connectors on the back of the E2800A*
+image::../media/e2800_controller_with_callouts.gif[Connectors on E2800A controller]
+
+[options="header"]
+|===
+|  | Port| Type| Use
+a|
+1
+a|
+Interconnect ports 1 and 2
+a|
+16Gb/s FC optical SFPa|
+Connect the E2800 controller to the E5700SG controller.
+a|
+2
+a|
+Management ports 1 and 2
+a|
+1-Gb (RJ-45) Ethernet
+a|
+
+* Port 1 Options:
+** Connect to a management network to enable direct TCP/IP access to SANtricity System Manager
+** Leave unwired to save a switch port and IP address.  Access SANtricity System Manager using the Grid Manager or Storage Grid Appliance Installer UIs.  
+
+*Note*: some optional SANtricity functionality, such as NTP sync for accurate log timestamps, is not available when you choose to leave Port 1 unwired.
+
+*Note*: StorageGRID 11.5 or greater, and SANtricity 11.70 or greater, are required when you leave Port 1 unwired.
+
+* Port 2 is reserved for technical support use.
+
+a|
+3
+a|
+Diagnostic and support ports
+a|
+
+* RJ-45 serial port
+* Micro USB serial port
+* USB port
+
+a|
+Reserved for technical support use.
+a|
+4
+a|
+Drive expansion ports.
+a|
+12Gb/s SAS
+a|
+Not used. StorageGRID appliances do not support expansion drive shelves.
+|===
+
+*Connectors on the back of the E2800B*
+
+image::../media/e2800B_controller_with_callouts.gif[Connectors on E2800B controller]
 
 [options="header"]
 |===
