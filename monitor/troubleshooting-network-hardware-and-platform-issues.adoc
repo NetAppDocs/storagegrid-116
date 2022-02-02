@@ -11,7 +11,7 @@ summary: 'There are several tasks you can perform to help determine the source o
 [.lead]
 There are several tasks you can perform to help determine the source of issues related to StorageGRID network, hardware, and platform issues.
 
-== Troubleshooting "`422: Unprocessable Entity`" errors
+== Troubleshoot "`422: Unprocessable Entity`" errors
 
 The error 422: Unprocessable Entity can occur in a number of circumstances. Check the error message to determine what caused your issue.
 
@@ -72,7 +72,7 @@ Check the ciphers that are offered by the external system. The system must use o
 
 xref:../admin/index.adoc[Administer StorageGRID]
 
-== Troubleshooting the Grid Network MTU mismatch alert
+== [[troubleshoot_MTU_alert]]Troubleshoot the Grid Network MTU mismatch alert
 
 The *Grid Network MTU mismatch* alert is triggered when the maximum transmission unit (MTU) setting for the Grid Network interface (eth0) differs significantly across nodes in the grid.
 
@@ -132,7 +132,7 @@ xref:../sg5700/index.adoc[SG5700 storage appliances]
 
 xref:../sg5600/index.adoc[SG5600 storage appliances]
 
-== Troubleshooting the Network Receive Error (NRER) alarm
+== Troubleshoot the Network Receive Error (NRER) alarm
 
 Network Receive Error (NRER) alarms can be caused by connectivity issues between StorageGRID and your network hardware. In some cases, NRER errors can clear without manual intervention. If the errors do not clear, take the recommended actions.
 
@@ -183,7 +183,7 @@ The ring buffer can be overrun when the StorageGRID system is overloaded and una
 
 .Related information
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Grid Network MTU mismatch alert]
+<<troubleshoot_MTU_alert,Troubleshoot the Grid Network MTU mismatch alert>>
 
 xref:alarms-reference.adoc[Alarms reference (legacy system)]
 
@@ -195,7 +195,7 @@ xref:../sg5600/index.adoc[SG5600 storage appliances]
 
 xref:../sg100-1000/index.adoc[SG100 and SG1000 services appliances]
 
-== Troubleshooting time synchronization errors
+== Troubleshoot time synchronization errors
 
 You might see issues with time synchronization in your grid.
 
@@ -268,7 +268,7 @@ sudo docker stop --time 900 storagegrid-DC1-S1-172-16-1-172
 storagegrid node start DC1-S1-172-16-1-172
 ----
 
-== Linux: Troubleshooting IPv6 support
+== Linux: Troubleshoot IPv6 support
 
 You might need to enable IPv6 support in the kernel if you have installed StorageGRID nodes on Linux hosts and you notice that IPv6 addresses have not been assigned to the node containers as expected.
 
