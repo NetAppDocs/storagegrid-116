@@ -13,8 +13,8 @@ If you enabled node encryption for the appliance during installation, you can mo
 
 .What you'll need
 
-* Node encryption must have been enabled for the appliance during installation. You cannot enable node encryption after the appliance is installed.
-* The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed into maintenance mode].
+* You enabled node encryption for the appliance during installation. You cannot enable node encryption after the appliance is installed.
+* You have xref:placing-appliance-into-maintenance-mode.adoc[placed the appliance into maintenance mode].
 
 .Steps
 
@@ -22,25 +22,20 @@ If you enabled node encryption for the appliance during installation, you can mo
 +
 image::../media/fde_monitor_in_maint_mode.png[KMS clear configuration]
 +
-The Node Encryption page includes these three sections:
+The Node Encryption page includes three sections:
 
  ** Encryption Status shows whether node encryption is enabled or disabled for the appliance.
  ** Key Management Server Details shows information about the KMS being used to encrypt the appliance. You can expand the server and client certificate sections to view certificate details and status.
-  *** To address issues with the certificates themselves, such as renewing expired certificates, see the information about KMS in the instructions for administering StorageGRID.
-  *** If there are unexpected problems connecting to KMS hosts, verify that the domain name system (DNS) servers are correct and that appliance networking is correctly configured.
-+
-xref:checking-dns-server-configuration.adoc[Check DNS server configuration]
-
+  *** To address issues with the certificates themselves, such as renewing expired certificates, see the xref:../admin/kms-configuring.adoc[instructions for configuring KMS].
+  *** If there are unexpected problems connecting to KMS hosts, verify that the xref:checking-dns-server-configuration.adoc[domain name system (DNS) servers are correct] and that xref:configuring-network-links-sg100-and-sg1000.adoc[appliance networking is correctly configured].
   *** If you are unable to resolve your certificate issues, contact technical support.
- ** Clear KMS Key disables node encryption for the appliance, removes the association between the appliance and the key management server that was configured for the StorageGRID site, and deletes all data from the appliance. You must clear the KMS key before you can install the appliance into another StorageGRID system.
-+
-xref:clearing-key-management-server-configuration.adoc[Clear key management server configuration]
+ ** Clear KMS Key disables node encryption for the appliance, removes the association between the appliance and the key management server that was configured for the StorageGRID site, and deletes all data from the appliance. You must xref:clearing-key-management-server-configuration.adoc[clear the KMS key] before you can install the appliance into another StorageGRID system.
 +
 IMPORTANT: Clearing the KMS configuration deletes data from the appliance, rendering it permanently inaccessible. This data is not recoverable.
 
 . When you are done checking node-encryption status, reboot the node. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select one of these options:
  ** Select *Reboot into StorageGRID* to reboot the controller with the node rejoining the grid. Select this option if you are done working in maintenance mode and are ready to return the node to normal operation.
- ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. (This option is available only when the controller is in maintenance mode.) Select this option if there are additional maintenance operations you need to perform on the node before rejoining the grid.
+ ** Select *Reboot into Maintenance Mode* to reboot the controller with the node remaining in maintenance mode. (This option is available only when the controller is in maintenance mode.) Select this option if there are additional maintenance operations you need to perform on the node before it can rejoin the grid.
 +
 image::../media/reboot_controller_from_maintenance_mode.png[Reboot controller in maintenance mode]
 +
