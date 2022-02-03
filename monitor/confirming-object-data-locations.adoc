@@ -1,18 +1,14 @@
 ---
-permalink: monitor/troubleshooting-object-and-storage-issues.html
+permalink: monitor/confirming-object-data-locations.html
 sidebar: sidebar
-keywords: how to troubleshoot object issues, how to troubleshoot storage issues
-summary: 'There are several tasks you can perform to help determine the source of object and storage issues.'
+keywords: how to confirm object location, object metadata lookup
+summary: 'Depending on the problem, you might want to confirm where object data is being stored. For example, you might want to verify that the ILM policy is performing as expected and object data is being stored where intended.'
 ---
-= Troubleshoot object and storage issues
+= Confirm object data locations
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-There are several tasks you can perform to help determine the source of object and storage issues.
-
-== Confirming object data locations
-
 Depending on the problem, you might want to confirm where object data is being stored. For example, you might want to verify that the ILM policy is performing as expected and object data is being stored where intended.
 
 .What you'll need
@@ -57,24 +53,3 @@ xref:../ilm/index.adoc[Manage objects with ILM]
 xref:../s3/index.adoc[Use S3]
 
 xref:../swift/index.adoc[Use Swift]
-
-== Object store (storage volume) failures
-
-The underlying storage on a Storage Node is divided into object stores. Object stores are also known as storage volumes.
-
-You can view object store information for each Storage Node. Object stores are shown at the bottom of the *NODES* > *_Storage Node_* > *Storage* page.
-
-image::../media/nodes_page_storage_nodes_storage_tables.png[Nodes Page Storage Node Storage Tables]
-
-To see more details about each Storage Node, follow these steps:
-
-. Select *SUPPORT* > *Tools* > *Grid topology*.
-. Select *_site_* > *_Storage Node_* > *LDR* > *Storage* > *Overview* > *Main*.
-
-image::../media/storage_node_object_stores.png[Storage Node object store]
-
-Depending on the nature of the failure, faults with a storage volume might be reflected in an alarm on the storage status or on the health of an object store. If a storage volume fails, you should repair the failed storage volume to restore the Storage Node to full functionality as soon as possible. If necessary, you can go to the *Configuration* tab and place the Storage Node in a read‐only state so that the StorageGRID system can use it for data retrieval while you prepare for a full recovery of the server.
-
-.Related information
-
-xref:../maintain/index.adoc[Recover and maintain]
