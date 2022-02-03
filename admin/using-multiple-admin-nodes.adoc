@@ -18,12 +18,9 @@ image::../media/admin_node_redundancy.png[Admin Node redundancy diagram]
 There are two options for continuing to view and configure the StorageGRID system if an Admin Node fails:
 
 * Web clients can reconnect to any other available Admin Node.
-* If a system administrator has configured a high availability group of Admin Nodes, web clients can continue to access the Grid Manager or the Tenant Manager using the virtual IP address of the HA group.
+* If a system administrator has configured a high availability group of Admin Nodes, web clients can continue to access the Grid Manager or the Tenant Manager using the virtual IP address of the HA group. See xref:managing-high-availability-groups.adoc[Manage high availability groups].
+
 +
 NOTE: When using an HA group, access is interrupted if the Master Admin Node fails. Users must sign in again after the virtual IP address of the HA group fails over to another Admin Node in the group.
 
 Some maintenance tasks can only be performed using the primary Admin Node. If the primary Admin Node fails, it must be recovered before the StorageGRID system is fully functional again.
-
-.Related information
-
-xref:managing-high-availability-groups.adoc[Manage high availability groups]

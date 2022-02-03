@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: create tenant, tenant account
 summary: 'You must create at least one tenant account to control access to the storage in your StorageGRID system.'
 ---
-= Create a tenant account
+= Create tenant account
 :icons: font
 :imagesdir: ../media/
 
@@ -13,7 +13,7 @@ You must create at least one tenant account to control access to the storage in 
 
 When you create a tenant account, you specify a name, a client protocol, and optionally a storage quota. If single sign-on (SSO) is enabled for StorageGRID, you also specify which federated group has Root access permission to configure the tenant account. If StorageGRID is not using single sign-on, you must also specify whether the tenant account will use its own identity source and configure the initial password for the tenant's local root user.
 
-The Grid Manager provides a wizard that takes you through the steps for creating a tenant account. The steps vary based on whether a xref:using-identity-federation.adoc[federated identity source] and xref:using-single-sign-on.adoc[single sign-on] are configured and whether the Grid Manager account you use to create the tenant account belongs to an admin group with the Root access permission.
+The Grid Manager provides a wizard that takes you through the steps for creating a tenant account. The steps vary based on whether xref:using-identity-federation.adoc[identity federation] and xref:configuring-sso.adoc[single sign-on] are configured and whether the Grid Manager account you use to create the tenant account belongs to an admin group with the Root access permission.
 
 .What you'll need
 
@@ -183,5 +183,5 @@ Each link opens the corresponding page in the Tenant Manager. To complete the pa
 
 * xref:controlling-access-through-firewalls.adoc[Control access through firewalls]
 
-* xref:managing-platform-services-for-s3-tenant-accounts.adoc[Manage platform services for S3 tenant accounts]
+* xref:manage-platform-services-for-tenants.adoc[Manage platform services for S3 tenant accounts]
 

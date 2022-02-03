@@ -2,18 +2,18 @@
 permalink: admin/use-api-if-sso-is-enabled-adfs.html
 sidebar: sidebar
 keywords: how to access storagegrid API if SSO is enabled with ADFS
-summary: 'If you have configured and enabled single sign-on (SSO) and you use Active Directory Federated Services (AD FS) as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
+summary: 'If you have configured and enabled single sign-on (SSO) and you use Active Directory as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.'
 ---
 = Use the API if single sign-on is enabled (Active Directory)
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-If you have xref:../admin/configuring-sso.adoc[configured and enabled single sign-on (SSO)] and you use Active Directory Federated Services (AD FS) as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
+If you have xref:../admin/configuring-sso.adoc[configured and enabled single sign-on (SSO)] and you use Active Directory as the SSO provider, you must issue a series of API requests to obtain an authentication token that is valid for the Grid Management API or the Tenant Management API.
 
 == Sign in to the API if single sign-on is enabled
 
-These instructions apply if you are using AD FS as the SSO identity provider.
+These instructions apply if you are using Active Directory as the SSO identity provider.
 
 .What you'll need
 
@@ -215,7 +215,7 @@ You can now use `MYTOKEN` for other requests, similar to how you would use the A
 == Sign out of the API if single sign-on is enabled
 
 If single sign-on (SSO) has been enabled, you must issue a series of API requests to sign out of the Grid Management API or the Tenant Management API. 
-These instructions apply if you are using AD FS as the SSO identity provider
+These instructions apply if you are using Active Directory as the SSO identity provider
 
 .About this task
 
