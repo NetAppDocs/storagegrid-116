@@ -17,7 +17,7 @@ If you need to preserve data on the appliance, you must either perform a node de
 
 IMPORTANT: When KMS is cleared, data on the appliance will be permanently deleted and no longer accessible. This data is not recoverable.
 
-xref:grid-node-decommissioning.adoc[Decommission the node] to move any data it contains to other nodes in StorageGRID.
+xref:../maintain/grid-node-decommissioning.adoc[Decommission the node] to move any data it contains to other nodes in the grid.
 
 .About this task
 
@@ -37,7 +37,8 @@ IMPORTANT: Decommission the appliance before clearing KMS to move its data to ot
 
 .Steps
 
-. Open a browser, and enter one of the IP addresses for the appliance's compute controller. +
+. Open a browser, and enter one of the IP addresses for the appliance's compute controller.
++
 `*https://_Controller_IP_:8443*`
 +
 `_Controller_IP_` is the IP address of the compute controller (not the storage controller) on any of the three StorageGRID networks.
@@ -73,7 +74,7 @@ Node encryption cannot be reenabled on the appliance until it is reinstalled in 
 
 .After you finish
 
-After the appliance reboots and you have verified that KMS has been cleared and that the appliance in a pre-install state, you can physically remove the appliance from your StorageGRID system. See the recovery and maintenance instructions for information about xref:preparing-appliance-for-reinstallation-platform-replacement-only.adoc[Prepare appliance for reinstallation].
+After the appliance reboots and you have verified that KMS has been cleared and that the appliance in a pre-install state, you can physically remove the appliance from your StorageGRID system. See the xref:../maintain/preparing-appliance-for-reinstallation-platform-replacement-only.adoc[instructions for preparing the appliance for reinstallation].
 
 .Related information
 

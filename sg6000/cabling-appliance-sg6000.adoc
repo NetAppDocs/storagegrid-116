@@ -31,89 +31,53 @@ The following figure shows the three controllers in the SGF6024 appliance, with 
 
 image::../media/sg6000_ef570_connections.png[SG6000 to SGF570 Connections]
 
-[options="header"]
+[cols="1a,2a,2a,3a" options="header"]
 |===
 |  | Port| Type of port| Function
-a|
-1
-a|
-BMC management port on the SG6000-CN controller
+|1
+|BMC management port on the SG6000-CN controller
+|1-GbE (RJ-45)
+|Connects to the network where you access the BMC interface.
 
-a|
-1-GbE (RJ-45)
-
-a|
-Connects to the network where you access the BMC interface.
-
-a|
-2
-a|
-FC connection ports:
+|2
+|FC connection ports:
 
 * 4 on the SG6000-CN controller
 * 2 on each storage controller
+|16-Gb/s FC optical SFP+
+|Connect each storage controller to the SG6000-CN controller.
 
-a|
-16-Gb/s FC optical SFP+
+|3
+|Four network ports on the SG6000-CN controller
+|10/25-GbE
+|Connect to the Grid Network and the Client Network for StorageGRID.
 
-a|
-Connect each storage controller to the SG6000-CN controller.
-
-a|
-3
-a|
-Four network ports on the SG6000-CN controller
-a|
-10/25-GbE
-a|
-Connect to the Grid Network and the Client Network for StorageGRID.
-
-a|
-4
-a|
-Admin Network port on the SG6000-CN controller (labelled P1 in the figure)
-a|
-1-GbE (RJ-45)
+|4
+|Admin Network port on the SG6000-CN controller (labelled P1 in the figure)
+|1-GbE (RJ-45)
 
 *Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
-
-a|
-Connects the SG6000-CN controller to the Admin Network for StorageGRID.
+|Connects the SG6000-CN controller to the Admin Network for StorageGRID.
 
 |
-4
-a|
-Rightmost RJ-45 port on the SG6000-CN controller
-a|
-1-GbE (RJ-45)
+|Rightmost RJ-45 port on the SG6000-CN controller
+|1-GbE (RJ-45)
 
 *Important:* This port operates only at 1000 baseT/full and does not support 10- or 100-megabit speeds.
-
-a|
-
+|
 * Can be bonded with management port 1 if you want a redundant connection to the Admin Network.
 * Can be left unwired and available for temporary local access (IP 169.254.0.1).
 * During installation, can be used to connect the SG6000-CN controller to a service laptop if DHCP-assigned IP addresses are not available.
 
-a|
-5
-a|
-Management port 1 on each storage controller
+|5
+|Management port 1 on each storage controller
+|1-GbE (RJ-45)
+|Connects to the network where you access SANtricity System Manager.
 
-a|
-1-GbE (RJ-45)
-a|
-Connects to the network where you access SANtricity System Manager.
-
-a|
-5
-a|
-Management port 2 on each storage controller
-
-a|
-1-GbE (RJ-45)
-a|
-Reserved for technical support.
+|
+|Management port 2 on each storage controller
+|1-GbE (RJ-45)
+|Reserved for technical support.
 |===
 
 .Steps

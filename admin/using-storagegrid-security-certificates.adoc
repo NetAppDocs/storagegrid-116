@@ -39,7 +39,6 @@ You can access information about all StorageGRID certificates in a single locati
 
 . From Grid Manager, select *CONFIGURATON* > *Security* > *Certificates*.
 +
-// Update image
 image::security_certificates.png["Certificates page"]
 
 . Select a tab on the Certificates page for information about each certificate category and to access the certificate settings. You can only access a tab if you have the appropriate permission.
@@ -166,7 +165,7 @@ You can:
 * xref:kms-adding.adoc[Upload key management server (KMS) server and client certificates]
 * xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate for S3, C2S S3, or Azure]
 * xref:creating-relying-party-trusts-in-ad-fs.adoc#creating-a-relying-party-trust-manually[Manually specify an SSO certificate for relying party trust]
-* xref:../monitor/set-up-email-alert-notifications.adoc[Specify an email alert notification certificate]
+* xref:../monitor/email-alert-notifications.adoc[Specify a certificate for alert email notifications]
 * xref:../monitor/configuring-syslog-server.adoc#attach-certificate.adoc[Specify an external syslog server certificate]
 
 --
@@ -195,7 +194,7 @@ You can use the default certificate created during installation or upload a cust
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *Management interface certificate*
 a|
-xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a custom server certificate for the Grid Manager and the Tenant Manager]
+xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure management interface certificates]
 |===
 
 === S3 and Swift API certificate
@@ -209,7 +208,7 @@ Authenticates secure S3 or Swift client connections to a Storage Node, to the de
 a|
 *CONFIGURATION* > *Security* > *Certificates*, select the *Global* tab, and then select *S3 and Swift API certificate*
 a|
-xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure a custom server certificate for connections to Storage Nodes, the CLB service on Gateway Nodes, or to load balancer endpoints.]
+xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configure S3 and Swift API certificates]
 |===
 
 === Grid CA certificate
@@ -231,7 +230,7 @@ Installed on each client, allowing StorageGRID to authenticate external client a
 a|
 *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab
 a|
-xref:configuring-administrator-client-certificates.adoc[Configure administrator client certificates]
+xref:configuring-administrator-client-certificates.adoc[Configure client certificates]
 |===
 
 === Load balancer endpoint certificate
@@ -241,7 +240,7 @@ xref:configuring-administrator-client-certificates.adoc[Configure administrator 
 a|
 Server
 a|
-Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. You upload or generate a load balancer certificate when you configure a load balancer endpoint. Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
+Authenticates the connection between S3 or Swift clients and the StorageGRID Load Balancer service on Gateway Nodes and Admin Nodes. You can upload or generate a load balancer certificate when you configure a load balancer endpoint. Client applications use the load balancer certificate when connecting to StorageGRID to save and retrieve object data.
 
 You can also use a custom version of the global <<S3 and Swift API certificate>> certificate to authenticate connections to the Load Balancer service. If the global certificate is used to authenticate load balancer connections, you do not need to upload or generate a separate certificate for each load balancer endpoint. 
 
@@ -283,8 +282,9 @@ Authenticates the connection from the StorageGRID platform service to an S3 stor
 a|
 *Tenant Manager* > *STORAGE (S3)* > *Platform services endpoints*
 a|
-xref:../tenant/creating-platform-services-endpoint.adoc[Create a platform services endpoint]
-xref:../tenant/editing-platform-services-endpoint.adoc[Edit a platform services endpoint]
+xref:../tenant/creating-platform-services-endpoint.adoc[Create platform services endpoint]
+
+xref:../tenant/editing-platform-services-endpoint.adoc[Edit platform services endpoint]
 
 |===
 
@@ -300,7 +300,7 @@ Authenticates the connection from a StorageGRID Cloud Storage Pool to an externa
 a|
 *ILM* > *Storage pools*
 a|
-xref:../ilm/creating-cloud-storage-pool.adoc[Specify a Cloud Storage Pool certificate]
+xref:../ilm/creating-cloud-storage-pool.adoc[Create a Cloud Storage Pool]
 
 |===
 
@@ -348,7 +348,7 @@ Authenticates the connection between an SMTP email server and StorageGRID that i
 a|
 *ALERTS* > *Email setup*
 a|
-xref:../monitor/set-up-email-alert-notifications.adoc[Set up email notifications for alerts]
+xref:../monitor/email-alert-notifications.adoc[Set up email notifications for alerts]
 a|
 |===
 
@@ -367,7 +367,7 @@ a|
 *CONFIGURATION* > *Monitoring* > *Audit and syslog server* and then select *Configure external syslog server*
 a|
 
-xref:../monitor/configuring-syslog-server.adoc[Use a syslog server certificate]
+xref:../monitor/configuring-syslog-server.adoc[Configure an external syslog server]
 
 |===
 
