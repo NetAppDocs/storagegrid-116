@@ -12,7 +12,7 @@ summary: 'There are several tasks you can perform to help determine the source o
 [.lead]
 There are several tasks you can perform to help determine the source of issues related to Admin Nodes and the StorageGRID user interface.
 
-== Troubleshooting sign-on errors
+== Troubleshoot sign-on errors
 
 If you experience an error when you are signing in to a StorageGRID Admin Node, your system might have an issue with the identity federation configuration, a networking or hardware problem, an issue with Admin Node services, or an issue with the Cassandra database on connected Storage Nodes.
 
@@ -98,7 +98,7 @@ The output is updated immediately if the status of a service changes.
  node exporter                  0.17.0+ds      Running
  sg snmp agent                  11.4.0         Running
 
-. Confirm that the Apache web server is running: `# service apache2 status`
+. Confirm that the nginx-gw service is running `# service nginx-gw status`
 
 . [[use_Lumberjack_to_collect_logs, start=9]]Use Lumberjack to collect logs: `# /usr/local/sbin/lumberjack.rb`
 +
@@ -138,15 +138,9 @@ Make sure the idnt, acct, nginx, and cassandra services are all running.
 . Repeat steps <<use_Lumberjack_to_collect_logs,Use Lumberjack to collect logs>> and <<review_logs,Review logs>> to review the logs on the Storage Nodes.
 . If you are unable to resolve the issue, contact technical support.
 +
-Provide the logs you collected to technical support.
+Provide the logs you collected to technical support. See also xref:logs-files-reference.adoc[Log files reference].
 
-.Related information
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:logs-files-reference.adoc[Log files reference]
-
-== Troubleshooting user interface issues
+== Troubleshoot user interface issues
 
 You might see issues with the Grid Manager or the Tenant Manager after upgrading to a new version of StorageGRID software.
 
@@ -164,13 +158,8 @@ NOTE: Browser support has changed for StorageGRID 11.5. Confirm you are using a 
 +
 Clearing the cache removes outdated resources used by the previous version of StorageGRID software, and permits the user interface to operate correctly again. For instructions, see the documentation for your web browser.
 
-.Related information
 
-xref:../admin/web-browser-requirements.adoc[Web browser requirements]
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-== Checking the status of an unavailable Admin Node
+== Check the status of an unavailable Admin Node
 
 If the StorageGRID system includes multiple Admin Nodes, you can use another Admin Node to check the status of an unavailable Admin Node.
 

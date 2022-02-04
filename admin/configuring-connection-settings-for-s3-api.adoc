@@ -16,7 +16,8 @@ If you are connecting to an Archive Node using the S3 interface, you must config
 ====
 Moving objects from an Archive Node to an external archival storage system through the S3 API has been replaced by ILM Cloud Storage Pools, which offer more functionality. The *Cloud Tiering - Simple Storage Service (S3)* option is still supported, but you might prefer to implement Cloud Storage Pools instead.
 
-If you are currently using an Archive Node with the *Cloud Tiering - Simple Storage Service (S3)* option, consider migrating your objects to a Cloud Storage Pool. See the instructions for managing objects with information lifecycle management.
+If you are currently using an Archive Node with the *Cloud Tiering - Simple Storage Service (S3)* option, consider migrating your objects to a Cloud Storage Pool. See xref:../ilm/index.adoc[Manage objects with ILM].
+
 ====
 
 .What you'll need
@@ -57,10 +58,8 @@ For a non-AWS target, enter the URL of the system hosting the bucket, including 
  ** *End Point Authentication*: Enabled by default. If the network to the external archival storage system is trusted, you can unselect the check box to disable endpoint SSL certificate and hostname verification for the targeted external archival storage system. If another instance of a StorageGRID system is the target archival storage device and the system is configured with publicly signed certificates, you can keep the check box selected.
  ** *Storage Class*: Select *Standard (Default)* for regular storage. Select *Reduced Redundancy* only for objects that can be easily recreated. *Reduced Redundancy* provides lower cost storage with less reliability. If the targeted archival storage system is another instance of the StorageGRID system, *Storage Class* controls how many interim copies of the object are made at ingest on the target system, if dual commit is used when objects are ingested there.
 
-. Click *Apply Changes*.
+. Select *Apply Changes*.
 +
 The specified configuration settings are validated and applied to your StorageGRID system. Once configured, the target cannot be changed.
 
-.Related information
 
-xref:../ilm/index.adoc[Manage objects with ILM]

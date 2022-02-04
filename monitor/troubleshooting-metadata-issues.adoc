@@ -72,7 +72,7 @@ The Services: Status - Cassandra (SVST) alarm indicates that you might need to r
 .About this task
 If Cassandra is stopped for more than 15 days (for example, the Storage Node is powered off), Cassandra will not start when the node is brought back online. You must rebuild the Cassandra database for the affected DDS service.
 
-You can xref:running-diagnostics.adoc[use the Diagnostics page] to obtain additional information on the current state of your grid.
+You can xref:running-diagnostics.adoc[run diagnostics] to obtain additional information on the current state of your grid.
 
 IMPORTANT: If two or more of the Cassandra database services are down for more than 15 days, contact technical support, and do not proceed with the steps below.
 
@@ -140,7 +140,7 @@ There can be more than one entry for Cassandra; you must locate the most recent 
 
  .. If Cassandra has been down for longer than 15 days, you must rebuild the Cassandra database.
 +
-For instructions, see xref:../maintain/recovering-storage-node-that-has-been-down-more-than-15-days.adoc[Recovering Storage Node down more than 15 days].
+For instructions, see xref:../maintain/recovering-storage-node-that-has-been-down-more-than-15-days.adoc[Recover Storage Node down more than 15 days].
  .. Contact technical support if alarms do not clear after Cassandra is rebuilt.
 
 == Troubleshoot Cassandra Out of Memory errors (SMTT alarm)
@@ -154,9 +154,7 @@ If an out-of-memory error occurs for the Cassandra database, a heap dump is crea
 . To view the event, select *SUPPORT* > *Tools* > *Grid topology* > *Configuration*.
 . Verify that the Cassandra Heap Out Of Memory Errors count is 1 or greater.
 +
-You can use the *SUPPORT* > *Tools* > *Diagnostics* page to obtain additional information on the current state of your grid.
-+
-xref:running-diagnostics.adoc[Running diagnostics]
+You can xref:running-diagnostics.adoc[run diagnostics] to obtain additional information on the current state of your grid.
 
 . Go to `/var/local/core/`, compress the `Cassandra.hprof` file, and send it to technical support.
 . Make a backup of the `Cassandra.hprof` file, and delete it from the `/var/local/core/ directory`.

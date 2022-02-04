@@ -23,7 +23,7 @@ StorageGRID requires the following for S3 Select queries:
 
 * The object you want to query is in CSV format, or is a GZIP or BZIP2 compressed file containing a CSV formatted file.
 * Tenants must be granted S3 Select ability by the grid administrator. Select *Allow S3 Select* when xref:creating-tenant-account.adoc[creating a tenant] or xref:editing-tenant-account.adoc[editing a tenant].
-* The SelectObjectContent request must be sent to a xref:managing-load-balancing.adoc[StorageGRID load balancer endpoint]. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
+* The SelectObjectContent request must be sent to a xref:configuring-load-balancer-endpoints.adoc[StorageGRID load balancer endpoint]. The Admin and Gateway Nodes used by the endpoint must be SG100 or SG1000 appliance nodes or VMware-based software nodes.
 
 Note the following limitations:
 
