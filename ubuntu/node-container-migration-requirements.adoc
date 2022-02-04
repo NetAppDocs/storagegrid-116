@@ -40,7 +40,7 @@ The lefthand side of the arrows corresponds to the traditional interfaces as vie
 
 Now, suppose you want to migrate NodeA to Host2. If Host2 also has interfaces named bond0.1001, bond0.1002, and bond0.1003, the system will allow the move, assuming that the like-named interfaces will provide the same connectivity on Host2 as they do on Host1. If Host2 does not have interfaces with the same names, the move will not be allowed.
 
-There are many ways to achieve consistent network interface naming across multiple hosts; see xref:configuring-host-network.adoc[Configuring the host network] for some examples.
+There are many ways to achieve consistent network interface naming across multiple hosts; see xref:configuring-host-network.adoc[Configure the host network] for some examples.
 
 == Shared storage
 
@@ -57,8 +57,3 @@ The following example shows one solution for block device mapping for a StorageG
 
 image::../media/block_device_mapping_rhel.gif[This image is explained by the surrounding text.]
 
-.Related information
-
-xref:configuring-host-network.adoc[Configure the host network]
-
-xref:../maintain/index.adoc[Recover and maintain]
