@@ -417,7 +417,7 @@ Check the status of Cassandra:
 
 This alarm might also indicate that the metadata store (Cassandra database) for a Storage Node requires rebuilding.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Services: Status - Cassandra (SVST) alarm]
+See information about troubleshooting the Services: Status - Cassandra (SVST) alarm in xref:troubleshooting-metadata-issues.adoc[Troubleshoot metadata issues].
 
 If the problem persists, contact technical support.
 
@@ -454,17 +454,15 @@ DDS
 a|
 This alarm is triggered when the Metadata Effective Space (CEMS) reaches 70% full (minor alarm), 90% full (major alarm), and 100% full (critical alarm).
 
-If this alarm reaches the 90% threshold, a warning appears on the Dashboard in the Grid Manager. You must perform an expansion procedure to add new Storage Nodes as soon as possible. See the instructions for expanding a StorageGRID grid.
+If this alarm reaches the 90% threshold, a warning appears on the Dashboard in the Grid Manager. You must perform an expansion procedure to add new Storage Nodes as soon as possible. See xref:../expand/index.adoc[Expand your grid].
 
 If this alarm reaches the 100% threshold, you must stop ingesting objects and add Storage Nodes immediately. Cassandra requires a certain amount of space to perform essential operations such as compaction and repair. These operations will be impacted if object metadata uses more than 100% of the allowed space. Undesirable results can occur.
 
 *Note*: Contact technical support if you are unable to add Storage Nodes.
 
-Once new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
+After new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Low metadata storage alert]
-
-xref:../expand/index.adoc[Expand your grid]
+Also see information about troubleshooting the Low metadata storage alert in xref:troubleshooting-metadata-issues.adoc[Troubleshoot metadata issues].
 
 a|
 CLBA
@@ -673,7 +671,7 @@ Lost objects represent a loss of data. The Lost Objects attribute is incremented
 
 Investigate LOST (LOST Object) alarms immediately. If the problem persists, contact technical support.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting lost and missing object data]
+xref:troubleshooting-lost-and-missing-object-data.adoc[Troubleshoot lost and missing object data]
 
 a|
 MCEP
@@ -697,7 +695,7 @@ NMS
 a|
 Check the network connections of the servers hosting the NMS service and the external mail server. Also confirm that the email server configuration is correct.
 
-xref:managing-alarms.adoc[Configuring email server settings for alarms (legacy system)]
+xref:managing-alarms.adoc[Configure email server settings for alarms (legacy system)]
 
 a|
 MINS
@@ -708,7 +706,7 @@ BNMS
 a|
 A minor alarm is triggered if the NMS service is unable to connect to the mail server. Check the network connections of the servers hosting the NMS service and the external mail server. Also confirm that the email server configuration is correct.
 
-xref:managing-alarms.adoc[Configuring email server settings for alarms (legacy system)]
+xref:managing-alarms.adoc[Configure email server settings for alarms (legacy system)]
 
 a|
 MISS
@@ -770,7 +768,7 @@ The following can be causes of NRER alarms:
 * High link error rates
 * NIC ring buffer overrun
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Network Receive Error (NRER) alarm]
+See information about troubleshooting the Network Receive Error (NRER) alarm in xref:troubleshooting-network-hardware-and-platform-issues.adoc[Troubleshoot network, hardware, and platform issues].
 
 a|
 NRLY
@@ -1214,7 +1212,7 @@ If the value of Storage Status is Volume(s) Unavailable, a part of the storage i
 
 If the value of Storage Status is Error, contact technical support.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Storage Status (SSTS) alarm]
+xref:troubleshooting-storage-status-alarm.adoc[Troubleshoot the Storage Status (SSTS) alarm]
 
 a|
 SVST
@@ -1238,7 +1236,7 @@ This alarm might also indicate that the metadata store (Cassandra database) for 
 
 If the problem persists, contact technical support.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Services: Status - Cassandra (SVST) alarm]
+xref:troubleshooting-metadata-issues.adoc[Troubleshoot the Services: Status - Cassandra (SVST) alarm]
 
 a|
 TMEM
