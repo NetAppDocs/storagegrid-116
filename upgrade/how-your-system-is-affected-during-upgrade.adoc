@@ -65,3 +65,23 @@ Until the *Final Upgrade Steps* task completes:
 
 * Do not perform an expansion procedure.
 * Do not perform a decommission procedure.
+
+== You cannot view bucket details or manage buckets from the Tenant Manager
+
+During the upgrade to StorageGRID 11.6 (that is, while the system is operating as a mixed-version environment), you cannot view bucket details or manage buckets using the Tenant Manager. One of the following errors appears on the Buckets page in Tenant Manager:
+
+* "`You cannot use this API while you are upgrading to 11.6.`"
+
+* "`You cannot view bucket versioning details in the Tenant Manager while you are upgrading to 11.6.`" 
+
+This error will resolve after the upgrade to 11.6 is complete. 
+
+.Workaround
+
+While the 11.6 upgrade is in progress, use the following tools to view bucket details or manage buckets, instead of using the Tenant Manager:
+
+*	To perform standard S3 operations on a bucket, use either the S3 REST API or the Tenant Management API.
+* To perform StorageGRID custom operations on a bucket (for example, viewing and modifying the bucket consistency level, enabling or disabling last access time updates, or configuring search integration), use the Tenant Management API.
+
+See xref:../tenant/understanding-tenant-management-api.adoc[Understand Tenant Management API] and xref:../s3/index.adoc[Use S3] for instructions.
+
