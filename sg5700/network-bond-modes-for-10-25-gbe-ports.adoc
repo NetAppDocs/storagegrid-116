@@ -59,4 +59,4 @@ If you plan to use Aggregate port bond mode:
 
 If you do not want to use all four 10/25-GbE ports, you can use one, two, or three ports. Using more than one port maximizes the chance that some network connectivity will remain available if one of the 10/25-GbE ports fails.
 
-NOTE: If you choose to use fewer than four ports, be aware that one or more alarms will be raised in the Grid Manager after StorageGRID is installed, indicating that cables are unplugged. You can safely acknowledge the alarms to clear them.
+NOTE: If you choose to use fewer than four ports, be aware that a *Services appliance link down* alert might be triggered in the Grid Manager after the appliance node is installed, indicating that a cable is unplugged. You can safely disable this alert rule for the triggered alert. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.

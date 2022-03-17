@@ -35,9 +35,9 @@ You can determine if you have a failed controller canister in two ways:
 
 The appliance Storage Node will not be accessible when you replace the controller. If the E2800 controller is functioning sufficiently, you can xref:placing-appliance-into-maintenance-mode.adoc[place the E5700SG controller into maintenance mode].
 
-When you replace a controller, you must remove the battery from the original controller and install it in the replacement controller.
+When you replace a controller, you must remove the battery from the original controller and install it in the replacement controller. In some cases, you might also need to remove the host interface card from the original controller and install it in the replacement controller.
 
-NOTE: The E2800 controller in the appliance does not include a host interface card (HIC).
+NOTE: The storage controllers in most appliance models do not include host interface cards (HIC).
 
 .Steps
 
@@ -149,8 +149,7 @@ image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
 +
 NOTE: The steps for assigning an IP address to the replacement controller depend on whether you connected management port 1 to a network with a DHCP server and on whether all drives are secured.
 +
-*** If management port 1 is connected to a network with a DHCP server, the new controller will obtain its IP address from the DHCP server. This value might be different than the original controller's IP address.
-*** If all drives are secured, you must use the Enterprise Management Window (EMW) in SANtricity Storage Manager to unlock the secured drives. You cannot access the new controller until you unlock the drives with the saved key. See the E-Series instructions for replacing a simplex E2800 controller.
+If management port 1 is connected to a network with a DHCP server, the new controller will obtain its IP address from the DHCP server. This value might be different than the original controller's IP address.
 
 . If the appliance uses secured drives, follow the instructions in the E2800 controller replacement procedure to import the drive security key.
 . Return the appliance to normal operating mode. From the StorageGRID Appliance Installer, select *Advanced* > *Reboot Controller*, and then select *Reboot into StorageGRID*.
