@@ -9,7 +9,7 @@ summary: 'You might need to replace an E2800 controller or an EF570 controller i
 :imagesdir: ../media/
 
 [.lead]
-You might need to replace an E2800 controller or an EF570 controller if it is not functioning optimally or if it has failed.
+You might need to replace an E2800 series controller or an EF570 controller if it is not functioning optimally or if it has failed.
 
 .What you'll need
 
@@ -55,7 +55,7 @@ Save the packing materials to use when shipping the failed controller.
 
 . Locate the MAC address and FRU part number labels on the back of the replacement controller.
 +
-This figure shows the E2800 controller. The procedure for replacing the EF570 controller is identical.
+This figure shows a E2800 series controller. The procedure for replacing the EF570 controller is identical.
 +
 image::../media/e2800_labels_on_controller.gif[MAC and FRU labels on E2800 controller]
 +
@@ -170,7 +170,53 @@ image::../media/e2800_battery_flange_ok.gif[Battery Flange Correct]
 +
 image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
 
- .. Replace the controller cover.
+ .. If the controller does not have a HIC, replace the controller cover. If the controller does have a HIC, <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
+
+ . [[move_the_HIC_to_the_replacement_controller]]If equipped with a HIC, move the HIC from the failed controller to the replacement controller.
+.. Remove any SFPs from the HIC.
+.. Using a #1 Phillips screwdriver, remove the screws that attach the HIC faceplate to the controller.
++
+There are four screws: one on the top, one on the side, and two on the front.
++
+image::../media/28_dwg_e2800_hic_faceplace_screws_maint-e2800.png[E2800 faceplate screws]
+
+.. Remove the HIC faceplate.
+.. Using your fingers or a Phillips screwdriver, loosen the three thumbscrews that secure the HIC to the controller card.
+.. Carefully detach the HIC from the controller card by lifting the card up and sliding it back.
++
+CAUTION: Be careful not to scratch or bump the components on the bottom of the HIC or on the top of the controller card.
++
+image::../media/28_dwg_e2800_hic_thumbscrews_maint-e2800.png[HIC thumbscrews E2800A]
++
+*(1)* _Host interface card_
++
+*(2)* _Thumbscrews_
+
+.. Place the HIC on a static-free surface.
+.. Using a #1 Phillips screwdriver, remove the four screws that attach the blank faceplate to the replacement controller, and remove the faceplate.
+.. Align the three thumbscrews on the HIC with the corresponding holes on the replacement controller, and align the connector on the bottom of the HIC with the HIC interface connector on the controller card.
++
+Be careful not to scratch or bump the components on the bottom of the HIC or on the top of the controller card.
+
+.. Carefully lower the HIC into place, and seat the HIC connector by pressing gently on the HIC.
++
+CAUTION: *Possible equipment damage* -- Be very careful not to pinch the gold ribbon connector for the controller LEDs between the HIC and the thumbscrews.
++
+image::../media/28_dwg_e2800_hic_thumbscrews_maint-e2800.gif[E2800A HIC thumscrews]
++
+*(1)* _Host interface card_
++
+*(2)* _Thumbscrews_
+
+.. Hand-tighten the HIC thumbscrews.
++
+Do not use a screwdriver, or you might over tighten the screws.
+
+.. Using a #1 Phillips screwdriver, attach the HIC faceplate you removed from the original controller to the new controller with four screws.
++
+image::../media/28_dwg_e2800_hic_faceplace_screws_maint-e2800.png[E2800A faceplate screws]
+
+.. Reinstall any removed SFPs into the HIC.
 . Install the replacement controller into the appliance.
  .. Turn the controller over, so that the removable cover faces down.
  .. With the cam handle in the open position, slide the controller all the way into the appliance.
