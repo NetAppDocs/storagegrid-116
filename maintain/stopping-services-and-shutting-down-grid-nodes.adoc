@@ -13,10 +13,7 @@ Before you can power off a StorageGRID system, you must stop all services runnin
 
 .About this task
 
-If possible, you should stop services on the grid nodes in this order:
-
-* Stop services on Gateway Nodes first.
-* Stop services on the primary Admin Node last.
+Stop services on Admin Nodes and API Gateway Nodes first, and then stop services on Storage Nodes.
 
 This approach allows you to use the primary Admin Node to monitor the status of the other grid nodes for as long as possible.
 

@@ -57,7 +57,7 @@ image::../media/s3_object_lock_global_setting_error.gif[S3 Object Lock Global Se
 
 .After you finish
 
-After you enable the global S3 Object Lock setting, you might need to xref:../ilm/ilm/creating-default-ilm-ruled.adoc[create a default rule] that is compliant and  xref:creating-ilm-policy-after-s3-object-lock-is-enabled.adoc[create an ILM policy] that is compliant. After the setting is enabled, the ILM policy can optionally include both a compliant default rule and a non-compliant default rule. For example, you might want to use a non-compliant rule that does not have filters for objects in buckets that do not have S3 Object Lock enabled.
+After you enable the global S3 Object Lock setting, you might need to xref:../ilm/creating-default-ilm-rule.adoc[create a default rule] that is compliant and  xref:creating-ilm-policy-after-s3-object-lock-is-enabled.adoc[create an ILM policy] that is compliant. After the setting is enabled, the ILM policy can optionally include both a compliant default rule and a non-compliant default rule. For example, you might want to use a non-compliant rule that does not have filters for objects in buckets that do not have S3 Object Lock enabled.
 
 .Related information
 

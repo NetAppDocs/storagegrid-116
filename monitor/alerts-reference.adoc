@@ -405,7 +405,7 @@ This alert indicates that something is interfering with node-to-node communicati
 . Check for a network issue that might be affecting one or more Storage Nodes.
 . Select *SUPPORT* > *Tools* > *Grid topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra service is "Running."
-. If Cassandra is not running, follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
+. If Cassandra is not running, follow the steps for xref:../maintain/starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra service are now running and the alert is not resolved, contact technical support.
 
 a|
@@ -415,7 +415,7 @@ The Cassandra compaction process is overloaded.
 
 If the compaction process is overloaded, read performance might be degraded and RAM might be used up. The Cassandra service might also become unresponsive or crash.
 
-. Restart the Cassandra service by following the steps for restarting a service in the xref:../maintain/index.adoc[recovery and maintenance instructions].
+. Restart the Cassandra service by following the steps for xref:../maintain/starting-or-restarting-service.adoc[restarting a service].
 . If this alert persists, contact technical support.
 
 
@@ -447,7 +447,7 @@ The Cassandra repair service exists on all Storage Nodes and provides critical r
 
 . Select *SUPPORT* > *Tools* > *Grid topology*.
 . For each Storage Node in your system, select *SSM* > *Services*. Ensure that the status of the Cassandra Reaper service is "Running."
-. If Cassandra Reaper is not running, follow the steps for follow the steps for xref:starting-or-restarting-service.adoc[starting or restarting a service].
+. If Cassandra Reaper is not running, follow the steps for follow the steps for xref:../maintain/starting-or-restarting-service.adoc[starting or restarting a service].
 . If all instances of the Cassandra Reaper service are now running and the alert is not resolved, contact technical support.
 
 
@@ -604,7 +604,7 @@ The server certificate used for accessing storage API endpoints is about to expi
 
 . Select *CONFIGURATION* > *Security* > *Certificates*.
 . On the *Global* tab, select *S3 and Swift API certificate*.
-. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-management-interface-certificate[Upload a new S3 and Swift API certificate.]
+. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Upload a new S3 and Swift API certificate.]
 
 a|External syslog CA certificate expiration
 a|The certificate authority (CA) certificate used to sign the external syslog server certificate is about to expire.
@@ -647,7 +647,7 @@ The maximum transmission unit (MTU) setting for the Grid Network interface (eth0
 
 The differences in MTU settings could indicate that some, but not all, eth0 networks are configured for jumbo frames. An MTU size mismatch of greater than 1000 might cause network performance problems.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Grid Network MTU mismatch alert]
+See the instructions for the Grid Network MTU mismatch alert in xref:troubleshooting-network-hardware-and-platform-issues.adoc[Troubleshoot network, hardware, and platform issues].
 
 a|
 High Java heap use
@@ -676,7 +676,7 @@ a|
 Unable to synchronize federated groups and users from the identity source.
 
 . Confirm that the configured LDAP server is online and available.
-. Review the settings on the Identity Federation page. Confirm that all values are current. See xref:../admin/using-identity-federation.adoc[Using identity federation] in the instructions for administering StorageGRID.
+. Review the settings on the Identity Federation page. Confirm that all values are current. See xref:../admin/using-identity-federation.adoc[Use identity federation] in the instructions for administering StorageGRID.
 . Click *Test Connection* to validate the settings for the LDAP server.
 . If you cannot resolve the issue, contact technical support.
 
@@ -685,7 +685,7 @@ Unable to synchronize federated groups and users from the identity source.
 
 . Sign in to the Tenant Manager.
 . Confirm that the LDAP server configured by the tenant is online and available.
-. Review the settings on the Identity Federation page. Confirm that all values are current. See xref:../tenant/using-identity-federation.adoc[Using identity federation] in the instructions for using a tenant account.
+. Review the settings on the Identity Federation page. Confirm that all values are current. See xref:../tenant/using-identity-federation.adoc[Use identity federation] in the instructions for using a tenant account.
 . Click *Test Connection* to validate the settings for the LDAP server.
 . If you cannot resolve the issue, contact technical support.
 
@@ -915,13 +915,11 @@ Immediately add Storage Nodes in an expansion procedure.
 *Minor alert*
 
 . Monitor the rate at which object metadata space is being used. Select *NODES* > *_Storage Node_* > *Storage*, and view the Storage Used - Object Metadata graph.
-. Add Storage Nodes in an expansion procedure as soon as possible.
+. Add Storage Nodes in an xref:../expand/index.adoc[expansion procedure] as soon as possible.
 
 Once new Storage Nodes are added, the system automatically rebalances object metadata across all Storage Nodes, and the alarm clears.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Low metadata storage alert]
-
-xref:../expand/index.adoc[Expand your grid]
+See the instructions for the Low metadata storage alert in xref:troubleshooting-metadata-issues.adoc[Troubleshoot metadata issues].
 
 a|
 Low metrics disk capacity
@@ -938,7 +936,7 @@ The space available for storing object data is low.
 
 Perform an expansion procedure. You can add storage volumes (LUNs) to existing Storage Nodes, or you can add new Storage Nodes.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Low object data storage alert]
+xref:troubleshooting-low-object-data-storage-alert.adoc[Troubleshoot the Low object data storage alert]
 
 xref:../expand/index.adoc[Expand your grid]
 
@@ -978,7 +976,9 @@ Errors have occurred while transferring data between nodes.
 
 Network connectivity errors might clear without manual intervention. Contact technical support if the errors do not clear.
 
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting the Network Receive Error (NRER) alarm]
+
+See the instructions for the Network Receive Error (NRER) alarm in xref:troubleshooting-network-hardware-and-platform-issues.adoc[Troubleshoot network, hardware, and platform issues].
+
 
 a|
 Node network reception frame error
@@ -1058,7 +1058,7 @@ This alert might indicate that data has been permanently lost and is not retriev
 
 . Investigate this alert immediately. You might need to take action to prevent further data loss. You also might be able to restore a lost object if you take prompt action.
 +
-xref:troubleshooting-storagegrid-system.adoc[Troubleshooting lost and missing object data]
+xref:troubleshooting-lost-and-missing-object-data.adoc[Troubleshoot lost and missing object data]
 
 . When the underlying problem is resolved, reset the counter:
  .. Select *SUPPORT* > *Tools* > *Grid topology*.
@@ -1259,7 +1259,7 @@ a|
 A file was found in replicated object storage that could not be identified as a replicated object.
 
 . Determine if there are any issues with the underlying storage on a Storage Node. For example, run hardware diagnostics or perform a filesystem check.
-. After resolving any storage issues, perform an xref:verifying-object-integrity.adoc[object existence check] to determine if any replicated copies, as defined by your ILM policy, are missing.
+. After resolving any storage issues, xref:verifying-object-integrity.adoc[run object existence check] to determine if any replicated copies, as defined by your ILM policy, are missing.
 . Monitor this alert. The alert will clear after 24 hours, but will be triggered again if the issue has not been fixed.
 . If you cannot resolve the alert, contact technical support.
 |===

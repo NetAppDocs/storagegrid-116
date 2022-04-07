@@ -2,7 +2,7 @@ section: admin
 title: Administer StorageGRID
 entries:
   - title: Overview
-    pdf-filename: Overview of administering StorageGRID
+    pdf-filename: Administer a StorageGRID System
     url: "/admin/index.html"
   - title: Get started with StorageGRID
     entries:
@@ -20,11 +20,11 @@ entries:
       url: "/admin/viewing-storagegrid-license-information.html"
     - title: Update StorageGRID license information
       url: "/admin/updating-storagegrid-license-information.html"
-    - title: Use the Grid Management API
-      url: "/admin/using-grid-management-api.html"
+    - title: Use the API     
       entries:
-      - title: Issue API requests
-        url: "/admin/issuing-api-requests.html"
+      - title: Use the Grid Management API
+        pdf-filename: Grid Management API
+        url: "/admin/using-grid-management-api.html"
       - title: Grid Management API operations
         url: "/admin/grid-management-api-operations.html"        
       - title: Grid Management API versioning
@@ -33,11 +33,11 @@ entries:
         url: "/admin/protecting-against-cross-site-request-forgery-csrf.html"
       - title: Use the API if single sign-on is enabled
         entries:
-        - title: AD FS
+        - title: Active Directory
           url: "/admin/use-api-if-sso-is-enabled-adfs.html"
-        - title: Azure AD
+        - title: Azure
           url: "/admin/use-api-if-sso-is-enabled-azure.html"
-        - title: Ping Federate
+        - title: PingFederate
           url: "/admin/use-api-if-sso-is-enabled-ping.html"   
   - title: Control access to StorageGRID
     entries:
@@ -57,27 +57,24 @@ entries:
       url: "/admin/managing-users.html"
     - title: Use single sign-on (SSO)
       entries:
-      - title: How single sign-on works
-        url: "/admin/how-sso-works.html"
-      - title: Requirements for using single sign-on
-        url: "/admin/requirements-for-sso.html"
       - title: Configure single sign-on
         url: "/admin/configuring-sso.html"
-        entries:
-        - title: Confirm federated users can sign in
-          url: "/admin/confirming-federated-users-can-sign-in.html"
-        - title: Use sandbox mode
-          url: "/admin/using-sandbox-mode.html"
-        - title: Create relying party trusts in AD FS
-          url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
-        - title: Create enterprise applications in Azure
-          url: "/admin/creating-enterprise-application-azure.html"          
-        - title: Create SP connections in PingFederate
-          url: "/admin/creating-sp-connection-ping.html"
-        - title: Disable single sign-on
-          url: "/admin/disabling-single-sign-on.html"
-        - title: Temporarily disable and reenable single sign-on for one Admin Node
-          url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
+      - title: Requirements for using single sign-on
+        url: "/admin/requirements-for-sso.html"
+      - title: Confirm federated users can sign in
+        url: "/admin/confirming-federated-users-can-sign-in.html"
+      - title: Use sandbox mode
+        url: "/admin/using-sandbox-mode.html"
+      - title: Create relying party trusts in AD FS
+        url: "/admin/creating-relying-party-trusts-in-ad-fs.html"
+      - title: Create enterprise applications in Azure
+        url: "/admin/creating-enterprise-application-azure.html"          
+      - title: Create SP connections in PingFederate
+        url: "/admin/creating-sp-connection-ping.html"
+      - title: Disable single sign-on
+        url: "/admin/disabling-single-sign-on.html"
+      - title: Temporarily disable and reenable single sign-on for one Admin Node
+        url: "/admin/temporarily-disabling-and-reenabling-sso-for-admin-node.html"
   - title: Manage security settings
     entries:      
     - title: Manage certificates
@@ -115,13 +112,6 @@ entries:
         url: "/admin/kms-configuring-storagegrid-as-client.html"
       - title: Add a key management server (KMS)
         url: "/admin/kms-adding.html"
-        entries:
-        - title: 'Step 1: Enter KMS Details'
-          url: "/admin/kms-adding-enter-kms-details.html"
-        - title: 'Step 2: Upload Server Certificate'
-          url: "/admin/kms-adding-upload-server-certificate.html"
-        - title: 'Step 3: Upload Client Certificates'
-          url: "/admin/kms-adding-upload-client-certificates.html"
       - title: View KMS details
         url: "/admin/kms-viewing-details.html"
       - title: View encrypted nodes
@@ -140,19 +130,19 @@ entries:
       entries:
       - title: Overview
         url: "/admin/managing-untrusted-client-networks.html"
-      - title: Specify a node&#8217;s Client Network is untrusted
+      - title: Specify node&#8217;s Client Network is untrusted
         url: "/admin/specifying-node-client-network-is-untrusted.html"
   - title: Manage tenants
     entries:
     - title: Manage tenants
       url: "/admin/managing-tenants.html"
-    - title: Create a tenant account
+    - title: Create tenant account
       url: "/admin/creating-tenant-account.html"
-    - title: Change the password for a tenant&#8217;s local root user
+    - title: Change password for tenant&#8217;s local root user
       url: "/admin/changing-password-for-tenant-local-root-user.html"
-    - title: Edit a tenant account
+    - title: Edit tenant account
       url: "/admin/editing-tenant-account.html"
-    - title: Delete a tenant account
+    - title: Delete tenant account
       url: "/admin/deleting-tenant-account.html"
     - title: Manage platform services
       entries:
@@ -258,7 +248,6 @@ entries:
     - title: Manage object metadata storage
       url: "/admin/managing-object-metadata-storage.html"
     - title: Configure global settings for stored objects
-      url: "/admin/configuring-global-settings-for-stored-objects.html"
       entries:
       - title: Configure stored object compression
         url: "/admin/configuring-stored-object-compression.html"
@@ -295,7 +284,7 @@ entries:
         - title: Configure audit clients for Active Directory
           url: "/admin/configuring-audit-clients-for-active-directory.html"
         - title: Add a user or group to a CIFS audit share
-          url: "/admin/add-user-or-group-to-cifs-audit-share.html"
+          url: "/admin/adding-user-or-group-to-cifs-audit-share.html"
         - title: Remove a user or group from a CIFS audit share
           url: "/admin/removing-user-or-group-from-cifs-audit-share.html"
         - title: Change CIFS audit share user or group name
@@ -314,51 +303,40 @@ entries:
         - title: Change IP address of NFS audit client
           url: "/admin/changing-ip-address-of-nfs-audit-client.html"
   - title: Manage Archive Nodes
-    url: "/admin/managing-archive-nodes.html"
     entries:
     - title: What an Archive Node is
-      url: "/admin/what-archive-node-is.html"
+      url: "/admin/what-archive-node-is.html" 
+    - title: Archive to the cloud through S3 API
+      url: "/admin/archiving-to-cloud-through-s3-api.html"
       entries:
-      - title: What the ARC service is
-        url: "/admin/what-arc-service-is.html"
-    - title: Configure Archive Node connections to archival storage
-      url: "/admin/configuring-archive-node-connections-to-archival-storage.html"
+      - title: Configure connection settings for S3 API
+        url: "/admin/configuring-connection-settings-for-s3-api.html"
+      - title: Modify connection settings for S3 API
+        url: "/admin/modifying-connection-settings-for-s3-api.html"
+      - title: Modify Cloud Tiering Service state
+        url: "/admin/modifying-cloud-tiering-service-state.html"
+      - title: Reset Store Failure Count for S3 API connection
+        url: "/admin/resetting-store-failure-count-for-s3-api-connection.html"
+      - title: Migrate objects from Cloud Tiering - S3 to Cloud Storage Pool
+        url: "/admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html"
+    - title: Archive to tape through TSM middleware
+      url: "/admin/archiving-to-tape-through-tsm-middleware.html"
       entries:
-      - title: Archive to the cloud through S3 API
-        url: "/admin/archiving-to-cloud-through-s3-api.html"
-        entries:
-        - title: Configure connection settings for S3 API
-          url: "/admin/configuring-connection-settings-for-s3-api.html"
-        - title: Modify connection settings for S3 API
-          url: "/admin/modifying-connection-settings-for-s3-api.html"
-        - title: Modify Cloud Tiering Service state
-          url: "/admin/modifying-cloud-tiering-service-state.html"
-        - title: Reset Store Failure Count for S3 API connection
-          url: "/admin/resetting-store-failure-count-for-s3-api-connection.html"
-        - title: Migrate objects from Cloud Tiering - S3 to Cloud Storage Pool
-          url: "/admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html"
-      - title: Archive to tape through TSM middleware
-        url: "/admin/archiving-to-tape-through-tsm-middleware.html"
-        entries:
-        - title: Configure connections to TSM middleware
-          url: "/admin/configuring-connections-to-tsm-middleware.html"
-        - title: Optimize Archive Node for TSM middleware sessions
-          url: "/admin/optimizing-archive-node-for-tsm-middleware-sessions.html"
-        - title: Configure archive state and counters for TSM
-          url: "/admin/configuring-archive-store-for-tsm-middleware-connection.html"
-        - title: Manage Archive Node when TSM server reaches capacity
-          url: "/admin/managing-archive-node-when-tsm-server-reaches-capacity.html"
-          entries:
-          - title: Set Archive Node to read-only if TSM middleware reaches capacity
-            url: "/admin/setting-archive-node-to-read-only-if-tsm-middleware-reaches-capacity.html"
-      - title: Configure Archive Node retrieve settings
-        url: "/admin/configuring-archive-node-retrieve-settings.html"
-      - title: Configure Archive Node replication
-        url: "/admin/configuring-archive-node-replication.html"
+      - title: Configure connections to TSM middleware
+        url: "/admin/configuring-connections-to-tsm-middleware.html"
+      - title: Optimize Archive Node for TSM middleware sessions
+        url: "/admin/optimizing-archive-node-for-tsm-middleware-sessions.html"
+      - title: Configure archive state and counters for TSM
+        url: "/admin/configuring-archive-store-for-tsm-middleware-connection.html"
+      - title: Manage Archive Node when TSM server reaches capacity
+        url: "/admin/managing-archive-node-when-tsm-server-reaches-capacity.html"
+    - title: Configure Archive Node retrieve settings
+      url: "/admin/configuring-archive-node-retrieve-settings.html"
+    - title: Configure Archive Node replication
+      url: "/admin/configuring-archive-node-replication.html"
     - title: Set Custom alarms for the Archive Node
       url: "/admin/setting-custom-alarms-for-archive-node.html"
     - title: Integrate Tivoli Storage Manager
-      url: "/admin/integrating-tivoli-storage-manager.html"
       entries:
       - title: Archive Node configuration and operation
         url: "/admin/archive-node-configuration-and-operation.html"
@@ -387,7 +365,5 @@ entries:
       url: "/admin/determining-ilm-policy-for-migrated-data.html"
     - title: Impact of migration on operations
       url: "/admin/impact-of-migration-on-operations.html"
-    - title: Schedule data migration
+    - title: Schedule and monitor data migration
       url: "/admin/scheduling-data-migration.html"
-    - title: Monitor data migration
-      url: "/admin/monitoring-data-migration.html"

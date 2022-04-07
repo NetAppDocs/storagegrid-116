@@ -26,13 +26,13 @@ You must configure identity federation for your StorageGRID system before you ca
 |===
 |Configured LDAP service type |Options for SSO identity provider
 
-|AD FS
-|* AD FS
-* Azure AD
+|Active Directory
+|* Active Directory
+* Azure
 * PingFederate
 
-|Azure AD
-|Azure AD
+|Azure
+|Azure
 
 |===
 
@@ -65,6 +65,4 @@ You can access an Admin Node's server certificate by logging in to the command s
 
 == Port requirements
 
-Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on.
-
-xref:controlling-access-through-firewalls.adoc[Control access through firewalls]
+Single sign-on (SSO) is not available on the restricted Grid Manager or Tenant Manager ports. You must use the default HTTPS port (443) if you want users to authenticate with single sign-on. See xref:controlling-access-through-firewalls.adoc[Control access through firewalls].

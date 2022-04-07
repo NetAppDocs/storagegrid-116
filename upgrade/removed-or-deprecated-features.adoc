@@ -1,15 +1,15 @@
 ---
 permalink: upgrade/removed-or-deprecated-features.html
 sidebar: sidebar
-keywords: features, removed, deprecated, weak consistency, compliance
-summary: 'Some features were removed or deprecated in StorageGRID 11.6. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.'
+keywords: features, removed, deprecated
+summary: 'Some features were removed or deprecated in this release. Review these items to understand whether you need to update client applications or modify your configuration before you upgrade.'
 ---
 = Removed or deprecated features
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Some features were removed or deprecated in StorageGRID 11.6. You must review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
+Some features were removed or deprecated in this release. Review these items to understand whether you need to update client applications or modify your configuration before you upgrade.
 
 == Alarm system and alarm-based APIs deprecated
 
@@ -29,7 +29,7 @@ The 11.6 release deprecates all alarm-based APIs. The following APIs are affecte
 
 In future StorageGRID releases, the maximum size for a single PUT Object operation will be 5 GiB, instead of 5 TiB. You can use multipart upload for objects that are larger than 5 GiB, up to a maximum of 5 TiB (5,497,558,138,880 bytes). 
 
-To help you transition clients to using smaller object sizes in PUT Object, the *S3 PUT Object size too large* alert will be triggered in StorageGRID 11.6 if an S3 client attempts to upload an object that exceeds 5 GiB.  
+To help you transition clients to using smaller object sizes in PUT Object, the *S3 PUT Object size too large* alert will be triggered in StorageGRID 11.6 if an S3 client attempts to upload an object that exceeds 5 GiB.
 
 == NAS Bridge feature deprecated
 
@@ -37,4 +37,4 @@ The NAS Bridge feature previously entered limited access with the StorageGRID 11
 
 NAS Bridge 11.4 remains the final release and will continue to be compatible with StorageGRID 11.6. Review the https://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^] for continued compatibility between NAS Bridge 11.4 and StorageGRID versions.
 
-Review the NetApp Support site for the https://mysupport.netapp.com/site/info/version-support#nasbridge_svsp[support schedule for NAS Bridge^].
+Review the NetApp Support site for the https://mysupport.netapp.com/site/info/version-support[support schedule for NAS Bridge^].

@@ -31,36 +31,28 @@ Policy statements are built using this structure to specify permissions: Grant <
 
 Each policy element is used for a specific function:
 
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Element| Description
-a|
-Sid
-a|
-The Sid element is optional. The Sid is only intended as a description for the user. It is stored but not interpreted by the StorageGRID system.
-a|
-Effect
-a|
-Use the Effect element to establish whether the specified operations are allowed or denied. You must identify operations you allow (or deny) on buckets or objects using the supported Action element keywords.
-a|
-Principal/NotPrincipal
-a|
-You can allow users, groups, and accounts to access specific resources and perform specific actions. If no S3 signature is included in the request, anonymous access is allowed by specifying the wildcard character (*) as the principal. By default, only the account root has access to resources owned by the account.
+|Sid
+|The Sid element is optional. The Sid is only intended as a description for the user. It is stored but not interpreted by the StorageGRID system.
+
+|Effect
+|Use the Effect element to establish whether the specified operations are allowed or denied. You must identify operations you allow (or deny) on buckets or objects using the supported Action element keywords.
+
+|Principal/NotPrincipal
+|You can allow users, groups, and accounts to access specific resources and perform specific actions. If no S3 signature is included in the request, anonymous access is allowed by specifying the wildcard character (*) as the principal. By default, only the account root has access to resources owned by the account.
 
 You only need to specify the Principal element in a bucket policy. For group policies, the group to which the policy is attached is the implicit Principal element.
 
-a|
-Resource/NotResource
-a|
-The Resource element identifies buckets and objects. You can allow or deny permissions to buckets and objects using the Amazon Resource Name (ARN) to identify the resource.
-a|
-Action/NotAction
-a|
-The Action and Effect elements are the two components of permissions. When a group requests a resource, they are either granted or denied access to the resource. Access is denied unless you specifically assign permissions, but you can use explicit deny to override a permission granted by another policy.
-a|
-Condition
-a|
-The Condition element is optional. Conditions allow you to build expressions to determine when a policy should be applied.
+|Resource/NotResource
+|The Resource element identifies buckets and objects. You can allow or deny permissions to buckets and objects using the Amazon Resource Name (ARN) to identify the resource.
+
+|Action/NotAction
+|The Action and Effect elements are the two components of permissions. When a group requests a resource, they are either granted or denied access to the resource. Access is denied unless you specifically assign permissions, but you can use explicit deny to override a permission granted by another policy.
+
+|Condition
+|The Condition element is optional. Conditions allow you to build expressions to determine when a policy should be applied.
 |===
 In the Action element, you can use the wildcard character (*) to specify all operations, or a subset of operations. For example, this Action matches permissions such as s3:GetObject, s3:PutObject, and s3:DeleteObject.
 
@@ -148,7 +140,7 @@ Other considerations:
 * You can use the asterisk (*) as a wildcard to match zero or more characters inside the object key.
 * International characters, which can be specified in the object key, should be encoded using JSON UTF-8 or using JSON \u escape sequences. Percent-encoding is not supported.
 +
-https://www.ietf.org/rfc/rfc2141.txt[RFC 2141 URN Syntax]
+https://www.ietf.org/rfc/rfc2141.txt[RFC 2141 URN Syntax^]
 +
 The HTTP request body for the PUT Bucket policy operation must be encoded with charset=UTF-8.
 
