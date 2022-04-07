@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: storagegrid, sg6000, storage node, storage appliance, Replacing, replace, storage controller, e2800, ef570, controller, remove, removing, removal, install, installing, installation
 summary: 'You might need to replace an E2800 controller or an EF570 controller if it is not functioning optimally or if it has failed.'
 ---
-= Replace storage controller
+= Replace storage controller in the SG6000
 :icons: font
 :imagesdir: ../media/
 
@@ -55,9 +55,9 @@ Save the packing materials to use when shipping the failed controller.
 
 . Locate the MAC address and FRU part number labels on the back of the replacement controller.
 +
-This figure shows a E2800 series controller. The procedure for replacing the EF570 controller is identical.
+This figure shows a E2800A series controller. The procedure for replacing the E2800B and EF570 controller is identical.
 +
-image::../media/e2800_labels_on_controller.gif[MAC and FRU labels on E2800 controller]
+image::../media/e2800_labels_on_controller.gif[MAC and FRU labels on E2800A controller]
 +
 [options="header"]
 |===
@@ -170,7 +170,7 @@ image::../media/e2800_battery_flange_ok.gif[Battery Flange Correct]
 +
 image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
 
- .. If the controller does not have a HIC, replace the controller cover. If the controller does have a HIC, <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
+ .. If the controller does not have a HIC (E2800B), replace the controller cover. If the controller does have a HIC (E2800A), <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
 
  . [[move_the_HIC_to_the_replacement_controller]]If equipped with a HIC, move the HIC from the failed controller to the replacement controller.
 .. Remove any SFPs from the HIC.
