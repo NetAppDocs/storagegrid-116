@@ -34,19 +34,30 @@ You can determine if you have a failed controller in two ways:
 +
 IMPORTANT: If both controllers in the shelf have their Attention LEDs on, contact technical support for assistance.
 
-Because the storage controller shelf contains two storage controllers, you can replace one of the controllers while your appliance is powered on and performing read/write operations, as long as the following conditions are true:
+If your appliance contains two storage controllers, you can replace one of the controllers while your appliance is powered on and performing read/write operations, as long as the following conditions are true:
 
 * The second controller in the shelf has Optimal status.
 * The "`OK to remove`" field in the Details area of the Recovery Guru in SANtricity System Manager displays Yes, indicating that it is safe to remove this component.
 
 IMPORTANT: When possible, place the appliance into maintenance mode for this replacement procedure to minimize the potential impact of unforeseen errors or failures.
 
-IMPORTANT: If the second controller canister in the shelf does not have Optimal status or if the Recovery Guru indicates that it is not OK to remove the controller canister, contact technical support.
+IMPORTANT: If the second controller in the shelf does not have Optimal status or if the Recovery Guru indicates that it is not OK to remove the controller, contact technical support.
 
 When you replace a controller, you must remove the battery from the original controller and install it in the replacement controller. In some cases, you might also need to remove the host interface card from the original controller and install it in the replacement controller.
 
 NOTE: The storage controllers in most appliance models do not include host interface cards (HIC).
 
+This task has the following parts: 
+. Prepare
+. Take controller offline
+. Remove controller
+. Move battery to new controller
+. Move HIC to new controller, if needed
+. Replace controller
+
+//For systems with two controllers, both controllers must have the same model number. 
+
+== Prepare
 .Steps
 
 . Unpack the new controller, and set it on a flat, static-free surface.
@@ -76,6 +87,9 @@ a|
 The FRU part number. This number must match the replacement part number for the currently installed controller.
 |===
 
+== Take controller offline
+.Steps
+
 . Prepare to remove the controller.
 +
 You use SANtricity System Manager to perform these steps. As needed for additional details, reference the E-Series instructions for replacing the storage controller.
@@ -96,6 +110,9 @@ NOTE: Collecting support data before and after replacing a component ensures you
 
  .. Take the controller you plan to replace offline.
 
+== Remove the controller
+.Steps
+
 . Remove the controller from the appliance:
  .. Put on an ESD wristband or take other antistatic precautions.
  .. Label the cables and then disconnect the cables and SFPs.
@@ -109,6 +126,10 @@ IMPORTANT: Always use two hands to support the weight of the controller.
 
  .. Place the controller on a flat, static-free surface with the removable cover facing up.
  .. Remove the cover by pressing down on the button and sliding the cover off.
+
+== Move battery to the new controller
+.Steps
+
 . Remove the battery from the failed controller, and install it into the replacement controller:
  .. Confirm that the green LED inside the controller (between the battery and the DIMMs) is off.
 +
@@ -169,8 +190,20 @@ image::../media/e2800_battery_flange_ok.gif[Battery Flange Correct]
   *** *Incorrect -- The battery's metal flange is not inserted into the slot on the controller:*
 +
 image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
+. Replace the controller cover.
 
- .. If the controller does not have a HIC (E2800B), replace the controller cover. If the controller does have a HIC (E2800A), <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
+== Move HIC to new controller, if needed
+.Steps
+
+ .. If the failed controller includes a host interface card (HIC), move the HIC from the failed controller to the replacement controller.
+ +
+ A separate HIC card is used for the E2800A controller only. The HIC is mounted to the main controller board and includes two SPF connectors.  
+ //need a stmt to tell how to know if they have it. but I'm making up these specifics//
+ 
+
+
+ 
+ A does not have a HIC (E2800B), replace the controller cover. If the controller does have a HIC (E2800A), <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
 
  . [[move_the_HIC_to_the_replacement_controller]]If equipped with a HIC, move the HIC from the failed controller to the replacement controller.
 .. Remove any SFPs from the HIC.
@@ -217,6 +250,10 @@ Do not use a screwdriver, or you might over tighten the screws.
 image::../media/28_dwg_e2800_hic_faceplace_screws_maint-e2800.png[E2800A faceplate screws]
 
 .. Reinstall any removed SFPs into the HIC.
+
+== Replace controller
+.Steps
+
 . Install the replacement controller into the appliance.
  .. Turn the controller over, so that the removable cover faces down.
  .. With the cam handle in the open position, slide the controller all the way into the appliance.
