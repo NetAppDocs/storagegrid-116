@@ -48,6 +48,7 @@ When you replace a controller, you must remove the battery from the original con
 NOTE: The storage controllers in most appliance models do not include host interface cards (HIC).
 
 This task has the following parts: 
+
 . Prepare
 . Take controller offline
 . Remove controller
@@ -66,13 +67,19 @@ Save the packing materials to use when shipping the failed controller.
 
 . Locate the MAC address and FRU part number labels on the back of the replacement controller.
 +
-This figure shows a E2800A series controller. The procedure for replacing the E2800B and EF570 controller is identical.
+These figures shows the E2800A controller and the E2800B controller. The procedure for replacing the E2800 series controllers and the EF570 controller is identical.
++
+*E2800A storage controller*
 +
 image::../media/e2800_labels_on_controller.gif[MAC and FRU labels on E2800A controller]
 +
+*E2800B storage controller*
++
+image::../media/e2800B_labels_on_controller.png[MAC and FRU labels on E2800A controller]
++
 [options="header"]
 |===
-| Label| Label| Description
+| Label| component| Description
 a|
 1
 a|
@@ -85,16 +92,22 @@ a|
 FRU part number
 a|
 The FRU part number. This number must match the replacement part number for the currently installed controller.
+a|
+3
+a|
+4-port HIC
+a|
+The 4-port host interface card (HIC). This card must be moved to the new controller when you perform the replacement. 
+
+*Note*: the E2800A controller does not have a HIC. 
 |===
 
 == Take controller offline
 .Steps
 
-. Prepare to remove the controller.
+. Prepare to remove the controller. You use SANtricity System Manager to perform these steps.
 +
-You use SANtricity System Manager to perform these steps. As needed for additional details, reference the E-Series instructions for replacing the storage controller.
-
- .. Confirm that the replacement part number for the failed controller is the same as the FRU part number for the replacement controller.
+.. Confirm that the replacement part number for the failed controller is the same as the FRU part number for the replacement controller.
 +
 When a controller has a fault and needs to be replaced, the replacement part number is displayed in the Details area of the Recovery Guru. If you need to find this number manually, you can look on the *Base* tab for the controller.
 +
@@ -109,147 +122,10 @@ If a problem occurs when you remove a controller, you can use the saved file to 
 NOTE: Collecting support data before and after replacing a component ensures you can send a full set of logs to technical support in case the replacement does not resolve the problem.
 
  .. Take the controller you plan to replace offline.
-
-== Remove the controller
-.Steps
-
-. Remove the controller from the appliance:
- .. Put on an ESD wristband or take other antistatic precautions.
- .. Label the cables and then disconnect the cables and SFPs.
-+
-IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step on the cables.
-
- .. Release the controller from the appliance by squeezing the latch on the cam handle until it releases, and then open the cam handle to the right.
- .. Using two hands and the cam handle, slide the controller out of the appliance.
-+
-IMPORTANT: Always use two hands to support the weight of the controller.
-
- .. Place the controller on a flat, static-free surface with the removable cover facing up.
- .. Remove the cover by pressing down on the button and sliding the cover off.
-
-== Move battery to the new controller
-.Steps
-
-. Remove the battery from the failed controller, and install it into the replacement controller:
- .. Confirm that the green LED inside the controller (between the battery and the DIMMs) is off.
-+
-If this green LED is on, the controller is still using battery power. You must wait for this LED to go off before removing any components.
-+
-image::../media/e2800_internal_cache_active_led.gif[Green LED on E2800]
-+
-[options="header"]
-|===
-| Item| Description
-a|
-1
-a|
-Internal Cache Active LED
-a|
-2
-a|
-Battery
-|===
-
- .. Locate the blue release latch for the battery.
- .. Unlatch the battery by pushing the release latch down and away from the controller.
-+
-image::../media/e2800_remove_battery.gif[Battery Latch]
-+
-[options="header"]
-|===
-| Item| Description
-a|
-1
-a|
-Battery release latch
-a|
-2
-a|
-Battery
-|===
-
- .. Lift up on the battery, and slide it out of the controller.
- .. Remove the cover from the replacement controller.
- .. Orient the replacement controller so that the slot for the battery faces toward you.
- .. Insert the battery into the controller at a slight downward angle.
-+
-You must insert the metal flange at the front of the battery into the slot on the bottom of the controller, and slide the top of the battery beneath the small alignment pin on the left side of the controller.
-
- .. Move the battery latch up to secure the battery.
-+
-When the latch clicks into place, the bottom of the latch hooks into a metal slot on the chassis.
-
- .. Turn the controller over to confirm that the battery is installed correctly.
-+
-IMPORTANT: *Possible hardware damage* -- The metal flange at the front of the battery must be completely inserted into the slot on the controller (as shown in the first figure). If the battery is not installed correctly (as shown in the second figure), the metal flange might contact the controller board, causing damage.
-
-  *** *Correct -- The battery's metal flange is completely inserted in the slot on the controller:*
-+
-image::../media/e2800_battery_flange_ok.gif[Battery Flange Correct]
-
-  *** *Incorrect -- The battery's metal flange is not inserted into the slot on the controller:*
-+
-image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
-. Replace the controller cover.
-
-== Move HIC to new controller, if needed
-.Steps
-
- .. If the failed controller includes a host interface card (HIC), move the HIC from the failed controller to the replacement controller.
- +
- A separate HIC card is used for the E2800A controller only. The HIC is mounted to the main controller board and includes two SPF connectors.  
- //need a stmt to tell how to know if they have it. but I'm making up these specifics//
  
-
-
- 
- A does not have a HIC (E2800B), replace the controller cover. If the controller does have a HIC (E2800A), <<move_the_HIC_to_the_replacement_controller, move the HIC from the failed controller to the replacement controller>>.
-
- . [[move_the_HIC_to_the_replacement_controller]]If equipped with a HIC, move the HIC from the failed controller to the replacement controller.
-.. Remove any SFPs from the HIC.
-.. Using a #1 Phillips screwdriver, remove the screws that attach the HIC faceplate to the controller.
-+
-There are four screws: one on the top, one on the side, and two on the front.
-+
-image::../media/28_dwg_e2800_hic_faceplace_screws_maint-e2800.png[E2800 faceplate screws]
-
-.. Remove the HIC faceplate.
-.. Using your fingers or a Phillips screwdriver, loosen the three thumbscrews that secure the HIC to the controller card.
-.. Carefully detach the HIC from the controller card by lifting the card up and sliding it back.
-+
-CAUTION: Be careful not to scratch or bump the components on the bottom of the HIC or on the top of the controller card.
-+
-image::../media/28_dwg_e2800_hic_thumbscrews_maint-e2800.png[HIC thumbscrews E2800A]
-+
-*(1)* _Host interface card_
-+
-*(2)* _Thumbscrews_
-
-.. Place the HIC on a static-free surface.
-.. Using a #1 Phillips screwdriver, remove the four screws that attach the blank faceplate to the replacement controller, and remove the faceplate.
-.. Align the three thumbscrews on the HIC with the corresponding holes on the replacement controller, and align the connector on the bottom of the HIC with the HIC interface connector on the controller card.
-+
-Be careful not to scratch or bump the components on the bottom of the HIC or on the top of the controller card.
-
-.. Carefully lower the HIC into place, and seat the HIC connector by pressing gently on the HIC.
-+
-CAUTION: *Possible equipment damage* -- Be very careful not to pinch the gold ribbon connector for the controller LEDs between the HIC and the thumbscrews.
-+
-image::../media/28_dwg_e2800_hic_thumbscrews_maint-e2800.gif[E2800A HIC thumscrews]
-+
-*(1)* _Host interface card_
-+
-*(2)* _Thumbscrews_
-
-.. Hand-tighten the HIC thumbscrews.
-+
-Do not use a screwdriver, or you might over tighten the screws.
-
-.. Using a #1 Phillips screwdriver, attach the HIC faceplate you removed from the original controller to the new controller with four screws.
-+
-image::../media/28_dwg_e2800_hic_faceplace_screws_maint-e2800.png[E2800A faceplate screws]
-
-.. Reinstall any removed SFPs into the HIC.
+include::../_include/remove_controller_e2800.adoc[]
+include::../_include/remove_battery_e2800.adoc[]
+include::../_include/HIC_replacement.adoc[] 
 
 == Replace controller
 .Steps
@@ -269,6 +145,8 @@ NOTE: If the original controller did not use DHCP for the IP address, the new co
  .. Select *Place Online* from the context menu, and confirm that you want to perform the operation.
  .. Verify that the seven-segment display shows a state of `99`.
 . Confirm that the new controller is Optimal, and collect support data.
+
+include::../_include/fru-statement.adoc[] 
 
 .Related information
 
