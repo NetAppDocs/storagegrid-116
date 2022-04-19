@@ -44,9 +44,9 @@ For example, if an SG1000 source node appliance is being used as an Admin Node a
  **  If you plan to use the same RAID mode on the target node as was used on the source node, or a less storage efficient RAID mode (for example, switching from RAID6 to DDP), the drives in the target appliance must be larger (in TB) than the drives in the source appliance.
  ** If the number of standard drives installed in a target storage appliance is less than the number of drives in the source node, due to installation of solid-state drives (SSDs), the overall storage capacity of the standard drives in the target appliance (in TB) must meet or exceed the total functional drive capacity of all drives in the source Storage Node.
 +
-For example, when cloning an SG5660 source Storage Node appliance with 60 drives to an SG6060 target appliance with 58 standard drives, larger drives should be installed in the SG6060 target appliance before cloning to maintain storage capacity. (The two drive slots containing SSDs in the target appliance are not included in the total appliance-storage capacity.)
+For example, when cloning an SG5660 source Storage Node appliance with 60 drives to an SG6060 or SG6060X target appliance with 58 standard drives, larger drives should be installed in the SG6060 or SG6060X target appliance before cloning to maintain storage capacity. (The two drive slots containing SSDs in the target appliance are not included in the total appliance-storage capacity.)
 +
-However, if a 60-drive SG5660 source node appliance is configured with SANtricity Dynamic Disk Pools DDP-8, configuring a 58-drive same-size-drive SG6060 target appliance with DDP-16 might make the SG6060 appliance a valid clone target due to its improved storage efficiency.
+However, if a 60-drive SG5660 source node appliance is configured with SANtricity Dynamic Disk Pools DDP-8, configuring a 58-drive same-size-drive SG6060 or SG6060X target appliance with DDP-16 might make the SG6060 or SG6060X appliance a valid clone target due to its improved storage efficiency.
 +
 You can view information about the current RAID mode of the source appliance node on the *NODES* page in Grid Manager. Select the *Storage* tab for the appliance.
 

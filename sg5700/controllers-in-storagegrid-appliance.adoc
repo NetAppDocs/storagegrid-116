@@ -4,12 +4,19 @@ sidebar: sidebar
 keywords: storagegrid, sg5700, storage node, storage appliance, controllers, controller, e5700sg, e2800, ports, port, connectors, connector
 summary: 'Both the SG5712 and SG5760 models of the StorageGRID appliance include an E5700SG controller and an E2800 controller. You should review the diagrams to learn the differences between the controllers.'
 ---
-= Controllers in StorageGRID appliance
+= Controllers in the StorageGRID 5700 appliance
 :icons: font
 :imagesdir: ../media/
 
 [.lead]
-Both the SG5712 and SG5760 models of the StorageGRID appliance include an E5700SG controller and an E2800 controller. You should review the diagrams to learn the differences between the controllers.
+Both the 12-drive SG5712 and SG5712X and the 60-drive SG5760 and SG5760X models of the StorageGRID appliance include an E5700SG controller and an E-Series E2800 storage controller. 
+
+* The SG5712 and SG5760 use a E2800A controller. 
+* The SG5712X and the SG5760X use a E2800B controller.
+
+ The E2800A and E2800B controllers are identical in specification and function except for the location of the interconnect ports. 
+
+You should review the diagrams to learn the differences among the controllers.
 
 == E5700SG controller
 
@@ -86,7 +93,11 @@ Options:
 
 |===
 
-== E2800 controller
+== E2800 series storage controller
+
+There are two versions of the E2800 storage controller used in the SG5700 appliances: E2800A and E2800B. The E2800A does not have a HIC, and the E2800B has a four-port HIC. The two controller versions have identical specifications and function except for the location of the interconnect ports. 
+
+The E2800 series storage controller has the following specifications: 
 
 * Operates as the storage controller for the appliance.
 * Manages the storage of data on the drives.
@@ -95,9 +106,15 @@ Options:
 * Includes SANtricity System Manager for monitoring appliance hardware and for managing alerts, the AutoSupport feature, and the Drive Security feature.
 * Connects to the E5700SG controller and operates as the target.
 
-This figure shows the connectors on the back of the E2800 controller.
+The following figures show the connectors on the back of the E2800A and E2800B controllers.
 
-image::../media/e2800_controller_with_callouts.gif[Connectors on E2800 controller]
+*Connectors on the back of the E2800A*
+
+image::../media/e2800_controller_with_callouts.gif[Connectors on E2800A controller]
+
+*Connectors on the back of the E2800B*
+
+image::../media/e2800B_controller_with_callouts.png[Connectors on E2800B controller]
 
 [options="header"]
 |===

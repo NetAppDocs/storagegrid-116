@@ -34,9 +34,7 @@ When using Fixed port bond mode, the ports can be bonded using active-backup mod
 * In active-backup mode (default), only one port is active at a time. If the active port fails, its backup port automatically provides a failover connection. Port 4 provides a backup path for port 2 (Grid Network), and port 3 provides a backup path for port 1 (Client Network).
 * In LACP mode, each pair of ports forms a logical channel between the controller and the network, allowing for higher throughput. If one port fails, the other port continues to provide the channel. Throughput is reduced, but connectivity is not impacted.
 
-NOTE: If you do not need redundant connections, you can use only one port for each network. However, be aware that an alert will be triggered in the Grid Manager after StorageGRID is installed, indicating that the link is down. Because this port is disconnected on purpose, you can safely disable this alert.
-
-From the Grid Manager, select *Alert* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
+NOTE: If you do not need redundant connections, you can use only one port for each network. However, be aware that an alert will be triggered in the Grid Manager after StorageGRID is installed, indicating that the link is down. Because this port is disconnected on purpose, you can safely disable this alert. From the Grid Manager, select *Alert* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
 
 == Aggregate port bond mode
 
@@ -61,4 +59,4 @@ If you plan to use aggregate port bond mode:
 
 If you do not want to use all four 10/25-GbE ports, you can use one, two, or three ports. Using more than one port maximizes the chance that some network connectivity will remain available if one of the 10/25-GbE ports fails.
 
-NOTE: If you choose to use fewer than four ports, be aware that one or more alarms will be raised in the Grid Manager after StorageGRID is installed, indicating that cables are unplugged. You can safely acknowledge the alarms to clear them.
+NOTE: If you choose to use fewer than four ports, be aware that a *Services appliance link down* alert might be triggered in the Grid Manager after the appliance node is installed, indicating that a cable is unplugged. You can safely disable this alert rule for the triggered alert. From the Grid Manager, select *ALERTS* > *Rules*, select the rule, and click *Edit rule*. Then, uncheck the *Enabled* check box.
