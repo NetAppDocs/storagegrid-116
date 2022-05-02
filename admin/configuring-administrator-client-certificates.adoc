@@ -11,7 +11,7 @@ summary: 'Client certificates allow authorized external clients to access the St
 [.lead]
 Client certificates allow authorized external clients to access the StorageGRID Prometheus database, providing a secure way for external tools to monitor StorageGRID.
 
-If you need to access StorageGRID using an external monitoring tool, you must upload or generate an administrator client certificate using the Grid Manager and copy the certificate information to the external tool.
+If you need to access StorageGRID using an external monitoring tool, you must upload or generate a client certificate using the Grid Manager and copy the certificate information to the external tool.
 
 See the information about xref:using-storagegrid-security-certificates.adoc[general security certificate use] and xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configuring custom server certificates]. 
 
@@ -26,7 +26,7 @@ NOTE: If you are using a key management server (KMS) to protect the data on spec
 * To configure a client certificate:
 ** You have the IP address or domain name of the Admin Node.
 ** If you have configured the StorageGRID management interface certificate, you have the CA, client certificate, and private key used to configure the management interface certificate.
-** To upload your own certificate, the public key and private key for the certificate are available on your local computer.
+** To upload your own certificate, the private key for the certificate is available on your local computer.
 ** The private key must have been saved or recorded at the time it was created. If you do not have the original private key, you must create a new one.
 * To edit a client certificate:
 ** You have the IP address or domain name of the Admin Node.
@@ -37,7 +37,7 @@ NOTE: If you are using a key management server (KMS) to protect the data on spec
 Follow the procedure for your scenario to add a client certificate:
 
 * <<Management interface certificate already configured>>
-* <<CA issued client certificate and private key>>
+* <<CA issued client certificate>>
 * <<Generated certificate from Grid Manager>>
 
 === Management interface certificate already configured
@@ -50,20 +50,12 @@ Use this procedure to add a client certificate if a management interface certifi
 . Select *Add*.
 . Enter a certificate name between 1 and 32 characters.
 . To access Prometheus metrics using your external monitoring tool, select *Allow Prometheus*.
-
-
 . In the *Certificate type* section, upload the management interface certificate `.pem` file.
 
 .. Select *Upload certificate* and then select *Continue*.
 .. Upload the management interface certificate file (`.pem`).
 +
-Select *Client certificate details* to display the certificate metadata and certificate PEM.
-+
-* Select *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
+* Select *Client certificate details* to display the certificate metadata and certificate PEM.
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
 .. Select *Create* to save the certificate in the Grid Manager.
@@ -101,13 +93,13 @@ You can now access the Prometheus metrics from StorageGRID with your external mo
 +
 For information about the metrics, see the xref:../monitor/index.adoc[instructions for monitoring StorageGRID].
 
-=== CA issued client certificate and private key
+=== CA issued client certificate
 
 Use this procedure to add an administrator client certificate if a management interface certificate was not configured and you plan to add a client certificate for Prometheus that uses a CA issued client certificate and private key.
 
 .Steps
 
-. xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[Configure a management interface certificate].
+. Perform the steps to xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configure a management interface certificate].
 . In the Grid Manager, select *CONFIGURATION* > *Security* > *Certificates* and then select the *Client* tab.
 . Select *Add*.
 . Enter a certificate name between 1 and 32 characters.
@@ -117,13 +109,7 @@ Use this procedure to add an administrator client certificate if a management in
 .. Select *Upload certificate* and then select *Continue*.
 .. Upload client certificate, private key and CA bundle files (`.pem`).
 +
-Select *Client certificate details* to display the certificate metadata and certificate PEM.
-+
-* Select *Download certificate* to save the certificate file.
-+
-Specify the certificate file name and download location. Save the file with the extension `.pem`.
-+
-For example: `storagegrid_certificate.pem`
+* Select *Client certificate details* to display the certificate metadata and certificate PEM.
 * Select *Copy certificate PEM* to copy the certificate contents for pasting elsewhere.
 
 .. Select *Create* to save the certificate in the Grid Manager.
