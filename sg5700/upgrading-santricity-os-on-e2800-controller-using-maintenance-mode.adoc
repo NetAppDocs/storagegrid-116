@@ -14,9 +14,10 @@ For storage controllers currently using SANtricity OS older than 08.42.20.00 (11
 .What you'll need
 
 * You have consulted the NetApp Interoperability Matrix Tool (IMT) to confirm that the SANtricity OS version you are using for the upgrade is compatible with your appliance.
-* You must place the E5700SG controller into xref:placing-appliance-into-maintenance-mode.adoc[maintenance mode], which interrupts the connection to the E2800 controller.
+* You must place the E5700SG controller into maintenance mode, which interrupts the connection to the E2800 controller.
 +
-
+xref:placing-appliance-into-maintenance-mode.adoc[Place appliance into maintenance mode]
++
 NOTE: In rare instances, placing a StorageGRID appliance into maintenance mode might make the appliance unavailable for remote access.
 
 .About this task
@@ -26,8 +27,6 @@ Do not upgrade the SANtricity OS or NVSRAM in the E-Series controller on more th
 IMPORTANT: Upgrading more than one StorageGRID appliance at a time might cause data unavailability, depending on your deployment model and ILM policies.
 
 .Steps
-
-. Confirm the appliance is in xref:placing-appliance-into-maintenance-mode.adoc[maintenance mode].
 
 . From a service laptop, access SANtricity System Manager and sign in.
 . Download the new SANtricity OS Software file and NVSRAM file to the management client.
