@@ -1,0 +1,66 @@
+//Remove battery to the new controller for E2800 series storage controller
+
+== Move battery to the new controller
+.Steps
+
+. Remove the battery from the failed controller, and install it into the replacement controller:
+ .. Confirm that the green LED inside the controller (between the battery and the DIMMs) is off.
++
+If this green LED is on, the controller is still using battery power. You must wait for this LED to go off before removing any components.
++
+image::../media/e2800_internal_cache_active_led.gif[Green LED on E2800]
++
+[cols="1a,2a" options="header"]
+|===
+| Item| Description
+a|
+1
+a|
+Internal Cache Active LED
+a|
+2
+a|
+Battery
+|===
+
+ .. Locate the blue release latch for the battery.
+ .. Unlatch the battery by pushing the release latch down and away from the controller.
++
+image::../media/e2800_remove_battery.gif[Battery Latch]
++
+[cols="1a,2a" options="header"]
+|===
+| Item| Description
+a|
+1
+a|
+Battery release latch
+a|
+2
+a|
+Battery
+|===
+
+ .. Lift up on the battery, and slide it out of the controller.
+ .. Remove the cover from the replacement controller.
+ .. Orient the replacement controller so that the slot for the battery faces toward you.
+ .. Insert the battery into the controller at a slight downward angle.
++
+You must insert the metal flange at the front of the battery into the slot on the bottom of the controller, and slide the top of the battery beneath the small alignment pin on the left side of the controller.
+
+ .. Move the battery latch up to secure the battery.
++
+When the latch clicks into place, the bottom of the latch hooks into a metal slot on the chassis.
+
+ .. Turn the controller over to confirm that the battery is installed correctly.
++
+IMPORTANT: *Possible hardware damage* -- The metal flange at the front of the battery must be completely inserted into the slot on the controller (as shown in the first figure). If the battery is not installed correctly (as shown in the second figure), the metal flange might contact the controller board, causing damage.
+
+  *** *Correct -- The battery's metal flange is completely inserted into the slot on the controller:*
++
+image::../media/e2800_battery_flange_ok.gif[Battery Flange Correct]
+
+  *** *Incorrect -- The battery's metal flange is not inserted into the slot on the controller:*
++
+image::../media/e2800_battery_flange_not_ok.gif[Battery Flange Incorrect]
+. Replace the controller cover.
