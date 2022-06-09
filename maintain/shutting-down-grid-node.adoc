@@ -25,9 +25,9 @@ Before performing this procedure, review these considerations:
  ** Shutting down a VMware node shuts down the virtual machine.
  ** Shutting down a Linux node shuts down the container.
  ** Shutting down a StorageGRID appliance node shuts down the compute controller.
-* If you plan to shut down Storage Nodes, note the following:
- ** If an ILM rule specifies an ingest behavior of Dual commit or the rule specifies Balanced and it is not possible to immediately create all required copies, StorageGRID immediately commits any newly ingested objects to two Storage Nodes on the same site and evaluates ILM later. If you want to shut down two or more Storage Nodes on a given site, you might not be able to access these objects for the duration of the shutdown.
- ** To ensure you can access all objects when a Storage Node is shut down, stop ingesting objects at a site for approximately one hour before shutting down the node.
+* If you plan to shut down more than one Storage Node at a site, stop ingesting objects at that site for approximately one hour before shutting down the nodes.
++
+If any ILM rule uses the *Dual commit* ingest option (or if a rule uses the *Balanced* option and all required copies cannot be created immediately), StorageGRID immediately commits any newly ingested objects to two Storage Nodes on the same site and evaluates ILM later. If more than one Storage Node at a site is shut down, you might not be able to access newly ingested objects for the duration of the shutdown. Write operations might also fail if too few Storage Nodes remain available at the site.
 
 .Steps
 
