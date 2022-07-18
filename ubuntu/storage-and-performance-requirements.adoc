@@ -25,9 +25,9 @@ The performance of the volumes used for the container pool, system data, and obj
 
 The volumes used for the container pool, system data, and object data must have write-back caching enabled. The cache must be on a protected or persistent media.
 
-== Requirements for hosts that use NetApp AFF storage
+== Requirements for hosts that use NetApp ONTAP storage
 
-If the StorageGRID node uses storage assigned from a NetApp AFF system, confirm that the volume does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
+If the StorageGRID node uses storage assigned from a NetApp ONTAP system, confirm that the volume does not have a FabricPool tiering policy enabled. Disabling FabricPool tiering for volumes used with StorageGRID nodes simplifies troubleshooting and storage operations.
 
 IMPORTANT: Never use FabricPool to tier any data related to StorageGRID back to StorageGRID itself. Tiering StorageGRID data back to StorageGRID increases troubleshooting and operational complexity.
 

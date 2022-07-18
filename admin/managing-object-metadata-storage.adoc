@@ -131,25 +131,22 @@ Each Storage Node's actual reserved space for metadata is subdivided into the sp
 
 image::../media/metadata_allowed_space_volume_0.png[Metadata allowed space volume 0]
 
-The following table summarizes how StorageGRID determines the allowed metadata space value for a Storage Node.
+The following table shows how StorageGRID calculates the *allowed metadata space* for different Storage Nodes, based on the amount of memory for the node and the actual reserved space for metadata.
 
-[cols="1a,1a,2a,2a" options="header"]
+[cols="1a,1a,2a,2a" grid="rows"]
 |===
 
 |
 |
-2+|Memory size on Storage Node
+2+<|*Amount of memory on Storage Node*
 
 |
 |
 |&lt; 128 GB
 |&gt;= 128 GB
 
-|
-|
-2+|Allowed metadata space
 
-.2+|Actual reserved space for metadata
+.2+|*Actual reserved space for metadata*
 |&lt;= 4 TB
 |60% of actual reserved space for metadata, up to a maximum of 1.32 TB
 |60% of actual reserved space for metadata, up to a maximum of 1.98 TB
