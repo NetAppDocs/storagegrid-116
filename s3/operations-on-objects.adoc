@@ -55,16 +55,16 @@ Multiple objects can be deleted in the same request message.
 If the `versionId` query parameter is not specified in the request, the operation deletes all tags from the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`MethodNotAllowed`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
 |GET Object
-|xref:get-object.adoc[GET Object]
+| xref:get-object.adoc[GET Object]
 
 |GET Object ACL
 |If the necessary access credentials are provided for the account, the operation returns a positive response and the ID, DisplayName, and Permission of the object owner, indicating that the owner has full access to the object.
 
 |GET Object legal hold
-|xref:using-s3-object-lock.adoc[Use S3 Object Lock]
+| xref:using-s3-object-lock.adoc[Use S3 Object Lock]
 
 |GET Object retention
-|xref:using-s3-object-lock.adoc[Use S3 Object Lock]
+| xref:using-s3-object-lock.adoc[Use S3 Object Lock]
 
 |GET Object tagging
 |Uses the `tagging` subresource to return all tags for an object. Implemented with all Amazon S3 REST API behavior
@@ -74,22 +74,22 @@ If the `versionId` query parameter is not specified in the request, the operatio
 If the `versionId` query parameter is not specified in the request, the operation returns all tags from the most recent version of the object in a versioned bucket. If the current version of the object is a delete marker, a "`MethodNotAllowed`" status is returned with the `x-amz-delete-marker` response header set to `true`.
 
 |HEAD Object
-|xref:head-object.adoc[HEAD Object]
+| xref:head-object.adoc[HEAD Object]
 
 |POST Object restore
-|xref:post-object-restore.adoc[POST Object restore]
+| xref:post-object-restore.adoc[POST Object restore]
 
 |PUT Object
-|xref:put-object.adoc[PUT Object]
+| xref:put-object.adoc[PUT Object]
 
 |PUT Object - Copy
-|xref:put-object-copy.adoc[PUT Object - Copy]
+| xref:put-object-copy.adoc[PUT Object - Copy]
 
 |PUT Object legal hold
-|xref:using-s3-object-lock.adoc[Use S3 Object Lock]
+| xref:using-s3-object-lock.adoc[Use S3 Object Lock]
 
 |PUT Object retention
-|xref:using-s3-object-lock.adoc[Use S3 Object Lock]
+| xref:using-s3-object-lock.adoc[Use S3 Object Lock]
 
 |PUT Object tagging
 |Uses the `tagging` subresource to add a set of tags to an existing object. Implemented with all Amazon S3 REST API behavior
