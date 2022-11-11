@@ -15,36 +15,33 @@ You can install one or more StorageGRID services appliances when you first deplo
 
 Your StorageGRID system is using the required version of StorageGRID software.
 
-[options="header"]
+[cols="1a,2a" options="header"]
 |===
 | Appliance| Required StorageGRID version
-a|
-SG100
-a|
-11.4 or later (latest hotfix recommended)
-a|
-SG1000
-a|
-11.3 or later (latest hotfix recommended)
+|SG100
+|11.4 or later (latest hotfix recommended)
+
+|SG1000
+|11.3 or later (latest hotfix recommended)
 |===
 
 == Installation and deployment tasks
 
 Preparing and adding a StorageGRID appliance to the grid includes four primary steps:
 
-. Preparing for installation:
+. xref:preparing-for-installation-sg100-and-sg1000.adoc[Preparing for installation]:
  ** Preparing the installation site
  ** Unpacking the boxes and checking the contents
  ** Obtaining additional equipment and tools
  ** Verifying network configuration
  ** Optional: Configuring an external key management server (KMS) if you plan to encrypt all appliance data. See details about external key management in the instructions for administering StorageGRID.
-. Installing the hardware:
+. xref:installing-hardware-sg100-and-sg1000.adoc[Installing the hardware]:
  ** Registering the hardware
  ** Installing the appliance into a cabinet or rack
  ** Cabling the appliance
  ** Connecting the power cord and applying power
  ** Viewing boot-up status codes
-. Configuring the hardware:
+. xref:configuring-storagegrid-connections-sg100-and-sg1000.adoc[Configuring the hardware]:
  ** Accessing StorageGRID Appliance Installer and configuring the link and network IP settings required to connect to StorageGRID networks
  ** Accessing the baseboard management controller (BMC) interface on the appliance.
  ** Optional: Enabling node encryption if you plan to use an external KMS to encrypt appliance data.
@@ -52,33 +49,24 @@ Preparing and adding a StorageGRID appliance to the grid includes four primary s
 +
 After the appliance hardware has been installed and configured, you can deploy the appliance as a Gateway Node and an Admin Node in a StorageGRID system. Both the SG100 and the SG1000 appliances can operate as Gateway Nodes and Admin Nodes (primary and non-primary) at the same time.
 +
-[options="header"]
+[cols="2a,2a" options="header"]
 |===
 | Task| Instructions
-a|
-Deploying an appliance Gateway or Admin Node in a new StorageGRID system
-a|
-xref:deploying-services-appliance-node.adoc[Deploy services appliance node]
-a|
-Adding an appliance Gateway or Admin Node to an existing StorageGRID system
-a|
-Instructions for expanding a StorageGRID system
-a|
-Deploying an appliance Gateway or Admin Node as part of a node recovery operation
-a|
-Instructions for recovery and maintenance
+
+|Deploying an appliance Gateway or Admin Node in a new StorageGRID system
+| xref:deploying-services-appliance-node.adoc[Deploy a services appliance node]
+
+|Adding an appliance Gateway or Admin Node to an existing StorageGRID system
+| xref:../expand/index.adoc[Expand a StorageGRID system]
+
+|Deploying an appliance Gateway or Admin Node as part of a node recovery operation
+| xref:../maintain/[Recover and maintain a StorageGRID system]
 |===
 
 .Related information
 
-xref:preparing-for-installation-sg100-and-sg1000.adoc[Prepare for installation (SG100 and SG1000)]
-
-xref:installing-hardware-sg100-and-sg1000.adoc[Install hardware (SG100 and SG1000)]
-
-xref:configuring-storagegrid-connections-sg100-and-sg1000.adoc[Configure StorageGRID connections (SG100 and SG1000)]
-
 xref:../expand/index.adoc[Expand your grid]
 
-xref:../maintain/index.adoc[Recover and maintain]
+xref:../maintain/index.adoc[Recover and maintain your grid]
 
 xref:../admin/index.adoc[Administer StorageGRID]
