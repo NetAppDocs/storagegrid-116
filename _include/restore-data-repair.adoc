@@ -81,7 +81,7 @@ If your grid contains replicated data, use the `start-replicated-volume-repair` 
 
 *Range of volumes*: This command restores replicated data to all volumes in the range `0003` to `0009` on a Storage Node named SG-DC-SN3:
 
-`repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volume-range 0003-0009`
+`repair-data start-replicated-volume-repair --nodes SG-DC-SN3 --volume-range 0003,0009`
 
 *Multiple volumes not in a sequence*: This command restores replicated data to volumes `0001`, `0005`, and `0008` on a Storage Node named SG-DC-SN3:
 
@@ -101,7 +101,7 @@ If your grid contains erasure-coded data, use the `start-ec-volume-repair` comma
 
 *Range of volumes*: This command restores erasure-coded data to all volumes in the range `0004` to `0006` on a Storage Node named SG-DC-SN3:
 
-`repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volume-range 0004-0006`
+`repair-data start-ec-volume-repair --nodes SG-DC-SN3 --volume-range 0004,0006`
 
 *Multiple volumes not in a sequence*: This command restores erasure-coded data to volumes `000A`, `000C`, and `000E` on a Storage Node named SG-DC-SN3:
 

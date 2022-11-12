@@ -35,19 +35,19 @@ Technical support can determine when it is safe to begin recovery of a second St
 *Note*: If more than one Storage Node that contains the ADC service fails at a site, you lose any pending platform service requests for that site.
 
 |A Storage Node has been offline for more than 15 days.
-|xref:recovering-storage-node-that-has-been-down-more-than-15-days.adoc[Recover Storage Node down more than 15 days]
+| xref:recovering-storage-node-that-has-been-down-more-than-15-days.adoc[Recover Storage Node down more than 15 days]
 |This procedure is required to ensure Cassandra database integrity.
 
 |An appliance Storage Node has failed.
-|xref:recovering-storagegrid-appliance-storage-node.adoc[Recover appliance Storage Node]
+| xref:recovering-storagegrid-appliance-storage-node.adoc[Recover appliance Storage Node]
 |The recovery procedure for appliance Storage Nodes is the same for all failures.
 
 |One or more storage volumes have failed, but the system drive is intact
-|xref:recovering-from-storage-volume-failure-where-system-drive-is-intact.adoc[Recover from storage volume failure where system drive is intact]
+| xref:recovering-from-storage-volume-failure-where-system-drive-is-intact.adoc[Recover from storage volume failure where system drive is intact]
 |This procedure is used for software-based Storage Nodes.
 
 |The system drive has failed.
-|xref:recovering-from-system-drive-failure.adoc[Recover from system drive failure]
+| xref:recovering-from-system-drive-failure.adoc[Recover from system drive failure]
 |The node replacement procedure depends on the deployment platform and on whether any storage volumes have also failed.
 |===
 NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repairs. Repairs occur automatically as soon as the related or required services have started. You might notice script output that mentions "`reaper`" or "`Cassandra repair.`" If you see an error message indicating the repair has failed, run the command indicated in the error message.
