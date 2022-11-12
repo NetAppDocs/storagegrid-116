@@ -28,28 +28,28 @@ If you took *any* of these corrective actions, you must perform additional recov
 |===
 | Type of recovery| Next step
 |Primary Admin Node
-|xref:configuring-replacement-primary-admin-node.adoc[Configure replacement primary Admin Node]
+| xref:configuring-replacement-primary-admin-node.adoc[Configure replacement primary Admin Node]
 
 |Non-primary Admin Node
-|xref:selecting-start-recovery-to-configure-non-primary-admin-node.adoc[Select Start Recovery to configure non-primary Admin Node]
+| xref:selecting-start-recovery-to-configure-non-primary-admin-node.adoc[Select Start Recovery to configure non-primary Admin Node]
 
 |Gateway Node
-|xref:selecting-start-recovery-to-configure-gateway-node.adoc[Select Start Recovery to configure Gateway Node]
+| xref:selecting-start-recovery-to-configure-gateway-node.adoc[Select Start Recovery to configure Gateway Node]
 
 |Archive Node
-|xref:selecting-start-recovery-to-configure-archive-node.adoc[Select Start Recovery to configure Archive Node]
+| xref:selecting-start-recovery-to-configure-archive-node.adoc[Select Start Recovery to configure Archive Node]
 
 |Storage Node (software-based):
 
 * If you had to use the `--force` flag to import the node, or you issued `storagegrid node force-recovery _node-name_`
 * If you had to do a full node reinstall, or you needed to restore /var/local
 
-|xref:selecting-start-recovery-to-configure-storage-node.adoc[Select Start Recovery to configure Storage Node]
+| xref:selecting-start-recovery-to-configure-storage-node.adoc[Select Start Recovery to configure Storage Node]
 
 |Storage Node (software-based):
 
 * If you added a new block device.
 * If, for any `<PURPOSE>`, the value of the `BLOCK_DEVICE_<PURPOSE>` configuration file variable refers to a block device that does not contain the same data it did before the host failure.
 
-|xref:recovering-from-storage-volume-failure-where-system-drive-is-intact.adoc[Recover from storage volume failure where system drive is intact]
+| xref:recovering-from-storage-volume-failure-where-system-drive-is-intact.adoc[Recover from storage volume failure where system drive is intact]
 |===

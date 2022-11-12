@@ -36,14 +36,14 @@ To complete this procedure, you perform these high-level tasks:
 * Review the script output and resolve any issues.
 * Run the `sn-recovery-postinstall.sh` script. When this script runs, it does the following.
 +
-IMPORTANT: Do not reboot a Storage Node during recovery before running `sn-recovery-postinstall.sh` (see the step for <<post_install_script_step,post-install script>>) to reformat the failed storage volumes and restore object metadata. Rebooting the Storage Node before `sn-recovery-postinstall.sh` completes causes errors for services that attempt to start and causes StorageGRID appliance nodes to exit maintenance mode.
+IMPORTANT: Do not reboot a Storage Node during recovery before running `sn-recovery-postinstall.sh` to reformat the failed storage volumes and restore object metadata. Rebooting the Storage Node before `sn-recovery-postinstall.sh` completes causes errors for services that attempt to start and causes StorageGRID appliance nodes to exit maintenance mode. See the step for <<post-install-script-step,post-install script>>.
 
- ** Reformats any storage volumes that the `sn-remount-volumes` script could not mount or that were found to be improperly formatted.
+** Reformats any storage volumes that the `sn-remount-volumes` script could not mount or that were found to be improperly formatted.
 +
 NOTE: If a storage volume is reformatted, any data on that volume is lost. You must perform an additional procedure to restore object data from other locations in the grid, assuming that ILM rules were configured to store more than one object copy.
 
- ** Rebuilds the Cassandra database on the node, if needed.
- ** Starts the services on the Storage Node.
+** Rebuilds the Cassandra database on the node, if needed.
+** Starts the services on the Storage Node.
 
 .Steps
 
@@ -188,8 +188,7 @@ NOTE: The RSM service is present on Storage Nodes that include the ADC service.
 NOTE: Some StorageGRID recovery procedures use Reaper to handle Cassandra repairs. Repairs occur automatically as soon as the related or required services have started. You might notice script output that mentions "`reaper`" or "`Cassandra repair.`" If you see an error message indicating the repair has failed, run the command indicated in the error message.
 
 +
-[#post_install_script_step]
-. As the `sn-recovery-postinstall.sh` script runs, monitor the Recovery page in the Grid Manager.
+. [[post-install-script-step]]. As the `sn-recovery-postinstall.sh` script runs, monitor the Recovery page in the Grid Manager.
 +
 The Progress bar and the Stage column on the Recovery page provide a high-level status of the `sn-recovery-postinstall.sh` script.
 +
