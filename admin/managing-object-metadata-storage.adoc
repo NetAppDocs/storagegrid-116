@@ -166,7 +166,7 @@ To view the allowed metadata space for a Storage Node:
 +
 image::../media/storage_used_object_metadata_allowed.png[Storage Used - Object Metadata - Allowed]
 
-In the screenshot, the *Allowed* value is 2.64 TB, which is the maximum value for a Storage Node whose actual reserved space for metadata is more than 4 TB.
+In the screenshot, the *Allowed* value is 3.96 TB, which is the maximum value for a Storage Node whose actual reserved space for metadata is more than 4 TB.
 
 The *Allowed* value corresponds to this Prometheus metric:
 
@@ -179,7 +179,7 @@ Suppose you install a StorageGRID system using version 11.6. For this example, a
 
 * The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for StorageGRID 11.6 when each Storage Node has more than 128 GB RAM.)
 * The actual reserved space for metadata for SN1 is 6 TB. (The entire volume is reserved because volume 0 is smaller than the *Metadata Reserved Space* setting.)
-* The allowed space for metadata on SN1 is 2.64 TB. (This is the maximum value for actual reserved space.)
+* The allowed space for metadata on SN1 is 3.96 TB. (This is the maximum value for allowed reserved space.)
 
 == How Storage Nodes of different sizes affect object capacity
 
