@@ -133,6 +133,7 @@ image::../media/metadata_allowed_space_volume_0.png[Metadata allowed space volum
 
 The following table shows how StorageGRID calculates the *allowed metadata space* for different Storage Nodes, based on the amount of memory for the node and the actual reserved space for metadata.
 
+[[actual-reserved-space-for-metadata]]
 [cols="1a,1a,2a,2a" grid="rows"]
 |===
 
@@ -179,7 +180,7 @@ Suppose you install a StorageGRID system using version 11.6. For this example, a
 
 * The system-wide *Metadata Reserved Space* is set to 8 TB. (This is the default value for StorageGRID 11.6 when each Storage Node has more than 128 GB RAM.)
 * The actual reserved space for metadata for SN1 is 6 TB. (The entire volume is reserved because volume 0 is smaller than the *Metadata Reserved Space* setting.)
-* The allowed space for metadata on SN1 is 3.96 TB. (This is the maximum value for allowed reserved space.)
+* The allowed space for metadata on SN1 is 3 TB, based on the calculation shown in the <<actual-reserved-space-for-metadata,table for actual reserved space for metadata>>: (Actual reserved space for metadata − 1 TB) × 60%, up to a maximum of 3.96 TB.
 
 == How Storage Nodes of different sizes affect object capacity
 
