@@ -7,6 +7,24 @@ settings:
     pdf_enabled: true
     harmony_enabled: true
     lipi_enabled: false
+  versions:
+    # Current repo stanza comes first
+    - name: StorageGRID
+      url: /storagegrid-116
+      version-number: "11.6"
+    # Additional releases newest to oldest
+    # Release in GitHub (typical)
+    - name: StorageGRID
+      url: /storagegrid-115
+      version-number: "11.5"
+    # Release not in GitHub
+    - name: StorageGRID
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63374&language=en-US
+      version-number: "11.4"
+    # Release not in GitHub
+    - name: StorageGRID
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61023&archive=true
+      version-number: "11.3"
 sidebar:
   entries:
     - title: StorageGRID 11.6 Docs
