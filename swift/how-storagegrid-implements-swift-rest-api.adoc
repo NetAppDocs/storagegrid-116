@@ -25,7 +25,7 @@ Conflicting client requests, such as two clients writing to the same key, are re
 
 By default, StorageGRID provides read-after-write consistency for newly created objects and eventual consistency for object updates and HEAD operations. Any GET following a successfully completed PUT will be able to read the newly written data. Overwrites of existing objects, metadata updates, and deletes are eventually consistent. Overwrites generally take seconds or minutes to propagate, but can take up to 15 days.
 
-StorageGRID also allows you to control consistency on a per container basis. You can change the consistency control to make a trade-off between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.
+StorageGRID also allows you to control consistency on a per container basis. You can change the consistency control to provide a balance between the availability of the objects and the consistency of those objects across different Storage Nodes and sites, as required by your application.
 
 .Related information
 
