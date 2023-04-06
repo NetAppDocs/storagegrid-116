@@ -14,24 +14,25 @@ You might need to replace the Fibre Channel host bus adapter (HBA) in the SG6000
 .What you'll need
 
 * You have the correct replacement Fibre Channel HBA.
-* You have determined which SG6000-CN controller contains the Fibre Channel HBA to replace.
-+
-xref:verifying-fibre-channel-hba-to-replace.adoc[Verify Fibre Channel HBA to replace]
 
-* You have physically located the SG6000-CN controller where you are replacing the Fibre Channel HBA in the data center.
-+
-xref:locating-controller-in-data-center.adoc[Locate controller in data center]
+* You have link:verifying-fibre-channel-hba-to-replace.html[determined which SG6000-CN controller contains the Fibre Channel HBA to replace].
 
-* You have removed the controller cover.
+* You have link:locating-controller-in-data-center.html[physically located the SG6000-CN controller] in the data center.
+
+* You have link:shutting-down-sg6000-cn-controller.html[shut down SG6000-CN controller].
 +
-xref:removing-sg6000-cn-controller-cover.adoc[Remove SG6000-CN controller cover]
+IMPORTANT: A controlled shutdown is required before you remove the controller from the rack.
+
+* You have link:removing-sg6000-cn-controller-from-cabinet-or-rack.html[removed the controller from the cabinet or rack].
+
+* You have link:removing-sg6000-cn-controller-cover.html[removed the controller cover].
+
 
 .About this task
 
-To prevent service interruptions, confirm that all other Storage Nodes are connected to the grid before starting the Fibre Channel HBA replacement or replace the adapter during a scheduled maintenance window when periods of service disruption are normally expected. See the information about determining node connection states in the instructions for managing objects with information lifecycle management.
+To prevent service interruptions, confirm that all other Storage Nodes are connected to the grid before starting the Fibre Channel HBA replacement or replace the adapter during a scheduled maintenance window when periods of service disruption are normally expected. See the information about link:../monitor/monitor-node-connection-states.html[monitoring node connection states].
 
-IMPORTANT: If you have ever used an ILM rule that creates only one copy of an object, you must replace the Fibre Channel HBA during a scheduled maintenance window. Otherwise, you might temporarily lose access to those objects during this procedure. +
-See information about managing objects with information lifecycle management.
+IMPORTANT: If you have ever used an ILM rule that creates only one copy of an object, you must replace the Fibre Channel HBA during a scheduled maintenance window. Otherwise, you might temporarily lose access to those objects during this procedure. See information about link:../ilm/why-you-should-not-use-single-copy-replication.html[why you should not use single-copy replication].
 
 .Steps
 
@@ -56,12 +57,3 @@ Install the replacement Fibre Channel HBA.
 
 xref:reinstalling-fibre-channel-hba.adoc[Reinstall Fibre Channel HBA]
 
-.Related information
-
-xref:reinstalling-fibre-channel-hba.adoc[Reinstall Fibre Channel HBA]
-
-xref:../admin/index.adoc[Administer StorageGRID]
-
-xref:../monitor/index.adoc[Monitor and troubleshoot]
-
-xref:../ilm/index.adoc[Manage objects with ILM]
