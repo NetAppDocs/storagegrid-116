@@ -35,7 +35,7 @@ When the failure is resolved and a higher priority interface becomes available a
 
 The best practices for creating a StorageGRID HA group for FabricPool depend on the workload, as follows:
 
-* If you plan to use FabricPool with primary workload data, you must create a HA group that includes at least two load-balancing nodes to prevent data retrieval interruption.
+* If you plan to use FabricPool with primary workload data, you must create an HA group that includes at least two load-balancing nodes to prevent data retrieval interruption.
 * If you plan to use the FabricPool snapshot-only volume tiering policy or non-primary local performance tiers (for example, disaster recovery locations or NetApp SnapMirror® destinations), you can configure an HA group with only one node.
 
 These instructions describe setting up an HA group for Active-Backup HA (one node is active and one node is backup). However, you might prefer to use DNS Round Robin or Active-Active HA. To learn the benefits of these other HA configurations, see xref:../admin/configuration-options-for-ha-groups.adoc[Configuration options for HA groups].
