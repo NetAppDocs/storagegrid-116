@@ -27,6 +27,16 @@ NOTE: If you are replacing the controller before installing StorageGRID software
 
 .Steps
 
+. Display the current configurations of the appliance and record them.
+.. Log in to the appliance to be replaced:
+  ... Enter the following command: `ssh admin@_grid_node_IP_`
+  ... Enter the password listed in the `Passwords.txt` file.
+  ... Enter the following command to switch to root: `su -`
+  ... Enter the password listed in the `Passwords.txt` file.
++
+When you are logged in as root, the prompt changes from `$` to `#`.
+.. Enter: `*run-host-command ipmitool lan print*` to display the current BMC configurations for the appliance.
+
 . If the SG6000-CN controller is functioning sufficiently to allow for a controlled shutdown, shut down the SG6000-CN controller.
 +
 xref:shutting-down-sg6000-cn-controller.adoc[Shut down SG6000-CN controller]
@@ -34,17 +44,23 @@ xref:shutting-down-sg6000-cn-controller.adoc[Shut down SG6000-CN controller]
 . Use one of two methods to verify that the power for the SG6000-CN controller is off:
  ** The power indicator LED on the front of the controller is off.
  ** The Power Control page of the BMC interface indicates that the controller is off.
-. If the StorageGRID networks attached to the controller use DHCP servers, update DNS/network and IP address settings.
+
+. If any of the network interfaces on this StorageGRID appliance are configured for DHCP, you might need to update the permanent DHCP lease assignments on the DHCP servers to reference the MAC addresses of the replacement appliance. The update ensures the appliance is assigned the expected IP addresses.
  .. Locate the MAC address label on the front of the SG6000-CN controller, and determine the MAC address for the Admin Network port.
 +
-NOTE: The MAC address label lists the MAC address for the BMC management port. +
+[NOTE]
+====
+The MAC address label lists the MAC address for the BMC management port. 
+
 To determine the MAC address for the Admin Network port, you must add *2* to the hexadecimal number on the label. For example, if the MAC address on the label ends in *09*, the MAC address for the Admin Port would end in *0B*. If the MAC address on the label ends in *(_y_)FF*, the MAC address for the Admin Port would end in *(_y_+1)01*. You can easily make this calculation by opening Calculator in Windows, setting it to Programmer mode, selecting Hex, typing the MAC address, then typing *+ 2 =*.
+====
 
  .. Ask your network administrator to associate the DNS/network and IP address for the controller you removed with the MAC address for the replacement controller.
 +
 IMPORTANT: You must ensure that all IP addresses for the original controller have been updated before you apply power to the replacement controller. Otherwise, the controller will obtain new DHCP IP addresses when it boots up and might not be able to reconnect to StorageGRID. This step applies to all StorageGRID networks that are attached to the controller.
 +
 NOTE: If the original controller used static IP address, the new controller will automatically adopt the IP addresses of the controller you removed.
+
 . Remove and replace the SG6000-CN controller:
  .. Label the cables and then disconnect the cables and any SFP+ or SFP28 transceivers.
 +
@@ -54,15 +70,38 @@ IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step o
  .. Install the replacement controller into the cabinet or rack.
  .. Replace the cables and any SFP+ or SFP28 transceivers.
  .. Power on the controller and monitor the controller LEDs and boot-up codes.
-. Confirm that the appliance Storage Node appears in the Grid Manager and that no alarms appear.
-. From the Grid Manager, select *NODES*, and verify that the BMC IP address for the node controller is correct.
-+
-If the node controller IP address is not valid or is not in the expected range, reconfigure the IP address as described in the recovery and maintenance instructions.
 
+ 
+. If the appliance where you replaced the controller used a key management server (KMS) to encrypt data, additional configuration might be required before the node can join the grid. If the node does not automatically join the grid, make sure that these configuration settings have transferred to the new controller and manually configure any settings that don't have the expected configuration:
+
+** link:../sg6000/configuring-storagegrid-connections.html[Configure StorageGRID connections] 
+** link:../admin/kms-overview-of-kms-and-appliance-configuration.html#set-up-the-appliance[Configure node encryption for the appliance]
+
+. Log in to the appliance with the replaced controller:
+  .. Enter the following command: `ssh admin@_grid_node_IP_`
+  .. Enter the password listed in the `Passwords.txt` file.
+  .. Enter the following command to switch to root: `su -`
+  .. Enter the password listed in the `Passwords.txt` file.
+
+. Restore BMC network connectivity for the appliance. There are two options: 
+* Use static IP, netmask, and gateway 
+* Use DHCP to obtain an IP, netmask, and gateway
+
+.. To restore the BMC configuration to use a static IP, netmask, and gateway, enter the following commands:
 +
-NOTE: If you applied additional customization during the original installation, such as setting SNMP trap destinations or email notifications, you should record and validate the configuration and reapply it if necessary.
+`*run-host-command ipmitool lan set 1 ipaddr _Appliance_IP_*`
 +
-xref:../maintain/index.adoc[Recover and maintain]
+`*run-host-command ipmitool lan set 1 netmask _Netmask_IP_*`
++
+`*run-host-command ipmitool lan set 1 defgw ipaddr _Default_gateway_*`
+
+.. To restore the BMC configuration to use DHCP to obtain an IP, netmask, and gateway, enter the following command: 
++
+`*run-host-command ipmitool lan set 1 ipsrc dhcp*`
+
+. After restoring BMC network connectivity, connect to the BMC interface to audit and restore any additional custom BMC configuration you might have applied. For example, you should confirm the settings for SNMP trap destinations and email notifications. See link:configuring-bmc-interface-sg6000.html[Configure BMC interface].
+. Confirm that the appliance node appears in the Grid Manager and that no alerts appear.
+
 
 .Related information
 
