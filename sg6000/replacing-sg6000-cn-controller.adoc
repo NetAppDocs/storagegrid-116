@@ -41,10 +41,6 @@ When you are logged in as root, the prompt changes from `$` to `#`.
 +
 xref:shutting-down-sg6000-cn-controller.adoc[Shut down SG6000-CN controller]
 
-. Use one of two methods to verify that the power for the SG6000-CN controller is off:
- ** The power indicator LED on the front of the controller is off.
- ** The Power Control page of the BMC interface indicates that the controller is off.
-
 . If any of the network interfaces on this StorageGRID appliance are configured for DHCP, you might need to update the permanent DHCP lease assignments on the DHCP servers to reference the MAC addresses of the replacement appliance. The update ensures the appliance is assigned the expected IP addresses.
  .. Locate the MAC address label on the front of the SG6000-CN controller, and determine the MAC address for the Admin Network port.
 +
@@ -110,3 +106,5 @@ xref:sg6000-cn-installing-into-cabinet-or-rack.adoc[SG6000-CN: Install into cabi
 xref:viewing-status-indicators-and-buttons-on-sg6000-cn-controller.adoc[View status indicators and buttons on SG6000-CN controller]
 
 xref:viewing-boot-up-codes-for-sg6000-cn-controller.adoc[View boot-up codes for SG6000-CN controller]
+
+// 2023 MAY 30, storagegrid-116-issue-51 (SGRIDDOC-3)
