@@ -13,32 +13,29 @@ Shut down the SG6000-CN controller to perform hardware maintenance.
 
 .What you'll need
 
-* You have physically located the SG6000-CN controller requiring maintenance in the data center.
-+
-xref:locating-controller-in-data-center.adoc[Locate controller in data center]
-
-* The appliance has been xref:placing-appliance-into-maintenance-mode.adoc[placed into maintenance mode].
+You have physically located the SG6000-CN controller requiring maintenance in the data center. See xref:locating-controller-in-data-center.adoc[Locate controller in data center].
 
 .About this task
 
-To prevent service interruptions, confirm that all other Storage Nodes are connected to the grid before shutting down the controller or shut down the controller during a scheduled maintenance window when periods of service disruption are acceptable. See the information about determining node connection states in the instructions for managing objects with information lifecycle management.
+To prevent service interruptions, confirm that all other Storage Nodes are connected to the grid before shutting down the controller or shut down the controller during a scheduled maintenance window when periods of service disruption are acceptable. See the information about xref:monitoring-node-connection-states.adoc[monitoring node connection states].
 
 IMPORTANT: If you have ever used an ILM rule that creates only one copy of an object, you must shut down the controller during a scheduled maintenance window. Otherwise, you might temporarily lose access to those objects during this procedure. See link:../ilm/index.html[Manage objects with information lifecycle management].
 
 .Steps
 
-. When the appliance has been placed maintenance mode, shut down the SG6000-CN controller:
+. Shut down the SG6000-CN controller:
 +
-CAUTION: You must perform a controlled shut down of the controller by entering the commands specified below. Shutting down the controller using the power switch will result in data loss.
+CAUTION: You must perform a controlled shut down of the controller by entering the commands specified below. It is a best practice to perform a controlled shutdown when possible to avoid unnecessary alerts, ensure full logs are available, and avoid service disruptions.
 
- .. Log in to the grid node using PuTTY or another ssh client:
+ .. If you have not already logged into the grid node, log in using PuTTY or another ssh client:
   ... Enter the following command: `ssh admin@_grid_node_IP_`
   ... Enter the password listed in the `Passwords.txt` file.
   ... Enter the following command to switch to root: `su -`
   ... Enter the password listed in the `Passwords.txt` file.
 +
 When you are logged in as root, the prompt changes from `$` to `#`.
- .. Shut down the SG6000-CN controller: +
+ .. Shut down the SG6000-CN controller: 
++
 `*shutdown -h now*`
 +
 This command might take up to 10 minutes to complete.
@@ -65,3 +62,5 @@ image::../media/bmc_power_control_page_controller_off.png[BMC Power control page
 .Related information
 
 xref:removing-sg6000-cn-controller-from-cabinet-or-rack.adoc[Remove SG6000-CN controller from cabinet or rack]
+
+// 2023 MAY 30, storagegrid-116-issue-51 (SGRIDDOC-3)
