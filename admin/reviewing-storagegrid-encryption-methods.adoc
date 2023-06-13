@@ -21,8 +21,9 @@ Key management server (KMS) in Grid Manager
 a|
 You configure a key management server for the StorageGRID site (*CONFIGURATION* > *Security* > *Key management server*) and enable node encryption for the appliance. Then, an appliance node connects to the KMS to request a key encryption key (KEK). This key encrypts and decrypts the data encryption key (DEK) on each volume.
 a|
-Appliance nodes that have *Node Encryption* enabled during installation. All data on the appliance is protected against physical loss or removal from the data center. Can be used with some StorageGRID storage and services appliances.
+Appliance nodes that have *Node Encryption* enabled during installation. All data on the appliance is protected against physical loss or removal from the data center.
 
+NOTE: Managing encryption keys with a KMS instance is only supported for storage nodes and service appliances.
 a|
 Drive security in SANtricity System Manager
 a|
@@ -119,3 +120,5 @@ Depending on your requirements, you can use more than one encryption method at a
 * You can use a KMS to secure data on appliance nodes and also use the Stored Object Encryption grid option to encrypt all objects when they are ingested.
 
 If only a small portion of your objects require encryption, consider controlling encryption at the bucket or individual object level instead. Enabling multiple levels of encryption has an additional performance cost.
+
+// 2023 JUN 13, SGRIDDOC-7
