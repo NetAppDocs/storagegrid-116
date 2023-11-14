@@ -40,7 +40,7 @@ For example, if an SG1000 source node appliance is being used as an Admin Node a
  ** Replacing an SG1000 source node appliance with an SG100 services target appliance reduces the maximum speed of the network ports from 100-GbE to 25-GbE.
  ** The SG100 and SG1000 appliances have different network connectors. Changing the appliance type might require replacing the cables or SFP modules.
 * A replacement storage appliance must have equal or greater capacity than the Storage Node it is replacing.
- ** If the target storage appliance has the same number of drives as the source node, the drives in the target appliance must have the same capacity (in TB) or larger.
+ ** If the target storage appliance has the same number of drives as the source node, the drives in the target appliance must have greater capacity (in TB).
  **  If you plan to use the same RAID mode on the target node as was used on the source node, or a less storage efficient RAID mode (for example, switching from RAID6 to DDP), the drives in the target appliance must be larger (in TB) than the drives in the source appliance.
  ** If the number of standard drives installed in a target storage appliance is less than the number of drives in the source node, due to installation of solid-state drives (SSDs), the overall storage capacity of the standard drives in the target appliance (in TB) must meet or exceed the total functional drive capacity of all drives in the source Storage Node.
 +
@@ -70,3 +70,5 @@ If any of the following issues are encountered while cloning, the cloning proces
 * For Storage Nodes, a replacement appliance of insufficient capacity
 
 You must resolve each issue for cloning to continue.
+
+// 2023 NOV 13, SGRIDDOC-21
