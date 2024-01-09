@@ -85,6 +85,8 @@ IMPORTANT: To prevent degraded performance, do not twist, fold, pinch, or step o
 
 .. To restore the BMC configuration to use a static IP, netmask, and gateway, enter the following commands:
 +
+`*run-host-command ipmitool lan set 1 ipsrc static*`
++
 `*run-host-command ipmitool lan set 1 ipaddr _Appliance_IP_*`
 +
 `*run-host-command ipmitool lan set 1 netmask _Netmask_IP_*`
@@ -107,4 +109,5 @@ xref:viewing-status-indicators-and-buttons-on-sg6000-cn-controller.adoc[View sta
 
 xref:viewing-boot-up-codes-for-sg6000-cn-controller.adoc[View boot-up codes for SG6000-CN controller]
 
+// 2023 JAN 4, SGIRDDOC-30 
 // 2023 MAY 30, storagegrid-116-issue-51 (SGRIDDOC-3)
