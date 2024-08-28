@@ -41,7 +41,6 @@ You can now create virtual LAN (VLAN) interfaces for Admin Nodes and Gateway Nod
 ** *Linux (after installing the node)*: xref:../maintain/linux-adding-trunk-or-access-interfaces-to-node.adoc[Linux: Add trunk or access interfaces to a node]
 ** *VMware (after installing the node)*: xref:../vmware/collecting-information-about-your-deployment-environment.adoc[Collect information about your deployment environment]
 
-
 == Can use Azure AD for identity federation
 
 You can now select Azure Active Directory (Azure AD) as the identity source when configuring identity federation for the Grid Manager or the Tenant Manager. See xref:../admin/using-identity-federation.adoc[Use identity federation].
@@ -179,7 +178,6 @@ IMPORTANT: The `show-replicated-repair-status` option is available for technical
 * Previously, Prometheus metrics were stored on Admin Nodes for 31 days. Now, metrics are stored until the space reserved for Prometheus data is full, which can significantly increase how long historical metrics are available.
 +
 When the `/var/local/mysql_ibdata/` volume reaches capacity, the oldest metrics are deleted first.
-
 
 == Installation enhancements
 
